@@ -1,0 +1,7 @@
+id: viptela-manage-19.2.2
+node_definition_id: viptela-manage
+description: ''
+label: vManage 19.2.2
+disk_image: viptela-vmanage-19.2.2-genericx86-64.qcow2
+read_only: false
+disk_subfolder: viptela-vmanage-19.2.2

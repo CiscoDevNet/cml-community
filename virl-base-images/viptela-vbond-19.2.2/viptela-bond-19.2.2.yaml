@@ -1,0 +1,7 @@
+id: viptela-bond-19.2.2
+node_definition_id: viptela-bond
+description: ''
+label: vBond 19.2.2
+disk_image: viptela-edge-19.2.2-genericx86-64.qcow2
+read_only: false
+disk_subfolder: viptela-bond-19.2.2

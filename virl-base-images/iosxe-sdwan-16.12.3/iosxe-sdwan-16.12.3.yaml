@@ -1,0 +1,8 @@
+id: iosxe-sdwan-16.12.3
+node_definition_id: iosxe-sdwan
+description: ''
+label: iosxe-sdwan-16.12.3
+disk_image: csr1000v-ucmk9.16.12.3-serial.qcow2
+read_only: false
+disk_subfolder: iosxe-sdwan-16.12.3
+schema_version: 0.1

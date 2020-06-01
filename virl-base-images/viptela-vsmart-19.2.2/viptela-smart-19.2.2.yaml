@@ -1,0 +1,7 @@
+id: viptela-smart-19.2.2
+node_definition_id: viptela-smart
+description: ''
+label: vSmart 19.2.2
+disk_image: viptela-smart-19.2.2-genericx86-64.qcow2
+read_only: false
+disk_subfolder: viptela-smart-19.2.2

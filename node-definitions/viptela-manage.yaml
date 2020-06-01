@@ -1,0 +1,74 @@
+id: viptela-manage
+configuration:
+  generator:
+    driver: null
+  provisioning:
+    volume_name: cidata
+    media_type: iso
+    files:
+      - name: meta-data
+        content: |-
+          instance-id: vmanage
+          local-hostname: vmanage
+        editable: false
+      - name: user-data
+        content: |-
+          #cloud-config
+          ssh_authorized_keys:
+            - your-ssh-pub-key-line-goes-here
+        editable: true
+device:
+  interfaces:
+    has_loopback_zero: false
+    physical:
+      - eth0
+      - ge0/0
+      - ge0/1
+      - ge0/2
+      - ge0/3
+      - ge0/4
+      - ge0/5
+      - ge0/6
+    serial_ports: 1
+inherited:
+  image:
+    ram: true
+    cpus: true
+    data_volume: true
+    boot_disk_size: false
+  node:
+    ram: true
+    cpus: true
+    data_volume: true
+    boot_disk_size: false
+general:
+  description: Viptela vManage System
+  nature: server
+  read_only: true
+boot:
+  timeout: 300
+  completed:
+    - ': System Ready'
+sim:
+  linux_native:
+    cpus: 8
+    disk_driver: ide
+    driver: server
+    libvirt_domain_driver: kvm
+    nic_driver: virtio
+    ram: 32768
+    data_volume: 512
+pyats:
+  os: linux
+ui:
+  description: |-
+    Viptela vManage System
+
+    32 GB DRAM, 8 vCPU, 512GB data disk
+
+    [CCO Link](https://sdwan-docs.cisco.com/Product_Documentation)
+  group: Others
+  icon: server
+  label: vManage
+  label_prefix: vmanage-
+  visible: true
