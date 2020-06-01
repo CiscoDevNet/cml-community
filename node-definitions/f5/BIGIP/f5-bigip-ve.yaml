@@ -1,0 +1,96 @@
+id: f5-bigip-ve
+general:
+  nature: server
+  read_only: false
+  description: F5 BIGIP Virtual Edition
+device:
+  interfaces:
+    has_loopback_zero: false
+    physical:
+      - eth0
+      - eth1
+      - eth2
+      - eth3
+      - eth4
+      - eth5
+      - eth6
+      - eth7
+      - eth8
+      - eth9
+      - eth10
+      - eth11
+      - eth12
+      - eth13
+      - eth14
+      - eth15
+      - eth16
+      - eth17
+      - eth18
+      - eth19
+      - eth20
+      - eth21
+      - eth22
+      - eth23
+      - eth24
+      - eth25
+      - eth26
+      - eth27
+    serial_ports: 1
+    default_count: 4
+ui:
+  visible: true
+  label_prefix: bigip-
+  icon: server
+  label: F5 BIGIP-VE
+  description: BIG-IP VE Appliance
+sim:
+  linux_native:
+    libvirt_domain_driver: kvm
+    driver: server
+    disk_driver: virtio
+    ram: 4096
+    cpus: 4
+    nic_driver: virtio
+    video:
+      memory: 1
+boot:
+  timeout: 600
+  completed:
+    - 'login: '
+inherited:
+  image:
+    ram: true
+    cpus: true
+    data_volume: false
+    boot_disk_size: false
+  node:
+    ram: true
+    cpus: true
+    data_volume: false
+    boot_disk_size: false
+configuration:
+  generator:
+    driver: null
+  provisioning:
+    volume_name: config-2
+    media_type: iso
+    files:
+      - name: user_data
+        editable: true
+        content: |-
+          #cloud-config
+
+          write_files:
+            - path: /config/onboarding/day0.sh
+               permissions: 0755
+               owner: root:root
+               content: |
+                 #!/bin/sh
+                 tmsh modify sys global-settings hostname mybigip.example.com
+
+          runcmd: [nohup sh -c '/config/onboarding/day0.sh' &]
+      - name: meta_data.json
+        editable: true
+        content: '{ "uuid": "1d9d6d3a-1d36-4db7-8d7c-63963d4d6f20", "hostname": "localhost"
+          }'
+schema_version: 0.0.1
