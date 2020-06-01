@@ -1,0 +1,47 @@
+id: a10vthunder
+general:
+  description: A10 vThunder Virtual Appliance
+  nature: server
+  read_only: false
+device:
+  interfaces:
+    has_loopback_zero: false
+    physical:
+      - management
+      - ethernet 1
+      - ethernet 2
+    serial_ports: 1
+    default_count: 3
+ui:
+  visible: true
+  description: A10 vThunder Load Balancer
+  label_prefix: vthunder-
+  icon: server
+  label: A10 vThunder
+sim:
+  linux_native:
+    libvirt_domain_driver: kvm
+    driver: server
+    disk_driver: virtio
+    ram: 4096
+    cpus: 4
+    nic_driver: virtio
+boot:
+  timeout: 600
+  completed:
+    - 'vThunder login: '
+inherited:
+  image:
+    ram: true
+    cpus: true
+    data_volume: false
+    boot_disk_size: false
+  node:
+    ram: true
+    cpus: true
+    data_volume: false
+    boot_disk_size: false
+configuration:
+  generator:
+    driver: null
+schema_version: 0.0.1
