@@ -1,0 +1,2170 @@
+lab:
+  description: A sample network built with IOS XE, NX-OS, IOS XR, and ASA devices.  Includes
+    Linux hosts.
+  notes: ''
+  timestamp: 1590053429.3350143
+  title: Multi Platform Network
+  version: 0.0.3
+nodes:
+  - id: n0
+    label: internet-rtr01
+    node_definition: csr1000v
+    x: -750
+    y: -200
+    configuration: |-
+      service timestamps debug datetime msec
+      service timestamps log datetime msec
+      ! Call-home is enabled by Smart-Licensing.
+      service call-home
+      platform qfp utilization monitor load 80
+      no platform punt-keepalive disable-kernel-core
+      platform console serial
+      !
+      hostname internet-rtr01
+      !
+      boot-start-marker
+      boot-end-marker
+      !
+      !
+      vrf definition Mgmt-intf
+      !
+      address-family ipv4
+      exit-address-family
+      !
+      address-family ipv6
+      exit-address-family
+      !
+      no logging console
+      enable password cisco
+      !
+      no aaa new-model
+      call-home
+      ! If contact email address in call-home is configured as sch-smart-licensing@cisco.com
+      ! the email address configured in Cisco Smart License Portal will be used as contact email address to send SCH notifications.
+      contact-email-addr sch-smart-licensing@cisco.com
+      profile "CiscoTAC-1"
+        active
+        destination transport-method http
+        no destination transport-method email
+      !
+      !
+      no ip domain lookup
+      ip domain name virl.info
+      !
+      login on-success log
+      !
+      subscriber templating
+      !
+      !
+      multilink bundle-name authenticated
+      !
+      crypto pki trustpoint SLA-TrustPoint
+      enrollment pkcs12
+      revocation-check crl
+      !
+      !
+      crypto pki certificate chain SLA-TrustPoint
+      certificate ca 01
+        30820321 30820209 A0030201 02020101 300D0609 2A864886 F70D0101 0B050030
+        32310E30 0C060355 040A1305 43697363 6F312030 1E060355 04031317 43697363
+        6F204C69 63656E73 696E6720 526F6F74 20434130 1E170D31 33303533 30313934
+        3834375A 170D3338 30353330 31393438 34375A30 32310E30 0C060355 040A1305
+        43697363 6F312030 1E060355 04031317 43697363 6F204C69 63656E73 696E6720
+        526F6F74 20434130 82012230 0D06092A 864886F7 0D010101 05000382 010F0030
+        82010A02 82010100 A6BCBD96 131E05F7 145EA72C 2CD686E6 17222EA1 F1EFF64D
+        CBB4C798 212AA147 C655D8D7 9471380D 8711441E 1AAF071A 9CAE6388 8A38E520
+        1C394D78 462EF239 C659F715 B98C0A59 5BBB5CBD 0CFEBEA3 700A8BF7 D8F256EE
+        4AA4E80D DB6FD1C9 60B1FD18 FFC69C96 6FA68957 A2617DE7 104FDC5F EA2956AC
+        7390A3EB 2B5436AD C847A2C5 DAB553EB 69A9A535 58E9F3E3 C0BD23CF 58BD7188
+        68E69491 20F320E7 948E71D7 AE3BCC84 F10684C7 4BC8E00F 539BA42B 42C68BB7
+        C7479096 B4CB2D62 EA2F505D C7B062A4 6811D95B E8250FC4 5D5D5FB8 8F27D191
+        C55F0D76 61F9A4CD 3D992327 A8BB03BD 4E6D7069 7CBADF8B DF5F4368 95135E44
+        DFC7C6CF 04DD7FD1 02030100 01A34230 40300E06 03551D0F 0101FF04 04030201
+        06300F06 03551D13 0101FF04 05300301 01FF301D 0603551D 0E041604 1449DC85
+        4B3D31E5 1B3E6A17 606AF333 3D3B4C73 E8300D06 092A8648 86F70D01 010B0500
+        03820101 00507F24 D3932A66 86025D9F E838AE5C 6D4DF6B0 49631C78 240DA905
+        604EDCDE FF4FED2B 77FC460E CD636FDB DD44681E 3A5673AB 9093D3B1 6C9E3D8B
+        D98987BF E40CBD9E 1AECA0C2 2189BB5C 8FA85686 CD98B646 5575B146 8DFC66A8
+        467A3DF4 4D565700 6ADF0F0D CF835015 3C04FF7C 21E878AC 11BA9CD2 55A9232C
+        7CA7B7E6 C1AF74F6 152E99B7 B1FCF9BB E973DE7F 5BDDEB86 C71E3B49 1765308B
+        5FB0DA06 B92AFE7F 494E8A9E 07B85737 F3A58BE1 1A48A229 C37C1E69 39F08678
+        80DDCD16 D6BACECA EEBC7CF9 8428787B 35202CDC 60E4616A B623CDBD 230E3AFB
+        418616A9 4093E049 4D10AB75 27E86F73 932E35B5 8862FDAE 0275156F 719BB2F0
+        D697DF7F 28
+          quit
+      !
+      license udi pid CSR1000V sn 9N2F3VJUAMK
+      diagnostic bootup level minimal
+      !
+      spanning-tree extend system-id
+      memory free low-watermark processor 80526
+      !
+      username cisco privilege 15 secret 9 $9$X8t5V6eWdPoRd.$wOxXAiJ8i7jeYcH70M82cMnxDgwX.31ymh9Y18oj3eg
+      !
+      redundancy
+      !
+      !
+      interface Loopback0
+      description to
+      no ip address
+      shutdown
+      !
+      interface GigabitEthernet1
+      description to port1.sandbox-backend
+      vrf forwarding Mgmt-intf
+      ip address 10.10.20.181 255.255.255.0
+      negotiation auto
+      no mop enabled
+      no mop sysid
+      no shutdown
+      !
+      interface GigabitEthernet2
+      description to GigabitEthernet0/0.edge-firewall01
+      ip address 172.31.252.1 255.255.255.0
+      negotiation auto
+      no mop enabled
+      no mop sysid
+      no shutdown
+      !
+      interface GigabitEthernet3
+      description to enp0s2.internet-host01
+      ip address 172.31.0.1 255.255.255.0
+      negotiation auto
+      no mop enabled
+      no mop sysid
+      no shutdown
+      !
+      interface GigabitEthernet4
+      description to
+      no ip address
+      shutdown
+      negotiation auto
+      no mop enabled
+      no mop sysid
+      !
+      ip forward-protocol nd
+      no ip http server
+      ip http secure-server
+      ip route 172.16.0.0 255.255.0.0 172.31.252.2
+      ip route vrf Mgmt-intf 0.0.0.0 0.0.0.0 10.10.20.254
+      !
+      ip ssh server algorithm authentication password
+      !
+      control-plane
+      !
+      !
+      line con 0
+      exec-timeout 0 0
+      password cisco
+      stopbits 1
+      line vty 0 4
+      exec-timeout 720 0
+      password cisco
+      login local
+      transport input telnet ssh
+      !
+      !
+      end
+    image_definition: csr1000v-161101b
+    ram: 4096
+    cpus: 2
+    tags: []
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        slot: 0
+        label: GigabitEthernet1
+        type: physical
+      - id: i2
+        slot: 1
+        label: GigabitEthernet2
+        type: physical
+      - id: i3
+        slot: 2
+        label: GigabitEthernet3
+        type: physical
+      - id: i4
+        slot: 3
+        label: GigabitEthernet4
+        type: physical
+  - id: n1
+    label: internet-host01
+    node_definition: ubuntu
+    x: -850
+    y: -200
+    configuration: |-
+      #cloud-config
+        bootcmd:
+        - ln -s -t /etc/rc.d /etc/rc.local
+        hostname: internet-host01
+        manage_etc_hosts: true
+        runcmd:
+        - systemctl start rc-local
+        - sed -i '/^\s*PasswordAuthentication\s\+no/d' /etc/ssh/sshd_config
+        - echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
+        - echo "UseDNS no" >> /etc/ssh/sshd_config
+        - service ssh restart
+        - service sshd restart
+        users:
+        - default
+        - gecos: User configured by VIRL Configuration Engine 0.23.12
+          lock-passwd: false
+          name: cisco
+          plain-text-passwd: cisco
+          shell: /bin/bash
+          ssh-authorized-keys:
+          - VIRL-USER-SSH-PUBLIC-KEY
+          sudo: ALL=(ALL) ALL
+        write_files:
+        - path: /etc/rc.local
+          owner: root:root
+          permissions: '0755'
+          content: |-
+            #!/bin/sh
+            ifconfig enp0s9 up 10.10.20.182 netmask 255.255.255.0
+            route add -net 0.0.0.0/0 gw 10.10.20.254 dev enp0s9
+            ifconfig enp0s2 up 172.31.0.11 netmask 255.255.255.0
+            route add -net 172.16.0.0/16 gw 172.31.0.1 dev enp0s2
+            route add -net 172.31.0.0/16 gw 172.31.0.1 dev enp0s2
+            exit 0
+    image_definition: ubuntu-18-04
+    tags: []
+    interfaces:
+      - id: i0
+        slot: 0
+        label: enp0s2
+        type: physical
+      - id: i1
+        slot: 1
+        label: enp0s3
+        type: physical
+      - id: i2
+        slot: 2
+        label: enp0s4
+        type: physical
+      - id: i3
+        slot: 3
+        label: enp0s5
+        type: physical
+      - id: i4
+        slot: 4
+        label: enp0s6
+        type: physical
+      - id: i5
+        slot: 5
+        label: enp0s7
+        type: physical
+      - id: i6
+        slot: 6
+        label: enp0s8
+        type: physical
+      - id: i7
+        slot: 7
+        label: enp0s9
+        type: physical
+  - id: n2
+    label: edge-firewall01
+    node_definition: asav
+    x: -650
+    y: -200
+    configuration: |-
+      terminal width 511
+      hostname edge-firewall01
+      username cisco password cisco privilege 15
+      enable password cisco
+      passwd cisco
+      !
+      license smart
+       feature tier standard
+       throughput level 1G
+      names
+      no mac-address auto
+
+      !
+      interface GigabitEthernet0/0
+       description to GigabitEthernet2.internet-rtr01
+       duplex full
+       nameif outside
+       security-level 0
+       ip address 172.31.252.2 255.255.255.0
+      !
+      interface GigabitEthernet0/1
+       description to GigabitEthernet0/1.edge-sw01
+       duplex full
+       nameif inside
+       security-level 100
+       ip address 172.16.253.4 255.255.255.248
+      !
+      interface Management0/0
+       description to port2.sandbox-backend
+       duplex full
+       management-only
+       nameif mgmt
+       security-level 100
+       ip address 10.10.20.171 255.255.255.0
+      !
+      ftp mode passive
+      dns domain-lookup mgmt
+      dns server-group DefaultDNS
+       name-server 10.17.248.11
+       name-server 10.17.248.12
+      same-security-traffic permit inter-interface
+      object network INSIDE-DEV
+       subnet 172.16.102.0 255.255.255.0
+      object network INSIDE-IOT
+       subnet 172.16.105.0 255.255.255.0
+      object network INSIDE-PROD
+       subnet 172.16.101.0 255.255.255.0
+      object network INSIDE-SECURITY
+       subnet 172.16.104.0 255.255.255.0
+      object network INSIDE-TEST
+       subnet 172.16.103.0 255.255.255.0
+      object network OUTSIDE-PUBLIC-IP-NETWORK
+       subnet 172.31.252.0 255.255.255.0
+      object-group network INSIDE-NETWORKS
+       network-object object INSIDE-DEV
+       network-object object INSIDE-IOT
+       network-object object INSIDE-PROD
+       network-object object INSIDE-SECURITY
+       network-object object INSIDE-TEST
+      access-list global_access remark Allow Ping
+      access-list global_access extended permit icmp any4 any4 log default
+      access-list inside_access_in extended permit ip object-group INSIDE-NETWORKS any log default
+      pager lines 23
+      logging enable
+      logging asdm informational
+      mtu mgmt 1500
+      mtu outside 1500
+      mtu inside 1500
+      no failover
+      icmp unreachable rate-limit 1 burst-size 1
+      no asdm history enable
+      arp timeout 14400
+      no arp permit-nonconnected
+      arp rate-limit 8192
+      access-group inside_access_in in interface inside
+      access-group global_access global
+      router ospf 1
+       network 172.16.253.0 255.255.255.248 area 0
+       redistribute static
+      !
+      route mgmt 0.0.0.0 0.0.0.0 10.10.20.254 1
+      route outside 172.31.0.0 255.255.0.0 172.31.252.1 1
+      timeout xlate 3:00:00
+      timeout pat-xlate 0:00:30
+      timeout conn 1:00:00 half-closed 0:10:00 udp 0:02:00 sctp 0:02:00 icmp 0:00:02
+      timeout sunrpc 0:10:00 h323 0:05:00 h225 1:00:00 mgcp 0:05:00 mgcp-pat 0:05:00
+      timeout sip 0:30:00 sip_media 0:02:00 sip-invite 0:03:00 sip-disconnect 0:02:00
+      timeout sip-provisional-media 0:02:00 uauth 0:05:00 absolute
+      timeout tcp-proxy-reassembly 0:01:00
+      timeout floating-conn 0:00:00
+      timeout conn-holddown 0:00:15
+      timeout igp stale-route 0:01:10
+      user-identity default-domain LOCAL
+      aaa authentication ssh console LOCAL
+      aaa authentication login-history
+      http server enable
+      http 0.0.0.0 0.0.0.0 mgmt
+      no snmp-server location
+      no snmp-server contact
+      crypto ipsec security-association pmtu-aging infinite
+      crypto ca trustpoint _SmartCallHome_ServerCA
+       no validation-usage
+       crl configure
+      crypto ca trustpool policy
+       auto-import
+      crypto ca certificate chain _SmartCallHome_ServerCA
+       certificate ca 0509
+          308205b7 3082039f a0030201 02020205 09300d06 092a8648 86f70d01 01050500
+          3045310b 30090603 55040613 02424d31 19301706 0355040a 13105175 6f566164
+          6973204c 696d6974 6564311b 30190603 55040313 1251756f 56616469 7320526f
+          6f742043 41203230 1e170d30 36313132 34313832 3730305a 170d3331 31313234
+          31383233 33335a30 45310b30 09060355 04061302 424d3119 30170603 55040a13
+          1051756f 56616469 73204c69 6d697465 64311b30 19060355 04031312 51756f56
+          61646973 20526f6f 74204341 20323082 0222300d 06092a86 4886f70d 01010105
+          00038202 0f003082 020a0282 0201009a 18ca4b94 0d002daf 03298af0 0f81c8ae
+          4c19851d 089fab29 4485f32f 81ad321e 9046bfa3 86261a1e fe7e1c18 3a5c9c60
+          172a3a74 8333307d 615411cb edabe0e6 d2a27ef5 6b6f18b7 0a0b2dfd e93eef0a
+          c6b310e9 dcc24617 f85dfda4 daff9e49 5a9ce633 e62496f7 3fba5b2b 1c7a35c2
+          d667feab 66508b6d 28602bef d760c3c7 93bc8d36 91f37ff8 db1113c4 9c7776c1
+          aeb7026a 817aa945 83e205e6 b956c194 378f4871 6322ec17 6507958a 4bdf8fc6
+          5a0ae5b0 e35f5e6b 11ab0cf9 85eb44e9 f80473f2 e9fe5c98 8cf573af 6bb47ecd
+          d45c022b 4c39e1b2 95952d42 87d7d5b3 9043b76c 13f1dedd f6c4f889 3fd175f5
+          92c391d5 8a88d090 ecdc6dde 89c26571 968b0d03 fd9cbf5b 16ac92db eafe797c
+          adebaff7 16cbdbcd 252be51f fb9a9fe2 51cc3a53 0c48e60e bdc9b476 0652e611
+          13857263 0304e004 362b2019 02e874a7 1fb6c956 66f07525 dc67c10e 616088b3
+          3ed1a8fc a3da1db0 d1b12354 df44766d ed41d8c1 b222b653 1cdf351d dca1772a
+          31e42df5 e5e5dbc8 e0ffe580 d70b63a0 ff33a10f ba2c1515 ea97b3d2 a2b5bef2
+          8c961e1a 8f1d6ca4 6137b986 7333d797 969e237d 82a44c81 e2a1d1ba 675f9507
+          a32711ee 16107bbc 454a4cb2 04d2abef d5fd0c51 ce506a08 31f991da 0c8f645c
+          03c33a8b 203f6e8d 673d3ad6 fe7d5b88 c95efbcc 61dc8b33 77d34432 35096204
+          921610d8 9e2747fb 3b21e3f8 eb1d5b02 03010001 a381b030 81ad300f 0603551d
+          130101ff 04053003 0101ff30 0b060355 1d0f0404 03020106 301d0603 551d0e04
+          1604141a 8462bc48 4c332504 d4eed0f6 03c41946 d1946b30 6e060355 1d230467
+          30658014 1a8462bc 484c3325 04d4eed0 f603c419 46d1946b a149a447 3045310b
+          30090603 55040613 02424d31 19301706 0355040a 13105175 6f566164 6973204c
+          696d6974 6564311b 30190603 55040313 1251756f 56616469 7320526f 6f742043
+          41203282 02050930 0d06092a 864886f7 0d010105 05000382 0201003e 0a164d9f
+          065ba8ae 715d2f05 2f67e613 4583c436 f6f3c026 0c0db547 645df8b4 72c946a5
+          03182755 89787d76 ea963480 1720dce7 83f88dfc 07b8da5f 4d2e67b2 84fdd944
+          fc775081 e67cb4c9 0d0b7253 f8760707 4147960c fbe08226 93558cfe 221f6065
+          7c5fe726 b3f73290 9850d437 7155f692 2178f795 79faf82d 26876656 3077a637
+          78335210 58ae3f61 8ef26ab1 ef187e4a 5963ca8d a256d5a7 2fbc561f cf39c1e2
+          fb0aa815 2c7d4d7a 63c66c97 443cd26f c34a170a f890d257 a21951a5 2d9741da
+          074fa950 da908d94 46e13ef0 94fd1000 38f53be8 40e1b46e 561a20cc 6f588ded
+          2e458fd6 e9933fe7 b12cdf3a d6228cdc 84bb226f d0f8e4c6 39e90488 3cc3baeb
+          557a6d80 9924f56c 01fbf897 b0945beb fdd26ff1 77680d35 6423acb8 55a103d1
+          4d4219dc f8755956 a3f9a849 79f8af0e b911a07c b76aed34 d0b62662 381a870c
+          f8e8fd2e d3907f07 912a1dd6 7e5c8583 99b03808 3fe95ef9 3507e4c9 626e577f
+          a75095f7 bac89be6 8ea201c5 d666bf79 61f33c1c e1b9825c 5da0c3e9 d848bd19
+          a2111419 6eb2861b 683e4837 1a88b75d 965e9cc7 ef276208 e291195c d2f121dd
+          ba174282 97718153 31a99ff6 7d62bf72 e1a3931d cc8a265a 0938d0ce d70d8016
+          b478a53a 874c8d8a a5d54697 f22c10b9 bc5422c0 01506943 9ef4b2ef 6df8ecda
+          f1e3b1ef df918f54 2a0b25c1 2619c452 100565d5 8210eac2 31cd2e
+        quit
+      telnet 0.0.0.0 0.0.0.0 mgmt
+      telnet timeout 15
+      ssh stricthostkeycheck
+      ssh 0.0.0.0 0.0.0.0 mgmt
+      ssh timeout 5
+      console timeout 0
+      console serial
+      management-access mgmt
+      threat-detection basic-threat
+      threat-detection statistics access-list
+      no threat-detection statistics tcp-intercept
+      dynamic-access-policy-record DfltAccessPolicy
+      username cisco password ***** pbkdf2 privilege 15
+      !
+      class-map inspection_default
+       match default-inspection-traffic
+      !
+      !
+      policy-map type inspect dns preset_dns_map
+       parameters
+        message-length maximum client auto
+        message-length maximum 512
+        no tcp-inspection
+      policy-map global_policy
+       class inspection_default
+        inspect ip-options
+        inspect netbios
+        inspect rtsp
+        inspect sunrpc
+        inspect tftp
+        inspect xdmcp
+        inspect dns preset_dns_map
+        inspect ftp
+        inspect h323 h225
+        inspect h323 ras
+        inspect rsh
+        inspect esmtp
+        inspect sqlnet
+        inspect sip
+        inspect skinny
+      policy-map type inspect dns migrated_dns_map_2
+       parameters
+        message-length maximum client auto
+        message-length maximum 512
+        no tcp-inspection
+      policy-map type inspect dns migrated_dns_map_1
+       parameters
+        message-length maximum client auto
+        message-length maximum 512
+        no tcp-inspection
+      !
+      service-policy global_policy global
+      prompt hostname context
+      no call-home reporting anonymous
+      call-home
+       profile CiscoTAC-1
+        no active
+        destination address http https://tools.cisco.com/its/service/oddce/services/DDCEService
+        destination address email callhome@cisco.com
+       profile License
+        destination address http https://tools.cisco.com/its/service/oddce/services/DDCEService
+        destination transport-method http
+      Cryptochecksum:b81cd20c8219fc5aa3c01e148bc739ce
+      : end
+    image_definition: asav-9-12-2
+    tags: []
+    interfaces:
+      - id: i0
+        slot: 0
+        label: Management0/0
+        type: physical
+      - id: i1
+        slot: 1
+        label: GigabitEthernet0/0
+        type: physical
+      - id: i2
+        slot: 2
+        label: GigabitEthernet0/1
+        type: physical
+  - id: n3
+    label: core-rtr01
+    node_definition: iosxrv
+    x: -700
+    y: 0
+    configuration: |-
+      hostname core-rtr01
+      logging console disable
+      service timestamps log datetime msec
+      service timestamps debug datetime msec
+      telnet vrf default ipv4 server max-servers 10
+      telnet vrf Mgmt-intf ipv4 server max-servers 10
+      domain name virl.info
+      domain lookup disable
+      vrf Mgmt-intf
+       address-family ipv4 unicast
+       !
+       address-family ipv6 unicast
+       !
+      !
+      line template vty
+       timestamp
+       exec-timeout 720 0
+      !
+      line console
+       exec-timeout 0 0
+       absolute-timeout 0
+       session-timeout 0
+      !
+      line default
+       exec-timeout 0 0
+       absolute-timeout 0
+       session-timeout 0
+      !
+      vty-pool default 0 50
+      control-plane
+       management-plane
+        inband
+         interface all
+          allow all
+         !
+        !
+       !
+      !
+      interface Loopback0
+       description to
+       shutdown
+      !
+      interface MgmtEth0/0/CPU0/0
+       description to port4.sandbox-backend
+       vrf Mgmt-intf
+       ipv4 address 10.10.20.173 255.255.255.0
+       no shutdown
+      !
+      interface GigabitEthernet0/0/0/0
+       description L3 Link to core-rtr02
+       ipv4 address 172.16.252.37 255.255.255.252
+       no shutdown
+      !
+      interface GigabitEthernet0/0/0/1
+       description L3 Link to edge-sw01
+       ipv4 address 172.16.253.2 255.255.255.248
+       no shutdown
+      !
+      interface GigabitEthernet0/0/0/2
+       description L3 Link to dist-rtr01
+       ipv4 address 172.16.252.22 255.255.255.252
+       no shutdown
+      !
+      interface GigabitEthernet0/0/0/3
+       description L3 Link to dist-rtr02
+       ipv4 address 172.16.252.30 255.255.255.252
+       no shutdown
+      !
+      router static
+       address-family ipv4 unicast
+        0.0.0.0/0 172.16.253.4
+       !
+       vrf Mgmt-intf
+        address-family ipv4 unicast
+         0.0.0.0/0 10.10.20.254
+        !
+       !
+      !
+      router ospf 1
+       area 0
+        interface GigabitEthernet0/0/0/0
+        !
+        interface GigabitEthernet0/0/0/1
+        !
+        interface GigabitEthernet0/0/0/2
+        !
+        interface GigabitEthernet0/0/0/3
+        !
+       !
+      !
+      ssh server v2
+      end
+    image_definition: iosxrv-6-3-1
+    tags: []
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        slot: 0
+        label: MgmtEth0/0/CPU0/0
+        type: physical
+      - id: i2
+        slot: 1
+        label: GigabitEthernet0/0/0/0
+        type: physical
+      - id: i3
+        slot: 2
+        label: GigabitEthernet0/0/0/1
+        type: physical
+      - id: i4
+        slot: 3
+        label: GigabitEthernet0/0/0/2
+        type: physical
+      - id: i5
+        slot: 4
+        label: GigabitEthernet0/0/0/3
+        type: physical
+  - id: n4
+    label: core-rtr02
+    node_definition: iosxrv
+    x: -600
+    y: 0
+    configuration: |-
+      hostname core-rtr02
+      logging console disable
+      service timestamps log datetime msec
+      service timestamps debug datetime msec
+      telnet vrf default ipv4 server max-servers 10
+      telnet vrf Mgmt-intf ipv4 server max-servers 10
+      domain name virl.info
+      domain lookup disable
+      vrf Mgmt-intf
+       address-family ipv4 unicast
+       !
+       address-family ipv6 unicast
+       !
+      !
+      line template vty
+       timestamp
+       exec-timeout 720 0
+      !
+      line console
+       exec-timeout 0 0
+       absolute-timeout 0
+       session-timeout 0
+      !
+      line default
+       exec-timeout 0 0
+       absolute-timeout 0
+       session-timeout 0
+      !
+      vty-pool default 0 50
+      control-plane
+       management-plane
+        inband
+         interface all
+          allow all
+         !
+        !
+       !
+      !
+      interface Loopback0
+       description to
+       shutdown
+      !
+      interface MgmtEth0/0/CPU0/0
+       description to port5.sandbox-backend
+       vrf Mgmt-intf
+       ipv4 address 10.10.20.174 255.255.255.0
+       no shutdown
+      !
+      interface GigabitEthernet0/0/0/0
+       description L3 Link to core-rtr01
+       ipv4 address 172.16.252.38 255.255.255.252
+       no shutdown
+      !
+      interface GigabitEthernet0/0/0/1
+       description L3 Link to edge-sw01
+       ipv4 address 172.16.253.3 255.255.255.248
+       no shutdown
+      !
+      interface GigabitEthernet0/0/0/2
+       description L3 Link to dist-rtr01
+       ipv4 address 172.16.252.26 255.255.255.252
+       no shutdown
+      !
+      interface GigabitEthernet0/0/0/3
+       description L3 Link to dist-rtr02
+       ipv4 address 172.16.252.34 255.255.255.252
+       no shutdown
+      !
+      router static
+       address-family ipv4 unicast
+        0.0.0.0/0 172.16.253.4
+       !
+       vrf Mgmt-intf
+        address-family ipv4 unicast
+         0.0.0.0/0 10.10.20.254
+        !
+       !
+      !
+      router ospf 1
+       area 0
+        interface GigabitEthernet0/0/0/0
+        !
+        interface GigabitEthernet0/0/0/1
+        !
+        interface GigabitEthernet0/0/0/2
+        !
+        interface GigabitEthernet0/0/0/3
+        !
+       !
+      !
+      ssh server v2
+      end
+    image_definition: iosxrv-6-3-1
+    tags: []
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        slot: 0
+        label: MgmtEth0/0/CPU0/0
+        type: physical
+      - id: i2
+        slot: 1
+        label: GigabitEthernet0/0/0/0
+        type: physical
+      - id: i3
+        slot: 2
+        label: GigabitEthernet0/0/0/1
+        type: physical
+      - id: i4
+        slot: 3
+        label: GigabitEthernet0/0/0/2
+        type: physical
+      - id: i5
+        slot: 4
+        label: GigabitEthernet0/0/0/3
+        type: physical
+  - id: n5
+    label: dist-rtr01
+    node_definition: csr1000v
+    x: -700
+    y: 100
+    configuration: |-
+      service timestamps debug datetime msec
+      service timestamps log datetime msec
+      ! Call-home is enabled by Smart-Licensing.
+      service call-home
+      platform qfp utilization monitor load 80
+      no platform punt-keepalive disable-kernel-core
+      platform console serial
+      !
+      hostname dist-rtr01
+      !
+      boot-start-marker
+      boot-end-marker
+      !
+      !
+      vrf definition Mgmt-intf
+      !
+      address-family ipv4
+      exit-address-family
+      !
+      address-family ipv6
+      exit-address-family
+      !
+      no logging console
+      enable password cisco
+      !
+      no aaa new-model
+      call-home
+      ! If contact email address in call-home is configured as sch-smart-licensing@cisco.com
+      ! the email address configured in Cisco Smart License Portal will be used as contact email address to send SCH notifications.
+      contact-email-addr sch-smart-licensing@cisco.com
+      profile "CiscoTAC-1"
+        active
+        destination transport-method http
+        no destination transport-method email
+      !
+      no ip domain lookup
+      ip domain name virl.info
+      !
+      login on-success log
+      !
+      subscriber templating
+      !
+      !
+      multilink bundle-name authenticated
+      !
+      crypto pki trustpoint SLA-TrustPoint
+      enrollment pkcs12
+      revocation-check crl
+      !
+      !
+      crypto pki certificate chain SLA-TrustPoint
+      certificate ca 01
+        30820321 30820209 A0030201 02020101 300D0609 2A864886 F70D0101 0B050030
+        32310E30 0C060355 040A1305 43697363 6F312030 1E060355 04031317 43697363
+        6F204C69 63656E73 696E6720 526F6F74 20434130 1E170D31 33303533 30313934
+        3834375A 170D3338 30353330 31393438 34375A30 32310E30 0C060355 040A1305
+        43697363 6F312030 1E060355 04031317 43697363 6F204C69 63656E73 696E6720
+        526F6F74 20434130 82012230 0D06092A 864886F7 0D010101 05000382 010F0030
+        82010A02 82010100 A6BCBD96 131E05F7 145EA72C 2CD686E6 17222EA1 F1EFF64D
+        CBB4C798 212AA147 C655D8D7 9471380D 8711441E 1AAF071A 9CAE6388 8A38E520
+        1C394D78 462EF239 C659F715 B98C0A59 5BBB5CBD 0CFEBEA3 700A8BF7 D8F256EE
+        4AA4E80D DB6FD1C9 60B1FD18 FFC69C96 6FA68957 A2617DE7 104FDC5F EA2956AC
+        7390A3EB 2B5436AD C847A2C5 DAB553EB 69A9A535 58E9F3E3 C0BD23CF 58BD7188
+        68E69491 20F320E7 948E71D7 AE3BCC84 F10684C7 4BC8E00F 539BA42B 42C68BB7
+        C7479096 B4CB2D62 EA2F505D C7B062A4 6811D95B E8250FC4 5D5D5FB8 8F27D191
+        C55F0D76 61F9A4CD 3D992327 A8BB03BD 4E6D7069 7CBADF8B DF5F4368 95135E44
+        DFC7C6CF 04DD7FD1 02030100 01A34230 40300E06 03551D0F 0101FF04 04030201
+        06300F06 03551D13 0101FF04 05300301 01FF301D 0603551D 0E041604 1449DC85
+        4B3D31E5 1B3E6A17 606AF333 3D3B4C73 E8300D06 092A8648 86F70D01 010B0500
+        03820101 00507F24 D3932A66 86025D9F E838AE5C 6D4DF6B0 49631C78 240DA905
+        604EDCDE FF4FED2B 77FC460E CD636FDB DD44681E 3A5673AB 9093D3B1 6C9E3D8B
+        D98987BF E40CBD9E 1AECA0C2 2189BB5C 8FA85686 CD98B646 5575B146 8DFC66A8
+        467A3DF4 4D565700 6ADF0F0D CF835015 3C04FF7C 21E878AC 11BA9CD2 55A9232C
+        7CA7B7E6 C1AF74F6 152E99B7 B1FCF9BB E973DE7F 5BDDEB86 C71E3B49 1765308B
+        5FB0DA06 B92AFE7F 494E8A9E 07B85737 F3A58BE1 1A48A229 C37C1E69 39F08678
+        80DDCD16 D6BACECA EEBC7CF9 8428787B 35202CDC 60E4616A B623CDBD 230E3AFB
+        418616A9 4093E049 4D10AB75 27E86F73 932E35B5 8862FDAE 0275156F 719BB2F0
+        D697DF7F 28
+          quit
+      !
+      license udi pid CSR1000V sn 9QRVOWWZSOE
+      diagnostic bootup level minimal
+      !
+      spanning-tree extend system-id
+      memory free low-watermark processor 80526
+      !
+      restconf
+      !
+      username cisco privilege 15 secret 9 $9$iVecEqVTUJzHUk$EO2BfGoo4I8.wW.QanPw2rSxwy9NJt6kc3xFNEFLYSA
+      !
+      redundancy
+      !
+      !
+      interface Loopback0
+      description to
+      no ip address
+      shutdown
+      !
+      interface GigabitEthernet1
+      description to port6.sandbox-backend
+      vrf forwarding Mgmt-intf
+      ip address 10.10.20.175 255.255.255.0
+      negotiation auto
+      no mop enabled
+      no mop sysid
+      no shutdown
+      !
+      interface GigabitEthernet2
+      description L3 Link to core-rtr01
+      ip address 172.16.252.21 255.255.255.252
+      negotiation auto
+      no mop enabled
+      no mop sysid
+      no shutdown
+      !
+      interface GigabitEthernet3
+      description L3 Link to core-rtr02
+      ip address 172.16.252.25 255.255.255.252
+      negotiation auto
+      no mop enabled
+      no mop sysid
+      no shutdown
+      !
+      interface GigabitEthernet4
+      description L3 Link to dist-sw01
+      ip address 172.16.252.2 255.255.255.252
+      negotiation auto
+      no mop enabled
+      no mop sysid
+      no shutdown
+      !
+      interface GigabitEthernet5
+      description L3 Link to dist-sw02
+      ip address 172.16.252.10 255.255.255.252
+      negotiation auto
+      no mop enabled
+      no mop sysid
+      no shutdown
+      !
+      interface GigabitEthernet6
+      description L3 Link to dist-rtr02
+      ip address 172.16.252.17 255.255.255.252
+      negotiation auto
+      no mop enabled
+      no mop sysid
+      no shutdown
+      !
+      router ospf 1
+      no log-adjacency-changes
+      network 172.16.252.0 0.0.3.255 area 0
+      !
+      ip forward-protocol nd
+      no ip http server
+      ip http secure-server
+      ip route vrf Mgmt-intf 0.0.0.0 0.0.0.0 10.10.20.254
+      !
+      ip ssh server algorithm authentication password
+      !
+      control-plane
+      !
+      !
+      line con 0
+      exec-timeout 0 0
+      password cisco
+      stopbits 1
+      line vty 0 4
+      exec-timeout 720 0
+      password cisco
+      login local
+      transport input telnet ssh
+      !
+      !
+      end
+    image_definition: csr1000v-161101b
+    tags: []
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        slot: 0
+        label: GigabitEthernet1
+        type: physical
+      - id: i2
+        slot: 1
+        label: GigabitEthernet2
+        type: physical
+      - id: i3
+        slot: 2
+        label: GigabitEthernet3
+        type: physical
+      - id: i4
+        slot: 3
+        label: GigabitEthernet4
+        type: physical
+      - id: i5
+        slot: 4
+        label: GigabitEthernet5
+        type: physical
+      - id: i6
+        slot: 5
+        label: GigabitEthernet6
+        type: physical
+  - id: n6
+    label: dist-rtr02
+    node_definition: csr1000v
+    x: -600
+    y: 100
+    configuration: |-
+      service timestamps debug datetime msec
+      service timestamps log datetime msec
+      ! Call-home is enabled by Smart-Licensing.
+      service call-home
+      platform qfp utilization monitor load 80
+      no platform punt-keepalive disable-kernel-core
+      platform console serial
+      !
+      hostname dist-rtr02
+      !
+      boot-start-marker
+      boot-end-marker
+      !
+      !
+      vrf definition Mgmt-intf
+      !
+      address-family ipv4
+      exit-address-family
+      !
+      address-family ipv6
+      exit-address-family
+      !
+      no logging console
+      enable password cisco
+      !
+      no aaa new-model
+      call-home
+      ! If contact email address in call-home is configured as sch-smart-licensing@cisco.com
+      ! the email address configured in Cisco Smart License Portal will be used as contact email address to send SCH notifications.
+      contact-email-addr sch-smart-licensing@cisco.com
+      profile "CiscoTAC-1"
+        active
+        destination transport-method http
+        no destination transport-method email
+      !
+      no ip domain lookup
+      ip domain name virl.info
+      !
+      login on-success log
+      !
+      subscriber templating
+      !
+      !
+      multilink bundle-name authenticated
+      !
+      crypto pki trustpoint SLA-TrustPoint
+      enrollment pkcs12
+      revocation-check crl
+      !
+      !
+      crypto pki certificate chain SLA-TrustPoint
+      certificate ca 01
+        30820321 30820209 A0030201 02020101 300D0609 2A864886 F70D0101 0B050030
+        32310E30 0C060355 040A1305 43697363 6F312030 1E060355 04031317 43697363
+        6F204C69 63656E73 696E6720 526F6F74 20434130 1E170D31 33303533 30313934
+        3834375A 170D3338 30353330 31393438 34375A30 32310E30 0C060355 040A1305
+        43697363 6F312030 1E060355 04031317 43697363 6F204C69 63656E73 696E6720
+        526F6F74 20434130 82012230 0D06092A 864886F7 0D010101 05000382 010F0030
+        82010A02 82010100 A6BCBD96 131E05F7 145EA72C 2CD686E6 17222EA1 F1EFF64D
+        CBB4C798 212AA147 C655D8D7 9471380D 8711441E 1AAF071A 9CAE6388 8A38E520
+        1C394D78 462EF239 C659F715 B98C0A59 5BBB5CBD 0CFEBEA3 700A8BF7 D8F256EE
+        4AA4E80D DB6FD1C9 60B1FD18 FFC69C96 6FA68957 A2617DE7 104FDC5F EA2956AC
+        7390A3EB 2B5436AD C847A2C5 DAB553EB 69A9A535 58E9F3E3 C0BD23CF 58BD7188
+        68E69491 20F320E7 948E71D7 AE3BCC84 F10684C7 4BC8E00F 539BA42B 42C68BB7
+        C7479096 B4CB2D62 EA2F505D C7B062A4 6811D95B E8250FC4 5D5D5FB8 8F27D191
+        C55F0D76 61F9A4CD 3D992327 A8BB03BD 4E6D7069 7CBADF8B DF5F4368 95135E44
+        DFC7C6CF 04DD7FD1 02030100 01A34230 40300E06 03551D0F 0101FF04 04030201
+        06300F06 03551D13 0101FF04 05300301 01FF301D 0603551D 0E041604 1449DC85
+        4B3D31E5 1B3E6A17 606AF333 3D3B4C73 E8300D06 092A8648 86F70D01 010B0500
+        03820101 00507F24 D3932A66 86025D9F E838AE5C 6D4DF6B0 49631C78 240DA905
+        604EDCDE FF4FED2B 77FC460E CD636FDB DD44681E 3A5673AB 9093D3B1 6C9E3D8B
+        D98987BF E40CBD9E 1AECA0C2 2189BB5C 8FA85686 CD98B646 5575B146 8DFC66A8
+        467A3DF4 4D565700 6ADF0F0D CF835015 3C04FF7C 21E878AC 11BA9CD2 55A9232C
+        7CA7B7E6 C1AF74F6 152E99B7 B1FCF9BB E973DE7F 5BDDEB86 C71E3B49 1765308B
+        5FB0DA06 B92AFE7F 494E8A9E 07B85737 F3A58BE1 1A48A229 C37C1E69 39F08678
+        80DDCD16 D6BACECA EEBC7CF9 8428787B 35202CDC 60E4616A B623CDBD 230E3AFB
+        418616A9 4093E049 4D10AB75 27E86F73 932E35B5 8862FDAE 0275156F 719BB2F0
+        D697DF7F 28
+          quit
+      !
+      license udi pid CSR1000V sn 9BYY4VJUS2J
+      diagnostic bootup level minimal
+      !
+      spanning-tree extend system-id
+      memory free low-watermark processor 80526
+      !
+      username cisco privilege 15 secret 9 $9$cONmK/B00qLzO.$iaGnQNzSbJ3ypgnmS02qYpg3FORertbgOgB2CyOHl9g
+      !
+      redundancy
+      !
+      !
+      interface Loopback0
+      description to
+      no ip address
+      shutdown
+      !
+      interface GigabitEthernet1
+      description to port7.sandbox-backend
+      vrf forwarding Mgmt-intf
+      ip address 10.10.20.176 255.255.255.0
+      negotiation auto
+      no mop enabled
+      no mop sysid
+      no shutdown
+      !
+      interface GigabitEthernet2
+      description L3 Link to core-rtr01
+      ip address 172.16.252.29 255.255.255.252
+      negotiation auto
+      no mop enabled
+      no mop sysid
+      no shutdown
+      !
+      interface GigabitEthernet3
+      description L3 Link to core-rtr02
+      ip address 172.16.252.33 255.255.255.252
+      negotiation auto
+      no mop enabled
+      no mop sysid
+      no shutdown
+      !
+      interface GigabitEthernet4
+      description L3 Link to dist-sw01
+      ip address 172.16.252.6 255.255.255.252
+      negotiation auto
+      no mop enabled
+      no mop sysid
+      no shutdown
+      !
+      interface GigabitEthernet5
+      description L3 Link to dist-sw02
+      ip address 172.16.252.14 255.255.255.252
+      negotiation auto
+      no mop enabled
+      no mop sysid
+      no shutdown
+      !
+      interface GigabitEthernet6
+      description L3 Link to dist-rtr01
+      ip address 172.16.252.18 255.255.255.252
+      negotiation auto
+      no mop enabled
+      no mop sysid
+      no shutdown
+      !
+      router ospf 1
+      no log-adjacency-changes
+      network 172.16.252.0 0.0.3.255 area 0
+      !
+      ip forward-protocol nd
+      no ip http server
+      ip http secure-server
+      ip route vrf Mgmt-intf 0.0.0.0 0.0.0.0 10.10.20.254
+      !
+      ip ssh server algorithm authentication password
+      !
+      control-plane
+      !
+      !
+      line con 0
+      exec-timeout 0 0
+      password cisco
+      stopbits 1
+      line vty 0 4
+      exec-timeout 720 0
+      password cisco
+      login local
+      transport input telnet ssh
+      !
+      !
+      end
+    image_definition: csr1000v-161101b
+    tags: []
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        slot: 0
+        label: GigabitEthernet1
+        type: physical
+      - id: i2
+        slot: 1
+        label: GigabitEthernet2
+        type: physical
+      - id: i3
+        slot: 2
+        label: GigabitEthernet3
+        type: physical
+      - id: i4
+        slot: 3
+        label: GigabitEthernet4
+        type: physical
+      - id: i5
+        slot: 4
+        label: GigabitEthernet5
+        type: physical
+      - id: i6
+        slot: 5
+        label: GigabitEthernet6
+        type: physical
+  - id: n7
+    label: dist-sw01
+    node_definition: nxosv9000
+    x: -700
+    y: 200
+    configuration: |-
+      hostname dist-sw01
+      vdc dist-sw01 id 1
+        limit-resource vlan minimum 16 maximum 4094
+        limit-resource vrf minimum 2 maximum 4096
+        limit-resource port-channel minimum 0 maximum 511
+        limit-resource u4route-mem minimum 96 maximum 96
+        limit-resource u6route-mem minimum 24 maximum 24
+        limit-resource m4route-mem minimum 58 maximum 58
+        limit-resource m6route-mem minimum 8 maximum 8
+
+      feature telnet
+      cfs eth distribute
+      feature ospf
+      feature interface-vlan
+      feature hsrp
+      feature lacp
+      feature vpc
+
+      no password strength-check
+      username admin password 5 $1$KuOSBsvW$Cy0TSD..gEBGBPjzpDgf51  role network-admin
+      username adminbackup password 5 !  role network-operator
+      username adminbackup passphrase  lifetime 99999 warntime 14 gracetime 3
+      username cisco password 5 $1$Nk7ZkwH0$fyiRmMMfIheqE3BqvcL0C1  role network-operator
+      username cisco role network-admin
+      username cisco passphrase  lifetime 99999 warntime 14 gracetime 3
+      username lab password 5 $1$buoy/oqy$.EXQz8rCn72ii8qtdldj00  role network-admin
+      username lab passphrase  lifetime 99999 warntime 14 gracetime 3
+      ip domain-lookup
+      snmp-server user lab network-admin auth md5 0x5ceb414591539ee35159fca86fdfa101 priv 0x5ceb414591539ee35159fca86fdfa101 localizedkey
+      snmp-server user admin network-admin auth md5 0x328945d53e05e8e7207f8c20b142f0b7 priv 0x328945d53e05e8e7207f8c20b142f0b7 localizedkey
+      snmp-server user cisco network-operator auth md5 0x55b3c64a53fb95518e75358ee75e82e9 priv 0x55b3c64a53fb95518e75358ee75e82e9 localizedkey
+      snmp-server user cisco network-admin
+      rmon event 1 log trap public description FATAL(1) owner PMON@FATAL
+      rmon event 2 log trap public description CRITICAL(2) owner PMON@CRITICAL
+      rmon event 3 log trap public description ERROR(3) owner PMON@ERROR
+      rmon event 4 log trap public description WARNING(4) owner PMON@WARNING
+      rmon event 5 log trap public description INFORMATION(5) owner PMON@INFO
+
+      vlan 1,101-105
+      vlan 101
+        name prod
+      vlan 102
+        name dev
+      vlan 103
+        name test
+      vlan 104
+        name security
+      vlan 105
+        name iot
+
+      vrf context management
+        ip route 0.0.0.0/0 10.10.20.254
+      hardware forwarding unicast trace
+      vpc domain 101
+        peer-switch
+        peer-keepalive destination 10.10.20.178 source 10.10.20.177
+        peer-gateway
+
+
+      interface Vlan1
+        no ip redirects
+        no ipv6 redirects
+
+      interface Vlan101
+        description prod svi
+        no shutdown
+        no ip redirects
+        ip address 172.16.101.2/24
+        no ipv6 redirects
+        ip router ospf 1 area 0.0.0.0
+        hsrp 10
+          ip 172.16.101.1
+
+      interface Vlan102
+        description dev svi
+        no shutdown
+        no ip redirects
+        ip address 172.16.102.2/24
+        no ipv6 redirects
+        ip router ospf 1 area 0.0.0.0
+        hsrp 10
+          ip 172.16.102.1
+
+      interface Vlan103
+        description test svi
+        no shutdown
+        no ip redirects
+        ip address 172.16.103.2/24
+        no ipv6 redirects
+        ip router ospf 1 area 0.0.0.0
+        hsrp 10
+          ip 172.16.103.1
+
+      interface Vlan104
+        description security svi
+        no shutdown
+        no ip redirects
+        ip address 172.16.104.2/24
+        no ipv6 redirects
+        ip router ospf 1 area 0.0.0.0
+        hsrp 10
+          ip 172.16.104.1
+
+      interface Vlan105
+        description iot svi
+        no shutdown
+        no ip redirects
+        ip address 172.16.105.2/24
+        no ipv6 redirects
+        ip router ospf 1 area 0.0.0.0
+        hsrp 10
+          ip 172.16.105.1
+
+      interface port-channel1
+        switchport mode trunk
+        spanning-tree port type network
+        vpc peer-link
+
+      interface Ethernet1/1
+        description VPC Peer Link
+        switchport mode trunk
+        channel-group 1 mode active
+
+      interface Ethernet1/2
+        description VPC Peer Link
+        switchport mode trunk
+        channel-group 1 mode active
+
+      interface Ethernet1/3
+        description L3 link to dist-rtr01
+        no switchport
+        ip address 172.16.252.1/30
+        no ip ospf passive-interface
+        ip router ospf 1 area 0.0.0.0
+        no shutdown
+
+      interface Ethernet1/4
+        description L3 link to dist-rtr02
+        no switchport
+        ip address 172.16.252.5/30
+        no ip ospf passive-interface
+        ip router ospf 1 area 0.0.0.0
+        no shutdown
+
+      interface Ethernet1/5
+        description to
+        shutdown
+
+      interface Ethernet1/6
+        description to
+        shutdown
+
+      interface Ethernet1/7
+        description to
+        shutdown
+
+      interface Ethernet1/8
+        description to
+        shutdown
+
+      interface Ethernet1/9
+        description to
+        shutdown
+
+      interface Ethernet1/10
+        description to
+        shutdown
+
+      interface Ethernet1/11
+        description Link to inside-host01
+        switchport access vlan 101
+        spanning-tree port type edge
+
+      interface mgmt0
+        description to port8.sandbox-backend
+        duplex full
+        vrf member management
+        ip address 10.10.20.177/24
+
+      interface loopback0
+        description to
+        shutdown
+      line console
+        exec-timeout 0
+        terminal width  511
+      line vty
+      router ospf 1
+        passive-interface default
+
+      no logging console
+      boot nxos bootflash:///nxos.9.2.3.bin
+    image_definition: nxosv9000-9-2-3
+    ram: 8192
+    cpus: 4
+    tags: []
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        slot: 0
+        label: mgmt0
+        type: physical
+      - id: i2
+        slot: 1
+        label: Ethernet1/1
+        type: physical
+      - id: i3
+        slot: 2
+        label: Ethernet1/2
+        type: physical
+      - id: i4
+        slot: 3
+        label: Ethernet1/3
+        type: physical
+      - id: i5
+        slot: 4
+        label: Ethernet1/4
+        type: physical
+      - id: i6
+        slot: 5
+        label: Ethernet1/5
+        type: physical
+      - id: i7
+        slot: 6
+        label: Ethernet1/6
+        type: physical
+      - id: i8
+        slot: 7
+        label: Ethernet1/7
+        type: physical
+      - id: i9
+        slot: 8
+        label: Ethernet1/8
+        type: physical
+      - id: i10
+        slot: 9
+        label: Ethernet1/9
+        type: physical
+      - id: i11
+        slot: 10
+        label: Ethernet1/10
+        type: physical
+      - id: i12
+        slot: 11
+        label: Ethernet1/11
+        type: physical
+  - id: n8
+    label: dist-sw02
+    node_definition: nxosv9000
+    x: -600
+    y: 200
+    configuration: |-
+      hostname dist-sw02
+      vdc dist-sw02 id 1
+        limit-resource vlan minimum 16 maximum 4094
+        limit-resource vrf minimum 2 maximum 4096
+        limit-resource port-channel minimum 0 maximum 511
+        limit-resource u4route-mem minimum 96 maximum 96
+        limit-resource u6route-mem minimum 24 maximum 24
+        limit-resource m4route-mem minimum 58 maximum 58
+        limit-resource m6route-mem minimum 8 maximum 8
+
+      feature telnet
+      cfs eth distribute
+      feature ospf
+      feature interface-vlan
+      feature hsrp
+      feature lacp
+      feature vpc
+
+      no password strength-check
+      username admin password 5 $1$KuOSBsvW$Cy0TSD..gEBGBPjzpDgf51  role network-admin
+      username adminbackup password 5 !  role network-operator
+      username adminbackup passphrase  lifetime 99999 warntime 14 gracetime 3
+      username cisco password 5 $1$Nk7ZkwH0$fyiRmMMfIheqE3BqvcL0C1  role network-operator
+      username cisco role network-admin
+      username cisco passphrase  lifetime 99999 warntime 14 gracetime 3
+      username lab password 5 $1$buoy/oqy$.EXQz8rCn72ii8qtdldj00  role network-admin
+      username lab passphrase  lifetime 99999 warntime 14 gracetime 3
+      ip domain-lookup
+      snmp-server user lab network-admin auth md5 0x5ceb414591539ee35159fca86fdfa101 priv 0x5ceb414591539ee35159fca86fdfa101 localizedkey
+      snmp-server user admin network-admin auth md5 0x328945d53e05e8e7207f8c20b142f0b7 priv 0x328945d53e05e8e7207f8c20b142f0b7 localizedkey
+      snmp-server user cisco network-operator auth md5 0x55b3c64a53fb95518e75358ee75e82e9 priv 0x55b3c64a53fb95518e75358ee75e82e9 localizedkey
+      snmp-server user cisco network-admin
+      rmon event 1 log trap public description FATAL(1) owner PMON@FATAL
+      rmon event 2 log trap public description CRITICAL(2) owner PMON@CRITICAL
+      rmon event 3 log trap public description ERROR(3) owner PMON@ERROR
+      rmon event 4 log trap public description WARNING(4) owner PMON@WARNING
+      rmon event 5 log trap public description INFORMATION(5) owner PMON@INFO
+
+      vlan 1,101-105
+      vlan 101
+        name prod
+      vlan 102
+        name dev
+      vlan 103
+        name test
+      vlan 104
+        name security
+      vlan 105
+        name iot
+
+      vrf context management
+        ip route 0.0.0.0/0 10.10.20.254
+      hardware forwarding unicast trace
+      vpc domain 101
+        peer-switch
+        peer-keepalive destination 10.10.20.177 source 10.10.20.178
+        peer-gateway
+
+
+      interface Vlan1
+        no ip redirects
+        no ipv6 redirects
+
+      interface Vlan101
+        description prod svi
+        no shutdown
+        no ip redirects
+        ip address 172.16.101.3/24
+        no ipv6 redirects
+        ip router ospf 1 area 0.0.0.0
+        hsrp 10
+          ip 172.16.101.1
+
+      interface Vlan102
+        description dev svi
+        no shutdown
+        no ip redirects
+        ip address 172.16.102.3/24
+        no ipv6 redirects
+        ip router ospf 1 area 0.0.0.0
+        hsrp 10
+          ip 172.16.102.1
+
+      interface Vlan103
+        description test svi
+        no shutdown
+        no ip redirects
+        ip address 172.16.103.3/24
+        no ipv6 redirects
+        ip router ospf 1 area 0.0.0.0
+        hsrp 10
+          ip 172.16.103.1
+
+      interface Vlan104
+        description security svi
+        no shutdown
+        no ip redirects
+        ip address 172.16.104.3/24
+        no ipv6 redirects
+        ip router ospf 1 area 0.0.0.0
+        hsrp 10
+          ip 172.16.104.1
+
+      interface Vlan105
+        description iot svi
+        no shutdown
+        no ip redirects
+        ip address 172.16.105.3/24
+        no ipv6 redirects
+        ip router ospf 1 area 0.0.0.0
+        hsrp 10
+          ip 172.16.105.1
+
+      interface port-channel1
+        switchport mode trunk
+        spanning-tree port type network
+        vpc peer-link
+
+      interface Ethernet1/1
+        description VPC Peer Link
+        switchport mode trunk
+        channel-group 1 mode active
+
+      interface Ethernet1/2
+        description VPC Peer Link
+        switchport mode trunk
+        channel-group 1 mode active
+
+      interface Ethernet1/3
+        description L3 link to dist-rtr01
+        no switchport
+        ip address 172.16.252.9/30
+        no ip ospf passive-interface
+        ip router ospf 1 area 0.0.0.0
+        no shutdown
+
+      interface Ethernet1/4
+        description L3 link to dist-rtr02
+        no switchport
+        ip address 172.16.252.13/30
+        no ip ospf passive-interface
+        ip router ospf 1 area 0.0.0.0
+        no shutdown
+
+      interface Ethernet1/5
+        description to
+        shutdown
+
+      interface Ethernet1/6
+        description to
+        shutdown
+
+      interface Ethernet1/7
+        description to
+        shutdown
+
+      interface Ethernet1/8
+        description to
+        shutdown
+
+      interface Ethernet1/9
+        description to
+        shutdown
+
+      interface Ethernet1/10
+        description to
+        shutdown
+
+      interface Ethernet1/11
+        description Link to inside-host02
+        switchport access vlan 102
+        spanning-tree port type edge
+
+      interface mgmt0
+        description to port9.sandbox-backend
+        duplex full
+        vrf member management
+        ip address 10.10.20.178/24
+
+      interface loopback0
+        description to
+        shutdown
+      line console
+        exec-timeout 0
+        terminal width  511
+      line vty
+      router ospf 1
+        passive-interface default
+
+      no logging console
+      boot nxos bootflash:///nxos.9.2.3.bin
+    image_definition: nxosv9000-9-2-3
+    ram: 8192
+    cpus: 4
+    tags: []
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        slot: 0
+        label: mgmt0
+        type: physical
+      - id: i2
+        slot: 1
+        label: Ethernet1/1
+        type: physical
+      - id: i3
+        slot: 2
+        label: Ethernet1/2
+        type: physical
+      - id: i4
+        slot: 3
+        label: Ethernet1/3
+        type: physical
+      - id: i5
+        slot: 4
+        label: Ethernet1/4
+        type: physical
+      - id: i6
+        slot: 5
+        label: Ethernet1/5
+        type: physical
+      - id: i7
+        slot: 6
+        label: Ethernet1/6
+        type: physical
+      - id: i8
+        slot: 7
+        label: Ethernet1/7
+        type: physical
+      - id: i9
+        slot: 8
+        label: Ethernet1/8
+        type: physical
+      - id: i10
+        slot: 9
+        label: Ethernet1/9
+        type: physical
+      - id: i11
+        slot: 10
+        label: Ethernet1/10
+        type: physical
+      - id: i12
+        slot: 11
+        label: Ethernet1/11
+        type: physical
+  - id: n9
+    label: inside-host01
+    node_definition: ubuntu
+    x: -700
+    y: 300
+    configuration: |-
+      #cloud-config
+        bootcmd:
+        - ln -s -t /etc/rc.d /etc/rc.local
+        hostname: inside-host01
+        manage_etc_hosts: true
+        runcmd:
+        - systemctl start rc-local
+        - sed -i '/^\s*PasswordAuthentication\s\+no/d' /etc/ssh/sshd_config
+        - echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
+        - echo "UseDNS no" >> /etc/ssh/sshd_config
+        - service ssh restart
+        - service sshd restart
+        users:
+        - default
+        - gecos: User configured by VIRL Configuration Engine 0.23.12
+          lock-passwd: false
+          name: cisco
+          plain-text-passwd: cisco
+          shell: /bin/bash
+          ssh-authorized-keys:
+          - VIRL-USER-SSH-PUBLIC-KEY
+          sudo: ALL=(ALL) ALL
+        write_files:
+        - path: /etc/rc.local
+          owner: root:root
+          permissions: '0755'
+          content: |-
+            #!/bin/sh
+            ifconfig enp0s9 up 10.10.20.179 netmask 255.255.255.0
+            route add -net 0.0.0.0/0 gw 10.10.20.254 dev enp0s9
+            ifconfig enp0s2 up 172.16.101.11 netmask 255.255.255.0
+            route add -net 172.16.0.0/16 gw 172.16.101.1 dev enp0s2
+            route add -net 172.31.0.0/16 gw 172.16.101.1 dev enp0s2
+            exit 0
+    image_definition: ubuntu-18-04
+    tags: []
+    interfaces:
+      - id: i0
+        slot: 0
+        label: enp0s2
+        type: physical
+      - id: i1
+        slot: 1
+        label: enp0s3
+        type: physical
+      - id: i2
+        slot: 2
+        label: enp0s4
+        type: physical
+      - id: i3
+        slot: 3
+        label: enp0s5
+        type: physical
+      - id: i4
+        slot: 4
+        label: enp0s6
+        type: physical
+      - id: i5
+        slot: 5
+        label: enp0s7
+        type: physical
+      - id: i6
+        slot: 6
+        label: enp0s8
+        type: physical
+      - id: i7
+        slot: 7
+        label: enp0s9
+        type: physical
+  - id: n11
+    label: edge-sw01
+    node_definition: iosvl2
+    x: -650
+    y: -100
+    configuration: |-
+      service timestamps debug datetime msec
+      service timestamps log datetime msec
+      no service password-encryption
+      service compress-config
+      !
+      hostname edge-sw01
+      !
+      boot-start-marker
+      boot-end-marker
+      !
+      !
+      vrf definition Mgmt-intf
+       !
+       address-family ipv4
+       exit-address-family
+       !
+       address-family ipv6
+       exit-address-family
+      !
+      no logging console
+      enable password cisco
+      !
+      no aaa new-model
+      !
+      vtp domain virl.lab
+      vtp mode transparent
+      !
+      no ip domain-lookup
+      ip cef
+      no ipv6 cef
+      !
+      spanning-tree mode pvst
+      spanning-tree extend system-id
+      !
+      !
+      vlan 2
+       name ank_vlan2
+      !
+      vlan 999
+       name edge-transit
+      no cdp run
+      !
+      !
+      interface Loopback0
+       description to
+       no ip address
+       shutdown
+      !
+      interface GigabitEthernet0/0
+       description to port3.sandbox-backend
+       no switchport
+       vrf forwarding Mgmt-intf
+       ip address 10.10.20.172 255.255.255.0
+       duplex full
+       no negotiation auto
+      !
+      interface GigabitEthernet0/1
+       description to GigabitEthernet0/1.edge-firewall01
+       switchport access vlan 999
+       switchport mode access
+       duplex full
+       no negotiation auto
+       spanning-tree portfast edge
+      !
+      interface GigabitEthernet0/2
+       description to GigabitEthernet0/0/0/1.core-rtr01
+       switchport access vlan 999
+       switchport mode access
+       duplex full
+       no negotiation auto
+       spanning-tree portfast edge
+      !
+      interface GigabitEthernet0/3
+       description to GigabitEthernet0/0/0/1.core-rtr02
+       switchport access vlan 999
+       switchport mode access
+       duplex full
+       no negotiation auto
+       spanning-tree portfast edge
+      !
+      ip forward-protocol nd
+      !
+      no ip http server
+      no ip http secure-server
+      !
+      ip route vrf Mgmt-intf 0.0.0.0 0.0.0.0 10.10.20.254
+      ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+      ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+      !
+      !
+      control-plane
+      !
+      banner exec ^CC
+      **************************************************************************
+      * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+      * education. IOSv is provided as-is and is not supported by Cisco's      *
+      * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+      * of the IOSv Software or Documentation to any third party for any       *
+      * purposes is expressly prohibited except as otherwise authorized by     *
+      * Cisco in writing.                                                      *
+      **************************************************************************^C
+      banner incoming ^CC
+      **************************************************************************
+      * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+      * education. IOSv is provided as-is and is not supported by Cisco's      *
+      * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+      * of the IOSv Software or Documentation to any third party for any       *
+      * purposes is expressly prohibited except as otherwise authorized by     *
+      * Cisco in writing.                                                      *
+      **************************************************************************^C
+      banner login ^CC
+      **************************************************************************
+      * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+      * education. IOSv is provided as-is and is not supported by Cisco's      *
+      * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+      * of the IOSv Software or Documentation to any third party for any       *
+      * purposes is expressly prohibited except as otherwise authorized by     *
+      * Cisco in writing.                                                      *
+      **************************************************************************^C
+      !
+      line con 0
+       exec-timeout 0 0
+       password cisco
+      line aux 0
+      line vty 0 4
+       exec-timeout 720 0
+       password cisco
+       login
+       transport input telnet ssh
+      !
+      !
+      end
+    image_definition: iosvl2-2019
+    tags: []
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        slot: 0
+        label: GigabitEthernet0/0
+        type: physical
+      - id: i2
+        slot: 1
+        label: GigabitEthernet0/1
+        type: physical
+      - id: i3
+        slot: 2
+        label: GigabitEthernet0/2
+        type: physical
+      - id: i4
+        slot: 3
+        label: GigabitEthernet0/3
+        type: physical
+  - id: n12
+    label: sandbox-backend
+    node_definition: unmanaged_switch
+    x: -1000
+    y: 50
+    configuration: ''
+    tags: []
+    interfaces:
+      - id: i0
+        slot: 0
+        label: port0
+        type: physical
+      - id: i1
+        slot: 1
+        label: port1
+        type: physical
+      - id: i2
+        slot: 2
+        label: port2
+        type: physical
+      - id: i3
+        slot: 3
+        label: port3
+        type: physical
+      - id: i4
+        slot: 4
+        label: port4
+        type: physical
+      - id: i5
+        slot: 5
+        label: port5
+        type: physical
+      - id: i6
+        slot: 6
+        label: port6
+        type: physical
+      - id: i7
+        slot: 7
+        label: port7
+        type: physical
+      - id: i8
+        slot: 8
+        label: port8
+        type: physical
+      - id: i9
+        slot: 9
+        label: port9
+        type: physical
+      - id: i10
+        slot: 10
+        label: port10
+        type: physical
+      - id: i11
+        slot: 11
+        label: port11
+        type: physical
+      - id: i12
+        slot: 12
+        label: port12
+        type: physical
+  - id: n13
+    label: bridge-to-sandbox
+    node_definition: external_connector
+    x: -1000
+    y: -50
+    configuration: bridge0
+    tags: []
+    interfaces:
+      - id: i0
+        slot: 0
+        label: port
+        type: physical
+  - id: n10
+    label: inside-host02
+    node_definition: desktop
+    x: -600
+    y: 300
+    configuration: |-
+      hostname inside-host02
+      # like this:
+      echo "127.0.0.1   inside-host02" >>/etc/hosts
+      echo "::1         inside-host02" >> /etc/hosts
+      ifconfig eth1 up 10.10.20.180 netmask 255.255.255.0
+      route add -net 0.0.0.0/0 gw 10.10.20.254 dev eth1
+      ifconfig eth0 up 172.16.102.11 netmask 255.255.255.0
+      route add -net 172.16.0.0/16 gw 172.16.102.1 dev eth0
+      route add -net 172.31.0.0/16 gw 172.16.102.1 dev eth0
+      service lightdm restart
+    image_definition: desktop
+    tags: []
+    interfaces:
+      - id: i0
+        slot: 0
+        label: eth0
+        type: physical
+      - id: i1
+        slot: 1
+        label: eth1
+        type: physical
+links:
+  - id: l1
+    i1: i1
+    n1: n2
+    i2: i2
+    n2: n0
+  - id: l2
+    i1: i2
+    n1: n2
+    i2: i2
+    n2: n11
+  - id: l3
+    i1: i2
+    n1: n3
+    i2: i2
+    n2: n4
+  - id: l5
+    i1: i2
+    n1: n7
+    i2: i2
+    n2: n8
+  - id: l6
+    i1: i3
+    n1: n7
+    i2: i3
+    n2: n8
+  - id: l7
+    i1: i3
+    n1: n11
+    i2: i3
+    n2: n3
+  - id: l8
+    i1: i4
+    n1: n11
+    i2: i3
+    n2: n4
+  - id: l9
+    i1: i4
+    n1: n3
+    i2: i2
+    n2: n5
+  - id: l10
+    i1: i5
+    n1: n3
+    i2: i2
+    n2: n6
+  - id: l11
+    i1: i4
+    n1: n4
+    i2: i3
+    n2: n5
+  - id: l12
+    i1: i5
+    n1: n4
+    i2: i3
+    n2: n6
+  - id: l13
+    i1: i4
+    n1: n5
+    i2: i4
+    n2: n7
+  - id: l14
+    i1: i5
+    n1: n5
+    i2: i4
+    n2: n8
+  - id: l15
+    i1: i4
+    n1: n6
+    i2: i5
+    n2: n7
+  - id: l16
+    i1: i5
+    n1: n6
+    i2: i5
+    n2: n8
+  - id: l17
+    i1: i12
+    n1: n7
+    i2: i0
+    n2: n9
+  - id: l19
+    i1: i0
+    n1: n13
+    i2: i0
+    n2: n12
+  - id: l0
+    i1: i3
+    n1: n0
+    i2: i0
+    n2: n1
+  - id: l20
+    i1: i1
+    n1: n0
+    i2: i1
+    n2: n12
+  - id: l21
+    i1: i0
+    n1: n2
+    i2: i2
+    n2: n12
+  - id: l22
+    i1: i1
+    n1: n11
+    i2: i3
+    n2: n12
+  - id: l23
+    i1: i1
+    n1: n3
+    i2: i4
+    n2: n12
+  - id: l24
+    i1: i1
+    n1: n4
+    i2: i5
+    n2: n12
+  - id: l4
+    i1: i1
+    n1: n5
+    i2: i6
+    n2: n12
+  - id: l25
+    i1: i1
+    n1: n6
+    i2: i7
+    n2: n12
+  - id: l26
+    i1: i6
+    n1: n5
+    i2: i6
+    n2: n6
+  - id: l27
+    i1: i1
+    n1: n7
+    i2: i8
+    n2: n12
+  - id: l28
+    i1: i1
+    n1: n8
+    i2: i9
+    n2: n12
+  - id: l29
+    i1: i7
+    n1: n1
+    i2: i10
+    n2: n12
+  - id: l30
+    i1: i7
+    n1: n9
+    i2: i11
+    n2: n12
+  - id: l18
+    i1: i0
+    n1: n10
+    i2: i12
+    n2: n8
+  - id: l31
+    i1: i1
+    n1: n10
+    i2: i12
+    n2: n12
