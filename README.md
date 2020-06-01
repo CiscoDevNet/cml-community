@@ -1,5 +1,7 @@
 # CML Community
 
+[![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/CiscoDevNet/cml-community)
+
 Community Contributed Content and Resources for Cisco Modeling Labs
 
 ![](readme_images/cml-labmanager.jpg)
@@ -12,6 +14,12 @@ This repository is intended to be a place for the CML community to find and shar
 
 ### Node and Image Definition Files
 Included with CML is a library of ["reference platforms"](https://developer.cisco.com/docs/modeling-labs/#!reference-platforms-and-images) for a variety of Cisco network devices as well as images for Linux servers, traffic generators, unmanaged devices, etc.  However, CML allows a "bring your own image" model for any KVM supported image.  While we **cannot** share the actual QCOW image files for nodes that require proper licensing and rights from individual platform owners, we can post the CML YAML file definitions that have been created to support different platforms from Cisco as well as third party vendors. 
+
+The folder structure of this repository reflect the folder structure and naming conventions used on the CML server itself for storing the definitions. 
+
+* [node-definitions](node-definitions) - Folder containing YAML file definitions for a CML node. The YAML file includes details on how the VM would be configured (ie CPU, RAM, Network Adapters, etc).
+* [virl-base-images](virl-base-images) - Folder containing a folder for each added platform disk image. Within each platform folder you will find a YAML file that references a specific `disk_image` file for a platform. A base image definition will reference a node definition.
+    * *Note: You will need to download the disk images from the vendors yourself.*
 
 ### Sample Lab Topologies 
 CML includes a series of Sample Labs that are available from the Tools menu in Lab Manager, however these are just a start of the possible network simulations that can be created.  Within this repository users of CML can find, or share, network topologies that have been created to highlight a specific type of simulation challenge.
