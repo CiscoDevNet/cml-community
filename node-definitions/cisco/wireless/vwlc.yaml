@@ -1,0 +1,60 @@
+id: vwlc
+configuration:
+  generator:
+    driver: null
+device:
+  interfaces:
+    has_loopback_zero: false
+    default_count: 2
+    physical:
+      - service-port
+      - data-port
+    serial_ports: 1
+inherited:
+  image:
+    ram: true
+    cpus: true
+    data_volume: false
+    boot_disk_size: false
+  node:
+    ram: true
+    cpus: true
+    data_volume: false
+    boot_disk_size: false
+general:
+  description: Virtual Wireless LAN Controller (vWLC) platform
+  nature: server
+  read_only: true
+schema_version: 0.0.1
+boot:
+  timeout: 300
+  completed:
+    - 'Would you like to terminate autoinstall? [yes]:'
+    - Enter User Name (or 'Recover-Config'
+sim:
+  linux_native:
+    cpus: 1
+    cpu_model: Nehalem
+    disk_driver: virtio
+    driver: server
+    libvirt_domain_driver: kvm
+    nic_driver: virtio
+    ram: 2048
+pyats:
+  os: aireos
+ui:
+  description: |-
+    Virtual Wireless LAN Controller (vWLC) platform
+
+    2 GB DRAM, 1 vCPU
+
+    Two network interfaces required (`service port` and `data port` which is effectively
+    a 802.1q trunk). The service port does not have to be connected to any part of the
+    network (typically disconnected/unused), therefore any NIC (even disconnected).
+
+    Based on [this document](https://www.cisco.com/c/en/us/td/docs/wireless/technology/mesh/8-2/b_Virtual_Wireless_LAN_Controller_Deployment_Guide_8-2.html)
+  group: Others
+  icon: access_point
+  label: vWLC
+  label_prefix: vwlc-
+  visible: true
