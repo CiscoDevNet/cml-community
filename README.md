@@ -55,3 +55,4 @@ We would **LOVE** to see this repository grow with community content. Please che
 This project was written and is maintained by the following individuals:
 
 * Hank Preston <hank.preston@gmail.com>
+* Joe Clarke <jclarke@marcuscom.com>
