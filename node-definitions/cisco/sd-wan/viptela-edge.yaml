@@ -76,4 +76,3 @@ ui:
   label: vEdge
   label_prefix: vedge-
   visible: true
-schema_version: 0.1

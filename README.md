@@ -56,3 +56,4 @@ This project was written and is maintained by the following individuals:
 
 * Hank Preston <hank.preston@gmail.com>
 * Joe Clarke <jclarke@marcuscom.com>
+* Paul Van Lierop <pevanlierop@gmail.com>
