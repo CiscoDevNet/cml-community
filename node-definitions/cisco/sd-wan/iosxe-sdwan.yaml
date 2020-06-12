@@ -77,4 +77,4 @@ ui:
   label: XE-SDWAN
   label_prefix: xe-sdwan-
   visible: true
-schema_version: 0.1
+schema_version: 0.0.1
