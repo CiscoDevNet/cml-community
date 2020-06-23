@@ -55,6 +55,8 @@ sim:
     libvirt_domain_driver: kvm
     nic_driver: virtio
     ram: 8192
+    video:
+      memory: 16
 pyats:
   os: iosxe
   series: csr1000v
