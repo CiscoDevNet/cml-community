@@ -4,7 +4,14 @@ This directory contains a node definition for the MikroTik Cloud Hosted Router a
 
 ### Image Availability
 
-Images can be downloaded from https://mikrotik.com/download for **free**.
+Images can be downloaded from https://mikrotik.com/download for **free**. You need to convert the downloaded img file to a qcow2 file. For example, on CentOS8, here's how it works.
+
+```sh
+dnf -y install qemu-img unzip
+curl -O https://download.mikrotik.com/routeros/6.47/chr-6.47.img.zip
+unzip chr-6.47.img.zip
+qemu-img convert -O qcow2 chr-6.47.img chr-6.47.qcow2
+```
 
 ### Description
 
