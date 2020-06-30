@@ -1,0 +1,76 @@
+id: chr
+sim:
+  linux_native:
+    driver: iosv
+    libvirt_domain_driver: kvm
+    nic_driver: virtio
+    disk_driver: virtio
+    ram: 64
+    cpus: 1
+general:
+  nature: router
+  description: MikroTik Cloud Hosted Router
+  read_only: true
+schema_version: 0.0.1
+inherited:
+  image:
+    ram: true
+    cpus: false
+    data_volume: false
+    boot_disk_size: false
+  node:
+    ram: true
+    cpus: false
+    data_volume: false
+    boot_disk_size: false
+configuration:
+  generator:
+    driver: iosv
+  provisioning:
+    volume_name: disk
+    media_type: fat
+    files:
+      - name: ios_config.txt
+        content: ''
+        editable: true
+device:
+  interfaces:
+    physical:
+      - ether1
+      - ether2
+      - ether3
+      - ether4
+      - ether5
+      - ether6
+      - ether7
+      - ether8
+      - ether9
+      - ether10
+      - ether11
+      - ether12
+      - ether13
+      - ether14
+      - ether15
+      - ether16
+    has_loopback_zero: false
+    default_count: 4
+    serial_ports: 1
+boot:
+  timeout: 60
+  completed:
+    - MikroTik Login
+pyats:
+  os: ios
+  series: iosv
+  config_extract_command: show run
+ui:
+  group: Others
+  icon: router
+  label_prefix: chr-
+  label: CHR
+  visible: true
+  description: |-
+    MikroTik Cloud Hosted Router
+
+    64 MB DRAM, 1 vCPU
+

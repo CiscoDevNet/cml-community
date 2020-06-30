@@ -1,0 +1,8 @@
+id: chr-6.47
+node_definition_id: chr
+description: ''
+label: CHR 6.47
+disk_image: chr-6.47.qcow2
+read_only: false
+disk_subfolder: chr-6.47
+schema_version: 0.0.1
