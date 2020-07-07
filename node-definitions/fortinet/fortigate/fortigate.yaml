@@ -1,0 +1,74 @@
+id: fortigate
+boot:
+  timeout: 60
+  completed:
+    - FortiGate-VM64-KVM login
+configuration:
+  generator:
+    driver: null
+  provisioning:
+    files:
+      - name: meta-data
+        content: ''
+        editable: true
+    media_type: iso
+    volume_name: disk
+device:
+  interfaces:
+    default_count: 4
+    has_loopback_zero: false
+    physical:
+      - port1
+      - port2
+      - port3
+      - port4
+      - port5
+      - port6
+      - port7
+      - port8
+      - port9
+      - port10
+      - port11
+      - port12
+      - port13
+      - port14
+      - port15
+      - port16
+    serial_ports: 1
+general:
+  description: FortiGate Next Generation Firewall
+  nature: firewall
+  read_only: true
+inherited:
+  image:
+    boot_disk_size: false
+    cpus: true
+    data_volume: true
+    ram: true
+  node:
+    boot_disk_size: false
+    cpus: true
+    data_volume: true
+    ram: true
+pyats:
+  os: linux
+schema_version: 0.0.1
+sim:
+  linux_native:
+    cpus: 1
+    data_volume: 32
+    disk_driver: virtio
+    driver: server
+    libvirt_domain_driver: kvm
+    nic_driver: virtio
+    ram: 1024
+ui:
+  description: |-
+    FortiGate Next Generation Firewall
+
+    1,024 MB DRAM, 1 vCPU
+  group: Others
+  icon: firewall
+  label: FortiGate
+  label_prefix: fortigate-
+  visible: true
