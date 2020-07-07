@@ -1,0 +1,9 @@
+id: fortigate-6.4.1
+node_definition_id: fortigate
+description: ''
+label: FortiGate 6.4.1
+disk_image: fortios.qcow2
+read_only: false
+disk_subfolder: fortigate-6.4.1
+schema_version: 0.0.1
+
