@@ -1,0 +1,96 @@
+id: ftdv
+general:
+  description: Cisco Firepower Threat Defense Virtual
+  nature: firewall
+  read_only: false
+device:
+  interfaces:
+    has_loopback_zero: false
+    physical:
+      - Management
+      - Diagnostic
+      - Outside
+      - Inside
+      - Data1
+      - Data2
+      - Data3
+      - Data4
+      - Data5
+      - Data6
+    serial_ports: 1
+    default_count: 4
+ui:
+  visible: true
+  description: |-
+    Cisco Adaptive Security Virtual Appliance (ASAv)
+
+    8 GB DRAM, 4 vCPUs
+
+    Maximum 10 interfaces, including Management.
+
+    [CCO Link](https://www.cisco.com/c/en/us/td/docs/security/firepower/quick_start/kvm/ftdv-kvm-gsg.html)
+  label_prefix: ftdv-
+  icon: firewall
+  label: FTDv
+sim:
+  linux_native:
+    libvirt_domain_driver: kvm
+    driver: asav
+    disk_driver: virtio
+    ram: 8192
+    cpus: 4
+    cpu_limit: 100
+    nic_driver: virtio
+boot:
+  timeout: 300
+  completed:
+    - 'login:'
+pyats:
+  os: fxos
+  use_in_testbed: true
+inherited:
+  image:
+    ram: true
+    cpus: true
+    cpu_limit: true
+    data_volume: false
+    boot_disk_size: false
+  node:
+    ram: true
+    cpus: true
+    cpu_limit: true
+    data_volume: false
+    boot_disk_size: false
+configuration:
+  generator:
+    driver: asav
+  provisioning:
+    volume_name: day0
+    media_type: iso
+    files:
+      - name: day0-config
+        editable: true
+        content: |-
+          #Firepower Threat Defense
+          {
+              "EULA": "accept",
+              "Hostname": "ftdv",
+              "AdminPassword": "Admin123",
+              "FirewallMode": "routed",
+              "DNS1": "",
+              "DNS2": "",
+              "DNS3": "",
+              "IPv4Mode": "manual",
+              "IPv4Addr": "",
+              "IPv4Mask": "",
+              "IPv4Gw": "",
+              "IPv6Mode": "disabled",
+              "IPv6Addr": "",
+              "IPv6Mask": "",
+              "IPv6Gw": "",
+              "FmcIp": "",
+              "FmcRegKey": "",
+              "FmcNatId": "",
+              "ManageLocally":"Yes"
+          }
+schema_version: 0.0.1

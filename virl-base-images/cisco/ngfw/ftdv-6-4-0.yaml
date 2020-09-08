@@ -1,0 +1,8 @@
+id: ftdv-6-4-0
+node_definition_id: ftdv
+description: FTDv 6.4.0
+label: FTDv 6.4.0
+disk_image: Cisco_Firepower_Threat_Defense_Virtual-6.4.0-102.qcow2
+read_only: false
+disk_subfolder: ftdv-6-4-0
+schema_version: 0.0.1
