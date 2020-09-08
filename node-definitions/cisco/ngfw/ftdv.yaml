@@ -22,7 +22,7 @@ device:
 ui:
   visible: true
   description: |-
-    Cisco Adaptive Security Virtual Appliance (ASAv)
+    Cisco Firepower Threat Defense Virtual (FTDv)
 
     8 GB DRAM, 4 vCPUs
 
