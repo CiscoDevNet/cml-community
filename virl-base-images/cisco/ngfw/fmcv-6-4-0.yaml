@@ -1,0 +1,8 @@
+id: fmcv-6-4-0
+node_definition_id: fmcv
+description: FMCv 6.4.0
+label: FMCv 6.4.0
+disk_image: Cisco_Firepower_Mgmt_Center_Virtual_KVM-6.4.0-113.qcow2
+read_only: false
+disk_subfolder: fmcv-6-4-0
+schema_version: 0.0.1
