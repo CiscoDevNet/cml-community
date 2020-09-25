@@ -11,3 +11,5 @@ Here is an example of how I did it:
 `qemu-img convert -f raw -O qcow2 OPNsense-20.7-OpenSSL-nano-amd64.img OPNsense-20.7-OpenSSL-nano-amd64.qcow2`
 
 `qemu-img resize OPNsense-20.7-OpenSSL-nano-amd64.qcow2 8G`
+
+Default credentials for OPNsense are root:opnsense
