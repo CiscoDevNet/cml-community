@@ -2,4 +2,4 @@
 
 Here you will find collections of OPNsense node definitions.
 
-**NOTE:** There seems to be an odd ACPI issue that prevents OPNsense from booting within CML when using a single CPU. Setting the CPU count to two resolved the issue. No further details are available.
+**NOTE:** There seems to be an odd ACPI issue that prevents OPNsense from booting within CML when using a single CPU. Setting the CPU count to two resolved the issue.
