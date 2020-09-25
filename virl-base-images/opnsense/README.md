@@ -12,4 +12,3 @@ Here is an example of how I did it:
 
 `qemu-img resize OPNsense-20.7-OpenSSL-nano-amd64.qcow2 8G`
 
-Default credentials are root:opnsense
