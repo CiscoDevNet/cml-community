@@ -1,8 +1,0 @@
-id: opensense-20-7
-node_definition_id: opnsense
-description: OPNsense 20.7
-label: OPNsense 20.7
-disk_image: OPNsense-20.7-OpenSSL-nano-amd64.qcow2
-read_only: false
-disk_subfolder: opensense-20-7
-schema_version: 0.0.1
