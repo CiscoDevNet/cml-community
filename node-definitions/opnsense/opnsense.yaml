@@ -1,0 +1,49 @@
+id: opnsense
+general:
+  description: OPNsense Firewall
+  nature: firewall
+  read_only: false
+device:
+  interfaces:
+    has_loopback_zero: true
+    physical:
+      - vtnet0
+      - vtnet1
+      - vtnet2
+      - vtnet3
+    serial_ports: 1
+    default_count: 4
+    loopback:
+      - lo0
+ui:
+  visible: true
+  label_prefix: opnsense-
+  icon: firewall
+  label: opnsense
+sim:
+  linux_native:
+    libvirt_domain_driver: kvm
+    driver: asav
+    disk_driver: virtio
+    ram: 2048
+    cpus: 2
+    nic_driver: virtio
+boot:
+  timeout: 300
+  completed:
+    - 'login:'
+inherited:
+  image:
+    ram: true
+    cpus: true
+    data_volume: false
+    boot_disk_size: false
+  node:
+    ram: true
+    cpus: true
+    data_volume: false
+    boot_disk_size: false
+configuration:
+  generator:
+    driver: null
+schema_version: 0.0.1

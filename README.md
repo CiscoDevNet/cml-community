@@ -58,3 +58,4 @@ This project was written and is maintained by the following individuals:
 * Joe Clarke <jclarke@marcuscom.com>
 * Paul Van Lierop <pevanlierop@gmail.com>
 * sig9 <sig9@sig9.org>
+* Ozzy Schoonover <OzzySchoonover@gmail.com>
