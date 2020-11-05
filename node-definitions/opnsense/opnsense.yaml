@@ -26,8 +26,9 @@ sim:
     driver: asav
     disk_driver: virtio
     ram: 2048
-    cpus: 2
+    cpus: 1
     nic_driver: virtio
+    cpu_limit: 100
 boot:
   timeout: 300
   completed:
@@ -38,11 +39,13 @@ inherited:
     cpus: true
     data_volume: false
     boot_disk_size: false
+    cpu_limit: true
   node:
     ram: true
     cpus: true
     data_volume: false
     boot_disk_size: false
+    cpu_limit: true
 configuration:
   generator:
     driver: null
