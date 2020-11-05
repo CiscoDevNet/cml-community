@@ -6,7 +6,7 @@ Once you have the image archive, unarchive it, convert the image to qcow2, and t
 
 Here is an example of how I did it:
 
-`bzip2 -d OPNsense-20.7-OpenSSL-nano-amd64.img`
+`bzip2 -d OPNsense-20.7-OpenSSL-nano-amd64.img.bz2`
 
 `qemu-img convert -f raw -O qcow2 OPNsense-20.7-OpenSSL-nano-amd64.img OPNsense-20.7-OpenSSL-nano-amd64.qcow2`
 
