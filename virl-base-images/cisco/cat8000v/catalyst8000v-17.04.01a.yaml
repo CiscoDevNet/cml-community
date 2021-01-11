@@ -1,0 +1,8 @@
+id: catalyst8000v-17.04.01a
+node_definition_id: cat8000v
+description: Catalyst 8000V 17.04.01a
+label: 17.04.01a
+disk_image: c8000v-universalk9_8G_serial.17.04.01a.qcow2
+read_only: false
+disk_subfolder: catalyst8000v-17.04.01a
+schema_version: 0.0.1
