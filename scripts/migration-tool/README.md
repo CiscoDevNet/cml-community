@@ -86,7 +86,7 @@ $ sudo /usr/local/bin/virl2-migrate-data.sh --backup --file /path/to/archive.tar
 
 You can specify a file path for the archive where ever you have the requisite disk space.  The backup command will perform some source checks and then create this archive tar file.
 
-Once the backup portion completes, transfer this archive file to the target CML server.  How you do this transfer is up to you.  Using an intermediate SFTP or SCP server might tbe the easiest way.
+Once the backup portion completes, transfer this archive file to the target CML server.  How you do this transfer is up to you.  Using an intermediate SFTP or SCP server might be the easiest way.
 
 When the archive file is on the target server, run the following command to restore it:
 
