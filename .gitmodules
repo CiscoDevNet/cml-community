@@ -1,0 +1,9 @@
+[submodule "use-cases/cml-class-automation"]
+	path = use-cases/cml-class-automation
+	url = https://github.com/CiscoDevNet/cml-class-automation
+[submodule "use-cases/cml-cicd"]
+	path = use-cases/cml-cicd
+	url = https://github.com/CiscoDevNet/cml-cicd
+[submodule "use-cases/dst-automation"]
+	path = use-cases/dst-automation
+	url = https://github.com/CiscoDevNet/dst-automation
