@@ -7,3 +7,9 @@
 [submodule "use-cases/dst-automation"]
 	path = use-cases/dst-automation
 	url = https://github.com/CiscoDevNet/dst-automation
+[submodule "use-cases/virlutils"]
+	path = use-cases/virlutils
+	url = https://github.com/CiscoDevNet/virlutils
+[submodule "use-cases/ansible-cml"]
+	path = use-cases/ansible-cml
+	url = https://github.com/CiscoDevNet/ansible-cml
