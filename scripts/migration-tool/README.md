@@ -47,6 +47,7 @@ Notably, what is **not** migrated are:
 
 -   Licensing (the target server must already have its own license)
 -   Stock node and image definitions (make sure you either have the same refplat ISO mounted on or contents copied to the target server)
+-   Custom bridge interfaces on the Linux side
 
 ## General Operations
 
