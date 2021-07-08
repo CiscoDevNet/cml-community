@@ -135,30 +135,6 @@ check_disk_space() {
     return 0
 }
 
-prepare_as_remote_host() {
-    systemctl enable sshd.service && systemctl start sshd
-    rc=$?
-    if [ ${rc} = 0 ]; then
-        echo "Host is now ready to be a migration source.  Run '${ME} --host' on the remote host and point to this host's IP."
-    else
-        echo "Failed to start OpenSSH.  See output above."
-    fi
-
-    return ${rc}
-}
-
-unprepare_as_remote_host() {
-    systemctl stop sshd && systemctl disable sshd.service
-    rc=$?
-    if [ ${rc} = 0 ]; then
-        echo "Host is no longer usable as a migration source."
-    else
-        echo "Failed to shutdown OpenSSH.  See output above."
-    fi
-
-    return ${rc}
-}
-
 wait_for_vms_to_stop() {
     # this is only needed if VMs are running on the
     # controller where the ISO is mounted.
@@ -179,12 +155,17 @@ wait_for_vms_to_stop() {
     (( !done )) && sleep 5
     done
     if (( !done )); then
-        echo "some VMs are still running, giving up..."
+        echo "Some labs are still running; please stop all labs before continuing"
+        return 1
     fi
 }
 
 stop_cml_services() {
     wait_for_vms_to_stop
+    rc=$?
+    if [ ${rc} != 0 ]; then
+        return ${rc}
+    fi
     systemctl stop virl2.target
     rc=$?
     if [ ${rc} != 0 ]; then
@@ -242,11 +223,27 @@ cleanup_from_host() {
     rm -rf "${backup_ddir}"
 }
 
+check_cml_versions() {
+    curr_ver=$1
+    src_ver=$2
+
+    if [ "${curr_ver}" = "${src_ver}" ]; then
+        return 0
+    fi
+
+    # Allow one to migrate from 2.2.2 to 2.3.0.
+    if echo ${curr_ver} | grep -qE '^2\.3\.0' && echo ${src_ver} | grep -qE '^2\.2\.2\+'; then
+        return 0
+    fi
+
+    return 1
+}
+
 sync_from_host() {
     host=$1
 
     if ! nc -z "${host}" ${SSH_PORT}; then
-        echo "Remote host does not have OpenSSH enabled; run '${ME} --prep' on the remote host first."
+        echo "Remote host does not have OpenSSH enabled; start the OpenSSH service from Cockpit on the source host."
         return 1
     fi
 
@@ -269,7 +266,7 @@ sync_from_host() {
     printf "The prompt following that will be for sysadmin's password on %s to enter sudo mode.\n\n" "${host}"
     # Stop the service on the remote host and make sure we don't need
     # a password for sudo.  We also install the SSH pubkey for subsequent logins.
-    if ! ssh -o "StrictHostKeyChecking=no" -t -p ${SSH_PORT} sysadmin@"${host}" "sudo /usr/local/bin/${ME} --stop && echo '%sysadmin        ALL=(ALL)       NOPASSWD: ALL' | sudo tee /etc/sudoers.d/cml-migrate >/dev/null 2>&1 && mkdir -p ~/.ssh && \
+    if ! ssh -o "StrictHostKeyChecking=no" -t -p ${SSH_PORT} sysadmin@"${host}" "echo '%sysadmin        ALL=(ALL)       NOPASSWD: ALL' | sudo tee /etc/sudoers.d/cml-migrate >/dev/null 2>&1 && mkdir -p ~/.ssh && \
         chmod 0700 ~/.ssh && (cp -fa ~/.ssh/authorized_keys ~/.ssh/authorized_keys.migration >/dev/null 2>&1 || true) && echo ${key} | tee -a ~/.ssh/authorized_keys >/dev/null 2>&1 && chmod 0600 ~/.ssh/authorized_keys"; then
         rc=$?
         cleanup_from_host "${key_dir}" "${backup_ddir}"
@@ -277,34 +274,50 @@ sync_from_host() {
         return ${rc}
     fi
 
-    # Check CML versions on both hosts.
-    output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo /usr/local/bin/${ME} --version") 2>/dev/null)
-    if [ $? != 0 ]; then
+    # Install this script on the remote host.
+    if ! scp -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -P ${SSH_PORT} "/usr/local/bin/${ME}" sysadmin@"${host}":"/tmp/${ME}" >/dev/null; then
         rc=$?
         cleanup_from_host "${key_dir}" "${backup_ddir}"
-        echo "Failed to determine remote CML version.  Make sure /usr/local/bin/${ME} is installed on the remote machine."
+        echo "Error copying /usr/local/bin/${ME} to source host.  The original local data have been restored."
+        return ${rc}
+    fi
+
+    # Stop CML services on remote host.
+    if ! ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo chmod +x /tmp/${ME} && sudo /tmp/${ME} --stop" 2>/dev/null; then
+        rc=$?
+        cleanup_from_host "${key_dir}" "${backup_ddir}"
+        echo "Failed to stop source CML services."
         exit ${rc}
     fi
 
-    if [ "${VIRL_VERSION}" != "${output}" ]; then
+    # Check CML versions on both hosts.
+    output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo /tmp/${ME} --version") 2>/dev/null)
+    if [ $? != 0 ]; then
+        rc=$?
         cleanup_from_host "${key_dir}" "${backup_ddir}"
-        echo "Versions do not match.  Source server version: ${VIRL_VERSION}, Dest server version: ${output}.  The original local data has been restored."
+        echo "Failed to determine remote CML version."
+        exit ${rc}
+    fi
+
+    if ! check_cml_versions ${VIRL_VERSION} ${output}; then
+        cleanup_from_host "${key_dir}" "${backup_ddir}"
+        echo "Migration between versions is not supported.  Source server version: ${output}, Dest server version: ${VIRL_VERSION}.  The original local data has been restored."
         return 1
     fi
 
     # Build the list of remote src dirs.
-    output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo /usr/local/bin/${ME} --src-dirs") 2>/dev/null)
+    output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo /tmp/${ME} --src-dirs") 2>/dev/null)
     if [ $? != 0 ]; then
         rc=$?
         cleanup_from_host "${key_dir}" "${backup_ddir}"
-        echo "Failed to obtain remote src dirs.  Make sure /usr/local/bin/${ME} is installed on the remote machine."
+        echo "Failed to obtain remote src dirs."
         exit ${rc}
     fi
 
     SRC_DIRS=${output}
 
     # Get the list of domains from virsh.
-    libvirt_domains=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo /usr/local/bin/${ME} --get-domains") 2>/dev/null)
+    libvirt_domains=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo /tmp/${ME} --get-domains") 2>/dev/null)
     if [ $? != 0 ]; then
         rc=$?
         cleanup_from_host "${key_dir}" "${backup_ddir}"
@@ -349,7 +362,7 @@ sync_from_host() {
     fi
 
     printf "\nFinishing up with the remote host..."
-    if ! ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo /usr/local/bin/${ME} --start && sudo rm -rf ${libvirt_domains} && sudo rm -f /etc/sudoers.d/cml-migrate && (cp -fa ~/.ssh/authorized_keys.migration ~/.ssh/authorized_keys >/dev/null 2>&1 || true)"; then
+    if ! ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo /tmp/${ME} --start && sudo rm -rf ${libvirt_domains} && sudo rm -f /tmp/${ME} && sudo rm -f /etc/sudoers.d/cml-migrate && (cp -fa ~/.ssh/authorized_keys.migration ~/.ssh/authorized_keys >/dev/null 2>&1 || true)"; then
         printf "FAILED.\n"
         echo "Error finishing up on remote host.  Check to make sure the CML services are running on ${host}."
         rc=$?
@@ -374,22 +387,16 @@ if [ "$EUID" != 0 ]; then
     exit 1
 fi
 
-opts=$(getopt -o brpuf:h:vd --long host:,file:,prep,unprep,backup,restore,version,src-dirs,stop,start,get-domains -- "$@")
+opts=$(getopt -o brf:h:vd --long host:,file:,backup,restore,version,src-dirs,stop,start,get-domains -- "$@")
 if [ $? != 0 ]; then
     echo "usage: $0 -h|--host HOST_TO_MIGRATE_FROM"
     echo "       OR"
     echo "       $0 -b|--backup|-r|--restore -f|--file PATH_TO_BACKUP_FILE"
-    echo "       OR"
-    echo "       $0 -p|--prep"
-    echo "       OR"
-    echo "       $0 -u|--unprep"
     exit 1
 fi
 
 REMOTE_HOST=
 BACKUP_FILE=
-PREP=0
-UNPREP=0
 BACKUP=0
 RESTORE=0
 
@@ -403,12 +410,6 @@ while true; do
     -f | --file)
         shift
         BACKUP_FILE=$1
-        ;;
-    -p | --prep)
-        PREP=1
-        ;;
-    -u | --unprep)
-        UNPREP=1
         ;;
     -b | --backup)
         BACKUP=1
@@ -444,19 +445,6 @@ while true; do
     esac
     shift
 done
-
-if [ ${PREP} = 1 ] && [ ${UNPREP} = 1 ]; then
-    echo "Only one of --prep or --unprep may be specified."
-    exit 1
-fi
-
-if [ ${PREP} = 1 ]; then
-    prepare_as_remote_host
-    exit $?
-elif [ ${UNPREP} = 1 ]; then
-    unprepare_as_remote_host
-    exit $?
-fi
 
 if [ -n "${REMOTE_HOST}" ] && [ -n "${BACKUP_FILE}" ]; then
     echo "Only one of --host or --file may be specified."
@@ -513,9 +501,9 @@ if [ ${RESTORE} = 1 ]; then
     fi
 
     virl_version=$(set_virl_version "${tempd}"/PRODUCT)
-    if [ "${VIRL_VERSION}" != "${virl_version}" ]; then
+    if check_cml_versions ${VIRL_VERSION} "${virl_version}"; then
         rm -rf "${tempd}"
-        echo "Versions do not match.  Source server version: ${VIRL_VERSION}, Dest server version: ${virl_version}."
+        echo "Versions do not match.  Source server version: ${virl_version}, Dest server version: ${VIRL_VERSION}."
         exit 1
     fi
 
