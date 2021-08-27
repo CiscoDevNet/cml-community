@@ -1,0 +1,17 @@
+#
+# Juniper vMX experimental image definition
+# forwarding plane
+# generated 2020-04-20
+# part of VIRL^2
+#
+
+id: jnpr-vmx-vfp-17-3
+label: Juniper forwarding plane
+description: |2
+  Juniper virtual forwarding plane
+  JunOS vMX x86-64 17.3R3-S4.2
+node_definition_id: jnpr-vmx-vfp
+disk_image: vFPC-20181016.qcow2
+read_only: true
+schema_version: "0.0.1"
+
