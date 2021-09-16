@@ -1,0 +1,52 @@
+id: panos10
+general:
+  description: Palo Alto Networks vFW
+  nature: firewall
+  read_only: false
+device:
+  interfaces:
+    has_loopback_zero: false
+    physical:
+      - mgmt
+      - ethernet1/1
+      - ethernet1/2
+      - ethernet1/3
+      - ethernet1/4
+      - ethernet1/5
+      - ethernet1/6
+      - ethernet1/7
+    serial_ports: 1
+    default_count: 8
+ui:
+  visible: true
+  label_prefix: panos10-
+  icon: firewall
+  label: PAN-OS 10
+sim:
+  linux_native:
+    libvirt_domain_driver: kvm
+    driver: server
+    disk_driver: virtio
+    ram: 4096
+    cpus: 2
+    cpu_limit: 20
+    nic_driver: e1000
+boot:
+  timeout: 250
+inherited:
+  image:
+    ram: true
+    cpus: true
+    cpu_limit: true
+    data_volume: true
+    boot_disk_size: true
+  node:
+    ram: true
+    cpus: true
+    cpu_limit: true
+    data_volume: true
+    boot_disk_size: true
+configuration:
+  generator:
+    driver: server
+schema_version: 0.0.1
