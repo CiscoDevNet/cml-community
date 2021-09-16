@@ -16,9 +16,6 @@ the default credentials and change the credentials after first logon.
         System initializing; please wait... (CTRL-C to bypass)
         Enter old password : 
 
-
-
-
 To set a static ip address issue the following commands :
 
         configure
