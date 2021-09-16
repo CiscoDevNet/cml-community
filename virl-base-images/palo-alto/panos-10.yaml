@@ -1,0 +1,8 @@
+id: panos-10
+node_definition_id: panos10
+description: PAN-OS 10
+label: PAN-OS 10
+disk_image: PA-VM-KVM-10.0.2.qcow2
+read_only: false
+disk_subfolder: panos-10
+schema_version: 0.0.1
