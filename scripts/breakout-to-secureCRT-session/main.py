@@ -12,7 +12,7 @@ user = os.getlogin()
 auth = cml.auth(server, username, password)
 allNodes = cml.getAllNodes(auth, server, lab)
 # print(allNodes)
-N = True
+
 n_id = 0
 port = 9000
 try:
