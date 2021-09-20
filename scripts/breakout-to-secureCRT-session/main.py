@@ -4,17 +4,15 @@ import os
 requests.packages.urllib3.disable_warnings()
 from cmlApiCalls import CML as cml
 
-#edit the following variables
-server = "cml.server.com"
+server = "cml.recurve-it.com"
 username = "admin"
-password = "CMLpassword123"
+password = "12qwas!@QWAS12qwas"
 lab = "53b3fe"
-
-
 user = os.getlogin()
 auth = cml.auth(server, username, password)
-
-
+allNodes = cml.getAllNodes(auth, server, lab)
+# print(allNodes)
+N = True
 n_id = 0
 port = 9000
 try:
@@ -26,9 +24,9 @@ except:
 while n_id < 100:
     node_id = f"n{n_id}"
     response = cml.getNodesByID(auth, server, lab, node_id)
-    
+    # print(response)
     if response == "end of list":
-        #exit after testing 100 nodes
+        print("Node " + node_id + " does not exist, will check all nodes from n0 to n99.")
         n_id = n_id + 1
         
 
@@ -43,7 +41,7 @@ while n_id < 100:
         # turn port number into hex
         # strip "0x2233" and make it only 4 charators   
         hexport = hex(port).split('x')[-1]
-        
+        print("creating: " + node_label)
         with open("config.ini", "r") as config:
             temp = config.read()
             temp = temp.replace("REPLACE", "0000" + hexport)
