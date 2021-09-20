@@ -14,7 +14,7 @@ lab = "53b3fe"
 user = os.getlogin()
 auth = cml.auth(server, username, password)
 
-N = True
+
 n_id = 0
 port = 9000
 try:
@@ -23,13 +23,14 @@ except:
     print("directory already exists... continue...")
 
     
-while N:
+while n_id < 100:
     node_id = f"n{n_id}"
     response = cml.getNodesByID(auth, server, lab, node_id)
     
     if response == "end of list":
-        #exit if end of list
-        N = False
+        #exit after testing 100 nodes
+        n_id = n_id + 1
+        
 
     elif response.get("node_definition") == "external_connector":
         # dont count external_connector as usable
