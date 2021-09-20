@@ -4,9 +4,9 @@ import os
 requests.packages.urllib3.disable_warnings()
 from cmlApiCalls import CML as cml
 
-server = "cml.recurve-it.com"
+server = "cml.server.com"
 username = "admin"
-password = "12qwas!@QWAS12qwas"
+password = "CMLpassword123"
 lab = "53b3fe"
 user = os.getlogin()
 auth = cml.auth(server, username, password)
