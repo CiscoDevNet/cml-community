@@ -1,0 +1,20 @@
+#
+# Juniper vMX experimental image definition
+# control plane
+# generated 2020-04-20
+# part of VIRL^2
+#
+
+id: jnpr-vmx-vcp-17-3
+label: Juniper virtual Control plane
+description: |2
+  Juniper virtual Control plane
+  JunOS vMX x86-64 17.3R3-S4.2
+node_definition_id: jnpr-vmx-vcp
+disk_image: junos-vmx-x86-64-17.3R3-S4.2.qcow2
+disk_image_2: vmxhdd.qcow2
+disk_image_3: metadata-usb-re.qcow2
+read_only: true
+schema_version: "0.0.1"
+
+
