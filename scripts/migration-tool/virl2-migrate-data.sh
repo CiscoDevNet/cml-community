@@ -9,6 +9,8 @@ source /etc/default/virl2
 SRC_DIRS="${BASE_DIR}/images ${CFG_DIR}"
 KEY_FILE="migration_key"
 SSH_PORT="1122"
+DOING_MIGRATION=0
+MIGRATION_MAP="${LIBVIRT_IMAGES}:${REF_PLAT_DIR}"
 
 set_virl_version() {
     product_file=/PRODUCT
@@ -23,6 +25,59 @@ set_virl_version() {
     else
         VIRL_VERSION=${vers}
     fi
+}
+
+mount_refplat_overlay() {
+    # create required directories, if needed
+    [ -d $REF_PLAT/cdrom ] || mkdir -p $REF_PLAT/cdrom
+    [ -d $REF_PLAT/diff ] || mkdir -p $REF_PLAT/diff
+    [ -d $REF_PLAT/work ] || mkdir -p $REF_PLAT/work
+
+    if [ $REF_PLAT != $LIBVIRT_IMAGES ]; then
+      MOUNT_POINT=$REF_PLAT/cdrom
+    else
+      MOUNT_POINT=$LIBVIRT_IMAGES
+    fi
+
+    # if overlayfs is mounted, do nothing
+    mount | grep -q "^overlay on $LIBVIRT_IMAGES"
+    if [ $? -eq 0 ]; then
+      echo "ref plat already mounted"
+      return
+    fi
+
+    # try to mount the CDROM. If none is present it will continue
+    # it will just give an error for the mount like
+    # "mount: /var/local/virl2/refplat/cdrom: no medium found on /dev/sr0."
+    if [ -f "$REF_PLAT_ISO_IMAGE" ]; then
+      ! test -d $MOUNT_POINT && mkdir $MOUNT_POINT
+      if ! mount -t iso9660 -oloop,fscontext=$CONTEXT $REF_PLAT_ISO_IMAGE $MOUNT_POINT; then
+        echo "no refplat ISO image present / mounted!"
+      fi
+    elif [ -d "$REF_PLAT_DIR" ]; then
+      if test -d "$REF_PLAT_DIR"; then
+        test -d $MOUNT_POINT && rmdir $MOUNT_POINT
+        ln -s $REF_PLAT_DIR $MOUNT_POINT
+      else
+        echo "no refplat ISO image present / mounted!"
+      fi
+    else
+      ! test -d $MOUNT_POINT && mkdir $MOUNT_POINT
+      if ! mount $CDROM_DEVICE; then
+        echo "no refplat CD-ROM present / mounted!"
+      fi
+    fi
+
+    # mount the libvirt image directory in an OverlayFS
+    if [ $REF_PLAT != $LIBVIRT_IMAGES ]; then
+      mount -t overlay overlay \
+        -ofscontext=$CONTEXT,lowerdir=$REF_PLAT/cdrom,upperdir=$REF_PLAT/diff,workdir=$REF_PLAT/work \
+        $LIBVIRT_IMAGES
+    fi
+}
+
+umount_refplat_overlay() {
+    umount ${LIBVIRT_IMAGES}
 }
 
 build_local_src_dirs() {
@@ -231,8 +286,9 @@ check_cml_versions() {
         return 0
     fi
 
-    # Allow one to migrate from 2.2.2 to 2.3.0.
-    if echo ${curr_ver} | grep -qE '^2\.3\.0' && echo ${src_ver} | grep -qE '^2\.2\.2\+'; then
+    # Allow one to migrate from 2.2.x to 2.3.0.
+    if echo ${curr_ver} | grep -qE '^2\.3\.0' && echo ${src_ver} | grep -qE '^2\.2\.'; then
+	DOING_MIGRATION=1
         return 0
     fi
 
@@ -305,16 +361,20 @@ sync_from_host() {
         return 1
     fi
 
-    # Build the list of remote src dirs.
-    output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo /tmp/${ME} --src-dirs") 2>/dev/null)
-    if [ $? != 0 ]; then
-        rc=$?
-        cleanup_from_host "${key_dir}" "${backup_ddir}"
-        echo "Failed to obtain remote src dirs."
-        exit ${rc}
-    fi
+    if [ ${DOING_MIGRATION} -eq 1 ]; then
+	mount_refplat_overlay()
+    else
+        # Build the list of remote src dirs.
+        output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo /tmp/${ME} --src-dirs") 2>/dev/null)
+        if [ $? != 0 ]; then
+            rc=$?
+            cleanup_from_host "${key_dir}" "${backup_ddir}"
+            echo "Failed to obtain remote src dirs."
+            exit ${rc}
+        fi
 
-    SRC_DIRS=${output}
+        SRC_DIRS=${output}
+    fi
 
     # Get the list of domains from virsh.
     libvirt_domains=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo /tmp/${ME} --get-domains") 2>/dev/null)
@@ -333,7 +393,12 @@ sync_from_host() {
     output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo du -B1 -sc ${SRC_DIRS} | grep total | sed -E -s 's|\s+total||'") 2>/dev/null)
     if check_disk_space "" ${BASE_DIR} "${output}"; then
         printf "Starting migration.  Please be patient, migration may take a while....\n\n\n"
-        output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo tar --acls --selinux -cpf - ${SRC_DIRS}" | tar -C / --acls --selinux -xpf -) 2>&1 )
+	sdirs=""
+	for src_dir in ${SRC_DIRS}; do
+	    sdirs="${sdirs} sysadmin@\"${host}\":${src_dir}"
+	done
+	output=$( (rsync -aAvX -e "ssh -o StrictHostKeyChecking=no -i \"${key_dir}\"/${KEY_FILE} -p ${SSH_PORT}" ${sdirs} /) 2>&1 )
+#        output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo tar --acls --selinux -cpf - ${SRC_DIRS}" | tar -C / --acls --selinux -xpf -) 2>&1 )
         rc=$?
         if [ ${rc} != 0 ]; then
             restore_local_files
@@ -342,19 +407,38 @@ sync_from_host() {
             printf '%s\n\n' "${output}"
             echo "The original local data have been restored."
         else
-            # For each of the libvirt domains, migrate the XML.
-            echo "Migrating libvirt domains..."
-            output=$(define_domains "${libvirt_domains}" 2>&1)
-            rc=$?
-            if [ ${rc} != 0 ]; then
-                restore_local_files
-                define_domains "${backup_ddir}"
-                echo "Libvirt domain import completed with errors:"
-                printf '%s\n\n' "${output}"
-                echo "The original local data have been restored."
-            else
-                echo "Migration completed SUCCESSFULLY."
-                echo "Please make sure you have either mounted the same refplat ISO on or copied its contents to this CML server."
+	    # Migrate each mapped src dir to its target dir.
+	    success=1
+	    for map_dir in ${MIGRATION_MAP}; do
+		src_dir=sysadmin@"${host}":$(cut -d':' -f1)
+		dest_dir=$(cut -d':' -f2)
+		output=$( (rsync -aAvX -e "ssh -o StrictHostKeyChecking=no -i \"${key_dir}\"/${KEY_FILE} -p ${SSH_PORT}" ${src_dir} ${dest_dir}) 2>&1 )
+		rc=$?
+		if [ ${rc} != 0 ]; then
+		    restore_local_files
+		    define_domains "${backup_ddir}"
+		    echo "Migration completed with errors:"
+		    printf '%s\n\n' "${output}"
+		    echo "The original local data have been restored."
+		    success=0
+		    break
+		fi
+	    done
+	    if [ ${success} = 1 ]; then
+                # For each of the libvirt domains, migrate the XML.
+                echo "Migrating libvirt domains..."
+                output=$(define_domains "${libvirt_domains}" 2>&1)
+                rc=$?
+                if [ ${rc} != 0 ]; then
+                    restore_local_files
+                    define_domains "${backup_ddir}"
+                    echo "Libvirt domain import completed with errors:"
+                    printf '%s\n\n' "${output}"
+                    echo "The original local data have been restored."
+                else
+                    echo "Migration completed SUCCESSFULLY."
+                    echo "Please make sure you have either mounted the same refplat ISO on or copied its contents to this CML server."
+		fi
             fi
         fi
     else
@@ -373,6 +457,13 @@ sync_from_host() {
     rm -rf "${key_dir}"
     rm -rf "${libvirt_domains}"
     rm -rf "${backup_ddir}"
+
+    if [ ${DOING_MIGRATION} -eq 1 ]; then
+	umount_refplat_overlay()
+	if [ ${rc} = 0 ]; then
+	    # Run migration script here
+	fi
+    fi
 
     restart_cml_services
 
@@ -545,7 +636,9 @@ if [ ${RESTORE} = 1 ]; then
     exit ${rc}
 fi
 
-build_local_src_dirs
+# Note: we don't necessarily need to do this anymore if we bring in libvirt's images.
+# But if the overlay is not mounted, we'll miss 
+#build_local_src_dirs
 
 BACKUP_FILE=$(realpath "${BACKUP_FILE}")
 
