@@ -1,0 +1,59 @@
+id: cumulusvx
+general:
+  description: NVIDIA Cumulus VX
+  nature: switch
+  read_only: false
+device:
+  interfaces:
+    has_loopback_zero: false
+    physical:
+      - eth0
+      - swp1
+      - swp2
+      - swp3
+      - swp4
+      - swp5
+      - swp6
+      - swp7
+    serial_ports: 1
+    default_count: 8
+ui:
+  visible: true
+  description: |-
+    NVIDIA Cumulus VX
+
+     2Gb of RAM and 15Gb of disk space
+  label_prefix: cumulusvx-
+  icon: switch
+  label: Cumulus VX
+sim:
+  linux_native:
+    libvirt_domain_driver: kvm
+    driver: server
+    disk_driver: virtio
+    ram: 2048
+    cpus: 2
+    cpu_limit: 20
+    nic_driver: virtio
+    video:
+      memory: 20
+      model: virtio
+boot:
+  timeout: 250
+inherited:
+  image:
+    ram: true
+    cpus: true
+    cpu_limit: true
+    data_volume: true
+    boot_disk_size: true
+  node:
+    ram: true
+    cpus: true
+    cpu_limit: true
+    data_volume: true
+    boot_disk_size: true
+configuration:
+  generator:
+    driver: null
+schema_version: 0.0.1
