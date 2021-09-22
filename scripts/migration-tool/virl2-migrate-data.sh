@@ -18,7 +18,7 @@ set_virl_version() {
         product_file=$1
     fi
 
-    vers=$(jq -r ".PRODUCT_VERSION" < "${product_file}")
+    vers=$(jq -r ".PRODUCT_VERSION" <"${product_file}")
 
     if [ $# = 1 ]; then
         echo ${vers}
@@ -34,46 +34,54 @@ mount_refplat_overlay() {
     [ -d $REF_PLAT/work ] || mkdir -p $REF_PLAT/work
 
     if [ $REF_PLAT != $LIBVIRT_IMAGES ]; then
-      MOUNT_POINT=$REF_PLAT/cdrom
+        MOUNT_POINT=$REF_PLAT/cdrom
     else
-      MOUNT_POINT=$LIBVIRT_IMAGES
+        MOUNT_POINT=$LIBVIRT_IMAGES
     fi
 
     # if overlayfs is mounted, do nothing
     mount | grep -q "^overlay on $LIBVIRT_IMAGES"
     if [ $? -eq 0 ]; then
-      echo "ref plat already mounted"
-      return
+        return 0
     fi
 
     # try to mount the CDROM. If none is present it will continue
     # it will just give an error for the mount like
     # "mount: /var/local/virl2/refplat/cdrom: no medium found on /dev/sr0."
     if [ -f "$REF_PLAT_ISO_IMAGE" ]; then
-      ! test -d $MOUNT_POINT && mkdir $MOUNT_POINT
-      if ! mount -t iso9660 -oloop,fscontext=$CONTEXT $REF_PLAT_ISO_IMAGE $MOUNT_POINT; then
-        echo "no refplat ISO image present / mounted!"
-      fi
+        ! test -d $MOUNT_POINT && mkdir $MOUNT_POINT
+        if ! mount -t iso9660 -oloop,fscontext=$CONTEXT $REF_PLAT_ISO_IMAGE $MOUNT_POINT; then
+            echo "no refplat ISO image present / mounted!"
+            return 1
+        fi
     elif [ -d "$REF_PLAT_DIR" ]; then
-      if test -d "$REF_PLAT_DIR"; then
-        test -d $MOUNT_POINT && rmdir $MOUNT_POINT
-        ln -s $REF_PLAT_DIR $MOUNT_POINT
-      else
-        echo "no refplat ISO image present / mounted!"
-      fi
+        if test -d "$REF_PLAT_DIR"; then
+            test -d $MOUNT_POINT && rmdir $MOUNT_POINT
+            ln -s $REF_PLAT_DIR $MOUNT_POINT
+        else
+            echo "no refplat ISO image present / mounted!"
+            return 1
+        fi
     else
-      ! test -d $MOUNT_POINT && mkdir $MOUNT_POINT
-      if ! mount $CDROM_DEVICE; then
-        echo "no refplat CD-ROM present / mounted!"
-      fi
+        ! test -d $MOUNT_POINT && mkdir $MOUNT_POINT
+        if ! mount $CDROM_DEVICE; then
+            echo "no refplat CD-ROM present / mounted!"
+            return 1
+        fi
     fi
 
     # mount the libvirt image directory in an OverlayFS
     if [ $REF_PLAT != $LIBVIRT_IMAGES ]; then
-      mount -t overlay overlay \
-        -ofscontext=$CONTEXT,lowerdir=$REF_PLAT/cdrom,upperdir=$REF_PLAT/diff,workdir=$REF_PLAT/work \
-        $LIBVIRT_IMAGES
+        mount -t overlay overlay \
+            -ofscontext=$CONTEXT,lowerdir=$REF_PLAT/cdrom,upperdir=$REF_PLAT/diff,workdir=$REF_PLAT/work \
+            $LIBVIRT_IMAGES
+        if [ $? != 0 ]; then
+            echo "error mounting overlay filesystem"
+            return 1
+        fi
     fi
+
+    return 0
 }
 
 umount_refplat_overlay() {
@@ -137,7 +145,7 @@ export_libvirt_domains() {
 '
 
     for domain in ${domains}; do
-        virsh dumpxml "${domain}" > "${ddir}"/"${domain}".xml
+        virsh dumpxml "${domain}" >"${ddir}"/"${domain}".xml
     done
 
     IFS=${old_IFS}
@@ -193,23 +201,23 @@ check_disk_space() {
 wait_for_vms_to_stop() {
     # this is only needed if VMs are running on the
     # controller where the ISO is mounted.
-    loops=5   # max 5x5 = 25s
+    loops=5 # max 5x5 = 25s
     done=0
-    while (( loops > 0 && !done )); do
-    done=1
-    for vm in $(virsh -c qemu:///system list --all --name); do
-        if [[ "$vm" =~ ^[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12} ]]; then
-            vm_state=$(virsh dominfo "$vm")
-            if [[ "$vm_state" =~ State:\ +running ]]; then
-                echo "still running: $vm"
-                done=0
+    while ((loops > 0 && !done)); do
+        done=1
+        for vm in $(virsh -c qemu:///system list --all --name); do
+            if [[ "$vm" =~ ^[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12} ]]; then
+                vm_state=$(virsh dominfo "$vm")
+                if [[ "$vm_state" =~ State:\ +running ]]; then
+                    echo "still running: $vm"
+                    done=0
+                fi
             fi
-        fi
+        done
+        ((loops -= 1))
+        ((!done)) && sleep 5
     done
-    (( loops -= 1 ))
-    (( !done )) && sleep 5
-    done
-    if (( !done )); then
+    if ((!done)); then
         echo "Some labs are still running; please stop all labs before continuing"
         return 1
     fi
@@ -288,7 +296,7 @@ check_cml_versions() {
 
     # Allow one to migrate from 2.2.x to 2.3.0.
     if echo ${curr_ver} | grep -qE '^2\.3\.0' && echo ${src_ver} | grep -qE '^2\.2\.'; then
-	DOING_MIGRATION=1
+        DOING_MIGRATION=1
         return 0
     fi
 
@@ -310,7 +318,10 @@ sync_from_host() {
         return 0
     fi
 
-    stop_cml_services || ( echo "Failed to stop CML services." ; exit $? )
+    stop_cml_services || (
+        echo "Failed to stop CML services."
+        exit $?
+    )
     backup_local_files
     backup_ddir=$(export_libvirt_domains)
     delete_libvirt_domains
@@ -362,8 +373,12 @@ sync_from_host() {
     fi
 
     if [ ${DOING_MIGRATION} -eq 1 ]; then
-	mount_refplat_overlay()
-    else
+        mount_refplat_overlay
+        if [ $? != 0 ]; then
+            rc=$?
+            cleanup_from_host "${key_dir}" "${backup_ddir}"
+            exit ${rc}
+        fi
         # Build the list of remote src dirs.
         output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo /tmp/${ME} --src-dirs") 2>/dev/null)
         if [ $? != 0 ]; then
@@ -393,12 +408,12 @@ sync_from_host() {
     output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo du -B1 -sc ${SRC_DIRS} | grep total | sed -E -s 's|\s+total||'") 2>/dev/null)
     if check_disk_space "" ${BASE_DIR} "${output}"; then
         printf "Starting migration.  Please be patient, migration may take a while....\n\n\n"
-	sdirs=""
-	for src_dir in ${SRC_DIRS}; do
-	    sdirs="${sdirs} sysadmin@\"${host}\":${src_dir}"
-	done
-	output=$( (rsync -aAvX -e "ssh -o StrictHostKeyChecking=no -i \"${key_dir}\"/${KEY_FILE} -p ${SSH_PORT}" ${sdirs} /) 2>&1 )
-#        output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo tar --acls --selinux -cpf - ${SRC_DIRS}" | tar -C / --acls --selinux -xpf -) 2>&1 )
+        sdirs=""
+        for src_dir in ${SRC_DIRS}; do
+            sdirs="${sdirs} sysadmin@\"${host}\":${src_dir}"
+        done
+        output=$( (rsync -aAvX -e "ssh -o StrictHostKeyChecking=no -i \"${key_dir}\"/${KEY_FILE} -p ${SSH_PORT}" ${sdirs} /) 2>&1)
+        #        output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo tar --acls --selinux -cpf - ${SRC_DIRS}" | tar -C / --acls --selinux -xpf -) 2>&1 )
         rc=$?
         if [ ${rc} != 0 ]; then
             restore_local_files
@@ -407,24 +422,24 @@ sync_from_host() {
             printf '%s\n\n' "${output}"
             echo "The original local data have been restored."
         else
-	    # Migrate each mapped src dir to its target dir.
-	    success=1
-	    for map_dir in ${MIGRATION_MAP}; do
-		src_dir=sysadmin@"${host}":$(cut -d':' -f1)
-		dest_dir=$(cut -d':' -f2)
-		output=$( (rsync -aAvX -e "ssh -o StrictHostKeyChecking=no -i \"${key_dir}\"/${KEY_FILE} -p ${SSH_PORT}" ${src_dir} ${dest_dir}) 2>&1 )
-		rc=$?
-		if [ ${rc} != 0 ]; then
-		    restore_local_files
-		    define_domains "${backup_ddir}"
-		    echo "Migration completed with errors:"
-		    printf '%s\n\n' "${output}"
-		    echo "The original local data have been restored."
-		    success=0
-		    break
-		fi
-	    done
-	    if [ ${success} = 1 ]; then
+            # Migrate each mapped src dir to its target dir.
+            success=1
+            for map_dir in ${MIGRATION_MAP}; do
+                src_dir=sysadmin@"${host}":$(cut -d':' -f1)
+                dest_dir=$(cut -d':' -f2)
+                output=$( (rsync -aAvX -e "ssh -o StrictHostKeyChecking=no -i \"${key_dir}\"/${KEY_FILE} -p ${SSH_PORT}" ${src_dir} ${dest_dir}) 2>&1)
+                rc=$?
+                if [ ${rc} != 0 ]; then
+                    restore_local_files
+                    define_domains "${backup_ddir}"
+                    echo "Migration completed with errors:"
+                    printf '%s\n\n' "${output}"
+                    echo "The original local data have been restored."
+                    success=0
+                    break
+                fi
+            done
+            if [ ${success} = 1 ]; then
                 # For each of the libvirt domains, migrate the XML.
                 echo "Migrating libvirt domains..."
                 output=$(define_domains "${libvirt_domains}" 2>&1)
@@ -438,7 +453,7 @@ sync_from_host() {
                 else
                     echo "Migration completed SUCCESSFULLY."
                     echo "Please make sure you have either mounted the same refplat ISO on or copied its contents to this CML server."
-		fi
+                fi
             fi
         fi
     else
@@ -459,10 +474,10 @@ sync_from_host() {
     rm -rf "${backup_ddir}"
 
     if [ ${DOING_MIGRATION} -eq 1 ]; then
-	umount_refplat_overlay()
-	if [ ${rc} = 0 ]; then
-	    # Run migration script here
-	fi
+        umount_refplat_overlay
+        if [ ${rc} = 0 ]; then
+            # Run migration script here
+        fi
     fi
 
     restart_cml_services
@@ -602,7 +617,10 @@ if [ ${RESTORE} = 1 ]; then
 
     rm -rf "${tempd}"
 
-    stop_cml_services || ( echo "Failed to stop CML services." ; exit $? )
+    stop_cml_services || (
+        echo "Failed to stop CML services."
+        exit $?
+    )
     backup_local_files
     backup_ddir=$(export_libvirt_domains)
     delete_libvirt_domains
@@ -637,7 +655,7 @@ if [ ${RESTORE} = 1 ]; then
 fi
 
 # Note: we don't necessarily need to do this anymore if we bring in libvirt's images.
-# But if the overlay is not mounted, we'll miss 
+# But if the overlay is not mounted, we'll miss
 #build_local_src_dirs
 
 BACKUP_FILE=$(realpath "${BACKUP_FILE}")
@@ -650,16 +668,19 @@ fi
 read -r -p "Are you sure you want to backup?  Doing so will restart the CML services. [y/N] " confirm
 echo
 if echo "${confirm}" | grep -qiv '^y'; then
-        echo "Terminating backup."
-        exit 0
+    echo "Terminating backup."
+    exit 0
 fi
 
-stop_cml_services || ( echo "Failed to stop CML services." ; exit $? )
+stop_cml_services || (
+    echo "Failed to stop CML services."
+    exit $?
+)
 
 ddir=$(export_libvirt_domains)
 tempd=$(mktemp -d /tmp/migration.XXXXX)
 cd "${tempd}"
-echo "${ddir}" > libvirt_domains.dat
+echo "${ddir}" >libvirt_domains.dat
 
 SRC_DIRS="${SRC_DIRS} ${ddir}"
 
