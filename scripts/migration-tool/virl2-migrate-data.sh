@@ -86,6 +86,7 @@ mount_refplat_overlay() {
 
 umount_refplat_overlay() {
     umount ${LIBVIRT_IMAGES}
+    return $?
 }
 
 build_local_src_dirs() {
@@ -373,12 +374,13 @@ sync_from_host() {
     fi
 
     if [ ${DOING_MIGRATION} -eq 1 ]; then
-        mount_refplat_overlay
+        (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo /tmp/${ME} --mount-overlay") 2>/dev/null
         if [ $? != 0 ]; then
             rc=$?
             cleanup_from_host "${key_dir}" "${backup_ddir}"
             exit ${rc}
         fi
+    else
         # Build the list of remote src dirs.
         output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo /tmp/${ME} --src-dirs") 2>/dev/null)
         if [ $? != 0 ]; then
@@ -461,6 +463,10 @@ sync_from_host() {
     fi
 
     printf "\nFinishing up with the remote host..."
+    if [ ${DOING_MIGRATION} -eq 1 ]; then
+        ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo /tmp/${ME} --umount-overlay"
+    fi
+
     if ! ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo /tmp/${ME} --start && sudo rm -rf ${libvirt_domains} && sudo rm -f /tmp/${ME} && sudo rm -f /etc/sudoers.d/cml-migrate && (cp -fa ~/.ssh/authorized_keys.migration ~/.ssh/authorized_keys >/dev/null 2>&1 || true)"; then
         printf "FAILED.\n"
         echo "Error finishing up on remote host.  Check to make sure the CML services are running on ${host}."
@@ -474,7 +480,6 @@ sync_from_host() {
     rm -rf "${backup_ddir}"
 
     if [ ${DOING_MIGRATION} -eq 1 ]; then
-        umount_refplat_overlay
         if [ ${rc} = 0 ]; then
             # Run migration script here
         fi
@@ -493,7 +498,7 @@ if [ "$EUID" != 0 ]; then
     exit 1
 fi
 
-opts=$(getopt -o brf:h:vd --long host:,file:,backup,restore,version,src-dirs,stop,start,get-domains -- "$@")
+opts=$(getopt -o brf:h:vd --long host:,file:,backup,restore,version,src-dirs,stop,start,get-domains,mount-overlay,umount-overlay -- "$@")
 if [ $? != 0 ]; then
     echo "usage: $0 -h|--host HOST_TO_MIGRATE_FROM"
     echo "       OR"
@@ -542,6 +547,14 @@ while true; do
         ;;
     --get-domains)
         export_libvirt_domains
+        exit $?
+        ;;
+    --mount-overlay)
+        mount_refplat_overlay
+        exit $?
+        ;;
+    --umount-overlay)
+        umount_refplat_overlay
         exit $?
         ;;
     --)
