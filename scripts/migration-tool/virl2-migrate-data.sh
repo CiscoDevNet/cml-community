@@ -481,7 +481,12 @@ sync_from_host() {
 
     if [ ${DOING_MIGRATION} -eq 1 ]; then
         if [ ${rc} = 0 ]; then
-            # Run migration script here
+            output=$( (env CFG_DIR=${CFG_DIR} VIRL2_DIR=${VIRL2_DIR} HOME=${VIRL2_DIR} ${VIRL2_DIR}/.local/bin/alembic upgrade 2.3.0) 2>&1)
+            rc=$?
+            if [ ${rc} != 0 ]; then
+                echo "Failed to execute data upgrade script:"
+                printf '%s\n\n' "${output}"
+            fi
         fi
     fi
 
@@ -498,7 +503,7 @@ if [ "$EUID" != 0 ]; then
     exit 1
 fi
 
-opts=$(getopt -o brf:h:vd --long host:,file:,backup,restore,version,src-dirs,stop,start,get-domains,mount-overlay,umount-overlay -- "$@")
+opts=$(getopt -o brf:h:vd --long host:,file:,backup,restore,version,src-dirs,stop,start,get-domains,mount-overlay,umount-overlay,migration -- "$@")
 if [ $? != 0 ]; then
     echo "usage: $0 -h|--host HOST_TO_MIGRATE_FROM"
     echo "       OR"
@@ -524,6 +529,9 @@ while true; do
         ;;
     -b | --backup)
         BACKUP=1
+        ;;
+    -m | --migration)
+        DOING_MIGRATION=1
         ;;
     -r | --restore)
         RESTORE=1
@@ -596,6 +604,8 @@ if [ ${RESTORE} = 1 ]; then
         exit 1
     fi
 
+    DOING_MIGRATION=0
+
     # While not all data may go to the product root, the way CML's file system
     # is laid out means it's almost certainly going to be on the same FS.
     if ! check_disk_space "${BACKUP_FILE}" ${BASE_DIR}; then
@@ -622,7 +632,7 @@ if [ ${RESTORE} = 1 ]; then
     virl_version=$(set_virl_version "${tempd}"/PRODUCT)
     if check_cml_versions ${VIRL_VERSION} "${virl_version}"; then
         rm -rf "${tempd}"
-        echo "Versions do not match.  Source server version: ${virl_version}, Dest server version: ${VIRL_VERSION}."
+        echo "Versions do not match or migration path not supported.  Source server version: ${virl_version}, Dest server version: ${VIRL_VERSION}."
         exit 1
     fi
 
@@ -639,7 +649,7 @@ if [ ${RESTORE} = 1 ]; then
     delete_libvirt_domains
 
     echo "Restoring ${BACKUP_FILE} to local CML.  Please be patient, this may take a while..."
-    output=$(tar -C / --acls --selinux --exclude=PRODUCT -xpf "${BACKUP_FILE}" 2>&1)
+    output=$(tar -C / --acls --selinux --exclude=PRODUCT -xpf "${BACKUP_FILE}" ${SRC_DIRS} 2>&1)
     rc=$?
     if [ ${rc} != 0 ]; then
         restore_local_files
@@ -656,7 +666,9 @@ if [ ${RESTORE} = 1 ]; then
             echo "The original local data have been restored."
         else
             echo "Restore completed SUCCESSFULLY."
-            echo "Please make sure you have either mounted the same refplat ISO on or copied its contents to this CML server."
+            if [ ${DOING_MIGRATION} -eq 0 ]; then
+                echo "Please make sure you have either mounted the same refplat ISO on or copied its contents to this CML server."
+            fi
         fi
     fi
 
@@ -667,9 +679,11 @@ if [ ${RESTORE} = 1 ]; then
     exit ${rc}
 fi
 
-# Note: we don't necessarily need to do this anymore if we bring in libvirt's images.
-# But if the overlay is not mounted, we'll miss
-#build_local_src_dirs
+if [ ${DOING_MIGRATION} -eq 0 ]; then
+    build_local_src_dirs
+else
+    SRC_DIRS="${SRC_DIRS} ${LIBVIRT_IMAGES}"
+fi
 
 BACKUP_FILE=$(realpath "${BACKUP_FILE}")
 
@@ -689,6 +703,13 @@ stop_cml_services || (
     echo "Failed to stop CML services."
     exit $?
 )
+
+if [ ${DOING_MIGRATION} -eq 1 ]; then
+    mount_refplat_overlay
+    if [ $? != 0 ]; then
+        exit $?
+    fi
+fi
 
 ddir=$(export_libvirt_domains)
 tempd=$(mktemp -d /tmp/migration.XXXXX)
@@ -712,6 +733,10 @@ fi
 
 rm -rf "${tempd}"
 rm -rf "${ddir}"
+
+if [ ${DOING_MIGRATION} -eq 1 ]; then
+    umount_refplat_overlay
+fi
 
 restart_cml_services
 
