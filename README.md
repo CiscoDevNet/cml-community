@@ -59,3 +59,4 @@ This project was written and is maintained by the following individuals:
 * Paul Van Lierop <pevanlierop@gmail.com>
 * sig9 <sig9@sig9.org>
 * Ozzy Schoonover <OzzySchoonover@gmail.com>
+* Alexander Deca <alexander@deca-consulting.be>
