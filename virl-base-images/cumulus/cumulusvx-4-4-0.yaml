@@ -1,0 +1,8 @@
+id: cumulusvx-4-4-0
+node_definition_id: cumulusvx
+description: NVIDIA Cumulus VX 4.4.0
+label: Cumulus VX 4.4.0
+disk_image: cumulus-linux-4.4.0-vx-amd64-qemu.qcow2
+read_only: false
+disk_subfolder: cumulusvx-4-4-0
+schema_version: 0.0.1
