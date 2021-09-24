@@ -343,7 +343,7 @@ sync_from_host() {
     fi
 
     # Install this script on the remote host.
-    if ! scp -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -P ${SSH_PORT} "/usr/local/bin/${ME}" sysadmin@"${host}":"/tmp/${ME}" >/dev/null; then
+    if ! scp -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -P ${SSH_PORT} ${LOCAL_ME} sysadmin@"${host}":"/tmp/${ME}" >/dev/null; then
         rc=$?
         cleanup_from_host "${key_dir}" "${backup_ddir}"
         echo "Error copying /usr/local/bin/${ME} to source host.  The original local data have been restored."
@@ -496,6 +496,7 @@ sync_from_host() {
 }
 
 ME=$(basename "$0")
+LOCAL_ME=$0
 set_virl_version
 
 if [ "$EUID" != 0 ]; then
