@@ -138,6 +138,7 @@ export_libvirt_domains() {
     ddir=$(mktemp -d /tmp/libvirt_domains.XXXXX)
     domains=$(virsh list --all --name)
     if [ $? != 0 ]; then
+        echo "${ddir}"
         return $?
     fi
 
@@ -151,6 +152,8 @@ export_libvirt_domains() {
 
     IFS=${old_IFS}
 
+    chown -R sysadmin "${ddir}"
+
     echo "${ddir}"
 }
 
@@ -160,6 +163,10 @@ define_domains() {
     old_IFS=${IFS}
     IFS='
 '
+    ls -1 "${ddir}"/*.xml
+    if [ $? != 0 ]; then
+        return 0
+    fi
 
     for domain in "${ddir}"/*.xml; do
         virsh define "${domain}"
@@ -256,6 +263,7 @@ backup_local_files() {
         if [ -e "${dir}" ]; then
             rm -rf "${dir}".bak
             mv -f "${dir}" "${dir}".bak
+            mkdir -p "${dir}"
         fi
     done
 }
@@ -412,9 +420,9 @@ sync_from_host() {
         printf "Starting migration.  Please be patient, migration may take a while....\n\n\n"
         sdirs=""
         for src_dir in ${SRC_DIRS}; do
-            sdirs="${sdirs} sysadmin@\"${host}\":${src_dir}"
+            sdirs="${sdirs} sysadmin@${host}:${src_dir}"
         done
-        output=$( (rsync -aAvX -e "ssh -o StrictHostKeyChecking=no -i \"${key_dir}\"/${KEY_FILE} -p ${SSH_PORT}" ${sdirs} /) 2>&1)
+        output=$( (rsync -aAvX -e "ssh -o StrictHostKeyChecking=no -i ${key_dir}/${KEY_FILE} -p ${SSH_PORT}" ${sdirs} /) 2>&1)
         #        output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo tar --acls --selinux -cpf - ${SRC_DIRS}" | tar -C / --acls --selinux -xpf -) 2>&1 )
         rc=$?
         if [ ${rc} != 0 ]; then
