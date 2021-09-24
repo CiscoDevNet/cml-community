@@ -225,7 +225,7 @@ wait_for_vms_to_stop() {
 }
 
 stop_cml_services() {
-    wait_for_vms_to_stop
+    #wait_for_vms_to_stop
     rc=$?
     if [ ${rc} != 0 ]; then
         return ${rc}
