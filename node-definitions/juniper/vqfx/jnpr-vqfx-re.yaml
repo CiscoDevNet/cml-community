@@ -1,0 +1,66 @@
+id: jnpr-vqfx-re
+general:
+  description: Juniper vQFX RE
+  nature: switch
+  read_only: false
+device:
+  interfaces:
+    has_loopback_zero: false
+    physical:
+      - Mgmt
+      - Sync
+      - Unusable
+      - xe-0/0/0
+      - xe-0/0/1
+      - xe-0/0/2
+      - xe-0/0/3
+      - xe-0/0/4
+      - xe-0/0/5
+      - xe-0/0/6
+      - xe-0/0/7
+      - xe-0/0/8
+      - xe-0/0/9
+      - xe-0/0/10
+      - xe-0/0/11
+      - xe-0/0/12
+      - xe-0/0/13
+      - xe-0/0/14
+      - xe-0/0/15
+    serial_ports: 1
+    default_count: 12
+ui:
+  visible: true
+  description: Juniper vQFX RE
+  label_prefix: vqfx-re-
+  icon: switch
+  label: Juniper vQFX RE
+sim:
+  linux_native:
+    libvirt_domain_driver: kvm
+    driver: server
+    disk_driver: ide
+    ram: 1500
+    cpus: 2
+    cpu_limit: 100
+    nic_driver: e1000
+boot:
+  completed:
+    - 'login:'
+  timeout: 600
+inherited:
+  image:
+    ram: true
+    cpus: true
+    cpu_limit: true
+    data_volume: true
+    boot_disk_size: true
+  node:
+    ram: true
+    cpus: true
+    cpu_limit: true
+    data_volume: true
+    boot_disk_size: true
+configuration:
+  generator:
+    driver: null
+schema_version: 0.0.1

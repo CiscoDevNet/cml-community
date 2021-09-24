@@ -1,0 +1,49 @@
+id: jnpr-vqfx-pfe
+general:
+  description: Juniper vQFX PFE
+  nature: switch
+  read_only: false
+device:
+  interfaces:
+    has_loopback_zero: false
+    physical:
+      - Mgmt
+      - Sync
+    serial_ports: 1
+    default_count: 2
+ui:
+  visible: true
+  description: Juniper vQFX PFE
+  label_prefix: vqfx-pfe-
+  icon: switch
+  label: Juniper vQFX PFE
+sim:
+  linux_native:
+    libvirt_domain_driver: kvm
+    driver: server
+    disk_driver: ide
+    ram: 2048
+    cpus: 2
+    cpu_limit: 100
+    nic_driver: e1000
+    video:
+      memory: 16
+boot:
+  timeout: 120
+inherited:
+  image:
+    ram: true
+    cpus: true
+    cpu_limit: true
+    data_volume: true
+    boot_disk_size: true
+  node:
+    ram: true
+    cpus: true
+    cpu_limit: true
+    data_volume: true
+    boot_disk_size: true
+configuration:
+  generator:
+    driver: null
+schema_version: 0.0.1
