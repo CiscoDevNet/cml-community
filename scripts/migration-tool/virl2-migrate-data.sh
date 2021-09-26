@@ -457,8 +457,18 @@ sync_from_host() {
                     printf '%s\n\n' "${output}"
                     echo "The original local data have been restored."
                 else
-                    echo "Migration completed SUCCESSFULLY."
-                    echo "Please make sure you have either mounted the same refplat ISO on or copied its contents to this CML server."
+                    if [ ${DOING_MIGRATION} -eq 1 ]; then
+                        echo "Data transfer completed SUCCESSFULLY."
+                        output=$( (cd ${BASE_DIR}/db_migrations && env CFG_DIR=${CFG_DIR} BASE_DIR=${BASE_DIR} VIRL2_DIR=${BASE_DIR} HOME=${BASE_DIR} ${BASE_DIR}/.local/bin/alembic upgrade 2.3.0) 2>&1)
+                        rc=$?
+                        if [ ${rc} != 0 ]; then
+                            echo "Failed to execute data upgrade script:"
+                            printf '%s\n\n' "${output}"
+                        fi
+                    else
+                        echo "Migration completed SUCCESSFULLY."
+                        echo "Please make sure you have either mounted the same refplat ISO on or copied its contents to this CML server."
+                    fi
                 fi
             fi
         fi
@@ -482,17 +492,6 @@ sync_from_host() {
     rm -rf "${key_dir}"
     rm -rf "${libvirt_domains}"
     rm -rf "${backup_ddir}"
-
-    if [ ${DOING_MIGRATION} -eq 1 ]; then
-        if [ ${rc} = 0 ]; then
-            output=$( (env CFG_DIR=${CFG_DIR} VIRL2_DIR=${VIRL2_DIR} HOME=${VIRL2_DIR} ${VIRL2_DIR}/.local/bin/alembic upgrade 2.3.0) 2>&1)
-            rc=$?
-            if [ ${rc} != 0 ]; then
-                echo "Failed to execute data upgrade script:"
-                printf '%s\n\n' "${output}"
-            fi
-        fi
-    fi
 
     restart_cml_services
 
