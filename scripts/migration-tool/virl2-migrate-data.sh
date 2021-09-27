@@ -90,6 +90,10 @@ umount_refplat_overlay() {
 }
 
 build_local_src_dirs() {
+    if [ ${DOING_MIGRATION} -eq 1 ]; then
+        return
+    fi
+
     if [ "${REF_PLAT}" != "${LIBVIRT_IMAGES}" ]; then
         MOUNT_POINT=${REF_PLAT}/cdrom
     else
@@ -386,18 +390,22 @@ sync_from_host() {
             cleanup_from_host "${key_dir}" "${backup_ddir}"
             exit ${rc}
         fi
-    else
-        # Build the list of remote src dirs.
-        output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo /tmp/${ME} --src-dirs") 2>/dev/null)
-        if [ $? != 0 ]; then
-            rc=$?
-            cleanup_from_host "${key_dir}" "${backup_ddir}"
-            echo "Failed to obtain remote src dirs."
-            exit ${rc}
-        fi
-
-        SRC_DIRS=${output}
     fi
+
+    migr_arg=""
+    if [ ${DOING_MIGRATION} -eq 1 ]; then
+        migr_arg="--migration"
+    fi
+    # Build the list of remote src dirs.
+    output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo /tmp/${ME} ${migr_arg} --src-dirs") 2>/dev/null)
+    if [ $? != 0 ]; then
+        rc=$?
+        cleanup_from_host "${key_dir}" "${backup_ddir}"
+        echo "Failed to obtain remote src dirs."
+        exit ${rc}
+    fi
+
+    SRC_DIRS=${output}
 
     # Get the list of domains from virsh.
     libvirt_domains=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo /tmp/${ME} --get-domains") 2>/dev/null)
@@ -420,7 +428,7 @@ sync_from_host() {
         for src_dir in ${SRC_DIRS}; do
             sdirs="${sdirs} sysadmin@${host}:${src_dir}"
         done
-        rsync -aAvX --progress --rsync-path="sudo rsync" -e "ssh -o StrictHostKeyChecking=no -i ${key_dir}/${KEY_FILE} -p ${SSH_PORT}" ${sdirs} /
+        rsync -aAzX --progress --rsync-path="sudo rsync" -e "ssh -o StrictHostKeyChecking=no -i ${key_dir}/${KEY_FILE} -p ${SSH_PORT}" ${sdirs} /
         #        output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo tar --acls --selinux -cpf - ${SRC_DIRS}" | tar -C / --acls --selinux -xpf -) 2>&1 )
         rc=$?
         if [ ${rc} != 0 ]; then
@@ -434,7 +442,7 @@ sync_from_host() {
             for map_dir in ${MIGRATION_MAP}; do
                 src_dir=sysadmin@${host}:$(echo ${map_dir} | cut -d':' -f1)
                 dest_dir=$(echo ${map_dir} | cut -d':' -f2)
-                rsync -aAvX --progress --rsync-path="sudo rsync" -e "ssh -o StrictHostKeyChecking=no -i ${key_dir}/${KEY_FILE} -p ${SSH_PORT}" ${src_dir} ${dest_dir}
+                rsync -aAzX --progress --rsync-path="sudo rsync" -e "ssh -o StrictHostKeyChecking=no -i ${key_dir}/${KEY_FILE} -p ${SSH_PORT}" ${src_dir} ${dest_dir}
                 rc=$?
                 if [ ${rc} != 0 ]; then
                     restore_local_files
@@ -459,7 +467,10 @@ sync_from_host() {
                 else
                     if [ ${DOING_MIGRATION} -eq 1 ]; then
                         echo "Data transfer completed SUCCESSFULLY."
+                        echo "Performing configuration migration..."
                         output=$( (cd ${BASE_DIR}/db_migrations && env CFG_DIR=${CFG_DIR} BASE_DIR=${BASE_DIR} VIRL2_DIR=${BASE_DIR} HOME=${BASE_DIR} ${BASE_DIR}/.local/bin/alembic upgrade 2.3.0) 2>&1)
+                        # This feels hacky, but we need to do it.
+                        chown -R www-data:www-data ${CFG_DIR}
                         rc=$?
                         if [ ${rc} != 0 ]; then
                             echo "Failed to execute data upgrade script:"
