@@ -10,7 +10,7 @@ SRC_DIRS="${BASE_DIR}/images ${CFG_DIR}"
 KEY_FILE="migration_key"
 SSH_PORT="1122"
 DOING_MIGRATION=0
-MIGRATION_MAP="${LIBVIRT_IMAGES}:${LIBVIRT_IMAGES}"
+MIGRATION_MAP="/var/lib/libvirt/images:${LIBVIRT_IMAGES}"
 
 set_virl_version() {
     product_file=/PRODUCT
@@ -162,15 +162,25 @@ export_libvirt_domains() {
 define_domains() {
     ddir=$1
 
-    old_IFS=${IFS}
-    IFS='
-'
-    ls -1 "${ddir}"/*.xml
+    if [ ! -d ${ddir} ]; then
+        echo "${ddir}: No such directory"
+        return 1
+    fi
+
+    ls -1 "${ddir}"/*.xml >/dev/null 2>&1
     if [ $? != 0 ]; then
         return 0
     fi
 
+    old_IFS=${IFS}
+    IFS='
+'
+
     for domain in "${ddir}"/*.xml; do
+        if [ ${DOING_MIGRATION} -eq 1 ]; then
+            # CentOS and Ubuntu use different KVM paths.
+            sed -i -e 's|<emulator>/usr/libexec/qemu-kvm|<emulator>/usr/bin/qemu-system-x86_64|' "${domain}"
+        fi
         virsh define "${domain}"
         if [ $? != 0 ]; then
             rc=$?
@@ -428,7 +438,7 @@ sync_from_host() {
         for src_dir in ${SRC_DIRS}; do
             sdirs="${sdirs} sysadmin@${host}:${src_dir}"
         done
-        rsync -aAzX --progress --rsync-path="sudo rsync" -e "ssh -o StrictHostKeyChecking=no -i ${key_dir}/${KEY_FILE} -p ${SSH_PORT}" ${sdirs} /
+        rsync -aAzXR --progress --rsync-path="sudo rsync" -e "ssh -o StrictHostKeyChecking=no -i ${key_dir}/${KEY_FILE} -p ${SSH_PORT}" ${sdirs} /
         #        output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo tar --acls --selinux -cpf - ${SRC_DIRS}" | tar -C / --acls --selinux -xpf -) 2>&1 )
         rc=$?
         if [ ${rc} != 0 ]; then
@@ -458,6 +468,7 @@ sync_from_host() {
                 echo "Migrating libvirt domains..."
                 output=$(define_domains "${libvirt_domains}" 2>&1)
                 rc=$?
+                echo "Libvirt output is '${output}'"
                 if [ ${rc} != 0 ]; then
                     restore_local_files
                     define_domains "${backup_ddir}"
