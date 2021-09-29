@@ -177,10 +177,6 @@ define_domains() {
 '
 
     for domain in "${ddir}"/*.xml; do
-        if [ ${DOING_MIGRATION} -eq 1 ]; then
-            # CentOS and Ubuntu use different KVM paths.
-            sed -i -e 's|<emulator>/usr/libexec/qemu-kvm|<emulator>/usr/bin/qemu-system-x86_64|' "${domain}"
-        fi
         virsh define "${domain}"
         if [ $? != 0 ]; then
             rc=$?
@@ -477,32 +473,32 @@ sync_from_host() {
                 fi
             done
             if [ ${success} = 1 ]; then
-                # For each of the libvirt domains, migrate the XML.
-                echo "Migrating libvirt domains..."
-                output=$(define_domains "${libvirt_domains}" 2>&1)
-                rc=$?
-                echo "Libvirt output is '${output}'"
-                if [ ${rc} != 0 ]; then
-                    restore_local_files
-                    define_domains "${backup_ddir}"
-                    echo "Libvirt domain import completed with errors:"
-                    printf '%s\n\n' "${output}"
-                    echo "The original local data have been restored."
-                else
-                    if [ ${DOING_MIGRATION} -eq 1 ]; then
-                        echo "Data transfer completed SUCCESSFULLY."
-                        echo "Performing configuration migration..."
-                        output=$( (cd ${BASE_DIR}/db_migrations && env CFG_DIR=${CFG_DIR} BASE_DIR=${BASE_DIR} VIRL2_DIR=${BASE_DIR} HOME=${BASE_DIR} ${BASE_DIR}/.local/bin/alembic upgrade 2.3.0) 2>&1)
-                        # This feels hacky, but we need to do it.
-                        chown -R www-data:www-data ${CFG_DIR}
-                        rc=$?
-                        if [ ${rc} != 0 ]; then
-                            echo "Failed to execute data upgrade script:"
-                            printf '%s\n\n' "${output}"
-                        fi
+                if [ ${DOING_MIGRATION} -eq 0 ]; then
+                    # For each of the libvirt domains, migrate the XML.
+                    echo "Migrating libvirt domains..."
+                    output=$(define_domains "${libvirt_domains}" 2>&1)
+                    rc=$?
+                    echo "Libvirt output is '${output}'"
+                    if [ ${rc} != 0 ]; then
+                        restore_local_files
+                        define_domains "${backup_ddir}"
+                        echo "Libvirt domain import completed with errors:"
+                        printf '%s\n\n' "${output}"
+                        echo "The original local data have been restored."
                     else
                         echo "Migration completed SUCCESSFULLY."
                         echo "Please make sure you have either mounted the same refplat ISO on or copied its contents to this CML server."
+                    fi
+                else
+                    echo "Data transfer completed SUCCESSFULLY."
+                    echo "Performing configuration migration..."
+                    output=$( (cd ${BASE_DIR}/db_migrations && env CFG_DIR=${CFG_DIR} BASE_DIR=${BASE_DIR} VIRL2_DIR=${BASE_DIR} HOME=${BASE_DIR} MIGRATION_LIBVIRT_XML_DIR=${libvirt_domains} ${BASE_DIR}/.local/bin/alembic upgrade 2.3.0) 2>&1)
+                    # This feels hacky, but we need to do it.
+                    chown -R www-data:www-data ${CFG_DIR}
+                    rc=$?
+                    if [ ${rc} != 0 ]; then
+                        echo "Failed to execute data upgrade script:"
+                        printf '%s\n\n' "${output}"
                     fi
                 fi
             fi
