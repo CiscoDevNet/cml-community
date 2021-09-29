@@ -327,6 +327,12 @@ check_cml_versions() {
 sync_from_host() {
     host=$1
 
+    ip addr show | grep -q "inet ${host}/"
+    if [ $? -eq 0 ]; then
+        echo "You are trying to migrate from the local host.  Please specify another host from which to migrate."
+        return 1
+    fi
+
     if ! nc -z "${host}" ${SSH_PORT}; then
         echo "Remote host does not have OpenSSH enabled; start the OpenSSH service from Cockpit on the source host."
         return 1
