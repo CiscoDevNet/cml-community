@@ -451,7 +451,7 @@ sync_from_host() {
             success=1
             for map_dir in ${MIGRATION_MAP}; do
                 src_dir=sysadmin@${host}:$(echo ${map_dir} | cut -d':' -f1)
-                dest_dir=$(echo ${map_dir} | cut -d':' -f2)
+                dest_dir=$(dirname $(echo ${map_dir} | cut -d':' -f2))
                 rsync -aAzX --progress --rsync-path="sudo rsync" -e "ssh -o StrictHostKeyChecking=no -i ${key_dir}/${KEY_FILE} -p ${SSH_PORT}" ${src_dir} ${dest_dir}
                 rc=$?
                 if [ ${rc} != 0 ]; then
@@ -541,6 +541,7 @@ REMOTE_HOST=
 BACKUP_FILE=
 BACKUP=0
 RESTORE=0
+GET_SRC_DIRS=0
 
 eval set -- "$opts"
 while true; do
@@ -567,9 +568,7 @@ while true; do
         exit 0
         ;;
     -d | --src-dirs)
-        build_local_src_dirs
-        echo ${SRC_DIRS}
-        exit 0
+        GET_SRC_DIRS=1
         ;;
     --stop)
         stop_cml_services
@@ -598,6 +597,12 @@ while true; do
     esac
     shift
 done
+
+if [ ${GET_SRC_DIRS} -eq 1 ]; then
+    build_local_src_dirs
+    echo ${SRC_DIRS}
+    exit 0
+fi
 
 if [ -n "${REMOTE_HOST}" ] && [ -n "${BACKUP_FILE}" ]; then
     echo "Only one of --host or --file may be specified."
