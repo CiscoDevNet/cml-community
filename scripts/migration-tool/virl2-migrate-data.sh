@@ -326,7 +326,7 @@ sync_from_host() {
     host_ip="${host}"
     if grep -qE '[a-zA-Z]' "${host_ip}"; then
         host_ip=$(host -t A "${host_ip}" | grep -oE '[0-9][0-9.]+')
-        if [ $? -ne 0 ]; then
+        if [ $? != 0 ]; then
             echo "Failed to lookup host ${host}.  Please specify a valid IP or hostname."
             return 1
         fi
@@ -490,12 +490,13 @@ sync_from_host() {
                         echo "Please make sure you have either mounted the same refplat ISO on or copied its contents to this CML server."
                     fi
                 else
-                    echo "Data transfer completed SUCCESSFULLY."
+                    printf "\nData transfer completed SUCCESSFULLY.\n"
                     echo "Performing configuration migration..."
                     output=$( (cd ${BASE_DIR}/db_migrations && env CFG_DIR=${CFG_DIR} BASE_DIR=${BASE_DIR} VIRL2_DIR=${BASE_DIR} HOME=${BASE_DIR} MIGRATION_LIBVIRT_XML_DIR=${libvirt_domains} ${BASE_DIR}/.local/bin/alembic upgrade 2.3.0) 2>&1)
+                    rc=$?
                     # This feels hacky, but we need to do it.
                     chown -R www-data:www-data ${CFG_DIR}
-                    rc=$?
+                    find ${BASE_DIR}/images -type f \( -name "*.img" -or -name "nodedisk*" \) | xargs chown libvirt-qemu:kvm
                     if [ ${rc} != 0 ]; then
                         echo "Failed to execute data upgrade script:"
                         printf '%s\n\n' "${output}"
