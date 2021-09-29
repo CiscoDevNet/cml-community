@@ -327,8 +327,11 @@ check_cml_versions() {
 sync_from_host() {
     host=$1
 
-    ip addr show | grep -q "inet ${host}/"
-    if [ $? -eq 0 ]; then
+    host_ip="${host}"
+    if grep -qE '[a-zA-Z]' "${host_ip}"; then
+        host_ip=$(host -t A "${host_ip}" | grep -oE '[0-9][0-9.]+')
+    fi
+    if ip addr show | grep -q "inet ${host_ip}/"; then
         echo "You are trying to migrate from the local host.  Please specify another host from which to migrate."
         return 1
     fi
