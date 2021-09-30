@@ -498,8 +498,12 @@ sync_from_host() {
                     chown -R www-data:www-data ${CFG_DIR}
                     find ${BASE_DIR}/images -type f \( -name "*.img" -or -name "nodedisk*" \) | xargs chown libvirt-qemu:kvm
                     if [ ${rc} != 0 ]; then
+                        restore_local_files
+                        define_domains "${backup_ddir}"
                         echo "Failed to execute data upgrade script:"
                         printf '%s\n\n' "${output}"
+                    else
+                        echo "Migration completed SUCCESSFULLY."
                     fi
                 fi
             fi
@@ -691,7 +695,17 @@ if [ ${RESTORE} = 1 ]; then
     delete_libvirt_domains
 
     echo "Restoring ${BACKUP_FILE} to local CML.  Please be patient, this may take a while..."
-    output=$(tar -C / --acls --selinux --exclude=PRODUCT -xpf "${BACKUP_FILE}" ${SRC_DIRS} 2>&1)
+    sdirs=""
+    if [ ${DOING_MIGRATION} -eq 1 ]; then
+        for sdir in ${SRC_DIRS}; do
+            # Remove the leading '/' to match what's in the tar file.
+            sdirs="${sdirs} $(echo ${sdir} | cut -d'/' -f2-)"
+        done
+        # Add the directory that contains the libvirt domains.
+        sdirs="${sdirs} $(echo ${ddir} | cut -d'/' -f2-)"
+        echo "Extracting ${sdirs} from the backup..."
+    fi
+    output=$(tar -C / --acls --selinux --exclude=PRODUCT -xpf "${BACKUP_FILE}" ${sdirs} 2>&1)
     rc=$?
     if [ ${rc} != 0 ]; then
         restore_local_files
@@ -700,21 +714,58 @@ if [ ${RESTORE} = 1 ]; then
         printf '%s\n\n' "${output}"
         echo "The original local data has been restored."
     else
-        output=$(define_domains "${ddir}" 2>&1)
-        rc=$?
-        if [ ${rc} != 0 ]; then
-            echo "Libvirt domain import completed with errors:"
-            printf '%s\n\n' "${output}"
-            echo "The original local data have been restored."
+        if [ ${DOING_MIGRATION} -eq 1 ]; then
+            sdirs=""
+            for mig_dir in ${MIGRATION_MAP}; do
+                map_dest=$(echo ${mig_dir} | cut -d':' -f2)
+                sdirs="${sdirs} $(echo ${map_dest} | cut -d'/' -f2-)"
+            done
+            if [ -n "${sdirs}" ]; then
+                echo "Extracting ${sdirs} from the backup..."
+                output=$(tar -C / --acls --selinux -xpf "${BACKUP_FILE}" ${sdirs} 2>&1)
+                rc=$?
+            else
+                rc=0
+            fi
+            if [ ${rc} != 0 ]; then
+                restore_local_files
+                define_domains "${backup_ddir}"
+                echo "Restore failed with error:"
+                printf '%s\n\n' "${output}"
+                echo "The original local data has been restored."
+            else
+                printf "\nRestore completed SUCCESSFULLY.\n"
+                echo "Performing configuration migration..."
+                output=$( (cd ${BASE_DIR}/db_migrations && env CFG_DIR=${CFG_DIR} BASE_DIR=${BASE_DIR} VIRL2_DIR=${BASE_DIR} HOME=${BASE_DIR} MIGRATION_LIBVIRT_XML_DIR=${ddir} ${BASE_DIR}/.local/bin/alembic upgrade 2.3.0) 2>&1)
+                rc=$?
+                # This feels hacky, but we need to do it.
+                chown -R www-data:www-data ${CFG_DIR}
+                find ${BASE_DIR}/images -type f \( -name "*.img" -or -name "nodedisk*" \) | xargs chown libvirt-qemu:kvm
+                if [ ${rc} != 0 ]; then
+                    restore_local_files
+                    define_domains "${backup_ddir}"
+                    echo "Failed to execute data upgrade script:"
+                    printf '%s\n\n' "${output}"
+                else
+                    echo "Migration completed SUCCESSFULLY."
+                fi
+            fi
         else
-            echo "Restore completed SUCCESSFULLY."
-            if [ ${DOING_MIGRATION} -eq 0 ]; then
+            output=$(define_domains "${ddir}" 2>&1)
+            rc=$?
+            if [ ${rc} != 0 ]; then
+                echo "Libvirt domain import completed with errors:"
+                printf '%s\n\n' "${output}"
+                echo "The original local data have been restored."
+            else
+                echo "Restore completed SUCCESSFULLY."
                 echo "Please make sure you have either mounted the same refplat ISO on or copied its contents to this CML server."
             fi
         fi
     fi
 
     rm -rf "${backup_ddir}"
+    rm -rf "${ddir}"
 
     restart_cml_services
 
@@ -724,7 +775,9 @@ fi
 if [ ${DOING_MIGRATION} -eq 0 ]; then
     build_local_src_dirs
 else
-    SRC_DIRS="${SRC_DIRS} ${LIBVIRT_IMAGES}"
+    for mig_dir in ${MIGRATION_MAP}; do
+        SRC_DIRS="${SRC_DIRS} $(echo ${mig_dir} | cut -d':' -f1)"
+    done
 fi
 
 BACKUP_FILE=$(realpath "${BACKUP_FILE}")
