@@ -671,6 +671,7 @@ if [ ${RESTORE} = 1 ]; then
     fi
 
     virl_version=$(set_virl_version "${tempd}"/PRODUCT)
+    # This will set DOING_MIGRATION if needed.
     if check_cml_versions ${VIRL_VERSION} "${virl_version}"; then
         rm -rf "${tempd}"
         echo "Versions do not match or migration path not supported.  Source server version: ${virl_version}, Dest server version: ${VIRL_VERSION}."
