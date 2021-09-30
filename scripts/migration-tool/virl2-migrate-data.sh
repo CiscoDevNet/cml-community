@@ -823,7 +823,7 @@ if [ ${rc} != 0 ]; then
     echo "Backup completed with errors:"
     printf '%s\n\n' "${output}"
 else
-    echo "Backup completed SUCCESSFULLY."
+    echo "Backup completed SUCCESSFULLY.  Backup file is ${BACKUP_FILE}."
 fi
 
 rm -rf "${tempd}"
