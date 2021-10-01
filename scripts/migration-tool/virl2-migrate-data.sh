@@ -186,7 +186,7 @@ export_libvirt_domains() {
 define_domains() {
     ddir=$1
 
-    if [ ! -d ${ddir} ]; then
+    if [ ! -d "${ddir}" ]; then
         echo "${ddir}: No such directory"
         return 1
     fi
@@ -336,7 +336,7 @@ check_cml_versions() {
     fi
 
     # Allow one to migrate from 2.2.x to 2.3.0.
-    if echo ${curr_ver} | grep -qE '^2\.3\.0' && echo ${src_ver} | grep -qE '^2\.2\.'; then
+    if echo "${curr_ver}" | grep -qE '^2\.3\.0' && echo ${src_ver} | grep -qE '^2\.2\.'; then
         DOING_MIGRATION=1
         return 0
     fi
@@ -398,7 +398,7 @@ sync_from_host() {
     fi
 
     # Install this script on the remote host.
-    if ! scp -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -P ${SSH_PORT} ${LOCAL_ME} sysadmin@"${host}":"/tmp/${ME}" >/dev/null; then
+    if ! scp -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -P ${SSH_PORT} "${LOCAL_ME}" sysadmin@"${host}":"/tmp/${ME}" >/dev/null; then
         rc=$?
         cleanup_from_host "${key_dir}" "${backup_ddir}"
         echo "Error copying /usr/local/bin/${ME} to source host.  The original local data have been restored."
@@ -485,9 +485,9 @@ sync_from_host() {
             # Migrate each mapped src dir to its target dir.
             success=1
             for map_dir in ${MIGRATION_MAP}; do
-                src_dir=sysadmin@${host}:$(echo ${map_dir} | cut -d':' -f1)
-                dest_dir=$(dirname $(echo ${map_dir} | cut -d':' -f2))
-                rsync -aAzX --progress --rsync-path="sudo rsync" -e "ssh -o StrictHostKeyChecking=no -i ${key_dir}/${KEY_FILE} -p ${SSH_PORT}" ${src_dir} ${dest_dir}
+                src_dir=sysadmin@${host}:$(echo "${map_dir}" | cut -d':' -f1)
+                dest_dir=$(dirname $(echo "${map_dir}" | cut -d':' -f2))
+                rsync -aAzX --progress --rsync-path="sudo rsync" -e "ssh -o StrictHostKeyChecking=no -i ${key_dir}/${KEY_FILE} -p ${SSH_PORT}" "${src_dir}" "${dest_dir}"
                 rc=$?
                 if [ ${rc} != 0 ]; then
                     restore_local_files
@@ -518,11 +518,11 @@ sync_from_host() {
                 else
                     printf "\nData transfer completed SUCCESSFULLY.\n"
                     echo "Performing configuration migration..."
-                    output=$( (cd ${BASE_DIR}/db_migrations && env CFG_DIR=${CFG_DIR} BASE_DIR=${BASE_DIR} VIRL2_DIR=${BASE_DIR} HOME=${BASE_DIR} MIGRATION_LIBVIRT_XML_DIR=${libvirt_domains} ${BASE_DIR}/.local/bin/alembic upgrade 2.3.0) 2>&1)
+                    output=$( (cd "${BASE_DIR}"/db_migrations && env CFG_DIR="${CFG_DIR}" BASE_DIR="${BASE_DIR}" VIRL2_DIR="${BASE_DIR}" HOME="${BASE_DIR}" MIGRATION_LIBVIRT_XML_DIR="${libvirt_domains}" "${BASE_DIR}"/.local/bin/alembic upgrade 2.3.0) 2>&1)
                     rc=$?
                     # This feels hacky, but we need to do it.
-                    chown -R www-data:www-data ${CFG_DIR}
-                    find ${BASE_DIR}/images -type f \( -name "*.img" -or -name "nodedisk*" \) | xargs chown libvirt-qemu:kvm
+                    chown -R www-data:www-data "${CFG_DIR}"
+                    find "${BASE_DIR}"/images -type f \( -name "*.img" -or -name "nodedisk*" \) -print0 | xargs -0 chown libvirt-qemu:kvm
                     if [ ${rc} != 0 ]; then
                         restore_local_files
                         define_domains "${backup_ddir}"
@@ -731,10 +731,10 @@ if [ ${RESTORE} = 1 ]; then
     if [ ${DOING_MIGRATION} -eq 1 ]; then
         for sdir in ${SRC_DIRS}; do
             # Remove the leading '/' to match what's in the tar file.
-            sdirs="${sdirs} $(echo ${sdir} | cut -d'/' -f2-)"
+            sdirs="${sdirs} $(echo "${sdir}" | cut -d'/' -f2-)"
         done
         # Add the directory that contains the libvirt domains.
-        sdirs="${sdirs} $(echo ${ddir} | cut -d'/' -f2-)"
+        sdirs="${sdirs} $(echo "${ddir}" | cut -d'/' -f2-)"
         echo "Extracting ${sdirs} from the backup..."
     fi
     output=$(tar -C / --acls --selinux --exclude=PRODUCT -xpf "${BACKUP_FILE}" ${sdirs} 2>&1)
@@ -749,8 +749,8 @@ if [ ${RESTORE} = 1 ]; then
         if [ ${DOING_MIGRATION} -eq 1 ]; then
             sdirs=""
             for mig_dir in ${MIGRATION_MAP}; do
-                map_dest=$(echo ${mig_dir} | cut -d':' -f2)
-                sdirs="${sdirs} $(echo ${map_dest} | cut -d'/' -f2-)"
+                map_dest=$(echo "${mig_dir}" | cut -d':' -f2)
+                sdirs="${sdirs} $(echo "${map_dest}" | cut -d'/' -f2-)"
             done
             if [ -n "${sdirs}" ]; then
                 echo "Extracting ${sdirs} from the backup..."
@@ -768,11 +768,11 @@ if [ ${RESTORE} = 1 ]; then
             else
                 printf "\nRestore completed SUCCESSFULLY.\n"
                 echo "Performing configuration migration..."
-                output=$( (cd ${BASE_DIR}/db_migrations && env CFG_DIR=${CFG_DIR} BASE_DIR=${BASE_DIR} VIRL2_DIR=${BASE_DIR} HOME=${BASE_DIR} MIGRATION_LIBVIRT_XML_DIR=${ddir} ${BASE_DIR}/.local/bin/alembic upgrade 2.3.0) 2>&1)
+                output=$( (cd "${BASE_DIR}"/db_migrations && env CFG_DIR="${CFG_DIR}" BASE_DIR="${BASE_DIR}" VIRL2_DIR="${BASE_DIR}" HOME="${BASE_DIR}" MIGRATION_LIBVIRT_XML_DIR="${ddir}" "${BASE_DIR}"/.local/bin/alembic upgrade 2.3.0) 2>&1)
                 rc=$?
                 # This feels hacky, but we need to do it.
-                chown -R www-data:www-data ${CFG_DIR}
-                find ${BASE_DIR}/images -type f \( -name "*.img" -or -name "nodedisk*" \) | xargs chown libvirt-qemu:kvm
+                chown -R www-data:www-data "${CFG_DIR}"
+                find "${BASE_DIR}"/images -type f \( -name "*.img" -or -name "nodedisk*" \) -print0 | xargs -0 chown libvirt-qemu:kvm
                 if [ ${rc} != 0 ]; then
                     restore_local_files
                     define_domains "${backup_ddir}"
@@ -808,7 +808,7 @@ if [ ${DOING_MIGRATION} -eq 0 ]; then
     build_local_src_dirs
 else
     for mig_dir in ${MIGRATION_MAP}; do
-        SRC_DIRS="${SRC_DIRS} $(echo ${mig_dir} | cut -d':' -f1)"
+        SRC_DIRS="${SRC_DIRS} $(echo "${mig_dir}" | cut -d':' -f1)"
     done
 fi
 
@@ -842,7 +842,10 @@ fi
 
 ddir=$(export_libvirt_domains)
 tempd=$(mktemp -d /tmp/migration.XXXXX)
-cd "${tempd}"
+cd "${tempd}" || (
+    echo "Failed to cd to ${tempd}"
+    exit $?
+)
 echo "${ddir}" >libvirt_domains.dat
 
 SRC_DIRS="${SRC_DIRS} ${ddir}"
