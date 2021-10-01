@@ -27,7 +27,21 @@ set_virl_version() {
     fi
 }
 
+needs_overlay() {
+    major_ver=$(echo ${VIRL_VERSION} | cut -d'.' -f1)
+    minor_ver=$(echo ${VIRL_VERSION} | cut -d'.' -f2)
+    if [ "${major_ver}" -gt 2 ] || ([ "${major_ver}" -eq 2 ] && [ "${minor_ver}" -ge 3 ]); then
+        return 1
+    fi
+
+    return 0
+}
+
 mount_refplat_overlay() {
+    if ! needs_overlay; then
+        return 0
+    fi
+
     # create required directories, if needed
     [ -d $REF_PLAT/cdrom ] || mkdir -p $REF_PLAT/cdrom
     [ -d $REF_PLAT/diff ] || mkdir -p $REF_PLAT/diff
@@ -85,12 +99,22 @@ mount_refplat_overlay() {
 }
 
 umount_refplat_overlay() {
+    if ! needs_overlay; then
+        return 0
+    fi
+
     umount ${LIBVIRT_IMAGES}
     return $?
 }
 
 build_local_src_dirs() {
     if [ ${DOING_MIGRATION} -eq 1 ]; then
+        return
+    fi
+
+    # In CML 2.3+ we no longer have the overlay.
+    if ! needs_overlay; then
+        SRC_DIRS="${SRC_DIRS} ${LIBVIRT_IMAGES}"
         return
     fi
 
@@ -341,11 +365,13 @@ sync_from_host() {
         return 1
     fi
 
-    read -r -p "Do you wish to import data from ${host}? [y/N] " confirm
-    echo
-    if echo "${confirm}" | grep -viq '^y'; then
-        echo "Terminating import."
-        return 0
+    if [ ${NO_CONFIRM} -eq 0 ]; then
+        read -r -p "Do you wish to import data from ${host}? [y/N] " confirm
+        echo
+        if echo "${confirm}" | grep -viq '^y'; then
+            echo "Terminating import."
+            return 0
+        fi
     fi
 
     stop_cml_services || (
@@ -543,7 +569,7 @@ if [ "$EUID" != 0 ]; then
     exit 1
 fi
 
-opts=$(getopt -o brf:h:vd --long host:,file:,backup,restore,version,src-dirs,stop,start,get-domains,mount-overlay,umount-overlay,migration -- "$@")
+opts=$(getopt -o brf:h:vd --long host:,file:,backup,restore,version,src-dirs,stop,start,get-domains,mount-overlay,umount-overlay,migration,no-confirm -- "$@")
 if [ $? != 0 ]; then
     echo "usage: $0 -h|--host HOST_TO_MIGRATE_FROM"
     echo "       OR"
@@ -556,6 +582,7 @@ BACKUP_FILE=
 BACKUP=0
 RESTORE=0
 GET_SRC_DIRS=0
+NO_CONFIRM=0
 
 eval set -- "$opts"
 while true; do
@@ -603,6 +630,9 @@ while true; do
     --umount-overlay)
         umount_refplat_overlay
         exit $?
+        ;;
+    --no-confirm)
+        NO_CONFIRM=1
         ;;
     --)
         shift
@@ -657,11 +687,13 @@ if [ ${RESTORE} = 1 ]; then
         exit $?
     fi
 
-    read -r -p "Do you wish to restore from ${BACKUP_FILE}?  This will overwrite current local data. [y/N] " confirm
-    echo
-    if echo "${confirm}" | grep -qiv '^y'; then
-        echo "Terminating restore."
-        exit 0
+    if [ ${NO_CONFIRM} -eq 0 ]; then
+        read -r -p "Do you wish to restore from ${BACKUP_FILE}?  This will overwrite current local data. [y/N] " confirm
+        echo
+        if echo "${confirm}" | grep -qiv '^y'; then
+            echo "Terminating restore."
+            exit 0
+        fi
     fi
 
     # First, extract /PRODUCT from the backup and check that the version matches the current version.
@@ -787,11 +819,13 @@ if ! check_disk_space "${SRC_DIRS}" "$(dirname "${BACKUP_FILE}")"; then
     exit $?
 fi
 
-read -r -p "Are you sure you want to backup?  Doing so will restart the CML services. [y/N] " confirm
-echo
-if echo "${confirm}" | grep -qiv '^y'; then
-    echo "Terminating backup."
-    exit 0
+if [ ${NO_CONFIRM} -eq 0 ]; then
+    read -r -p "Are you sure you want to backup?  Doing so will restart the CML services. [y/N] " confirm
+    echo
+    if echo "${confirm}" | grep -qiv '^y'; then
+        echo "Terminating backup."
+        exit 0
+    fi
 fi
 
 stop_cml_services || (
