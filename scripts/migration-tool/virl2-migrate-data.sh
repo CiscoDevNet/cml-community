@@ -737,7 +737,7 @@ if [ ${RESTORE} = 1 ]; then
         sdirs="${sdirs} $(echo "${ddir}" | cut -d'/' -f2-)"
         echo "Extracting ${sdirs} from the backup..."
     fi
-    tar -C / --acls --selinux --checkpoint=10000 --checkout-action=echo="%{}T" --exclude=PRODUCT -xzvpf "${BACKUP_FILE}" ${sdirs}
+    tar -C / --acls --selinux --checkpoint=2000 --checkpoint-action=echo="%{}T" --exclude=PRODUCT -xzvpf "${BACKUP_FILE}" ${sdirs}
     rc=$?
     if [ ${rc} != 0 ]; then
         restore_local_files
@@ -753,7 +753,7 @@ if [ ${RESTORE} = 1 ]; then
             done
             if [ -n "${sdirs}" ]; then
                 echo "Extracting ${sdirs} from the backup..."
-                output=$(tar -C / --acls --selinux -xpf "${BACKUP_FILE}" ${sdirs} 2>&1)
+                tar -C / --acls --selinux --checkpoint=2000 --checkpoint-action=echo="%{}T" -xzvpf "${BACKUP_FILE}" ${sdirs}
                 rc=$?
             else
                 rc=0
@@ -852,7 +852,8 @@ SRC_DIRS="${SRC_DIRS} ${ddir}"
 echo "Backing up ${SRC_DIRS}..."
 
 echo "Backing up CML data to ${BACKUP_FILE}.  Please be patient, this may take a while..."
-tar -C "${tempd}" --acls --selinux --checkpoint=10000 --checkout-action=echo="%{}T" -cvzpf "${BACKUP_FILE}" /PRODUCT ${SRC_DIRS} libvirt_domains.dat
+total=$(du -shc /PRODUCT ${SRC_DIRS} libvirt_domains.dat -B10k --apparent-size | tail -1 | cut -f1)
+tar -C "${tempd}" --acls --selinux ---use-compress-program="pigz" --checkpoint=2000 --checkpoint-action=exec=' printf "\e[1;31m%s of %s copied  %d/100%% complete  \e[0m\r" $(numfmt --to=iec-i $((10000*${TAR_CHECKPOINT})) ) $(numfmt --to=iec-i $((10000*${total})) )\t$((100*${TAR_CHECKPOINT}/${total})) ' -cvzpf "${BACKUP_FILE}" /PRODUCT ${SRC_DIRS} libvirt_domains.dat
 rc=$?
 if [ ${rc} != 0 ]; then
     rm -f "${BACKUP_FILE}"
