@@ -737,13 +737,12 @@ if [ ${RESTORE} = 1 ]; then
         sdirs="${sdirs} $(echo "${ddir}" | cut -d'/' -f2-)"
         echo "Extracting ${sdirs} from the backup..."
     fi
-    output=$(tar -C / --acls --selinux --exclude=PRODUCT -xpf "${BACKUP_FILE}" ${sdirs} 2>&1)
+    tar -C / --acls --selinux --exclude=PRODUCT -xvpf "${BACKUP_FILE}" ${sdirs}
     rc=$?
     if [ ${rc} != 0 ]; then
         restore_local_files
         define_domains "${backup_ddir}"
-        echo "Restore failed with error:"
-        printf '%s\n\n' "${output}"
+        echo "Restore failed with error.  See output above for the error details."
         echo "The original local data has been restored."
     else
         if [ ${DOING_MIGRATION} -eq 1 ]; then
@@ -853,12 +852,11 @@ SRC_DIRS="${SRC_DIRS} ${ddir}"
 echo "Backing up ${SRC_DIRS}..."
 
 echo "Backing up CML data to ${BACKUP_FILE}.  Please be patient, this may take a while..."
-output=$(tar -C "${tempd}" --acls --selinux -cpf "${BACKUP_FILE}" /PRODUCT ${SRC_DIRS} libvirt_domains.dat 2>&1)
+tar -C "${tempd}" --acls --selinux -cvpf "${BACKUP_FILE}" /PRODUCT ${SRC_DIRS} libvirt_domains.dat
 rc=$?
 if [ ${rc} != 0 ]; then
     rm -f "${BACKUP_FILE}"
-    echo "Backup completed with errors:"
-    printf '%s\n\n' "${output}"
+    echo "Backup completed with errors.  See the output above for the error details."
 else
     echo "Backup completed SUCCESSFULLY.  Backup file is ${BACKUP_FILE}."
 fi
