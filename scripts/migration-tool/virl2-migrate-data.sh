@@ -698,7 +698,7 @@ if [ ${RESTORE} = 1 ]; then
 
     # First, extract /PRODUCT from the backup and check that the version matches the current version.
     tempd=$(mktemp -d /tmp/migration.XXXXX)
-    output=$(tar -C "${tempd}" --acls --selinux -xpf "${BACKUP_FILE}" PRODUCT libvirt_domains.dat 2>&1)
+    output=$(tar -C "${tempd}" --acls --selinux --occurrence=1 -xpf "${BACKUP_FILE}" PRODUCT libvirt_domains.dat 2>&1)
     rc=$?
     if [ ${rc} != 0 ]; then
         echo "Failed to extract /PRODUCT from backup:"
@@ -737,7 +737,7 @@ if [ ${RESTORE} = 1 ]; then
         sdirs="${sdirs} $(echo "${ddir}" | cut -d'/' -f2-)"
         echo "Extracting ${sdirs} from the backup..."
     fi
-    tar -C / --acls --selinux --checkpoint=2000 --checkpoint-action=echo="%{}T" --exclude=PRODUCT -xzvpf "${BACKUP_FILE}" ${sdirs}
+    tar -C / --acls --selinux --checkpoint=2000 --checkpoint-action=echo="%{}T" --occurrence=1 --exclude=PRODUCT -xzvpf "${BACKUP_FILE}" ${sdirs}
     rc=$?
     if [ ${rc} != 0 ]; then
         restore_local_files
@@ -753,7 +753,7 @@ if [ ${RESTORE} = 1 ]; then
             done
             if [ -n "${sdirs}" ]; then
                 echo "Extracting ${sdirs} from the backup..."
-                tar -C / --acls --selinux --checkpoint=2000 --checkpoint-action=echo="%{}T" -xzvpf "${BACKUP_FILE}" ${sdirs}
+                tar -C / --acls --selinux --checkpoint=2000 --checkpoint-action=echo="%{}T" --occurrence=1 -xzvpf "${BACKUP_FILE}" ${sdirs}
                 rc=$?
             else
                 rc=0
