@@ -853,7 +853,7 @@ echo "Backing up ${SRC_DIRS}..."
 
 echo "Backing up CML data to ${BACKUP_FILE}.  Please be patient, this may take a while..."
 total=$(du -shc /PRODUCT ${SRC_DIRS} libvirt_domains.dat -B10k --apparent-size | tail -1 | cut -f1)
-tar -C "${tempd}" --acls --selinux ---use-compress-program="pigz" --checkpoint=2000 --checkpoint-action=exec=' printf "\e[1;31m%s of %s copied  %d/100%% complete  \e[0m\r" $(numfmt --to=iec-i $((10000*${TAR_CHECKPOINT})) ) $(numfmt --to=iec-i $((10000*${total})) )\t$((100*${TAR_CHECKPOINT}/${total})) ' -cvzpf "${BACKUP_FILE}" /PRODUCT ${SRC_DIRS} libvirt_domains.dat
+tar -C "${tempd}" --acls --selinux --use-compress-program="pigz" --checkpoint=2000 --checkpoint-action=exec=' printf "\e[1;31m%s of %s copied  %d/100%% complete  \e[0m\r" $(numfmt --to=iec-i $((10000*${TAR_CHECKPOINT})) ) $(numfmt --to=iec-i $((10000*${total})) )\t$((100*${TAR_CHECKPOINT}/${total})) ' -cvzpf "${BACKUP_FILE}" /PRODUCT ${SRC_DIRS} libvirt_domains.dat
 rc=$?
 if [ ${rc} != 0 ]; then
     rm -f "${BACKUP_FILE}"
