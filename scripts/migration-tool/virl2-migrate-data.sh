@@ -13,6 +13,10 @@ DOING_MIGRATION=0
 MIGRATION_MAP="/var/lib/libvirt/images:${LIBVIRT_IMAGES}"
 
 cleanup_backup() {
+    echo
+    echo "Cleaning up..."
+    echo
+
     if [ -n "${tempd}" ]; then
         rm -rf "${tempd}"
     fi
@@ -24,6 +28,8 @@ cleanup_backup() {
         umount_refplat_overlay 2>/dev/null
     fi
 
+    rm -f "${BACKUP_FILE}"
+
     restart_cml_services
 
     if [ -z "${rc}" ]; then
@@ -34,6 +40,10 @@ cleanup_backup() {
 }
 
 cleanup_failed_restore() {
+    echo
+    echo "Cleaning up..."
+    echo
+
     if [ -n "${backup_dir}" ]; then
         rm -rf "${backup_ddir}"
     fi
@@ -51,6 +61,10 @@ cleanup_failed_restore() {
 }
 
 cleanup_failed_from_host() {
+    echo
+    echo "Cleaning up..."
+    echo
+
     cleanup_from_host "${key_dir}" "${backup_ddir}"
 
     if [ ${DOING_MIGRATION} -eq 1 ]; then
