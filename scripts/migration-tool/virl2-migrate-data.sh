@@ -698,7 +698,7 @@ if [ ${RESTORE} = 1 ]; then
 
     # First, extract /PRODUCT from the backup and check that the version matches the current version.
     tempd=$(mktemp -d /tmp/migration.XXXXX)
-    output=$(tar -C "${tempd}" --acls --selinux --occurrence=1 -xpf "${BACKUP_FILE}" PRODUCT libvirt_domains.dat 2>&1)
+    output=$(tar -C "${tempd}" --acls --selinux -xpf "${BACKUP_FILE}" PRODUCT libvirt_domains.dat 2>&1)
     rc=$?
     if [ ${rc} != 0 ]; then
         echo "Failed to extract /PRODUCT from backup:"
@@ -737,7 +737,8 @@ if [ ${RESTORE} = 1 ]; then
         sdirs="${sdirs} $(echo "${ddir}" | cut -d'/' -f2-)"
         echo "Extracting ${sdirs} from the backup..."
     fi
-    tar -C / --acls --selinux --checkpoint=2000 --checkpoint-action=echo="%{}T" --occurrence=1 --exclude=PRODUCT -xzvpf "${BACKUP_FILE}" ${sdirs}
+    export total=$(du -shc ${BACKUP_FILE} -B10k --apparent-size | tail -1 | cut -f1)
+    tar -C / --acls --selinux --checkpoint=2000 --checkpoint-action=exec=' printf "\e[1;31m%s of %s extracted  %d/100%% complete  \e[0m\r" $(numfmt --to=iec-i $((10000*${TAR_CHECKPOINT})) ) $(numfmt --to=iec-i $((10000*${total})) )\t$((100*${TAR_CHECKPOINT}/${total})) ' --exclude=PRODUCT -xvpf "${BACKUP_FILE}"
     rc=$?
     if [ ${rc} != 0 ]; then
         restore_local_files
@@ -752,8 +753,7 @@ if [ ${RESTORE} = 1 ]; then
                 sdirs="${sdirs} $(echo "${map_dest}" | cut -d'/' -f2-)"
             done
             if [ -n "${sdirs}" ]; then
-                echo "Extracting ${sdirs} from the backup..."
-                tar -C / --acls --selinux --checkpoint=2000 --checkpoint-action=echo="%{}T" --occurrence=1 -xzvpf "${BACKUP_FILE}" ${sdirs}
+                echo "Restoring nodes from the backup..."
                 rc=$?
             else
                 rc=0
@@ -853,7 +853,7 @@ echo "Backing up ${SRC_DIRS}..."
 
 echo "Backing up CML data to ${BACKUP_FILE}.  Please be patient, this may take a while..."
 export total=$(du -shc /PRODUCT ${SRC_DIRS} libvirt_domains.dat -B10k --apparent-size | tail -1 | cut -f1)
-tar -C "${tempd}" --acls --selinux --use-compress-program="pigz" --checkpoint=2000 --checkpoint-action=exec=' printf "\e[1;31m%s of %s copied  %d/100%% complete  \e[0m\r" $(numfmt --to=iec-i $((10000*${TAR_CHECKPOINT})) ) $(numfmt --to=iec-i $((10000*${total})) )\t$((100*${TAR_CHECKPOINT}/${total})) ' -cvpf "${BACKUP_FILE}" /PRODUCT ${SRC_DIRS} libvirt_domains.dat
+tar -C "${tempd}" --acls --selinux --checkpoint=2000 --checkpoint-action=exec=' printf "\e[1;31m%s of %s copied  %d/100%% complete  \e[0m\r" $(numfmt --to=iec-i $((10000*${TAR_CHECKPOINT})) ) $(numfmt --to=iec-i $((10000*${total})) )\t$((100*${TAR_CHECKPOINT}/${total})) ' -cvpf "${BACKUP_FILE}" /PRODUCT libvirt_domains.dat ${SRC_DIRS}
 rc=$?
 if [ ${rc} != 0 ]; then
     rm -f "${BACKUP_FILE}"
