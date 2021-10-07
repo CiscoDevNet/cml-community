@@ -418,7 +418,7 @@ sync_from_host() {
     host=$1
 
     host_ip="${host}"
-    if grep -qE '[a-zA-Z]' "${host_ip}"; then
+    if echo "${host_ip}" | grep -qE '[a-zA-Z]'; then
         host_ip=$(host -t A "${host_ip}" | grep -oE '[0-9][0-9.]+')
         if [ $? != 0 ]; then
             echo "Failed to lookup host ${host}.  Please specify a valid IP or hostname."
