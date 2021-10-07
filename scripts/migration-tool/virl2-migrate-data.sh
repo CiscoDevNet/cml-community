@@ -28,12 +28,14 @@ cleanup_backup() {
         umount_refplat_overlay 2>/dev/null
     fi
 
-    rm -f "${BACKUP_FILE}"
-
     restart_cml_services
 
     if [ -z "${rc}" ]; then
         rc=1
+    fi
+
+    if [ ${rc} != 0 ]; then
+        rm -f "${BACKUP_FILE}"
     fi
 
     exit ${rc}
@@ -929,6 +931,7 @@ echo "Backing up CML data to ${BACKUP_FILE}.  Please be patient, this may take a
 export total=$(du -shc /PRODUCT ${SRC_DIRS} libvirt_domains.dat -B10k --apparent-size | tail -1 | cut -f1)
 tar -C "${tempd}" --acls --selinux --checkpoint=2000 --checkpoint-action=exec=' printf "\e[1;31m%s of %s copied  %d/100%% complete  \e[0m\r" $(numfmt --to=iec-i $((10000*${TAR_CHECKPOINT})) ) $(numfmt --to=iec-i $((10000*${total})) )\t$((100*${TAR_CHECKPOINT}/${total})) ' -cvpf "${BACKUP_FILE}" /PRODUCT libvirt_domains.dat ${SRC_DIRS}
 rc=$?
+echo
 if [ ${rc} != 0 ]; then
     rm -f "${BACKUP_FILE}"
     echo "Backup completed with errors.  See the output above for the error details."
