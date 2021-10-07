@@ -12,6 +12,60 @@ SSH_PORT="1122"
 DOING_MIGRATION=0
 MIGRATION_MAP="/var/lib/libvirt/images:${LIBVIRT_IMAGES}"
 
+cleanup_backup() {
+    if [ -n "${tempd}" ]; then
+        rm -rf "${tempd}"
+    fi
+    if [ -n "${ddir}" ]; then
+        rm -rf "${ddir}"
+    fi
+
+    if [ ${DOING_MIGRATION} -eq 1 ]; then
+        umount_refplat_overlay 2>/dev/null
+    fi
+
+    restart_cml_services
+
+    if [ -z "${rc}" ]; then
+        rc=1
+    fi
+
+    exit ${rc}
+}
+
+cleanup_failed_restore() {
+    if [ -n "${backup_dir}" ]; then
+        rm -rf "${backup_ddir}"
+    fi
+    if [ -n "${ddir}" ]; then
+        rm -rf "${ddir}"
+    fi
+
+    restart_cml_services
+
+    if [ -z "${rc}" ]; then
+        rc=1
+    fi
+
+    exit ${rc}
+}
+
+cleanup_failed_from_host() {
+    cleanup_from_host "${key_dir}" "${backup_ddir}"
+
+    if [ ${DOING_MIGRATION} -eq 1 ]; then
+        ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo /tmp/${ME} --umount-overlay"
+    fi
+
+    ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo /tmp/${ME} --start && sudo rm -rf ${libvirt_domains} && sudo rm -f /tmp/${ME} && sudo rm -f /etc/sudoers.d/cml-migrate && (cp -fa ~/.ssh/authorized_keys.migration ~/.ssh/authorized_keys >/dev/null 2>&1 || true)"
+
+    if [ -z "${rc}" ]; then
+        rc=1
+    fi
+
+    exit ${rc}
+}
+
 set_virl_version() {
     product_file=/PRODUCT
     if [ $# = 1 ]; then
@@ -410,8 +464,10 @@ sync_from_host() {
         rc=$?
         cleanup_from_host "${key_dir}" "${backup_ddir}"
         echo "Failed to stop source CML services."
-        exit ${rc}
+        return ${rc}
     fi
+
+    trap cleanup_failed_from_host SIGINT
 
     # Check CML versions on both hosts.
     output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo /tmp/${ME} --version") 2>/dev/null)
@@ -419,7 +475,7 @@ sync_from_host() {
         rc=$?
         cleanup_from_host "${key_dir}" "${backup_ddir}"
         echo "Failed to determine remote CML version."
-        exit ${rc}
+        return ${rc}
     fi
 
     if ! check_cml_versions ${VIRL_VERSION} ${output}; then
@@ -433,7 +489,7 @@ sync_from_host() {
         if [ $? != 0 ]; then
             rc=$?
             cleanup_from_host "${key_dir}" "${backup_ddir}"
-            exit ${rc}
+            return ${rc}
         fi
     fi
 
@@ -447,7 +503,7 @@ sync_from_host() {
         rc=$?
         cleanup_from_host "${key_dir}" "${backup_ddir}"
         echo "Failed to obtain remote src dirs."
-        exit ${rc}
+        return ${rc}
     fi
 
     SRC_DIRS=${output}
@@ -458,7 +514,7 @@ sync_from_host() {
         rc=$?
         cleanup_from_host "${key_dir}" "${backup_ddir}"
         echo "Failed to get libvirt domains from ${host}: ${libvirt_domains}"
-        exit ${rc}
+        return ${rc}
     fi
 
     SRC_DIRS="${SRC_DIRS} ${libvirt_domains}"
@@ -726,6 +782,8 @@ if [ ${RESTORE} = 1 ]; then
     backup_ddir=$(export_libvirt_domains)
     delete_libvirt_domains
 
+    trap cleanup_failed_restore SIGINT
+
     echo "Restoring ${BACKUP_FILE} to local CML.  Please be patient, this may take a while..."
     sdirs=""
     if [ ${DOING_MIGRATION} -eq 1 ]; then
@@ -832,6 +890,8 @@ stop_cml_services || (
     exit $?
 )
 
+trap cleanup_backup SIGINT
+
 if [ ${DOING_MIGRATION} -eq 1 ]; then
     mount_refplat_overlay
     if [ $? != 0 ]; then
@@ -862,13 +922,4 @@ else
     echo "Backup completed SUCCESSFULLY.  Backup file is ${BACKUP_FILE}."
 fi
 
-rm -rf "${tempd}"
-rm -rf "${ddir}"
-
-if [ ${DOING_MIGRATION} -eq 1 ]; then
-    umount_refplat_overlay
-fi
-
-restart_cml_services
-
-exit ${rc}
+cleanup_backup
