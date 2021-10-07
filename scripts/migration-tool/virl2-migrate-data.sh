@@ -545,7 +545,7 @@ sync_from_host() {
         for src_dir in ${SRC_DIRS}; do
             sdirs="${sdirs} sysadmin@${host}:${src_dir}"
         done
-        rsync -aAzXR --progress --checksum --rsync-path="sudo rsync" -e "ssh -o StrictHostKeyChecking=no -i ${key_dir}/${KEY_FILE} -p ${SSH_PORT}" ${sdirs} /
+        rsync -aAvzXR --progress --checksum --rsync-path="sudo rsync" -e "ssh -o StrictHostKeyChecking=no -i ${key_dir}/${KEY_FILE} -p ${SSH_PORT}" ${sdirs} /
         #        output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo tar --acls --selinux -cpf - ${SRC_DIRS}" | tar -C / --acls --selinux -xpf -) 2>&1 )
         rc=$?
         if [ ${rc} != 0 ]; then
@@ -559,7 +559,7 @@ sync_from_host() {
             for map_dir in ${MIGRATION_MAP}; do
                 src_dir=sysadmin@${host}:$(echo "${map_dir}" | cut -d':' -f1)
                 dest_dir=$(dirname $(echo "${map_dir}" | cut -d':' -f2))
-                rsync -aAzX --progress --checksum --rsync-path="sudo rsync" -e "ssh -o StrictHostKeyChecking=no -i ${key_dir}/${KEY_FILE} -p ${SSH_PORT}" "${src_dir}" "${dest_dir}"
+                rsync -aAvzX --progress --checksum --rsync-path="sudo rsync" -e "ssh -o StrictHostKeyChecking=no -i ${key_dir}/${KEY_FILE} -p ${SSH_PORT}" "${src_dir}" "${dest_dir}"
                 rc=$?
                 if [ ${rc} != 0 ]; then
                     restore_local_files
