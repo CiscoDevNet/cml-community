@@ -201,7 +201,7 @@ build_local_src_dirs() {
     WRKDIR="${REF_PLAT}"/diff
 
     # Find all custom node defs
-    new_node_defs=$(find "${WRKDIR}"/node-definitions/ -maxdepth 1 -type f)
+    new_node_defs=$(find "${WRKDIR}"/node-definitions/ -maxdepth 1 -type f -name "*.yaml")
     old_IFS=${IFS}
     IFS='
 '
@@ -545,7 +545,7 @@ sync_from_host() {
         for src_dir in ${SRC_DIRS}; do
             sdirs="${sdirs} sysadmin@${host}:${src_dir}"
         done
-        rsync -aAvzXR --progress --checksum --rsync-path="sudo rsync" -e "ssh -o StrictHostKeyChecking=no -i ${key_dir}/${KEY_FILE} -p ${SSH_PORT}" ${sdirs} /
+        rsync -aAvzXR --progress --checksum --rsync-path="sudo rsync" --exclude "*.rej" --exclude "*.orig" -e "ssh -o StrictHostKeyChecking=no -i ${key_dir}/${KEY_FILE} -p ${SSH_PORT}" ${sdirs} /
         #        output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo tar --acls --selinux -cpf - ${SRC_DIRS}" | tar -C / --acls --selinux -xpf -) 2>&1 )
         rc=$?
         if [ ${rc} != 0 ]; then
@@ -556,20 +556,22 @@ sync_from_host() {
         else
             # Migrate each mapped src dir to its target dir.
             success=1
-            for map_dir in ${MIGRATION_MAP}; do
-                src_dir=sysadmin@${host}:$(echo "${map_dir}" | cut -d':' -f1)
-                dest_dir=$(dirname $(echo "${map_dir}" | cut -d':' -f2))
-                rsync -aAvzX --progress --checksum --rsync-path="sudo rsync" -e "ssh -o StrictHostKeyChecking=no -i ${key_dir}/${KEY_FILE} -p ${SSH_PORT}" "${src_dir}" "${dest_dir}"
-                rc=$?
-                if [ ${rc} != 0 ]; then
-                    restore_local_files
-                    define_domains "${backup_ddir}"
-                    echo "Migration completed with errors.  See the output above for details."
-                    echo "The original local data have been restored."
-                    success=0
-                    break
-                fi
-            done
+            if [ ${DOING_MIGRATION} -eq 1 ]; then
+                for map_dir in ${MIGRATION_MAP}; do
+                    src_dir=sysadmin@${host}:$(echo "${map_dir}" | cut -d':' -f1)
+                    dest_dir=$(dirname $(echo "${map_dir}" | cut -d':' -f2))
+                    rsync -aAvzX --progress --checksum --rsync-path="sudo rsync" --exclude "*.rej" --exclude "*.orig" -e "ssh -o StrictHostKeyChecking=no -i ${key_dir}/${KEY_FILE} -p ${SSH_PORT}" "${src_dir}" "${dest_dir}"
+                    rc=$?
+                    if [ ${rc} != 0 ]; then
+                        restore_local_files
+                        define_domains "${backup_ddir}"
+                        echo "Migration completed with errors.  See the output above for details."
+                        echo "The original local data have been restored."
+                        success=0
+                        break
+                    fi
+                done
+            fi
             if [ ${success} = 1 ]; then
                 if [ ${DOING_MIGRATION} -eq 0 ]; then
                     # For each of the libvirt domains, migrate the XML.
@@ -594,7 +596,7 @@ sync_from_host() {
                     rc=$?
                     # This feels hacky, but we need to do it.
                     chown -R www-data:www-data "${CFG_DIR}"
-                    find "${BASE_DIR}"/images -type f \( -name "*.img" -or -name "nodedisk*" \) -print0 | xargs -0 chown libvirt-qemu:kvm
+                    find "${BASE_DIR}"/images -type f \( -name "*.img" -or -name "nodedisk*" \) -print0 | xargs -0 chown libvirt-qemu:kvm 2>/dev/null
                     if [ ${rc} != 0 ]; then
                         restore_local_files
                         define_domains "${backup_ddir}"
@@ -845,7 +847,7 @@ if [ ${RESTORE} = 1 ]; then
                 rc=$?
                 # This feels hacky, but we need to do it.
                 chown -R www-data:www-data "${CFG_DIR}"
-                find "${BASE_DIR}"/images -type f \( -name "*.img" -or -name "nodedisk*" \) -print0 | xargs -0 chown libvirt-qemu:kvm
+                find "${BASE_DIR}"/images -type f \( -name "*.img" -or -name "nodedisk*" \) -print0 | xargs -0 chown libvirt-qemu:kvm 2>/dev/null
                 if [ ${rc} != 0 ]; then
                     restore_local_files
                     define_domains "${backup_ddir}"
@@ -929,7 +931,7 @@ echo "Backing up ${SRC_DIRS}..."
 
 echo "Backing up CML data to ${BACKUP_FILE}.  Please be patient, this may take a while..."
 export total=$(du -shc /PRODUCT ${SRC_DIRS} libvirt_domains.dat -B10k --apparent-size | tail -1 | cut -f1)
-tar -C "${tempd}" --acls --selinux --checkpoint=2000 --checkpoint-action=exec=' printf "\e[1;31m%s of %s copied  %d/100%% complete  \e[0m\r" $(numfmt --to=iec-i $((10000*${TAR_CHECKPOINT})) ) $(numfmt --to=iec-i $((10000*${total})) )\t$((100*${TAR_CHECKPOINT}/${total})) ' -cvpf "${BACKUP_FILE}" /PRODUCT libvirt_domains.dat ${SRC_DIRS}
+tar -C "${tempd}" --acls --selinux --checkpoint=2000 --exclude="*.rej" --exclude="*.orig" --checkpoint-action=exec=' printf "\e[1;31m%s of %s copied  %d/100%% complete  \e[0m\r" $(numfmt --to=iec-i $((10000*${TAR_CHECKPOINT})) ) $(numfmt --to=iec-i $((10000*${total})) )\t$((100*${TAR_CHECKPOINT}/${total})) ' -cvpf "${BACKUP_FILE}" /PRODUCT libvirt_domains.dat ${SRC_DIRS}
 rc=$?
 echo
 if [ ${rc} != 0 ]; then
