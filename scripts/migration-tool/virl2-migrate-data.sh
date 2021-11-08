@@ -10,6 +10,7 @@ SRC_DIRS="${BASE_DIR}/images ${CFG_DIR}"
 KEY_FILE="migration_key"
 SSH_PORT="1122"
 DOING_MIGRATION=0
+DEFAULT_USER="sysadmin"
 MIGRATION_MAP="/var/lib/libvirt/images:${LIBVIRT_IMAGES}"
 
 cleanup_backup() {
@@ -76,10 +77,10 @@ cleanup_failed_from_host() {
     cleanup_from_host "${key_dir}" "${backup_ddir}" "${backup_ndir}"
 
     if [ ${DOING_MIGRATION} -eq 1 ]; then
-        ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo /tmp/${ME} --umount-overlay"
+        ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} "${sysadmin_user}"@"${host}" "sudo /tmp/${ME} --umount-overlay"
     fi
 
-    ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo /tmp/${ME} --start && sudo rm -rf ${libvirt_domains} && sudo rm -f /tmp/${ME} && sudo rm -f /etc/sudoers.d/cml-migrate && (cp -fa ~/.ssh/authorized_keys.migration ~/.ssh/authorized_keys >/dev/null 2>&1 || true)"
+    ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} "${sysadmin_user}"@"${host}" "sudo /tmp/${ME} --start && sudo rm -rf ${libvirt_domains} && sudo rm -f /tmp/${ME} && sudo rm -f /etc/sudoers.d/cml-migrate && (cp -fa ~/.ssh/authorized_keys.migration ~/.ssh/authorized_keys >/dev/null 2>&1 || true)"
 
     if [ -z "${rc}" ]; then
         rc=1
@@ -261,7 +262,7 @@ export_libvirt_domains() {
 
 export_libvirt_networks() {
     ndir=$(mktemp -d /tmp/libvirt_networks.XXXXX)
-    networks=$(virsh net-list --all --name)
+    networks=$(virsh net-list --all --name | grep -v "^default")
     if [ $? != 0 ]; then
         echo "${ndir}"
         return $?
@@ -345,7 +346,7 @@ delete_libvirt_domains() {
 }
 
 delete_libvirt_networks() {
-    for network in $(virsh net-list --all --name); do
+    for network in $(virsh net-list --all --name | grep -v "^default"); do
         virsh net-undefine "${network}" >/dev/null
     done
 }
@@ -522,11 +523,11 @@ sync_from_host() {
     key_dir=$(generate_ssh_key)
     key=$(cat "${key_dir}"/${KEY_FILE}.pub)
 
-    printf "\nThe next prompt will be for sysadmin's password on %s.\n" "${host}"
-    printf "The prompt following that will be for sysadmin's password on %s to enter sudo mode.\n\n" "${host}"
+    printf "\nThe next prompt will be for %s's password on %s.\n" "${sysadmin_user}" "${host}"
+    printf "The prompt following that will be for %s's password on %s to enter sudo mode.\n\n" "${sysadmin_user}" "${host}"
     # Stop the service on the remote host and make sure we don't need
     # a password for sudo.  We also install the SSH pubkey for subsequent logins.
-    if ! ssh -o "StrictHostKeyChecking=no" -t -p ${SSH_PORT} sysadmin@"${host}" "echo '%sysadmin        ALL=(ALL)       NOPASSWD: ALL' | sudo tee /etc/sudoers.d/cml-migrate >/dev/null 2>&1 && mkdir -p ~/.ssh && \
+    if ! ssh -o "StrictHostKeyChecking=no" -t -p ${SSH_PORT} "${sysadmin_user}"@"${host}" "echo '%${sysadmin_user}        ALL=(ALL)       NOPASSWD: ALL' | sudo tee /etc/sudoers.d/cml-migrate >/dev/null 2>&1 && mkdir -p ~/.ssh && \
         chmod 0700 ~/.ssh && (cp -fa ~/.ssh/authorized_keys ~/.ssh/authorized_keys.migration >/dev/null 2>&1 || true) && echo ${key} | tee -a ~/.ssh/authorized_keys >/dev/null 2>&1 && chmod 0600 ~/.ssh/authorized_keys"; then
         rc=$?
         cleanup_from_host "${key_dir}" "${backup_ddir}" "${backup_ndir}"
@@ -535,7 +536,7 @@ sync_from_host() {
     fi
 
     # Install this script on the remote host.
-    if ! scp -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -P ${SSH_PORT} "${LOCAL_ME}" sysadmin@"${host}":"/tmp/${ME}" >/dev/null; then
+    if ! scp -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -P ${SSH_PORT} "${LOCAL_ME}" "${sysadmin_user}"@"${host}":"/tmp/${ME}" >/dev/null; then
         rc=$?
         cleanup_from_host "${key_dir}" "${backup_ddir}" "${backup_ndir}"
         echo "Error copying /usr/local/bin/${ME} to source host.  The original local data have been restored."
@@ -543,7 +544,7 @@ sync_from_host() {
     fi
 
     # Stop CML services on remote host.
-    if ! ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo chmod +x /tmp/${ME} && sudo /tmp/${ME} --stop" 2>/dev/null; then
+    if ! ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} "${sysadmin_user}"@"${host}" "sudo chmod +x /tmp/${ME} && sudo /tmp/${ME} --stop" 2>/dev/null; then
         rc=$?
         cleanup_from_host "${key_dir}" "${backup_ddir}" "${backup_ndir}"
         echo "Failed to stop source CML services."
@@ -553,7 +554,7 @@ sync_from_host() {
     trap cleanup_failed_from_host SIGINT
 
     # Check CML versions on both hosts.
-    output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo /tmp/${ME} --version") 2>/dev/null)
+    output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} "${sysadmin_user}"@"${host}" "sudo /tmp/${ME} --version") 2>/dev/null)
     if [ $? != 0 ]; then
         rc=$?
         cleanup_from_host "${key_dir}" "${backup_ddir}" "${backup_ndir}"
@@ -568,7 +569,7 @@ sync_from_host() {
     fi
 
     if [ ${DOING_MIGRATION} -eq 1 ]; then
-        (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo /tmp/${ME} --mount-overlay") 2>/dev/null
+        (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} "${sysadmin_user}"@"${host}" "sudo /tmp/${ME} --mount-overlay") 2>/dev/null
         if [ $? != 0 ]; then
             rc=$?
             cleanup_from_host "${key_dir}" "${backup_ddir}" "${backup_ndir}"
@@ -581,7 +582,7 @@ sync_from_host() {
         migr_arg="--migration"
     fi
     # Build the list of remote src dirs.
-    output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo /tmp/${ME} ${migr_arg} --src-dirs") 2>/dev/null)
+    output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} "${sysadmin_user}"@"${host}" "sudo /tmp/${ME} ${migr_arg} --src-dirs") 2>/dev/null)
     if [ $? != 0 ]; then
         rc=$?
         cleanup_from_host "${key_dir}" "${backup_ddir}" "${backup_ndir}"
@@ -592,7 +593,7 @@ sync_from_host() {
     SRC_DIRS=${output}
 
     # Get the list of domains from virsh.
-    libvirt_domains=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo /tmp/${ME} --get-domains") 2>/dev/null)
+    libvirt_domains=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} "${sysadmin_user}"@"${host}" "sudo /tmp/${ME} --get-domains") 2>/dev/null)
     if [ $? != 0 ]; then
         rc=$?
         cleanup_from_host "${key_dir}" "${backup_ddir}" "${backup_ndir}"
@@ -601,7 +602,7 @@ sync_from_host() {
     fi
 
     # Get the list of networks from virsh
-    libvirt_networks=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo /tmp/${ME} --get-networks") 2>/dev/null)
+    libvirt_networks=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} "${sysadmin_user}"@"${host}" "sudo /tmp/${ME} --get-networks") 2>/dev/null)
     if [ $? != 0 ]; then
         rc=$?
         cleanup_from_host "${key_dir}" "${backup_ddir}" "${backup_ndir}"
@@ -614,12 +615,12 @@ sync_from_host() {
     echo "Migrating ${SRC_DIRS} to this CML server..."
 
     # Get required disk space from remote host
-    output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo du -B1 -sc ${SRC_DIRS} | grep total | sed -E -s 's|\s+total||'") 2>/dev/null)
+    output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} "${sysadmin_user}"@"${host}" "sudo du -B1 -sc ${SRC_DIRS} | grep total | sed -E -s 's|\s+total||'") 2>/dev/null)
     if check_disk_space "" ${BASE_DIR} "${output}"; then
         printf "Starting migration.  Please be patient, migration may take a while....\n\n\n"
         sdirs=""
         for src_dir in ${SRC_DIRS}; do
-            sdirs="${sdirs} sysadmin@${host}:${src_dir}"
+            sdirs="${sdirs} ${sysadmin_user}@${host}:${src_dir}"
         done
         rsync -aAvzXR --progress --checksum --rsync-path="sudo rsync" --exclude "*.rej" --exclude "*.orig" -e "ssh -o StrictHostKeyChecking=no -i ${key_dir}/${KEY_FILE} -p ${SSH_PORT}" ${sdirs} /
         #        output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo tar --acls --selinux -cpf - ${SRC_DIRS}" | tar -C / --acls --selinux -xpf -) 2>&1 )
@@ -635,7 +636,7 @@ sync_from_host() {
             success=1
             if [ ${DOING_MIGRATION} -eq 1 ]; then
                 for map_dir in ${MIGRATION_MAP}; do
-                    src_dir=sysadmin@${host}:$(echo "${map_dir}" | cut -d':' -f1)
+                    src_dir=${sysadmin_user}@${host}:$(echo "${map_dir}" | cut -d':' -f1)
                     dest_dir=$(dirname $(echo "${map_dir}" | cut -d':' -f2))
                     rsync -aAvzX --progress --checksum --rsync-path="sudo rsync" --exclude "*.rej" --exclude "*.orig" -e "ssh -o StrictHostKeyChecking=no -i ${key_dir}/${KEY_FILE} -p ${SSH_PORT}" "${src_dir}" "${dest_dir}"
                     rc=$?
@@ -708,10 +709,10 @@ sync_from_host() {
 
     printf "\nFinishing up with the remote host..."
     if [ ${DOING_MIGRATION} -eq 1 ]; then
-        ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo /tmp/${ME} --umount-overlay"
+        ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} "${sysadmin_user}"@"${host}" "sudo /tmp/${ME} --umount-overlay"
     fi
 
-    if ! ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo /tmp/${ME} --start && sudo rm -rf ${libvirt_domains} && sudo rm -rf ${libvirt_networks} && sudo rm -f /tmp/${ME} && sudo rm -f /etc/sudoers.d/cml-migrate && (cp -fa ~/.ssh/authorized_keys.migration ~/.ssh/authorized_keys >/dev/null 2>&1 || true)"; then
+    if ! ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} "${sysadmin_user}"@"${host}" "sudo /tmp/${ME} --start && sudo rm -rf ${libvirt_domains} && sudo rm -rf ${libvirt_networks} && sudo rm -f /tmp/${ME} && sudo rm -f /etc/sudoers.d/cml-migrate && (cp -fa ~/.ssh/authorized_keys.migration ~/.ssh/authorized_keys >/dev/null 2>&1 || true)"; then
         printf "FAILED.\n"
         echo "Error finishing up on remote host.  Check to make sure the CML services are running on ${host}."
         rc=$?
@@ -739,7 +740,7 @@ if [ "$EUID" != 0 ]; then
     exit 1
 fi
 
-opts=$(getopt -o brf:h:vd --long host:,file:,backup,restore,version,src-dirs,stop,start,get-domains,get-networks,mount-overlay,umount-overlay,migration,no-confirm -- "$@")
+opts=$(getopt -o brf:h:vdu: --long host:,file:,backup,restore,version,src-dirs,stop,start,get-domains,get-networks,mount-overlay,umount-overlay,migration,no-confirm,user -- "$@")
 if [ $? != 0 ]; then
     echo "usage: $0 -h|--host HOST_TO_MIGRATE_FROM"
     echo "       OR"
@@ -753,6 +754,8 @@ BACKUP=0
 RESTORE=0
 GET_SRC_DIRS=0
 NO_CONFIRM=0
+
+sysadmin_user=${DEFAULT_USER}
 
 eval set -- "$opts"
 while true; do
@@ -777,6 +780,10 @@ while true; do
     -v | --version)
         echo ${VIRL_VERSION}
         exit 0
+        ;;
+    -u | --user)
+        shift
+        sysadmin_user=$1
         ;;
     -d | --src-dirs)
         GET_SRC_DIRS=1
