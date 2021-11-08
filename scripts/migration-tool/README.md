@@ -63,14 +63,14 @@ The script itself will handle the shutting down and restarting of CML services o
 To perform an online, server-to-server copy or version migration, on the source server, run the following commands to enable the OpenSSH service:
 
 ```bash
-$ sudo systemctl enable sshd
-$ sudo systemctl start sshd
+sudo systemctl enable sshd
+sudo systemctl start sshd
 ```
 
 Back on the target server, run the following command to initiate the transfer:
 
 ```bash
-$ sudo /usr/local/bin/virl2-migrate-data.sh --host <SOURCE CML SERVER IP>
+sudo /usr/local/bin/virl2-migrate-data.sh --host <SOURCE CML SERVER IP>
 ```
 
 Here, `<SOURCE CML SERVER IP>` is the IP address or hostname of the source CML server.  This will prompt you to confirm a few things and do some checks to ensure the migration is most likely to succeed.
@@ -78,8 +78,8 @@ Here, `<SOURCE CML SERVER IP>` is the IP address or hostname of the source CML s
 When migration completes, you can disable the OpenSSH server on the source server to maintain tight security.  Run the following commands to do so:
 
 ```bash
-$ sudo systemctl stop sshd
-$ sudo systemctl disable sshd
+sudo systemctl stop sshd
+sudo systemctl disable sshd
 ```
 
 > **Note:** This is an optional step... If the OpenSSH service was already enabled prior to running the migration tool then it is up to the system administrator whether they want to leave it enabled or disable it at this point.
@@ -89,13 +89,13 @@ $ sudo systemctl disable sshd
 To perform an offline, archive file copy, run the following command on the source server to create an archive of all configuration, lab, node, and image data:
 
 ```bash
-$ sudo /usr/local/bin/virl2-migrate-data.sh --backup --file /path/to/archive.tar
+sudo /usr/local/bin/virl2-migrate-data.sh --backup --file /path/to/archive.tar
 ```
 
 If you will be doing a version migration (i.e., from 2.2 to 2.3), run the following command instead:
 
 ```bash
-$ sudo /usr/local/bin/virl2-migrate-data.sh --backup --migration --file /path/to/archive.tar
+sudo /usr/local/bin/virl2-migrate-data.sh --backup --migration --file /path/to/archive.tar
 ```
 
 You can specify a file path for the archive where ever you have the requisite disk space.  The backup command will perform some source checks and then create this archive tar file.
@@ -105,7 +105,7 @@ Once the backup portion completes, transfer this archive file to the target CML 
 When the archive file is on the target server, run the following command to restore it (this is the same command for both data copy and version migration):
 
 ```bash
-$ sudo /usr/local/bin/virl2-migrate-data.sh --restore --file /path/to/archive.tar
+sudo /usr/local/bin/virl2-migrate-data.sh --restore --file /path/to/archive.tar
 ```
 
 The restore command will perform target checks and then prompt you to confirm you want to restore the source data onto this server.
@@ -113,3 +113,5 @@ The restore command will perform target checks and then prompt you to confirm yo
 ## Caveats
 
 This script is distributed as-is without formal support.  While it has been tested to work, it cannot anticipate all conditions of the source and target CML servers and may not properly copy all data in all cases.  Prior to running the script, you should have a backup of the source CML server (and/or VMware snapshot) just in case something goes wrong.  You should also wait to delete the source server after migration until you have thoroughly tested the target and confirm all functionality is properly working.
+
+If you have renamed the *sysadmin* user, you must pass the `--user` parameter to the migration command when doing online migration/copying.  For example: `--user cmladmin`.
