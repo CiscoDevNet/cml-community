@@ -289,7 +289,7 @@ export_libvirt_networks() {
 
 export_libvirt_ifaces() {
     ndir=$(mktemp -d /tmp/libvirt_ifaces.XXXXX)
-    ifaces=$(virsh net-list --all --name | grep "^bridge" | grep -v "^bridge0")
+    ifaces=$(virsh net-list --all | grep "^[[:space:]]*bridge" | awk '{print $1}' | grep -v "^bridge0")
     if [ $? != 0 ]; then
         echo "${idir}"
         return $?
@@ -408,7 +408,7 @@ delete_libvirt_networks() {
 }
 
 delete_libvirt_ifaces() {
-    for iface in $(virsh iface-list --all --name | grep "^bridge" | grep -v "^bridge0"); do
+    for iface in $(virsh iface-list --all | grep "^[[:space:]]*bridge" | awk '{print $1}' | grep -v "^bridge0"); do
         virsh iface-undefine "${iface}" >/dev/null
     done
 }
