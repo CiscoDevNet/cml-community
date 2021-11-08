@@ -838,7 +838,7 @@ if [ "$EUID" != 0 ]; then
     exit 1
 fi
 
-opts=$(getopt -o brf:h:vdu: --long host:,file:,backup,restore,version,src-dirs,stop,start,get-domains,get-networks,mount-overlay,umount-overlay,migration,no-confirm,user -- "$@")
+opts=$(getopt -o brf:h:vdu: --long host:,file:,backup,restore,version,src-dirs,stop,start,get-domains,get-networks,get-ifaces,mount-overlay,umount-overlay,migration,no-confirm,user -- "$@")
 if [ $? != 0 ]; then
     echo "usage: $0 -h|--host HOST_TO_MIGRATE_FROM"
     echo "       OR"
@@ -900,6 +900,10 @@ while true; do
         ;;
     --get-networks)
         export_libvirt_networks
+        exit $?
+        ;;
+    --get-ifaces)
+        export_libvirt_ifaces
         exit $?
         ;;
     --mount-overlay)
