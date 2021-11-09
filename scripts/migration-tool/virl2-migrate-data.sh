@@ -80,8 +80,6 @@ cleanup_failed_from_host() {
     echo "Cleaning up..."
     echo
 
-    cleanup_from_host "${key_dir}" "${backup_ddir}" "${backup_ndir}" "${backup_idir}"
-
     if [ ${DOING_MIGRATION} -eq 1 ]; then
         ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} "${sysadmin_user}"@"${host}" "sudo /tmp/${ME} --umount-overlay"
     fi
@@ -91,6 +89,8 @@ cleanup_failed_from_host() {
     if [ -z "${rc}" ]; then
         rc=1
     fi
+
+    cleanup_from_host "${key_dir}"
 
     exit ${rc}
 }
@@ -288,7 +288,7 @@ export_libvirt_networks() {
 }
 
 export_libvirt_ifaces() {
-    ndir=$(mktemp -d /tmp/libvirt_ifaces.XXXXX)
+    idir=$(mktemp -d /tmp/libvirt_ifaces.XXXXX)
     ifaces=$(virsh net-list --all | grep "^[[:space:]]*bridge" | awk '{print $1}' | grep -v "^bridge0")
     if [ $? != 0 ]; then
         echo "${idir}"
@@ -483,23 +483,20 @@ restart_cml_services() {
     systemctl start virl2.target
 }
 
-backup_local_files() {
-    # Backup each source directory, just in case.
-    # Do this with mv to avoid running out of disk space.
-    for dir in ${SRC_DIRS}; do
-        if [ -e "${dir}" ]; then
-            rm -rf "${dir}".bak
-            mv -f "${dir}" "${dir}".bak
-            mkdir -p "${dir}"
-        fi
-    done
-}
+delete_local_dirs() {
+    dirs=$1
 
-restore_local_files() {
-    for dir in ${SRC_DIRS}; do
-        if [ -e "${dir}" ]; then
-            rm -rf "${dir}"
-            mv -f "${dir}".bak "${dir}"
+    from=""
+    if [ $# -ge 2 ]; then
+        from=$2
+    fi
+
+    for dir in ${dirs}; do
+        echo "Deleting local directory ${from}${dir}"
+        rm -rf "${from}""${dir}"
+        if [ $# -lt 3 ]; then
+            echo "Creating directory ${from}${dir}"
+            mkdir -p "${from}""${dir}"
         fi
     done
 }
@@ -513,19 +510,9 @@ generate_ssh_key() {
 
 cleanup_from_host() {
     key_dir=$1
-    backup_ddir=$2
-    backup_ndir=$3
-    backup_idir=$4
 
     rm -rf "${key_dir}"
-    restore_local_files
-    define_domains "${backup_ddir}"
-    define_networks "${backup_ndir}"
-    define_ifaces "${backup_idir}"
     restart_cml_services
-    rm -rf "${backup_ddir}"
-    rm -rf "${backup_ndir}"
-    rm -rf "${backup_idir}"
 }
 
 check_cml_versions() {
@@ -579,10 +566,6 @@ sync_from_host() {
         echo "Failed to stop CML services."
         exit $?
     )
-    backup_local_files
-    backup_ddir=$(export_libvirt_domains)
-    backup_ndir=$(export_libvirt_networks)
-    backup_idir=$(export_libvirt_ifaces)
     delete_libvirt_domains
     delete_libvirt_networks
     delete_libvirt_ifaces
@@ -597,23 +580,23 @@ sync_from_host() {
     if ! ssh -o "StrictHostKeyChecking=no" -t -p ${SSH_PORT} "${sysadmin_user}"@"${host}" "echo '%${sysadmin_user}        ALL=(ALL)       NOPASSWD: ALL' | sudo tee /etc/sudoers.d/cml-migrate >/dev/null 2>&1 && mkdir -p ~/.ssh && \
         chmod 0700 ~/.ssh && (cp -fa ~/.ssh/authorized_keys ~/.ssh/authorized_keys.migration >/dev/null 2>&1 || true) && echo ${key} | tee -a ~/.ssh/authorized_keys >/dev/null 2>&1 && chmod 0600 ~/.ssh/authorized_keys"; then
         rc=$?
-        cleanup_from_host "${key_dir}" "${backup_ddir}" "${backup_ndir}" "${backup_idir}"
-        echo "Error preparing ${host} for migration.  The original local data have been restored."
+        cleanup_from_host "${key_dir}"
+        echo "Error preparing ${host} for migration."
         return ${rc}
     fi
 
     # Install this script on the remote host.
     if ! scp -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -P ${SSH_PORT} "${LOCAL_ME}" "${sysadmin_user}"@"${host}":"/tmp/${ME}" >/dev/null; then
         rc=$?
-        cleanup_from_host "${key_dir}" "${backup_ddir}" "${backup_ndir}" "${backup_idir}"
-        echo "Error copying /usr/local/bin/${ME} to source host.  The original local data have been restored."
+        cleanup_from_host "${key_dir}"
+        echo "Error copying /usr/local/bin/${ME} to source host."
         return ${rc}
     fi
 
     # Stop CML services on remote host.
     if ! ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} "${sysadmin_user}"@"${host}" "sudo chmod +x /tmp/${ME} && sudo /tmp/${ME} --stop" 2>/dev/null; then
         rc=$?
-        cleanup_from_host "${key_dir}" "${backup_ddir}" "${backup_ndir}" "${backup_idir}"
+        cleanup_from_host "${key_dir}"
         echo "Failed to stop source CML services."
         return ${rc}
     fi
@@ -624,14 +607,14 @@ sync_from_host() {
     output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} "${sysadmin_user}"@"${host}" "sudo /tmp/${ME} --version") 2>/dev/null)
     if [ $? != 0 ]; then
         rc=$?
-        cleanup_from_host "${key_dir}" "${backup_ddir}" "${backup_ndir}" "${backup_idir}"
+        cleanup_from_host "${key_dir}"
         echo "Failed to determine remote CML version."
         return ${rc}
     fi
 
     if ! check_cml_versions ${VIRL_VERSION} ${output}; then
-        cleanup_from_host "${key_dir}" "${backup_ddir}" "${backup_ndir}" "${backup_idir}"
-        echo "Migration between versions is not supported.  Source server version: ${output}, Dest server version: ${VIRL_VERSION}.  The original local data has been restored."
+        cleanup_from_host "${key_dir}"
+        echo "Migration between versions is not supported.  Source server version: ${output}, Dest server version: ${VIRL_VERSION}."
         return 1
     fi
 
@@ -639,7 +622,7 @@ sync_from_host() {
         (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} "${sysadmin_user}"@"${host}" "sudo /tmp/${ME} --mount-overlay") 2>/dev/null
         if [ $? != 0 ]; then
             rc=$?
-            cleanup_from_host "${key_dir}" "${backup_ddir}" "${backup_ndir}" "${backup_idir}"
+            cleanup_from_host "${key_dir}"
             return ${rc}
         fi
     fi
@@ -652,18 +635,19 @@ sync_from_host() {
     output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} "${sysadmin_user}"@"${host}" "sudo /tmp/${ME} ${migr_arg} --src-dirs") 2>/dev/null)
     if [ $? != 0 ]; then
         rc=$?
-        cleanup_from_host "${key_dir}" "${backup_ddir}" "${backup_ndir}" "${backup_idir}"
+        cleanup_from_host "${key_dir}"
         echo "Failed to obtain remote src dirs."
         return ${rc}
     fi
 
     SRC_DIRS=${output}
+    delete_local_dirs "${SRC_DIRS}"
 
     # Get the list of domains from virsh.
     libvirt_domains=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} "${sysadmin_user}"@"${host}" "sudo /tmp/${ME} --get-domains") 2>/dev/null)
     if [ $? != 0 ]; then
         rc=$?
-        cleanup_from_host "${key_dir}" "${backup_ddir}" "${backup_ndir}" "${backup_idir}"
+        cleanup_from_host "${key_dir}"
         echo "Failed to get libvirt domains from ${host}: ${libvirt_domains}"
         return ${rc}
     fi
@@ -672,7 +656,7 @@ sync_from_host() {
     libvirt_networks=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} "${sysadmin_user}"@"${host}" "sudo /tmp/${ME} --get-networks") 2>/dev/null)
     if [ $? != 0 ]; then
         rc=$?
-        cleanup_from_host "${key_dir}" "${backup_ddir}" "${backup_ndir}" "${backup_idir}"
+        cleanup_from_host "${key_dir}"
         echo "Failed to get libvirt networks from ${host}: ${libvirt_networks}"
         return ${rc}
     fi
@@ -681,7 +665,7 @@ sync_from_host() {
     libvirt_ifaces=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} "${sysadmin_user}"@"${host}" "sudo /tmp/${ME} --get-ifaces") 2>/dev/null)
     if [ $? != 0 ]; then
         rc=$?
-        cleanup_from_host "${key_dir}" "${backup_ddir}" "${backup_ndir}" "${backup_idir}"
+        cleanup_from_host "${key_dir}"
         echo "Failed to get libvirt ifaces from ${host}: ${libvirt_ifaces}"
         return ${rc}
     fi
@@ -698,16 +682,11 @@ sync_from_host() {
         for src_dir in ${SRC_DIRS}; do
             sdirs="${sdirs} ${sysadmin_user}@${host}:${src_dir}"
         done
-        rsync -aAvzXR --progress --checksum --rsync-path="sudo rsync" --exclude "*.rej" --exclude "*.orig" -e "ssh -o StrictHostKeyChecking=no -i ${key_dir}/${KEY_FILE} -p ${SSH_PORT}" ${sdirs} /
+        rsync -aAvzXR --progress --checksum --rsync-path="sudo rsync" --exclude="*.rej" --exclude="*.orig" -e "ssh -o StrictHostKeyChecking=no -i ${key_dir}/${KEY_FILE} -p ${SSH_PORT}" ${sdirs} /
         #        output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo tar --acls --selinux -cpf - ${SRC_DIRS}" | tar -C / --acls --selinux -xpf -) 2>&1 )
         rc=$?
         if [ ${rc} != 0 ]; then
-            restore_local_files
-            define_domains "${backup_ddir}"
-            define_networks "${backup_ndir}"
-            define_ifaces "${backup_idir}"
             echo "Migration completed with errors.  See the output above for details."
-            echo "The original local data have been restored."
         else
             # Migrate each mapped src dir to its target dir.
             success=1
@@ -715,15 +694,11 @@ sync_from_host() {
                 for map_dir in ${MIGRATION_MAP}; do
                     src_dir=${sysadmin_user}@${host}:$(echo "${map_dir}" | cut -d':' -f1)
                     dest_dir=$(dirname $(echo "${map_dir}" | cut -d':' -f2))
-                    rsync -aAvzX --progress --checksum --rsync-path="sudo rsync" --exclude "*.rej" --exclude "*.orig" -e "ssh -o StrictHostKeyChecking=no -i ${key_dir}/${KEY_FILE} -p ${SSH_PORT}" "${src_dir}" "${dest_dir}"
+                    delete_local_dirs "$(echo "${map_dir}" | cut -d':' -f2)"
+                    rsync -aAvzX --progress --checksum --rsync-path="sudo rsync" --exclude="*.rej" --exclude="*.orig" -e "ssh -o StrictHostKeyChecking=no -i ${key_dir}/${KEY_FILE} -p ${SSH_PORT}" "${src_dir}" "${dest_dir}"
                     rc=$?
                     if [ ${rc} != 0 ]; then
-                        restore_local_files
-                        define_domains "${backup_ddir}"
-                        define_networks "${backup_ndir}"
-                        define_ifaces "${backup_idir}"
                         echo "Migration completed with errors.  See the output above for details."
-                        echo "The original local data have been restored."
                         success=0
                         break
                     fi
@@ -737,13 +712,8 @@ sync_from_host() {
                     rc=$?
                     echo "Libvirt domain output is '${output}'"
                     if [ ${rc} != 0 ]; then
-                        restore_local_files
-                        define_domains "${backup_ddir}"
-                        define_networks "${backup_ndir}"
-                        define_ifaces "${backup_idir}"
                         echo "Libvirt domain import completed with errors:"
                         printf '%s\n\n' "${output}"
-                        echo "The original local data have been restored."
                     else
                         # For each of the libvirt networks, migrate the XML.
                         echo "Migrating libvirt networks..."
@@ -751,13 +721,8 @@ sync_from_host() {
                         rc=$?
                         echo "Libvirt network output is '${output}'"
                         if [ ${rc} != 0 ]; then
-                            restore_local_files
-                            define_domains "${backup_ddir}"
-                            define_networks "${backup_ndir}"
-                            define_ifaces "${backup_idir}"
                             echo "Libvirt network import completed with errors:"
                             printf '%s\n\n' "${output}"
-                            echo "The original local data have been restored."
                         else
                             # For each of the libvirt ifaces, migrate the XML.
                             echo "Migrating libvirt ifaces..."
@@ -765,13 +730,8 @@ sync_from_host() {
                             rc=$?
                             echo "Libvirt iface output is '${output}'"
                             if [ ${rc} != 0 ]; then
-                                restore_local_files
-                                define_domains "${backup_ddir}"
-                                define_networks "${backup_ndir}"
-                                define_ifaces "${backup_idir}"
                                 echo "Libvirt network import completed with errors:"
                                 printf '%s\n\n' "${output}"
-                                echo "The original local data have been restored."
                             else
                                 echo "Migration completed SUCCESSFULLY."
                                 echo "Please make sure you have either mounted the same refplat ISO on or copied its contents to this CML server."
@@ -787,10 +747,6 @@ sync_from_host() {
                     chown -R www-data:www-data "${CFG_DIR}"
                     find "${BASE_DIR}"/images -type f \( -name "*.img" -or -name "nodedisk*" \) -print0 | xargs -0 chown libvirt-qemu:kvm 2>/dev/null
                     if [ ${rc} != 0 ]; then
-                        restore_local_files
-                        define_domains "${backup_ddir}"
-                        define_networks "${backup_ndir}"
-                        define_ifaces "${backup_idir}"
                         echo "Failed to execute data upgrade script:"
                         printf '%s\n\n' "${output}"
                     else
@@ -820,9 +776,6 @@ sync_from_host() {
     rm -rf "${libvirt_domains}"
     rm -rf "${libvirt_networks}"
     rm -rf "${libvirt_ifaces}"
-    rm -rf "${backup_ddir}"
-    rm -rf "${backup_ndir}"
-    rm -rf "${backup_idir}"
 
     restart_cml_services
 
@@ -981,10 +934,10 @@ if [ ${RESTORE} = 1 ]; then
 
     # First, extract /PRODUCT from the backup and check that the version matches the current version.
     tempd=$(mktemp -d /tmp/migration.XXXXX)
-    output=$(tar -C "${tempd}" --acls --selinux -xpf "${BACKUP_FILE}" PRODUCT libvirt_domains.dat 2>&1)
+    output=$(tar -C "${tempd}" --acls --selinux -xpf "${BACKUP_FILE}" PRODUCT libvirt_domains.dat libvirt_networks.dat libvirt_ifaces.dat 2>&1)
     rc=$?
     if [ ${rc} != 0 ]; then
-        echo "Failed to extract /PRODUCT from backup:"
+        echo "Failed to extract /PRODUCT and libvirt data from backup:"
         printf '%s\n\n' "${output}"
         exit ${rc}
     fi
@@ -1007,10 +960,6 @@ if [ ${RESTORE} = 1 ]; then
         echo "Failed to stop CML services."
         exit $?
     )
-    backup_local_files
-    backup_ddir=$(export_libvirt_domains)
-    backup_ndir=$(export_libvirt_networks)
-    backup_idir=$(export_libvirt_ifaces)
     delete_libvirt_domains
     delete_libvirt_networks
     delete_libvirt_ifaces
@@ -1032,54 +981,27 @@ if [ ${RESTORE} = 1 ]; then
         sdirs="${sdirs} $(echo "${idir}" | cut -d'/' -f2-)"
         echo "Extracting ${sdirs} from the backup..."
     fi
+
+    delete_local_dirs "$(tar -tf "${BACKUP_FILE}" | grep '/$')" "/" 0
     export total=$(du -shc ${BACKUP_FILE} -B10k --apparent-size | tail -1 | cut -f1)
-    tar -C / --acls --selinux --checkpoint=2000 --checkpoint-action=exec=' printf "\e[1;31m%s of %s extracted  %d/100%% complete  \e[0m\r" $(numfmt --to=iec-i $((10000*${TAR_CHECKPOINT})) ) $(numfmt --to=iec-i $((10000*${total})) )\t$((100*${TAR_CHECKPOINT}/${total})) ' --exclude=PRODUCT -xvpf "${BACKUP_FILE}"
+    tar -C / --acls --selinux --checkpoint=2000 --checkpoint-action=exec=' printf "\e[1;31m%s of %s extracted  %d/100%% complete  \e[0m\r" $(numfmt --to=iec-i $((10000*${TAR_CHECKPOINT})) ) $(numfmt --to=iec-i $((10000*${total})) )\t$((100*${TAR_CHECKPOINT}/${total})) ' --exclude=PRODUCT --exclude="libvirt*.dat" -xvpf "${BACKUP_FILE}"
     rc=$?
     if [ ${rc} != 0 ]; then
-        restore_local_files
-        define_domains "${backup_ddir}"
-        define_network "${backup_ndir}"
-        define_ifaces "${backup_idir}"
         echo "Restore failed with error.  See output above for the error details."
-        echo "The original local data has been restored."
     else
         if [ ${DOING_MIGRATION} -eq 1 ]; then
-            sdirs=""
-            for mig_dir in ${MIGRATION_MAP}; do
-                map_dest=$(echo "${mig_dir}" | cut -d':' -f2)
-                sdirs="${sdirs} $(echo "${map_dest}" | cut -d'/' -f2-)"
-            done
-            if [ -n "${sdirs}" ]; then
-                echo "Restoring nodes from the backup..."
-                rc=$?
-            else
-                rc=0
-            fi
+            printf "\nRestore completed SUCCESSFULLY.\n"
+            echo "Performing configuration migration..."
+            output=$( (cd "${BASE_DIR}"/db_migrations && env CFG_DIR="${CFG_DIR}" BASE_DIR="${BASE_DIR}" VIRL2_DIR="${BASE_DIR}" HOME="${BASE_DIR}" MIGRATION_LIBVIRT_DOM_XML_DIR="${ddir}" MIGRATION_LIBVIRT_NET_XML_DIR="${ndir}" MIGRATION_LIBVIRT_IF_XML_DIR="${idir}" "${BASE_DIR}"/.local/bin/alembic upgrade 2.3.0) 2>&1)
+            rc=$?
+            # This feels hacky, but we need to do it.
+            chown -R www-data:www-data "${CFG_DIR}"
+            find "${BASE_DIR}"/images -type f \( -name "*.img" -or -name "nodedisk*" \) -print0 | xargs -0 chown libvirt-qemu:kvm 2>/dev/null
             if [ ${rc} != 0 ]; then
-                restore_local_files
-                define_domains "${backup_ddir}"
-                define_networks "${backup_ndir}"
-                echo "Restore failed with error:"
+                echo "Failed to execute data upgrade script:"
                 printf '%s\n\n' "${output}"
-                echo "The original local data has been restored."
             else
-                printf "\nRestore completed SUCCESSFULLY.\n"
-                echo "Performing configuration migration..."
-                output=$( (cd "${BASE_DIR}"/db_migrations && env CFG_DIR="${CFG_DIR}" BASE_DIR="${BASE_DIR}" VIRL2_DIR="${BASE_DIR}" HOME="${BASE_DIR}" MIGRATION_LIBVIRT_DOM_XML_DIR="${ddir}" MIGRATION_LIBVIRT_NET_XML_DIR="${ndir}" MIGRATION_LIBVIRT_IF_XML_DIR="${idir}" "${BASE_DIR}"/.local/bin/alembic upgrade 2.3.0) 2>&1)
-                rc=$?
-                # This feels hacky, but we need to do it.
-                chown -R www-data:www-data "${CFG_DIR}"
-                find "${BASE_DIR}"/images -type f \( -name "*.img" -or -name "nodedisk*" \) -print0 | xargs -0 chown libvirt-qemu:kvm 2>/dev/null
-                if [ ${rc} != 0 ]; then
-                    restore_local_files
-                    define_domains "${backup_ddir}"
-                    define_networks "${backup_ndir}"
-                    define_ifaces "${backup_idir}"
-                    echo "Failed to execute data upgrade script:"
-                    printf '%s\n\n' "${output}"
-                else
-                    echo "Migration completed SUCCESSFULLY."
-                fi
+                echo "Migration completed SUCCESSFULLY."
             fi
         else
             output=$(define_domains "${ddir}" 2>&1)
@@ -1087,33 +1009,18 @@ if [ ${RESTORE} = 1 ]; then
             if [ ${rc} != 0 ]; then
                 echo "Libvirt domain import completed with errors:"
                 printf '%s\n\n' "${output}"
-                restore_local_files
-                define_domains "${backup_ddir}"
-                define_networks "${backup_ndir}"
-                define_ifaces "${backup_idir}"
-                echo "The original local data have been restored."
             else
                 output=$(define_networks "${ndir}" 2>&1)
                 rc=$?
                 if [ ${rc} != 0 ]; then
                     echo "Libvirt network import completed with errors:"
                     printf '%s\n\n' "${output}"
-                    restore_local_files
-                    define_domains "${backup_ddir}"
-                    define_networks "${backup_ndir}"
-                    define_ifaces "${backup_idir}"
-                    echo "The original local data have been restored."
                 else
                     output=$(define_ifaces "${idir}" 2>&1)
                     rc=$?
                     if [ ${rc} != 0 ]; then
                         echo "Libvirt iface import completed with errors:"
                         printf '%s\n\n' "${output}"
-                        restore_local_files
-                        define_domains "${backup_ddir}"
-                        define_networks "${backup_ndir}"
-                        define_ifaces "${backup_idir}"
-                        echo "The original local data have been restored."
                     else
                         echo "Restore completed SUCCESSFULLY."
                         echo "Please make sure you have either mounted the same refplat ISO on or copied its contents to this CML server."
@@ -1123,9 +1030,6 @@ if [ ${RESTORE} = 1 ]; then
         fi
     fi
 
-    rm -rf "${backup_ddir}"
-    rm -rf "${backup_ndir}"
-    rm -rf "${backup_idir}"
     rm -rf "${ddir}"
     rm -rf "${ndir}"
     rm -rf "${idir}"
@@ -1190,8 +1094,8 @@ SRC_DIRS="${SRC_DIRS} ${ddir} ${ndir} ${idir}"
 echo "Backing up ${SRC_DIRS}..."
 
 echo "Backing up CML data to ${BACKUP_FILE}.  Please be patient, this may take a while..."
-export total=$(du -shc /PRODUCT ${SRC_DIRS} libvirt_domains.dat -B10k --apparent-size | tail -1 | cut -f1)
-tar -C "${tempd}" --acls --selinux --checkpoint=2000 --exclude="*.rej" --exclude="*.orig" --checkpoint-action=exec=' printf "\e[1;31m%s of %s copied  %d/100%% complete  \e[0m\r" $(numfmt --to=iec-i $((10000*${TAR_CHECKPOINT})) ) $(numfmt --to=iec-i $((10000*${total})) )\t$((100*${TAR_CHECKPOINT}/${total})) ' -cvpf "${BACKUP_FILE}" /PRODUCT libvirt_domains.dat ${SRC_DIRS}
+export total=$(du -shc /PRODUCT ${SRC_DIRS} libvirt_domains.dat libvirt_networks.dat libvirt_ifaces.dat -B10k --apparent-size | tail -1 | cut -f1)
+tar -C "${tempd}" --acls --selinux --checkpoint=2000 --exclude="*.rej" --exclude="*.orig" --checkpoint-action=exec=' printf "\e[1;31m%s of %s copied  %d/100%% complete  \e[0m\r" $(numfmt --to=iec-i $((10000*${TAR_CHECKPOINT})) ) $(numfmt --to=iec-i $((10000*${total})) )\t$((100*${TAR_CHECKPOINT}/${total})) ' -cvpf "${BACKUP_FILE}" /PRODUCT libvirt_domains.dat libvirt_networks.dat libvirt_ifaces.dat ${SRC_DIRS}
 rc=$?
 echo
 if [ ${rc} != 0 ]; then
