@@ -764,7 +764,7 @@ sync_from_host() {
         ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} "${sysadmin_user}"@"${host}" "sudo /tmp/${ME} --umount-overlay"
     fi
 
-    if ! ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} "${sysadmin_user}"@"${host}" "sudo /tmp/${ME} --start && sudo rm -rf ${libvirt_domains} && sudo rm -rf ${libvirt_networks} && rm -rf ${libvirt_ifaces} && sudo rm -f /tmp/${ME} && sudo rm -f /etc/sudoers.d/cml-migrate && (cp -fa ~/.ssh/authorized_keys.migration ~/.ssh/authorized_keys >/dev/null 2>&1 || true)"; then
+    if ! ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} "${sysadmin_user}"@"${host}" "sudo /tmp/${ME} --start && sudo rm -rf ${libvirt_domains} && sudo rm -rf ${libvirt_networks} && sudo rm -rf ${libvirt_ifaces} && sudo rm -f /tmp/${ME} && sudo rm -f /etc/sudoers.d/cml-migrate && (cp -fa ~/.ssh/authorized_keys.migration ~/.ssh/authorized_keys >/dev/null 2>&1 || true)"; then
         printf "FAILED.\n"
         echo "Error finishing up on remote host.  Check to make sure the CML services are running on ${host}."
         rc=$?
