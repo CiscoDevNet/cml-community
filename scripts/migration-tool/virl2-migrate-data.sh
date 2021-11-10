@@ -673,9 +673,15 @@ sync_from_host() {
     SRC_DIRS="${SRC_DIRS} ${libvirt_domains} ${libvirt_networks} ${libvirt_ifaces}"
 
     echo "Migrating ${SRC_DIRS} to this CML server..."
+    space_dirs=""
+    if [ ${DOING_MIGRATION} -eq 1 ]; then
+        for map_dir in ${MIGRATION_MAP}; do
+            space_dirs="${space_dirs} $(echo "${map_dir}" | cut -d':' -f1)"
+        done
+    fi
 
     # Get required disk space from remote host
-    output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} "${sysadmin_user}"@"${host}" "sudo du -B1 -sc ${SRC_DIRS} | grep total | sed -E -s 's|\s+total||'") 2>/dev/null)
+    output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} "${sysadmin_user}"@"${host}" "sudo du -B1 -sc ${SRC_DIRS} ${space_dirs} | grep total | sed -E -s 's|\s+total||'") 2>/dev/null)
     if check_disk_space "" ${BASE_DIR} "${output}"; then
         printf "Starting migration.  Please be patient, migration may take a while....\n\n\n"
         sdirs=""
