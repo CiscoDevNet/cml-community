@@ -6,13 +6,13 @@ You can also migration between CML 2.2 and CML 2.3.  This is a special case as t
 
 The script requires the following:
 
-- Both CML servers must be running the _exact same version of CML_ (unless doing a version migration).
+- Both CML servers must be running the *exact same version of CML* (unless doing a version migration).
 - The target CML server must have sufficient disk space to copy all of the data from the source CML server (in online operation).
 - The source server must have sufficient disk space to hold an archive of all of its data (in offline operation).
 
 ## Installation
 
-To perform any data copy or version migration, the `virl2-migrate-data.sh` script needs to be copied to the target (i.e., _new_ server).  The best way to transfer the script to a CML server is to place it on an external SFTP or SCP server, and then execute the following from Cockpit's Terminal as root (i.e., after using `sudo -E -s`):
+To perform any data copy or version migration, the `virl2-migrate-data.sh` script needs to be copied to the target (i.e., *new* server).  The best way to transfer the script to a CML server is to place it on an external SFTP or SCP server, and then execute the following from Cockpit's Terminal as root (i.e., after using `sudo -E -s`):
 
 SFTP:
 
