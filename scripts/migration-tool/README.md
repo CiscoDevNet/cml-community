@@ -6,9 +6,9 @@ You can also migration between CML 2.2 and CML 2.3.  This is a special case as t
 
 The script requires the following:
 
--   Both CML servers must be running the _exact same version of CML_ (unless doing a version migration).
--   The target CML server must have sufficient disk space to copy all of the data from the source CML server (in online operation).
--   The source server must have sufficient disk space to hold an archive of all of its data (in offline operation).
+- Both CML servers must be running the _exact same version of CML_ (unless doing a version migration).
+- The target CML server must have sufficient disk space to copy all of the data from the source CML server (in online operation).
+- The source server must have sufficient disk space to hold an archive of all of its data (in offline operation).
 
 ## Installation
 
@@ -42,17 +42,18 @@ In both cases, then run the following to make the script executable:
 
 The script copies the following data:
 
--   Labs and the non-volatile and data storage for nodes within the labs
--   Custom node definitions
--   Custom image definitions
--   CML server config including users and groups
+- Labs and the non-volatile and data storage for nodes within the labs
+- Custom node definitions
+- Custom image definitions
+- CML server config including users and groups
 
-Notably, what is **not** copied are:
+Notably, items **not** copied are:
 
--   Licensing (the target server must already have its own license)
--   Stock node and image definitions (make sure you either have the same refplat ISO mounted on or contents copied to the target server)
-    - **Note:** Version migration _does_ copy stock node and image definitions
--   Custom bridge interfaces on the Linux side
+- Licensing (the target server must already have its own license)
+- Stock node and image definitions (make sure you either have the same refplat ISO mounted on or contents copied to the target server)
+  - **Note:** Version migration *does* copy stock node and image definitions
+- Custom bridge interfaces on the Linux side
+  - **Note**: The bridge interfaces are copied from a virtualization standpoint, but the underlying bridge-to-physical interface mappings are not
 
 ## General Operations
 
