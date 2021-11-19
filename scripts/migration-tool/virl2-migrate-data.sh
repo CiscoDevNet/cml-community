@@ -1084,7 +1084,7 @@ if [ ${DOING_MIGRATION} -eq 1 ]; then
 fi
 
 ddir=$(export_libvirt_domains)
-ndir=$(eport_libvirt_networks)
+ndir=$(export_libvirt_networks)
 idir=$(export_libvirt_ifaces)
 tempd=$(mktemp -d /tmp/migration.XXXXX)
 cd "${tempd}" || (
