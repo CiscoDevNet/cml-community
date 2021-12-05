@@ -75,6 +75,7 @@ while n_id < 100:
                 response.get("node_definition") == "alpine" or
                 response.get("node_definition") == "coreos" or
                 response.get("node_definition") == "desktop" or
+                response.get("node_definition") == "trex" or   
                 response.get("node_definition") == "ubuntu"):
             # only add 1 to port number for the next device
             port = port + 1
