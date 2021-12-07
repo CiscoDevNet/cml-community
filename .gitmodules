@@ -16,3 +16,6 @@
 [submodule "use-cases/cml-nxos-l3-edge-fabric"]
 	path = use-cases/cml-nxos-l3-edge-fabric
 	url = https://github.com/charliefenwick/cml-nxos-l3-edge-fabric
+[submodule "use-cases/sdwan-devops"]
+	path = use-cases/sdwan-devops
+	url = https://github.com/CiscoDevNet/sdwan-devops
