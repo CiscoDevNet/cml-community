@@ -1105,7 +1105,6 @@ tar -C "${tempd}" --acls --selinux --checkpoint=2000 --exclude="*.rej" --exclude
 rc=$?
 echo
 if [ ${rc} != 0 ]; then
-    rm -f "${BACKUP_FILE}"
     echo "Backup completed with errors.  See the output above for the error details."
 else
     echo "Backup completed SUCCESSFULLY.  Backup file is ${BACKUP_FILE}."
