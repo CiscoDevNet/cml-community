@@ -7,7 +7,7 @@
 source /etc/default/virl2
 
 # Version of this script in semver 2.0 format.
-_VERSION="2.0.0-rc2"
+_VERSION="2.0.0-rc3"
 
 # This is the link to the raw GitHub source for the script itself.
 # TODO: Change this to be master before release!
