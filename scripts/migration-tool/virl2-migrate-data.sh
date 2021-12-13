@@ -7,7 +7,7 @@
 source /etc/default/virl2
 
 # Version of this script in semver 2.0 format.
-_VERSION="2.0.0-rc1"
+_VERSION="2.0.0-rc2"
 
 # This is the link to the raw GitHub source for the script itself.
 # TODO: Change this to be master before release!
@@ -27,7 +27,10 @@ check_for_updates() {
         return 1
     fi
 
-    if [ "${gh_version}" = "${_VERSION}" ]; then
+    gh_version="_GH${gh_version}"
+    eval "${gh_version}"
+
+    if [ "${_GH_VERSION}" = "${_VERSION}" ]; then
         echo "GitHub source version is the same as the current version.  Not updating."
         return 0
     fi
@@ -41,7 +44,7 @@ check_for_updates() {
 
     chmod +x ${LOCAL_ME}
 
-    echo "Successfully updated to ${gh_version}.  Please re-run ${LOCAL_ME}."
+    echo "Successfully updated to ${_GH_VERSION}.  Please re-run ${LOCAL_ME}."
 
     return 0
 }
@@ -914,7 +917,8 @@ while true; do
         exit 0
         ;;
     --update)
-        exit $(check_for_updates)
+        check_for_updates
+        exit $?
         ;;
     --)
         shift
