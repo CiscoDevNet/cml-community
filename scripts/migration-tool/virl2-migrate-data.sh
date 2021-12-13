@@ -6,6 +6,9 @@
 
 source /etc/default/virl2
 
+# Version of this script in semver 2.0 format.
+_VERSION="2.0.0-rc1"
+
 SRC_DIRS="${BASE_DIR}/images ${CFG_DIR}"
 KEY_FILE="migration_key"
 SSH_PORT="1122"
@@ -797,7 +800,7 @@ if [ "$EUID" != 0 ]; then
     exit 1
 fi
 
-opts=$(getopt -o brf:h:vdu: --long host:,file:,backup,restore,version,src-dirs,stop,start,get-domains,get-networks,get-ifaces,mount-overlay,umount-overlay,migration,no-confirm,user -- "$@")
+opts=$(getopt -o brf:h:vdu: --long host:,file:,backup,restore,version,src-dirs,stop,start,get-domains,get-networks,get-ifaces,mount-overlay,umount-overlay,migration,no-confirm,user,version -- "$@")
 if [ $? != 0 ]; then
     echo "usage: $0 -h|--host HOST_TO_MIGRATE_FROM"
     echo "       OR"
@@ -875,6 +878,10 @@ while true; do
         ;;
     --no-confirm)
         NO_CONFIRM=1
+        ;;
+    --version)
+        echo "${_VERSION}"
+        exit 0
         ;;
     --)
         shift
