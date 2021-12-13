@@ -640,7 +640,7 @@ sync_from_host() {
     trap cleanup_failed_from_host SIGINT
 
     # Check CML versions on both hosts.
-    output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} "${sysadmin_user}"@"${host}" "sudo /tmp/${ME} --version") 2>/dev/null)
+    output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} "${sysadmin_user}"@"${host}" "sudo /tmp/${ME} --cml-version") 2>/dev/null)
     if [ $? != 0 ]; then
         rc=$?
         cleanup_from_host "${key_dir}"
@@ -833,7 +833,7 @@ if [ "$EUID" != 0 ]; then
     exit 1
 fi
 
-opts=$(getopt -o brf:h:vdu: --long host:,file:,backup,restore,version,src-dirs,stop,start,get-domains,get-networks,get-ifaces,mount-overlay,umount-overlay,migration,no-confirm,user,version,update -- "$@")
+opts=$(getopt -o brf:h:vdu: --long host:,file:,backup,restore,cml-version,src-dirs,stop,start,get-domains,get-networks,get-ifaces,mount-overlay,umount-overlay,migration,no-confirm,user,version,update -- "$@")
 if [ $? != 0 ]; then
     echo "usage: $0 -h|--host HOST_TO_MIGRATE_FROM"
     echo "       OR"
@@ -870,7 +870,7 @@ while true; do
     -r | --restore)
         RESTORE=1
         ;;
-    -v | --version)
+    --cml-version)
         echo ${VIRL_VERSION}
         exit 0
         ;;
@@ -912,7 +912,7 @@ while true; do
     --no-confirm)
         NO_CONFIRM=1
         ;;
-    --version)
+    -v | --version)
         echo "${_VERSION}"
         exit 0
         ;;
