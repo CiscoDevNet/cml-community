@@ -27,7 +27,7 @@ check_for_updates() {
         return 1
     fi
 
-    if [ "${gh_version}" -eq "${_VERSION}" ]; then
+    if [ "${gh_version}" = "${_VERSION}" ]; then
         echo "GitHub source version is the same as the current version.  Not updating."
         return 0
     fi
