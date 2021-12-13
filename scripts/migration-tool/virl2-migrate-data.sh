@@ -9,12 +9,42 @@ source /etc/default/virl2
 # Version of this script in semver 2.0 format.
 _VERSION="2.0.0-rc1"
 
+# This is the link to the raw GitHub source for the script itself.
+# TODO: Change this to be master before release!
+GITHUB_URL="https://raw.githubusercontent.com/CiscoDevNet/cml-community/new-migration/scripts/migration-tool/virl2-migrate-data.sh"
+
 SRC_DIRS="${BASE_DIR}/images ${CFG_DIR}"
 KEY_FILE="migration_key"
 SSH_PORT="1122"
 DOING_MIGRATION=0
 DEFAULT_USER="sysadmin"
 MIGRATION_MAP="/var/lib/libvirt/images:${LIBVIRT_IMAGES}"
+
+check_for_updates() {
+    gh_version=$(curl -s ${GITHUB_URL} | grep "^_VERSION")
+    if [ -z "${gh_version}" ]; then
+        echo "Unable to find version from GitHub source.  Not updating."
+        return 1
+    fi
+
+    if [ "${gh_version}" -eq "${_VERSION}" ]; then
+        echo "GitHub source version is the same as the current version.  Not updating."
+        return 0
+    fi
+
+    curl -s --output ${LOCAL_ME} ${GITHUB_URL}
+    rc=$?
+    if [ ${rc} != 0 ]; then
+        echo "Failed to download GitHub source.  Not updating."
+        return ${rc}
+    fi
+
+    chmod +x ${LOCAL_ME}
+
+    echo "Successfully updated to ${gh_version}.  Please re-run ${LOCAL_ME}."
+
+    return 0
+}
 
 cleanup_backup() {
     echo
@@ -800,7 +830,7 @@ if [ "$EUID" != 0 ]; then
     exit 1
 fi
 
-opts=$(getopt -o brf:h:vdu: --long host:,file:,backup,restore,version,src-dirs,stop,start,get-domains,get-networks,get-ifaces,mount-overlay,umount-overlay,migration,no-confirm,user,version -- "$@")
+opts=$(getopt -o brf:h:vdu: --long host:,file:,backup,restore,version,src-dirs,stop,start,get-domains,get-networks,get-ifaces,mount-overlay,umount-overlay,migration,no-confirm,user,version,update -- "$@")
 if [ $? != 0 ]; then
     echo "usage: $0 -h|--host HOST_TO_MIGRATE_FROM"
     echo "       OR"
@@ -882,6 +912,9 @@ while true; do
     --version)
         echo "${_VERSION}"
         exit 0
+        ;;
+    --update)
+        exit $(check_for_updates)
         ;;
     --)
         shift
