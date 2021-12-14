@@ -111,6 +111,16 @@ sudo /usr/local/bin/virl2-migrate-data.sh --restore --file /path/to/archive.tar
 
 The restore command will perform target checks and then prompt you to confirm you want to restore the source data onto this server.
 
+## Updating the Script
+
+If you run the script with the `--update` flag, it will check GitHub to see if a new release is available.  If so, it will download the new script (overwriting itself) and prepare itself for execution.  If there are no updates available, the script will not be touched.  For example:
+
+```bash
+/usr/local/bin/virl2-migrate-data.sh --update
+```
+
+This step isn't typically required, but if you are running into problems it can be something to try before reporting the problem upstream.
+
 ## Caveats
 
 This script is distributed as-is without formal support.  While it has been tested to work, it cannot anticipate all conditions of the source and target CML servers and may not properly copy all data in all cases.  Prior to running the script, you should have a backup of the source CML server (and/or VMware snapshot) just in case something goes wrong.  You should also wait to delete the source server after migration until you have thoroughly tested the target and confirm all functionality is properly working.
