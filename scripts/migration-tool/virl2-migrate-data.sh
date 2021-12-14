@@ -7,11 +7,14 @@
 source /etc/default/virl2
 
 # Version of this script in semver 2.0 format.
-_VERSION="2.0.0-rc3"
+_VERSION="2.0.0-rc4"
+
+# The branch from which to grab the canonical, stable latest version of the script.
+# TODO: Change this to be master before release!
+GITHUB_BRANCH="new-migration"
 
 # This is the link to the raw GitHub source for the script itself.
-# TODO: Change this to be master before release!
-GITHUB_URL="https://raw.githubusercontent.com/CiscoDevNet/cml-community/new-migration/scripts/migration-tool/virl2-migrate-data.sh"
+GITHUB_URL="https://raw.githubusercontent.com/CiscoDevNet/cml-community/${GITHUB_BRANCH}/scripts/migration-tool/virl2-migrate-data.sh"
 
 SRC_DIRS="${BASE_DIR}/images ${CFG_DIR}"
 KEY_FILE="migration_key"
