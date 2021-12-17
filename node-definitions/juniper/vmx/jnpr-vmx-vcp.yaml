@@ -1,0 +1,70 @@
+#
+# Juniper vMX virtual control plane (VCP) node definition
+# generated 2020-04-20
+# part of VIRL^2
+#
+id: jnpr-vmx-vcp
+configuration:
+  generator:
+    driver: null
+  provisioning:
+    volume_name: disk
+    media_type: iso
+    files:
+    - name: configuration.txt
+      content: hostname insert_hostname_here
+      editable: true
+inherited:
+  image:
+    ram: false
+    cpus: false
+    data_volume: false
+    boot_disk_size: false
+  node:
+    ram: false
+    cpus: false
+    data_volume: false
+    boot_disk_size: false
+device:
+  interfaces:
+    has_loopback_zero: false
+    default_count: 2
+    physical:
+    - fxp0
+    - em1
+    serial_ports: 1
+general:
+  description: Juniper vMX virtual CP (EXPERIMENTAL)
+  nature: router
+  read_only: true
+schema_version: "0.0.1"
+sim:
+  linux_native:
+    cpus: 1
+    disk_driver: ide
+    driver: server
+    libvirt_domain_driver: kvm
+    nic_driver: virtio
+    ram: 1024
+boot:
+  timeout: 600
+  completed:
+  - "login:"
+ui:
+  description: |2
+
+    Juniper vMX Virtual Control Plane
+    1024MB, 1 vCPU
+
+    ##### Note
+    **EXPERIMENTAL**
+  group: Others
+  icon: router
+  label: Juniper vMX VCP
+  label_prefix: vmx-vcp-
+  visible: true
+pyats:
+  os: junos
+  config_extract_command: show configuration
+  use_in_testbed: true
+
