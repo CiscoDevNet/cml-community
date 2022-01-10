@@ -1,10 +1,10 @@
-# Juniper vMX Node Definitions
+# Juniper vQFX Node Definitions
 
 This directory contains the following node definitions:
 
-* `jnpr-vmx-vcp.yaml` - Juniper vMX virtual control plane node definition
-* `jnpr-vmx-vfp.yaml` - Juniper vMX virtual forwarding plane node definition
+* `jnpr-vqfx-re.yaml` - Juniper Virtual Routing Engine
+* `jnpr-vqfx-pfe.yaml` - Juniper Virtual Packet Forwarding Engine
 
 ## Caveats
 
-vMX support is considered **EXPERIMENTAL** within CML.
+vQFX support is considered **EXPERIMENTAL** within CML.
