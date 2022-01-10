@@ -1,0 +1,70 @@
+id: jnpr-vqfx-re
+configuration:
+  generator:
+    driver: null
+  provisioning:
+    volume_name: disk
+    media_type: iso
+    files:
+      - name: configuration.txt
+        content: hostname insert_hostname_here
+        editable: true
+inherited:
+  image:
+    ram: false
+    cpus: false
+    data_volume: false
+    boot_disk_size: false
+    cpu_limit: true
+  node:
+    ram: false
+    cpus: false
+    data_volume: false
+    boot_disk_size: false
+    cpu_limit: true
+device:
+  interfaces:
+    has_loopback_zero: false
+    default_count: 2
+    physical:
+      - em0
+      - em1
+      - xe-0/0/0
+      - xe-0/0/1
+      - xe-0/0/2
+      - xe-0/0/3
+      - xe-0/0/4
+      - xe-0/0/5
+      - xe-0/0/6
+    serial_ports: 1
+general:
+  description: Juniper vQFX RE
+  nature: router
+  read_only: false
+schema_version: 0.0.1
+sim:
+  linux_native:
+    cpus: 1
+    disk_driver: ide
+    driver: server
+    libvirt_domain_driver: kvm
+    nic_driver: e1000
+    ram: 1024
+    cpu_limit: 100
+boot:
+  timeout: 600
+  completed:
+    - 'login:'
+ui:
+  description: |2-
+
+    Juniper vQFX Virtual Routing Engine
+    1024MB, 1 vCPU
+
+    ##### Note
+    **EXPERIMENTAL**
+  group: Others
+  icon: router
+  label: Juniper vQFX RE
+  label_prefix: vqfx-re-
+  visible: false
