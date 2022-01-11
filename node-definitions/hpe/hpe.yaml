@@ -1,0 +1,74 @@
+id: hpe
+configuration:
+  generator:
+    driver: server
+  provisioning:
+    volume_name: cfg
+    media_type: iso
+    files:
+      - name: config.txt
+        content: '# this is a shell script which will be sourced at boot'
+        editable: true
+device:
+  interfaces:
+    has_loopback_zero: false
+    default_count: 1
+    physical:
+      - MGE0/0/0
+      - WGE1/0/1
+      - WGE1/0/2
+      - WGE1/0/3
+      - WGE1/0/4
+      - WGE1/0/5
+      - WGE1/0/6
+      - WGE1/0/7
+      - WGE1/0/8
+    serial_ports: 1
+inherited:
+  image:
+    ram: true
+    cpus: true
+    cpu_limit: true
+    data_volume: true
+    boot_disk_size: true
+  node:
+    ram: true
+    cpus: true
+    cpu_limit: true
+    data_volume: true
+    boot_disk_size: true
+general:
+  description: HPE Router
+  nature: server
+  read_only: false
+schema_version: 0.0.1
+sim:
+  linux_native:
+    cpus: 2
+    disk_driver: ide
+    driver: server
+    libvirt_domain_driver: kvm
+    nic_driver: virtio
+    ram: 4096
+    boot_disk_size: 16
+    video:
+      memory: 16
+    cpu_limit: 100
+boot:
+  completed:
+    - '###### BOOT CONFIG DONE ######'
+  timeout: 300
+pyats:
+  os: linux
+  use_in_testbed: true
+ui:
+  description: |-
+    HPE Router
+    4096 MB RAM, 2 vCPU
+    ##### Note
+    **EXPERIMENTAL**
+  group: Others
+  icon: server
+  label: HPE
+  label_prefix: HPE-
+  visible: true
