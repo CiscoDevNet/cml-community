@@ -1,0 +1,80 @@
+id: fmcv
+general:
+  description: Cisco Firepower Management Center Virtual Appliance
+  nature: server
+  read_only: false
+device:
+  interfaces:
+    has_loopback_zero: true
+    physical:
+      - eth0
+    serial_ports: 1
+    default_count: 1
+    loopback:
+      - lo
+ui:
+  visible: true
+  description: |-
+    Cisco Firepower Management Center Virtual Appliance
+    28 GB DRAM, 4 vCPUs
+    [CCO Link](https://www.cisco.com/c/en/us/td/docs/security/firepower/quick_start/fmcv/fpmc-virtual.html)
+  label_prefix: fmcv-
+  icon: server
+  label: FMCv
+sim:
+  linux_native:
+    libvirt_domain_driver: kvm
+    driver: server
+    disk_driver: virtio
+    ram: 28672
+    cpus: 4
+    cpu_limit: 100
+    nic_driver: virtio
+    data_volume: 250
+boot:
+  timeout: 1200
+  completed:
+    - 'login:'
+inherited:
+  image:
+    ram: true
+    cpus: true
+    cpu_limit: true
+    data_volume: true
+    boot_disk_size: false
+  node:
+    ram: true
+    cpus: true
+    cpu_limit: true
+    data_volume: true
+    boot_disk_size: false
+configuration:
+  generator:
+    driver: server
+  provisioning:
+    volume_name: day0
+    media_type: iso
+    files:
+      - name: day0-config
+        editable: true
+        content: |-
+          #FMC
+          {
+              "EULA": "accept",
+              "Hostname": "fmvc",
+              "AdminPassword": "Admin123",
+              "DNS1": "",
+              "DNS2": "",
+              "IPv4Mode": "manual",
+              "IPv4Addr": "10.10.10.2",
+              "IPv4Mask": "255.255.255.0",
+              "IPv4Gw": "10.10.10.1",
+              "IPv6Mode": "disabled",
+              "IPv6Addr": "",
+              "IPv6Mask": "",
+              "IPv6Gw": "",
+          }
+schema_version: 0.0.1
+pyats:
+  os: linux
+  use_in_testbed: true
