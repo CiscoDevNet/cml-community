@@ -2,7 +2,7 @@
 
 This directory contains the following node definition:
 
-* `fmc.yaml` - Cisco Firepower Management Center Virtual Appliance
+* `fmcv.yaml` - Cisco Firepower Management Center Virtual Appliance
 
 ### Image Availability
 
