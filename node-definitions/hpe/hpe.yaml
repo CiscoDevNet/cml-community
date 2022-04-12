@@ -11,8 +11,8 @@ configuration:
         editable: true
 device:
   interfaces:
-    has_loopback_zero: false
-    default_count: 1
+    has_loopback_zero: true
+    default_count: 6
     physical:
       - MGE0/0/0
       - WGE1/0/1
@@ -20,10 +20,9 @@ device:
       - WGE1/0/3
       - WGE1/0/4
       - WGE1/0/5
-      - WGE1/0/6
-      - WGE1/0/7
-      - WGE1/0/8
-    serial_ports: 1
+    serial_ports: 2
+    loopback:
+     - InLoop0
 inherited:
   image:
     ram: true
@@ -48,7 +47,7 @@ sim:
     disk_driver: ide
     driver: server
     libvirt_domain_driver: kvm
-    nic_driver: virtio
+    nic_driver: e1000
     ram: 4096
     boot_disk_size: 16
     video:
@@ -57,7 +56,7 @@ sim:
 boot:
   completed:
     - '###### BOOT CONFIG DONE ######'
-  timeout: 300
+  timeout: 20
 pyats:
   os: linux
   use_in_testbed: true
