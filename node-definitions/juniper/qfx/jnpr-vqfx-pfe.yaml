@@ -1,0 +1,66 @@
+id: jnpr-vqfx-pfe
+configuration:
+  generator:
+    driver: null
+  provisioning:
+    volume_name: config
+    media_type: iso
+    files:
+      - name: boot
+        editable: true
+        content: console=ttyS0
+inherited:
+  image:
+    ram: false
+    cpus: false
+    data_volume: false
+    boot_disk_size: false
+    cpu_limit: true
+  node:
+    ram: false
+    cpus: false
+    data_volume: false
+    boot_disk_size: false
+    cpu_limit: true
+device:
+  interfaces:
+    has_loopback_zero: true
+    default_count: 7
+    physical:
+      - em0
+      - em1
+    serial_ports: 1
+    loopback:
+      - Lo0
+general:
+  description: Juniper vQFX PFE
+  nature: router
+  read_only: false
+schema_version: 0.0.1
+sim:
+  linux_native:
+    cpus: 1
+    disk_driver: ide
+    driver: server
+    libvirt_domain_driver: kvm
+    nic_driver: e1000
+    ram: 2048
+    cpu_limit: 100
+    video:
+      memory: 1024
+boot:
+  timeout: 600
+  completed:
+    - console=ttyS0
+ui:
+  description: |-
+    Juniper vQFX Virtual Packet Forwarding Engine VPFE
+    2048MB 1 vCPUs
+
+    ##### Note
+    **EXPERIMENTAL**
+  group: Others
+  icon: router
+  label: Juniper vQFX PFE
+  label_prefix: vqfx-pfe-
+  visible: true
