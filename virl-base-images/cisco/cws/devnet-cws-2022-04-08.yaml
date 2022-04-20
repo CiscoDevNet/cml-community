@@ -1,0 +1,8 @@
+id: devnet-cws-2022-04-08
+node_definition_id: cws
+description: Candidate Workstation 2022-04-08 release
+label: CWS 2022-04-08 Release
+disk_image: cws.qcow2
+read_only: false
+disk_subfolder: devnet-cws-2022-04-08
+schema_version: 0.0.1
