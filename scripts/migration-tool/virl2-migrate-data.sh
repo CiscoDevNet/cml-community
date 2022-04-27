@@ -7,7 +7,7 @@
 source /etc/default/virl2
 
 # Version of this script in semver 2.0 format.
-_VERSION="2.0.0"
+_VERSION="2.0.1"
 
 # The branch from which to grab the canonical, stable latest version of the script.
 GITHUB_BRANCH="master"
@@ -561,8 +561,8 @@ check_cml_versions() {
         return 0
     fi
 
-    # Allow one to migrate from 2.2.x to 2.3.0.
-    if echo "${curr_ver}" | grep -qE '^2\.3\.0' && echo ${src_ver} | grep -qE '^2\.2\.'; then
+    # Allow one to migrate from 2.2.x to 2.3+.
+    if echo "${curr_ver}" | grep -qE '^2\.[34]\.[0-9]' && echo ${src_ver} | grep -qE '^2\.2\.'; then
         DOING_MIGRATION=1
         return 0
     fi
