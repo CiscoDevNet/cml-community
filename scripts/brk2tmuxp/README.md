@@ -58,7 +58,8 @@ pipenv install
 - pip
 
 ```sh
-pipenv install -r requirements
+python3 -m venv /path/to/directory
+pip install -r requirements
 ```
 
 Note: the only dependency is `pyyaml`.
