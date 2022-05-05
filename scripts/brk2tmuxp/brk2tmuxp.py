@@ -6,7 +6,7 @@ import sys
 import yaml
 
 
-def main():
+def main() -> int:
     """
     reads a CML breakout labs.yaml file and returns a list of dict ready to be
     translated into multiple JSON or YAML tmuxp session files.
@@ -92,6 +92,8 @@ def main():
         else:
             with open(f"{uuid}.yaml", "w") as f:
                 yaml.dump(tmux_session, f)
+
+    return 0
 
 
 def panes_configs(lab: dict, brk_dir: str, listen_addr: str, sleep: float) -> dict:
