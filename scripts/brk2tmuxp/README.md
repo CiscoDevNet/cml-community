@@ -129,7 +129,7 @@ Or (a)ppend windows in the current active session?
 [y/n/a]: y
 ```
 
-![windows-01](https://github.com/sgherdao/cml-community/blob/master/scripts/brk2tmuxp/windows-01.jpg?raw=true)
+![windows-01](windows-01.jpg)
 
 ### Generate the "panes" variant and load it with `tmuxp`:
 
@@ -146,6 +146,6 @@ Or (a)ppend windows in the current active session?
 ❯
 ```
 
-![panes-01](https://github.com/sgherdao/cml-community/blob/master/scripts/brk2tmuxp/panes-01.jpg?raw=true)
+![panes-01](panes-01.jpg)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
