@@ -77,7 +77,7 @@ optional arguments:
 
 ### Generate your CML breakout labs's configurations:
 
-Use breakout init`or`breakout ui`to fetch the labs and nodes from the controller and generate the`labs.yaml` file:
+Use `breakout init` or `breakout ui` to fetch the labs and nodes from the controller and generate the `labs.yaml` file:
 
 ```
 ❯ breakout init
