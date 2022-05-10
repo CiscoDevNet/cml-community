@@ -1,0 +1,23 @@
+#!/usr/bin/env python3.7
+
+import iterm2
+import time
+
+async def main(connection):
+    app = await iterm2.async_get_app(connection)
+    window = await app.current_window.async_create(connection)
+{% for brk_tab in brk_lab["tabs"][:1] %}
+    tab = window.current_tab
+    await tab.async_set_title("{{ brk_tab["tab_title"] }}")
+    session = tab.current_session
+    await session.async_send_text("{{ brk_tab['shell_command'] }}\n")
+{% endfor %}
+    time.sleep({{ sleep }})
+{% for brk_tab in brk_lab["tabs"][1:] %}
+    tab = await window.async_create_tab(
+        )
+    await tab.async_set_title("{{ brk_tab["tab_title"] }}")
+    session = tab.current_session
+    await session.async_send_text("{{ brk_tab['shell_command'] }}\n")
+{% endfor %}
+iterm2.run_until_complete(main)
