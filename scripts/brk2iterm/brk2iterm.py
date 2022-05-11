@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import argparse
+import shutil
 import sys
 
 import jinja2
@@ -89,16 +90,18 @@ def brk2tabs(lab: dict, brk_dir: str, listen_addr: str) -> dict:
 
     """
     lab_title = lab["lab_title"]
+    breakout_path = shutil.which("breakout")
     conf = {
         "session_name": lab_title,
         "tabs": [
             {
                 "tab_title": "breakout",
-                "shell_command": f"cd {brk_dir} && /usr/local/bin/breakout run '{lab_title}'",
+                "shell_command": f"cd {brk_dir} && {breakout_path} run '{lab_title}'",
             }
         ],
     }
 
+    telnet_path = shutil.which("telnet")
     for _, node in lab["nodes"].items():
         node_label = node["label"]
 
@@ -106,7 +109,7 @@ def brk2tabs(lab: dict, brk_dir: str, listen_addr: str) -> dict:
             [
                 {
                     "tab_title": f"{node_label}/{n['name'][-1]}",
-                    "shell_command": f"/usr/local/bin/telnet {listen_addr} {n['listen_port']}",
+                    "shell_command": f"{telnet_path} {listen_addr} {n['listen_port']}",
                 }
                 for n in node["devices"]
                 if n["enabled"] and n["name"] != "vnc"
