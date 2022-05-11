@@ -28,6 +28,30 @@ This will download and install the iTerm2's Python Runtime:
 
 ![py-runtime02](install_py_runtime02.png)
 
+- Get the breakout tool
+
+Download the breakout tool from your CML controller see [Installing the Breakout Tool](https://developer.cisco.com/docs/modeling-labs/#!installing-breakout-tool)
+
+Once the binary obtained, make it executable:
+
+```
+chmod u+x breakout-macos-x86_amd64
+```
+
+Then, move the binary somewhere in your `$PATH` for example `/usr/local/bin/`, use `breakout` as the destination filename:
+
+```
+mv breakout-macos-x86_amd64 /usr/local/bin/breakout
+```
+
+Alternatively, create a symlink:
+
+```
+ln -s /path/to/breakout-macos-x86_amd64 /usr/local/bin/breakout
+```
+
+_Note: The Python script expects the Breakout binary to be named `breakout`; If this is not wanted, rename all occurrences of `breakout` to your preferred name in the code_
+
 ### Installation
 
 Clone the repository, cd in the directory and install the requirements:
