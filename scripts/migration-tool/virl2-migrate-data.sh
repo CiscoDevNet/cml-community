@@ -7,7 +7,7 @@
 source /etc/default/virl2
 
 # Version of this script in semver 2.0 format.
-_VERSION="2.0.1"
+_VERSION="2.0.2"
 
 # The branch from which to grab the canonical, stable latest version of the script.
 GITHUB_BRANCH="master"
@@ -785,7 +785,7 @@ sync_from_host() {
                 else
                     printf "\nData transfer completed SUCCESSFULLY.\n"
                     echo "Performing configuration migration..."
-                    output=$( (cd "${BASE_DIR}"/db_migrations && env CFG_DIR="${CFG_DIR}" BASE_DIR="${BASE_DIR}" VIRL2_DIR="${BASE_DIR}" HOME="${BASE_DIR}" MIGRATION_LIBVIRT_DOM_XML_DIR="${libvirt_domains}" MIGRATION_LIBVIRT_NET_XML_DIR="${libvirt_networks}" MIGRATION_LIBVIRT_IF_XML_DIR="${libvirt_ifaces}" "${BASE_DIR}"/.local/bin/alembic upgrade 2.3.0) 2>&1)
+                    output=$( (cd "${BASE_DIR}"/db_migrations && env CFG_DIR="${CFG_DIR}" BASE_DIR="${BASE_DIR}" VIRL2_DIR="${BASE_DIR}" HOME="${BASE_DIR}" MIGRATION_LIBVIRT_DOM_XML_DIR="${libvirt_domains}" MIGRATION_LIBVIRT_NET_XML_DIR="${libvirt_networks}" MIGRATION_LIBVIRT_IF_XML_DIR="${libvirt_ifaces}" COMPUTE_ID="${COMPUTE_ID}" "${BASE_DIR}"/.local/bin/alembic upgrade head) 2>&1)
                     rc=$?
                     # This feels hacky, but we need to do it.
                     chown -R www-data:www-data "${CFG_DIR}"
@@ -1044,7 +1044,7 @@ if [ ${RESTORE} = 1 ]; then
         if [ ${DOING_MIGRATION} -eq 1 ]; then
             printf "\nRestore completed SUCCESSFULLY.\n"
             echo "Performing configuration migration..."
-            output=$( (cd "${BASE_DIR}"/db_migrations && env CFG_DIR="${CFG_DIR}" BASE_DIR="${BASE_DIR}" VIRL2_DIR="${BASE_DIR}" HOME="${BASE_DIR}" MIGRATION_LIBVIRT_DOM_XML_DIR="${ddir}" MIGRATION_LIBVIRT_NET_XML_DIR="${ndir}" MIGRATION_LIBVIRT_IF_XML_DIR="${idir}" "${BASE_DIR}"/.local/bin/alembic upgrade 2.3.0) 2>&1)
+            output=$( (cd "${BASE_DIR}"/db_migrations && env CFG_DIR="${CFG_DIR}" BASE_DIR="${BASE_DIR}" VIRL2_DIR="${BASE_DIR}" HOME="${BASE_DIR}" MIGRATION_LIBVIRT_DOM_XML_DIR="${ddir}" MIGRATION_LIBVIRT_NET_XML_DIR="${ndir}" MIGRATION_LIBVIRT_IF_XML_DIR="${idir}" COMPUTE_ID="${COMPUTE_ID}" "${BASE_DIR}"/.local/bin/alembic upgrade head) 2>&1)
             rc=$?
             # This feels hacky, but we need to do it.
             chown -R www-data:www-data "${CFG_DIR}"
