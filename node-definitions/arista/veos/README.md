@@ -2,7 +2,7 @@
 
 This directory contains the following node definitions:
 
-* vEOS.yaml` - Arista vEOS node definition 
+* vEOS.yaml - Arista vEOS node definition 
 
 ### Image 
 
