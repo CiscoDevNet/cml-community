@@ -10,7 +10,7 @@ A valid vEOS image can be downloaded the through Arista support portal. https://
 
 ### Notes
 
-This node definition uses recommended values for vEOS instances. However, lowering the DRAM to 1.5Gbps should theoritically work but YMMV. 
+This node definition uses recommended values for vEOS instances. However, lowering the DRAM to 1.5GB should theoritically work but YMMV. 
 
 
 
