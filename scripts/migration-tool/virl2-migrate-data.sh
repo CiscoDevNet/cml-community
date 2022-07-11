@@ -863,6 +863,10 @@ while true; do
         shift
         BACKUP_FILE=$1
         ;;
+    --remote-file)
+        shift
+        REMOTE_FILE=$1
+        ;;
     -b | --backup)
         BACKUP=1
         ;;
@@ -936,13 +940,18 @@ if [ ${GET_SRC_DIRS} -eq 1 ]; then
     exit 0
 fi
 
-if [ -n "${REMOTE_HOST}" ] && [ -n "${BACKUP_FILE}" ]; then
-    echo "Only one of --host or --file may be specified."
+if [ -n "${REMOTE_HOST}" ] && ([ -n "${BACKUP_FILE}" ] || [ -n "${REMOTE_FILE}" ]); then
+    echo "Only one of --host or --file or --remote-file may be specified."
     exit 1
 fi
 
-if [ -z "${REMOTE_HOST}" ] && [ -z "${BACKUP_FILE}" ]; then
-    echo "One of --host or --file must be specified."
+if [ -z "${REMOTE_HOST}" ] && [ -z "${BACKUP_FILE}" ] && [ -z "${REMOTE_FILE}" ]; then
+    echo "One of --host or --file or --remote-file must be specified."
+    exit 1
+fi
+
+if [ -n "${BACKUP_FILE}" ] && [ -n "${REMOTE_FILE}" ]; then
+    echo "Only one of --file or --remote-file may be specified."
     exit 1
 fi
 
@@ -1099,11 +1108,17 @@ else
     done
 fi
 
-BACKUP_FILE=$(realpath "${BACKUP_FILE}")
+if [ -n "${BACKUP_FILE}" ]; then
+    BACKUP_FILE=$(realpath "${BACKUP_FILE}")
 
-# We are doing a dump to a single tar file.
-if ! check_disk_space "${SRC_DIRS}" "$(dirname "${BACKUP_FILE}")"; then
-    exit $?
+    # We are doing a dump to a single tar file.
+    if ! check_disk_space "${SRC_DIRS}" "$(dirname "${BACKUP_FILE}")"; then
+        exit $?
+    fi
+else
+    RBACKUP_FILE=$(echo ${REMOTE_FILE} | cut -d':' -f2)
+    REMOTE_HOST=$(echo ${REMOTE_FILE} | cut -d':' -f1)
+    # TODO Add support for a port other than 22?
 fi
 
 if [ ${NO_CONFIRM} -eq 0 ]; then
@@ -1147,13 +1162,21 @@ echo "Backing up ${SRC_DIRS}..."
 
 echo "Backing up CML data to ${BACKUP_FILE}.  Please be patient, this may take a while..."
 export total=$(du -shc /PRODUCT ${SRC_DIRS} libvirt_domains.dat libvirt_networks.dat libvirt_ifaces.dat -B10k --apparent-size | tail -1 | cut -f1)
-tar -C "${tempd}" --acls --selinux --checkpoint=2000 --exclude="*.rej" --exclude="*.orig" --checkpoint-action=exec=' printf "\e[1;31m%s of %s copied  %d/100%% complete  \e[0m\r" $(numfmt --to=iec-i $((10000*${TAR_CHECKPOINT})) ) $(numfmt --to=iec-i $((10000*${total})) )\t$((100*${TAR_CHECKPOINT}/${total})) ' -cvpf "${BACKUP_FILE}" /PRODUCT libvirt_domains.dat libvirt_networks.dat libvirt_ifaces.dat ${SRC_DIRS}
+if [ -n "${BACKUP_FILE}" ]; then
+    tar -C "${tempd}" --acls --selinux --checkpoint=2000 --exclude="*.rej" --exclude="*.orig" --checkpoint-action=exec=' printf "\e[1;31m%s of %s copied  %d/100%% complete  \e[0m\r" $(numfmt --to=iec-i $((10000*${TAR_CHECKPOINT})) ) $(numfmt --to=iec-i $((10000*${total})) )\t$((100*${TAR_CHECKPOINT}/${total})) ' -cvpf "${BACKUP_FILE}" /PRODUCT libvirt_domains.dat libvirt_networks.dat libvirt_ifaces.dat ${SRC_DIRS}
+else
+    tar -C "${tempd}" --acls --selinux --checkpoint=2000 --exclude="*.rej" --exclude="*.orig" --checkpoint-action=exec=' printf "\e[1;31m%s of %s copied  %d/100%% complete  \e[0m\r" $(numfmt --to=iec-i $((10000*${TAR_CHECKPOINT})) ) $(numfmt --to=iec-i $((10000*${total})) )\t$((100*${TAR_CHECKPOINT}/${total})) ' -cvpf - /PRODUCT libvirt_domains.dat libvirt_networks.dat libvirt_ifaces.dat ${SRC_DIRS} | ssh ${REMOTE_HOST} "cat > ${RBACKUP_FILE}"
+fi
 rc=$?
 echo
 if [ ${rc} != 0 ]; then
     echo "Backup completed with errors.  See the output above for the error details."
 else
-    echo "Backup completed SUCCESSFULLY.  Backup file is ${BACKUP_FILE}."
+    if [ -n "${BACKUP_FILE}" ]; then
+        echo "Backup completed SUCCESSFULLY.  Backup file is ${BACKUP_FILE}."
+    else
+        echo "Backup completed SUCCESSFULLY.  Backup file is ${RBACKUP_FILE} on host ${REMOTE_HOST}."
+    fi
 fi
 
 cleanup_backup
