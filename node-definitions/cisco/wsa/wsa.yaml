@@ -1,0 +1,66 @@
+id: wsa
+general:
+  description: Cisco Web Security Appliance (WSA)
+  nature: server
+  read_only: false
+device:
+  interfaces:
+    has_loopback_zero: true
+    physical:
+      - enp6s0
+      - enp6s1
+      - enp6s2
+      - enp6s3
+    serial_ports: 2
+    default_count: 4
+    loopback:
+      - loopback
+ui:
+  visible: true
+  label_prefix: wsa-
+  icon: server
+  label: WSA
+  description: |-
+    Cisco Web Security Appliance (WSA)
+    8192 MB RAM, 3 vCPUs
+sim:
+  linux_native:
+    libvirt_domain_driver: kvm
+    driver: server
+    disk_driver: ide
+    ram: 8192
+    cpus: 3
+    cpu_limit: 100
+    nic_driver: virtio
+    boot_disk_size: 200
+boot:
+  timeout: 300
+inherited:
+  image:
+    ram: true
+    cpus: true
+    cpu_limit: true
+    data_volume: true
+    boot_disk_size: true
+  node:
+    ram: true
+    cpus: true
+    cpu_limit: true
+    data_volume: true
+    boot_disk_size: true
+configuration:
+  generator:
+    driver: server
+  provisioning:
+    volume_name: cidata
+    media_type: iso
+    files:
+      - name: config.xml
+        editable: true
+        content: |-
+          <?xml version="1.0" encoding="ISO-8859-1"?>
+          <!DOCTYPE config SYSTEM "config.dtd">
+          <config>
+
+          </config>
+schema_version: 0.0.1

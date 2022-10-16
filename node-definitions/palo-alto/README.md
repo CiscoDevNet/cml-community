@@ -1,5 +1,3 @@
-# Palo Alto Networks vFW image
-
 This directory contains the node definition for PAN-OS 10.
 
 
@@ -22,6 +20,3 @@ To set a static ip address issue the following commands :
         set deviceconfig system type static
         set deviceconfig system ip-address <Firewall-IP> netmask <netmask> default-gateway <gateway-IP> dns-setting servers primary <DNS-IP>
         commit
-
-
-
