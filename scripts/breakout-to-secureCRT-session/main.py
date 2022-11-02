@@ -2,6 +2,7 @@ import requests
 import json
 import os
 import yaml
+import sys
 requests.packages.urllib3.disable_warnings()
 from cmlApiCalls import CML as cml
 
@@ -23,71 +24,80 @@ auth = cml.auth(server, username, password)
 
 # get all nodes from the cml server (funtion in cmlApiCalls.py)
 allNodes = cml.getAllNodes(auth, server, lab)
-# print(allNodes) -- for troubleshooting
+# print(allNodes) # -- for troubleshooting
+
 N = True
 n_id = 0
 port = 9000
-try:
-    os.mkdir(rf"C:/Users/{user}/AppData/Roaming/VanDyke/Config/Sessions/CML-{lab}")
-except:
+
+## Adding some code to determine if it is running on Mac OS.
+## Not yet tested on Win OS.
+
+crtPath = "VanDyke/SecureCRT/Config/Sessions"
+if sys.platform == 'darwin':
+    appPath = "/Users/{}/Library/Application Support/{}/CML-{}".format(user,crtPath,lab)
+    pathMode = 0o777
+else: 
+    appPath = "C:/Users/{}/AppData/Roaming/{}/CML-{}".format(user,crtPath,lab)
+
+if os.path.exists(appPath):
     print("directory already exists... continue...")
+else:
+    os.mkdir(appPath,pathMode)
 
-    
-while n_id < 100:
+# Create a Dict consisting of all (label:node_definition) from CML
+nodeDict = {}
+
+for n_id in allNodes:
     node_id = f"n{n_id}"
-    response = cml.getNodesByID(auth, server, lab, node_id)
-    # print(response) -- for troubleshooting
-    # if node does not exists, check the next node
-    if response == "end of list":
-        print("Node " + node_id + " does not exist, will check all nodes from n0 to n99.")
-        # increment node number
-        n_id = n_id + 1
+    response = cml.getNodesByID(auth, server, lab, n_id)
+    nodeDict.update({response.get("label"): response.get("node_definition")})
 
+# Sort keys to match breakout tool.  Tool assigned ports based on label.
+
+for node in sorted(nodeDict):
     # dont count devices that cannot be consoled into    
-    elif (response.get("node_definition") == "external_connector" or
-            response.get("node_definition") == "unmanaged_switch"):
-        # increment node number
-        n_id = n_id + 1    
-        
+    if (nodeDict.get(node) == "external_connector" or
+            nodeDict.get(node) == "unmanaged_switch"):
+        print ("Found {}, skipping".format(nodeDict.get(node)))
     else:
         # get label
-        node_label = response.get("label")
-        
+        node_label = node
+
         # turn port number into hex
         # strip "0x2233" and make it only 4 charators   
         hexport = hex(port).split('x')[-1]
         # node definition is also printed for troubleshooting
-        print("creating: " + node_label + " Node Definition: " + response.get("node_definition"))
+        print("creating: " + node_label + " Node Definition: " + nodeDict.get(node))
         # create a secureCRT Session
         with open("config.ini", "r") as config:
             temp = config.read()
             temp = temp.replace("REPLACE", "0000" + hexport)
-            location = rf"C:/Users/{user}/AppData/Roaming/VanDyke/Config/Sessions/CML-{lab}/{port}-{node_label}.ini"
+            location = rf"{appPath}/{port}-{node_label}.ini"
             with open( location, "w") as config2write:
                 config2write.write(temp)
-        
-        # if any custom nodes are added, and they dont add by 2 ports in the breakout tool
-        # add the node definition to the if statement below to only add by 1 port. 
-        if (response.get("node_definition") == "wan_emulator" or 
-                response.get("node_definition") == "asav" or 
-                response.get("node_definition") == "ftdv" or
-                response.get("node_definition") == "server" or
-                response.get("node_definition") == "alpine" or
-                response.get("node_definition") == "coreos" or
-                response.get("node_definition") == "desktop" or
-                response.get("node_definition") == "trex" or   
-                response.get("node_definition") == "ubuntu"):
+
+        # if any custom nodes are added, and they dont add by 2 ports 
+        # in the breakout tool add the node definition to the if 
+        # statement below to only add by 1 port. 
+        if (nodeDict.get(node) == "wan_emulator" or
+                nodeDict.get(node) == "asav" or
+                nodeDict.get(node) == "ftdv" or
+                nodeDict.get(node) == "server" or
+                nodeDict.get(node) == "alpine" or
+                nodeDict.get(node) == "coreos" or
+                nodeDict.get(node) == "desktop" or
+                nodeDict.get(node) == "trex" or
+                nodeDict.get(node) == "viptela-bond" or
+                nodeDict.get(node) == "viptela-smart" or
+                nodeDict.get(node) == "viptela-manage" or
+                nodeDict.get(node) == "ubuntu"):
             # only add 1 to port number for the next device
             port = port + 1
         # else add 2 to port number for the next device
         else:
             port = port + 2
-        # increment node number    
-        n_id = n_id + 1
-# 
-print("Nodes 0-99 checked. if you need more, increase the number checked in the while loop")
-print("example change to: while n_id < 150:")
-print("exiting...")        
-            
+
+print("exiting...")
 
 

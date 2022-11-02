@@ -35,3 +35,17 @@ class CML:
             return(node)
         else:
             return("end of list")
+    def getAllNodes(auth, server, lab ):
+        headers = {
+        'accept': 'application/json',
+        'Authorization': auth,
+        }
+
+        response = requests.get(f'https://{server}/api/v0/labs/{lab}/nodes/?simplified=true', headers=headers, verify=False)
+        
+        nodes = json.loads(response.text)
+
+        if response.status_code == 200:
+            return(nodes)
+        else:
+            return("end of list")
