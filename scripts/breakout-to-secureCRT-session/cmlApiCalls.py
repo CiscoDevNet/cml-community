@@ -4,7 +4,7 @@ requests.packages.urllib3.disable_warnings()
 
 
 class CML:
-    
+
     def auth(server, username, password):
         headers = {
             "accept": "application/json",
@@ -20,7 +20,22 @@ class CML:
 
         access_token = "Bearer " + json.loads(response.text)
         return(access_token)
-    
+
+    def getLabInfo(auth, server, lab):
+        headers = {
+        'accept': 'application/json',
+        'Authorization': auth,
+        }
+
+        response = requests.get(f'https://{server}/api/v0/labs/{lab}/?simplified=true', headers=headers, verify=False)
+
+        lab_info = json.loads(response.text)
+
+        if response.status_code == 200:
+            return(lab_info)
+        else:
+            return("end of list")
+
     def getNodesByID(auth, server, lab, node_id):
         headers = {
         'accept': 'application/json',
@@ -28,7 +43,7 @@ class CML:
         }
 
         response = requests.get(f'https://{server}/api/v0/labs/{lab}/nodes/{node_id}?simplified=true', headers=headers, verify=False)
-        
+
         node = json.loads(response.text)
 
         if response.status_code == 200:

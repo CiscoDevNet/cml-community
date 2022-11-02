@@ -28,15 +28,19 @@ allNodes = cml.getAllNodes(auth, server, lab)
 
 port = 9000
 
+## Changing to use Lab title vs Lab ID.
+labInfo = cml.getLabInfo(auth, server, lab)
+labName = labInfo.get("lab_title")
+
 ## Adding some code to determine if it is running on Mac OS.
 ## Not yet tested on Win OS.
 
 crtPath = "VanDyke/SecureCRT/Config/Sessions"
 if sys.platform == 'darwin':
-    appPath = "/Users/{}/Library/Application Support/{}/CML-{}".format(user,crtPath,lab)
+    appPath = "/Users/{}/Library/Application Support/{}/CML-{}".format(user,crtPath,labName)
     pathMode = 0o777
 else: 
-    appPath = "C:/Users/{}/AppData/Roaming/{}/CML-{}".format(user,crtPath,lab)
+    appPath = "C:/Users/{}/AppData/Roaming/{}/CML-{}".format(user,crtPath,labName)
 
 if os.path.exists(appPath):
     print("directory already exists... continue...")
