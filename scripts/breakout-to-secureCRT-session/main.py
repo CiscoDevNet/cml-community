@@ -26,8 +26,6 @@ auth = cml.auth(server, username, password)
 allNodes = cml.getAllNodes(auth, server, lab)
 # print(allNodes) # -- for troubleshooting
 
-N = True
-n_id = 0
 port = 9000
 
 ## Adding some code to determine if it is running on Mac OS.
@@ -49,7 +47,6 @@ else:
 nodeDict = {}
 
 for n_id in allNodes:
-    node_id = f"n{n_id}"
     response = cml.getNodesByID(auth, server, lab, n_id)
     nodeDict.update({response.get("label"): response.get("node_definition")})
 
