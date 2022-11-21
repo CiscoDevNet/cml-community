@@ -1,0 +1,64 @@
+id: cws
+sim:
+  linux_native:
+    driver: server
+    libvirt_domain_driver: kvm
+    disk_driver: virtio
+    nic_driver: virtio
+    ram: 8192
+    cpus: 4
+    data_volume: 1
+    boot_disk_size: 50
+    cpu_limit: 100
+    video:
+      memory: 4
+      model: cirrus
+inherited:
+  image:
+    ram: true
+    cpus: true
+    cpu_limit: true
+    data_volume: true
+    boot_disk_size: true
+  node:
+    ram: true
+    cpus: true
+    cpu_limit: true
+    data_volume: true
+    boot_disk_size: true
+general:
+  nature: server
+  description: Cisco Certified DevNet Expert Candidate Workstation
+  read_only: false
+schema_version: 0.0.1
+configuration:
+  generator:
+    driver: ubuntu
+device:
+  interfaces:
+    physical:
+      - ens3
+      - ens4
+      - ens5
+      - ens6
+    has_loopback_zero: false
+    default_count: 1
+    serial_ports: 1
+boot:
+  timeout: 180
+  completed:
+    - Welcome to Ubuntu
+    - expert-cws login
+pyats:
+  os: linux
+  use_in_testbed: true
+ui:
+  group: Others
+  icon: server
+  label: DevNet Expert CWS
+  label_prefix: cws-
+  visible: true
+  description: |-
+    Cisco Certified DevNet Expert Candidate Workstation (Ubuntu 20.04)
+
+    8 GB DRAM, 4 vCPU (can be adjusted)

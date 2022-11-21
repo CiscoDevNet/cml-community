@@ -1,9 +1,7 @@
-# Palo Alto Networks vFW image
-
-This directory contains the node definition for PAN-OS 10
+This directory contains the node definition for PAN-OS 10.
 
 
-### General Information
+# Notes
 
 default username and password are admin/admin
 mgmt interface defaults to dhcp
@@ -22,7 +20,3 @@ To set a static ip address issue the following commands :
         set deviceconfig system type static
         set deviceconfig system ip-address <Firewall-IP> netmask <netmask> default-gateway <gateway-IP> dns-setting servers primary <DNS-IP>
         commit
-
-
-
-
