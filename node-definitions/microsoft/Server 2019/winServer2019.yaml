@@ -25,7 +25,7 @@ sim:
     nic_driver: e1000
     boot_disk_size: 64
     video:
-      model: cirrus-vga
+      model: cirrus
       memory: 16
 boot:
   timeout: 300
