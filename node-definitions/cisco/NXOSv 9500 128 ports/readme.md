@@ -1,11 +1,11 @@
-NXOSv 9500 with 128 ports
+# NXOSv 9500 with 128 ports
 This directory contains the following node definition:
 
-nxosv9500-148.yaml - Nexus 9500v with 128 ports node definition
-Image Availability
+*`nxosv9500-148.yaml` - Nexus 9500v with 128 ports node definition
+### Image Availability
 Images for the NXOSv 9500 can be downloaded from https://software.cisco.com/download/home/286312239/type/282088129/release/9.3(8) with a proper Cisco.com account and entitlement.
 
-Notes
+### Notes
 NXOSv 9300 is the default image in CML, it has 64 ports. 
 NXOSv 9500 allows inserting additional line cards there by increasing the number of ports. 
 This node definition has boot strap configs to insert line cards in the following order. 
