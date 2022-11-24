@@ -29,7 +29,6 @@ sim:
     ram: 6144
     cpus: 2
     nic_driver: e1000
-    boot_disk_size: 32
     video:
       model: cirrus
       memory: 16
