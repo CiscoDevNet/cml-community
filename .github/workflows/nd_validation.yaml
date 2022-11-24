@@ -1,0 +1,23 @@
+name: Node definition schema check
+
+on: 
+  push:
+    paths:
+      - 'node-definitions/**/*.yaml'
+  pull_request:
+    paths:
+      - 'node-definitions/**/*.yaml'
+
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validations of node definitions
+        uses: thiagodnf/yaml-schema-checker@v0.0.8
+        with:
+          jsonSchemaFile: validation_schemas/node_definition.json
+          yamlFiles: node-definitions/**/*.yaml

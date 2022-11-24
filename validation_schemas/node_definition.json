@@ -1,0 +1,2682 @@
+{
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "id",
+        "boot",
+        "sim",
+        "general",
+        "configuration",
+        "device",
+        "ui"
+    ],
+    "properties": {
+        "id": {
+            "$ref": "#/schemas/DefinitionID",
+            "description": "A symbolic name used to identify this node definition, such as `iosv` or `asav`."
+        },
+        "boot": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "timeout"
+            ],
+            "properties": {
+                "timeout": {
+                    "type": "integer",
+                    "maximum": 86400,
+                    "description": "Timeout (seconds).",
+                    "example": 60
+                },
+                "completed": {
+                    "type": "array",
+                    "minItems": 1,
+                    "description": "A list of strings which should be matched to determine when the node is \"ready\".",
+                    "example": null,
+                    "items": {
+                        "type": "string",
+                        "maxLength": 128
+                    }
+                },
+                "uses_regex": {
+                    "type": "boolean",
+                    "description": "Whether the strings in `completed` should be treated as regular expressions or not."
+                }
+            }
+        },
+        "sim": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "Simulation parameters.",
+            "properties": {
+                "linux_native": {
+                    "$ref": "#/schemas/LinuxNativeSimulation"
+                }
+            },
+            "required": [
+                "linux_native"
+            ]
+        },
+        "general": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "General information for the node type.",
+            "required": [
+                "nature",
+                "read_only"
+            ],
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "maxLength": 4096,
+                    "description": "A description of the node type."
+                },
+                "nature": {
+                    "type": "string",
+                    "description": "The \"nature\" / kind of the node type defined here.",
+                    "enum": [
+                        "router",
+                        "switch",
+                        "server",
+                        "host",
+                        "cloud",
+                        "firewall",
+                        "external_connector"
+                    ]
+                },
+                "read_only": {
+                    "type": "boolean",
+                    "description": "Whether the node definition can be deleted or not."
+                }
+            }
+        },
+        "configuration": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "generator"
+            ],
+            "properties": {
+                "generator": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "driver"
+                    ],
+                    "properties": {
+                        "driver": {
+                            "type": [
+                                "null",
+                                "string"
+                            ],
+                            "description": "Configuration Driver.",
+                            "enum": [
+                                "asav",
+                                "alpine",
+                                "cat9k",
+                                "coreos",
+                                "csr1000v",
+                                "desktop",
+                                "iol",
+                                "iol-l2",
+                                "iosv",
+                                "iosvl2",
+                                "iosxrv",
+                                "iosxrv9000",
+                                "lxc",
+                                "nxosv",
+                                "nxosv9000",
+                                "pagent",
+                                "server",
+                                "trex",
+                                "ubuntu",
+                                "wan_emulator",
+                                null
+                            ]
+                        }
+                    }
+                },
+                "provisioning": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "files",
+                        "media_type",
+                        "volume_name"
+                    ],
+                    "properties": {
+                        "files": {
+                            "type": "array",
+                            "description": "List of node configuration file objects.",
+                            "minItems": 1,
+                            "items": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "required": [
+                                    "editable",
+                                    "name"
+                                ],
+                                "properties": {
+                                    "content": {
+                                        "$ref": "#/schemas/NodeConfiguration"
+                                    },
+                                    "editable": {
+                                        "type": "boolean",
+                                        "description": "Is the configuration file editable?"
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "maxLength": 64,
+                                        "description": "The ame of the configuration file."
+                                    }
+                                }
+                            }
+                        },
+                        "media_type": {
+                            "type": "string",
+                            "description": "The type of the configuration media.",
+                            "enum": [
+                                "iso",
+                                "fat"
+                            ]
+                        },
+                        "volume_name": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 32,
+                            "description": "The volume name of the configuration media."
+                        }
+                    }
+                }
+            }
+        },
+        "device": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "interfaces"
+            ],
+            "properties": {
+                "interfaces": {
+                    "$ref": "#/schemas/Interfaces"
+                }
+            }
+        },
+        "ui": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "icon",
+                "visible",
+                "label",
+                "label_prefix"
+            ],
+            "properties": {
+                "visible": {
+                    "type": "boolean",
+                    "description": "Determines visibility in the UI for this node type."
+                },
+                "group": {
+                    "type": "string",
+                    "description": "Intended to group similar node types (unused).",
+                    "enum": [
+                        "Cisco",
+                        "Others"
+                    ]
+                },
+                "description": {
+                    "type": "string",
+                    "maxLength": 4096,
+                    "description": "The description of the node type (can be Markdown)."
+                },
+                "label_prefix": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 32,
+                    "description": "The textual prefix for node labels."
+                },
+                "icon": {
+                    "type": "string",
+                    "description": "The icon to use with this node type.",
+                    "enum": [
+                        "router",
+                        "switch",
+                        "server",
+                        "host",
+                        "cloud",
+                        "firewall",
+                        "access_point",
+                        "wlc"
+                    ]
+                },
+                "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 32,
+                    "description": "The node label."
+                }
+            }
+        },
+        "inherited": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "image",
+                "node"
+            ],
+            "properties": {
+                "image": {
+                    "$ref": "#/schemas/VMProperties"
+                },
+                "node": {
+                    "$ref": "#/schemas/VMProperties"
+                }
+            }
+        },
+        "pyats": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "os"
+            ],
+            "properties": {
+                "os": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 32,
+                    "description": "The operating system as defined / understood by pyATS."
+                },
+                "series": {
+                    "minLength": 1,
+                    "maxLength": 32,
+                    "type": "string",
+                    "description": "The device series as defined by pyATS / Unicon."
+                },
+                "model": {
+                    "minLength": 1,
+                    "maxLength": 32,
+                    "type": "string",
+                    "description": "The device model as defined by pyATS / Unicon."
+                },
+                "use_in_testbed": {
+                    "type": "boolean",
+                    "description": "Use this device in an exported testbed?"
+                },
+                "username": {
+                    "minLength": 1,
+                    "maxLength": 64,
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "description": "Use this username with pyATS / Unicon when interacting with this node type."
+                },
+                "password": {
+                    "minLength": 1,
+                    "maxLength": 128,
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "description": "Use this password with pyATS / Unicon when interacting with this node type."
+                },
+                "config_extract_command": {
+                    "maxLength": 4096,
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "description": "This is the CLI command to use when configurations should be extracted from a device of this node type."
+                }
+            }
+        },
+        "schema_version": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 32,
+            "description": "The schema version used for this node type.",
+            "example": "0.0.1"
+        }
+    },
+    "schemas": {
+        "LinuxNativeSimulation": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "Base for simulation objects.",
+            "required": [
+                "libvirt_domain_driver",
+                "driver"
+            ],
+            "properties": {
+                "libvirt_domain_driver": {
+                    "type": "string",
+                    "description": "Domain Driver.",
+                    "enum": [
+                        "kvm",
+                        "lxc",
+                        "none"
+                    ]
+                },
+                "driver": {
+                    "type": "string",
+                    "description": "Simulation Driver.",
+                    "enum": [
+                        "asav",
+                        "alpine",
+                        "cat9k",
+                        "coreos",
+                        "csr1000v",
+                        "external_connector",
+                        "iol",
+                        "iol-l2",
+                        "iosv",
+                        "iosvl2",
+                        "iosxrv",
+                        "iosxrv9000",
+                        "lxc",
+                        "nxosv",
+                        "nxosv9000",
+                        "pagent",
+                        "server",
+                        "trex",
+                        "ubuntu",
+                        "unmanaged_switch",
+                        "wan_emulator"
+                    ]
+                },
+                "disk_driver": {
+                    "type": "string",
+                    "description": "Disk Driver.",
+                    "enum": [
+                        "ide",
+                        "sata",
+                        "virtio"
+                    ]
+                },
+                "efi_boot": {
+                    "type": "boolean",
+                    "description": "If set, use EFI boot for the VM."
+                },
+                "efi_code": {
+                    "$ref": "#/schemas/FilePath",
+                    "description": "EFI code file path; if unset, use default."
+                },
+                "efi_vars": {
+                    "$ref": "#/schemas/FilePath",
+                    "description": "EFI var file path; if unset, use no variable file."
+                },
+                "machine_type": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 32,
+                    "description": "QEMU machine type, defaults to pc; q35 is more modern."
+                },
+                "ram": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 1048576,
+                    "description": "Memory in MB."
+                },
+                "cpus": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 128,
+                    "description": "CPUs."
+                },
+                "cpu_limit": {
+                    "type": "integer",
+                    "description": "CPU Limit.",
+                    "minimum": 20,
+                    "maximum": 100
+                },
+                "cpu_model": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 32
+                },
+                "nic_driver": {
+                    "type": "string",
+                    "description": "Network Driver.",
+                    "enum": [
+                        "virtio",
+                        "e1000",
+                        "rtl8139",
+                        "vmxnet3"
+                    ]
+                },
+                "data_volume": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 4096,
+                    "description": "Data Disk Size in GiB."
+                },
+                "boot_disk_size": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 4096,
+                    "description": "Boot Disk Size in GiB."
+                },
+                "video": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "description": "If present, then VNC can be used with the node VM.",
+                    "required": [
+                        "memory"
+                    ],
+                    "properties": {
+                        "model": {
+                            "type": "string",
+                            "description": "Video Model.",
+                            "enum": [
+                                "std",
+                                "cirrus",
+                                "vmware",
+                                "qxl",
+                                "xenfb",
+                                "tcx",
+                                "cg3",
+                                "virtio",
+                                "none"
+                            ]
+                        },
+                        "memory": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "maximum": 128,
+                            "description": "Video Memory."
+                        }
+                    }
+                }
+            },
+            "oneOf": [
+                {
+                    "properties": {
+                        "libvirt_domain_driver": {
+                            "enum": [
+                                "kvm"
+                            ]
+                        }
+                    },
+                    "required": [
+                        "cpus",
+                        "ram",
+                        "nic_driver",
+                        "disk_driver"
+                    ]
+                },
+                {
+                    "properties": {
+                        "libvirt_domain_driver": {
+                            "enum": [
+                                "lxc"
+                            ]
+                        }
+                    },
+                    "required": [
+                        "ram"
+                    ]
+                },
+                {
+                    "properties": {
+                        "libvirt_domain_driver": {
+                            "enum": [
+                                "none"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "Interfaces": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "serial_ports",
+                "physical",
+                "has_loopback_zero"
+            ],
+            "properties": {
+                "has_loopback_zero": {
+                    "type": "boolean",
+                    "description": "Has `loopback0` interface (used with ANK)."
+                },
+                "serial_ports": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 64,
+                    "description": "Number of serial Ports."
+                },
+                "default_count": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 64,
+                    "description": "Default number of physical interfaces."
+                },
+                "loopback": {
+                    "type": "array",
+                    "description": "List of loopback interfaces.",
+                    "minItems": 1,
+                    "items": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 32
+                    }
+                },
+                "management": {
+                    "type": "array",
+                    "description": "List of management interfaces.",
+                    "minItems": 1,
+                    "items": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 32
+                    }
+                },
+                "physical": {
+                    "type": "array",
+                    "description": "List of physical interfaces.",
+                    "minItems": 1,
+                    "items": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 32
+                    }
+                }
+            },
+            "oneOf": [
+                {
+                    "properties": {
+                        "has_loopback_zero": {
+                            "enum": [
+                                true
+                            ]
+                        }
+                    },
+                    "required": [
+                        "loopback"
+                    ]
+                },
+                {
+                    "properties": {
+                        "has_loopback_zero": {
+                            "enum": [
+                                false
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "VMProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "Virtual Machine properties.",
+            "required": [
+                "ram",
+                "cpus",
+                "data_volume",
+                "boot_disk_size"
+            ],
+            "properties": {
+                "ram": {
+                    "type": "boolean",
+                    "description": "RAM."
+                },
+                "cpus": {
+                    "type": "boolean",
+                    "description": "CPU Count."
+                },
+                "cpu_limit": {
+                    "type": "boolean",
+                    "description": "CPU Limit."
+                },
+                "data_volume": {
+                    "type": "boolean",
+                    "description": "Data Disk Size."
+                },
+                "boot_disk_size": {
+                    "type": "boolean",
+                    "description": "Boot Disk Size."
+                }
+            }
+        },
+        "NodeDefinition": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "boot",
+                "sim",
+                "general",
+                "configuration",
+                "device",
+                "ui"
+            ],
+            "properties": {
+                "id": {
+                    "$ref": "#/schemas/DefinitionID",
+                    "description": "A symbolic name used to identify this node definition, such as `iosv` or `asav`."
+                },
+                "boot": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "timeout"
+                    ],
+                    "properties": {
+                        "timeout": {
+                            "type": "integer",
+                            "maximum": 86400,
+                            "description": "Timeout (seconds).",
+                            "example": 60
+                        },
+                        "completed": {
+                            "type": "array",
+                            "minItems": 1,
+                            "description": "A list of strings which should be matched to determine when the node is \"ready\".",
+                            "example": null,
+                            "items": {
+                                "type": "string",
+                                "maxLength": 128
+                            }
+                        },
+                        "uses_regex": {
+                            "type": "boolean",
+                            "description": "Whether the strings in `completed` should be treated as regular expressions or not."
+                        }
+                    }
+                },
+                "sim": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "description": "Simulation parameters.",
+                    "properties": {
+                        "linux_native": {
+                            "$ref": "#/schemas/LinuxNativeSimulation"
+                        }
+                    },
+                    "required": [
+                        "linux_native"
+                    ]
+                },
+                "general": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "description": "General information for the node type.",
+                    "required": [
+                        "nature",
+                        "read_only"
+                    ],
+                    "properties": {
+                        "description": {
+                            "type": "string",
+                            "maxLength": 4096,
+                            "description": "A description of the node type."
+                        },
+                        "nature": {
+                            "type": "string",
+                            "description": "The \"nature\" / kind of the node type defined here.",
+                            "enum": [
+                                "router",
+                                "switch",
+                                "server",
+                                "host",
+                                "cloud",
+                                "firewall",
+                                "external_connector"
+                            ]
+                        },
+                        "read_only": {
+                            "type": "boolean",
+                            "description": "Whether the node definition can be deleted or not."
+                        }
+                    }
+                },
+                "configuration": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "generator"
+                    ],
+                    "properties": {
+                        "generator": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": [
+                                "driver"
+                            ],
+                            "properties": {
+                                "driver": {
+                                    "type": [
+                                        "null",
+                                        "string"
+                                    ],
+                                    "description": "Configuration Driver.",
+                                    "enum": [
+                                        "asav",
+                                        "alpine",
+                                        "cat9k",
+                                        "coreos",
+                                        "csr1000v",
+                                        "desktop",
+                                        "iol",
+                                        "iol-l2",
+                                        "iosv",
+                                        "iosvl2",
+                                        "iosxrv",
+                                        "iosxrv9000",
+                                        "lxc",
+                                        "nxosv",
+                                        "nxosv9000",
+                                        "pagent",
+                                        "server",
+                                        "trex",
+                                        "ubuntu",
+                                        "wan_emulator"
+                                    ]
+                                }
+                            }
+                        },
+                        "provisioning": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": [
+                                "files",
+                                "media_type",
+                                "volume_name"
+                            ],
+                            "properties": {
+                                "files": {
+                                    "type": "array",
+                                    "description": "List of node configuration file objects.",
+                                    "minItems": 1,
+                                    "items": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "required": [
+                                            "editable",
+                                            "name"
+                                        ],
+                                        "properties": {
+                                            "content": {
+                                                "$ref": "#/schemas/NodeConfiguration"
+                                            },
+                                            "editable": {
+                                                "type": "boolean",
+                                                "description": "Is the configuration file editable?"
+                                            },
+                                            "name": {
+                                                "type": "string",
+                                                "minLength": 1,
+                                                "maxLength": 64,
+                                                "description": "The ame of the configuration file."
+                                            }
+                                        }
+                                    }
+                                },
+                                "media_type": {
+                                    "type": "string",
+                                    "description": "The type of the configuration media.",
+                                    "enum": [
+                                        "iso",
+                                        "fat"
+                                    ]
+                                },
+                                "volume_name": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 32,
+                                    "description": "The volume name of the configuration media."
+                                }
+                            }
+                        }
+                    }
+                },
+                "device": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "interfaces"
+                    ],
+                    "properties": {
+                        "interfaces": {
+                            "$ref": "#/schemas/Interfaces"
+                        }
+                    }
+                },
+                "ui": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "icon",
+                        "visible",
+                        "label",
+                        "label_prefix"
+                    ],
+                    "properties": {
+                        "visible": {
+                            "type": "boolean",
+                            "description": "Determines visibility in the UI for this node type."
+                        },
+                        "group": {
+                            "type": "string",
+                            "description": "Intended to group similar node types (unused).",
+                            "enum": [
+                                "Cisco",
+                                "Others"
+                            ]
+                        },
+                        "description": {
+                            "type": "string",
+                            "maxLength": 4096,
+                            "description": "The description of the node type (can be Markdown)."
+                        },
+                        "label_prefix": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 32,
+                            "description": "The textual prefix for node labels."
+                        },
+                        "icon": {
+                            "type": "string",
+                            "description": "The icon to use with this node type.",
+                            "enum": [
+                                "router",
+                                "switch",
+                                "server",
+                                "host",
+                                "cloud",
+                                "firewall",
+                                "access_point",
+                                "wlc"
+                            ]
+                        },
+                        "label": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 32,
+                            "description": "The node label."
+                        }
+                    }
+                },
+                "inherited": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "image",
+                        "node"
+                    ],
+                    "properties": {
+                        "image": {
+                            "$ref": "#/schemas/VMProperties"
+                        },
+                        "node": {
+                            "$ref": "#/schemas/VMProperties"
+                        }
+                    }
+                },
+                "pyats": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "os"
+                    ],
+                    "properties": {
+                        "os": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 32,
+                            "description": "The operating system as defined / understood by pyATS."
+                        },
+                        "series": {
+                            "minLength": 1,
+                            "maxLength": 32,
+                            "type": "string",
+                            "description": "The device series as defined by pyATS / Unicon."
+                        },
+                        "model": {
+                            "minLength": 1,
+                            "maxLength": 32,
+                            "type": "string",
+                            "description": "The device model as defined by pyATS / Unicon."
+                        },
+                        "use_in_testbed": {
+                            "type": "boolean",
+                            "description": "Use this device in an exported testbed?"
+                        },
+                        "username": {
+                            "minLength": 1,
+                            "maxLength": 64,
+                            "type": [
+                                "null",
+                                "string"
+                            ],
+                            "description": "Use this username with pyATS / Unicon when interacting with this node type."
+                        },
+                        "password": {
+                            "minLength": 1,
+                            "maxLength": 128,
+                            "type": [
+                                "null",
+                                "string"
+                            ],
+                            "description": "Use this password with pyATS / Unicon when interacting with this node type."
+                        },
+                        "config_extract_command": {
+                            "maxLength": 4096,
+                            "type": [
+                                "null",
+                                "string"
+                            ],
+                            "description": "This is the CLI command to use when configurations should be extracted from a device of this node type."
+                        }
+                    }
+                },
+                "schema_version": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 32,
+                    "description": "The schema version used for this node type.",
+                    "example": "0.0.1"
+                }
+            }
+        },
+        "NodeDefinitionList": {
+            "type": "array",
+            "items": {
+                "$ref": "#/schemas/NodeDefinition"
+            }
+        },
+        "UUID4": {
+            "type": "string",
+            "format": "uuid",
+            "description": "A UUID4.",
+            "example": "90f84e38-a71c-4d57-8d90-00fa8a197385",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}(?!\\n)$"
+        },
+        "UUID4Array": {
+            "type": "array",
+            "items": {
+                "$ref": "#/schemas/UUID4"
+            },
+            "example": [
+                "90f84e38-a71c-4d57-8d90-00fa8a197385",
+                "60f84e39-ffff-4d99-8a78-00fa8aaf5666"
+            ]
+        },
+        "NullableUUID4": {
+            "type": [
+                "null",
+                "string"
+            ],
+            "format": "uuid",
+            "description": "An optional UUID4 reference.",
+            "example": "90f84e38-a71c-4d57-8d90-00fa8a197385",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}(?!\\n)$"
+        },
+        "FilePath": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255,
+            "pattern": "^(?![.])[^!@#%^&*();$\\n\\r\\t)/\\\\]{1,255}(?![\\n\\t])$"
+        },
+        "OptionalFilePath": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 255,
+            "pattern": "^(?![.])[^!@#%^&*();$\\n\\r\\t)/\\\\]{0,255}(?![\\n\\t])$"
+        },
+        "GenericDescription": {
+            "type": "string",
+            "maxLength": 4096
+        },
+        "IPAddress": {
+            "type": "string",
+            "pattern": "^((([0-9]{1,3}[.]){3}[0-9]{1,3})|([0-9a-fA-F:]{3,39}))(?!\n)$"
+        },
+        "LinuxInterfaceName": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]{1,15}(?!\n)$"
+        },
+        "Hostname": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-]{1,64}(?!\n)$"
+        },
+        "HostPort": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128,
+            "pattern": "^([a-zA-Z0-9.-]+|\\[[0-9a-fA-F:]{3,39}(%[a-z0-9]+)?\\])(:[0-9]{1,5})?(?!\n)$"
+        },
+        "LabDescription": {
+            "$ref": "#/schemas/GenericDescription",
+            "description": "Additional, textual free-form detail of the lab.",
+            "example": "CCNA study lab"
+        },
+        "LabNotes": {
+            "$ref": "#/schemas/GenericDescription",
+            "description": "Additional, textual free-form Lab notes.",
+            "example": "Find why this topology does not perform as expected!"
+        },
+        "LabTitle": {
+            "type": "string",
+            "description": "Title of the Lab.",
+            "minLength": 1,
+            "maxLength": 64,
+            "example": "Lab at Mon 17:27 PM"
+        },
+        "TopologyID": {
+            "type": "string",
+            "description": "Element ID.",
+            "minLength": 1,
+            "maxLength": 64,
+            "example": "l1"
+        },
+        "TopologySchemaVersion": {
+            "type": "string",
+            "description": "Topology schema version.",
+            "example": "0.2.0",
+            "enum": [
+                "0.0.1",
+                "0.0.2",
+                "0.0.3",
+                "0.0.4",
+                "0.0.5",
+                "0.1.0",
+                "0.2.0"
+            ]
+        },
+        "DateTimeString": {
+            "type": "string",
+            "description": "Datetime string in ISO8601 format.",
+            "example": "2021-02-28T07:33:47+00:00",
+            "maxLength": 32,
+            "format": "date-time"
+        },
+        "Ram": {
+            "type": [
+                "integer",
+                "null"
+            ],
+            "format": "int32",
+            "minimum": 1,
+            "maximum": 1048576
+        },
+        "Cpus": {
+            "type": [
+                "integer",
+                "null"
+            ],
+            "format": "int32",
+            "minimum": 1,
+            "maximum": 128
+        },
+        "CpuLimit": {
+            "type": [
+                "integer",
+                "null"
+            ],
+            "format": "int32",
+            "minimum": 20,
+            "maximum": 100
+        },
+        "DiskSpace": {
+            "type": [
+                "integer",
+                "null"
+            ],
+            "format": "int32",
+            "minimum": 0,
+            "maximum": 4096
+        },
+        "Label": {
+            "type": "string",
+            "description": "A label.",
+            "minLength": 1,
+            "maxLength": 128,
+            "example": "Any human-readable text"
+        },
+        "DefinitionID": {
+            "type": "string",
+            "description": "Name of the node or image definition (max 250 UTF-8 bytes).",
+            "minLength": 1,
+            "maxLength": 250,
+            "pattern": "^(?![.])[^!@#%^&*();$\\n\\r\\t)/\\\\]{1,250}(?![\\n\\t])$",
+            "example": "server"
+        },
+        "NullableDefinitionID": {
+            "type": [
+                "null",
+                "string"
+            ],
+            "description": "Name of the optional node or image definition (max 250 UTF-8 bytes).",
+            "minLength": 1,
+            "maxLength": 250,
+            "pattern": "^(?![.])[^!@#%^&*();$\\n\\r\\t)/\\\\]{1,250}(?![\\n\\t])$"
+        },
+        "Tag": {
+            "type": "string",
+            "description": "A tag.",
+            "maxLength": 64
+        },
+        "TagArray": {
+            "type": "array",
+            "description": "Array of string tags.",
+            "items": {
+                "$ref": "#/schemas/Tag"
+            }
+        },
+        "NodeConfiguration": {
+            "type": "string",
+            "description": "Node configuration (no more than 20MB)."
+        },
+        "Coordinate": {
+            "type": "integer",
+            "description": "A coordinate.",
+            "minimum": -15000,
+            "maximum": 15000
+        },
+        "CoordinateFloat": {
+            "type": "number",
+            "format": "float",
+            "description": "A coordinate (floating point).",
+            "minimum": -15000,
+            "maximum": 15000
+        },
+        "InterfaceSlot": {
+            "type": "integer",
+            "description": "Number of slots.",
+            "minimum": 0,
+            "maximum": 128
+        },
+        "InterfaceType": {
+            "description": "Interface type.",
+            "type": "string",
+            "enum": [
+                "physical",
+                "loopback"
+            ]
+        },
+        "SerialDevice": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "Serial device.",
+            "properties": {
+                "console_key": {
+                    "$ref": "#/schemas/UUID4"
+                },
+                "device_number": {
+                    "type": "integer"
+                }
+            }
+        },
+        "SerialDeviceList": {
+            "type": "array",
+            "description": "List of SerialDevice objects.",
+            "items": {
+                "$ref": "#/schemas/SerialDevice"
+            }
+        },
+        "LabSchema": {
+            "type": "object"
+        },
+        "State": {
+            "type": "string",
+            "description": "The state of the element.",
+            "enum": [
+                "DEFINED_ON_CORE",
+                "STOPPED",
+                "STARTED"
+            ]
+        },
+        "BootProgress": {
+            "type": "string",
+            "description": "Node boot progress.",
+            "enum": [
+                "Not running",
+                "Booting",
+                "Booted"
+            ]
+        },
+        "LabState": {
+            "description": "The overall state of the lab.",
+            "$ref": "#/schemas/State"
+        },
+        "IdObject": {
+            "required": [
+                "id"
+            ],
+            "properties": {
+                "id": {
+                    "$ref": "#/schemas/UUID4"
+                }
+            }
+        },
+        "LabGroups": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "id",
+                    "permission"
+                ],
+                "properties": {
+                    "id": {
+                        "$ref": "#/schemas/UUID4"
+                    },
+                    "permission": {
+                        "type": "string",
+                        "enum": [
+                            "read_only",
+                            "read_write"
+                        ]
+                    }
+                }
+            }
+        },
+        "LabCreate": {
+            "type": [
+                "object",
+                "null"
+            ],
+            "additionalProperties": false,
+            "description": "Lab metadata.",
+            "properties": {
+                "title": {
+                    "$ref": "#/schemas/LabTitle"
+                },
+                "owner": {
+                    "$ref": "#/schemas/UUID4",
+                    "description": "The owner of the lab."
+                },
+                "description": {
+                    "$ref": "#/schemas/LabDescription"
+                },
+                "notes": {
+                    "$ref": "#/schemas/LabNotes"
+                },
+                "groups": {
+                    "$ref": "#/schemas/LabGroups",
+                    "description": "Array of LabGroup objects - mapping from group ID to permission."
+                }
+            }
+        },
+        "LinkCreate": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "src_int",
+                "dst_int"
+            ],
+            "properties": {
+                "src_int": {
+                    "$ref": "#/schemas/UUID4"
+                },
+                "dst_int": {
+                    "$ref": "#/schemas/UUID4"
+                }
+            }
+        },
+        "InterfaceCreate": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "node"
+            ],
+            "properties": {
+                "node": {
+                    "$ref": "#/schemas/UUID4"
+                },
+                "slot": {
+                    "$ref": "#/schemas/InterfaceSlot"
+                }
+            }
+        },
+        "LinkBase": {
+            "type": "object",
+            "description": "Link object.",
+            "properties": {
+                "lab_id": {
+                    "$ref": "#/schemas/UUID4",
+                    "description": "ID of the lab."
+                },
+                "link_capture_key": {
+                    "type": "string",
+                    "maxLength": 64,
+                    "description": "The link capture key."
+                },
+                "label": {
+                    "$ref": "#/schemas/Label",
+                    "description": "The link label."
+                },
+                "state": {
+                    "description": "The status of the link in the lab.",
+                    "$ref": "#/schemas/State"
+                }
+            }
+        },
+        "Link": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/schemas/LinkBase"
+                }
+            ],
+            "properties": {
+                "id": {
+                    "$ref": "#/schemas/UUID4",
+                    "description": "ID of the link."
+                },
+                "interface_a": {
+                    "$ref": "#/schemas/UUID4",
+                    "description": "ID of the interface A."
+                },
+                "interface_b": {
+                    "$ref": "#/schemas/UUID4",
+                    "description": "ID of the interface B."
+                },
+                "node_a": {
+                    "$ref": "#/schemas/UUID4",
+                    "description": "ID of the node A."
+                },
+                "node_b": {
+                    "$ref": "#/schemas/UUID4",
+                    "description": "ID of the node B."
+                }
+            },
+            "additionalProperties": false
+        },
+        "InterfaceBase": {
+            "type": "object",
+            "description": "Interface object.",
+            "properties": {
+                "lab_id": {
+                    "$ref": "#/schemas/UUID4",
+                    "description": "ID of the lab."
+                },
+                "label": {
+                    "$ref": "#/schemas/Label",
+                    "description": "The interface label."
+                },
+                "type": {
+                    "$ref": "#/schemas/InterfaceType"
+                },
+                "slot": {
+                    "$ref": "#/schemas/InterfaceSlot"
+                },
+                "mac_address": {
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "maxLength": 32,
+                    "description": "MAC address."
+                },
+                "is_connected": {
+                    "type": "boolean",
+                    "description": "Whether this interface is connected (in-use)."
+                },
+                "state": {
+                    "$ref": "#/schemas/State",
+                    "description": "The status of the link in the lab."
+                }
+            }
+        },
+        "InterfaceOperationalData": {
+            "type": "object",
+            "properties": {
+                "mac_address": {
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "maxLength": 32,
+                    "description": "MAC address."
+                },
+                "src_udp_port": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 65535,
+                    "description": "Source UDP port."
+                },
+                "dst_udp_port": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 65535,
+                    "description": "Destination UDP port."
+                },
+                "device_name": {
+                    "type": "string",
+                    "maxLength": 64,
+                    "description": "Device name."
+                },
+                "operational": {
+                    "$ref": "#/schemas/InterfaceOperationalData",
+                    "description": "Additional operational data associated with the interface."
+                }
+            }
+        },
+        "Interface": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/schemas/InterfaceBase"
+                }
+            ],
+            "properties": {
+                "id": {
+                    "$ref": "#/schemas/UUID4",
+                    "description": "ID of the interface."
+                },
+                "node": {
+                    "$ref": "#/schemas/UUID4",
+                    "description": "ID of the node."
+                },
+                "src_udp_port": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 65535,
+                    "description": "Source UDP port."
+                },
+                "dst_udp_port": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 65535,
+                    "description": "Destination UDP port."
+                },
+                "device_name": {
+                    "type": "string",
+                    "maxLength": 64,
+                    "description": "Device name."
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "label",
+                "slot"
+            ]
+        },
+        "NodeBase": {
+            "type": "object",
+            "description": "Node object base.",
+            "properties": {
+                "x": {
+                    "$ref": "#/schemas/Coordinate",
+                    "description": "Node X coordinate."
+                },
+                "y": {
+                    "$ref": "#/schemas/Coordinate",
+                    "description": "Node Y coordinate."
+                },
+                "label": {
+                    "$ref": "#/schemas/Label",
+                    "description": "A label for the specified node."
+                },
+                "configuration": {
+                    "$ref": "#/schemas/NodeConfiguration",
+                    "description": "The initial bootstrap configuration for the node."
+                },
+                "image_definition": {
+                    "$ref": "#/schemas/NullableDefinitionID",
+                    "description": "Image Definition ID for the specified node."
+                },
+                "ram": {
+                    "$ref": "#/schemas/Ram"
+                },
+                "cpus": {
+                    "$ref": "#/schemas/Cpus"
+                },
+                "cpu_limit": {
+                    "$ref": "#/schemas/CpuLimit"
+                },
+                "data_volume": {
+                    "$ref": "#/schemas/DiskSpace"
+                },
+                "boot_disk_size": {
+                    "$ref": "#/schemas/DiskSpace"
+                },
+                "hide_links": {
+                    "type": "boolean",
+                    "description": "Whether to hide links to/from this node."
+                },
+                "tags": {
+                    "$ref": "#/schemas/TagArray"
+                }
+            },
+            "additionalProperties": true
+        },
+        "NodeUpdate": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/schemas/NodeBase"
+                }
+            ],
+            "properties": {
+                "x": {},
+                "y": {},
+                "label": {},
+                "configuration": {},
+                "image_definition": {},
+                "ram": {},
+                "cpus": {},
+                "cpu_limit": {},
+                "data_volume": {},
+                "boot_disk_size": {},
+                "hide_links": {},
+                "tags": {}
+            },
+            "additionalProperties": false
+        },
+        "NodeDefined": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/schemas/NodeBase"
+                }
+            ],
+            "properties": {
+                "node_definition": {
+                    "$ref": "#/schemas/DefinitionID",
+                    "description": "Node Definition ID for the specified node."
+                },
+                "x": {},
+                "y": {},
+                "label": {},
+                "configuration": {},
+                "image_definition": {},
+                "ram": {},
+                "cpus": {},
+                "cpu_limit": {},
+                "data_volume": {},
+                "boot_disk_size": {},
+                "hide_links": {},
+                "tags": {}
+            },
+            "additionalProperties": true,
+            "required": [
+                "label",
+                "node_definition",
+                "x",
+                "y"
+            ]
+        },
+        "NodeCreate": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/schemas/NodeDefined"
+                }
+            ],
+            "properties": {
+                "node_definition": {},
+                "x": {},
+                "y": {},
+                "label": {},
+                "configuration": {},
+                "image_definition": {},
+                "ram": {},
+                "cpus": {},
+                "cpu_limit": {},
+                "data_volume": {},
+                "boot_disk_size": {},
+                "hide_links": {},
+                "tags": {}
+            },
+            "additionalProperties": false,
+            "required": [
+                "label",
+                "node_definition",
+                "x",
+                "y"
+            ]
+        },
+        "NodeOperationalData": {
+            "type": "object",
+            "description": "Operational data resolved when a node was started.",
+            "properties": {
+                "compute_id": {
+                    "$ref": "#/schemas/NullableUUID4",
+                    "description": "The ID of the compute host where this node is deployed."
+                },
+                "vnc_key": {
+                    "$ref": "#/schemas/NullableUUID4",
+                    "description": "The key used to connect to a node's graphical VNC console if supported by node."
+                },
+                "image_definition": {
+                    "$ref": "#/schemas/NullableDefinitionID",
+                    "description": "Image definition ID used for the specified node."
+                },
+                "resource_pool": {
+                    "$ref": "#/schemas/NullableUUID4",
+                    "description": "Node was launched with resources from the given resource pool."
+                },
+                "ram": {
+                    "$ref": "#/schemas/Ram"
+                },
+                "cpus": {
+                    "$ref": "#/schemas/Cpus"
+                },
+                "cpu_limit": {
+                    "$ref": "#/schemas/CpuLimit"
+                },
+                "data_volume": {
+                    "$ref": "#/schemas/DiskSpace"
+                },
+                "boot_disk_size": {
+                    "$ref": "#/schemas/DiskSpace"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "boot_disk_size",
+                "cpu_limit",
+                "cpus",
+                "data_volume",
+                "ram",
+                "compute_id",
+                "image_definition",
+                "vnc_key"
+            ]
+        },
+        "Node": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/schemas/NodeDefined"
+                }
+            ],
+            "properties": {
+                "id": {
+                    "$ref": "#/schemas/UUID4",
+                    "description": "ID of the node."
+                },
+                "boot_progress": {
+                    "$ref": "#/schemas/BootProgress",
+                    "description": "Flag indicating whether the node appears to have completed its boot."
+                },
+                "compute_id": {
+                    "$ref": "#/schemas/NullableUUID4",
+                    "description": "The ID of the compute host where this node is deployed."
+                },
+                "operational": {
+                    "$ref": "#/schemas/NodeOperationalData",
+                    "description": "Additional operational data associated with the node."
+                },
+                "resource_pool": {
+                    "$ref": "#/schemas/NullableUUID4",
+                    "description": "Node was launched with resources from the given resource pool."
+                },
+                "state": {
+                    "$ref": "#/schemas/State",
+                    "description": "The state of the node."
+                },
+                "vnc_key": {
+                    "$ref": "#/schemas/NullableUUID4",
+                    "description": "The key used to connect to a node's graphical VNC console, if supported by node."
+                },
+                "x": {},
+                "y": {},
+                "label": {},
+                "configuration": {},
+                "node_definition": {},
+                "image_definition": {},
+                "cpu_limit": {},
+                "data_volume": {},
+                "boot_disk_size": {},
+                "hide_links": {},
+                "tags": {}
+            },
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "label",
+                "node_definition",
+                "x",
+                "y"
+            ]
+        },
+        "NodeTopology": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/schemas/NodeDefined"
+                }
+            ],
+            "properties": {
+                "id": {
+                    "$ref": "#/schemas/TopologyID",
+                    "description": "ID of the node."
+                },
+                "interfaces": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/schemas/InterfaceTopology"
+                    }
+                },
+                "x": {},
+                "y": {},
+                "label": {},
+                "configuration": {},
+                "node_definition": {},
+                "image_definition": {},
+                "ram": {},
+                "cpus": {},
+                "cpu_limit": {},
+                "data_volume": {},
+                "boot_disk_size": {},
+                "hide_links": {},
+                "tags": {}
+            },
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "label",
+                "node_definition",
+                "x",
+                "y"
+            ]
+        },
+        "LinkTopology": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "$ref": "#/schemas/TopologyID"
+                },
+                "i1": {
+                    "$ref": "#/schemas/TopologyID"
+                },
+                "i2": {
+                    "$ref": "#/schemas/TopologyID"
+                },
+                "n1": {
+                    "$ref": "#/schemas/TopologyID"
+                },
+                "n2": {
+                    "$ref": "#/schemas/TopologyID"
+                },
+                "label": {
+                    "$ref": "#/schemas/Label"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "i1",
+                "i2",
+                "n1",
+                "n2"
+            ]
+        },
+        "InterfaceTopology": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "$ref": "#/schemas/TopologyID"
+                },
+                "node": {
+                    "$ref": "#/schemas/TopologyID"
+                },
+                "label": {
+                    "$ref": "#/schemas/Label",
+                    "description": "The interface label."
+                },
+                "type": {
+                    "$ref": "#/schemas/InterfaceType"
+                },
+                "slot": {
+                    "$ref": "#/schemas/InterfaceSlot"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "type"
+            ]
+        },
+        "LabTopology": {
+            "type": "object",
+            "required": [
+                "version"
+            ],
+            "properties": {
+                "title": {
+                    "$ref": "#/schemas/LabTitle"
+                },
+                "owner": {
+                    "deprecated": true,
+                    "$ref": "#/schemas/UUID4",
+                    "description": "The owner of the lab."
+                },
+                "description": {
+                    "$ref": "#/schemas/LabDescription"
+                },
+                "notes": {
+                    "$ref": "#/schemas/LabNotes"
+                },
+                "version": {
+                    "$ref": "#/schemas/TopologySchemaVersion"
+                },
+                "timestamp": {
+                    "deprecated": true
+                }
+            },
+            "additionalProperties": false
+        },
+        "Topology": {
+            "type": "object",
+            "description": "A JSON object that describes topology, including its nodes, interfaces, links, and details, such as the user-supplied title and notes.",
+            "required": [
+                "nodes",
+                "links",
+                "lab"
+            ],
+            "properties": {
+                "lab": {
+                    "$ref": "#/schemas/LabTopology"
+                },
+                "nodes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/schemas/NodeTopology"
+                    }
+                },
+                "links": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/schemas/LinkTopology"
+                    }
+                },
+                "annotations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/schemas/AnnotationBase"
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
+        "Lab": {
+            "description": "Metadata about the state of the lab itself.",
+            "required": [
+                "id",
+                "lab_title",
+                "state"
+            ],
+            "properties": {
+                "id": {
+                    "$ref": "#/schemas/UUID4"
+                },
+                "state": {
+                    "$ref": "#/schemas/LabState"
+                },
+                "created": {
+                    "$ref": "#/schemas/DateTimeString",
+                    "description": "The date and time when the lab was created."
+                },
+                "modified": {
+                    "$ref": "#/schemas/DateTimeString",
+                    "description": "The date and time when the lab was modified."
+                },
+                "lab_title": {
+                    "$ref": "#/schemas/LabTitle"
+                },
+                "owner": {
+                    "$ref": "#/schemas/UUID4",
+                    "description": "The owner of the lab."
+                },
+                "lab_description": {
+                    "$ref": "#/schemas/LabDescription"
+                },
+                "node_count": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "Number of nodes (or devices) in the lab."
+                },
+                "link_count": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "Number of connections between nodes in the lab."
+                },
+                "lab_notes": {
+                    "$ref": "#/schemas/LabNotes"
+                },
+                "groups": {
+                    "$ref": "#/schemas/LabGroups",
+                    "description": "Array of LabGroup objects - mapping from group id to permission."
+                }
+            }
+        },
+        "ResourcePoolDataBase": {
+            "type": "object",
+            "description": "Resource pool limitable data.",
+            "properties": {
+                "licenses": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "minimum": 0,
+                    "maximum": 320,
+                    "description": "Limit the number of allowed node licenses."
+                },
+                "ram": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "format": "int32",
+                    "minimum": 0,
+                    "maximum": 33554432,
+                    "description": "Limit the amount of memory (MB) allowed in the pool."
+                },
+                "cpus": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "format": "int32",
+                    "minimum": 0,
+                    "maximum": 4096,
+                    "description": "Limit the number of whole cpus allowed in the pool."
+                },
+                "disk_space": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "format": "int32",
+                    "minimum": 0,
+                    "maximum": 32768,
+                    "description": "(Not enforced) Limit the amount of disk space (GB) of all disks allowed in the pool."
+                },
+                "external_connectors": {
+                    "type": [
+                        "array",
+                        "null"
+                    ],
+                    "minItems": 0,
+                    "maxItems": 128,
+                    "items": {
+                        "$ref": "#/schemas/LinuxInterfaceName"
+                    },
+                    "description": "List of external connector interface names allowed in the pool.",
+                    "example": [
+                        "bridge0"
+                    ]
+                }
+            },
+            "additionalProperties": true
+        },
+        "ResourcePoolBase": {
+            "type": "object",
+            "description": "Resource pool base.",
+            "allOf": [
+                {
+                    "$ref": "#/schemas/ResourcePoolDataBase"
+                }
+            ],
+            "properties": {
+                "label": {
+                    "$ref": "#/schemas/Label",
+                    "description": "The resource pool label."
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "$ref": "#/schemas/GenericDescription",
+                    "description": "Free-form textual description of the resource pool."
+                },
+                "licenses": {},
+                "ram": {},
+                "cpus": {},
+                "disk_space": {},
+                "external_connectors": {}
+            },
+            "additionalProperties": true
+        },
+        "ResourcePoolUpdate": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/schemas/ResourcePoolBase"
+                }
+            ],
+            "description": "Resource pool updateable attributes.",
+            "properties": {
+                "label": {},
+                "description": {},
+                "licenses": {},
+                "ram": {},
+                "cpus": {},
+                "disk_space": {},
+                "external_connectors": {}
+            },
+            "additionalProperties": false
+        },
+        "ResourcePoolCreate": {
+            "type": "object",
+            "required": [
+                "label"
+            ],
+            "allOf": [
+                {
+                    "$ref": "#/schemas/ResourcePoolBase"
+                }
+            ],
+            "description": "Resource pool create attributes.",
+            "properties": {
+                "users": {
+                    "$ref": "#/schemas/UUID4Array",
+                    "description": "List of user IDs assigned to the created pool."
+                },
+                "shared": {
+                    "type": "boolean",
+                    "description": "If set to `false`, a list of pools will be created for each user."
+                },
+                "template": {
+                    "$ref": "#/schemas/NullableUUID4",
+                    "description": "Parent template pool providing defaults to this pool."
+                },
+                "label": {},
+                "description": {},
+                "licenses": {},
+                "ram": {},
+                "cpus": {},
+                "disk_space": {},
+                "external_connectors": {}
+            },
+            "additionalProperties": false
+        },
+        "ResourcePool": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/schemas/ResourcePoolBase"
+                }
+            ],
+            "description": "Resource pool configuration data.",
+            "properties": {
+                "id": {
+                    "$ref": "#/schemas/UUID4"
+                },
+                "template": {
+                    "$ref": "#/schemas/NullableUUID4",
+                    "description": "Parent template pool providing defaults to this pool."
+                },
+                "users": {
+                    "$ref": "#/schemas/UUID4Array",
+                    "description": "List of user IDs assigned to the pool."
+                },
+                "user_pools": {
+                    "$ref": "#/schemas/UUID4Array",
+                    "description": "List of resource pools instantiated from this template."
+                },
+                "label": {},
+                "description": {},
+                "licenses": {},
+                "ram": {},
+                "cpus": {},
+                "disk_space": {},
+                "external_connectors": {}
+            },
+            "additionalProperties": false
+        },
+        "ResourcePoolUsageData": {
+            "type": "object",
+            "description": "Resource pool usage statistics data.",
+            "allOf": [
+                {
+                    "$ref": "#/schemas/ResourcePoolDataBase"
+                }
+            ],
+            "properties": {
+                "licenses": {},
+                "ram": {},
+                "cpus": {},
+                "disk_space": {},
+                "external_connectors": {}
+            },
+            "additionalProperties": false
+        },
+        "ResourcePoolUsage": {
+            "type": "object",
+            "description": "Resource pool resolved allowed and usage data.",
+            "properties": {
+                "id": {
+                    "$ref": "#/schemas/UUID4"
+                },
+                "label": {
+                    "$ref": "#/schemas/Label",
+                    "description": "The resource pool label."
+                },
+                "description": {
+                    "$ref": "#/schemas/GenericDescription",
+                    "description": "Free-form textual description of the resource pool."
+                },
+                "limit": {
+                    "description": "Resolved limits (from self or parent template).",
+                    "$ref": "#/schemas/ResourcePoolUsageData"
+                },
+                "usage": {
+                    "description": "Current total usage by nodes using the resource pool.",
+                    "$ref": "#/schemas/ResourcePoolUsageData"
+                }
+            },
+            "additionalProperties": false
+        },
+        "Error": {
+            "required": [
+                "code",
+                "description"
+            ],
+            "properties": {
+                "code": {
+                    "description": "The HTTP status that was associated with this error.",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "description": {
+                    "description": "A human-readable message that describes the error.",
+                    "type": "string"
+                }
+            }
+        },
+        "ConnexionError": {
+            "type": "object",
+            "description": "This is the object returned by the default exception handling of Connexion as defined in <https://connexion.readthedocs.io/en/latest/exceptions.html#default-exception-handling>. It refers to <https://tools.ietf.org/html/draft-ietf-appsawg-http-problem-00>.",
+            "required": [
+                "type",
+                "title",
+                "status",
+                "detail"
+            ],
+            "properties": {
+                "type": {
+                    "description": "An absolute URI (defaults to \"about:blank\").",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "A short, human-readable summary of the problem type.",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "The HTTP status code.",
+                    "type": "integer"
+                },
+                "detail": {
+                    "description": "An human readable explanation specific to this occurrence of the problem.",
+                    "type": "string"
+                },
+                "instance": {
+                    "description": "An absolute URI that identifies the specific occurrence of the problem.",
+                    "type": "string"
+                }
+            }
+        },
+        "OptIn": {
+            "type": "object",
+            "required": [
+                "opt_in"
+            ],
+            "properties": {
+                "opt_in": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "example": true
+                }
+            }
+        },
+        "OptInData": {
+            "type": [
+                "object",
+                "null"
+            ],
+            "required": [
+                "first_name",
+                "last_name",
+                "email"
+            ],
+            "properties": {
+                "first_name": {
+                    "type": "string",
+                    "maxLength": 128,
+                    "description": "First name.",
+                    "example": "John"
+                },
+                "last_name": {
+                    "type": "string",
+                    "maxLength": 128,
+                    "description": "Last name.",
+                    "example": "Doe"
+                },
+                "email": {
+                    "type": "string",
+                    "maxLength": 128,
+                    "description": "Email address.",
+                    "example": "johndoe@cisco.com"
+                },
+                "job_title": {
+                    "type": "string",
+                    "maxLength": 128,
+                    "description": "Job title.",
+                    "example": "Engineer"
+                },
+                "company": {
+                    "type": "string",
+                    "maxLength": 128,
+                    "description": "Company.",
+                    "example": "Cisco"
+                }
+            }
+        },
+        "LineStyle": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "enum": [
+                "arrow",
+                "square",
+                "circle"
+            ]
+        },
+        "AnnotationBase": {
+            "type": "object",
+            "description": "Annotation data. Some properties are only valid for specific types.",
+            "properties": {
+                "border_color": {
+                    "type": "string",
+                    "maxLength": 16,
+                    "description": "Border color, like `#FF00FF`.",
+                    "example": "#FF00FF"
+                },
+                "border_radius": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 128,
+                    "description": "Border radius for rectangles"
+                },
+                "border_style": {
+                    "type": "string",
+                    "maxLength": 16,
+                    "description": "List of space separated integers, defining the style."
+                },
+                "color": {
+                    "type": "string",
+                    "maxLength": 16,
+                    "description": "Element color, like `#FF00FF`.",
+                    "example": "#00AAFF"
+                },
+                "rotation": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 360,
+                    "description": "Rotation of object, in degrees."
+                },
+                "line_start": {
+                    "$ref": "#/schemas/LineStyle",
+                    "description": "Line arrow start style."
+                },
+                "line_end": {
+                    "$ref": "#/schemas/LineStyle",
+                    "description": "Line arrow end style."
+                },
+                "text_bold": {
+                    "type": "boolean",
+                    "description": "Text style bold."
+                },
+                "text_content": {
+                    "type": "string",
+                    "maxLength": 8192,
+                    "description": "Text element content."
+                },
+                "text_font": {
+                    "type": "string",
+                    "maxLength": 128,
+                    "description": "Text element font name."
+                },
+                "text_italic": {
+                    "type": "boolean",
+                    "description": "Text style italic."
+                },
+                "text_size": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 128,
+                    "description": "Text size in the unit specified in `text_unit`."
+                },
+                "text_unit": {
+                    "type": "string",
+                    "enum": [
+                        "pt",
+                        "px",
+                        "em"
+                    ],
+                    "description": "Unit of the given text size."
+                },
+                "thickness": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 32,
+                    "description": "Line thickness."
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "ellipse",
+                        "line",
+                        "rectangle",
+                        "text"
+                    ],
+                    "description": "Annotation element type."
+                },
+                "x1": {
+                    "$ref": "#/schemas/CoordinateFloat",
+                    "description": "Element anchor X coordinate."
+                },
+                "y1": {
+                    "$ref": "#/schemas/CoordinateFloat",
+                    "description": "Element anchor Y coordinate."
+                },
+                "x2": {
+                    "$ref": "#/schemas/CoordinateFloat",
+                    "description": "Additional X value (width, radius, ..., type dependent)."
+                },
+                "y2": {
+                    "$ref": "#/schemas/CoordinateFloat",
+                    "description": "Additional Y value (height, radius, ..., type dependent)."
+                },
+                "z_index": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 8000,
+                    "description": "Element Z layer."
+                }
+            },
+            "additionalProperties": true
+        },
+        "Annotation": {
+            "description": "Text annotation element data.",
+            "allOf": [
+                {
+                    "$ref": "#/schemas/AnnotationBase"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "$ref": "#/schemas/UUID4"
+                        }
+                    }
+                }
+            ],
+            "additionalProperties": false
+        },
+        "AnnotationBodyCreate": {
+            "description": "Text annotation element data when creating.",
+            "allOf": [
+                {
+                    "$ref": "#/schemas/AnnotationBase"
+                },
+                {
+                    "oneOf": [
+                        {
+                            "properties": {
+                                "type": {
+                                    "enum": [
+                                        "text"
+                                    ]
+                                },
+                                "border_color": {},
+                                "border_style": {},
+                                "color": {},
+                                "thickness": {},
+                                "x1": {},
+                                "y1": {},
+                                "z_index": {},
+                                "rotation": {},
+                                "text_bold": {},
+                                "text_content": {},
+                                "text_font": {},
+                                "text_italic": {},
+                                "text_size": {},
+                                "text_unit": {}
+                            },
+                            "required": [
+                                "border_color",
+                                "border_style",
+                                "color",
+                                "thickness",
+                                "type",
+                                "x1",
+                                "y1",
+                                "z_index",
+                                "rotation",
+                                "text_bold",
+                                "text_font",
+                                "text_italic",
+                                "text_size",
+                                "text_unit",
+                                "text_content"
+                            ],
+                            "additionalProperties": false
+                        },
+                        {
+                            "properties": {
+                                "type": {
+                                    "enum": [
+                                        "rectangle"
+                                    ]
+                                },
+                                "border_color": {},
+                                "border_radius": {},
+                                "border_style": {},
+                                "color": {},
+                                "thickness": {},
+                                "x1": {},
+                                "y1": {},
+                                "z_index": {},
+                                "x2": {},
+                                "y2": {}
+                            },
+                            "required": [
+                                "border_color",
+                                "border_style",
+                                "color",
+                                "thickness",
+                                "type",
+                                "x1",
+                                "y1",
+                                "x2",
+                                "y2",
+                                "z_index"
+                            ],
+                            "additionalProperties": false
+                        },
+                        {
+                            "properties": {
+                                "type": {
+                                    "enum": [
+                                        "ellipse"
+                                    ]
+                                },
+                                "border_color": {},
+                                "border_style": {},
+                                "color": {},
+                                "thickness": {},
+                                "x1": {},
+                                "y1": {},
+                                "x2": {},
+                                "y2": {},
+                                "z_index": {}
+                            },
+                            "required": [
+                                "border_color",
+                                "border_style",
+                                "color",
+                                "thickness",
+                                "type",
+                                "x1",
+                                "y1",
+                                "x2",
+                                "y2",
+                                "z_index"
+                            ],
+                            "additionalProperties": false
+                        },
+                        {
+                            "properties": {
+                                "type": {
+                                    "enum": [
+                                        "line"
+                                    ]
+                                },
+                                "border_color": {},
+                                "border_style": {},
+                                "color": {},
+                                "thickness": {},
+                                "line_start": {},
+                                "line_end": {},
+                                "x1": {},
+                                "y1": {},
+                                "x2": {},
+                                "y2": {},
+                                "z_index": {}
+                            },
+                            "required": [
+                                "border_color",
+                                "border_style",
+                                "color",
+                                "thickness",
+                                "type",
+                                "line_start",
+                                "line_end",
+                                "x1",
+                                "y1",
+                                "x2",
+                                "y2",
+                                "z_index"
+                            ],
+                            "additionalProperties": false
+                        }
+                    ]
+                }
+            ]
+        },
+        "AnnotationBodyUpdate": {
+            "description": "Text annotation element data when updating.",
+            "allOf": [
+                {
+                    "$ref": "#/schemas/AnnotationBase"
+                },
+                {
+                    "oneOf": [
+                        {
+                            "properties": {
+                                "type": {
+                                    "enum": [
+                                        "text"
+                                    ]
+                                },
+                                "border_color": {},
+                                "border_style": {},
+                                "color": {},
+                                "thickness": {},
+                                "x1": {},
+                                "y1": {},
+                                "z_index": {},
+                                "rotation": {},
+                                "text_bold": {},
+                                "text_content": {},
+                                "text_font": {},
+                                "text_italic": {},
+                                "text_size": {},
+                                "text_unit": {}
+                            },
+                            "required": [
+                                "type"
+                            ],
+                            "additionalProperties": false
+                        },
+                        {
+                            "properties": {
+                                "type": {
+                                    "enum": [
+                                        "rectangle"
+                                    ]
+                                },
+                                "border_color": {},
+                                "border_radius": {},
+                                "border_style": {},
+                                "color": {},
+                                "thickness": {},
+                                "x1": {},
+                                "y1": {},
+                                "x2": {},
+                                "y2": {},
+                                "z_index": {}
+                            },
+                            "required": [
+                                "type"
+                            ],
+                            "additionalProperties": false
+                        },
+                        {
+                            "properties": {
+                                "type": {
+                                    "enum": [
+                                        "ellipse"
+                                    ]
+                                },
+                                "border_color": {},
+                                "border_style": {},
+                                "color": {},
+                                "thickness": {},
+                                "x1": {},
+                                "y1": {},
+                                "x2": {},
+                                "y2": {},
+                                "z_index": {}
+                            },
+                            "required": [
+                                "type"
+                            ],
+                            "additionalProperties": false
+                        },
+                        {
+                            "properties": {
+                                "type": {
+                                    "enum": [
+                                        "line"
+                                    ]
+                                },
+                                "border_color": {},
+                                "border_style": {},
+                                "color": {},
+                                "thickness": {},
+                                "line_start": {},
+                                "line_end": {},
+                                "x1": {},
+                                "y1": {},
+                                "x2": {},
+                                "y2": {},
+                                "z_index": {}
+                            },
+                            "required": [
+                                "type"
+                            ],
+                            "additionalProperties": false
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
