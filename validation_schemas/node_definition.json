@@ -1,0 +1,1010 @@
+{
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "id",
+        "boot",
+        "sim",
+        "general",
+        "configuration",
+        "device",
+        "ui"
+    ],
+    "properties": {
+        "id": {
+            "$ref": "#/schemas/DefinitionID",
+            "description": "A symbolic name used to identify this node definition, such as `iosv` or `asav`."
+        },
+        "boot": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "timeout"
+            ],
+            "properties": {
+                "timeout": {
+                    "type": "integer",
+                    "maximum": 86400,
+                    "description": "Timeout (seconds).",
+                    "example": 60
+                },
+                "completed": {
+                    "type": "array",
+                    "minItems": 1,
+                    "description": "A list of strings which should be matched to determine when the node is \"ready\".",
+                    "example": null,
+                    "items": {
+                        "type": "string",
+                        "maxLength": 128
+                    }
+                },
+                "uses_regex": {
+                    "type": "boolean",
+                    "description": "Whether the strings in `completed` should be treated as regular expressions or not."
+                }
+            }
+        },
+        "sim": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "Simulation parameters.",
+            "properties": {
+                "linux_native": {
+                    "$ref": "#/schemas/LinuxNativeSimulation"
+                }
+            },
+            "required": [
+                "linux_native"
+            ]
+        },
+        "general": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "General information for the node type.",
+            "required": [
+                "nature",
+                "read_only"
+            ],
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "maxLength": 4096,
+                    "description": "A description of the node type."
+                },
+                "nature": {
+                    "type": "string",
+                    "description": "The \"nature\" / kind of the node type defined here.",
+                    "enum": [
+                        "router",
+                        "switch",
+                        "server",
+                        "host",
+                        "cloud",
+                        "firewall",
+                        "external_connector"
+                    ]
+                },
+                "read_only": {
+                    "type": "boolean",
+                    "description": "Whether the node definition can be deleted or not."
+                }
+            }
+        },
+        "configuration": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "generator"
+            ],
+            "properties": {
+                "generator": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "driver"
+                    ],
+                    "properties": {
+                        "driver": {
+                            "type": [
+                                "null",
+                                "string"
+                            ],
+                            "description": "Configuration Driver.",
+                            "enum": [
+                                "asav",
+                                "alpine",
+                                "cat9k",
+                                "coreos",
+                                "csr1000v",
+                                "desktop",
+                                "iol",
+                                "iol-l2",
+                                "iosv",
+                                "iosvl2",
+                                "iosxrv",
+                                "iosxrv9000",
+                                "lxc",
+                                "nxosv",
+                                "nxosv9000",
+                                "pagent",
+                                "server",
+                                "trex",
+                                "ubuntu",
+                                "wan_emulator",
+                                null
+                            ]
+                        }
+                    }
+                },
+                "provisioning": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "files",
+                        "media_type",
+                        "volume_name"
+                    ],
+                    "properties": {
+                        "files": {
+                            "type": "array",
+                            "description": "List of node configuration file objects.",
+                            "minItems": 1,
+                            "items": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "required": [
+                                    "editable",
+                                    "name"
+                                ],
+                                "properties": {
+                                    "content": {
+                                        "$ref": "#/schemas/NodeConfiguration"
+                                    },
+                                    "editable": {
+                                        "type": "boolean",
+                                        "description": "Is the configuration file editable?"
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "maxLength": 64,
+                                        "description": "The ame of the configuration file."
+                                    }
+                                }
+                            }
+                        },
+                        "media_type": {
+                            "type": "string",
+                            "description": "The type of the configuration media.",
+                            "enum": [
+                                "iso",
+                                "fat"
+                            ]
+                        },
+                        "volume_name": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 32,
+                            "description": "The volume name of the configuration media."
+                        }
+                    }
+                }
+            }
+        },
+        "device": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "interfaces"
+            ],
+            "properties": {
+                "interfaces": {
+                    "$ref": "#/schemas/Interfaces"
+                }
+            }
+        },
+        "ui": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "icon",
+                "visible",
+                "label",
+                "label_prefix"
+            ],
+            "properties": {
+                "visible": {
+                    "type": "boolean",
+                    "description": "Determines visibility in the UI for this node type."
+                },
+                "group": {
+                    "type": "string",
+                    "description": "Intended to group similar node types (unused).",
+                    "enum": [
+                        "Cisco",
+                        "Others"
+                    ]
+                },
+                "description": {
+                    "type": "string",
+                    "maxLength": 4096,
+                    "description": "The description of the node type (can be Markdown)."
+                },
+                "label_prefix": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 32,
+                    "description": "The textual prefix for node labels."
+                },
+                "icon": {
+                    "type": "string",
+                    "description": "The icon to use with this node type.",
+                    "enum": [
+                        "router",
+                        "switch",
+                        "server",
+                        "host",
+                        "cloud",
+                        "firewall",
+                        "access_point",
+                        "wlc"
+                    ]
+                },
+                "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 32,
+                    "description": "The node label."
+                }
+            }
+        },
+        "inherited": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "image",
+                "node"
+            ],
+            "properties": {
+                "image": {
+                    "$ref": "#/schemas/VMProperties"
+                },
+                "node": {
+                    "$ref": "#/schemas/VMProperties"
+                }
+            }
+        },
+        "pyats": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "os"
+            ],
+            "properties": {
+                "os": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 32,
+                    "description": "The operating system as defined / understood by pyATS."
+                },
+                "series": {
+                    "minLength": 1,
+                    "maxLength": 32,
+                    "type": "string",
+                    "description": "The device series as defined by pyATS / Unicon."
+                },
+                "model": {
+                    "minLength": 1,
+                    "maxLength": 32,
+                    "type": "string",
+                    "description": "The device model as defined by pyATS / Unicon."
+                },
+                "use_in_testbed": {
+                    "type": "boolean",
+                    "description": "Use this device in an exported testbed?"
+                },
+                "username": {
+                    "minLength": 1,
+                    "maxLength": 64,
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "description": "Use this username with pyATS / Unicon when interacting with this node type."
+                },
+                "password": {
+                    "minLength": 1,
+                    "maxLength": 128,
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "description": "Use this password with pyATS / Unicon when interacting with this node type."
+                },
+                "config_extract_command": {
+                    "maxLength": 4096,
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "description": "This is the CLI command to use when configurations should be extracted from a device of this node type."
+                }
+            }
+        },
+        "schema_version": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 32,
+            "description": "The schema version used for this node type.",
+            "example": "0.0.1"
+        }
+    },
+    "schemas": {
+        "LinuxNativeSimulation": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "Base for simulation objects.",
+            "required": [
+                "libvirt_domain_driver",
+                "driver"
+            ],
+            "properties": {
+                "libvirt_domain_driver": {
+                    "type": "string",
+                    "description": "Domain Driver.",
+                    "enum": [
+                        "kvm",
+                        "lxc",
+                        "none"
+                    ]
+                },
+                "driver": {
+                    "type": "string",
+                    "description": "Simulation Driver.",
+                    "enum": [
+                        "asav",
+                        "alpine",
+                        "cat9k",
+                        "coreos",
+                        "csr1000v",
+                        "external_connector",
+                        "iol",
+                        "iol-l2",
+                        "iosv",
+                        "iosvl2",
+                        "iosxrv",
+                        "iosxrv9000",
+                        "lxc",
+                        "nxosv",
+                        "nxosv9000",
+                        "pagent",
+                        "server",
+                        "trex",
+                        "ubuntu",
+                        "unmanaged_switch",
+                        "wan_emulator"
+                    ]
+                },
+                "disk_driver": {
+                    "type": "string",
+                    "description": "Disk Driver.",
+                    "enum": [
+                        "ide",
+                        "sata",
+                        "virtio"
+                    ]
+                },
+                "efi_boot": {
+                    "type": "boolean",
+                    "description": "If set, use EFI boot for the VM."
+                },
+                "efi_code": {
+                    "$ref": "#/schemas/FilePath",
+                    "description": "EFI code file path; if unset, use default."
+                },
+                "efi_vars": {
+                    "$ref": "#/schemas/FilePath",
+                    "description": "EFI var file path; if unset, use no variable file."
+                },
+                "machine_type": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 32,
+                    "description": "QEMU machine type, defaults to pc; q35 is more modern."
+                },
+                "ram": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 1048576,
+                    "description": "Memory in MB."
+                },
+                "cpus": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 128,
+                    "description": "CPUs."
+                },
+                "cpu_limit": {
+                    "type": "integer",
+                    "description": "CPU Limit.",
+                    "minimum": 20,
+                    "maximum": 100
+                },
+                "cpu_model": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 32
+                },
+                "nic_driver": {
+                    "type": "string",
+                    "description": "Network Driver.",
+                    "enum": [
+                        "virtio",
+                        "e1000",
+                        "rtl8139",
+                        "vmxnet3"
+                    ]
+                },
+                "data_volume": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 4096,
+                    "description": "Data Disk Size in GiB."
+                },
+                "boot_disk_size": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 4096,
+                    "description": "Boot Disk Size in GiB."
+                },
+                "video": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "description": "If present, then VNC can be used with the node VM.",
+                    "required": [
+                        "memory"
+                    ],
+                    "properties": {
+                        "model": {
+                            "type": "string",
+                            "description": "Video Model.",
+                            "enum": [
+                                "std",
+                                "cirrus",
+                                "vmware",
+                                "qxl",
+                                "xenfb",
+                                "tcx",
+                                "cg3",
+                                "virtio",
+                                "none"
+                            ]
+                        },
+                        "memory": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "maximum": 2048,
+                            "description": "Video Memory."
+                        }
+                    }
+                }
+            },
+            "oneOf": [
+                {
+                    "properties": {
+                        "libvirt_domain_driver": {
+                            "enum": [
+                                "kvm"
+                            ]
+                        }
+                    },
+                    "required": [
+                        "cpus",
+                        "ram",
+                        "nic_driver",
+                        "disk_driver"
+                    ]
+                },
+                {
+                    "properties": {
+                        "libvirt_domain_driver": {
+                            "enum": [
+                                "lxc"
+                            ]
+                        }
+                    },
+                    "required": [
+                        "ram"
+                    ]
+                },
+                {
+                    "properties": {
+                        "libvirt_domain_driver": {
+                            "enum": [
+                                "none"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "Interfaces": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "serial_ports",
+                "physical",
+                "has_loopback_zero"
+            ],
+            "properties": {
+                "has_loopback_zero": {
+                    "type": "boolean",
+                    "description": "Has `loopback0` interface (used with ANK)."
+                },
+                "serial_ports": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 64,
+                    "description": "Number of serial Ports."
+                },
+                "default_count": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 64,
+                    "description": "Default number of physical interfaces."
+                },
+                "loopback": {
+                    "type": "array",
+                    "description": "List of loopback interfaces.",
+                    "minItems": 1,
+                    "items": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 32
+                    }
+                },
+                "management": {
+                    "type": "array",
+                    "description": "List of management interfaces.",
+                    "minItems": 1,
+                    "items": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 32
+                    }
+                },
+                "physical": {
+                    "type": "array",
+                    "description": "List of physical interfaces.",
+                    "minItems": 1,
+                    "items": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 32
+                    }
+                }
+            },
+            "oneOf": [
+                {
+                    "properties": {
+                        "has_loopback_zero": {
+                            "enum": [
+                                true
+                            ]
+                        }
+                    },
+                    "required": [
+                        "loopback"
+                    ]
+                },
+                {
+                    "properties": {
+                        "has_loopback_zero": {
+                            "enum": [
+                                false
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "VMProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "Virtual Machine properties.",
+            "required": [
+                "ram",
+                "cpus",
+                "data_volume",
+                "boot_disk_size"
+            ],
+            "properties": {
+                "ram": {
+                    "type": "boolean",
+                    "description": "RAM."
+                },
+                "cpus": {
+                    "type": "boolean",
+                    "description": "CPU Count."
+                },
+                "cpu_limit": {
+                    "type": "boolean",
+                    "description": "CPU Limit."
+                },
+                "data_volume": {
+                    "type": "boolean",
+                    "description": "Data Disk Size."
+                },
+                "boot_disk_size": {
+                    "type": "boolean",
+                    "description": "Boot Disk Size."
+                }
+            }
+        },
+        "NodeDefinition": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "boot",
+                "sim",
+                "general",
+                "configuration",
+                "device",
+                "ui"
+            ],
+            "properties": {
+                "id": {
+                    "$ref": "#/schemas/DefinitionID",
+                    "description": "A symbolic name used to identify this node definition, such as `iosv` or `asav`."
+                },
+                "boot": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "timeout"
+                    ],
+                    "properties": {
+                        "timeout": {
+                            "type": "integer",
+                            "maximum": 86400,
+                            "description": "Timeout (seconds).",
+                            "example": 60
+                        },
+                        "completed": {
+                            "type": "array",
+                            "minItems": 1,
+                            "description": "A list of strings which should be matched to determine when the node is \"ready\".",
+                            "example": null,
+                            "items": {
+                                "type": "string",
+                                "maxLength": 128
+                            }
+                        },
+                        "uses_regex": {
+                            "type": "boolean",
+                            "description": "Whether the strings in `completed` should be treated as regular expressions or not."
+                        }
+                    }
+                },
+                "sim": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "description": "Simulation parameters.",
+                    "properties": {
+                        "linux_native": {
+                            "$ref": "#/schemas/LinuxNativeSimulation"
+                        }
+                    },
+                    "required": [
+                        "linux_native"
+                    ]
+                },
+                "general": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "description": "General information for the node type.",
+                    "required": [
+                        "nature",
+                        "read_only"
+                    ],
+                    "properties": {
+                        "description": {
+                            "type": "string",
+                            "maxLength": 4096,
+                            "description": "A description of the node type."
+                        },
+                        "nature": {
+                            "type": "string",
+                            "description": "The \"nature\" / kind of the node type defined here.",
+                            "enum": [
+                                "router",
+                                "switch",
+                                "server",
+                                "host",
+                                "cloud",
+                                "firewall",
+                                "external_connector"
+                            ]
+                        },
+                        "read_only": {
+                            "type": "boolean",
+                            "description": "Whether the node definition can be deleted or not."
+                        }
+                    }
+                },
+                "configuration": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "generator"
+                    ],
+                    "properties": {
+                        "generator": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": [
+                                "driver"
+                            ],
+                            "properties": {
+                                "driver": {
+                                    "type": [
+                                        "null",
+                                        "string"
+                                    ],
+                                    "description": "Configuration Driver.",
+                                    "enum": [
+                                        "asav",
+                                        "alpine",
+                                        "cat9k",
+                                        "coreos",
+                                        "csr1000v",
+                                        "desktop",
+                                        "iol",
+                                        "iol-l2",
+                                        "iosv",
+                                        "iosvl2",
+                                        "iosxrv",
+                                        "iosxrv9000",
+                                        "lxc",
+                                        "nxosv",
+                                        "nxosv9000",
+                                        "pagent",
+                                        "server",
+                                        "trex",
+                                        "ubuntu",
+                                        "wan_emulator"
+                                    ]
+                                }
+                            }
+                        },
+                        "provisioning": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": [
+                                "files",
+                                "media_type",
+                                "volume_name"
+                            ],
+                            "properties": {
+                                "files": {
+                                    "type": "array",
+                                    "description": "List of node configuration file objects.",
+                                    "minItems": 1,
+                                    "items": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "required": [
+                                            "editable",
+                                            "name"
+                                        ],
+                                        "properties": {
+                                            "content": {
+                                                "$ref": "#/schemas/NodeConfiguration"
+                                            },
+                                            "editable": {
+                                                "type": "boolean",
+                                                "description": "Is the configuration file editable?"
+                                            },
+                                            "name": {
+                                                "type": "string",
+                                                "minLength": 1,
+                                                "maxLength": 64,
+                                                "description": "The ame of the configuration file."
+                                            }
+                                        }
+                                    }
+                                },
+                                "media_type": {
+                                    "type": "string",
+                                    "description": "The type of the configuration media.",
+                                    "enum": [
+                                        "iso",
+                                        "fat"
+                                    ]
+                                },
+                                "volume_name": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 32,
+                                    "description": "The volume name of the configuration media."
+                                }
+                            }
+                        }
+                    }
+                },
+                "device": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "interfaces"
+                    ],
+                    "properties": {
+                        "interfaces": {
+                            "$ref": "#/schemas/Interfaces"
+                        }
+                    }
+                },
+                "ui": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "icon",
+                        "visible",
+                        "label",
+                        "label_prefix"
+                    ],
+                    "properties": {
+                        "visible": {
+                            "type": "boolean",
+                            "description": "Determines visibility in the UI for this node type."
+                        },
+                        "group": {
+                            "type": "string",
+                            "description": "Intended to group similar node types (unused).",
+                            "enum": [
+                                "Cisco",
+                                "Others"
+                            ]
+                        },
+                        "description": {
+                            "type": "string",
+                            "maxLength": 4096,
+                            "description": "The description of the node type (can be Markdown)."
+                        },
+                        "label_prefix": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 32,
+                            "description": "The textual prefix for node labels."
+                        },
+                        "icon": {
+                            "type": "string",
+                            "description": "The icon to use with this node type.",
+                            "enum": [
+                                "router",
+                                "switch",
+                                "server",
+                                "host",
+                                "cloud",
+                                "firewall",
+                                "access_point",
+                                "wlc"
+                            ]
+                        },
+                        "label": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 32,
+                            "description": "The node label."
+                        }
+                    }
+                },
+                "inherited": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "image",
+                        "node"
+                    ],
+                    "properties": {
+                        "image": {
+                            "$ref": "#/schemas/VMProperties"
+                        },
+                        "node": {
+                            "$ref": "#/schemas/VMProperties"
+                        }
+                    }
+                },
+                "pyats": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "os"
+                    ],
+                    "properties": {
+                        "os": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 32,
+                            "description": "The operating system as defined / understood by pyATS."
+                        },
+                        "series": {
+                            "minLength": 1,
+                            "maxLength": 32,
+                            "type": "string",
+                            "description": "The device series as defined by pyATS / Unicon."
+                        },
+                        "model": {
+                            "minLength": 1,
+                            "maxLength": 32,
+                            "type": "string",
+                            "description": "The device model as defined by pyATS / Unicon."
+                        },
+                        "use_in_testbed": {
+                            "type": "boolean",
+                            "description": "Use this device in an exported testbed?"
+                        },
+                        "username": {
+                            "minLength": 1,
+                            "maxLength": 64,
+                            "type": [
+                                "null",
+                                "string"
+                            ],
+                            "description": "Use this username with pyATS / Unicon when interacting with this node type."
+                        },
+                        "password": {
+                            "minLength": 1,
+                            "maxLength": 128,
+                            "type": [
+                                "null",
+                                "string"
+                            ],
+                            "description": "Use this password with pyATS / Unicon when interacting with this node type."
+                        },
+                        "config_extract_command": {
+                            "maxLength": 4096,
+                            "type": [
+                                "null",
+                                "string"
+                            ],
+                            "description": "This is the CLI command to use when configurations should be extracted from a device of this node type."
+                        }
+                    }
+                },
+                "schema_version": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 32,
+                    "description": "The schema version used for this node type.",
+                    "example": "0.0.1"
+                }
+            }
+        },
+        "NodeDefinitionList": {
+            "type": "array",
+            "items": {
+                "$ref": "#/schemas/NodeDefinition"
+            }
+        },
+        "FilePath": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255,
+            "pattern": "^(?![.])[^!@#%^&*();$\\n\\r\\t)/\\\\]{1,255}(?![\\n\\t])$"
+        },
+        "DefinitionID": {
+            "type": "string",
+            "description": "Name of the node or image definition (max 250 UTF-8 bytes).",
+            "minLength": 1,
+            "maxLength": 250,
+            "pattern": "^(?![.])[^!@#%^&*();$\\n\\r\\t)/\\\\]{1,250}(?![\\n\\t])$",
+            "example": "server"
+        },
+        "NodeConfiguration": {
+            "type": "string",
+            "description": "Node configuration (no more than 20MB)."
+        }
+    }
+}
