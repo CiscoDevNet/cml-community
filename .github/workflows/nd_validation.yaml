@@ -1,6 +1,6 @@
 name: Node definition schema check
 
-on: 
+on:
   push:
     paths:
       - 'node-definitions/**/*.yaml'
