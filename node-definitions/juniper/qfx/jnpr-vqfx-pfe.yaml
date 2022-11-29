@@ -47,7 +47,7 @@ sim:
     ram: 2048
     cpu_limit: 100
     video:
-      memory: 1
+      memory: 16
 boot:
   timeout: 600
   completed:
