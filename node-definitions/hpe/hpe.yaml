@@ -49,7 +49,6 @@ sim:
     libvirt_domain_driver: kvm
     nic_driver: e1000
     ram: 4096
-    boot_disk_size: 16
     video:
       memory: 16
     cpu_limit: 100

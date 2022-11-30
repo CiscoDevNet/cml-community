@@ -32,7 +32,6 @@ sim:
     cpus: 3
     cpu_limit: 100
     nic_driver: virtio
-    boot_disk_size: 200
 boot:
   timeout: 300
 inherited:

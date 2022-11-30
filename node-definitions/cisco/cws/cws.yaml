@@ -8,7 +8,6 @@ sim:
     ram: 8192
     cpus: 4
     data_volume: 1
-    boot_disk_size: 50
     cpu_limit: 100
     video:
       memory: 4
