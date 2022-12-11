@@ -19,3 +19,6 @@
 [submodule "use-cases/sdwan-devops"]
 	path = use-cases/sdwan-devops
 	url = https://github.com/CiscoDevNet/sdwan-devops
+[submodule "lab-topologies/ciscolive-brkcrt-2059"]
+	path = lab-topologies/ciscolive-brkcrt-2059
+	url = https://github.com/CiscoLearning/ciscolive-brkcrt-2059.git
