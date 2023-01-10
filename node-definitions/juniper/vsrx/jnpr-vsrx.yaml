@@ -12,7 +12,115 @@ configuration:
     media_type: iso
     files:
       - name: juniper.conf
-        content: hostname insert_hostname_here
+        content: |-
+          system {
+              host-name insert_hostname_here;
+              autoinstallation {
+                  delete-upon-commit; ## Deletes [system autoinstallation] upon change/commit
+                  traceoptions {
+                      level verbose;
+                      flag {
+                          all;
+                      }
+                  }
+              }
+              services {
+                  ssh;
+                  web-management {
+                      http {
+                          interface fxp0.0;
+                      }
+                      https {
+                          system-generated-certificate;
+                          interface fxp0.0;
+                      }
+                  }                               
+              }
+              syslog {
+                  file interactive-commands {
+                      interactive-commands any;
+                  }
+                  file messages {
+                      any any;
+                      authorization info;
+                  }
+              }
+              license {
+                  autoupdate {
+                      url https://ae1.juniper.net/junos/key_retrieval;
+                  }
+              }
+          }
+          security {
+              screen {
+                  ids-option untrust-screen {
+                      icmp {
+                          ping-death;
+                      }                           
+                      ip {
+                          source-route-option;
+                          tear-drop;
+                      }
+                      tcp {
+                          syn-flood {
+                              alarm-threshold 1024;
+                              attack-threshold 200;
+                              source-threshold 1024;
+                              destination-threshold 2048;
+                              queue-size 2000; ## Warning: 'queue-size' is deprecated
+                              timeout 20;
+                          }
+                          land;
+                      }
+                  }
+              }
+              policies {
+                  from-zone trust to-zone trust {
+                      policy default-permit {
+                          match {
+                              source-address any;
+                              destination-address any;
+                              application any;
+                          }
+                          then {
+                              permit;
+                          }
+                      }
+                  }
+                  from-zone trust to-zone untrust {
+                      policy default-permit {
+                          match {
+                              source-address any;
+                              destination-address any;
+                              application any;
+                          }
+                          then {
+                              permit;
+                          }
+                      }
+                  }
+                  pre-id-default-policy {
+                      then {
+                          log {
+                              session-close;      
+                          }
+                      }
+                  }
+              }
+              zones {
+                  security-zone trust {
+                      tcp-rst;
+                  }
+                  security-zone untrust {
+                      screen untrust-screen;
+                  }
+              }
+          }
+          interfaces {
+              fxp0 {
+                  unit 0;
+              }
+          }
         editable: true
 inherited:
   image:
@@ -89,6 +197,7 @@ pyats:
 ui:
   description: |2-
     Juniper vSRX 3.0 virtual firewall
+
     4096MB, 2 vCPU
 
     ##### Note
