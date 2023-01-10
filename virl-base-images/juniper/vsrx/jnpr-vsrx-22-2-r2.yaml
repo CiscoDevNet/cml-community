@@ -1,0 +1,13 @@
+#
+# Juniper vSRX 3.0 image definition
+# generated 2023-01-09
+# part of VIRL^2
+#
+
+id: jnpr-vsrx-22.2R2-S1.5
+label: Juniper vSRX 3.0 22.2R2
+node_definition_id: jnpr-vsrx
+disk_image: junos-vsrx3-x86-64-22.2R2-S1.5.qcow2
+description: Juniper vSRX 3.0 22.2R2-S1
+read_only: true
+schema_version: "0.0.1"
