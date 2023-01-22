@@ -1,13 +1,14 @@
 #!/bin/bash
 #
-#  This file is part of VIRL2
-#  Cisco (c) 2021
+# This file is part of VIRL 2
+# Copyright (c) 2019-2023, Cisco Systems, Inc.
+# All rights reserved.
 #
 
 source /etc/default/virl2
 
 # Version of this script in semver 2.0 format.
-_VERSION="2.0.2"
+_VERSION="2.0.4"
 
 # The branch from which to grab the canonical, stable latest version of the script.
 GITHUB_BRANCH="master"
@@ -21,6 +22,10 @@ SSH_PORT="1122"
 DOING_MIGRATION=0
 DEFAULT_USER="sysadmin"
 MIGRATION_MAP="/var/lib/libvirt/images:${LIBVIRT_IMAGES}"
+HOSTNAME=$(hostname --short)
+
+# Compute a timestamp, avoiding colons so that it's easier to use in filenames.
+TIMESTAMP=$(printf '%(%Y-%m-%d_%H-%M-%S_%Z)T')
 
 check_for_updates() {
     gh_version=$(curl -s ${GITHUB_URL} | grep "^_VERSION")
@@ -91,9 +96,6 @@ cleanup_failed_restore() {
     echo "Cleaning up..."
     echo
 
-    if [ -n "${backup_dir}" ]; then
-        rm -rf "${backup_ddir}"
-    fi
     if [ -n "${ddir}" ]; then
         rm -rf "${ddir}"
     fi
@@ -281,6 +283,21 @@ build_local_src_dirs() {
     done
 
     IFS=${old_IFS}
+}
+
+export_network_configuration() {
+    outfile=${CFG_DIR}/migration_info.txt
+    printf "# CML2 migration on $(date).\n" >> ${outfile}
+    printf "\n## nmcli con show \n" >> ${outfile}
+    nmcli con show >> ${outfile}
+    printf "\n## ip link show \n" >> ${outfile}
+    ip link show >> ${outfile}
+    printf "\n## nmcli con show bridge0 \n" >> ${outfile}
+    nmcli con show bridge0 >> ${outfile}
+    printf "\n## nmcli \n" >> ${outfile}
+    nmcli >> ${outfile}
+    printf "\n## hostname \n" >> ${outfile}
+    hostname >> ${outfile}
 }
 
 export_libvirt_domains() {
@@ -562,7 +579,7 @@ check_cml_versions() {
     fi
 
     # Allow one to migrate from 2.2.x to 2.3+.
-    if echo "${curr_ver}" | grep -qE '^2\.[34]\.[0-9]' && echo ${src_ver} | grep -qE '^2\.2\.'; then
+    if echo "${curr_ver}" | grep -qE '^2\.[3-9]\.[0-9]' && echo "${src_ver}" | grep -qE '^2\.2\.'; then
         DOING_MIGRATION=1
         return 0
     fi
@@ -572,16 +589,19 @@ check_cml_versions() {
 
 sync_from_host() {
     host=$1
-
     host_ip="${host}"
+    # used in scp/rsync commands to support ipv6
+    scp_rsync_host="${host}"
     if echo "${host_ip}" | grep -qE '[a-zA-Z]'; then
         host_ip=$(host -t A "${host_ip}" | grep -oE '[0-9][0-9.]+')
         if [ $? != 0 ]; then
             echo "Failed to lookup host ${host}.  Please specify a valid IP or hostname."
             return 1
         fi
+    elif echo "${host_ip}" | grep -qE '([0-9a-fA-F:]{1,5}){3,8}'; then
+        scp_rsync_host=\["${host}"\]
     fi
-    if ip addr show | grep -q "inet ${host_ip}/"; then
+    if ip addr show | grep -q "inet6* ${host_ip}/"; then
         echo "You are trying to migrate from the local host.  Please specify another host from which to migrate."
         return 1
     fi
@@ -624,7 +644,7 @@ sync_from_host() {
     fi
 
     # Install this script on the remote host.
-    if ! scp -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -P ${SSH_PORT} "${LOCAL_ME}" "${sysadmin_user}"@"${host}":"/tmp/${ME}" >/dev/null; then
+    if ! scp -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -P ${SSH_PORT} "${LOCAL_ME}" "${sysadmin_user}"@"${scp_rsync_host}":"/tmp/${ME}" >/dev/null; then
         rc=$?
         cleanup_from_host "${key_dir}"
         echo "Error copying /usr/local/bin/${ME} to source host."
@@ -724,7 +744,7 @@ sync_from_host() {
         printf "Starting migration.  Please be patient, migration may take a while....\n\n\n"
         sdirs=""
         for src_dir in ${SRC_DIRS}; do
-            sdirs="${sdirs} ${sysadmin_user}@${host}:${src_dir}"
+            sdirs="${sdirs} ${sysadmin_user}"@"${scp_rsync_host}":"${src_dir}"
         done
         rsync -aAvzXR --progress --checksum --rsync-path="sudo rsync" --exclude="*.rej" --exclude="*.orig" -e "ssh -o StrictHostKeyChecking=no -i ${key_dir}/${KEY_FILE} -p ${SSH_PORT}" ${sdirs} /
         #        output=$( (ssh -o "StrictHostKeyChecking=no" -i "${key_dir}"/${KEY_FILE} -p ${SSH_PORT} sysadmin@"${host}" "sudo tar --acls --selinux -cpf - ${SRC_DIRS}" | tar -C / --acls --selinux -xpf -) 2>&1 )
@@ -736,7 +756,7 @@ sync_from_host() {
             success=1
             if [ ${DOING_MIGRATION} -eq 1 ]; then
                 for map_dir in ${MIGRATION_MAP}; do
-                    src_dir=${sysadmin_user}@${host}:$(echo "${map_dir}" | cut -d':' -f1)
+                    src_dir=${sysadmin_user}@${scp_rsync_host}:$(echo "${map_dir}" | cut -d':' -f1)
                     dest_dir=$(dirname $(echo "${map_dir}" | cut -d':' -f2))
                     delete_local_dirs "$(echo "${map_dir}" | cut -d':' -f2)"
                     rsync -aAvzX --progress --checksum --rsync-path="sudo rsync" --exclude="*.rej" --exclude="*.orig" -e "ssh -o StrictHostKeyChecking=no -i ${key_dir}/${KEY_FILE} -p ${SSH_PORT}" "${src_dir}" "${dest_dir}"
@@ -785,7 +805,7 @@ sync_from_host() {
                 else
                     printf "\nData transfer completed SUCCESSFULLY.\n"
                     echo "Performing configuration migration..."
-                    output=$( (cd "${BASE_DIR}"/db_migrations && env CFG_DIR="${CFG_DIR}" BASE_DIR="${BASE_DIR}" VIRL2_DIR="${BASE_DIR}" HOME="${BASE_DIR}" MIGRATION_LIBVIRT_DOM_XML_DIR="${libvirt_domains}" MIGRATION_LIBVIRT_NET_XML_DIR="${libvirt_networks}" MIGRATION_LIBVIRT_IF_XML_DIR="${libvirt_ifaces}" COMPUTE_ID="${COMPUTE_ID}" "${BASE_DIR}"/.local/bin/alembic upgrade head) 2>&1)
+                    output=$( (cd "${BASE_DIR}"/db_migrations && env CFG_DIR="${CFG_DIR}" BASE_DIR="${BASE_DIR}" VIRL2_DIR="${BASE_DIR}" HOME="${BASE_DIR}" MIGRATION_LIBVIRT_DOM_XML_DIR="${libvirt_domains}" MIGRATION_LIBVIRT_NET_XML_DIR="${libvirt_networks}" MIGRATION_LIBVIRT_IF_XML_DIR="${libvirt_ifaces}" COMPUTE_ID="${COMPUTE_ID}" MIGRATION=1 HOSTNAME="${HOSTNAME}" "${BASE_DIR}"/.local/bin/alembic upgrade head) 2>&1)
                     rc=$?
                     # This feels hacky, but we need to do it.
                     chown -R www-data:www-data "${CFG_DIR}"
@@ -1044,7 +1064,7 @@ if [ ${RESTORE} = 1 ]; then
         if [ ${DOING_MIGRATION} -eq 1 ]; then
             printf "\nRestore completed SUCCESSFULLY.\n"
             echo "Performing configuration migration..."
-            output=$( (cd "${BASE_DIR}"/db_migrations && env CFG_DIR="${CFG_DIR}" BASE_DIR="${BASE_DIR}" VIRL2_DIR="${BASE_DIR}" HOME="${BASE_DIR}" MIGRATION_LIBVIRT_DOM_XML_DIR="${ddir}" MIGRATION_LIBVIRT_NET_XML_DIR="${ndir}" MIGRATION_LIBVIRT_IF_XML_DIR="${idir}" COMPUTE_ID="${COMPUTE_ID}" "${BASE_DIR}"/.local/bin/alembic upgrade head) 2>&1)
+            output=$( (cd "${BASE_DIR}"/db_migrations && env CFG_DIR="${CFG_DIR}" BASE_DIR="${BASE_DIR}" VIRL2_DIR="${BASE_DIR}" HOME="${BASE_DIR}" MIGRATION_LIBVIRT_DOM_XML_DIR="${ddir}" MIGRATION_LIBVIRT_NET_XML_DIR="${ndir}" MIGRATION_LIBVIRT_IF_XML_DIR="${idir}" COMPUTE_ID="${COMPUTE_ID}" MIGRATION=1 HOSTNAME="${HOSTNAME}" "${BASE_DIR}"/.local/bin/alembic upgrade head) 2>&1)
             rc=$?
             # This feels hacky, but we need to do it.
             chown -R www-data:www-data "${CFG_DIR}"
@@ -1115,6 +1135,9 @@ if [ ${NO_CONFIRM} -eq 0 ]; then
     fi
 fi
 
+# Before stopping the services, fetch the diagnostics and put it in a folder to include in the backup.
+/usr/bin/curl -sk ip6-localhost:8001/api/internal/diagnostics > $CFG_DIR/diagnostics-$TIMESTAMP.log
+
 stop_cml_services || (
     echo "Failed to stop CML services."
     exit $?
@@ -1140,6 +1163,9 @@ cd "${tempd}" || (
 echo "${ddir}" >libvirt_domains.dat
 echo "${ndir}" >libvirt_networks.dat
 echo "${idir}" >libvirt_ifaces.dat
+
+# Try to preserve some info about the server's network configuration.
+export_network_configuration
 
 SRC_DIRS="${SRC_DIRS} ${ddir} ${ndir} ${idir}"
 
