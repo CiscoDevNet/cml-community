@@ -22,3 +22,6 @@
 [submodule "lab-topologies/ciscolive-brkcrt-2059"]
 	path = lab-topologies/ciscolive-brkcrt-2059
 	url = https://github.com/CiscoLearning/ciscolive-brkcrt-2059.git
+[submodule "use-cases/cloud-cml"]
+	path = use-cases/cloud-cml
+	url = https://github.com/CiscoDevNet/cloud-cml.git
