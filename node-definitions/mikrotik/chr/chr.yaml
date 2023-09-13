@@ -5,7 +5,7 @@ sim:
     libvirt_domain_driver: kvm
     nic_driver: virtio
     disk_driver: virtio
-    ram: 64
+    ram: 256
     cpus: 1
 general:
   nature: router
@@ -72,5 +72,5 @@ ui:
   description: |-
     MikroTik Cloud Hosted Router
 
-    64 MB DRAM, 1 vCPU
+    256 MB DRAM, 1 vCPU
 
