@@ -1,4 +1,4 @@
-id: viptela-edge
+id: cat-sdwan-validator
 configuration:
   generator:
     driver: null
@@ -8,23 +8,22 @@ configuration:
     files:
       - name: meta-data
         content: |-
-          instance-id: ubuntu
-          local-hostname: ubuntu
+          instance-id: Validator
+          local-hostname: Validator
         editable: false
       - name: user-data
         content: |-
           #cloud-config
           vinitparam:
-          - otp: 00000000000000000000000000000000
-          - vbond: 1.2.3.4
-          - uuid: 12345678-dead-beef-cafe-1234567890ab
-          - org: some-org-string
-          ssh_authorized_keys:
-            - your-ssh-pub-key-line-goes-here
+           - Validator :
+           - host-name: Validator
+           - org:
+           - rcc : true
         editable: true
 device:
   interfaces:
     has_loopback_zero: false
+    default_count: 2
     physical:
       - eth0
       - ge0/0
@@ -34,6 +33,7 @@ device:
       - ge0/4
       - ge0/5
       - ge0/6
+      - ge0/7
     serial_ports: 1
 inherited:
   image:
@@ -41,17 +41,20 @@ inherited:
     cpus: true
     data_volume: false
     boot_disk_size: false
+    cpu_limit: true
   node:
     ram: true
     cpus: true
     data_volume: false
     boot_disk_size: false
+    cpu_limit: true
 general:
-  description: Viptela vEdge System
+  description: Cisco Catalyst SD-WAN Validator
   nature: server
   read_only: false
+schema_version: 0.0.1
 boot:
-  timeout: 120
+  timeout: 300
   completed:
     - ': System Ready'
 sim:
@@ -61,19 +64,19 @@ sim:
     driver: server
     libvirt_domain_driver: kvm
     nic_driver: virtio
-    ram: 2048
+    ram: 4096
+    cpu_limit: 100
 pyats:
-  os: linux
+  os: sdwan
+  series: viptela
+  config_extract_command: show running
+  username: admin
+  password: admin
+  use_in_testbed: true
 ui:
-  description: |-
-    Viptela vEdge System
-
-    2 GB DRAM, 2 vCPU
-
-    [CCO Link](https://sdwan-docs.cisco.com/Product_Documentation)
+  description: Cisco Catalyst SD-WAN Validator
   group: Others
   icon: server
-  label: vEdge
-  label_prefix: vedge-
+  label: Catalyst SD-WAN Validator
+  label_prefix: sdwan-validator-
   visible: true
-schema_version: 0.0.1

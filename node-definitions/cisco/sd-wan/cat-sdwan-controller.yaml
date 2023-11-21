@@ -1,4 +1,4 @@
-id: viptela-smart
+id: cat-sdwan-controller
 configuration:
   generator:
     driver: null
@@ -8,27 +8,31 @@ configuration:
     files:
       - name: meta-data
         content: |-
-          instance-id: vsmart
-          local-hostname: vsmart
+          instance-id: Controller
+          local-hostname: Controller
         editable: false
       - name: user-data
         content: |-
           #cloud-config
-          ssh_authorized_keys:
-            - your-ssh-pub-key-line-goes-here
+          vinitparam:
+           - vbond :
+           - host-name: Controller
+           - org:
+           - rcc : true
         editable: true
 device:
   interfaces:
     has_loopback_zero: false
+    default_count: 4
     physical:
       - eth0
-      - ge0/0
-      - ge0/1
-      - ge0/2
-      - ge0/3
-      - ge0/4
-      - ge0/5
-      - ge0/6
+      - eth1
+      - eth2
+      - eth3
+      - eth4
+      - eth5
+      - eth6
+      - eth7
     serial_ports: 1
 inherited:
   image:
@@ -36,15 +40,18 @@ inherited:
     cpus: true
     data_volume: false
     boot_disk_size: false
+    cpu_limit: true
   node:
     ram: true
     cpus: true
     data_volume: false
     boot_disk_size: false
+    cpu_limit: true
 general:
-  description: Viptela vSmart System
+  description: Cisco Catalyst SD-WAN Controller
   nature: server
-  read_only: true
+  read_only: false
+schema_version: 0.0.1
 boot:
   timeout: 300
   completed:
@@ -57,17 +64,18 @@ sim:
     libvirt_domain_driver: kvm
     nic_driver: virtio
     ram: 4096
+    cpu_limit: 100
 pyats:
-  os: linux
+  os: sdwan
+  series: viptela
+  config_extract_command: show running
+  username: admin
+  password: admin
+  use_in_testbed: true
 ui:
-  description: |-
-    Viptela vSmart System
-
-    4 GB DRAM, 2 vCPU
-
-    [CCO Link](https://sdwan-docs.cisco.com/Product_Documentation)
+  description: Cisco Catalyst SD-WAN Controller
   group: Others
   icon: server
-  label: vSmart
-  label_prefix: vsmart-
+  label: Catalyst SD-WAN Controller
+  label_prefix: cat-sdwan-controller-
   visible: true

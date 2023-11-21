@@ -1,4 +1,4 @@
-id: viptela-bond
+id: vEdge
 configuration:
   generator:
     driver: null
@@ -8,18 +8,22 @@ configuration:
     files:
       - name: meta-data
         content: |-
-          instance-id: vbond
-          local-hostname: vbond
+          instance-id: vEdge
+          local-hostname: vEdge
         editable: false
       - name: user-data
         content: |-
           #cloud-config
-          ssh_authorized_keys:
-            - your-ssh-pub-key-line-goes-here
+          vinitparam:
+          - otp:
+          - vbond:
+          - uuid:
+          - org:
         editable: true
 device:
   interfaces:
     has_loopback_zero: false
+    default_count: 2
     physical:
       - eth0
       - ge0/0
@@ -29,6 +33,7 @@ device:
       - ge0/4
       - ge0/5
       - ge0/6
+      - ge0/7
     serial_ports: 1
 inherited:
   image:
@@ -36,17 +41,20 @@ inherited:
     cpus: true
     data_volume: false
     boot_disk_size: false
+    cpu_limit: true
   node:
     ram: true
     cpus: true
     data_volume: false
     boot_disk_size: false
+    cpu_limit: true
 general:
-  description: Viptela vBond System
+  description: Catalyst SD-WAN vEdge
   nature: server
-  read_only: true
+  read_only: false
+schema_version: 0.0.1
 boot:
-  timeout: 300
+  timeout: 120
   completed:
     - ': System Ready'
 sim:
@@ -56,18 +64,19 @@ sim:
     driver: server
     libvirt_domain_driver: kvm
     nic_driver: virtio
-    ram: 4096
+    ram: 2048
+    cpu_limit: 100
 pyats:
-  os: linux
+  os: sdwan
+  series: viptela
+  config_extract_command: show running
+  username: admin
+  password: admin
+  use_in_testbed: true
 ui:
-  description: |-
-    Viptela vBond System
-
-    4 GB DRAM, 2 vCPU
-
-    [CCO Link](https://sdwan-docs.cisco.com/Product_Documentation)
+  description: Catalyst SD-WAN vEdge
   group: Others
-  icon: server
-  label: vBond
-  label_prefix: vbond-
+  icon: router
+  label: Catalyst SD-WAN vEdge
+  label_prefix: vEdge-
   visible: true
