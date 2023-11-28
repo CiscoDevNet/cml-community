@@ -1,0 +1,69 @@
+id: cEdge
+general:
+  description: Catalyst SD-WAN cEdge
+  nature: router
+  read_only: false
+device:
+  interfaces:
+    has_loopback_zero: true
+    physical:
+      - GigabitEthernet1
+      - GigabitEthernet2
+      - GigabitEthernet3
+      - GigabitEthernet4
+      - GigabitEthernet5
+      - GigabitEthernet6
+      - GigabitEthernet7
+      - GigabitEthernet8
+      - GigabitEthernet9
+      - GigabitEthernet10
+    serial_ports: 2
+    default_count: 8
+    loopback:
+      - Loopback0
+ui:
+  visible: true
+  label_prefix: cEdge-
+  icon: router
+  label: Catalyst SD-WAN cEdge
+sim:
+  linux_native:
+    libvirt_domain_driver: kvm
+    driver: csr1000v
+    disk_driver: virtio
+    ram: 5120
+    cpus: 2
+    nic_driver: vmxnet3
+    cpu_limit: 100
+boot:
+  completed:
+    - Press RETURN to get started!
+  timeout: 250
+inherited:
+  image:
+    ram: true
+    cpus: true
+    data_volume: false
+    boot_disk_size: false
+    cpu_limit: true
+  node:
+    ram: true
+    cpus: true
+    data_volume: false
+    boot_disk_size: false
+    cpu_limit: true
+configuration:
+  generator:
+    driver: csr1000v
+  provisioning:
+    volume_name: disk
+    media_type: iso
+    files:
+      - name: ciscosdwan_cloud_init.cfg
+        editable: true
+        content: '# cloud-init'
+schema_version: 0.0.1
+pyats:
+  os: iosxe
+  use_in_testbed: true
+  series: sdwan
