@@ -14,6 +14,7 @@ configuration:
       - name: user-data
         content: |-
           #cloud-config
+          # This syntax only works with software <= 20.4.x.
           vinitparam:
            - format-partition: 1
            - vbond :
