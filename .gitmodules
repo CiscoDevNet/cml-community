@@ -25,3 +25,6 @@
 [submodule "use-cases/cloud-cml"]
 	path = use-cases/cloud-cml
 	url = https://github.com/CiscoDevNet/cloud-cml.git
+[submodule "use-cases/sdwan-lab"]
+	path = use-cases/sdwan-lab
+	url = https://wwwin-github.cisco.com/AIDE/sdwan-lab.git
