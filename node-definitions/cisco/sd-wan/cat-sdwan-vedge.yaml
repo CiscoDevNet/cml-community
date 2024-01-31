@@ -1,4 +1,4 @@
-id: vEdge
+id: cat-sdwan-vedge
 configuration:
   generator:
     driver: null
@@ -79,5 +79,5 @@ ui:
   group: Others
   icon: router
   label: Catalyst SD-WAN vEdge
-  label_prefix: vEdge-
+  label_prefix: sdwan-vedge-
   visible: true

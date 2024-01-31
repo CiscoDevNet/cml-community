@@ -1,6 +1,6 @@
-id: cEdge
+id: cat-sdwan-edge
 general:
-  description: Catalyst SD-WAN cEdge
+  description: Catalyst SD-WAN Edge
   nature: router
   read_only: false
 device:
@@ -23,9 +23,9 @@ device:
       - Loopback0
 ui:
   visible: true
-  label_prefix: cEdge-
+  label_prefix: sdwan-edge-
   icon: router
-  label: Catalyst SD-WAN cEdge
+  label: Catalyst SD-WAN Edge
 sim:
   linux_native:
     libvirt_domain_driver: kvm
