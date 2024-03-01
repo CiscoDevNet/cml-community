@@ -34,9 +34,6 @@ def generate_session_ini(label, port, lab_title, filename, parent_folder):
     file.write(f"D:\"ANSI Color\"=00000001\n")
     file.write(f"S:\"Emulation\"=VT100\n")
 
-
-
-
 key_path = r"SOFTWARE\VanDyke\SecureCRT" # Replace with your specific subkey if needed
 try:
     with winreg.OpenKey(winreg.HKEY_CURRENT_USER, key_path) as key:
@@ -48,9 +45,11 @@ except WindowsError:
 #define folder for labs and sessions to be placed
 parent_folder = secureCrtPath + "\sessions\_CML" 
 #purge old labs/sessions
-os.system('rmdir /s /q ' + parent_folder)
+os.system(f'rmdir /s /q "{parent_folder}"')
+
 # Specify the YAML file path
 yaml_file_path = "labs.yaml"  # Replace with your YAML file path
+
 # Load the YAML data
 try:
   with open(yaml_file_path, "r") as file:
@@ -80,6 +79,7 @@ for item_name, item_data in data.items():
           lab_title = item_data['lab_title']
           filename = f"{label}_{port}.ini"
           valid_chars = " -_.0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+          #sanitize folder and file names
           lab_title = "".join(c for c in lab_title if c in valid_chars) 
           filename = "".join(c for c in filename if c in valid_chars)
           generate_session_ini(label, port, lab_title, filename, parent_folder)
