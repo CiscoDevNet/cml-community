@@ -1,0 +1,30 @@
+This tool will generate a lab.yaml file with the breakout tool.
+
+I wanted something that was simple and didn't need alot of modules loaded.
+I decided to make use of the yaml file the breakout tool will generate and use that as a basis for generating my secureCRT session files.
+
+
+It will discover your secureCRT configuration folders from the windows registry.
+IT then purges out anything inside the sessions\_CML folder (if it exists)
+It then parses tha yaml file and generates secureCRT lab folders and session files under a _CML folder in your secureCRT config\sessions folder.
+It then lauches the breakout tool.
+
+bat file expects everything to be in c:\cml\ (adjust .bat file if this is different)
+Ensure the breakout tool is also in this foler (again, adjust bat file as needed)
+python 3.x with requirements must be loaded (needs PyYAML)
+
+Setup:
+	Edit config.yaml
+		set username 
+		set password
+		set controller url
+
+Usage:
+	Ensure secureCRT is closed
+	run the start-breakout.bat
+		This will generate a labs.yaml
+		It will then purge the _CML folder in securecrt
+		It will then generates Lab folders and saved session files under _CML in secureCRT.
+		*SecureCRT config path is read from the registry.
+	Once you see the breakout tool screen you can open secureCRT.
+	You will have any active labs show under the _CML folder.
