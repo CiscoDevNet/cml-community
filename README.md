@@ -61,3 +61,4 @@ This project was written and is maintained by the following individuals:
 * Ozzy Schoonover <OzzySchoonover@gmail.com>
 * Alexander Deca <alexander@deca-consulting.be>
 * Xinyu Wei <trustywolf@sfc.wide.ad.jp>
+* Kelly Christians <kelly.christians@rsmus.com>
