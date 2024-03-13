@@ -25,3 +25,6 @@
 [submodule "use-cases/cloud-cml"]
 	path = use-cases/cloud-cml
 	url = https://github.com/CiscoDevNet/cloud-cml.git
+[submodule "scripts/eve2cml"]
+	path = scripts/eve2cml
+	url = https://github.com/CiscoDevNet/eve2cml.git
