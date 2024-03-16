@@ -1,0 +1,72 @@
+id: exos
+boot:
+  timeout: 250
+  completed:
+    - Authentication Service (AAA) on the master node is now available for login.
+configuration:
+  generator:
+    driver: null
+  provisioning:
+    files:
+      - name: meta-data
+        content: ""
+        editable: true
+    media_type: iso
+    volume_name: disk
+device:
+  interfaces:
+    default_count: 4
+    has_loopback_zero: false
+    physical:
+      - Mgmt
+      - "1"
+      - "2"
+      - "3"
+      - "4"
+      - "5"
+      - "6"
+      - "7"
+      - "8"
+      - "9"
+      - "10"
+      - "11"
+      - "12"
+    serial_ports: 1
+general:
+  description: ExtremeXOS VM
+  nature: switch
+  read_only: true
+inherited:
+  image:
+    boot_disk_size: false
+    cpus: true
+    data_volume: true
+    ram: true
+  node:
+    boot_disk_size: false
+    cpus: true
+    data_volume: true
+    ram: true
+pyats:
+  os: linux
+schema_version: 0.0.1
+sim:
+  linux_native:
+    cpus: 1
+    disk_driver: ide
+    driver: server
+    libvirt_domain_driver: kvm
+    nic_driver: rtl8139
+    ram: 512
+ui:
+  description: |-
+    The ExtremeXOS VM is created and maintained by Extreme Networks for users to emulate a network using EXOS switches.
+    Boot up and login is admin with no password.
+
+    [Virtual_EXOS](https://github.com/extremenetworks/Virtual_EXOS)
+    [Documentation](https://www.extremenetworks.com/support/documentation)
+  group: Others
+  icon: switch
+  label: EXOS
+  label_prefix: exos-
+  visible: true

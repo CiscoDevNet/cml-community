@@ -1,0 +1,86 @@
+id: voss
+boot:
+  timeout: 250
+  completed:
+    - EXTREME NETWORKS Fabric Engine COMMAND LINE INTERFACE
+configuration:
+  generator:
+    driver: null
+  provisioning:
+    files:
+      - name: meta-data
+        content: ""
+        editable: true
+    media_type: iso
+    volume_name: disk
+device:
+  interfaces:
+    default_count: 4
+    has_loopback_zero: false
+    physical:
+      - Mgmt
+      - "1/1"
+      - "1/2"
+      - "1/3"
+      - "1/4"
+      - "1/5"
+      - "1/6"
+      - "1/7"
+      - "1/8"
+      - "1/9"
+      - "1/10"
+      - "1/11"
+      - "1/12"
+      - "1/13"
+      - "1/14"
+      - "1/15"
+      - "1/16"
+      - "1/17"
+      - "1/18"
+      - "1/19"
+      - "1/20"
+      - "1/21"
+      - "1/22"
+      - "1/23"
+      - "1/24"
+      - "1/25"
+      - "1/26"
+    serial_ports: 1
+general:
+  description: VOSS VM (VSP8K switch)
+  nature: switch
+  read_only: true
+inherited:
+  image:
+    boot_disk_size: false
+    cpus: true
+    data_volume: true
+    ram: true
+  node:
+    boot_disk_size: false
+    cpus: true
+    data_volume: true
+    ram: true
+pyats:
+  os: linux
+schema_version: 0.0.1
+sim:
+  linux_native:
+    cpus: 1
+    disk_driver: ide
+    driver: server
+    libvirt_domain_driver: kvm
+    nic_driver: e1000
+    ram: 2048
+ui:
+  description: |-
+    The VOSS VM is a software emulation of a VSP8K switch.
+    Boot up and login is rwa/rwa.
+
+    [Virtual_VOSS](https://github.com/extremenetworks/Virtual_VOSS)
+    [Documentation](https://www.extremenetworks.com/support/documentation)
+  group: Others
+  icon: switch
+  label: VOSS
+  label_prefix: voss-
+  visible: true
