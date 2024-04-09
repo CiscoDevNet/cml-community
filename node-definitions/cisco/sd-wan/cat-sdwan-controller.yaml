@@ -7,7 +7,7 @@
 id: cat-sdwan-controller
 configuration:
   generator:
-    driver: sdwan
+    driver: null
   provisioning:
     volume_name: cidata
     media_type: iso

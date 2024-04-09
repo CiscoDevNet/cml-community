@@ -54,7 +54,7 @@ inherited:
     cpu_limit: true
 configuration:
   generator:
-    driver: sdwan_edge
+    driver: csr1000v
   provisioning:
     volume_name: disk
     media_type: iso
