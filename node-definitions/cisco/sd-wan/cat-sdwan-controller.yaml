@@ -1,7 +1,13 @@
+#
+# cat-sdwan-controller node definition
+# generated 2023-12-19
+# part of VIRL^2
+#
+
 id: cat-sdwan-controller
 configuration:
   generator:
-    driver: null
+    driver: sdwan
   provisioning:
     volume_name: cidata
     media_type: iso
@@ -12,14 +18,31 @@ configuration:
           local-hostname: Controller
         editable: false
       - name: user-data
-        content: |-
+        content: |
           #cloud-config
-          # This syntax only works with software <= 20.4.x.
-          vinitparam:
-           - vbond :
-           - host-name: Controller
-           - org:
-           - rcc : true
+          write_files:
+          - path: /etc/confd/init/zcloud.xml
+            content: |
+              <config xmlns="http://tail-f.com/ns/config/1.0">
+                <system xmlns="http://viptela.com/system">
+                  <host-name>inserthostname-here</host-name>
+                  <aaa>
+                    <user>
+                      <name>admin</name>
+                      <password>$6$0270fb81b5b56c1e$LOaD1.Xj7zlP9TwMwZ5sMI1rtsU7b.TTtk3vetlfwVetEq7xmFkSvRCnsCn0rp14WYMC0ydfZtwiXNJL8mVr9/</password>
+                    </user>
+                    <user>
+                      <name>cisco</name>
+                      <password>$6$0270fb81b5b56c1e$LOaD1.Xj7zlP9TwMwZ5sMI1rtsU7b.TTtk3vetlfwVetEq7xmFkSvRCnsCn0rp14WYMC0ydfZtwiXNJL8mVr9/</password>
+                      <group>netadmin</group>
+                    </user>
+                    <user>
+                      <name>cisco</name>
+                      <password>$6$0270fb81b5b56c1e$LOaD1.Xj7zlP9TwMwZ5sMI1rtsU7b.TTtk3vetlfwVetEq7xmFkSvRCnsCn0rp14WYMC0ydfZtwiXNJL8mVr9/</password>
+                    </user>
+                  </aaa>
+                </system>
+              </config>
         editable: true
 device:
   interfaces:
@@ -34,6 +57,30 @@ device:
       - eth5
       - eth6
       - eth7
+      - eth8
+      - eth9
+      - eth10
+      - eth11
+      - eth12
+      - eth13
+      - eth14
+      - eth15
+      - eth16
+      - eth17
+      - eth18
+      - eth19
+      - eth20
+      - eth21
+      - eth22
+      - eth23
+      - eth24
+      - eth25
+      - eth26
+      - eth27
+      - eth28
+      - eth29
+      - eth30
+      - eth31
     serial_ports: 1
 inherited:
   image:
@@ -70,13 +117,10 @@ pyats:
   os: sdwan
   series: viptela
   config_extract_command: show running
-  username: admin
-  password: admin
-  use_in_testbed: true
 ui:
   description: Cisco Catalyst SD-WAN Controller
-  group: Others
+  group: Cisco
   icon: server
   label: Catalyst SD-WAN Controller
-  label_prefix: cat-sdwan-controller-
+  label_prefix: sdwan-controller-
   visible: true

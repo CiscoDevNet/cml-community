@@ -1,7 +1,13 @@
+#
+# cat-sdwan-manager node definition
+# generated 2023-12-19
+# part of VIRL^2
+#
+
 id: cat-sdwan-manager
 configuration:
   generator:
-    driver: null
+    driver: sdwan_manager
   provisioning:
     volume_name: cidata
     media_type: iso
@@ -12,20 +18,46 @@ configuration:
           local-hostname: Manager
         editable: false
       - name: user-data
-        content: |-
+        content: |
           #cloud-config
-          # This syntax only works with software <= 20.4.x.
-          vinitparam:
-           - format-partition: 1
-           - vbond :
-           - host-name: Manager
-           - org:
-           - rcc : true
+          fs_setup:
+          - device: "/dev/sdb"
+            partition: "none"
+            filesystem: "ext4"
+          mounts:
+          - [ sdb, /opt/data ]
+          write_files:
+          - path: /opt/web-app/etc/persona
+            owner: vmanage:vmanage-admin
+            permissions: '0644'
+            content: '{"persona":"COMPUTE_AND_DATA"}'
+          - path: /etc/confd/init/zcloud.xml
+            content: |
+              <config xmlns="http://tail-f.com/ns/config/1.0">
+                <system xmlns="http://viptela.com/system">
+                  <host-name>inserthostname-here</host-name>
+                  <aaa>
+                    <user>
+                      <name>admin</name>
+                      <password>$6$0270fb81b5b56c1e$LOaD1.Xj7zlP9TwMwZ5sMI1rtsU7b.TTtk3vetlfwVetEq7xmFkSvRCnsCn0rp14WYMC0ydfZtwiXNJL8mVr9/</password>
+                    </user>
+                    <user>
+                      <name>cisco</name>
+                      <password>$6$0270fb81b5b56c1e$LOaD1.Xj7zlP9TwMwZ5sMI1rtsU7b.TTtk3vetlfwVetEq7xmFkSvRCnsCn0rp14WYMC0ydfZtwiXNJL8mVr9/</password>
+                      <group>netadmin</group>
+                    </user>
+                    <user>
+                      <name>cisco</name>
+                      <password>$6$0270fb81b5b56c1e$LOaD1.Xj7zlP9TwMwZ5sMI1rtsU7b.TTtk3vetlfwVetEq7xmFkSvRCnsCn0rp14WYMC0ydfZtwiXNJL8mVr9/</password>
+                    </user>
+                  </aaa>
+                </system>
+              </config>
         editable: true
 device:
   interfaces:
     has_loopback_zero: false
-    default_count: 2
+    default_count: 4
     physical:
       - eth0
       - eth1
@@ -36,6 +68,29 @@ device:
       - eth6
       - eth7
       - eth8
+      - eth9
+      - eth10
+      - eth11
+      - eth12
+      - eth13
+      - eth14
+      - eth15
+      - eth16
+      - eth17
+      - eth18
+      - eth19
+      - eth20
+      - eth21
+      - eth22
+      - eth23
+      - eth24
+      - eth25
+      - eth26
+      - eth27
+      - eth28
+      - eth29
+      - eth30
+      - eth31
     serial_ports: 1
 inherited:
   image:
@@ -66,19 +121,16 @@ sim:
     driver: server
     libvirt_domain_driver: kvm
     nic_driver: virtio
-    ram: 16384
+    ram: 32768
     data_volume: 256
     cpu_limit: 100
 pyats:
   os: sdwan
   series: viptela
   config_extract_command: show running
-  username: admin
-  password: admin
-  use_in_testbed: true
 ui:
   description: Cisco Catalyst SD-WAN Manager
-  group: Others
+  group: Cisco
   icon: server
   label: Catalyst SD-WAN Manager
   label_prefix: sdwan-manager-

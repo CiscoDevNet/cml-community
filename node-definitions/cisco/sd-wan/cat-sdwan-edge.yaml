@@ -1,8 +1,10 @@
+#
+# cat-sdwan-edge node definition
+# generated 2023-12-19
+# part of VIRL^2
+#
+
 id: cat-sdwan-edge
-general:
-  description: Catalyst SD-WAN Edge
-  nature: router
-  read_only: false
 device:
   interfaces:
     has_loopback_zero: true
@@ -17,28 +19,26 @@ device:
       - GigabitEthernet8
       - GigabitEthernet9
       - GigabitEthernet10
+      - GigabitEthernet11
+      - GigabitEthernet12
+      - GigabitEthernet13
+      - GigabitEthernet14
+      - GigabitEthernet15
+      - GigabitEthernet16
+      - GigabitEthernet17
+      - GigabitEthernet18
+      - GigabitEthernet19
+      - GigabitEthernet20
+      - GigabitEthernet21
+      - GigabitEthernet22
+      - GigabitEthernet23
+      - GigabitEthernet24
+      - GigabitEthernet25
+      - GigabitEthernet26
     serial_ports: 2
-    default_count: 8
+    default_count: 4
     loopback:
       - Loopback0
-ui:
-  visible: true
-  label_prefix: sdwan-edge-
-  icon: router
-  label: Catalyst SD-WAN Edge
-sim:
-  linux_native:
-    libvirt_domain_driver: kvm
-    driver: csr1000v
-    disk_driver: virtio
-    ram: 5120
-    cpus: 2
-    nic_driver: vmxnet3
-    cpu_limit: 100
-boot:
-  completed:
-    - Press RETURN to get started!
-  timeout: 250
 inherited:
   image:
     ram: true
@@ -54,16 +54,77 @@ inherited:
     cpu_limit: true
 configuration:
   generator:
-    driver: csr1000v
+    driver: sdwan_edge
   provisioning:
     volume_name: disk
     media_type: iso
     files:
       - name: ciscosdwan_cloud_init.cfg
         editable: true
-        content: '# cloud-init'
+        content: |
+          Content-Type: multipart/mixed; boundary="==BOUNDARY=="
+          MIME-Version: 1.0
+
+          --==BOUNDARY==
+          Content-Type: text/cloud-config; charset="us-ascii"
+          MIME-Version: 1.0
+          Content-Transfer-Encoding: 7bit
+          Content-Disposition: attachment; filename="cloud-config"
+
+          #cloud-config
+          vinitparam:
+          - otp : <insert otp/token here>
+          - vbond : <insert vbond ip/name here>
+          # <replace C8K with valid uuid below>
+          - uuid : C8K
+          - org : <insert org name here>
+          - rcc : <true/false>
+          ca-certs:
+            remove-defaults: false
+            trusted:
+            - |
+              -----BEGIN CERTIFICATE-----
+              <insert certificate here>
+              -----END CERTIFICATE-----
+          --==BOUNDARY==
+          Content-Type: text/cloud-boothook; charset="us-ascii"
+          MIME-Version: 1.0
+          Content-Transfer-Encoding: 7bit
+          Content-Disposition: attachment;
+          filename="config-C8K.txt"
+
+          #cloud-boothook
+            hostname inserthostname-here
+            username cisco privilege 15 secret 0 cisco
+            !
+          !
+          --==BOUNDARY==--
+general:
+  description: Catalyst SD-WAN Edge
+  nature: router
+  read_only: false
 schema_version: 0.0.1
+boot:
+  completed:
+    - Press RETURN to get started!
+  timeout: 250
+sim:
+  linux_native:
+    libvirt_domain_driver: kvm
+    driver: csr1000v
+    disk_driver: virtio
+    ram: 5120
+    cpus: 2
+    nic_driver: vmxnet3
+    cpu_limit: 100
 pyats:
   os: iosxe
-  use_in_testbed: true
   series: sdwan
+  config_extract_command: show running
+ui:
+  description: Cisco Catalyst SD-WAN Edge
+  group: Cisco
+  icon: router
+  label: Catalyst SD-WAN Edge
+  label_prefix: sdwan-edge-
+  visible: true
