@@ -96,6 +96,7 @@ configuration:
           #cloud-boothook
             hostname inserthostname-here
             username cisco privilege 15 secret 0 cisco
+            platform console serial
             !
           !
           --==BOUNDARY==--
