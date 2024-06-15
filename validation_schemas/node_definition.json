@@ -495,7 +495,8 @@
                                 "tcx",
                                 "cg3",
                                 "virtio",
-                                "none"
+                                "none",
+				"vga"
                             ]
                         },
                         "memory": {
