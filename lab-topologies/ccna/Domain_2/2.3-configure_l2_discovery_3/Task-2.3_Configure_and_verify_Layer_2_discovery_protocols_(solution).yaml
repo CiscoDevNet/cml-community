@@ -1,0 +1,809 @@
+annotations:
+  - border_color: '#808080FF'
+    border_radius: 0
+    border_style: ''
+    color: '#BBEA9A'
+    thickness: 1
+    type: rectangle
+    x1: -760.0
+    y1: -200.0
+    x2: 720.0
+    y2: 280.0
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#0A0000'
+    rotation: 0
+    text_bold: true
+    text_content: CDP
+    text_font: cursive
+    text_italic: false
+    text_size: 20
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -680.0
+    y1: -160.0
+    z_index: 1
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#080000'
+    rotation: 0
+    text_bold: false
+    text_content: LLDP
+    text_font: cursive
+    text_italic: false
+    text_size: 20
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -200.0
+    y1: -160.0
+    z_index: 2
+  - border_color: '#808080FF'
+    border_style: ''
+    color: '#F0BDBD'
+    thickness: 1
+    type: ellipse
+    x1: -120.0
+    y1: 220.0
+    x2: 120.0
+    y2: 100.0
+    z_index: 3
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#080000'
+    rotation: 0
+    text_bold: true
+    text_content: Managment Desktop
+    text_font: cursive
+    text_italic: false
+    text_size: 13
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -200.0
+    y1: 240.0
+    z_index: 4
+nodes:
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          Building configuration...
+
+          Current configuration : 3018 bytes
+          !
+          ! Last configuration change at 14:10:11 UTC Wed May 1 2024
+          !
+          version 15.9
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          no service password-encryption
+          !
+          hostname Iosv-0
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          no logging console
+          !
+          no aaa new-model
+          !
+          !
+          !
+          mmi polling-interval 60
+          no mmi auto-configure
+          no mmi pvc
+          mmi snmp-timeout 180
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          ip cef
+          no ipv6 cef
+          !
+          multilink bundle-name authenticated
+          !
+          !
+          !
+          !
+          !
+          redundancy
+          !
+          lldp run
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          interface GigabitEthernet0/0
+           ip address 192.168.2.1 255.255.255.0
+           duplex auto
+           speed auto
+           media-type rj45
+          !
+          interface GigabitEthernet0/1
+           ip address 192.168.1.1 255.255.255.0
+           duplex auto
+           speed auto
+           media-type rj45
+          !
+          interface GigabitEthernet0/2
+           no ip address
+           shutdown
+           duplex auto
+           speed auto
+           media-type rj45
+          !
+          interface GigabitEthernet0/3
+           no ip address
+           shutdown
+           duplex auto
+           speed auto
+           media-type rj45
+          !
+          ip forward-protocol nd
+          !
+          !
+          no ip http server
+          no ip http secure-server
+          !
+          ipv6 ioam timestamp
+          !
+          !
+          !
+          control-plane
+          !
+          banner exec ^C
+          **************************************************************************
+          * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+          * education. IOSv is provided as-is and is not supported by Cisco's      *
+          * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+          * of the IOSv Software or Documentation to any third party for any       *
+          * purposes is expressly prohibited except as otherwise authorized by     *
+          * Cisco in writing.                                                      *
+          **************************************************************************^C
+          banner incoming ^C
+          **************************************************************************
+          * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+          * education. IOSv is provided as-is and is not supported by Cisco's      *
+          * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+          * of the IOSv Software or Documentation to any third party for any       *
+          * purposes is expressly prohibited except as otherwise authorized by     *
+          * Cisco in writing.                                                      *
+          **************************************************************************^C
+          banner login ^C
+          **************************************************************************
+          * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+          * education. IOSv is provided as-is and is not supported by Cisco's      *
+          * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+          * of the IOSv Software or Documentation to any third party for any       *
+          * purposes is expressly prohibited except as otherwise authorized by     *
+          * Cisco in writing.                                                      *
+          **************************************************************************^C
+          !
+          line con 0
+           exec-timeout 0 0
+          line aux 0
+          line vty 0 4
+           exec-timeout 0 0
+           login
+           transport input none
+          !
+          no scheduler allocate
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: iosv-0
+    node_definition: iosv
+    parameters: {}
+    ram: null
+    tags: []
+    x: -400
+    y: -160
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: GigabitEthernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: GigabitEthernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: GigabitEthernet0/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          Building configuration...
+
+          Current configuration : 2690 bytes
+          !
+          ! Last configuration change at 14:10:16 UTC Wed May 1 2024
+          !
+          version 15.2
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          no service password-encryption
+          service compress-config
+          !
+          hostname Iosvl2-0
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          no logging console
+          !
+          no aaa new-model
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          ip cef
+          no ipv6 cef
+          !
+          !
+          !
+          spanning-tree mode pvst
+          spanning-tree extend system-id
+          !
+          lldp run
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          interface GigabitEthernet0/0
+           negotiation auto
+          !
+          interface GigabitEthernet0/1
+           negotiation auto
+          !
+          interface GigabitEthernet0/2
+           negotiation auto
+          !
+          interface GigabitEthernet0/3
+           negotiation auto
+          !
+          ip forward-protocol nd
+          !
+          ip http server
+          ip http secure-server
+          !
+          ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+          ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+          !
+          !
+          !
+          !
+          !
+          !
+          control-plane
+          !
+          banner exec ^C
+          IOSv - Cisco Systems Confidential -
+
+          Supplemental End User License Restrictions
+
+          This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+
+          By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
+          ^C
+          banner incoming ^C
+          IOSv - Cisco Systems Confidential -
+
+          Supplemental End User License Restrictions
+
+          This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+
+          By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
+          ^C
+          banner login ^C
+          IOSv - Cisco Systems Confidential -
+
+          Supplemental End User License Restrictions
+
+          This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+
+          By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
+          ^C
+          !
+          line con 0
+           exec-timeout 0 0
+          line aux 0
+          line vty 0 4
+           exec-timeout 0 0
+           login
+          !
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: iosvl2-0
+    node_definition: iosvl2
+    parameters: {}
+    ram: null
+    tags: []
+    x: -120
+    y: 40
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: GigabitEthernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: GigabitEthernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: GigabitEthernet0/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n2
+    image_definition: null
+    label: desktop-0
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: -120
+    y: 200
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          Building configuration...
+
+          Current configuration : 1007 bytes
+          !
+          ! Last configuration change at 14:10:13 UTC Wed May 1 2024
+          !
+          version 17.12
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          !
+          hostname Iol-l2-0
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          no logging console
+          no aaa new-model
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          ip audit notify log
+          ip audit po max-events 100
+          ip cef
+          login on-success log
+          no ipv6 cef
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          vtp version 1
+          multilink bundle-name authenticated
+          !
+          !
+          !
+          !
+          memory free low-watermark processor 80589
+          !
+          !
+          spanning-tree mode rapid-pvst
+          spanning-tree extend system-id
+          !
+          !
+          vlan internal allocation policy ascending
+          !
+          lldp run
+          !
+          !
+          !
+          !
+          interface Ethernet0/0
+          !
+          interface Ethernet0/1
+          !
+          interface Ethernet0/2
+          !
+          interface Ethernet0/3
+          !
+          interface Vlan1
+           ip address 192.168.1.2 255.255.255.0
+          !
+          ip forward-protocol nd
+          !
+          !
+          ip http server
+          ip http secure-server
+          ip ssh bulk-mode 131072
+          !
+          !
+          !
+          !
+          !
+          !
+          control-plane
+          !
+          !
+          !
+          line con 0
+           exec-timeout 0 0
+           logging synchronous
+          line aux 0
+          line vty 0 4
+           exec-timeout 0 0
+           login
+           transport input ssh
+          !
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n3
+    image_definition: null
+    label: iol-l2-0
+    node_definition: ioll2-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: -680
+    y: 40
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet0/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          Building configuration...
+
+          Current configuration : 951 bytes
+          !
+          ! Last configuration change at 14:10:14 UTC Wed May 1 2024
+          !
+          version 17.12
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          !
+          hostname Iol-L2-1
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          no logging console
+          no aaa new-model
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          ip audit notify log
+          ip audit po max-events 100
+          ip cef
+          login on-success log
+          no ipv6 cef
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          vtp version 1
+          multilink bundle-name authenticated
+          !
+          !
+          !
+          !
+          memory free low-watermark processor 80589
+          !
+          !
+          spanning-tree mode rapid-pvst
+          spanning-tree extend system-id
+          !
+          !
+          vlan internal allocation policy ascending
+          !
+          lldp run
+          !
+          !
+          !
+          !
+          interface Ethernet0/0
+          !
+          interface Ethernet0/1
+          !
+          interface Ethernet0/2
+          !
+          interface Ethernet0/3
+          !
+          ip forward-protocol nd
+          !
+          !
+          ip http server
+          ip http secure-server
+          ip ssh bulk-mode 131072
+          !
+          !
+          !
+          !
+          !
+          !
+          control-plane
+          !
+          !
+          !
+          line con 0
+           exec-timeout 0 0
+           logging synchronous
+          line aux 0
+          line vty 0 4
+           exec-timeout 0 0
+           login
+           transport input ssh
+          !
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n4
+    image_definition: null
+    label: iol-l2-1
+    node_definition: ioll2-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: -400
+    y: 40
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet0/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n5
+    image_definition: null
+    label: ext-conn-0
+    node_definition: external_connector
+    parameters: {}
+    ram: null
+    tags: []
+    x: -400
+    y: -320
+    interfaces:
+      - id: i0
+        label: port
+        slot: 0
+        type: physical
+links:
+  - id: l0
+    n1: n0
+    n2: n1
+    i1: i1
+    i2: i1
+    conditioning: {}
+    label: iosv-0-GigabitEthernet0/0<->iosvl2-0-GigabitEthernet0/0
+  - id: l1
+    n1: n1
+    n2: n2
+    i1: i2
+    i2: i0
+    conditioning: {}
+    label: iosvl2-0-GigabitEthernet0/1<->desktop-0-eth0
+  - id: l2
+    n1: n0
+    n2: n3
+    i1: i2
+    i2: i1
+    conditioning: {}
+    label: iosv-0-GigabitEthernet0/1<->iol-l2-0-Ethernet0/0
+  - id: l3
+    n1: n3
+    n2: n4
+    i1: i2
+    i2: i1
+    conditioning: {}
+    label: iol-l2-0-Ethernet0/1<->iol-l2-1-Ethernet0/0
+  - id: l4
+    n1: n4
+    n2: n1
+    i1: i2
+    i2: i3
+    conditioning: {}
+    label: iol-l2-1-Ethernet0/1<->iosvl2-0-GigabitEthernet0/2
+  - id: l5
+    n1: n0
+    n2: n5
+    i1: i3
+    i2: i0
+    conditioning: {}
+    label: iosv-0-GigabitEthernet0/2<->ext-conn-0-port
+lab:
+  description: |-
+    CDP and LLDP are like friendly messages that network devices send to each other to introduce themselves and share information.
+    CDP is like a postcard that Cisco devices use to say "Hello, I'm a Cisco device!" It also tells other Cisco devices nearby about its name, the type of device it is, and how it's connected.
+    LLDP is similar, but it's like a universal postcard that all kinds of devices can use. It sends out messages saying "Hi, I'm here!" and shares basic information about the device, like its name, what it is, and how it's connected to the network.
+    So, CDP and LLDP are both ways for devices on a network to be friendly and introduce themselves, helping to keep everything connected smoothly.
+  notes: |-
+    Task-2.3[Configure and verify Layer 2 discovery protocols (Cisco Discovery Protocol and LLDP)]
+
+    step1: Configure the names(all devices) and interfaces of router
+
+    1a. I have given the hostnames as visbale on the scress to all Devices with commnad #hostname <actual hostname>,  You can give your desired names to them.
+
+    1b. For router interfaces I have assigned{ 192.168.1.1 and 192.168.1.2} you can assign according to you.
+
+    step2: By default cdp is enabled in the cisco devices. So, verfiy it.
+
+    2a. You can verfiy by below commands
+
+    #show cdp neighbors
+    Iol-l2-0#show cdp neighbors
+    Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
+                      S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone,
+                      D - Remote, C - CVTA, M - Two-port Mac Relay
+    Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+    Iol-L2-1         Eth 0/1           155             R S I  Linux Uni Eth 0/0
+    Iosv-0           Eth 0/0           171              R B             Gig 0/1
+
+    #show cdp neighbors detail | <interface>
+
+    step3: Configure the LLDP on all Nodes(Devices).
+
+    1a To enable LLDP on cisco devices
+
+    #lldp run
+
+    step4: Verfiy the working of LLDP.
+
+    1a To verfiy
+
+    #show lldp neighbors
+
+    Iol-l2-0#show lldp neighbors
+    Capability codes:
+        (R) Router, (B) Bridge, (T) Telephone, (C) DOCSIS Cable Device
+        (W) WLAN Access Point, (P) Repeater, (S) Station, (O) Other
+
+    Device ID           Local Intf     Hold-time  Capability      Port ID
+    Iol-L2-1            Et0/1          120        B,R             Et0/0
+    Iosv-0              Et0/0          120        R               Gi0/1
+
+    Total entries displayed: 2
+  title: Task-2.3[Configure and verify Layer 2 discovery protocols]
+  version: 0.2.2
