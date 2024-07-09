@@ -1,0 +1,358 @@
+annotations:
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: ''
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 200.0
+    y1: 160.0
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#C12C2C'
+    rotation: 0
+    text_bold: false
+    text_content: 192.168.2.0 /24
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -280.0
+    y1: 40.0
+    z_index: 2
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#C12C2C'
+    rotation: 0
+    text_bold: false
+    text_content: '.1'
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -160.0
+    y1: 80.0
+    z_index: 2
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#C12C2C'
+    rotation: 0
+    text_bold: false
+    text_content: '.2'
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -160.0
+    y1: -40.0
+    z_index: 2
+nodes:
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname inserthostname-here
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+          hostname PC1
+          echo '127.0.0.1 PC1' >> /etc/hosts
+          ip address add 192.168.2.2/255.255.255.0 dev eth0
+          route add default gw 192.168.2.1 eth0
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: PC1
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: -120
+    y: -80
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          Building configuration...
+
+
+          Current configuration : 3222 bytes
+          !
+          ! Last configuration change at 09:12:27 UTC Wed May 15 2024
+          !
+          version 15.9
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          no service password-encryption
+          !
+          hostname R1
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          no logging console
+          !
+          aaa new-model
+          !
+          !
+          aaa authentication login default local
+          aaa authorization exec default local
+          !
+          !
+          !
+          !
+          !
+          aaa session-id common
+          !
+          !
+          !
+          mmi polling-interval 60
+          no mmi auto-configure
+          no mmi pvc
+          mmi snmp-timeout 180
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          no ip domain lookup
+          ip domain name cisco.com
+          ip cef
+          no ipv6 cef
+          !
+          multilink bundle-name authenticated
+          !
+          !
+          !
+          !
+          username cisco privilege 15 password 0 cisco
+          !
+          redundancy
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          interface GigabitEthernet0/0
+           no ip address
+           shutdown
+           duplex auto
+           speed auto
+           media-type rj45
+          !
+          interface GigabitEthernet0/1
+           ip address 192.168.2.1 255.255.255.0
+           duplex auto
+           speed auto
+           media-type rj45
+          !
+          interface GigabitEthernet0/2
+           no ip address
+           shutdown
+           duplex auto
+           speed auto
+           media-type rj45
+          !
+          interface GigabitEthernet0/3
+           no ip address
+           shutdown
+           duplex auto
+           speed auto
+           media-type rj45
+          !
+          ip forward-protocol nd
+          !
+          !
+          no ip http server
+          no ip http secure-server
+          ip ssh version 2
+          !
+          ipv6 ioam timestamp
+          !
+          !
+          !
+          !
+          !
+          control-plane
+          !
+          banner exec ^C
+          **************************************************************************
+          * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+          * education. IOSv is provided as-is and is not supported by Cisco's      *
+          * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+          * of the IOSv Software or Documentation to any third party for any       *
+          * purposes is expressly prohibited except as otherwise authorized by     *
+          * Cisco in writing.                                                      *
+          **************************************************************************^C
+          banner incoming ^C
+          **************************************************************************
+          * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+          * education. IOSv is provided as-is and is not supported by Cisco's      *
+          * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+          * of the IOSv Software or Documentation to any third party for any       *
+          * purposes is expressly prohibited except as otherwise authorized by     *
+          * Cisco in writing.                                                      *
+          **************************************************************************^C
+          banner login ^C
+          **************************************************************************
+          * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+          * education. IOSv is provided as-is and is not supported by Cisco's      *
+          * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+          * of the IOSv Software or Documentation to any third party for any       *
+          * purposes is expressly prohibited except as otherwise authorized by     *
+          * Cisco in writing.                                                      *
+          **************************************************************************^C
+          !
+          line con 0
+           exec-timeout 0 0
+          line aux 0
+          line vty 0 4
+           exec-timeout 0 0
+           password cisco
+           transport input ssh
+          !
+          no scheduler allocate
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: R1
+    node_definition: iosv
+    parameters: {}
+    ram: null
+    tags: []
+    x: -120
+    y: 120
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: GigabitEthernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: GigabitEthernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: GigabitEthernet0/3
+        slot: 3
+        type: physical
+links:
+  - id: l0
+    n1: n1
+    n2: n0
+    i1: i2
+    i2: i0
+    conditioning: {}
+    label: R1-GigabitEthernet0/1<->PC1-eth0
+lab:
+  description: ''
+  notes: |-
+    SSH (Secure Shell) is a secure method for remote access as is includes authentication and encryption. To do this, it uses a RSA public/private keypair. In this Lab you will configure SSH access for R1. You will then be able to connect to R1 via PC1 & R2 using SSH.
+
+    Step 1. Configure the Hostnames and IP Addresses as per the Topology.
+
+    Step 2  Enable SSH on R1.
+    Note: You must first Configure a domain name, Generate the RSA keypair & Create a login username / password (Username: cisco, Password:cisco)
+    See the successfull message once SSH has been enabled on R1
+    ----
+    The name for the keys will be: R1.cisco.com
+    Choose the size of the key modulus in the range of 360 to 4096 for your
+      General Purpose Keys. Choosing a key modulus greater than 512 may take
+      a few minutes.
+    How many bits in the modulus [512]: 2048
+    % Generating 2048 bit RSA keys, keys will be non-exportable...
+    [OK] (elapsed time was 1 seconds)
+    R1(config)#
+    *May 15 08:16:00.479: %SSH-5-ENABLED: SSH 1.99 has been enabled
+    --
+    Step 3: Configure VTY lines to use SSH only
+
+    Step 4: Create a user using the AAA model (Username cisco). Copy the running Config to the startup config.
+
+    Step 5: Verify that SSH has been configured correctly by attempting to SSH into R1 from R2 or  PC1
+
+    Note: You will need to enter this command to establish a sucessfull connection from PC1 to R1 (due to CML limitations)
+    ssh cisco@192.168.2.1 -oKexAlgorithms=diffie-hellman-group14-sha1 -oHostKeyAlgorithms=ssh-rsa
+    -------------------------------------------------------------------------------------------
+    See the output below from PC1 to R1:
+    PC1:~$ ssh cisco@192.168.2.1 -oKexAlgorithms=diffie-hellman-group14-sha1 -oHostK
+    eyAlgorithms=ssh-rsa
+
+    **************************************************************************
+    * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+    * education. IOSv is provided as-is and is not supported by Cisco's      *
+    * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+    * of the IOSv Software or Documentation to any third party for any       *
+    * purposes is expressly prohibited except as otherwise authorized by     *
+    * Cisco in writing.                                                      *
+    (cisco@192.168.2.1) Password: ********************************************
+
+
+    **************************************************************************
+    * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+    * education. IOSv is provided as-is and is not supported by Cisco's      *
+    * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+    * of the IOSv Software or Documentation to any third party for any       *
+    * purposes is expressly prohibited except as otherwise authorized by     *
+    * Cisco in writing.                                                      *
+    **************************************************************************
+    R1>
+
+    Note: We can also verify SSH has been abled by running the "show ssh" command on R1 while an SSH connection has been established, see the output below:
+    R1#show ssh
+    Connection Version Mode  Encryption  Hmac          State                Username
+    0          2.0     IN   aes128-ctr  hmac-sha2-256 Session started       cisco
+    0          2.0     OUT  aes128-ctr  hmac-sha2-256 Session started       cisco
+    R1#
+  title: Lab at Wed 07:49 AM
+  version: 0.2.2
