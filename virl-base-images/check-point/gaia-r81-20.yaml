@@ -1,0 +1,8 @@
+id: gaia-r81-20
+node_definition_id: gaia
+description: Gaia R81.20
+label: Gaia R81.20
+disk_image: ivory_main-634-991001608_unsecured.qcow2 
+read_only: false
+disk_subfolder: gaia-r81-20
+schema_version: 0.0.1
