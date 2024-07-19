@@ -18,7 +18,6 @@ device:
       - eth8
     serial_ports: 1
     default_count: 3
-    min_count: 1
     loopback:
       - lo
 ui:
