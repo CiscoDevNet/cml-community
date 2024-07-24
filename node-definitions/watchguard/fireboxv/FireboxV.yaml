@@ -1,0 +1,76 @@
+id: FireboxV
+boot:
+  timeout: 60
+  uses_regex: false
+configuration:
+  generator:
+    driver: null
+  provisioning:
+    files:
+      - name: meta-data
+        editable: true
+    media_type: iso
+    volume_name: disk
+device:
+  interfaces:
+    default_count: 2
+    has_loopback_zero: true
+    physical:
+      - port1
+      - port2
+      - port3
+      - port4
+      - port5
+      - port6
+      - port7
+      - port8
+      - port9
+      - port10
+    serial_ports: 1
+    loopback:
+      - lo
+general:
+  description: Watchguard FireboxV Firewall
+  nature: firewall
+  read_only: false
+inherited:
+  image:
+    boot_disk_size: false
+    cpus: true
+    data_volume: true
+    ram: true
+    cpu_limit: true
+  node:
+    boot_disk_size: false
+    cpus: true
+    data_volume: true
+    ram: true
+    cpu_limit: true
+schema_version: 0.0.1
+sim:
+  linux_native:
+    cpus: 2
+    data_volume: 32
+    disk_driver: sata
+    driver: server
+    libvirt_domain_driver: kvm
+    nic_driver: virtio
+    ram: 2048
+    cpu_limit: 100
+    boot_disk_size: 8
+ui:
+  description: |-
+    Watchguard FireboxV Firewall
+
+    2,048 MB DRAM, 2 vCPU
+  group: Others
+  icon: firewall
+  label: FireboxV
+  label_prefix: FireboxV-
+  visible: true
+pyats:
+  os: linux
+  use_in_testbed: true
+  username: admin
+  password: readwrite
+  config_extract_command: show interface

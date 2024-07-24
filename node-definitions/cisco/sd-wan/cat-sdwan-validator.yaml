@@ -1,3 +1,9 @@
+#
+# cat-sdwan-validator node definition
+# generated 2023-12-19
+# part of VIRL^2
+#
+
 id: cat-sdwan-validator
 configuration:
   generator:
@@ -12,19 +18,36 @@ configuration:
           local-hostname: Validator
         editable: false
       - name: user-data
-        content: |-
+        content: |
           #cloud-config
-          # This syntax only works with software <= 20.4.x.
-          vinitparam:
-           - Validator :
-           - host-name: Validator
-           - org:
-           - rcc : true
+          write_files:
+          - path: /etc/confd/init/zcloud.xml
+            content: |
+              <config xmlns="http://tail-f.com/ns/config/1.0">
+                <system xmlns="http://viptela.com/system">
+                  <host-name>inserthostname-here</host-name>
+                  <aaa>
+                    <user>
+                      <name>admin</name>
+                      <password>$6$0270fb81b5b56c1e$LOaD1.Xj7zlP9TwMwZ5sMI1rtsU7b.TTtk3vetlfwVetEq7xmFkSvRCnsCn0rp14WYMC0ydfZtwiXNJL8mVr9/</password>
+                    </user>
+                    <user>
+                      <name>cisco</name>
+                      <password>$6$0270fb81b5b56c1e$LOaD1.Xj7zlP9TwMwZ5sMI1rtsU7b.TTtk3vetlfwVetEq7xmFkSvRCnsCn0rp14WYMC0ydfZtwiXNJL8mVr9/</password>
+                      <group>netadmin</group>
+                    </user>
+                    <user>
+                      <name>cisco</name>
+                      <password>$6$0270fb81b5b56c1e$LOaD1.Xj7zlP9TwMwZ5sMI1rtsU7b.TTtk3vetlfwVetEq7xmFkSvRCnsCn0rp14WYMC0ydfZtwiXNJL8mVr9/</password>
+                    </user>
+                  </aaa>
+                </system>
+              </config>
         editable: true
 device:
   interfaces:
     has_loopback_zero: false
-    default_count: 2
+    default_count: 4
     physical:
       - eth0
       - ge0/0
@@ -35,6 +58,29 @@ device:
       - ge0/5
       - ge0/6
       - ge0/7
+      - eth1
+      - eth2
+      - eth3
+      - eth4
+      - eth5
+      - eth6
+      - eth7
+      - eth8
+      - eth9
+      - eth10
+      - eth11
+      - eth12
+      - eth13
+      - eth14
+      - eth15
+      - eth16
+      - eth17
+      - eth18
+      - eth19
+      - eth20
+      - eth21
+      - eth22
+      - eth23
     serial_ports: 1
 inherited:
   image:
@@ -71,12 +117,9 @@ pyats:
   os: sdwan
   series: viptela
   config_extract_command: show running
-  username: admin
-  password: admin
-  use_in_testbed: true
 ui:
   description: Cisco Catalyst SD-WAN Validator
-  group: Others
+  group: Cisco
   icon: server
   label: Catalyst SD-WAN Validator
   label_prefix: sdwan-validator-

@@ -1,0 +1,33 @@
+annotations:
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: true
+    text_content: |2+
+
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -240.0
+    y1: -40.0
+    z_index: 0
+nodes: []
+links: []
+lab:
+  description: In this Lab, we'll explore the fundamental components of network infrastructure
+    and their crucial roles in enabling seamless communication and data exchange.
+    From routers directing internet traffic to access points providing wireless connectivity,
+    we'll delve into the functions of Layer 2 and Layer 3 switches, next-generation
+    firewalls, controllers like Cisco DNA Center and WLC, endpoints, servers, and
+    Power over Ethernet technology. By understanding these components and their analogies
+    to everyday scenarios, we'll gain insights into the intricate workings of networks
+    and their significance in modern connectivity.
+  notes: |-
+    #Task-1.1
+    Do a small research on Network components and role and functionality. We will see small topology in solution Lab and devices roles and function.
+  title: Task - 1.1[ Netwotk Fundamentals ]
+  version: 0.2.2
