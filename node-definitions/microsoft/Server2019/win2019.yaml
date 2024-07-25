@@ -1,5 +1,6 @@
 id: win2019
 general:
+  description: Windows Server 2019
   nature: server
   read_only: false
 device:
@@ -11,9 +12,9 @@ device:
     default_count: 1
 ui:
   visible: true
-  label_prefix: win2019
+  label_prefix: win2019-
   icon: server
-  label: win2019
+  label: Windows Server 2019
 sim:
   linux_native:
     libvirt_domain_driver: kvm
