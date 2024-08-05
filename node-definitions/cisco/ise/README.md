@@ -2,6 +2,10 @@
 
 This directory contains a node definition for the Cisco Identity Services Engine (ISE).
 
+
+** ⚠️ The smallest ISE image is still large.  It is recommended to run ISE outside of CML and use external
+connectivity to have it communicate with the virtual lab. ⚠️ **
+
 ### Image Availability
 
 The image for ISE can be found at https://software.cisco.com/download/home/283801620/type/283802505/.  There is no specific
