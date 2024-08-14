@@ -1,0 +1,8 @@
+id: win2019
+node_definition_id: win2019
+description: Windows Server 2019
+label: Windows Server 2019
+disk_image: 17763.737.amd64fre.rs5_release_svc_refresh.190906-2324_server_serverdatacentereval_en-us_1.qcow2
+read_only: false
+disk_subfolder: win2019
+schema_version: 0.0.1
