@@ -1,53 +1,55 @@
-id: Windows 10
+id: win2022
 general:
+  description: Windows Server 2022
   nature: server
   read_only: false
-  description: Windows 10 Node definition.
 device:
   interfaces:
     has_loopback_zero: false
     physical:
       - eth0
       - eth1
+      - eth2
+      - eth3
+      - eth4
+      - eth5
+      - eth6
+      - eth7
     serial_ports: 1
-    default_count: 2
+    default_count: 1
 ui:
   visible: true
-  label_prefix: Windows
-  icon: host
-  label: Windows 10
-  description: |-
-    2 vCPUs 6 GB RAM
-
-    ##### Note
-    **EXPERIMENTAL**
+  label_prefix: win2022-
+  icon: server
+  label: Windows Server 2022
 sim:
   linux_native:
     libvirt_domain_driver: kvm
     driver: server
     disk_driver: sata
-    ram: 6144
-    cpus: 2
+    ram: 16384
+    cpus: 4
+    cpu_limit: 100
     nic_driver: e1000
+    boot_disk_size: 64
     video:
       model: cirrus
       memory: 16
-    cpu_limit: 20
 boot:
   timeout: 300
 inherited:
   image:
     ram: true
     cpus: true
+    cpu_limit: true
     data_volume: true
     boot_disk_size: true
-    cpu_limit: true
   node:
     ram: true
     cpus: true
+    cpu_limit: true
     data_volume: true
     boot_disk_size: true
-    cpu_limit: true
 configuration:
   generator:
     driver: server
