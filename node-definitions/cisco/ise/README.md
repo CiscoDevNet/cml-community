@@ -8,7 +8,14 @@ connectivity to have it communicate with the virtual lab. ⚠️**
 
 ### Image Availability
 
-The image for ISE can be found at https://software.cisco.com/download/home/283801620/type/283802505/.  There is no specific
+If you have a support contract and general download access, you can find the image for ISE at
+https://software.cisco.com/download/home/283801620/type/283802505/.  If not, ISE is provided as an eval
+(see **Known Issues** below), and you can find the instructions for obtaining it in this
+[blog](https://sendthepayload.com/getting-your-hands-on-identity-services-engine-and-installing-it/).
+Note: you only need to follow the instructions to obtain the image.  Installing it into CML requires the
+conversion an upload as described below.
+
+There is no specific
 QCOW2 for ISE, however.  You can convert the OVA's VMDK to QCOW2 using the `qemu-img` command:
 
 ```sh
