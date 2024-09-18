@@ -572,6 +572,12 @@
                     "maximum": 64,
                     "description": "Default number of physical interfaces."
                 },
+		"min_count": {
+		    "type": "integer",
+		    "minimum": 1,
+		    "maximum": 64,
+		    "description": "Minimal number of physical interfaces."
+		},
                 "loopback": {
                     "type": "array",
                     "description": "List of loopback interfaces.",
