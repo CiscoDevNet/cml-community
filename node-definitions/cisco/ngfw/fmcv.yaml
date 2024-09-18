@@ -17,7 +17,7 @@ ui:
   description: |-
     Cisco Firepower Management Center Virtual Appliance
 
-    28 GB DRAM, 4 vCPUs
+    32 GB DRAM, 4 vCPUs
 
     [CCO Link](https://www.cisco.com/c/en/us/td/docs/security/firepower/quick_start/fmcv/fpmc-virtual.html)
   label_prefix: fmcv-
@@ -28,13 +28,13 @@ sim:
     libvirt_domain_driver: kvm
     driver: server
     disk_driver: virtio
-    ram: 28672
+    ram: 32768
     cpus: 4
     cpu_limit: 100
     nic_driver: virtio
-    data_volume: 250
+    data_volume: 256
 boot:
-  timeout: 1200
+  timeout: 1800
   completed:
     - 'login:'
 inherited:
@@ -52,7 +52,7 @@ inherited:
     boot_disk_size: false
 configuration:
   generator:
-    driver: server
+    driver: null
   provisioning:
     volume_name: day0
     media_type: iso
@@ -64,7 +64,7 @@ configuration:
           {
               "EULA": "accept",
               "Hostname": "fmvc",
-              "AdminPassword": "Admin123",
+              "AdminPassword": "Cisco1@3",
               "DNS1": "",
               "DNS2": "",
               "IPv4Mode": "dhcp",
@@ -79,4 +79,5 @@ configuration:
 schema_version: 0.0.1
 pyats:
   os: linux
-  use_in_testbed: true
+  username: admin
+  password: Cisco1@3
