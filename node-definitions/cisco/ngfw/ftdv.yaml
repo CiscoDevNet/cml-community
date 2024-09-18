@@ -9,6 +9,7 @@ device:
     physical:
       - Management0/0
       - donotuse1
+      - GigabitEthernet0/0
       - GigabitEthernet0/1
       - GigabitEthernet0/2
       - GigabitEthernet0/3
