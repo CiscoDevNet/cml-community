@@ -60,7 +60,6 @@ configuration:
       - name: day0-config
         editable: true
         content: |-
-          #FMC
           {
               "EULA": "accept",
               "Hostname": "fmvc",
@@ -74,7 +73,7 @@ configuration:
               "IPv6Mode": "disabled",
               "IPv6Addr": "",
               "IPv6Mask": "",
-              "IPv6Gw": "",
+              "IPv6Gw": ""
           }
 schema_version: 0.0.1
 pyats:

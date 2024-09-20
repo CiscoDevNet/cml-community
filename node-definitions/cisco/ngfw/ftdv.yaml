@@ -73,7 +73,6 @@ configuration:
       - name: day0-config
         editable: true
         content: |-
-          #Firepower Threat Defense
           {
               "EULA": "accept",
               "Hostname": "ftdv",
