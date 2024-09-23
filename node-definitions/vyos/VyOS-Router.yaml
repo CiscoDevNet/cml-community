@@ -1,0 +1,55 @@
+id: VyOS-Router
+general:
+  nature: router
+  description: |- 
+    Opensource Router and Firewall Platform
+    https://docs.vyos.io/
+  read_only: false
+device:
+  interfaces:
+    has_loopback_zero: true
+    physical:
+      - eth0
+      - eth1
+      - eth2
+      - eth3
+      - eth4
+      - eth5
+    serial_ports: 1
+    default_count: 6
+    loopback:
+      - lo
+ui:
+  visible: true
+  label_prefix: vyos-
+  icon: router
+  label: VyOS
+sim:
+  linux_native:
+    libvirt_domain_driver: kvm
+    driver: server
+    disk_driver: sata
+    ram: 512
+    cpus: 1
+    cpu_limit: 100
+    nic_driver: virtio
+boot:
+  timeout: 60
+  uses_regex: false
+inherited:
+  image:
+    ram: true
+    cpus: true
+    cpu_limit: true
+    data_volume: true
+    boot_disk_size: true
+  node:
+    ram: true
+    cpus: true
+    cpu_limit: true
+    data_volume: true
+    boot_disk_size: true
+configuration:
+  generator:
+    driver: null
+schema_version: 0.0.1

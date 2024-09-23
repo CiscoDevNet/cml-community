@@ -1,0 +1,8 @@
+id: VyOS-1.5-rolling-202409200006
+node_definition_id: VyOS-Router
+description: VyOS-1.5-rolling-202409200006
+label: VyOS-1.5-rolling-202409200006
+disk_image: vyos-1.5-rolling-202409200006.qcow2
+read_only: false
+disk_subfolder: VyOS-1.5-rolling-202409200006
+schema_version: 0.0.1
