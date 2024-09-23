@@ -16,6 +16,6 @@ qemu-img convert -O qcow2 chr-6.47.img chr-6.47.qcow2
 ### Description
 
 This node definition provides for a MikroTik Cloud Hosted Router node with four default ethernet interfaces and the ability to add up to
-16. The node requires 1 vCPUs and 256 MB of RAM.
+16. The node requires 1 vCPUs and 1 GB of RAM which meets the requirements to run the latest RouterOS.
 
 This node provides a serial console.
