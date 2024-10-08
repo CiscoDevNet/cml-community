@@ -70,7 +70,7 @@ Configure the authentication, authorization, and accounting policies.
 aaa authentication login default group AAA-TACACS local
 aaa authorization exec default group AAA-TACACS local 
 !
-aaa accounting exec default start-stop group ISE-TACACS
+aaa accounting exec default start-stop group AAA-TACACS
 aaa accounting commands 1 default start-stop group AAA-TACACS
 aaa accounting commands 15 default start-stop group AAA-TACACS
 !
