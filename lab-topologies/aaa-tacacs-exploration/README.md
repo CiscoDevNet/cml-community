@@ -1,7 +1,17 @@
 # Exploring AAA / TACACS Configuration for IOS 
-Simple topology for practicing AAA TACACS configuration in IOS.
+> Note: An alternative topology file [aaa-exploration-ios-nxos.yaml](aaa-exploration-ios-nxos.yaml) is available that adds a NX-OS switch to the topology and walks through configuring TACACS on this data center platform as well.
 
 ![](topology.jpg)
+
+Verifying the identity of the people who log into network, what each person is allowed to do on a network device, and tracking what was done is a critical part of network operations.  Collectively these are known as "Triple A Services", or Authentication, Authorization, and Accounting.  Another name used is "Role Based Access Control", or RBAC.
+
+TACACS+ is a common protocol used for RBAC / AAA on network devices, and this lab explores how to configure AAA on both IOS and NX-OS devices.  
+
+> RADIUS is another protocol that can be used for device administration with AAA. 
+
+A TACACS server must be available on the network for devices to send AAA requests to for validation. This lab leverages an open source `tac_plus` server as a lightweight service that can be easily installed on an Ubuntu host within the topology. For more information on `tac_plus` see the documentation for [`tac_plus`](https://manpages.ubuntu.com/manpages/trusty/man8/tac_plus.8.html) and [`tac_plus.conf`](https://manpages.ubuntu.com/manpages/trusty/man5/tac_plus.conf.5.html).  The starting config for `aaa-server` installs `tac_plus` and deploys a basic TACACS configuration to support IOS and NX-OS hosts connecting for user authentication, role based authorization (administrator and operator), and accounting. The configuration file `tac_plus.conf` is located at `/etc/tacacs/tac_plus.conf`. You can modify this configuraiton file and restart `tac_plus` (`sudo systemctl restart tac_plus`) as part of your own learning.
+
+> Command authorization is not part of this lab guide, and the `tac_plus` server is ***NOT*** configured for command authorization as part of the initial configuration. Though you can update the `tac_plus.conf` file and experiment with command authorization on your own.
 
 ## Starting Configuration 
 
