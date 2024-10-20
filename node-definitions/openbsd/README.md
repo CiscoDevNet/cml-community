@@ -54,9 +54,51 @@ Right away you should check for updates:
 
 ### Install additional packages
 
-These packages have been extremely useful through the years.
+This is an exellent opportunity to install some of the packages that are
+useful for network operations.  Of course, it may be possible to install
+these packages later if your labs have Internet connectivity.
 
-    pkg_add mtr-- wget gnuwatch nmap wireguard-tools git
+If you intend to use ```cloud-init``` you will need to install git:
+
+    pkg_add git
+
+#### Install now
+
+The benefit of installing packages now is that they will be available
+for use immediately on all instances of the node.  The downsiide is that
+it will occupy more space on the image.
+
+These packages have been extremely useful through the years:
+
+    pkg_add mtr-- wget gnuwatch nmap wireguard-tools
+
+Please note the ```--``` in ```mtr--```.  If ```mtr``` is specified without
+the ```--``` the ```pkg_add``` command will ask the user which version is
+desired; normal MTR or MTR with GTK support.  By using the ```--``` suffix the
+non-GTK version is installed.
+
+#### Install later
+
+If there is Internet connectivity for the instance at runtime it is also
+possible to install these packages later.  This will save space on the image.
+
+To install at runtime, become root on the instance and run the following
+command:
+
+    pkg_add mtr-- wget gnuwatch nmap wireguard-tools
+
+Alternatively, if you are using ```cloud-init``` you can include a
+```packages``` section in your ```user-data``` file.  For example:
+
+```yaml
+#cloud-config
+packages:
+  - mtr--
+  - wget
+  - gnuwatch
+  - nmap
+  - wireguard-tools
+```
 
 ### Add username and password hints
 
@@ -89,12 +131,12 @@ required for an end host nor webserver; but it's a step easily missed.
 
 ### cloud-init
 
-cloud-init is a tool that allows you to configure a VM on first boot.  This
-allows you to configure a VM without having to use the VM's console.
+```cloud-init``` is a tool that allows you to configure a VM on first boot.
+This allows you to configure a VM without having to use the VM's console.
 
 #### Install cloud-init
 
-There is no pre-built cloud-init package for OpenBSD.  However, it's not
+There is no pre-built ```cloud-init``` package for OpenBSD.  However, it's not
 difficult to install it from source:
 
     git clone https://github.com/canonical/cloud-init.git
@@ -106,9 +148,9 @@ in ```/etc/rc.local```.  These commands will be run on boot.
 
 #### Configure cloud-init
 
-By it's very nature cloud-init is typically used with a cloud provider with
-access to the Internet.  As the intent here is to build a VM that will run
-inside a CML environment is is necessary to configure cloud-init to look
+By it's very nature ```cloud-init``` is typically used with a cloud provider
+with access to the Internet.  As the intent here is to build a VM that will run
+inside a CML environment is is necessary to configure ```cloud-init``` to look
 for a local data source.
 
 Edit ```/etc/cloud/cloud.cfg``` and add the following:
@@ -132,7 +174,7 @@ extension (there is no ```.yml``` extension).
 
 #### Configure the boot process
 
-By default cloud-init will populate the ```/etc/rc.local``` file.  The
+By default ```cloud-init``` will populate the ```/etc/rc.local``` file.  The
 ```ds-identify``` command will be run by default but is not required since
 the datasource is already configured.  I recommend commenting out this line
 in order to speed up the boot process.

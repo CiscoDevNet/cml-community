@@ -68,11 +68,27 @@ configuration:
         content: |-
           #cloud-config
           # Docs: https://cloudinit.readthedocs.io/en/latest/explanation/about-cloud-config.html
+
+          hostname: openbsd76p1
+
+          write_files:
+          - path: /etc/motd
+            content: |
+              ##########################################################
+              ##  A sample message of the day.                        ##
+              ##########################################################
       - name: network-config
         editable: true
         content: |-
           #cloud-config
-          # Docs: https://cloudinit.readthedocs.io/en/latest/reference/network-config-format-v1.html#network-config-v1
+          # Docs: https://cloudinit.readthedocs.io/en/latest/reference/network-config-format-v1.html
+          network:
+            version: 1
+            config:
+            - type: physical
+              name: em0
+              subnets:
+              - type: dhcp
       - name: vendor-data
         editable: true
 schema_version: 0.0.1
