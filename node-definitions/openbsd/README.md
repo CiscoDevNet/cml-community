@@ -1,4 +1,5 @@
 # OpenBSD-CML
+
 Instructions for building an OpenBSD node in Cisco Modeling Lab
 
 ## Why OpenBSD in CML?
@@ -12,16 +13,33 @@ other roles not mentioned here.
 # Create a qcow2 OpenBSD VM
 
 ## Create the VM
+
+Resources required for initially building the VM can differ from the resources
+required for running an instance of that VM in CML.
+
 As resources in CML are generally scarce I suggest starting with a fairly
-minimal configuration for a VM:
+minimal configuration while building the VM.  Although it's generally possible
+to increase the resources at runtime it's hard to decrease them.
 
 * RAM: 1GB
 * Disk: 8GB
-* CPU: Single
-* Network: single interface with Internet access
+* CPU: 1
+* Network: single interface with Internet access (used to install patches and
+  upgrades)
 
-Although I used VMWare to build this image it should be equally difficult or
-easier to use other platforms (VirtualBox, QEMU, KVM, etc).
+When running an instance of this VM in CML it is possible (and even likely)
+that you will add aditional network interfaces or increase the RAM or Disk
+space.  RAM, Disk, and Network are all easily increased in your CML config.
+
+During the install process OpenBSD will either install a single-CPU kernel or a
+multi-CPU kernel.  If you want to use a multi-CPU kernel you will need to
+create the VM with more than one CPU.  It is possible to change the kernel
+after the fact but it's easier to just create the VM with more than one
+CPU.  As this is a destined for a lab environment I suggest creating the VM
+with only one CPU.
+
+Although I used VMWare to build this image it should be mostly the same to use
+other platforms (VirtualBox, QEMU, KVM, etc).
 
 ## Install OpenBSD
 
