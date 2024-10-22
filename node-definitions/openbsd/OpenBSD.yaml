@@ -1,0 +1,94 @@
+id: OpenBSD
+general:
+  description: OpenBSD Firewall / Router / Server / Host
+  nature: firewall
+  read_only: false
+device:
+  interfaces:
+    has_loopback_zero: true
+    physical:
+      - em0
+      - em1
+      - em2
+      - em3
+      - em4
+      - em5
+      - em6
+      - em7
+    serial_ports: 1
+    default_count: 2
+    loopback:
+      - lo0
+ui:
+  visible: true
+  label_prefix: oBSD-
+  icon: firewall
+  label: OpenBSD
+sim:
+  linux_native:
+    libvirt_domain_driver: kvm
+    driver: server
+    disk_driver: sata
+    ram: 1024
+    cpus: 1
+    nic_driver: e1000
+    cpu_limit: 100
+boot:
+  timeout: 300
+  completed:
+    - 'login:'
+  uses_regex: false
+inherited:
+  image:
+    ram: true
+    cpus: true
+    data_volume: false
+    boot_disk_size: false
+    cpu_limit: true
+  node:
+    ram: true
+    cpus: true
+    data_volume: false
+    boot_disk_size: false
+    cpu_limit: true
+configuration:
+  generator:
+    driver: server
+  provisioning:
+    volume_name: cidata
+    media_type: iso
+    files:
+      - name: meta-data
+        editable: true
+        content: |-
+          instance-id: openbsd
+          local-hostname: openbsd
+      - name: user-data
+        editable: true
+        content: |-
+          #cloud-config
+          # Docs: https://cloudinit.readthedocs.io/en/latest/explanation/about-cloud-config.html
+
+          hostname: openbsd76p1
+
+          write_files:
+          - path: /etc/motd
+            content: |
+              ##########################################################
+              ##  A sample message of the day.                        ##
+              ##########################################################
+      - name: network-config
+        editable: true
+        content: |-
+          #cloud-config
+          # Docs: https://cloudinit.readthedocs.io/en/latest/reference/network-config-format-v1.html
+          network:
+            version: 1
+            config:
+            - type: physical
+              name: em0
+              subnets:
+              - type: dhcp
+      - name: vendor-data
+        editable: true
+schema_version: 0.0.1
