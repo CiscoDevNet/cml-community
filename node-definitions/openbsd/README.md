@@ -10,6 +10,13 @@ OpenBSD can act as a router, a routed layer 3 firewall, a NAT boundary, a
 bridging Layer-3 firewall, an end host, a webserver, a load balancer, and many
 other roles not mentioned here.
 
+# Deployable image
+
+A pre-built OpenBSD CML image is available
+[here](https://cml-images.nerdops.io/).
+
+The instructions below were used to create the image.
+
 # Create a qcow2 OpenBSD VM
 
 ## Create the VM
