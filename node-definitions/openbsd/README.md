@@ -175,7 +175,7 @@ in ```/etc/rc.local```.  These commands will be run on boot.
 
 By it's very nature ```cloud-init``` is typically used with a cloud provider
 with access to the Internet.  As the intent here is to build a VM that will run
-inside a CML environment is is necessary to configure ```cloud-init``` to look
+inside a CML environment it is necessary to configure ```cloud-init``` to look
 for a local data source.
 
 Edit ```/etc/cloud/cloud.cfg``` and add the following:
