@@ -7,10 +7,19 @@ device:
   interfaces:
     has_loopback_zero: true
     physical:
-      - em0
+      - vtnet0
+      - vtnet1
+      - vtnet2
+      - vtnet3
+      - vtnet4
+      - vtnet5
+      - vtnet6
+      - vtnet7
     serial_ports: 1
     loopback:
       - lo0
+    min_count: 1
+    default_count: 2
 ui:
   visible: true
   label_prefix: fBSD-
@@ -24,7 +33,7 @@ sim:
     ram: 1024
     cpus: 1
     cpu_limit: 100
-    nic_driver: e1000
+    nic_driver: virtio
 boot:
   completed:
     - 'login:'
