@@ -15,7 +15,7 @@ device:
       - Ethernet20
       - Ethernet24
       - Ethernet28
-    serial_ports: 2
+    serial_ports: 1
     default_count: 9
     loopback:
       - Loopback0
@@ -31,11 +31,8 @@ sim:
     disk_driver: virtio
     ram: 4096
     cpus: 2
-    cpu_limit: 25
+    cpu_limit: 100
     nic_driver: e1000
-    video:
-      model: vga
-      memory: 2
     efi_boot: false
 boot:
   completed:

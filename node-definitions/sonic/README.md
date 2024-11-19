@@ -6,7 +6,8 @@ This directory contains the node definition for SONiC
 default username and password are admin/YourPaSsWoRd
 mgmt interface defaults to dhcp
 
-download community image here : https://sonic.software
+download community image here: https://sonic.software
+documentation can be found here: https://github.com/sonic-net/sonic/wiki
 
 ![](/readme_images/sonic-boot.png)
 
