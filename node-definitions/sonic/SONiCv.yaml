@@ -1,0 +1,58 @@
+id: SONiCv
+general:
+  nature: switch
+  read_only: false
+device:
+  interfaces:
+    has_loopback_zero: true
+    physical:
+      - Eth0
+      - Ethernet0
+      - Ethernet4
+      - Ethernet8
+      - Ethernet12
+      - Ethernet16
+      - Ethernet20
+      - Ethernet24
+      - Ethernet28
+    serial_ports: 1
+    default_count: 9
+    loopback:
+      - Loopback0
+ui:
+  visible: true
+  label_prefix: SONiCv-
+  icon: switch
+  label: SONiC Virtual Switch (VM)
+sim:
+  linux_native:
+    libvirt_domain_driver: kvm
+    driver: server
+    disk_driver: virtio
+    ram: 4096
+    cpus: 2
+    cpu_limit: 100
+    nic_driver: e1000
+    efi_boot: false
+boot:
+  completed:
+    - sonic login
+  timeout: 240
+  uses_regex: false
+inherited:
+  image:
+    ram: true
+    cpus: true
+    cpu_limit: true
+    data_volume: true
+    boot_disk_size: true
+  node:
+    ram: true
+    cpus: true
+    cpu_limit: true
+    data_volume: true
+    boot_disk_size: true
+configuration:
+  generator:
+    driver: null
+schema_version: 0.0.1
