@@ -1,0 +1,8 @@
+id: SONiCv-Enterprise-4.2.0
+node_definition_id: SONiCv
+description: ''
+label: SONiCv Enterprise 4.2.0 (Dell)
+disk_image: Enterprise_SONiC_OS_4.2.0.qcow2
+read_only: false
+disk_subfolder: SONiCv-Enterprise-4.2.0
+schema_version: 0.0.1

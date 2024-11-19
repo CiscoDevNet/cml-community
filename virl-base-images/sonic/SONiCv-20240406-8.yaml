@@ -1,0 +1,8 @@
+id: SONiCv-20240406-8
+node_definition_id: SONiCv
+description: ''
+label: SONiC Virtual Switch (Build 20240406)
+disk_image: sonic-vs-20240406-8.qcow2
+read_only: false
+disk_subfolder: SONiCv-20240406-8
+schema_version: 0.0.1
