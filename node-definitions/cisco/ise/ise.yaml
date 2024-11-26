@@ -1,0 +1,53 @@
+id: ise
+general:
+  description: Cisco Identity Services Engine (ISE)
+  nature: server
+  read_only: false
+device:
+  interfaces:
+    has_loopback_zero: true
+    physical:
+      - eth0
+    serial_ports: 1
+    loopback:
+      - lo
+ui:
+  visible: true
+  description: Cisco Identity Services Engine (ISE)
+  label_prefix: ise-
+  icon: server
+  label: ISE
+sim:
+  linux_native:
+    libvirt_domain_driver: kvm
+    driver: server
+    disk_driver: ide
+    ram: 16384
+    cpus: 16
+    cpu_limit: 100
+    nic_driver: virtio
+    boot_disk_size: 300
+    video:
+      model: vga
+      memory: 1
+    efi_boot: false
+boot:
+  timeout: 1200
+  uses_regex: false
+inherited:
+  image:
+    ram: true
+    cpus: true
+    cpu_limit: true
+    data_volume: true
+    boot_disk_size: true
+  node:
+    ram: true
+    cpus: true
+    cpu_limit: true
+    data_volume: true
+    boot_disk_size: true
+configuration:
+  generator:
+    driver: null
+schema_version: 0.0.1

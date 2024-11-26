@@ -66,12 +66,6 @@ device:
       - GigabitEthernet24
       - GigabitEthernet25
       - GigabitEthernet26
-      - GigabitEthernet27
-      - GigabitEthernet28
-      - GigabitEthernet29
-      - GigabitEthernet30
-      - GigabitEthernet31
-      - GigabitEthernet32
     serial_ports: 2
 general:
   description: Catalyst 8000V Edge Software

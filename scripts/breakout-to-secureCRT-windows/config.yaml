@@ -1,0 +1,32 @@
+#
+# breakout default configuration file
+# - 'username' and 'password' for authentication
+# - replace hostname 'cml-controller.cml.lab' with your IP or FQDN
+# - set an empty 'listen_address' to listen globally
+#
+# Known environment variables:
+#
+# BREAKOUT_USERNAME
+# BREAKOUT_PASSWORD
+# BREAKOUT_CONTROLLER
+# BREAKOUT_LISTEN_ADDRESS
+# BREAKOUT_UI_SERVER_PORT
+# BREAKOUT_CONSOLE_START_PORT
+# BREAKOUT_VNC_START_PORT
+# BREAKOUT_LAB_CONFIG_NAME
+# BREAKOUT_POPULATE_ALL
+# BREAKOUT_VERIFY_TLS
+# BREAKOUT_EXTRA_LF
+#
+
+console_start_port: 9000
+controller: https://your.controller.fqdn
+extra_lf: false
+lab_config_name: labs.yaml
+listen_address: '[::1]'
+password: 'changeMe'
+populate_all: true
+ui_server_port: 8080
+username: your.username
+verify_tls: true
+vnc_start_port: 5900

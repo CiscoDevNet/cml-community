@@ -1,0 +1,8 @@
+id: win2022
+node_definition_id: win2022
+description: Windows Server 2022
+label: Windows Server 2022
+disk_image: 20348.169.amd64fre.fe_release_svc_refresh.210806-2348_server_serverdatacentereval_en-us.qcow2
+read_only: false
+disk_subfolder: win2022
+schema_version: 0.0.1

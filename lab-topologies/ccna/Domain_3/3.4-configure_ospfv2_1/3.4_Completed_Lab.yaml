@@ -1,0 +1,1058 @@
+annotations:
+  - border_color: '#808080FF'
+    border_radius: 0
+    border_style: ''
+    color: '#83E340'
+    thickness: 1
+    type: rectangle
+    x1: 0.0
+    y1: 400.0
+    x2: 160.0
+    y2: 40.0
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: OSPF AREA 0
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 40.0
+    y1: 400.0
+    z_index: 1
+  - border_color: '#808080FF'
+    border_style: ''
+    color: '#FFFFFFFF'
+    line_end: null
+    line_start: null
+    thickness: 1
+    type: line
+    x1: -120.0
+    y1: 520.0
+    x2: -120.0
+    y2: 520.0
+    z_index: 2
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#F8327A'
+    rotation: 0
+    text_bold: false
+    text_content: '.1'
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 400.0
+    y1: 480.0
+    z_index: 3
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#F83279'
+    rotation: 0
+    text_bold: false
+    text_content: 192.168.3.0 /24
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 400.0
+    y1: 520.0
+    z_index: 3
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#F8327A'
+    rotation: 0
+    text_bold: false
+    text_content: '.3'
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 560.0
+    y1: 440.0
+    z_index: 3
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#DE67F4'
+    rotation: 0
+    text_bold: false
+    text_content: 192.168.1.0 /24
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -320.0
+    y1: 520.0
+    z_index: 3
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#DE67F4'
+    rotation: 0
+    text_bold: false
+    text_content: '.1'
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -160.0
+    y1: 440.0
+    z_index: 3
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#DE67F4'
+    rotation: 0
+    text_bold: false
+    text_content: '.3'
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -360.0
+    y1: 440.0
+    z_index: 3
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#6775F4'
+    rotation: 0
+    text_bold: false
+    text_content: 192.168.2.0 /24
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 120.0
+    y1: 160.0
+    z_index: 3
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#6775F4'
+    rotation: 0
+    text_bold: false
+    text_content: '.1'
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 40.0
+    y1: 200.0
+    z_index: 3
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#6775F4'
+    rotation: 0
+    text_bold: false
+    text_content: '.3'
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 40.0
+    y1: 80.0
+    z_index: 3
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#FBB657'
+    rotation: 0
+    text_bold: false
+    text_content: 192.168.13.0 /24
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 40.0
+    y1: 480.0
+    z_index: 4
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: ''
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -40.0
+    y1: 480.0
+    z_index: 5
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#FBB657'
+    rotation: 0
+    text_bold: false
+    text_content: '.2'
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 200.0
+    y1: 480.0
+    z_index: 4
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#FBB657'
+    rotation: 0
+    text_bold: false
+    text_content: '.1'
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -40.0
+    y1: 480.0
+    z_index: 4
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#045F4E'
+    rotation: 0
+    text_bold: false
+    text_content: 192.168.23.0 /24
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 200.0
+    y1: 360.0
+    z_index: 4
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#045F4E'
+    rotation: 0
+    text_bold: false
+    text_content: '.1'
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 160.0
+    y1: 320.0
+    z_index: 4
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#045F4E'
+    rotation: 0
+    text_bold: false
+    text_content: '.2'
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 280.0
+    y1: 400.0
+    z_index: 4
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#A62382'
+    rotation: 0
+    text_bold: false
+    text_content: 192.168.12.0 /24
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -120.0
+    y1: 360.0
+    z_index: 4
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#A62382'
+    rotation: 0
+    text_bold: false
+    text_content: '.1'
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -40.0
+    y1: 400.0
+    z_index: 4
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#A62382'
+    rotation: 0
+    text_bold: false
+    text_content: '.2'
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -40.0
+    y1: 320.0
+    z_index: 4
+nodes:
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          Building configuration...
+
+          Current configuration : 3149 bytes
+          !
+          ! Last configuration change at 07:13:00 UTC Wed May 15 2024
+          !
+          version 15.9
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          no service password-encryption
+          !
+          hostname R1
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          no logging console
+          !
+          no aaa new-model
+          !
+          !
+          !
+          mmi polling-interval 60
+          no mmi auto-configure
+          no mmi pvc
+          mmi snmp-timeout 180
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          no ip domain lookup
+          ip cef
+          no ipv6 cef
+          !
+          multilink bundle-name authenticated
+          !
+          !
+          !
+          !
+          !
+          redundancy
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          interface GigabitEthernet0/0
+           ip address 192.168.2.1 255.255.255.0
+           duplex auto
+           speed auto
+           media-type rj45
+          !
+          interface GigabitEthernet0/1
+           no ip address
+           shutdown
+           duplex auto
+           speed auto
+           media-type rj45
+          !
+          interface GigabitEthernet0/2
+           ip address 192.168.12.2 255.255.255.0
+           duplex auto
+           speed auto
+           media-type rj45
+          !
+          interface GigabitEthernet0/3
+           no ip address
+           duplex auto
+           speed auto
+           media-type rj45
+          !
+          router ospf 1
+           network 192.168.2.0 0.0.0.255 area 0
+           network 192.168.12.0 0.0.0.255 area 0
+           network 192.168.23.0 0.0.0.255 area 0
+          !
+          ip forward-protocol nd
+          !
+          !
+          no ip http server
+          no ip http secure-server
+          !
+          ipv6 ioam timestamp
+          !
+          !
+          !
+          control-plane
+          !
+          banner exec ^C
+          **************************************************************************
+          * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+          * education. IOSv is provided as-is and is not supported by Cisco's      *
+          * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+          * of the IOSv Software or Documentation to any third party for any       *
+          * purposes is expressly prohibited except as otherwise authorized by     *
+          * Cisco in writing.                                                      *
+          **************************************************************************^C
+          banner incoming ^C
+          **************************************************************************
+          * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+          * education. IOSv is provided as-is and is not supported by Cisco's      *
+          * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+          * of the IOSv Software or Documentation to any third party for any       *
+          * purposes is expressly prohibited except as otherwise authorized by     *
+          * Cisco in writing.                                                      *
+          **************************************************************************^C
+          banner login ^C
+          **************************************************************************
+          * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+          * education. IOSv is provided as-is and is not supported by Cisco's      *
+          * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+          * of the IOSv Software or Documentation to any third party for any       *
+          * purposes is expressly prohibited except as otherwise authorized by     *
+          * Cisco in writing.                                                      *
+          **************************************************************************^C
+          !
+          line con 0
+           exec-timeout 0 0
+          line aux 0
+          line vty 0 4
+           exec-timeout 0 0
+           login
+           transport input none
+          !
+          no scheduler allocate
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: R1
+    node_definition: iosv
+    parameters: {}
+    ram: null
+    tags: []
+    x: 80
+    y: 280
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: GigabitEthernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: GigabitEthernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: GigabitEthernet0/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          Building configuration...
+
+          Current configuration : 3187 bytes
+          !
+          ! Last configuration change at 07:12:59 UTC Wed May 15 2024
+          !
+          version 15.9
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          no service password-encryption
+          !
+          hostname R0
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          no logging console
+          !
+          no aaa new-model
+          !
+          !
+          !
+          mmi polling-interval 60
+          no mmi auto-configure
+          no mmi pvc
+          mmi snmp-timeout 180
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          no ip domain lookup
+          ip cef
+          no ipv6 cef
+          !
+          multilink bundle-name authenticated
+          !
+          !
+          !
+          !
+          !
+          redundancy
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          interface GigabitEthernet0/0
+           ip address 192.168.1.1 255.255.255.0
+           duplex auto
+           speed auto
+           media-type rj45
+          !
+          interface GigabitEthernet0/1
+           ip address 192.168.13.1 255.255.255.0
+           duplex auto
+           speed auto
+           media-type rj45
+          !
+          interface GigabitEthernet0/2
+           ip address 192.168.12.1 255.255.255.0
+           duplex auto
+           speed auto
+           media-type rj45
+          !
+          interface GigabitEthernet0/3
+           ip address 192.168.23.1 255.255.255.0
+           duplex auto
+           speed auto
+           media-type rj45
+          !
+          router ospf 1
+           network 192.168.1.0 0.0.0.255 area 0
+           network 192.168.12.0 0.0.0.255 area 0
+           network 192.168.13.0 0.0.0.255 area 0
+          !
+          ip forward-protocol nd
+          !
+          !
+          no ip http server
+          no ip http secure-server
+          !
+          ipv6 ioam timestamp
+          !
+          !
+          !
+          control-plane
+          !
+          banner exec ^C
+          **************************************************************************
+          * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+          * education. IOSv is provided as-is and is not supported by Cisco's      *
+          * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+          * of the IOSv Software or Documentation to any third party for any       *
+          * purposes is expressly prohibited except as otherwise authorized by     *
+          * Cisco in writing.                                                      *
+          **************************************************************************^C
+          banner incoming ^C
+          **************************************************************************
+          * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+          * education. IOSv is provided as-is and is not supported by Cisco's      *
+          * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+          * of the IOSv Software or Documentation to any third party for any       *
+          * purposes is expressly prohibited except as otherwise authorized by     *
+          * Cisco in writing.                                                      *
+          **************************************************************************^C
+          banner login ^C
+          **************************************************************************
+          * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+          * education. IOSv is provided as-is and is not supported by Cisco's      *
+          * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+          * of the IOSv Software or Documentation to any third party for any       *
+          * purposes is expressly prohibited except as otherwise authorized by     *
+          * Cisco in writing.                                                      *
+          **************************************************************************^C
+          !
+          line con 0
+           exec-timeout 0 0
+          line aux 0
+          line vty 0 4
+           exec-timeout 0 0
+           login
+           transport input none
+          !
+          no scheduler allocate
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: R0
+    node_definition: iosv
+    parameters: {}
+    ram: null
+    tags: []
+    x: -120
+    y: 480
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: GigabitEthernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: GigabitEthernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: GigabitEthernet0/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          Building configuration...
+
+          Current configuration : 3173 bytes
+          !
+          ! Last configuration change at 07:13:00 UTC Wed May 15 2024
+          !
+          version 15.9
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          no service password-encryption
+          !
+          hostname R2
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          no logging console
+          !
+          no aaa new-model
+          !
+          !
+          !
+          mmi polling-interval 60
+          no mmi auto-configure
+          no mmi pvc
+          mmi snmp-timeout 180
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          no ip domain lookup
+          ip cef
+          no ipv6 cef
+          !
+          multilink bundle-name authenticated
+          !
+          !
+          !
+          !
+          !
+          redundancy
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          interface GigabitEthernet0/0
+           ip address 192.168.3.1 255.255.255.0
+           duplex auto
+           speed auto
+           media-type rj45
+          !
+          interface GigabitEthernet0/1
+           ip address 192.168.13.2 255.255.255.0
+           duplex auto
+           speed auto
+           media-type rj45
+          !
+          interface GigabitEthernet0/2
+           no ip address
+           shutdown
+           duplex auto
+           speed auto
+           media-type rj45
+          !
+          interface GigabitEthernet0/3
+           ip address 192.168.23.2 255.255.255.0
+           duplex auto
+           speed auto
+           media-type rj45
+          !
+          router ospf 1
+           network 192.168.3.0 0.0.0.255 area 0
+           network 192.168.13.0 0.0.0.255 area 0
+           network 192.168.23.0 0.0.0.255 area 0
+          !
+          ip forward-protocol nd
+          !
+          !
+          no ip http server
+          no ip http secure-server
+          !
+          ipv6 ioam timestamp
+          !
+          !
+          !
+          control-plane
+          !
+          banner exec ^C
+          **************************************************************************
+          * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+          * education. IOSv is provided as-is and is not supported by Cisco's      *
+          * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+          * of the IOSv Software or Documentation to any third party for any       *
+          * purposes is expressly prohibited except as otherwise authorized by     *
+          * Cisco in writing.                                                      *
+          **************************************************************************^C
+          banner incoming ^C
+          **************************************************************************
+          * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+          * education. IOSv is provided as-is and is not supported by Cisco's      *
+          * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+          * of the IOSv Software or Documentation to any third party for any       *
+          * purposes is expressly prohibited except as otherwise authorized by     *
+          * Cisco in writing.                                                      *
+          **************************************************************************^C
+          banner login ^C
+          **************************************************************************
+          * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+          * education. IOSv is provided as-is and is not supported by Cisco's      *
+          * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+          * of the IOSv Software or Documentation to any third party for any       *
+          * purposes is expressly prohibited except as otherwise authorized by     *
+          * Cisco in writing.                                                      *
+          **************************************************************************^C
+          !
+          line con 0
+           exec-timeout 0 0
+          line aux 0
+          line vty 0 4
+           exec-timeout 0 0
+           login
+           transport input none
+          !
+          no scheduler allocate
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n2
+    image_definition: null
+    label: R2
+    node_definition: iosv
+    parameters: {}
+    ram: null
+    tags: []
+    x: 320
+    y: 480
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: GigabitEthernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: GigabitEthernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: GigabitEthernet0/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname inserthostname-here
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+          hostname PC0
+          echo '127.0.0.1 PC0' >> /etc/hosts
+          ip address add 192.168.1.3/255.255.255.0 dev eth0
+          route add default gw 192.168.1.1 eth0
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n3
+    image_definition: null
+    label: PC0
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: -400
+    y: 480
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname inserthostname-here
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+          hostname PC0
+          echo '127.0.0.1 PC2' >> /etc/hosts
+          ip address add 192.168.3.3/255.255.255.0 dev eth0
+          route add default gw 192.168.3.1 eth0
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n4
+    image_definition: null
+    label: PC2
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: 600
+    y: 480
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname inserthostname-here
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+          hostname PC1
+          echo '127.0.0.1 PC1' >> /etc/hosts
+          ip address add 192.168.2.3/255.255.255.0 dev eth0
+          route add default gw 192.168.2.1 eth0
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n5
+    image_definition: null
+    label: PC1
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: 80
+    y: 40
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+links:
+  - id: l0
+    n1: n3
+    n2: n1
+    i1: i0
+    i2: i1
+    conditioning: {}
+    label: PC0-eth0<->R0-GigabitEthernet0/0
+  - id: l1
+    n1: n2
+    n2: n4
+    i1: i1
+    i2: i0
+    conditioning: {}
+    label: R2-GigabitEthernet0/0<->PC2-eth0
+  - id: l2
+    n1: n0
+    n2: n5
+    i1: i1
+    i2: i0
+    conditioning: {}
+    label: R1-GigabitEthernet0/0<->PC1-eth0
+  - id: l3
+    n1: n1
+    n2: n2
+    i1: i2
+    i2: i2
+    conditioning: {}
+    label: R0-GigabitEthernet0/1<->R2-GigabitEthernet0/1
+  - id: l4
+    n1: n1
+    n2: n0
+    i1: i3
+    i2: i3
+    conditioning: {}
+    label: R0-GigabitEthernet0/2<->R1-GigabitEthernet0/2
+  - id: l5
+    n1: n2
+    n2: n0
+    i1: i4
+    i2: i4
+    conditioning: {}
+    label: R2-GigabitEthernet0/3<->R1-GigabitEthernet0/3
+lab:
+  description: ''
+  notes: |-
+    OSPF, short for Open Shortest Path First, is like a GPS for routers in a network. It helps them figure out the shortest route between two places (endpoints) and the best path to take, considering all the routers in between. To do this, routers share information with each other about the network roads they know about. They do this regularly, kind of like sending out updates, or through special messages that everyone listens to. These messages also include info about the routers nearby. So, it's like each router saying, "Hey, I'm here, and here's what I can do!"
+
+    Step 1: Assign IPv4 addresses, subnet mask, and default gateway to Hosts (PCs & Routers) according to the IP addressing as per the Topology.
+
+    Step 2: Configure OSPFv2 in a single area between R0, R1 & R2.
+
+    Step 3: Verify the OSPFv2 area by using the show ip ospf database’, which lists all OSPF routers in the same area. You must also ensure all PC's are able to ping each other. NOTE: Make sure all interfaces are in up state.
+
+    Review Output below:
+    R0#show ip ospf database
+
+                OSPF Router with ID (192.168.23.1) (Process ID 1)
+                    Router Link States (Area 0)
+    Link ID         ADV Router      Age         Seq#       Checksum Link count
+    192.168.2.1     192.168.2.1     170         0x80000005 0x000FDC 2
+    192.168.23.1    192.168.23.1    178         0x8000000A 0x002B94 3
+    192.168.23.2    192.168.23.2    593         0x80000007 0x000B1E 3
+                    Net Link States (Area 0)
+    Link ID         ADV Router      Age         Seq#       Checksum
+    192.168.12.1    192.168.23.1    178         0x80000001 0x0068EB
+    192.168.13.1    192.168.23.1    639         0x80000001 0x007DBF
+    R0#
+    --
+    R1#show ip ospf database
+                OSPF Router with ID (192.168.2.1) (Process ID 1)
+                    Router Link States (Area 0)
+    Link ID         ADV Router      Age         Seq#       Checksum Link count
+    192.168.2.1     192.168.2.1     90          0x80000005 0x000FDC 2
+    192.168.23.1    192.168.23.1    101         0x8000000A 0x002B94 3
+    192.168.23.2    192.168.23.2    515         0x80000007 0x000B1E 3
+                   Net Link States (Area 0)
+    Link ID         ADV Router      Age         Seq#       Checksum
+    192.168.12.1    192.168.23.1    101         0x80000001 0x0068EB
+    192.168.13.1    192.168.23.1    561         0x80000001 0x007DBF
+    ------
+    R2#show ip ospf database
+                OSPF Router with ID (192.168.23.2) (Process ID 1)
+                    Router Link States (Area 0)
+    Link ID         ADV Router      Age         Seq#       Checksum Link count
+    192.168.2.1     192.168.2.1     57          0x80000005 0x000FDC 2
+    192.168.23.1    192.168.23.1    66          0x8000000A 0x002B94 3
+    192.168.23.2    192.168.23.2    479         0x80000007 0x000B1E 3
+                    Net Link States (Area 0)
+    Link ID         ADV Router      Age         Seq#       Checksum
+    192.168.12.1    192.168.23.1    66          0x80000001 0x0068EB
+    192.168.13.1    192.168.23.1    527         0x80000001 0x007DBF
+    ------
+  title: Lab at Wed 06:20 AM
+  version: 0.2.2

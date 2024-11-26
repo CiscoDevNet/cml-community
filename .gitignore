@@ -1,5 +1,6 @@
 #macs
 .DS_Store
+.vscode/
 
 #ansible
 *.retry

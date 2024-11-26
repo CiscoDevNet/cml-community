@@ -1,0 +1,86 @@
+id: gaia
+general:
+  description: Check Point Gaia Security Appliance
+  nature: firewall
+  read_only: false
+device:
+  interfaces:
+    has_loopback_zero: true
+    physical:
+      - eth0
+      - eth1
+      - eth2
+      - eth3
+      - eth4
+      - eth5
+      - eth6
+      - eth7
+      - eth8
+    serial_ports: 1
+    default_count: 3
+    loopback:
+      - lo
+ui:
+  visible: true
+  label_prefix: cp-gaia-
+  icon: firewall
+  label: Check Point Gaia
+sim:
+  linux_native:
+    libvirt_domain_driver: kvm
+    driver: server
+    disk_driver: virtio
+    ram: 6144
+    cpus: 4
+    nic_driver: virtio
+    cpu_limit: 100
+    video:
+      model: virtio
+      memory: 32
+boot:
+  timeout: 250
+  uses_regex: false
+inherited:
+  image:
+    ram: true
+    cpus: true
+    cpu_limit: true
+    data_volume: true
+    boot_disk_size: true
+  node:
+    ram: true
+    cpus: true
+    cpu_limit: true
+    data_volume: true
+    boot_disk_size: true
+configuration:
+  generator:
+    driver: null
+  provisioning:
+    volume_name: disk
+    media_type: iso
+    files:
+      - name: user_data
+        content: |-
+
+          #cloud-config
+          system:
+            hostname: insert_hostname_here
+            ntp1:
+              address: ntp.checkpoint.com
+              version: 4
+            ntp2:
+              address: ntp2.checkpoint.com
+              version: 4
+          interfaces:
+          - name: eth0
+            ipv4-address: DHCP
+
+        editable: true
+schema_version: 0.0.1
+pyats:
+  os: gaia
+  use_in_testbed: false
+  username: admin
+  password: Password1
+  config_extract_command: show configuration

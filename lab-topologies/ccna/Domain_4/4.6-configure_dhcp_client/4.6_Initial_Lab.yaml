@@ -1,0 +1,209 @@
+annotations:
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#422F93'
+    rotation: 0
+    text_bold: false
+    text_content: R1 DHCP Server for network 192.168.1.0 /24
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -80.0
+    y1: 40.0
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#422F93'
+    rotation: 0
+    text_bold: false
+    text_content: '.1'
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -80.0
+    y1: -40.0
+    z_index: 0
+nodes:
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: R1
+    node_definition: iosv
+    parameters: {}
+    ram: null
+    tags: []
+    x: -120
+    y: -80
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: GigabitEthernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: GigabitEthernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: GigabitEthernet0/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: SW1
+    node_definition: iosvl2
+    parameters: {}
+    ram: null
+    tags: []
+    x: -120
+    y: 120
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: GigabitEthernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: GigabitEthernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: GigabitEthernet0/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n2
+    image_definition: null
+    label: PC0
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: -360
+    y: 320
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n3
+    image_definition: null
+    label: PC1
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: -120
+    y: 320
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n4
+    image_definition: null
+    label: PC2
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: 120
+    y: 320
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+links:
+  - id: l0
+    n1: n0
+    n2: n1
+    i1: i1
+    i2: i1
+    conditioning: {}
+    label: R1-GigabitEthernet0/0<->SW1-GigabitEthernet0/0
+  - id: l1
+    n1: n2
+    n2: n1
+    i1: i0
+    i2: i2
+    conditioning: {}
+    label: PC0-eth0<->SW1-GigabitEthernet0/1
+  - id: l2
+    n1: n3
+    n2: n1
+    i1: i0
+    i2: i3
+    conditioning: {}
+    label: PC1-eth0<->SW1-GigabitEthernet0/2
+  - id: l3
+    n1: n4
+    n2: n1
+    i1: i0
+    i2: i4
+    conditioning: {}
+    label: PC2-eth0<->SW1-GigabitEthernet0/3
+lab:
+  description: ''
+  notes: |-
+    DHCP (Dynamic Host Configuration Protocol) configuration is performed on routers to assign an IP address, subnet mask, gateway address= to the host systems. With this configuration, the dynamic IP address is assigned, which enables the administrator to easily connect a new host in the configured network.  In this lab we will configure R1 as the DHCP server for the network 192.168.1.0 /24.
+
+    Step 1. Configure the hostnames as per the Topology.
+    Note: Record the MAC Addresses for the hosts as this will be used for validation later.
+
+    Step 2: On R1, create the DHCP pool labeled as “MyPool”.
+    NOTE: The default router IP should be the IP address assigned to Gig/01 on R1.
+
+    Step 3: Configure the interface connected to SW1to R1 as a Trunk port.
+    Note: Don't forget to bring up the interface.
+
+    Note: On each host, run the “ipconfig /renew”.
+    Step 3: Verrify that all three hosts have successfully received an IP Address from R1 via the: show ip dhcp binding command
+  title: Lab at Thu 07:23 AM
+  version: 0.2.2

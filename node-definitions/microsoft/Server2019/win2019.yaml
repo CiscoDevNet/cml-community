@@ -1,0 +1,56 @@
+id: win2019
+general:
+  description: Windows Server 2019
+  nature: server
+  read_only: false
+device:
+  interfaces:
+    has_loopback_zero: false
+    physical:
+      - eth0
+      - eth1
+      - eth2
+      - eth3
+      - eth4
+      - eth5
+      - eth6
+      - eth7
+    serial_ports: 1
+    default_count: 1
+ui:
+  visible: true
+  label_prefix: win2019-
+  icon: server
+  label: Windows Server 2019
+sim:
+  linux_native:
+    libvirt_domain_driver: kvm
+    driver: server
+    disk_driver: sata
+    ram: 16384
+    cpus: 4
+    cpu_limit: 100
+    nic_driver: e1000
+    boot_disk_size: 64
+    video:
+      model: cirrus
+      memory: 16
+boot:
+  timeout: 300
+inherited:
+  image:
+    ram: true
+    cpus: true
+    cpu_limit: true
+    data_volume: true
+    boot_disk_size: true
+  node:
+    ram: true
+    cpus: true
+    cpu_limit: true
+    data_volume: true
+    boot_disk_size: true
+configuration:
+  generator:
+    driver: server
+schema_version: 0.0.1

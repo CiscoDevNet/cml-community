@@ -1,0 +1,5 @@
+# Configure and verify Layer 2 discovery protocols (Cisco Discovery Protocol and LLDP)
+
+Cisco Discovery Protocol (CDP) is a Cisco proprietary protocol for network discovery on the data link layer. It can share information such as device names and IOS versions, with other physically connected Cisco devices. Link Layer Discovery Protocol (LLDP) is vendor-neutral protocol using on the data link layer for network discovery. It is mainly used with network devices in the local area network (LAN). The network devices advertise information, such as their identities and capabilities to their neighbors. In this lab, you must document the ports that are connected to other switches using CDP and LLDP. You will document your findings in a network topology diagram. You will also enable or disable these discovery protocols as necessary. CML Version - Sandbox 2.X
+
+![Lab Topology](https://github.com/CiscoDevNet/cml-community/blob/master/lab-topologies/ccna//Domain_2/2.3-configure_l2_discovery_1/2.3_Screenshot.png)

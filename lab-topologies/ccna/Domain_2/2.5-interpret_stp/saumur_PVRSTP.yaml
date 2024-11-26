@@ -1,0 +1,579 @@
+annotations:
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: ''
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 280.0
+    y1: 80.0
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: link-1-1
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -320.0
+    y1: 120.0
+    z_index: 1
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: link-1-2
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -200.0
+    y1: 120.0
+    z_index: 2
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: link-1-3
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -120.0
+    y1: 120.0
+    z_index: 3
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: link-1-4
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -280.0
+    y1: 0.0
+    z_index: 4
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: ''
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -240.0
+    y1: 0.0
+    z_index: 5
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: link-1-5
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -120.0
+    y1: 0.0
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: link-2-1
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -80.0
+    y1: 160.0
+    z_index: 7
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: true
+    text_content: SAUMUR PVRST
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -240.0
+    y1: -40.0
+    z_index: 8
+nodes:
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: "Building configuration...\n\nCurrent configuration : 3684 bytes\n\
+          !\n! Last configuration change at 14:25:57 UTC Thu May 23 2024\n!\nversion\
+          \ 17.12\nservice timestamps debug datetime msec\nservice timestamps log\
+          \ datetime msec\n!\nhostname saumur\n!\nboot-start-marker\nboot-end-marker\n\
+          !\n!\nno logging console\nno aaa new-model\n!\n!\n!\n!\n!\n!\n!\n!\n!\n\
+          !\n!\n!\n!\nip audit notify log\nip audit po max-events 100\nno ip domain\
+          \ lookup\nip cef\nlogin on-success log\nno ipv6 cef\n!\n!\n!\n!\n!\n!\n\
+          !\nvtp version 1\nmultilink bundle-name authenticated\n!\ncrypto pki trustpoint\
+          \ TP-self-signed-131184641\n enrollment selfsigned\n subject-name cn=IOS-Self-Signed-Certificate-131184641\n\
+          \ revocation-check none\n rsakeypair TP-self-signed-131184641\n hash sha256\n\
+          !\n!\ncrypto pki certificate chain TP-self-signed-131184641\n certificate\
+          \ self-signed 01\n  3082032E 30820216 A0030201 02020101 300D0609 2A864886\
+          \ F70D0101 0B050030\n  30312E30 2C060355 04030C25 494F532D 53656C66 2D536967\
+          \ 6E65642D 43657274\n  69666963 6174652D 31333131 38343634 31301E17 0D323430\
+          \ 35323331 33333235\n  325A170D 33343035 32333133 33323532 5A303031 2E302C06\
+          \ 03550403 0C25494F\n  532D5365 6C662D53 69676E65 642D4365 72746966 69636174\
+          \ 652D3133 31313834\n  36343130 82012230 0D06092A 864886F7 0D010101 05000382\
+          \ 010F0030 82010A02\n  82010100 B6F8F31B 311193B0 4096BD3A 8AB2ABB5 5A3FCB23\
+          \ C765769F 7B411D08\n  A3FB0313 56CA1360 23281CEF 6109B967 182841E1 A171319C\
+          \ A601D172 8DBDCDDC\n  F730B89D 94CD254A 308E6ACB 26DD92F2 2D32B1A1 222385F6\
+          \ 4D35CB25 5B2A8810\n  02E836C9 42D47483 BAA4A7AE E3FAA9A2 6F3045BF E568D4DD\
+          \ 6D50BA00 2A22AD16\n  8A4DD0CA 40E9E85E 59FE6923 CEE9055D 37579B04 C9B0F6E2\
+          \ 4F45B420 D91FF291\n  362DB6B6 9DB4FC84 A60D6F3B E5D6385A EB04A468 004252EE\
+          \ 4BE16E3B FE58D16C\n  79502E97 F2CFAEF1 A385C459 59A237BB 2537FC49 41EF9EE9\
+          \ 4BAC4F84 2E3BE168\n  C55A08EC 278A26D4 C5D60FFF 204B5596 405690C4 D5CCDDA7\
+          \ 66B4B739 7083DBE9\n  D4936115 02030100 01A35330 51301D06 03551D0E 04160414\
+          \ CFDEA039 2F5F927E\n  E3A2B078 D84AEEAE 1DDB0D51 301F0603 551D2304 18301680\
+          \ 14CFDEA0 392F5F92\n  7EE3A2B0 78D84AEE AE1DDB0D 51300F06 03551D13 0101FF04\
+          \ 05300301 01FF300D\n  06092A86 4886F70D 01010B05 00038201 01006566 FC9D5BFE\
+          \ 4BB464BE 53DF1BFA\n  E03798F0 568B7B11 603CED8C 1AB491C5 EED56B17 DD3E2C0E\
+          \ DE8662AC AE609592\n  B24305F2 46D5AD6A 74304E5B 00659F03 7D362FBA EF9896FB\
+          \ 3191E5E5 971C8D41\n  9B84BB95 2DAF9CBC 94E1865E A6EDF9AA 7F171046 FBA13487\
+          \ F9ADDB7E 2AB27DBA\n  8246FF67 EF4D26F0 BBB030CB 29D6CD3C 3AA28566 CB5943EF\
+          \ 45213C8E CE3B81F9\n  D28C445F 1DC15F57 E90A4DE2 78950187 58223E08 E788FC1C\
+          \ 26AA59F8 2F5037AB\n  0EAF5A10 DCBDEB29 7B1F09A5 8BB26202 C3094C98 22707B41\
+          \ 670E5654 9EF0B4FB\n  574E9D56 71283B40 83750054 C82EED54 CFD5D878 715F5A2F\
+          \ 9F085475 862321CD\n  63F4477A 5847F76E 835BFF01 290044C8 E94D\n  \tquit\n\
+          !\n!\nmemory free low-watermark processor 80589\n!\n!\nspanning-tree mode\
+          \ rapid-pvst\nspanning-tree extend system-id\nspanning-tree pathcost method\
+          \ long\n!\n!\nvlan internal allocation policy ascending\n!\n!\n!\n!\n!\n\
+          interface Ethernet0/0\n switchport trunk encapsulation dot1q\n switchport\
+          \ mode trunk\n bandwidth 1000000\n spanning-tree link-type point-to-point\n\
+          !\ninterface Ethernet0/1\n switchport trunk encapsulation dot1q\n switchport\
+          \ mode trunk\n bandwidth 1000000\n spanning-tree link-type point-to-point\n\
+          !\ninterface Ethernet0/2\n switchport trunk encapsulation dot1q\n switchport\
+          \ mode trunk\n bandwidth 1000000\n spanning-tree link-type point-to-point\n\
+          !\ninterface Ethernet0/3\n switchport trunk encapsulation dot1q\n switchport\
+          \ mode trunk\n bandwidth 1000000\n spanning-tree link-type point-to-point\n\
+          !\nip forward-protocol nd\n!\n!\nip http server\nip http secure-server\n\
+          ip ssh bulk-mode 131072\n!\n!\n!\n!\n!\n!\ncontrol-plane\n!\n!\n!\nline\
+          \ con 0\n exec-timeout 0 0\n logging synchronous\nline aux 0\nline vty 0\
+          \ 4\n exec-timeout 0 0\n login\n transport input ssh\n!\n!\nend"
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: saumur
+    node_definition: ioll2-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: -160
+    y: 240
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet0/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: "Building configuration...\n\nCurrent configuration : 3447 bytes\n\
+          !\n! Last configuration change at 14:26:12 UTC Thu May 23 2024\n!\nversion\
+          \ 17.12\nservice timestamps debug datetime msec\nservice timestamps log\
+          \ datetime msec\n!\nhostname bourgueil\n!\nboot-start-marker\nboot-end-marker\n\
+          !\n!\nno logging console\nno aaa new-model\n!\n!\n!\n!\n!\n!\n!\n!\n!\n\
+          !\n!\n!\n!\nip audit notify log\nip audit po max-events 100\nno ip domain\
+          \ lookup\nip cef\nlogin on-success log\nno ipv6 cef\n!\n!\n!\n!\n!\n!\n\
+          !\nvtp version 1\nmultilink bundle-name authenticated\n!\ncrypto pki trustpoint\
+          \ TP-self-signed-131184643\n enrollment selfsigned\n subject-name cn=IOS-Self-Signed-Certificate-131184643\n\
+          \ revocation-check none\n rsakeypair TP-self-signed-131184643\n hash sha256\n\
+          !\n!\ncrypto pki certificate chain TP-self-signed-131184643\n certificate\
+          \ self-signed 01\n  3082032E 30820216 A0030201 02020101 300D0609 2A864886\
+          \ F70D0101 0B050030\n  30312E30 2C060355 04030C25 494F532D 53656C66 2D536967\
+          \ 6E65642D 43657274\n  69666963 6174652D 31333131 38343634 33301E17 0D323430\
+          \ 35323331 33333235\n  385A170D 33343035 32333133 33323538 5A303031 2E302C06\
+          \ 03550403 0C25494F\n  532D5365 6C662D53 69676E65 642D4365 72746966 69636174\
+          \ 652D3133 31313834\n  36343330 82012230 0D06092A 864886F7 0D010101 05000382\
+          \ 010F0030 82010A02\n  82010100 A18D5E99 6EB7C0ED 67AA85D1 62EC568B E02C9619\
+          \ 2BA9F797 4EC9A81F\n  552CEB02 84A578FB C98349C3 547EA243 5389D9D8 50342A44\
+          \ 8ABAE09D 279A0998\n  C904EC45 748561FA CAD774FF F6245A2A 17B929C9 C8BE4FB9\
+          \ BAEBC6C0 53E83CA1\n  C6F0EB22 4C08311F 19E8E7B8 666E1642 94E6A2ED B1AC3AAA\
+          \ C1D778FD F1F4AE59\n  49D446C2 4CBEEC23 20D5670B 30E26FA5 EBF3BB6D F0DC174D\
+          \ BBCA7ECE 6FF99E82\n  64ECEC10 A046B273 756A1508 5256B010 05E8609E 08B7EE8D\
+          \ 39BBF494 5A9E9ECA\n  41B098FB 31CC36A1 26E608C0 4EAD1941 8020CC2D 09C937E7\
+          \ 120A50C0 1543A18C\n  347DDF2A 8FF26964 CE0F2915 976820EA D68CB0CA 450E9B1A\
+          \ 66289AF3 B894C5FC\n  FDDDBEDF 02030100 01A35330 51301D06 03551D0E 04160414\
+          \ 67A63F6B 72545508\n  59EF1F6B F5BB2168 1459D2F7 301F0603 551D2304 18301680\
+          \ 1467A63F 6B725455\n  0859EF1F 6BF5BB21 681459D2 F7300F06 03551D13 0101FF04\
+          \ 05300301 01FF300D\n  06092A86 4886F70D 01010B05 00038201 010069F4 A58C5A9F\
+          \ 976F2743 1E1BB135\n  E79304C3 C6D20C32 C77A0050 83D92F81 569428BF 27B867AC\
+          \ 403FBB0D 0D80C041\n  138E950A 197EE30C F82155F6 D00190AF B52D0769 B9D7054F\
+          \ DF7A28BF BC143F53\n  AF9C6E0A 9007B7EE 17267F55 9E18DA6A 4821AF20 FE6F4094\
+          \ EEE2DF8B E264D891\n  FCA27F3F 267DAE38 4E8B73E3 FDCD9E49 4192410E 66F63275\
+          \ 7CA22DB9 02821CA3\n  540C5D16 AE436BA8 E81BB337 B702A25E 73C35FA4 87F14052\
+          \ 52E1DAC0 226CD01D\n  E512B9F7 33ABE2B9 9650A7D5 062E33BD E265D1A9 7CE7608B\
+          \ C8A9F382 AB85F578\n  0FD769AB 9F582A7D 56952187 AD864F07 DFBAA825 49379C11\
+          \ EF3C3BBB BA8DD9B1\n  1FE7EF2A 4905F5F1 6A915CF0 FD7D066E 6F24\n  \tquit\n\
+          !\n!\nmemory free low-watermark processor 80589\n!\n!\nspanning-tree mode\
+          \ rapid-pvst\nspanning-tree extend system-id\nspanning-tree pathcost method\
+          \ long\n!\n!\nvlan internal allocation policy ascending\n!\n!\n!\n!\n!\n\
+          interface Ethernet0/0\n switchport trunk encapsulation dot1q\n switchport\
+          \ mode trunk\n bandwidth 1000000\n spanning-tree link-type point-to-point\n\
+          !\ninterface Ethernet0/1\n!\ninterface Ethernet0/2\n switchport trunk encapsulation\
+          \ dot1q\n switchport mode trunk\n bandwidth 1000000\n spanning-tree link-type\
+          \ point-to-point\n!\ninterface Ethernet0/3\n!\nip forward-protocol nd\n\
+          !\n!\nip http server\nip http secure-server\nip ssh bulk-mode 131072\n!\n\
+          !\n!\n!\n!\n!\ncontrol-plane\n!\n!\n!\nline con 0\n exec-timeout 0 0\n logging\
+          \ synchronous\nline aux 0\nline vty 0 4\n exec-timeout 0 0\n login\n transport\
+          \ input ssh\n!\n!\nend"
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: bourgueil
+    node_definition: ioll2-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: -320
+    y: 40
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet0/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: "Building configuration...\n\nCurrent configuration : 3564 bytes\n\
+          !\n! Last configuration change at 14:26:50 UTC Thu May 23 2024\n!\nversion\
+          \ 17.12\nservice timestamps debug datetime msec\nservice timestamps log\
+          \ datetime msec\n!\nhostname chinon\n!\nboot-start-marker\nboot-end-marker\n\
+          !\n!\nno logging console\nno aaa new-model\n!\n!\n!\n!\n!\n!\n!\n!\n!\n\
+          !\n!\n!\n!\nip audit notify log\nip audit po max-events 100\nno ip domain\
+          \ lookup\nip cef\nlogin on-success log\nno ipv6 cef\n!\n!\n!\n!\n!\n!\n\
+          !\nvtp version 1\nmultilink bundle-name authenticated\n!\ncrypto pki trustpoint\
+          \ TP-self-signed-131184642\n enrollment selfsigned\n subject-name cn=IOS-Self-Signed-Certificate-131184642\n\
+          \ revocation-check none\n rsakeypair TP-self-signed-131184642\n hash sha256\n\
+          !\n!\ncrypto pki certificate chain TP-self-signed-131184642\n certificate\
+          \ self-signed 01\n  3082032E 30820216 A0030201 02020101 300D0609 2A864886\
+          \ F70D0101 0B050030\n  30312E30 2C060355 04030C25 494F532D 53656C66 2D536967\
+          \ 6E65642D 43657274\n  69666963 6174652D 31333131 38343634 32301E17 0D323430\
+          \ 35323331 33333235\n  355A170D 33343035 32333133 33323535 5A303031 2E302C06\
+          \ 03550403 0C25494F\n  532D5365 6C662D53 69676E65 642D4365 72746966 69636174\
+          \ 652D3133 31313834\n  36343230 82012230 0D06092A 864886F7 0D010101 05000382\
+          \ 010F0030 82010A02\n  82010100 D1AE82B3 EE88D8FC 2BB2DAF8 5DFAB392 CBB94F28\
+          \ 3CE23B3A ABD9715A\n  5484CEDC 4BBDA362 0F890F62 9737C831 7FD07E6F 4FBE5B3E\
+          \ 7491E33F C30A0CCC\n  865FF131 F8129E45 83379093 C935019B 94019710 BDF7E113\
+          \ BEC0C455 ED56AB17\n  14701DDE 68EBCAEE FD41A282 41247B1D 732DBA0F FA6C8062\
+          \ 7CCB9FEE 7C7B3AAB\n  0304FCD8 6C091C92 937D3C6D 7A6FD91B 7FA1E4BA AB28A493\
+          \ CBC3B3C6 92F5D2B6\n  F5A4DAF4 1861812D 768B7EF2 6F73192C 2AD9A5DA 7EEED7BF\
+          \ E3D4CC09 5A99C6B8\n  48167246 F1551A76 2052AED4 2E77283C F6806587 6762FCA6\
+          \ 9EB11BA2 1ED88035\n  A5E52096 6FD31CEF 17014BE0 49753950 3B0EB544 32854095\
+          \ 7BAD49A8 9BC208CF\n  75115B33 02030100 01A35330 51301D06 03551D0E 04160414\
+          \ 9FA14E8F 8BBD2879\n  975F4E6F C94B9AE4 96774C85 301F0603 551D2304 18301680\
+          \ 149FA14E 8F8BBD28\n  79975F4E 6FC94B9A E496774C 85300F06 03551D13 0101FF04\
+          \ 05300301 01FF300D\n  06092A86 4886F70D 01010B05 00038201 01008B28 E286E00A\
+          \ A9A6F6BE 38D66F9E\n  1B4EAEAA BA3F0594 B8F5D5BE C0326550 BCA7C860 A354E1B2\
+          \ 48AD29C7 86DBA23C\n  43E2CACA 9AC6E2EE D43282DC 9FDF97B2 226E769A 051AE8F4\
+          \ 7C467F8F FAAA8BCF\n  7CCA621F 712A460E 3E9A6CD0 957BC430 826C32DB F12F1E22\
+          \ F1AB0C11 0C7CE0A8\n  7FCED042 9797B485 6425DB85 9477C831 BE3E192D 7756741C\
+          \ 6CECE9D2 8DFF082A\n  F6389789 D6F0AE6F 1628B419 F99D0D97 33F1D019 8CF6C875\
+          \ 645FCA8B F35ED98D\n  CD1D240D 91339E53 8182845B 13D38526 FB388AF5 30633E98\
+          \ 50EDCD39 864EE6D3\n  D1F9D24B E1EB4959 65AA0987 078147D8 1F804A52 5C65243E\
+          \ C05B8645 616FA855\n  625A07EF B49E111B A1549F11 596272FF 2006\n  \tquit\n\
+          !\n!\nmemory free low-watermark processor 80589\n!\n!\nspanning-tree mode\
+          \ rapid-pvst\nspanning-tree extend system-id\nspanning-tree pathcost method\
+          \ long\n!\n!\nvlan internal allocation policy ascending\n!\n!\n!\n!\n!\n\
+          interface Ethernet0/0\n switchport trunk encapsulation dot1q\n switchport\
+          \ mode trunk\n bandwidth 1000000\n spanning-tree link-type point-to-point\n\
+          !\ninterface Ethernet0/1\n switchport trunk encapsulation dot1q\n switchport\
+          \ mode trunk\n bandwidth 1000000\n spanning-tree link-type point-to-point\n\
+          !\ninterface Ethernet0/2\n switchport trunk encapsulation dot1q\n switchport\
+          \ mode trunk\n bandwidth 1000000\n spanning-tree link-type point-to-point\n\
+          !\ninterface Ethernet0/3\n!\nip forward-protocol nd\n!\n!\nip http server\n\
+          ip http secure-server\nip ssh bulk-mode 131072\n!\n!\n!\n!\n!\n!\ncontrol-plane\n\
+          !\n!\n!\nline con 0\n exec-timeout 0 0\n logging synchronous\nline aux 0\n\
+          line vty 0 4\n exec-timeout 0 0\n login\n transport input ssh\n!\n!\nend"
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n2
+    image_definition: null
+    label: chinon
+    node_definition: ioll2-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: -160
+    y: 40
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet0/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: "Building configuration...\n\nCurrent configuration : 3564 bytes\n\
+          !\n! Last configuration change at 14:27:05 UTC Thu May 23 2024\n!\nversion\
+          \ 17.12\nservice timestamps debug datetime msec\nservice timestamps log\
+          \ datetime msec\n!\nhostname souzay\n!\nboot-start-marker\nboot-end-marker\n\
+          !\n!\nno logging console\nno aaa new-model\n!\n!\n!\n!\n!\n!\n!\n!\n!\n\
+          !\n!\n!\n!\nip audit notify log\nip audit po max-events 100\nno ip domain\
+          \ lookup\nip cef\nlogin on-success log\nno ipv6 cef\n!\n!\n!\n!\n!\n!\n\
+          !\nvtp version 1\nmultilink bundle-name authenticated\n!\ncrypto pki trustpoint\
+          \ TP-self-signed-131184644\n enrollment selfsigned\n subject-name cn=IOS-Self-Signed-Certificate-131184644\n\
+          \ revocation-check none\n rsakeypair TP-self-signed-131184644\n hash sha256\n\
+          !\n!\ncrypto pki certificate chain TP-self-signed-131184644\n certificate\
+          \ self-signed 01\n  3082032E 30820216 A0030201 02020101 300D0609 2A864886\
+          \ F70D0101 0B050030\n  30312E30 2C060355 04030C25 494F532D 53656C66 2D536967\
+          \ 6E65642D 43657274\n  69666963 6174652D 31333131 38343634 34301E17 0D323430\
+          \ 35323331 33333330\n  325A170D 33343035 32333133 33333032 5A303031 2E302C06\
+          \ 03550403 0C25494F\n  532D5365 6C662D53 69676E65 642D4365 72746966 69636174\
+          \ 652D3133 31313834\n  36343430 82012230 0D06092A 864886F7 0D010101 05000382\
+          \ 010F0030 82010A02\n  82010100 E1920FFE 5F6DB0B5 00FBECDD 5D713DDC CDE0DEA3\
+          \ 4C1FF1CF 5B210238\n  1787AFEA 2CD1459D 9197BF8D CE7E4457 ECD91472 58041B60\
+          \ 2835D4EB C3FF9430\n  236C4122 93764669 BF4D411D 8857F2EE 06B894E5 BFA90C73\
+          \ 9D7BC6F0 A87F4C91\n  6C3DA87E 552956B7 A4006C4F 2A967750 59B7B9F1 EA6ABC85\
+          \ 7B96FD27 05A13BB5\n  A0E8EEF8 35020A9F 42AD0AE7 84159E73 225EFC30 E7D133F7\
+          \ 4797E0DE 77E220AE\n  F23517FB 3CCB7689 78F856F8 9305BFD5 FFC735A4 BB3AD6B8\
+          \ 3559983D 0838CAEA\n  AE25AE00 4E15866D 06F82BC5 C61AE004 C0CA3CD6 69029F89\
+          \ 61DF9A7E D48A6497\n  E9E7A365 6ED7DBAD B37B08B7 05FB5ADC BFE335C4 1DAC5BEC\
+          \ 0CE438E6 1F6D198D\n  C5809D57 02030100 01A35330 51301D06 03551D0E 04160414\
+          \ 9A5EC274 D3A95915\n  7DD8A2F4 77FFCD8F B8BCAAA4 301F0603 551D2304 18301680\
+          \ 149A5EC2 74D3A959\n  157DD8A2 F477FFCD 8FB8BCAA A4300F06 03551D13 0101FF04\
+          \ 05300301 01FF300D\n  06092A86 4886F70D 01010B05 00038201 010096B5 21BBDA77\
+          \ B01E8817 83C0A54E\n  0A8D0C7D FD79FA1A D51DE3A2 AD068BF8 30ED223B 04F8F529\
+          \ 5E40512E 2C52A86D\n  7A2C55D7 2DE473FD 41B27DB1 A851CA40 1B350580 136EF3AE\
+          \ 0FD9F157 8158A702\n  5247EAC3 771EE564 5DF130F4 17F9A5FF F700DE92 70446785\
+          \ B9345A5D 89727075\n  F86D0CF9 D7DB6B3B 4B36DD78 EF75ADD6 BF0E8BF5 060418A4\
+          \ BD8801CE 3669731A\n  AEC598CB 42A45BAD 741A71F9 22016A6C 60BA201E E14E6018\
+          \ 71A0BEF9 1865B874\n  7309F395 3AE83298 5D6C5310 79B71490 EBC636CD C7453940\
+          \ 645814E6 E679C1B8\n  34F3FB66 5A6BDFE1 25DC7C09 F3E68A1A F33C153E 28622C0B\
+          \ 69822D0B 2CABB004\n  88149A4C 76BE771C 145FFDB5 F33025D5 80B3\n  \tquit\n\
+          !\n!\nmemory free low-watermark processor 80589\n!\n!\nspanning-tree mode\
+          \ rapid-pvst\nspanning-tree extend system-id\nspanning-tree pathcost method\
+          \ long\n!\n!\nvlan internal allocation policy ascending\n!\n!\n!\n!\n!\n\
+          interface Ethernet0/0\n switchport trunk encapsulation dot1q\n switchport\
+          \ mode trunk\n bandwidth 1000000\n spanning-tree link-type point-to-point\n\
+          !\ninterface Ethernet0/1\n switchport trunk encapsulation dot1q\n switchport\
+          \ mode trunk\n bandwidth 1000000\n spanning-tree link-type point-to-point\n\
+          !\ninterface Ethernet0/2\n!\ninterface Ethernet0/3\n switchport trunk encapsulation\
+          \ dot1q\n switchport mode trunk\n bandwidth 1000000\n spanning-tree link-type\
+          \ point-to-point\n!\nip forward-protocol nd\n!\n!\nip http server\nip http\
+          \ secure-server\nip ssh bulk-mode 131072\n!\n!\n!\n!\n!\n!\ncontrol-plane\n\
+          !\n!\n!\nline con 0\n exec-timeout 0 0\n logging synchronous\nline aux 0\n\
+          line vty 0 4\n exec-timeout 0 0\n login\n transport input ssh\n!\n!\nend"
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n3
+    image_definition: null
+    label: souzay
+    node_definition: ioll2-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: 0
+    y: 40
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet0/3
+        slot: 3
+        type: physical
+links:
+  - id: l0
+    n1: n0
+    n2: n1
+    i1: i3
+    i2: i1
+    conditioning: {}
+    label: saumur-Ethernet0/2<->bourgueil-Ethernet0/0
+  - id: l1
+    n1: n0
+    n2: n2
+    i1: i2
+    i2: i1
+    conditioning: {}
+    label: saumur-Ethernet0/1<->chinon-Ethernet0/0
+  - id: l2
+    n1: n0
+    n2: n3
+    i1: i1
+    i2: i1
+    conditioning: {}
+    label: saumur-Ethernet0/0<->souzay-Ethernet0/0
+  - id: l3
+    n1: n0
+    n2: n3
+    i1: i4
+    i2: i4
+    conditioning: {}
+    label: saumur-Ethernet0/3<->souzay-Ethernet0/3
+  - id: l4
+    n1: n1
+    n2: n2
+    i1: i3
+    i2: i2
+    conditioning: {}
+    label: bourgueil-Ethernet0/2<->chinon-Ethernet0/1
+  - id: l5
+    n1: n2
+    n2: n3
+    i1: i3
+    i2: i2
+    conditioning: {}
+    label: chinon-Ethernet0/2<->souzay-Ethernet0/1
+lab:
+  description: ''
+  notes: "LAB Guide for configuring LAB saumur_PVRSTP\n\nintroduction :\n\nThree Towns\
+    \ : Bourgueil, Chinon and Souzay have gathered their IT with a bigger one : Saumur.\n\
+    Their IT include servers and a network.\n\nN.B. This case is derived from a real\
+    \ use case from which all real data have been changed.\n\nYou will have to solve\
+    \ their network design problem and to implement the solution in the lab.\n\nAs\
+    \ cities they are entitled to lay optical fibers within their territory.\nCurrently\
+    \ they have layed only one fiber optic sheath containing several optical fibers.\n\
+    The four towns are connected directly to saumur by three fibers taken from the\
+    \ same sheath.\n\n\nThe towns want to introduce redundancy in their network :\n\
+    \n.1) they want to use a fiber from the existing sheath to create a redundant\
+    \ link between spoke neighbor towns,\n   that is between bourgueil and chinon\
+    \ and between chinon and souzay.\n\n.2) there are a lot of public works in those\
+    \ towns and the network admin wants to avoid all of the towns to be\n   isolated\
+    \ in case its sheath be striken and cut by an excavator.\n   They have the project\
+    \ to lay a second fiber optic sheath between Souzay and Saumur,\n   to interconnect\
+    \ Souzay to Saumur with another fiber taken from that new sheath.\n\nThe planned\
+    \ redundant topology is as depicted the lab topology\n\n\nThe network admin has\
+    \ chosen to use pvRSTP to build its network\nAll fibers are used with 1 Gbps SFPs.\n\
+    All VLANs will have an identical nominal topology\n\n1. part 1\n\nQuestion 1:\n\
+    Considering the redundant topology, where would you put the Root Node of the PVRSTP\
+    \ topology ?\n\n.1. Bourgueil\n.2. Saumur\n.3. Chinon\n.4. Souzay\n\nQuestion\
+    \ 2:\nhow would you do that ?\n\n.1. switch(config-if)# spanning-tree vlan 1-4094\
+    \ priority 4096\n\n.2. switch(config)# spanning-tree vlan 1-4094 priority 32768\n\
+    \n.3. switch(config)# spanning-tree vlan 1-4094 priority 4096\n\n.4. switch(config-if)#\
+    \ spanning-tree vlan 1-4094 priority 32768\n\n1. step 1 : in the lab, apply the\
+    \ configuration you have chosen to the switch you have picked at Question 1\n\n\
+    \n2. part 2\n\nThe switches are configured with spanning-tree pathcost method\
+    \ long\ni.e :\n\nPort speed \tspanning-tree pathcost method long:\n10 Mbps \t\
+    2000000,\n100 Mbps 200000,\n1 Gbps \t20000,\n10 Gbps \t2000,\n\nThe network admin\
+    \ has assigned the following objectives to meet for the target redundant topology\
+    \ :\n\n.1) the direct link (i.e. link-1-1, link-1-2, link-1-3) between saumur\
+    \ and\n   a town mustn't be blocked by STP under nominal circumstances\n\n.2)\
+    \ in case of a single direct link failing, the redundant link used should\n  \
+    \ prioritarily be the additional link (i.e. link-1-4, link-1-5), if possible.\n\
+    \n.3) only when several direct links between the root and towns have failed,\n\
+    \   should the link between souzay and saumur in the second sheath be used. (i.e.\
+    \ link-2-1)\n\nTo achieve this, the network admin has choosen to configure administrative\
+    \ spanning-tree costs on\nlinks to be used only in case of a failure.\n\nQuestion\
+    \ 3 : on the target topology, what is the cost configuration that meets\nthe objectives\
+    \ of the redundant topology as choosen by the network admin ?\n\n.1. configure\
+    \ a cost of 200000 on both ends of link-1-1, link-1-2, link-1-3 and\n   a cost\
+    \ of 2000000 on both ends of link-1-5\n\n.2. configure a cost of 2000000 on both\
+    \ ends of link-1-4 & link-1-5 and\n   a cost of 2000 on both ends of link-2-1\n\
+    \n.3. configure a cost of 200000 on both ends of link-1-4 & link-1-5 and\n   a\
+    \ cost of 2000000 on both ends of link-2-1\n\n.4. configure a cost of 2000000\
+    \ on both ends of link-1-4 & link-1-5 and\n   a cost of 200000 on both ends of\
+    \ link-2-1\n\n\nN.B. reminder to configure a cost,  in interface configuration\
+    \ mode, use the command :\n\nswitch(config-if)# spanning-tree cost COST\n\nwhere\
+    \ COST is the cost value you wan to configure.\n\nstep 2. in the lab, apply the\
+    \ configuration you have chosen at Question 3 to all relevant interfaces"
+  title: saumur_PVRSTP
+  version: 0.2.2

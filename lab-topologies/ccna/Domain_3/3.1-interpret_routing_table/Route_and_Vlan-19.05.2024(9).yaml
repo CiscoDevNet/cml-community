@@ -1,0 +1,851 @@
+annotations:
+  - border_color: '#083EEE44'
+    border_style: ''
+    color: '#7607BD'
+    rotation: 0
+    text_bold: true
+    text_content: vlan10
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 8
+    type: text
+    x1: -320.0
+    y1: 240.0
+    z_index: 0
+  - border_color: '#2B034767'
+    border_style: ''
+    color: '#60058E'
+    rotation: 0
+    text_bold: true
+    text_content: vlan20
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 8
+    type: text
+    x1: -160.0
+    y1: 240.0
+    z_index: 1
+  - border_color: '#32828389'
+    border_style: ''
+    color: '#109EA4'
+    rotation: 0
+    text_bold: true
+    text_content: vlan30
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 8
+    type: text
+    x1: 80.0
+    y1: 240.0
+    z_index: 2
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: ''
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 240.0
+    y1: 280.0
+    z_index: 3
+  - border_color: '#961E9359'
+    border_style: ''
+    color: '#088283'
+    rotation: 0
+    text_bold: true
+    text_content: vlan40
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 8
+    type: text
+    x1: 240.0
+    y1: 240.0
+    z_index: 4
+  - border_color: '#808080FF'
+    border_radius: 0
+    border_style: ''
+    color: '#ADEACF'
+    thickness: 1
+    type: rectangle
+    x1: -280.0
+    y1: -200.0
+    x2: 480.0
+    y2: 120.0
+    z_index: 5
+  - border_color: '#808080FF'
+    border_radius: 0
+    border_style: ''
+    color: '#CFDE98'
+    thickness: 1
+    type: rectangle
+    x1: -280.0
+    y1: -40.0
+    x2: 480.0
+    y2: 120.0
+    z_index: 6
+nodes:
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          Building configuration...
+
+          Current configuration : 1107 bytes
+          !
+          ! Last configuration change at 10:40:14 UTC Sun May 19 2024
+          !
+          version 17.12
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          !
+          hostname inserthostname-here
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          no logging console
+          no aaa new-model
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          ip audit notify log
+          ip audit po max-events 100
+          ip cef
+          login on-success log
+          no ipv6 cef
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          vtp version 1
+          multilink bundle-name authenticated
+          !
+          !
+          !
+          !
+          memory free low-watermark processor 80589
+          !
+          !
+          spanning-tree mode rapid-pvst
+          spanning-tree extend system-id
+          !
+          !
+          vlan internal allocation policy ascending
+          !
+          !
+          !
+          !
+          !
+          interface Ethernet0/0
+           switchport access vlan 10
+           switchport mode access
+          !
+          interface Ethernet0/1
+           switchport access vlan 20
+           switchport mode access
+          !
+          interface Ethernet0/2
+           switchport access vlan 10
+           switchport mode access
+          !
+          interface Ethernet0/3
+          !
+          ip forward-protocol nd
+          !
+          !
+          ip http server
+          ip http secure-server
+          ip ssh bulk-mode 131072
+          !
+          !
+          !
+          !
+          !
+          !
+          control-plane
+          !
+          !
+          !
+          line con 0
+           exec-timeout 0 0
+           logging synchronous
+          line aux 0
+          line vty 0 4
+           exec-timeout 0 0
+           login
+           transport input ssh
+          !
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: SW1
+    node_definition: ioll2-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: -200
+    y: 0
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet0/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          Building configuration...
+
+          Current configuration : 1107 bytes
+          !
+          ! Last configuration change at 10:40:07 UTC Sun May 19 2024
+          !
+          version 17.12
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          !
+          hostname inserthostname-here
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          no logging console
+          no aaa new-model
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          ip audit notify log
+          ip audit po max-events 100
+          ip cef
+          login on-success log
+          no ipv6 cef
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          vtp version 1
+          multilink bundle-name authenticated
+          !
+          !
+          !
+          !
+          memory free low-watermark processor 80589
+          !
+          !
+          spanning-tree mode rapid-pvst
+          spanning-tree extend system-id
+          !
+          !
+          vlan internal allocation policy ascending
+          !
+          !
+          !
+          !
+          !
+          interface Ethernet0/0
+           switchport access vlan 30
+           switchport mode access
+          !
+          interface Ethernet0/1
+           switchport access vlan 40
+           switchport mode access
+          !
+          interface Ethernet0/2
+           switchport access vlan 40
+           switchport mode access
+          !
+          interface Ethernet0/3
+          !
+          ip forward-protocol nd
+          !
+          !
+          ip http server
+          ip http secure-server
+          ip ssh bulk-mode 131072
+          !
+          !
+          !
+          !
+          !
+          !
+          control-plane
+          !
+          !
+          !
+          line con 0
+           exec-timeout 0 0
+           logging synchronous
+          line aux 0
+          line vty 0 4
+           exec-timeout 0 0
+           login
+           transport input ssh
+          !
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: SW2
+    node_definition: ioll2-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: 120
+    y: 0
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet0/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n2
+    image_definition: null
+    label: PC1
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: -280
+    y: 160
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n3
+    image_definition: null
+    label: Server1
+    node_definition: server
+    parameters: {}
+    ram: null
+    tags: []
+    x: 120
+    y: 160
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          Building configuration...
+
+          Current configuration : 1024 bytes
+          !
+          ! Last configuration change at 10:40:26 UTC Sun May 19 2024
+          !
+          version 17.12
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          !
+          hostname inserthostname-here
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          no logging console
+          no aaa new-model
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          ip cef
+          login on-success log
+          no ipv6 cef
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          multilink bundle-name authenticated
+          !
+          !
+          !
+          !
+          !
+          memory free low-watermark processor 81225
+          !
+          !
+          spanning-tree mode rapid-pvst
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          interface Ethernet0/0
+           ip address 10.10.10.100 255.255.255.0
+          !
+          interface Ethernet0/1
+           ip address 1.1.1.1 255.255.255.0
+          !
+          interface Ethernet0/2
+           no ip address
+           shutdown
+          !
+          interface Ethernet0/3
+           no ip address
+           shutdown
+          !
+          ip forward-protocol nd
+          !
+          !
+          ip http server
+          ip http secure-server
+          ip route 20.20.20.0 255.255.255.0 1.1.1.2
+          ip ssh bulk-mode 131072
+          !
+          !
+          !
+          !
+          !
+          control-plane
+          !
+          !
+          !
+          line con 0
+           exec-timeout 0 0
+           logging synchronous
+          line aux 0
+          line vty 0 4
+           exec-timeout 0 0
+           login
+           transport input ssh
+          !
+          !
+          !
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n4
+    image_definition: null
+    label: R1
+    node_definition: iol-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: -200
+    y: -160
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet0/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          Building configuration...
+
+          Current configuration : 1024 bytes
+          !
+          ! Last configuration change at 10:40:20 UTC Sun May 19 2024
+          !
+          version 17.12
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          !
+          hostname inserthostname-here
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          no logging console
+          no aaa new-model
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          ip cef
+          login on-success log
+          no ipv6 cef
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          multilink bundle-name authenticated
+          !
+          !
+          !
+          !
+          !
+          memory free low-watermark processor 81225
+          !
+          !
+          spanning-tree mode rapid-pvst
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          interface Ethernet0/0
+           ip address 20.20.20.100 255.255.255.0
+          !
+          interface Ethernet0/1
+           ip address 1.1.1.2 255.255.255.0
+          !
+          interface Ethernet0/2
+           no ip address
+           shutdown
+          !
+          interface Ethernet0/3
+           no ip address
+           shutdown
+          !
+          ip forward-protocol nd
+          !
+          !
+          ip http server
+          ip http secure-server
+          ip route 10.10.10.0 255.255.255.0 1.1.1.1
+          ip ssh bulk-mode 131072
+          !
+          !
+          !
+          !
+          !
+          control-plane
+          !
+          !
+          !
+          line con 0
+           exec-timeout 0 0
+           logging synchronous
+          line aux 0
+          line vty 0 4
+           exec-timeout 0 0
+           login
+           transport input ssh
+          !
+          !
+          !
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n5
+    image_definition: null
+    label: R2
+    node_definition: iol-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: 120
+    y: -160
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet0/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n6
+    image_definition: null
+    label: '.....'
+    node_definition: external_connector
+    parameters: {}
+    ram: null
+    tags: []
+    x: -40
+    y: -160
+    interfaces:
+      - id: i0
+        label: port
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n7
+    image_definition: null
+    label: PC2
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: -160
+    y: 160
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n8
+    image_definition: null
+    label: Server2
+    node_definition: server
+    parameters: {}
+    ram: null
+    tags: []
+    x: 240
+    y: 160
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+links:
+  - id: l0
+    n1: n0
+    n2: n2
+    i1: i1
+    i2: i0
+    conditioning: {}
+    label: SW1-Ethernet0/0<->PC1-eth0
+  - id: l1
+    n1: n0
+    n2: n7
+    i1: i2
+    i2: i0
+    conditioning: {}
+    label: SW1-Ethernet0/1<->PC2-eth0
+  - id: l2
+    n1: n0
+    n2: n4
+    i1: i3
+    i2: i1
+    conditioning: {}
+    label: SW1-Ethernet0/2<->R1-Ethernet0/0
+  - id: l3
+    n1: n3
+    n2: n1
+    i1: i0
+    i2: i1
+    conditioning: {}
+    label: Server1-eth0<->SW2-Ethernet0/0
+  - id: l4
+    n1: n8
+    n2: n1
+    i1: i0
+    i2: i2
+    conditioning: {}
+    label: Server2-eth0<->SW2-Ethernet0/1
+  - id: l5
+    n1: n1
+    n2: n5
+    i1: i3
+    i2: i1
+    conditioning: {}
+    label: SW2-Ethernet0/2<->R2-Ethernet0/0
+  - id: l6
+    n1: n5
+    n2: n4
+    i1: i2
+    i2: i2
+    conditioning: {}
+    label: R2-Ethernet0/1<->R1-Ethernet0/1
+lab:
+  description: ''
+  notes: |-
+    #Lab guid for configuring Vlans and Routing (CCNA Task 2.1 and 3.1)
+
+    Step 1: Configure the IPs for PCs as 10.10.10.x, that x ist the PC number.
+    Step 2: Configure the IPs for Servers as 10.10.10.y, that y ist the Servers number.
+    Step 3: Configure the Vlans on the Switches, so that only traffic between PC1 and Server2 can be transferred.
+    Step 4: Configure the needed Route and Gateways in routers.
+    Step 5: Check to solve any wrong configuration .
+  title: Route and Vlan-19.05.2024
+  version: 0.2.2

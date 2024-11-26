@@ -7,18 +7,19 @@ device:
   interfaces:
     has_loopback_zero: false
     physical:
-      - Management
-      - Diagnostic
-      - Outside
-      - Inside
-      - Data1
-      - Data2
-      - Data3
-      - Data4
-      - Data5
-      - Data6
+      - Management0/0
+      - donotuse1
+      - GigabitEthernet0/0
+      - GigabitEthernet0/1
+      - GigabitEthernet0/2
+      - GigabitEthernet0/3
+      - GigabitEthernet0/4
+      - GigabitEthernet0/5
+      - GigabitEthernet0/6
+      - GigabitEthernet0/7
     serial_ports: 1
     default_count: 4
+    min_count: 4
 ui:
   visible: true
   description: |-
@@ -47,7 +48,8 @@ boot:
     - 'login:'
 pyats:
   os: fxos
-  use_in_testbed: true
+  username: admin
+  password: Cisco1@3
 inherited:
   image:
     ram: true
@@ -63,7 +65,7 @@ inherited:
     boot_disk_size: false
 configuration:
   generator:
-    driver: asav
+    driver: null
   provisioning:
     volume_name: day0
     media_type: iso
@@ -71,11 +73,10 @@ configuration:
       - name: day0-config
         editable: true
         content: |-
-          #Firepower Threat Defense
           {
               "EULA": "accept",
               "Hostname": "ftdv",
-              "AdminPassword": "Admin123",
+              "AdminPassword": "Cisco1@3",
               "FirewallMode": "routed",
               "DNS1": "",
               "DNS2": "",

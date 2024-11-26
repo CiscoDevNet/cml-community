@@ -113,12 +113,10 @@
                             "enum": [
                                 "asav",
                                 "alpine",
-                                "cat9k",
+                                "cat9000v",
                                 "coreos",
                                 "csr1000v",
                                 "desktop",
-                                "iol",
-                                "iol-l2",
                                 "iosv",
                                 "iosvl2",
                                 "iosxrv",
@@ -127,6 +125,9 @@
                                 "nxosv",
                                 "nxosv9000",
                                 "pagent",
+				"sdwan",
+				"sdwan_edge",
+				"sdwan_manager",
                                 "server",
                                 "trex",
                                 "ubuntu",
@@ -353,6 +354,7 @@
                     "type": "string",
                     "description": "Domain Driver.",
                     "enum": [
+			"iol",
                         "kvm",
                         "lxc",
                         "none"
@@ -442,7 +444,23 @@
                         "virtio",
                         "e1000",
                         "rtl8139",
-                        "vmxnet3"
+                        "vmxnet3",
+			"e1000e",
+			"e1000-82544gc",
+			"e1000-82545em",
+			"i82550",
+			"i82551",
+			"i82557a",
+			"i82557b",
+			"i82557c",
+			"i82558a",
+			"i82558b",
+			"i82559a",
+			"i82559b",
+			"i82559c",
+			"i82559er",
+			"i82562",
+			"i82801"
                     ]
                 },
                 "data_volume": {
@@ -477,7 +495,8 @@
                                 "tcx",
                                 "cg3",
                                 "virtio",
-                                "none"
+                                "none",
+				"vga"
                             ]
                         },
                         "memory": {
@@ -553,6 +572,12 @@
                     "maximum": 64,
                     "description": "Default number of physical interfaces."
                 },
+		"min_count": {
+		    "type": "integer",
+		    "minimum": 1,
+		    "maximum": 64,
+		    "description": "Minimal number of physical interfaces."
+		},
                 "loopback": {
                     "type": "array",
                     "description": "List of loopback interfaces.",

@@ -1,0 +1,67 @@
+id: ucspe
+general:
+  description: |-
+    UCS Platform Emulator
+
+    1 vCPU / 2 GB RAM
+
+    [Cisco Community Documentation](https://community.cisco.com/t5/custom/page/page-id/customFilteredByMultiLabel?board=6011-docs-dc-ucs&labels=ucs%20platform%20emulator)
+  nature: server
+  read_only: false
+device:
+  interfaces:
+    has_loopback_zero: false
+    physical:
+      - ethernet0
+      - ethernet1
+      - ethernet2
+    serial_ports: 1
+    min_count: 3
+    default_count: 3
+ui:
+  visible: true
+  description: |-
+    UCS Platform Emulator
+
+    1 vCPU / 2 GB RAM
+
+    Cisco UCS Platform Emulator is the Cisco UCS Manager application bundled into a virtual machine (VM).The
+    VM includes software that emulates hardware communications for the Cisco Unified Computing System
+    (Cisco UCS) hardware that is configured and managed by Cisco UCS Manager. For example, you can use
+    Cisco UCS Platform Emulator to create and test a supported Cisco UCS configuration, or to duplicate an
+    existing Cisco UCS environment for troubleshooting or development purposes.
+  label_prefix: ucspe-
+  icon: server
+  label: UCSPE
+sim:
+  linux_native:
+    libvirt_domain_driver: kvm
+    driver: server
+    disk_driver: virtio
+    ram: 2048
+    cpus: 1
+    cpu_limit: 100
+    nic_driver: e1000
+    boot_disk_size: 20
+boot:
+  timeout: 900
+  uses_regex: true
+  completed:
+    - 'login:'
+inherited:
+  image:
+    ram: true
+    cpus: true
+    cpu_limit: true
+    data_volume: true
+    boot_disk_size: true
+  node:
+    ram: true
+    cpus: true
+    cpu_limit: true
+    data_volume: true
+    boot_disk_size: true
+configuration:
+  generator:
+    driver: null
+schema_version: 0.0.1

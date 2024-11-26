@@ -60,3 +60,6 @@ This project was written and is maintained by the following individuals:
 * sig9 <sig9@sig9.org>
 * Ozzy Schoonover <OzzySchoonover@gmail.com>
 * Alexander Deca <alexander@deca-consulting.be>
+* Xinyu Wei <trustywolf@sfc.wide.ad.jp>
+* Kelly Christians <kelly.christians@rsmus.com>
+* Ariadne Haske <ariadne@haske.org>

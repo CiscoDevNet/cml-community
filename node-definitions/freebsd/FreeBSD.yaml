@@ -1,0 +1,75 @@
+id: FreeBSD
+general:
+  nature: server
+  description: FreeBSD with "nuage-init" (a limited version of cloud-init).
+  read_only: false
+device:
+  interfaces:
+    has_loopback_zero: true
+    physical:
+      - vtnet0
+      - vtnet1
+      - vtnet2
+      - vtnet3
+      - vtnet4
+      - vtnet5
+      - vtnet6
+      - vtnet7
+    serial_ports: 1
+    loopback:
+      - lo0
+    min_count: 1
+    default_count: 2
+ui:
+  visible: true
+  label_prefix: fBSD-
+  icon: server
+  label: FreeBSD
+sim:
+  linux_native:
+    libvirt_domain_driver: kvm
+    driver: server
+    disk_driver: sata
+    ram: 1024
+    cpus: 1
+    cpu_limit: 100
+    nic_driver: virtio
+boot:
+  completed:
+    - 'login:'
+  timeout: 300
+  uses_regex: false
+inherited:
+  image:
+    ram: true
+    cpus: true
+    cpu_limit: true
+    data_volume: true
+    boot_disk_size: true
+  node:
+    ram: true
+    cpus: true
+    cpu_limit: true
+    data_volume: true
+    boot_disk_size: true
+configuration:
+  generator:
+    driver: server
+  provisioning:
+    volume_name: cidata
+    media_type: iso
+    files:
+      - name: meta-data
+        editable: true
+        content: |-
+          instance-id: freebsd-01
+          local-hostname: freebsd-01
+      - name: user-data
+        editable: true
+        content: |-
+          #cloud-config
+          users:
+            - name: cisco
+              plain_text_passwd: cisco
+              groups: wheel
+schema_version: 0.0.1

@@ -1,0 +1,673 @@
+annotations:
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: 192.168.0.10
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -565.0
+    y1: -74.0
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: 192.168.0.11
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -325.0
+    y1: -73.0
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: 192.168.0.1
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -446.3066108896985
+    y1: 47.653305444849266
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: cisco / cisco
+    text_font: monospace
+    text_italic: false
+    text_size: 8
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -559.75
+    y1: -55.5
+    z_index: 1
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: cisco / cisco
+    text_font: monospace
+    text_italic: false
+    text_size: 8
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -318.75
+    y1: -53.5
+    z_index: 1
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      TACACS Accounts
+      tacadmin / admin123 (priv 15)
+      tacoper  / oper123  (priv 1)
+
+      TACACS Secret
+      tacacs123
+
+      TACACS Log Files
+      journalctl -fu tac_plus
+      tail -f /var/log/tac_plus.acct
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -960.4378534132434
+    y1: -244.7193548844158
+    z_index: 2
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: cisco / cisco
+    text_font: monospace
+    text_italic: false
+    text_size: 8
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -443.7290720829766
+    y1: 67.39536041488296
+    z_index: 1
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#0C0C0C'
+    rotation: 0
+    text_bold: true
+    text_content: Exploring AAA / TACACS Configuration for IOS
+    text_font: monospace
+    text_italic: false
+    text_size: 13
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -962.0997946295324
+    y1: -292.6838112360871
+    z_index: 3
+nodes:
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: internet
+    node_definition: external_connector
+    parameters: {}
+    ram: null
+    tags: []
+    x: -640
+    y: -240
+    interfaces:
+      - id: i0
+        label: port
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: internet-sw
+    node_definition: unmanaged_switch
+    parameters: {}
+    ram: null
+    tags: []
+    x: -640
+    y: -120
+    interfaces:
+      - id: i0
+        label: port0
+        slot: 0
+        type: physical
+      - id: i1
+        label: port1
+        slot: 1
+        type: physical
+      - id: i2
+        label: port2
+        slot: 2
+        type: physical
+      - id: i3
+        label: port3
+        slot: 3
+        type: physical
+      - id: i4
+        label: port4
+        slot: 4
+        type: physical
+      - id: i5
+        label: port5
+        slot: 5
+        type: physical
+      - id: i6
+        label: port6
+        slot: 6
+        type: physical
+      - id: i7
+        label: port7
+        slot: 7
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: user-data
+        content: |-
+          #cloud-config
+          hostname: tacacs-server
+          manage_etc_hosts: True
+          system_info:
+            default_user:
+              name: cisco
+          password: cisco
+          chpasswd: { expire: False }
+          ssh_pwauth: True
+          ssh_authorized_keys:
+            - your-ssh-pubkey-line-goes-here
+
+          # Install requirements for tac_plus
+          package_update: true
+          packages:
+            - wget
+            - make
+            - gcc
+            - flex
+            - bison
+            - libwrap0-dev
+
+          write_files:
+            # Create the tac_plus configuration file
+            - path: /etc/tacacs/tac_plus.conf
+              content: |
+                key = tacacs123
+                group = netadmin {
+                  default service = permit
+                  service = exec {
+                          priv-lvl = 15
+                          }
+                }
+                group = netoper {
+                  default service = permit
+                  service = exec {
+                          priv-lvl = 1
+                          }
+                }
+                user = tacadmin {
+                  login = cleartext admin123
+                  member = netadmin
+                }
+                user = tacoper {
+                  login = cleartext oper123
+                  member = netoper
+                }
+            # Create a systemd service to manage tac_plus
+            - path: /etc/systemd/system/tac_plus.service
+              content: |
+                [Unit]
+                Description=tac_plus Service
+                After=network.target
+                [Service]
+                Type=simple
+                ExecStart=/tacacs/sbin/tac_plus -G -C /etc/tacacs/tac_plus.conf -d 8 -d 16 -l /var/log/tac_plus.log
+                [Install]
+                WantedBy=multi-user.target
+
+          runcmd:
+            # Download tac_plus source code and un-tar it
+            - wget https://shrubbery.net/pub/tac_plus/tacacs-F4.0.4.28.tar.gz -O /opt/tacacs-F4.0.4.28.tar.gz
+            - cd /opt && tar -xzf tacacs-F4.0.4.28.tar.gz
+            # Compile and install tac_plus
+            - cd /opt/tacacs-F4.0.4.28 && ./configure --prefix=/tacacs && make && make install
+            # Enable and start the systemd service
+            - systemctl enable tac_plus
+            - systemctl start tac_plus
+            # Configure "inside" network adapter
+            #  Note: ens2 is connected to internet through NAT ext-con and
+            #        required to download the software
+            - ip address add 192.168.0.10/24 dev ens3
+            - ip link set up dev ens3
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n2
+    image_definition: ubuntu-22-04-20240126
+    label: tacacs-server
+    node_definition: ubuntu
+    parameters: {}
+    ram: null
+    tags: []
+    x: -520
+    y: -120
+    interfaces:
+      - id: i0
+        label: ens2
+        slot: 0
+        type: physical
+      - id: i1
+        label: ens3
+        slot: 1
+        type: physical
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n3
+    image_definition: null
+    label: lab-sw
+    node_definition: unmanaged_switch
+    parameters: {}
+    ram: null
+    tags: []
+    x: -400
+    y: -120
+    interfaces:
+      - id: i0
+        label: port0
+        slot: 0
+        type: physical
+      - id: i1
+        label: port1
+        slot: 1
+        type: physical
+      - id: i2
+        label: port2
+        slot: 2
+        type: physical
+      - id: i3
+        label: port3
+        slot: 3
+        type: physical
+      - id: i4
+        label: port4
+        slot: 4
+        type: physical
+      - id: i5
+        label: port5
+        slot: 5
+        type: physical
+      - id: i6
+        label: port6
+        slot: 6
+        type: physical
+      - id: i7
+        label: port7
+        slot: 7
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname rtr1
+          !
+          ! In order to avoid entering a configuration dialog
+          ! on boot, please ensure that all ethernet interfaces
+          ! have some ip configuration present here such as the
+          ! example below:
+          !
+          interface range Ethernet 0/0 - 3
+           no ip address
+           shutdown
+          !
+          no ip domain lookup
+          ip domain name lab.intra
+          crypto key generate rsa general-keys modulus 2048
+          !
+          aaa new-model
+          !
+          username cisco priv 15 secret cisco
+          !
+          interface Eth0/0
+           no shutdown
+           ip address 192.168.0.1 255.255.255.0
+           exit
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n4
+    image_definition: null
+    label: rtr1
+    node_definition: iol-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: -400
+    y: 0
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet0/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |
+          # this is a shell script which will be sourced at boot
+          hostname desktop
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+          # Network Settings
+          ip address add 192.168.0.11/24 dev eth0
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n5
+    image_definition: null
+    label: desktop
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: -280
+    y: -120
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+      - id: i1
+        label: eth1
+        slot: 1
+        type: physical
+links:
+  - id: l0
+    n1: n1
+    n2: n0
+    i1: i0
+    i2: i0
+    conditioning: {}
+    label: ext-sw-port0<->ext-conn-0-port
+  - id: l1
+    n1: n2
+    n2: n1
+    i1: i0
+    i2: i3
+    conditioning: {}
+    label: aaa-server_0-ens2<->ext-sw-port3
+  - id: l2
+    n1: n2
+    n2: n3
+    i1: i1
+    i2: i0
+    conditioning: {}
+    label: aaa-server_0-ens3<->ext-sw_0-port0
+  - id: l3
+    n1: n4
+    n2: n3
+    i1: i1
+    i2: i1
+    conditioning: {}
+    label: router1_0-Ethernet0/0<->ext-sw_0-port1
+  - id: l4
+    n1: n5
+    n2: n3
+    i1: i0
+    i2: i2
+    conditioning: {}
+    label: desktop-0-eth0<->ext-sw_0-port2
+lab:
+  description: Simple topology for practicing AAA TACACS configuration in IOS.
+  notes: |-
+    # Exploring AAA / TACACS Configuration for IOS
+
+    Verifying the identity of the people who log into network, what each person is allowed to do on a network device, and tracking what was done is a critical part of network operations.  Collectively these are known as "Triple A Services", or Authentication, Authorization, and Accounting.  Another name used is "Role Based Access Control", or RBAC.
+
+    TACACS+ is a common protocol used for RBAC / AAA on network devices, and this lab explores how to configure AAA on both IOS and NX-OS devices.
+
+    > RADIUS is another protocol that can be used for device administration with AAA.
+
+    A TACACS server must be available on the network for devices to send AAA requests to for validation. This lab leverages an open source `tac_plus` server as a lightweight service that can be easily installed on an Ubuntu host within the topology. For more information on `tac_plus` see the documentation for [`tac_plus`](https://manpages.ubuntu.com/manpages/trusty/man8/tac_plus.8.html) and [`tac_plus.conf`](https://manpages.ubuntu.com/manpages/trusty/man5/tac_plus.conf.5.html).  The starting config for `aaa-server` installs `tac_plus` and deploys a basic TACACS configuration to support IOS and NX-OS hosts connecting for user authentication, role based authorization (administrator and operator), and accounting. The configuration file `tac_plus.conf` is located at `/etc/tacacs/tac_plus.conf`. You can modify this configuraiton file and restart `tac_plus` (`sudo systemctl restart tac_plus`) as part of your own learning.
+
+    > Command authorization is not part of this lab guide, and the `tac_plus` server is ***NOT*** configured for command authorization as part of the initial configuration. Though you can update the `tac_plus.conf` file and experiment with command authorization on your own.
+
+    ## Starting Configuration
+
+    `rtr1` has the following configuration applied as startup configuration to enable inbound SSH from `desktop` that is locally authenticated.
+
+    ```
+    ip domain name lab.intra
+    crypto key generate rsa general-keys modulus 2048
+    !
+    aaa new-model
+    !
+    username cisco priv 15 secret cisco
+    ```
+
+
+    ## Ensuring the serial / console leverages local authentication
+    To provide safety and fallback access to devices, we will force the console line to only use local admin accounts.
+
+    ```
+    aaa authentication login CONSOLE local
+    aaa authorization console
+    aaa authorization exec CONSOLE local
+    !
+    line con 0
+     login authentication CONSOLE
+     authorization exec CONSOLE
+    !
+    ```
+
+    ## Configuring TACACS server as default AAA
+
+    Start by identitying the interface that TACACS packets should be sourced from. This is often important because TACACS servers typically only respond to known hosts/addresses.
+
+    ```
+    ip tacacs source-interface Ethernet0/0
+    ```
+
+    Now create the TACACS server entry for the server. Be sure to double check the "key" (secret) used for communications.
+
+    > Note: Be careful to NOT add an extra "space" after the key. This can cause problems on some platforms.
+
+    ```
+    tacacs server aaa-server
+     address ipv4 192.168.0.10
+     key tacacs123
+    !
+    ```
+
+    Create a `aaa group` that includes the TACACS server. In a production environment, you would typically have at least 2 TACASC servers configured for fallback.
+
+    ```
+    aaa group server tacacs+ AAA-TACACS
+     server name aaa-server
+    !
+    ```
+
+    Test that the TACACS server is responding successfully.
+
+    ```
+    test aaa group tacacs+ tacadmin admin123 legacy
+    ```
+
+    Configure the authentication, authorization, and accounting policies.
+
+    ```
+    aaa authentication login default group AAA-TACACS local
+    aaa authorization exec default group AAA-TACACS local
+    !
+    aaa accounting exec default start-stop group AAA-TACACS
+    aaa accounting commands 1 default start-stop group AAA-TACACS
+    aaa accounting commands 15 default start-stop group AAA-TACACS
+    !
+    ```
+
+    ## Testing the configuration
+
+    Open the console for the `tacacs-server` and monitor the service "journal"
+
+    ```
+    journalctl -fu tac_plus
+    ```
+
+    Open the console for the `desktop` and attempt to connect to `rtr1` with SSH as the `tacadmin` user.
+
+    ```
+    ssh tacadmin@192.168.0.1
+    ```
+
+    After you log in, run a command to verify access.
+
+    ```
+    show ip interface brief
+    ```
+
+    Check the output on the `tacacs-server`. You should see messages for both the `authentication` and `authorization`
+
+    ```
+    # Examples
+    Oct 07 21:30:36 tacacs-server tac_plus[5704]: login query for 'tacadmin' port tty2 from 192.168.0.1 accepted
+    Oct 07 21:30:36 tacacs-server tac_plus[5705]: connect from 192.168.0.1 [192.168.0.1]
+    Oct 07 21:30:36 tacacs-server tac_plus[5705]: Start authorization request
+    Oct 07 21:30:36 tacacs-server tac_plus[5705]: do_author: user='tacadmin'
+    Oct 07 21:30:36 tacacs-server tac_plus[5705]: user 'tacadmin' found
+    Oct 07 21:30:36 tacacs-server tac_plus[5705]: exec authorization request for tacadmin
+    Oct 07 21:30:36 tacacs-server tac_plus[5705]: exec is explicitly permitted by line 4
+    Oct 07 21:30:36 tacacs-server tac_plus[5705]: nas:service=shell (passed thru)
+    Oct 07 21:30:36 tacacs-server tac_plus[5705]: nas:cmd* (passed thru)
+    Oct 07 21:30:36 tacacs-server tac_plus[5705]: nas:absent, server:priv-lvl=15 -> add priv-lvl=15 (k)
+    Oct 07 21:30:36 tacacs-server tac_plus[5705]: added 1 args
+    Oct 07 21:30:36 tacacs-server tac_plus[5705]: out_args[0] = service=shell input copy discarded
+    Oct 07 21:30:36 tacacs-server tac_plus[5705]: out_args[1] = cmd* input copy discarded
+    Oct 07 21:30:36 tacacs-server tac_plus[5705]: out_args[2] = priv-lvl=15 compacted to out_args[0]
+    Oct 07 21:30:36 tacacs-server tac_plus[5705]: 1 output args
+    Oct 07 21:30:36 tacacs-server tac_plus[5705]: authorization query for 'tacadmin' tty2 from 192.168.0.1 accepted
+    ```
+
+    Stop the journalctl monitor (`Cntrl-c`), and open the accounting log.
+
+    ```
+    tail -f /var/log/tac_plus.acct
+    ```
+
+    > Note: If the command fails and the file isn't found, return to the SSH session to the router and run a couple commands.  The file isn't created until an accounting message is sent to the server.
+
+    Run some more commands on `rtr1`. Try some that are `priv 15` as well as `priv 1`
+
+    ```
+    ! Priv 1
+    show ip route
+    ! Priv 15
+    write mem
+    ```
+
+    Verify the accounting logs were received.
+
+    Logout from the router, and log in as `tacoper`. Verify through the same logs that the user is given the correct access.
+
+    ## Other useful commands
+
+    ### Debugs on the router
+
+    ```
+    debug aaa authentication
+    debug aaa authorization
+    debug aaa accounting
+
+    debug tacacs authentication
+    debug tacacs authorization
+    debug tacacs accounting
+    ```
+
+    ### Show commands on router
+
+    ```
+    show tacacs
+    show aaa sessions
+    ```
+
+    ### Test AAA
+
+    ```
+    test aaa group tacacs+ tacadmin admin123 legacy
+    ```
+
+    ### tacacs-server logs
+
+    ```
+    journalctl -fu tac_plus
+    tail -f /var/log/tac_plus.acct
+    tail -f /var/log/tac_plus.log
+    ```
+
+    ### tac_plus server maintenance
+
+    ```
+    systemctl status tac_plus
+    sudo systemctl stop tac_plus
+    sudo systemctl start tac_plus
+    ```
+  title: Snack Minute AAA TACACS Exploration
+  version: 0.2.2
