@@ -1,0 +1,1833 @@
+annotations:
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: ''
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -640.0
+    y1: -160.0
+    z_index: 1
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: ''
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -720.0
+    y1: -160.0
+    z_index: 2
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: ''
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -560.0
+    y1: -200.0
+    z_index: 3
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: ''
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -600.0
+    y1: -240.0
+    z_index: 4
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: Desg (FWD)
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -933.961524905953
+    y1: -102.11937756616089
+    z_index: 5
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: Desg (FWD)
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -933.5280480128123
+    y1: -130.9375320781916
+    z_index: 5
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#1613ED'
+    rotation: 0
+    text_bold: false
+    text_content: ROOT (FWD)
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -1051.932417095154
+    y1: -128.14478060184547
+    z_index: 5
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: Desg (FWD)
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -937.4939738077643
+    y1: -70.25444271579909
+    z_index: 5
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#D22D2D'
+    rotation: 0
+    text_bold: false
+    text_content: Altn (BLK)
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -941.1585212299293
+    y1: 100.8269318576991
+    z_index: 5
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: Desg (FWD)
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -939.7487733434242
+    y1: -42.78120680387113
+    z_index: 5
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#D22D2D'
+    rotation: 0
+    text_bold: false
+    text_content: Altn (BLK)
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -938.6848309973306
+    y1: 77.60459481795908
+    z_index: 5
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#1613ED'
+    rotation: 0
+    text_bold: false
+    text_content: ROOT (FWD)
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -1050.0727509277378
+    y1: -151.14233058856024
+    z_index: 5
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: "\nCCNA v1.1 Exam Topics\n2.5\tInterpret basic operations of Rapid\
+      \ PVST+ Spanning Tree Protocol\n2.5.a\tRoot port, root bridge (primary/secondary),\
+      \ and other port names\n2.5.b\tPort states and roles\n2.5.c\tPortFast\n2.5.d\t\
+      Root guard, loop guard, BPDU filter, and BPDU guard"
+    text_font: monospace
+    text_italic: false
+    text_size: 8
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -242.58806231119388
+    y1: -551.6153208060653
+    z_index: 7
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: Desg (FWD)
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -935.4944425196219
+    y1: -18.58836193895418
+    z_index: 5
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: 'CCNA Exam Prep: Back to Networking Basics with Hank Preston and
+      Patrick Gargano'
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -1080.0
+    y1: -520.0
+    z_index: 11
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: STP Unleashed!
+    text_font: monospace
+    text_italic: false
+    text_size: 18
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -1080.0
+    y1: -480.0
+    z_index: 12
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      192.168.1.10
+      VLAN 10
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -691.0776000112628
+    y1: 7.615850007743264
+    z_index: 13
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      192.168.2.10
+      VLAN 20
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -481.38470000140785
+    y1: 164.15410000422364
+    z_index: 13
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      192.168.1.11
+      VLAN 10
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -11.613649971139033
+    y1: 4.8464500049275046
+    z_index: 13
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      192.168.2.11
+      VLAN 20
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -198.61529999859218
+    y1: 165.53880000563146
+    z_index: 13
+  - border_color: '#808080FF'
+    border_radius: 0
+    border_style: ''
+    color: '#EB6F6F'
+    thickness: 1
+    type: rectangle
+    x1: -720.0
+    y1: -63.29905611038228
+    x2: 160.0
+    y2: 105.2372001069972
+    z_index: 5
+  - border_color: '#808080FF'
+    border_radius: 0
+    border_style: ''
+    color: '#EB6F6F'
+    thickness: 1
+    type: rectangle
+    x1: -40.0
+    y1: -62.070656149802296
+    x2: 160.0
+    y2: 105.2372001069972
+    z_index: 5
+  - border_color: '#808080FF'
+    border_radius: 0
+    border_style: ''
+    color: '#656FD1'
+    thickness: 1
+    type: rectangle
+    x1: -493.24029669115225
+    y1: 80.0
+    x2: 130.85415013304248
+    y2: 122.25074407827066
+    z_index: 5
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: Root Bridge VLAN 20
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -931.2041973007591
+    y1: -228.51970912792953
+    z_index: 0
+  - border_color: '#808080FF'
+    border_radius: 0
+    border_style: ''
+    color: '#656FD1'
+    thickness: 1
+    type: rectangle
+    x1: -208.81874607662223
+    y1: 80.0
+    x2: 130.85415013304248
+    y2: 119.32504403462707
+    z_index: 5
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: Root Bridge VLAN 10
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -931.2041973007591
+    y1: -205.51771710253513
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: Desg (FWD)
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -935.5231265383086
+    y1: -153.93014986643604
+    z_index: 5
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#1613ED'
+    rotation: 0
+    text_bold: false
+    text_content: ROOT (FWD)
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -1058.9269097308281
+    y1: -103.14302293237989
+    z_index: 5
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: Desg (FWD)
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -941.4890523332607
+    y1: 6.4133957305114535
+    z_index: 5
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: Desg (FWD)
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -945.4838965028282
+    y1: 26.415739289798964
+    z_index: 5
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#D22D2D'
+    rotation: 0
+    text_bold: false
+    text_content: Altn (BLK)
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -951.6786205652184
+    y1: 123.60389175017292
+    z_index: 5
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#D22D2D'
+    rotation: 0
+    text_bold: false
+    text_content: Altn (BLK)
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -944.674753692394
+    y1: 54.616664148289715
+    z_index: 5
+nodes:
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname ALS1
+          !
+          spanning-tree mode pvst
+          spanning-tree vlan 1,10,20 priority 20480
+          !
+          vtp domain CCNAPrep
+          vtp mode transparent
+          !
+          interface gig0/0
+           shutdown
+           exit
+          !
+          interface gig0/1
+           description Connected to DLS1
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           no shutdown
+           exit
+          !
+          interface gig0/2
+           description Connected to DLS2
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           no shutdown
+           exit
+          !
+          interface gig0/3
+           shutdown
+           exit
+          !
+          interface gig1/0
+           description Connected to EmpHost1
+           switchport mode access
+           switchport access vlan 10
+           no shutdown
+           exit
+          !
+          interface gig1/1
+           description Connected to GstHost1
+           switchport mode access
+           switchport access vlan 20
+           no shutdown
+           exit
+          !
+          interface gig1/2
+           switchport trunk encapsulation dot1q
+           switchport mode access
+           shutdown
+           exit
+          !
+          interface gig1/3
+           shutdown
+           exit
+          !
+          vtp mode transparent
+          vtp domain CCNAPrep
+          !
+          vlan 10
+           name Employees
+           exit
+          !
+          vlan 20
+           name Guests
+           exit
+          !
+          line con 0
+           exec-timeout 0 0
+           exit
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: ALS1
+    node_definition: iosvl2
+    parameters: {}
+    ram: null
+    tags: []
+    x: -440
+    y: -40
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: GigabitEthernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: GigabitEthernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: GigabitEthernet0/3
+        slot: 3
+        type: physical
+      - id: i5
+        label: GigabitEthernet1/0
+        slot: 4
+        type: physical
+      - id: i6
+        label: GigabitEthernet1/1
+        slot: 5
+        type: physical
+      - id: i7
+        label: GigabitEthernet1/2
+        slot: 6
+        type: physical
+      - id: i8
+        label: GigabitEthernet1/3
+        slot: 7
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname DLS1
+          !
+          spanning-tree mode pvst
+          spanning-tree vlan 1,10,20 priority 24576
+          !
+          vtp domain CCNAPrep
+          vtp mode transparent
+          !
+          spanning-tree mode pvst
+          !
+          interface gig0/0
+           shutdown
+           exit
+          !
+          interface gig0/1
+           description Connected to ALS1
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           no shutdown
+           exit
+          !
+          interface gig0/2
+           description Connected to ALS2
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           no shutdown
+           exit
+          !
+          interface gig0/3
+           description Connected to CORE_ROUTER
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           no shutdown
+           exit
+          !
+          interface gig1/0
+           description Connected to DLS2
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           no shutdown
+           exit
+          !
+          interface gig1/1
+           description Connected to DLS2
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           no shutdown
+           exit
+          !
+          interface gig1/2
+           shutdown
+           exit
+          !
+          interface gig1/3
+           shutdown
+           exit
+          !
+          vtp mode transparent
+          vtp domain CCNAPrep
+          !
+          vlan 10
+           name Employees
+           exit
+          !
+          vlan 20
+           name Guests
+           exit
+          !
+          line con 0
+           exec-timeout 0 0
+           exit
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: DLS1
+    node_definition: iosvl2
+    parameters: {}
+    ram: null
+    tags: []
+    x: -440
+    y: -240
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: GigabitEthernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: GigabitEthernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: GigabitEthernet0/3
+        slot: 3
+        type: physical
+      - id: i5
+        label: GigabitEthernet1/0
+        slot: 4
+        type: physical
+      - id: i6
+        label: GigabitEthernet1/1
+        slot: 5
+        type: physical
+      - id: i7
+        label: GigabitEthernet1/2
+        slot: 6
+        type: physical
+      - id: i8
+        label: GigabitEthernet1/3
+        slot: 7
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname ALS2
+          !
+          spanning-tree mode pvst
+          spanning-tree vlan 1,10,20 priority 12288
+          !
+          vtp domain CCNAPrep
+          vtp mode transparent
+          !
+          interface gig0/0
+           shutdown
+           exit
+          !
+          interface gig0/1
+           description Connected to DLS2
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           no shutdown
+           exit
+          !
+          interface gig0/2
+           description Connected to DLS1
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           no shutdown
+           exit
+          !
+          interface gig0/3
+           shutdown
+           exit
+          !
+          interface gig1/0
+           description Connected to EmpHost2
+           switchport mode access
+           switchport access vlan 10
+           no shutdown
+           exit
+          !
+          interface gig1/1
+           description Connected to GstHost2
+           switchport mode access
+           switchport access vlan 20
+           no shutdown
+           exit
+          !
+          interface gig1/2
+           switchport trunk encapsulation dot1q
+           switchport mode access
+           shutdown
+           exit
+          !
+          interface gig1/3
+           shutdown
+           exit
+          !
+          vtp mode transparent
+          vtp domain CCNAPrep
+          !
+          vlan 10
+           name Employees
+           exit
+          !
+          vlan 20
+           name Guests
+           exit
+          !
+          line con 0
+           exec-timeout 0 0
+           exit
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n2
+    image_definition: null
+    label: ALS2
+    node_definition: iosvl2
+    parameters: {}
+    ram: null
+    tags: []
+    x: -160
+    y: -40
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: GigabitEthernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: GigabitEthernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: GigabitEthernet0/3
+        slot: 3
+        type: physical
+      - id: i5
+        label: GigabitEthernet1/0
+        slot: 4
+        type: physical
+      - id: i6
+        label: GigabitEthernet1/1
+        slot: 5
+        type: physical
+      - id: i7
+        label: GigabitEthernet1/2
+        slot: 6
+        type: physical
+      - id: i8
+        label: GigabitEthernet1/3
+        slot: 7
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname inserthostname-here
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+          ip address add 192.168.1.10/24 dev eth0
+          ip route add default via 192.168.1.1
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n3
+    image_definition: null
+    label: EmpHost1
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: -640
+    y: -40
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname DLS2
+          !
+          spanning-tree mode pvst
+          spanning-tree vlan 1,10,20 priority 16384
+          !
+          vtp domain CCNAPrep
+          vtp mode transparent
+          !
+          interface gig0/0
+           shutdown
+           exit
+          !
+          interface gig0/1
+           description Connected to ALS2
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           no shutdown
+           exit
+          !
+          interface gig0/2
+           description Connected to ALS1
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           no shutdown
+           exit
+          !
+          interface gig0/3
+           shutdown
+           exit
+          !
+          interface gig1/0
+           description Connected to DLS2
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           no shutdown
+           exit
+          !
+          interface gig1/1
+           description Connected to DLS2
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           no shutdown
+           exit
+          !
+          interface gig1/2
+           shutdown
+           exit
+          !
+          interface gig1/3
+           shutdown
+           exit
+          !
+          !
+          vlan 10
+           name Employees
+           exit
+          !
+          vlan 20
+           name Guests
+           exit
+          !
+          line con 0
+           exec-timeout 0 0
+           exit
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n4
+    image_definition: null
+    label: DLS2
+    node_definition: iosvl2
+    parameters: {}
+    ram: null
+    tags: []
+    x: -160
+    y: -240
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: GigabitEthernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: GigabitEthernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: GigabitEthernet0/3
+        slot: 3
+        type: physical
+      - id: i5
+        label: GigabitEthernet1/0
+        slot: 4
+        type: physical
+      - id: i6
+        label: GigabitEthernet1/1
+        slot: 5
+        type: physical
+      - id: i7
+        label: GigabitEthernet1/2
+        slot: 6
+        type: physical
+      - id: i8
+        label: GigabitEthernet1/3
+        slot: 7
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname inserthostname-here
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+          ip address add 192.168.2.10/24 dev eth0
+          ip route add default via 192.168.2.1
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n5
+    image_definition: null
+    label: GstHost1
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: -440
+    y: 120
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname inserthostname-here
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+          ip address add 192.168.1.11/24 dev eth0
+          ip route add default via 192.168.1.1
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n6
+    image_definition: null
+    label: EmpHost2
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: 40
+    y: -40
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname inserthostname-here
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+          ip address add 192.168.2.11/24 dev eth0
+          ip route add default via 192.168.2.1
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n7
+    image_definition: null
+    label: GstHost2
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: -160
+    y: 120
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname CORE_ROUTER
+          !
+          ! In order to avoid entering a configuration dialog
+          ! on boot, please ensure that all ethernet interfaces
+          ! have some ip configuration present here such as the
+          ! example below:
+          !
+          interface range Ethernet 0/0 - 3
+           no ip address
+           shutdown
+          !
+          interface eth0/0
+           no shutdown
+           description Router on a Stick Connection to DLS1
+           exit
+          interface eth0/0.10
+           encapsulation dot1q 10
+           ip address 192.168.1.1 255.255.255.0
+           exit
+          interface eth0/0.20
+           encapsulation dot1q 20
+           ip address 192.168.2.1 255.255.255.0
+           exit
+          interface eth0/0.30
+           encapsulation dot1q 30
+           ip address 192.168.3.1 255.255.255.0
+           exit
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n8
+    image_definition: null
+    label: CORE_ROUTER
+    node_definition: iol-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: -440
+    y: -400
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet0/3
+        slot: 3
+        type: physical
+links:
+  - id: l0
+    n1: n4
+    n2: n2
+    i1: i2
+    i2: i2
+    conditioning: {}
+    label: DLS2-GigabitEthernet0/1<->ALS2-GigabitEthernet0/1
+  - id: l1
+    n1: n2
+    n2: n6
+    i1: i5
+    i2: i0
+    conditioning: {}
+    label: ALS2-GigabitEthernet1/0<->EmpHost2-eth0
+  - id: l2
+    n1: n2
+    n2: n7
+    i1: i6
+    i2: i0
+    conditioning: {}
+    label: ALS2-GigabitEthernet1/1<->GstHost2-eth0
+  - id: l3
+    n1: n1
+    n2: n8
+    i1: i4
+    i2: i1
+    conditioning: {}
+    label: DLS1-GigabitEthernet0/3<->CORE_ROUTER-Ethernet0/0
+  - id: l4
+    n1: n1
+    n2: n4
+    i1: i5
+    i2: i5
+    conditioning: {}
+    label: DLS1-GigabitEthernet1/0<->DLS2-GigabitEthernet1/0
+  - id: l5
+    n1: n1
+    n2: n4
+    i1: i6
+    i2: i6
+    conditioning: {}
+    label: DLS1-GigabitEthernet1/1<->DLS2-GigabitEthernet1/1
+  - id: l6
+    n1: n1
+    n2: n0
+    i1: i2
+    i2: i2
+    conditioning: {}
+    label: DLS1-GigabitEthernet0/1<->ALS1-GigabitEthernet0/1
+  - id: l7
+    n1: n1
+    n2: n2
+    i1: i3
+    i2: i3
+    conditioning: {}
+    label: DLS1-GigabitEthernet0/2<->ALS2-GigabitEthernet0/2
+  - id: l8
+    n1: n4
+    n2: n0
+    i1: i3
+    i2: i3
+    conditioning: {}
+    label: DLS2-GigabitEthernet0/2<->ALS1-GigabitEthernet0/2
+  - id: l9
+    n1: n0
+    n2: n3
+    i1: i5
+    i2: i0
+    conditioning: {}
+    label: ALS1-GigabitEthernet1/0<->EmpHost1-eth0
+  - id: l10
+    n1: n0
+    n2: n5
+    i1: i6
+    i2: i0
+    conditioning: {}
+    label: ALS1-GigabitEthernet1/1<->GstHost1-eth0
+lab:
+  description: Navigate the landscape of network optimization with this live stream
+    event dedicated to the Spanning Tree Protocol (STP). Our subject matter experts
+    will guide through the essentials of STP configuration and management, ensuring
+    you can navigate network efficiency with confidence. In addition, you'll be equipped
+    with the necessary tools and knowledge to optimize your network. Get ready to
+    master the Spanning Tree Protocol and see its full capabilities in action.
+  notes: |-
+    **CCNA Exam Prep: Back to Networking Basics with Hank Preston and Patrick Gargano**
+
+    # Spanning-Tree Protocol (STP) Unleashed!
+
+    Exploring how STP works to break Layer 2 loops in a redundant switched topology.
+
+    * Investigate the starting default STP results
+    * Review the STP timers
+    * Enable RSTP
+    * Enable PortFast and BPDU Guard
+    * Enable Root Guard
+    * Enable Loop Guard
+
+
+    ## Setup and Scenario
+    In this set of lab-based demonstrations, you are the network engineer for a growing organization tasked with updating the network to support new network needs.  The network traditionally only had two switches, but to provide better performance and redundancy, two more switches were added following the recommended enterprise network model of a distribution layer and an access layer. Unfortunately, users are now complaining of connectivity and access issues.
+
+    The NOC team is asking you to investigate what the issue is and correct it.
+
+    The following lab-based demonstrations will look at how STP operates by default and how to improve its performance and security.
+
+    *Be sure to **START** the lab before continuing to the demo labs.*
+
+    ## Part 1 - Investigate the default STP results
+    Since the network has grown from two switches to four, and extra links were added to provide redundancy, users are complaining of poor performance and connectivity issues. Start by investigating the current state of the STP for VLANs 10 and 20.
+
+    ### Step 1
+    Issue the `show spanning-tree vlan 10` command on all four switches (DLS1, DLS2, ALS1 and ALS2) and identify which switch is the root bridge for VLAN 10. Repeat the same command but for VLAN 20.
+
+    > Note: To ensure the correct placement of the root bridge at the start of this lab, and to ensure that the lab steps can be successfully replicated, the following STP bridge priority values have been statically assigned:
+    >* DLS1 Bridge Priority: 24576
+    >* DLS2 Bridge Priority: 16384
+    >* ALS1 Bridge Priority: 20480
+    >* ALS2 Bridge Priority: 12288
+    >
+    > In a "real network", the default priority of 32768 would be in place on all switches.
+
+    ALS2 is the root bridge for both VLAN 10 and VLAN 20 because it has the lowest bridge priority. When the bridge priority is tied, STP uses the MAC address as the tie-breaker. Since it is difficult to predict and control the MAC address of a switch in virtual lab environments, the bridge priority was used in this lab to simulate the suboptimal root bridge election.
+
+    <pre>ALS2# <b>show spanning-tree vlan 10</b>
+
+    VLAN0010
+      Spanning tree enabled protocol ieee
+      Root ID    Priority    12298
+                 Address     5254.0005.130e
+                 <b>This bridge is the root</b>
+                 Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+      Bridge ID  Priority    12298  (priority 12288 sys-id-ext 10)
+                 Address     5254.0005.130e
+                 Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+                 Aging Time  300 sec
+
+    Interface           Role Sts Cost      Prio.Nbr Type
+    ------------------- ---- --- --------- -------- --------------------------------
+    Gi0/1               Desg FWD 4         128.2    P2p
+    Gi0/2               Desg FWD 4         128.3    P2p
+    Gi1/0               Desg FWD 4         128.5    P2p
+    </pre>
+
+    ### Step 2
+    From the `show spanning-tree vlan 10` output, investigate the port roles and port states on all four switches.
+
+    Since ALS2 is the root bridge, it has all of its connected ports in a designated (forwarding) state for VLAN 10 and VLAN 20
+
+    Because ALS1, DLS1, and DLS2 are not root bridges, only one port must be elected root on each of these three switches. The root port is the port with the lowest cost to the root bridge. As DLS2 has a lower BID than DLS1 and ALS1, all other ports on DLS2 are set to designated. Other ports on ALS1 and DLS1 are nondesignated (Altn), except for ports connected to hosts, and for DLS1 G0/1 which is designated for the link between DLS1 and ALS1.
+
+    > Note: The Cisco proprietary protocol PVST+ uses the term "alternate" for nondesignated ports. The blocked port is also known as the alternate port with RSTP. It is an alternate path to the root, which is less desirable. The port is blocking, where incoming frames are dropped.
+
+    ## Part 2 - Investigate STP timer values
+    Before optimizing the current STP setup, start by investigating the current STP timers and how they impact convergence time.
+
+    ### Step 1
+    Turn on the STP topology events debugging on DLS1
+
+    ``DLS1# debug spanning-tree events``
+
+    You have turned on this debug to observe STP convergence, which is how much time STP needs to establish a new path after a link failure in real time.
+
+    ### Step 2
+    Shut down the forwarding root port on DLS1, G0/2, and observe how long it takes STP to notice the failure and make a redundant link forwarding.
+    Notice in the debug output that the G1/0 port transitions to listening for VLANs 1, 10, 20. The port will then transition to learning for VLANs 1, 10, 20 and then to forwarding for all three VLANs. The port changes for VLAN 10 are highlighted in the output below.
+    <pre>
+    DLS1(config)# <b>interface G0/2</b>
+    DLS1(config-if)# <b>shutdown</b>
+
+    *Sep 13 14:56:08.059: STP: VLAN0001 new root port Gi1/0, cost 8
+    *Sep 13 14:56:08.059: STP: VLAN0001 Gi1/0 -> listening
+    *Sep 13 14:56:08.059: STP[1]: Generating TC trap for port GigabitEthernet0/2
+    *Sep 13 <b>14:56:08.059</b>: STP: <b>VLAN0010 new root port Gi1/0, cost 8</b>
+    *Sep 13 14:56:08.060: <b>STP: VLAN0010 Gi1/0 -> listening</b>
+    *Sep 13 14:56:08.060: STP[10]: Generating TC trap for port GigabitEthernet0/2
+    *Sep 13 14:56:08.060: STP: VLAN0020 new root port Gi1/0, cost 8
+    *Sep 13 14:56:08.060: STP: VLAN0020 Gi1/0 -> listening
+    *Sep 13 14:56:08.060: STP[20]: Generating TC trap for port GigabitEthernet0/2
+    *Sep 13 14:56:10.060: STP: VLAN0001 sent Topology Change Notice on Gi1/0
+    *Sep 13 14:56:10.063: STP: VLAN0010 sent Topology Change Notice on Gi1/0
+    *Sep 13 14:56:10.065: STP: VLAN0020 sent Topology Change Notice on Gi1/0
+    *Sep 13 14:56:23.060: STP: VLAN0001 Gi1/0 -> learning
+    *Sep 13 14:56:23.061: <b>STP: VLAN0010 Gi1/0 -> learning</b>
+    *Sep 13 14:56:23.061: STP: VLAN0020 Gi1/0 -> learning
+    *Sep 13 14:56:26.560: STP: VLAN0001 sent Topology Change Notice on Gi1/0
+    *Sep 13 14:56:26.561: STP[1]: Generating TC trap for port GigabitEthernet0/1
+    *Sep 13 14:56:26.561: STP: VLAN0001 Gi0/1 -> blocking
+    *Sep 13 14:56:26.564: STP: VLAN0010 sent Topology Change Notice on Gi1/0
+    *Sep 13 14:56:26.564: STP[10]: Generating TC trap for port GigabitEthernet0/1
+    *Sep 13 14:56:26.565: STP: VLAN0010 Gi0/1 -> blocking
+    *Sep 13 14:56:26.568: STP: VLAN0020 sent Topology Change Notice on Gi1/0
+    *Sep 13 14:56:26.568: STP[20]: Generating TC trap for port GigabitEthernet0/1
+    *Sep 13 14:56:26.568: STP: VLAN0020 Gi0/1 -> blocking
+    *Sep 13 14:56:38.059: STP[1]: Generating TC trap for port GigabitEthernet1/0
+    *Sep 13 14:56:38.063: STP: VLAN0001 sent Topology Change Notice on Gi1/0
+    *Sep 13 14:56:38.064: STP: VLAN0001 Gi1/0 -> forwarding
+    *Sep 13 14:56:38.065: STP[10]: Generating TC trap for port GigabitEthernet1/0
+    *Sep 13 14:56:38.066: STP: VLAN0010 sent Topology Change Notice on Gi1/0
+    *Sep 13 14:56:38.066: <b>STP: VLAN0010 Gi1/0 -> forwarding</b>
+    *Sep 13 14:56:38.066: STP[20]: Generating TC trap for port GigabitEthernet1/0
+    *Sep 13 14:56:38.068: STP: VLAN0020 sent Topology Change Notice on Gi1/0
+    *Sep 13 14:56:38.068: STP: VLAN0020 Gi1/0 -> forwarding
+    </pre>
+    You should see a total of 30 seconds elapse from when the port starts listening to when it finally transitions to forwarding.
+
+    #### STP Timers
+    STP uses three different timers to ensure proper loop-free convergence:
+
+    * __hello time:__ The time between each BPDU that is sent on a port. Equals 2 seconds, by default
+
+    * __forward delay:__ The time that is spent in the listening and learning state. Equals 15 seconds, by default
+
+    * __maximum age:__ Controls the maximum length of time that a bridge port stores its BPDU information; equals 20 seconds, by default
+
+    The transition between port states takes from 30 to 50 seconds, depending on the topology change.
+
+    You can adjust STP timers. You can tune the hello time from 1 up to 10 seconds, the forward delay from 4 up to 30 seconds, and the maximum age from 6 up to 40 seconds. However, the timer values should never be changed without consideration. When changing the timers, you should apply changes only on the root bridge. The root bridge will then propagate the timer values to the other switches.
+
+    Return to ALS2 and run the ```show spanning-tree vlan 10``` command again to see the timer values on the current root bridge.
+
+    <pre>ALS2# <b>show spanning-tree vlan 10</b>
+
+    VLAN0010
+    .
+                 This bridge is the root
+                 <b>Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec</b>
+    </pre>
+
+    ### Step 3
+    Turn the interface G0/2 on DLS1 back on and disable STP debugging:
+    <pre>
+    DLS1(config)# <b>interface G0/2</b>
+    DLS1(config-if)# <b>no shutdown</b>
+    DLS1(config-if)# <b>do undebug all</b>
+    </pre>
+    You have turned the interface back on to observe how the topology changes after a failed interface comes back up.
+
+    On DLS1 and ALS1 use the ```show spanning-tree vlan 10``` command to observe how STP port roles get redefined after a failed interface comes back up.
+
+    The port roles are again the same as they were before shutting down the interface. The port roles on ALS2 have not changed since it is the current root bridge for VLAN 10, and all ports are designated.
+
+    > After you bring G0/2 on the DLS1 back up, it will take about 30 seconds for STP to make ports either forwarding or blocking.
+
+    ## Part 3 - Enable IEEE 802.1w Rapid Spanning-Tree
+    Now that you have investigated the default STP values and current topology, you will start by enabling RSTP.
+
+    ### Step 1
+    Enable RSTP on all switches (DLS1, DLS2, ALS1, ALS2):
+    <pre><b>spanning-tree mode rapid-pvst</b></pre>
+
+    If all switches in the network, except one, are running RSTP, the interfaces that lead to legacy STP switches will automatically fall back to legacy STP. If you are using Cisco switches, they will fall back to PVST+. You can check whether all the switches have RSTP configured by observing the convergence time.
+
+    ### Step 2
+    Verify that RSTP is enabled on all four switches (DLS1, DLS2, ALS1, ALS2):
+    <pre><b>show spanning-tree vlan 10</b>
+
+    VLAN0010
+    Spanning tree enabled protocol rstp
+      <... output omitted ...></pre>
+
+    If you look through the rest of the output from the ``show spanning-tree vlan 10`` command you will see that the port roles and states have remained the same as they were for PVST+.
+
+    ### Step 3
+    Re-enable the ``debug spanning-tree events`` command and then shut down the interface G0/2 on DLS1 and observe the convergence time of RSTP:
+
+    <pre>
+    DLS1# <b>debug spanning-tree events</b>
+    Spanning Tree event debugging is on
+    DLS1(config)# <b>interface G0/2</b>
+    DLS1(config-if)# <b>shutdown</b>
+
+    *Sep 13 15:59:14.084: RSTP(1): updt roles, root port Gi0/2 going down
+    *Sep 13 15:59:14.084: RSTP(1): Gi1/0 is now root port
+    *Sep 13 15:59:14.084: RSTP(1): syncing port Gi0/1
+    *Sep 13 15:59:14.084: RSTP(1): syncing port Gi0/3
+    *Sep 13 <b>15:59:14.085: RSTP(10): updt roles, root port Gi0/2 going down</b>
+    *Sep 13 15:59:14.085: <b>STP(10): Gi1/0 is now root port</b>
+    *Sep 13 15:59:14.085: RSTP(10): syncing port Gi0/1
+    *Sep 13 15:59:14.085: RSTP(10): syncing port Gi0/3
+    *Sep 13 15:59:14.086: RSTP(20): updt roles, root port Gi0/2 going down
+    *Sep 13 15:59:14.086: RSTP(20): Gi1/0 is now root port
+    *Sep 13 15:59:14.086: RSTP(20): syncing port Gi0/1
+    *Sep 13 15:59:14.086: RSTP(20): syncing port Gi0/3
+    *Sep 13 15:59:14.093: STP[1]: Generating TC trap for port GigabitEthernet1/0
+    *Sep 13 15:59:14.094: <b>STP[10]: Generating TC trap for port GigabitEthernet1/0</b>
+    *Sep 13 15:59:14.094: STP[20]: Generating TC trap for port GigabitEthernet1/0
+    *Sep 13 15:59:14.097: RSTP(1): transmitting a proposal on Gi0/1
+    *Sep 13 15:59:14.099: RSTP(1): transmitting a proposal on Gi0/3
+    *Sep 13 15:59:14.100: RSTP(10): transmitting a proposal on Gi0/1
+    *Sep 13 15:59:14.105: RSTP(10): transmitting a proposal on Gi0/3
+    *Sep 13 15:59:14.108: RSTP(20): transmitting a proposal on Gi0/1
+    *Sep 13 15:59:14.110: RSTP(20): transmitting a proposal on Gi0/3
+    *Sep 13 15:59:14.124: RSTP(1): updt roles, received superior bpdu on Gi0/1
+    *Sep 13 15:59:14.124: RSTP(1): Gi0/1 is now alternate
+    *Sep 13 15:59:14.127: RSTP(1): synced Gi1/0
+    *Sep 13 15:59:14.127: <b>RSTP(10): updt roles, received superior bpdu on Gi0/1 </b>
+    *Sep 13 15:59:14.127: <b>RSTP(10): Gi0/1 is now alternate</b>
+    *Sep 13 15:59:14.128: RSTP(10): synced Gi1/0
+    *Sep 13 15:59:14.129: RSTP(20): updt roles, received superior bpdu on Gi0/1
+    *Sep 13 15:59:14.129: RSTP(20): Gi0/1 is now alternate
+    *Sep 13 15:59:14.130: RSTP(20): synced Gi1/0
+    </pre>
+    If you want to observe the port state recalculation, you must trigger a topology change. One of the options is to shut down the interface.
+
+    How much time will it take spanning tree to converge now that you have enabled the rapid version?
+
+    The convergence time of RSTP is much shorter than the convergence time of STP. The entire convergence happens at the speed of BPDU transmission. That convergence can be less than 1 second. Notice in the output above that as soon as the G0/2 interface is shutdown, G1/0 becomes the new root port, G1/1 remains an alternate port in blocking/discarding state, and G0/1 now transitions to alternate role (BLK) since the bridge ID is lower on ALS1.
+
+    You will also notice the transmission of proposals on G0/3 for a total of 30 seconds as DLS1 tries to negotiate RSTP with the CORE_ROUTER. The G0/3 port role remains designated, but the port transitions quickly from blocking/discarding through listening and learning states to ensure that no STP loops exists on that port. After 30 seconds the port transitions to forwarding.
+
+    ### Step 4
+    Turn the interface G0/2 on DLS1 back on and disable STP debugging:
+    <pre>
+    DLS1(config)# <b>interface G0/2</b>
+    DLS1(config-if)# <b>no shutdown</b>
+    DLS1(config-if)# <b>do undebug all</b>
+    </pre>
+
+    ## Part 4 - Tune RSTP for Root and Backup Root Bridge Election
+    You do not want the network to choose the root bridge by itself. If all switches have default STP priorities, the switch with the lowest MAC address will become the root bridge. The oldest switch will have the lowest MAC address since the lower MAC addresses were factory-assigned first. To manually set the root bridge, you can change the priority of the switch.
+
+    In the example topology, you do not want the access layer switch ALS2 to become the root bridge. If ALS2 was the root bridge, the links between the distribution layer switches would get blocked. The traffic between DLS1 and DLS2 would then need to go through ALS2, which is not optimal.
+
+    Consider this example traffic diagram where traffic between hots connected to access layer switches all must traverse ALS2.
+
+    ```
+                        +------+
+                        | ALS2 |
+                        | Root |
+                        +------+
+                       /        \
+                      /          \
+                     /            \
+                +------+        +------+
+                | DLS1 |        | DLS2 |
+                +------+        +------+
+                   |                |
+                   |                |
+                +------+        +------+
+                | ALS1 |        | ALS3 |
+                +------+        +------+
+                   |                |
+                 Host A           Host B
+    ```
+
+    You want distribution or core switches to become the root bridge.
+
+    There are two ways of changing switch priority:
+
+    * Setting the exact value. The value must be between 0 and 61,440 and in increments of 4096.
+
+        <pre><b>spanning-tree vlan <i>vlan-id</i> priority <i>bridge-priority</i></b></pre>
+
+        * The default value is 32,768.
+        * 4 of the 16 priority bits represent the VLAN ID
+    * Setting the primary root bridge with a macro. Use the spanning-tree vlan vlan-id root primary command.
+
+        <pre><b>spanning-tree vlan <i>vlan-id</i> root {primary | secondary}</b></pre>
+
+        * If you issue the `show running-configuration` command, you will see the switch priority as a number—not the `primary` or `secondary` keyword.
+
+    ### Step 1
+    Configure DLS1 as the root bridge for VLANs 1 and 10 and secondary root bridge for VLAN 20. Use the `spanning-tree vlan vlan-id priority value` command to override the values that were pre-configured at the start of the lab. Use the value 4096 for the primary root and 8192 for the secondary root. These values are lower than the current priority values across all four switches.
+    <pre>
+    DLS1(config)# <b>spanning-tree vlan 1 priority 4096</b>
+    DLS1(config)# <b>spanning-tree vlan 10 priority 4096</b>
+    DLS1(config)# <b>spanning-tree vlan 20 priority 8192</b>
+    </pre>
+
+    ### Step 2
+    Configure DLS2 as the root bridge for VLAN 20 and secondary root bridge for VLANs 1 and 10. Use the `spanning-tree vlan vlan-id priority value` command.
+    <pre>
+    DLS2(config)# <b>spanning-tree vlan 20 priority 4096</b>
+    DLS2(config)# <b>spanning-tree vlan 1 priority 8192</b>
+    DLS2(config)# <b>spanning-tree vlan 10 priority 8192</b>
+    </pre>
+    The reason for sharing the root bridge role across DLS1 and DLS2 for VLANs 10 and 20 is to provide load-balancing across redundant links.
+    DLS1 is configured as the root bridge for VLAN 10 and DLS2 is configured as the root bridge for VLAN 20. ALS1 and ALS2 will forward traffic for VLAN 10 through DLS1, while they will also forward traffic for VLAN 20 through DLS2.
+
+    > VLAN 1 is included in this step to avoid suboptimal forwarding of VLAN 1 traffic.
+
+    ### Step 3
+    Verify that DLS1 is now the root bridge for VLAN 10 and the secondary root bridge for VLAN 20.
+
+    <pre>
+    DLS1# <b>show spanning-tree vlan 10</b>
+
+    VLAN0010
+      Spanning tree enabled protocol rstp
+      Root ID    Priority    4106
+                 Address     5254.000e.8c2b
+                 <b>This bridge is the root</b>
+                 Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+      Bridge ID  <b>Priority    4106   (priority 4096 sys-id-ext 10)</b>
+                 Address     5254.000e.8c2b
+                 Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+                 Aging Time  300 sec
+
+    DLS1# <b>show spanning-tree vlan 20</b>
+
+    VLAN0020
+      Spanning tree enabled protocol rstp
+      Root ID    Priority    4116
+                 Address     5254.0009.c377
+                 Cost        4
+                 Port        5 (GigabitEthernet1/0)
+                 Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+      Bridge ID  <b>Priority    8212  (priority 8192 sys-id-ext 20)</b>
+                 Address     5254.0014.4977
+                 Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+                 Aging Time  300 sec
+    </pre>
+
+    ### Step 4
+    Verify that DLS2 is now the root bridge for VLAN 20 and the secondary root bridge for VLAN 10.
+    <pre>
+    DLS2# <b>show spanning-tree vlan 10</b>
+
+    VLAN0010
+      Spanning tree enabled protocol rstp
+      Root ID    Priority    4106
+                 Address     5254.000e.8c2b
+                 Cost        4
+                 Port        5 (GigabitEthernet1/0)
+                 Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+      Bridge ID  <b>Priority    8202  (priority 8192 sys-id-ext 10)</b>
+                 Address     5254.001f.3178
+                 Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+                 Aging Time  300 sec
+
+    DLS2# <b>show spanning-tree vlan 20</b>
+
+    VLAN0020
+      Spanning tree enabled protocol rstp
+      Root ID    Priority    4116
+                 Address     5254.001f.3178
+                 <b>This bridge is the root</b>
+                 Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+      Bridge ID  <b>Priority    4116   (priority 4096 sys-id-ext 20)</b>
+                 Address     5254.001f.3178
+                 Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+                 Aging Time  300 sec
+
+    </pre>
+
+    ## Part 5 - Enable PortFast and BPDU Guard on Access Ports
+    If a switch port connects to another switch, the STP initialization cycle must transition from state to state to ensure a loop-free topology.
+
+    However, for access devices such as PCs, laptops, servers, and printers, the delays incurred with STP initialization can cause problems such as DHCP timeouts. Cisco designed PortFast, which, together with BPDU, can be used as enhancements to STP to reduce the time that is required for an access device to enter the forwarding state.
+
+    When the PortFast feature is enabled on a switch port that is configured as an access port, that port bypasses the typical STP listening and learning states. This feature allows the port to transition from the blocking to the forwarding state immediately. You can use PortFast on access ports that are connected to a single workstation or to a server to allow those devices to connect to the network immediately rather than waiting for the spanning tree to converge.
+
+    The STP PortFast BPDU guard enhancement allows network designers to enforce the STP domain borders and keep the active topology predictable. The devices behind the ports that have STP PortFast enabled are not able to influence the STP topology. At the reception of BPDUs, the BPDU guard operation disables the port that has PortFast configured. The BPDU guard transitions the port into "errdisable" state, and a message appears on the console.
+
+    ### Step 1
+    Enable PortFast and BPDU Guard on ALS1 and ALS2 G1/0, G1/1, and G1/2. Use the `` interface range`` command to speed up this configuration task.
+    <pre>
+    ALS1(config)# <b>interface range g1/0-2</b>
+    ALS1(config-if-range)# <b>spanning-tree portfast </b>
+    %Warning: portfast should only be enabled on ports connected to a single
+     host. Connecting hubs, concentrators, switches, bridges, etc... to this
+     interface  when portfast is enabled, can cause temporary bridging loops.
+     Use with CAUTION
+
+    ALS1(config-if-range)# <b>spanning-tree bpduguard enable </b>
+
+    ALS2(config)# <b>interface range g1/0-2</b>
+    ALS2(config-if-range)# <b>spanning-tree portfast </b>
+    %Warning: portfast should only be enabled on ports connected to a single
+     host. Connecting hubs, concentrators, switches, bridges, etc... to this
+     interface  when portfast is enabled, can cause temporary bridging loops.
+     Use with CAUTION
+
+    ALS2(config-if-range)# <b>spanning-tree bpduguard enable </b>
+    </pre>
+    > It is also possible to enable PortFast and BPDU Guard by default on the switch with the `` spanning-tree portfast default `` and the `` spanning-tree portfast bpduguard default `` commands.
+
+    ### Step 2
+    Use the ``show spanning-tree interface G1/0 detail`` and ``show spanning-tree interface G1/1 detail`` command on ALS1 and ALS2 to verify that PortFast and BPDU Guard are both enabled.
+    <pre>
+    ALS1# <b>show spanning-tree interface g1/0 detail </b>
+     Port 5 (GigabitEthernet1/0) of VLAN0010 is designated forwarding
+       Port path cost 4, Port priority 128, Port Identifier 128.5.
+       Designated root has priority 4106, address 5254.000e.8c2b
+       Designated bridge has priority 20490, address 5254.0014.cbfc
+       Designated port id is 128.5, designated path cost 4
+       Timers: message age 0, forward delay 0, hold 0
+       Number of transitions to forwarding state: 2
+       <b>The port is in the portfast edge mode</b>
+       Link type is point-to-point by default
+       <b>Bpdu guard is enabled</b>
+       BPDU: sent 1531, received 0
+    </pre>
+
+    ### Step 3
+    To illustrate the importance of BPDU guard to prevent connecting a switch/bridge to a port that should only be connected to hosts, we will connect ALS1 and ALS2 interfaces G1/2 - a port we just configured for portfast and bpduguard.
+
+    Right-click ALS1 and choose "Add link".  Connect to ALS2 and be sure to select interfaces **GigE1/2** on both switches.
+
+    The interfaces were pre-configured in `shutdown` state. Go ahead and enable each interface.
+
+    <pre>
+    ALS1(config)#interface GigabitEthernet 1/2
+    ALS1(config-if)#<b>no shut</b>
+    ALS1(config-if)#end
+
+
+    ALS2(config)#interface GigabitEthernet 1/2
+    ALS2(config-if)#<b>no shut</b>
+    ALS2(config-if)#end
+    </pre>
+
+    As soon as you enable the second interface, you should see messages indicating the misconfiguration.
+
+    <pre>
+    *Sep 16 16:48:23.755: %SPANTREE-2-BLOCK_BPDUGUARD: Received BPDU on port Gi1/2 with BPDU Guard enabled. Disabling port.
+    *Sep 16 16:48:23.756: %PM-4-ERR_DISABLE: bpduguard error detected on Gi1/2, putting Gi1/2 in err-disable state
+    *Sep 16 16:48:24.760: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/2, changed state to down
+    *Sep 16 16:48:25.762: %LINK-3-UPDOWN: Interface GigabitEthernet1/2, changed state to down
+    </pre>
+
+    And check the status of the interfaces to see the state `err-disabled`
+
+    <pre>
+    ALS1#show interfaces g1/2
+    GigabitEthernet1/2 is down, line protocol is down (<b>err-disabled</b>)
+    </pre>
+
+    > An `err-disabled` port will not automatically recover. It requires administrator intervention.  This is done by fixing whatever network problem caused the disabled state, and then issuing a `shutdown` followed by `no shutdown` command on the interface.
+
+    Remove the link from the topology by right clicking the added link in the topology and choosing "Delete".
+
+    ### Step 4
+    Recall earlier that DLS1 transmitted RSTP proposals on G0/3 to CORE_ROUTER for 30 seconds when a topology change was detected. Since DLS1 G0/3 is connected to a router and not a L2 switch, you can enable PortFast even though G0/3 is in trunking mode.
+
+    <pre>
+    DLS1(config)# <b>interface G0/3</b>
+    DLS1(config-if)# <b>spanning-tree portfast trunk </b>
+    %Warning: portfast should only be enabled on ports connected to a single
+     host. Connecting hubs, concentrators, switches, bridges, etc... to this
+     interface  when portfast is enabled, can cause temporary bridging loops.
+     Use with CAUTION
+    </pre>
+
+    ### Step 5
+    Use the ``show spanning-tree vlan 10 interface g0/3 detail`` command to verify the PortFast status of the trunk.
+    <pre>
+    DLS1(config-if)# <b>do show spanning-tree vlan 10 interface g0/3 detail</b>
+     Port 4 (GigabitEthernet0/3) of VLAN0010 is designated forwarding
+    .
+       <b>The port is in the portfast edge trunk mode</b>
+    .</pre>
+
+    ## Part 6 - Enable Root Guard
+    The root guard feature of Cisco switches prevents a switch or rogue device from becoming a root bridge in a spanning tree domain. The root guard feature is designed to provide a way to enforce the placement of root bridges in the network. Root guard limits the switch ports from which the root bridge can be negotiated. If a port where root guard is enabled receives BPDUs that are superior to BPDUs that the current root bridge is sending, then the port transitions to a root-inconsistent state, which is effectively equal to an STP listening state, and no data traffic is forwarded across that port.
+
+    ### Step 1
+    Enable Root Guard on DLS1 and DLS2 ports that connect to ALS1 and ALS2.
+    <pre>
+    DLS2(config)# <b>interface range g0/1-2</b>
+    DLS1(config-if-range)# <b>spanning-tree guard root</b>
+    DLS1(config-if-range)#
+    *Sep 13 17:55:22.294: %SPANTREE-2-ROOTGUARD_CONFIG_CHANGE: Root guard enabled on port GigabitEthernet0/1.
+    *Sep 13 17:55:22.298: %SPANTREE-2-ROOTGUARD_CONFIG_CHANGE: Root guard enabled on port GigabitEthernet0/2.
+
+    DLS2(config)#<b>interface range g0/1-2</b>
+    DLS2(config-if-range)# <b>spanning-tree guard root</b>
+    DLS2(config-if-range)#
+    *Sep 13 18:04:23.877: %SPANTREE-2-ROOTGUARD_CONFIG_CHANGE: Root guard enabled on port GigabitEthernet0/1.
+    *Sep 13 18:04:23.881: %SPANTREE-2-ROOTGUARD_CONFIG_CHANGE: Root guard enabled on port GigabitEthernet0/2.
+    </pre>
+    The root guard feature prevents a switch from becoming a root bridge on configured ports. Root guard is best deployed toward ports that connect to switches that should not be the root bridge.
+
+    ### Step 2
+    Use the ``show spanning-tree vlan 10 interface g0/1`` and ``show spanning-tree vlan 10 interface g0/2`` commands on DLS1 and DLS2 to verify that Root Guard is enabled.
+
+    <pre>
+    DLS1# <b>show spanning-tree vlan 10 interface g0/1 detail </b>
+     Port 2 (GigabitEthernet0/1) of VLAN0010 is designated forwarding
+    .
+    .
+       <b>Root guard is enabled on the port</b>
+    .</pre>
+
+    ### Step 3
+    Now we'll verify that root guard protects root status by re-configuring ALS1 with a better (ie lower) priority than either distribution layer switch.
+
+    The lowest possible priority value that can be configured is `0`. Set this on ALS1 for all possible VLANs.
+
+    <pre>ALS1(config)#<b>spanning-tree vlan 1-4094 priority 0</b></pre>
+
+    As soon as you change the priority on ALS1, DLS1 and DLS2 will report errors.
+
+    <pre>
+    DLS1# *Sep 16 17:00:22.663: %SPANTREE-2-ROOTGUARD_BLOCK: Root guard blocking port GigabitEthernet0/1 on VLAN0001.
+
+    DLS2# *Sep 16 17:00:21.974: %SPANTREE-2-ROOTGUARD_BLOCK: Root guard blocking port GigabitEthernet0/2 on VLAN0001.
+    </pre>
+
+    Look at the spanning-tree details for interface g0/1 on DLS1. Verify that it shows the expected error for all three vlans.
+
+    <pre>
+    DLS1#show spanning-tree interface g0/1 detail
+     Port 2 (GigabitEthernet0/1) of VLAN0001 is broken  <b>(Root Inconsistent)</b>
+       .
+
+     Port 2 (GigabitEthernet0/1) of VLAN0010 is broken  <b>(Root Inconsistent)</b>
+       .
+
+     Port 2 (GigabitEthernet0/1) of VLAN0020 is broken  <b>(Root Inconsistent)</b>
+       .
+    </pre>
+
+    The status is also displayed in the output of `show spanning-tree`.
+
+    <pre>
+    DLS1# show span vlan 10
+
+    VLAN0010
+    .
+
+    Interface           Role Sts Cost      Prio.Nbr Type
+    ------------------- ---- --- --------- -------- --------------------------------
+    Gi0/1               Desg BKN*4         128.2    P2p <b>*ROOT_Inc</b>
+    Gi0/2               Desg FWD 4         128.3    P2p
+    Gi0/3               Desg FWD 4         128.4    P2p
+    Gi1/0               Desg FWD 4         128.5    P2p
+    Gi1/1               Desg FWD 4         128.6    P2p
+    </pre>
+
+    Fix the network by removing the incorrect bridge priority value on ALS1.
+
+    <pre>ALS1(config)#<b>no spanning-tree vlan 1-4094 priority</b></pre>
+
+    Unlike ports that are `err-disabled` due to BPDU guard, root inconsistent ports are automatically re-enabled when the configuration problem is fixed.
+
+    ```
+    *Sep 16 17:11:11.875: %SPANTREE-2-ROOTGUARD_UNBLOCK: Root guard unblocking port GigabitEthernet0/1 on VLAN0010.
+    *Sep 16 17:11:13.173: %SPANTREE-2-ROOTGUARD_UNBLOCK: Root guard unblocking port GigabitEthernet0/1 on VLAN0001.
+    ```
+    ## Part 7 - Enable Loop Guard
+    A Layer 2 loop is created when an STP blocking port in a redundant topology erroneously transitions to the forwarding state. This situation usually happens because one of the ports of a physically redundant topology (not necessarily the STP blocking port) no longer receives STP BPDUs
+
+    When one of the ports in a physically redundant topology no longer receives BPDUs, STP conceives that the topology is loop-free. Eventually, the blocking port from the alternate or backup port becomes designated and moves to a forwarding state. This situation creates a loop.
+
+    The loop guard feature performs additional checks. If BPDUs are not received on a nondesignated  port, and loop guard is enabled, that port is moved into the STP loop-inconsistent blocking state, instead of the listening, learning, and eventually forwarding state. Without the loop guard feature, the port takes on the designated port role. The port moves to the STP forwarding state and creates a loop.
+
+    Root guard is mutually exclusive with loop guard. Root guard is used on designated ports, and it does not allow the port to become nondesignated. Loop guard works on nondesignated ports and does not allow the port to become designated through the expiration of the Max Age timer. Root guard cannot be enabled on the same port as loop guard. When loop guard is configured on a port, it disables any root guard that is already configured on the same port. Loop guard must be enabled on the nondesignated ports (more precisely, on root and alternate ports) for all possible combinations of active topologies.
+
+    ### Step 1
+    Enable Loop Guard on ALS1 G0/1 and G0/2, as well as on ALS2 G0/1 and G0/2.
+
+    <pre>
+    ALS1(config)# <b>interface range g0/1-2</b>
+    ALS1(config-if-range)# <b>spanning-tree guard loop</b>
+
+    ALS2(config)# <b>interface range g0/1-2</b>
+    ALS2(config-if-range)# <b>spanning-tree guard loop</b>
+    </pre>
+    > It is also possible to configure Loop Guard by default on a switch with the `` spanning-tree loopguard default `` command.
+
+    ### Step 2
+    Verify that Loop Guard is enabled on ALS1 and ALS2 G0/1 and G0/2.
+
+    <pre>
+    ALS1# <b>show spanning-tree vlan 10 interface g0/1 detail</b>
+     Port 2 (GigabitEthernet0/1) of VLAN0010 is root forwarding
+    .
+       <b>Loop guard is enabled on the port</b>
+    .</pre>
+
+    > Note: Network problems that trigger loop guard typically occur due to Layer 1 (ie cabling; transceiver) issues, or strange configurations on hosts that act as bridges. These are difficult to simulate, but configuring loop guard is a best practice to protect against these unlikely but disruptive problems.
+
+    ## Great job! You finished the lab! You've learned how to:
+    * investigate the spanning-tree defaults
+    * enable RSTP
+    * enable features such as PortFast, BPDU Guard, Root Guard, & Loop Guard
+  title: CCNA Prep 2024 S1E2 Spanning-Tree Protocol (STP) Unleashed!
+  version: 0.2.2

@@ -1,0 +1,1438 @@
+annotations:
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: true
+    text_content: 'CCNA Exam Prep: Back to Networking Basics with Hank Preston and
+      Patrick Gargano'
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -438.0
+    y1: -266.0
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: true
+    text_content: 'Conquering OSPF: Optimize Your Network with OSPF'
+    text_font: monospace
+    text_italic: false
+    text_size: 18
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -438.0
+    y1: -241.0
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      OSPF, or Open Shortest Path First, is a widely deployed standard routing protocol that scales from small "single area"
+      networks to large global wide area networks. CCNA candidates need to be comfortable configuring and verifying single
+      area OSPFv2 deployments.
+
+      In this lab we will explore:
+      * Configuring IOS routers to run OSPF and share network information with neighbors
+      * Configure and verify neighbor adjacency details such as, Router IDs and Timers
+      * Designated Router/Backup Designated Router
+      * Sharing a default route with OSPF
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -437.415294010199
+    y1: -208.7376460917897
+    z_index: 0
+  - border_color: '#808080FF'
+    border_radius: 0
+    border_style: ''
+    color: '#C5EEFF'
+    thickness: 1
+    type: rectangle
+    x1: 49.3683970210723
+    y1: 48.72779229141973
+    x2: 630.6316029789275
+    y2: 167.18451799163688
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      Building 1 Networks
+      vl10      users      192.168.11.0/24
+      vl20      iot        192.168.199.0/24
+      vl30      security   10.1.1.0/24
+      vl40      guests     10.11.0.0/20
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 334.97174787984807
+    y1: 75.84118114448668
+    z_index: 2
+  - border_color: '#D5FFD2'
+    border_style: ''
+    color: '#D5FFD2'
+    thickness: 1
+    type: ellipse
+    x1: 97.16925052641605
+    y1: 287.9891925339368
+    x2: 38.272718826033774
+    y2: 35.879856189892564
+    z_index: 3
+  - border_color: '#D5FFD2'
+    border_style: ''
+    color: '#D5FFD2'
+    thickness: 1
+    type: ellipse
+    x1: 143.61682664305926
+    y1: 261.2726717190459
+    x2: 35.204913397244695
+    y2: 33.16767687685274
+    z_index: 3
+  - border_color: '#D5FFD2'
+    border_style: ''
+    color: '#D5FFD2'
+    thickness: 1
+    type: ellipse
+    x1: 245.7345239243876
+    y1: 296.1640163661116
+    x2: 35.12777245494142
+    y2: 34.92363470866556
+    z_index: 3
+  - border_color: '#D4FFD200'
+    border_radius: 20
+    border_style: ''
+    color: '#D5FFD2'
+    thickness: 1
+    type: rectangle
+    x1: 76.26746981358835
+    y1: 275.4724513932729
+    x2: 163.73253018641165
+    y2: 55.558665018421436
+    z_index: 4
+  - border_color: '#D5FFD2'
+    border_style: ''
+    color: '#D5FFD2'
+    thickness: 1
+    type: ellipse
+    x1: 202.49992066824285
+    y1: 261.8532835305447
+    x2: 39.36374036126641
+    y2: 37.352572857961945
+    z_index: 3
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: Building 2
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 97.45800926863043
+    y1: 284.96097970934585
+    z_index: 5
+  - border_color: '#808080FF'
+    border_style: ''
+    color: '#FFFFFFFF'
+    line_end: null
+    line_start: null
+    thickness: 2
+    type: line
+    x1: -40.0
+    y1: 120.0
+    x2: 80.0
+    y2: 280.0
+    z_index: 1
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: 10.11.15.1
+    text_font: monospace
+    text_italic: false
+    text_size: 8
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 209.89880484388777
+    y1: 204.26761748761922
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: 192.168.11.101
+    text_font: monospace
+    text_italic: false
+    text_size: 8
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 197.49768726441954
+    y1: 122.83010690662928
+    z_index: 6
+  - border_color: '#808080FF'
+    border_radius: 0
+    border_style: ''
+    color: '#C0C0C0'
+    thickness: 1
+    type: rectangle
+    x1: -309.95355209528157
+    y1: 31.260753098263688
+    x2: 296.93966628365354
+    y2: 256.1832414996226
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#FFFFFF'
+    rotation: 0
+    text_bold: true
+    text_content: Campus Core
+    text_font: monospace
+    text_italic: false
+    text_size: 14
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -303.7474893399314
+    y1: 262.2316048585568
+    z_index: 2
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#2D39C2'
+    rotation: 0
+    text_bold: true
+    text_content: |-
+      Core Routing
+      172.20.1.0/24
+    text_font: monospace
+    text_italic: false
+    text_size: 6
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -76.49666902463494
+    y1: 153.0613194653771
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#2D39C2'
+    rotation: 89
+    text_bold: true
+    text_content: 172.20.0.0/30
+    text_font: monospace
+    text_italic: false
+    text_size: 4
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -141.35413914042374
+    y1: 124.37305427271227
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#F70606'
+    rotation: 0
+    text_bold: false
+    text_content: Primary
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -188.71318984911622
+    y1: 43.706313383543275
+    z_index: 7
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#DD8888'
+    rotation: 0
+    text_bold: false
+    text_content: Backup
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -182.95464318244893
+    y1: 241.65323840327255
+    z_index: 7
+  - border_color: '#03A717'
+    border_radius: 5
+    border_style: 4,2
+    color: '#FFFFFF00'
+    thickness: 5
+    type: rectangle
+    x1: -168.5
+    y1: 70.04382553738856
+    x2: 289.0
+    y2: 135.0
+    z_index: 1
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#008821'
+    rotation: 0
+    text_bold: true
+    text_content: OSPF Area 0
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -40.417540054179206
+    y1: 80.34477611549127
+    z_index: 8
+nodes:
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname cr-rtr1
+          !
+          ! In order to avoid entering a configuration dialog
+          ! on boot, please ensure that all ethernet interfaces
+          ! have some ip configuration present here such as the
+          ! example below:
+          !
+          interface range Ethernet 0/0 - 3
+           no ip address
+           shutdown
+          !
+          interface e0/0
+           description Connection to Internet
+           ip address dhcp
+           ip nat outside
+           no shutdown
+           exit
+          interface e0/1
+           description Connection to cr-rtr2
+           ip address 172.20.0.1 255.255.255.252
+           ip nat inside
+           no shutdown
+           exit
+          interface e0/2
+           description Connection to Campus Core Switch
+           ip address 172.20.1.1 255.255.255.0
+           ip nat inside
+           no shutdown
+           exit
+          !
+          interface loop99
+           ip address 192.168.200.1 255.255.255.255
+           no shutdown
+           exit
+          !
+          ip nat inside source list 1 interface Ethernet0/0 overload
+          !
+          ip access-list standard 1
+           10 permit 0.0.0.0 255.255.255.255
+          !
+          !
+          ip route 192.168.11.0 255.255.255.0 172.20.1.11
+          ip route 192.168.199.0 255.255.255.0 172.20.1.11
+          ip route 10.1.1.0 255.255.255.0 172.20.1.11
+          ip route 10.11.0.0 255.255.248.0 172.20.1.11
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: cr-rtr1
+    node_definition: iol-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: -160
+    y: 80
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet0/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname cr-rtr2
+          !
+          ! In order to avoid entering a configuration dialog
+          ! on boot, please ensure that all ethernet interfaces
+          ! have some ip configuration present here such as the
+          ! example below:
+          !
+          interface range Ethernet 0/0 - 3
+           no ip address
+           shutdown
+          !
+          interface e0/0
+           description Connection to Internet
+           ip address dhcp
+           ip nat outside
+           no shutdown
+           exit
+          interface e0/1
+           description Connection to cr-rtr1
+           ip address 172.20.0.2 255.255.255.0
+           ip nat inside
+           no shutdown
+           exit
+          interface e0/2
+           description Connection to Campus Core Switch
+           ip address 172.20.1.2 255.255.255.0
+           ip nat inside
+           no shutdown
+           exit
+          !
+          ip nat inside source list 1 interface Ethernet0/0 overload
+          !
+          ip access-list standard 1
+           10 permit 0.0.0.0 255.255.255.255
+          !
+          !
+          ip route 192.168.11.0 255.255.255.0 172.20.1.11
+          ip route 192.168.199.0 255.255.255.0 172.20.1.11
+          ip route 10.1.1.0 255.255.255.0 172.20.1.11
+          ip route 10.11.0.0 255.255.240.0 172.20.1.11
+          !
+          ! Configure default route through cr-rtr1, backup DHCP to internet
+          ! SLA tracking against reachability to cr-rtr1 Int e0/1 IP setup
+          ! because IOL interface doesn't go "down" when disconnected.
+          ip sla 1
+           icmp-echo 172.20.0.1 source-interface Ethernet0/1
+            threshold 800
+            timeout 1000
+            frequency 2
+          ip sla schedule 1 life forever start-time now
+          track 1 ip sla 1 reachability
+          ip route 0.0.0.0 0.0.0.0 172.20.0.1 track 1
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: cr-rtr2
+    node_definition: iol-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: -160
+    y: 201
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet0/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname bld1-sw
+          !
+          vtp mode transparent
+          !
+          vlan 10
+           name users
+          vlan 20
+           name iot
+          vlan 30
+           name security
+          vlan 40
+           name guests
+          !
+          interface vlan 10
+           ip address 192.168.11.1 255.255.255.0
+           no shutdown
+           exit
+          interface vlan 20
+           ip address 192.168.199.1 255.255.255.0
+           no shutdown
+           exit
+          interface vlan 30
+           ip address 10.1.1.1 255.255.255.0
+           no shutdown
+           exit
+          interface vlan 40
+           ip address 10.11.0.1 255.255.240.0
+           no shutdown
+           exit
+          !
+          interface e0/0
+           no switchport
+           description Connection to Campus Core Switch
+           ip address 172.20.1.11 255.255.255.0
+           no shutdown
+          interface e0/1
+           description Link to User 1
+           switchport mode access
+           switchport access vlan 10
+           spanning-tree portfast
+           no shutdown
+          interface e0/2
+           description Link to Guest 1
+           switchport mode access
+           switchport access vlan 40
+           spanning-tree portfast
+           no shutdown
+          interface e0/3
+           description Configured as Trunk to bring up all VLANs
+           switchport trunk encap dot1q
+           switchport mode trunk
+           no shutdown
+          !
+          ip routing
+          ip route 0.0.0.0 0.0.0.0 172.20.1.1
+          ip route 0.0.0.0 0.0.0.0 172.20.1.2 10
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n2
+    image_definition: null
+    label: bld1-sw
+    node_definition: ioll2-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: 80
+    y: 120
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet0/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n3
+    image_definition: null
+    label: int-sw
+    node_definition: unmanaged_switch
+    parameters: {}
+    ram: null
+    tags: []
+    x: -280
+    y: 120
+    interfaces:
+      - id: i0
+        label: port0
+        slot: 0
+        type: physical
+      - id: i1
+        label: port1
+        slot: 1
+        type: physical
+      - id: i2
+        label: port2
+        slot: 2
+        type: physical
+      - id: i3
+        label: port3
+        slot: 3
+        type: physical
+      - id: i4
+        label: port4
+        slot: 4
+        type: physical
+      - id: i5
+        label: port5
+        slot: 5
+        type: physical
+      - id: i6
+        label: port6
+        slot: 6
+        type: physical
+      - id: i7
+        label: port7
+        slot: 7
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname user1
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+          # Bring up network
+          ip address add 192.168.11.101/24 dev eth0
+          ip route add default via 192.168.11.1
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n4
+    image_definition: null
+    label: user1
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: 240
+    y: 80
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n5
+    image_definition: null
+    label: internet-gateway
+    node_definition: external_connector
+    parameters: {}
+    ram: null
+    tags: []
+    x: -400
+    y: 119
+    interfaces:
+      - id: i0
+        label: port
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n6
+    image_definition: null
+    label: ' '
+    node_definition: unmanaged_switch
+    parameters: {}
+    ram: null
+    tags: []
+    x: -40
+    y: 120
+    interfaces:
+      - id: i0
+        label: port0
+        slot: 0
+        type: physical
+      - id: i1
+        label: port1
+        slot: 1
+        type: physical
+      - id: i2
+        label: port2
+        slot: 2
+        type: physical
+      - id: i3
+        label: port3
+        slot: 3
+        type: physical
+      - id: i4
+        label: port4
+        slot: 4
+        type: physical
+      - id: i5
+        label: port5
+        slot: 5
+        type: physical
+      - id: i6
+        label: port6
+        slot: 6
+        type: physical
+      - id: i7
+        label: port7
+        slot: 7
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname guest1
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+          # Bring up network
+          ip address add 10.11.15.1/20 dev eth0
+          ip route add default via 10.11.0.1
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n7
+    image_definition: null
+    label: guest1
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: 240
+    y: 160
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+links:
+  - id: l0
+    n1: n5
+    n2: n3
+    i1: i0
+    i2: i0
+    conditioning: {}
+    label: Internet-port<->int-sw-port0
+  - id: l1
+    n1: n0
+    n2: n3
+    i1: i1
+    i2: i1
+    conditioning: {}
+    label: cr-rtr1-Ethernet0/0<->int-sw-port1
+  - id: l2
+    n1: n1
+    n2: n3
+    i1: i1
+    i2: i2
+    conditioning: {}
+    label: cr-rt2-Ethernet0/0<->int-sw-port2
+  - id: l3
+    n1: n0
+    n2: n1
+    i1: i2
+    i2: i2
+    conditioning: {}
+    label: cr-rtr1-Ethernet0/1<->cr-rt2-Ethernet0/1
+  - id: l4
+    n1: n1
+    n2: n6
+    i1: i3
+    i2: i1
+    conditioning: {}
+    label: cr-rt2-Ethernet0/2<->cr-sw-port1
+  - id: l5
+    n1: n6
+    n2: n2
+    i1: i2
+    i2: i1
+    conditioning: {}
+    label: cr-sw-port2<->bld1-sw-Ethernet0/0
+  - id: l6
+    n1: n2
+    n2: n4
+    i1: i2
+    i2: i0
+    conditioning: {}
+    label: bld1-sw-Ethernet0/1<->user1-eth0
+  - id: l7
+    n1: n2
+    n2: n7
+    i1: i3
+    i2: i0
+    conditioning: {}
+    label: bld1-sw-Ethernet0/2<->guest1-eth0
+  - id: l8
+    n1: n0
+    n2: n6
+    i1: i3
+    i2: i0
+    conditioning: {}
+    label: cr-rtr1-Ethernet0/2<-> -port0
+lab:
+  description: |-
+    Conquering OSPF: Optimize Your Network with OSPF
+    Maximize your network's potential with our in-depth focus on OSPF. This live stream event is tailored to help you master OSPF and optimize your network through dynamic routing and effective path selection. Perfect for networking professionals aiming to deepen their expertise, you'll be provided with the skills needed to ensure your network runs at peak performance. Join us to conquer OSPF and elevate your network optimization skills.
+  notes: |-
+    **CCNA Exam Prep: Back to Networking Basics with Hank Preston and Patrick Gargano**
+
+    # Conquering OSPF: Optimize Your Network with OSPF
+
+    As networks grow, become more complex, and rate of change increases, a move to dynamic routing is often a good choice. Dynamic routing leverages routing protocols to transmit network updates between routers automatically as changes occur, allowing routers to update their routing tables with the best options to reach destinations without requiring manual intervention by network engineers.
+
+    OSPF, or Open Shortest Path First, is a widely deployed standard routing protocol that scales from small "single area" networks to large global wide area networks.  CCNA candidates need to be comfortable configuring and verifying single area OSPFv2 deployments. In this lab we will explore:
+
+    * Configuring IOS routers to run OSPF and share network information with neighbors
+    * Configure and verify neighbor adjacency details such as Router IDs and Timers
+    * Designated Router/Backup Designated Router election
+    * Sharing a default route with OSPF
+
+    ## Setup and Scenario
+    In this set of lab-based demonstrations, you are the network engineer for a growing organization tasked with updating the network to support new network needs. The network was originally deployed using static routes as it was small, but now the network has grown from a single building to a "campus", and it is time to deploy dynamic routing.
+
+    You've been asked to:
+
+    * Enable OSPF between the core routers and the building 1 Layer 3 switch
+    * Ensure reliable internet access in case of a link failure to the primary router `cr-rtr1`
+    * Ensure the core routers provide routing updates to all building switches
+
+    *Be sure to **START** the lab before continuing to the demo labs.*
+
+    ## Part 1: Reviewing the Current State of the Network
+    Before we jump into configuring OSPF across the network, let's check the current status of the network and how it is operating.
+
+    1. Open a VNC connection to the desktop `user1`.  Open the Internet browser and navigate to https://u.cisco.com.
+        * You should see the Cisco U homepage.
+    1. Open the terminal application and `ping www.cisco.com`.
+        * You should see pings return successfully.
+
+        > If these steps fail, verify that your CML server is configured and deployed to allow Internet access for hosts through a NAT configured external connector node.
+        >
+        > If your server is ***not*** configured to allow this access, you can `ping 192.168.200.1` as an alternative test. This is a loopback address on `cr-rtr1`.
+
+    1. Open a VNC connection to the desktop `guest1` and repeat the tests.
+        * **These tests should ***not*** work.***
+
+    Uh oh... something doesn't seem to be right with the network.  See if you can figure out what is wrong and why the `guest1` desktop can't reach the internet.
+
+    <details>
+    <summary>Answer to what is wrong</summary>
+
+    This is an example of one of the problems that can happen with static routing, mis-configurations and human error.
+
+    If you check `cr-rtr1` for a route back to `guest1`, you will see there isn't one listed.
+
+    ```
+    cr-rtr1#show ip route 10.11.15.1
+    % Subnet not in table
+    ```
+
+    Compare that to the backup `cr-rtr2`.
+
+    ```
+    cr-rtr2#show ip route 10.11.15.1
+    Routing entry for 10.11.0.0/20
+      Known via "static", distance 1, metric 0
+      Routing Descriptor Blocks:
+      * 172.20.1.11
+          Route metric is 0, traffic share count is 1
+    ```
+
+    Check the full routing table on `cr-rtr1` and you can find the mistake.
+
+    <pre>
+    cr-rtr1#show ip route | begin Gateway
+    Gateway of last resort is 192.168.255.1 to network 0.0.0.0
+
+    S*    0.0.0.0/0 [254/0] via 192.168.255.1
+          <strong style="color: red">10.0.0.0/21</strong> is subnetted, 1 subnets
+    S        10.11.0.0 [1/0] via 172.20.1.11
+          172.16.0.0/24 is subnetted, 1 subnets
+    S        172.16.11.0 [1/0] via 172.20.1.11
+    .
+    .
+    </pre>
+
+    Building 1, vlan 10's network is `10.11.0.0/20`, but `cr-rtr1` has a route for `10.11.0.0/21`. If you test a `ping 10.11.0.1` from `cr-rtr1`, you'll see that the router has reachability to the `vlan 40` interface on `bld1-sw`.  But because of the incorrect subnet mask on the `ip route` command, only half of the valid IPs for guests are reachable from the router.
+
+    You can "fix" this issue, but replacing the static route statement on `cr-rtr1`.
+
+    ```
+    no ip route 10.11.0.0 255.255.248.0 172.20.1.11
+    ip route 10.11.0.0 255.255.240.0 172.20.1.11
+    ```
+
+    Test Internet access from `guest1 ` again. It should now be working.
+
+    </details>
+
+    ### What did we learn?
+
+    While dynamic routing doesn't prevent misconfigurations, by reducing the manual management of a large number of static routes and instead allowing the routers to send routing updates directly, this does improve reliability and remove what can be difficult troubleshooting scenarios.
+
+    ## Part 2: Basics of Getting OSPF Up and Running
+    ### Minimal configuration needed to build neighbor relationships
+    We'll start with the minimal configuration necessary for OSPF relationships to be created between the core routers and building switch.
+
+    * Enable OSPF process
+    * Add the interfaces/networks between routers to OSPF area 0
+
+    1. Start by configuring `bld1-sw`:
+
+        ```
+        router ospf 11
+         network 172.20.1.0 0.0.0.255 area 0
+        ```
+
+    1. And now `cr-rtr1`:
+
+        ```
+        router ospf 1
+         network 172.20.1.0 0.0.0.255 area 0
+        ```
+
+    1. Some things to take note of:
+        * Each router has a "process id".  This value is locally significant on each router and does ***not*** need to match.
+        * `network` statements with "wildcard masks" are used to match interfaces on the router to enable for OSPF
+
+    1. Watch the console output on `cr-rtr1`.  After some time you should see a message like the one below. This is an indication that OSPF has completed establishing the neighbor relationship between `bld1-sw` and `cr-rtr1` and is now exchanging routing information.
+
+        ```
+        *Oct 18 06:04:22.574: %OSPF-5-ADJCHG: Process 1, Nbr 192.168.199.1 on Ethernet0/2 from LOADING to FULL, Loading Done
+        ```
+
+    1. There are many `show` commands available for OSPF, but we'll start with `show ip ospf neighbor` to view the current neighbors on `cr-rtr1`.
+
+        ```
+        cr-rtr1# show ip ospf neighbor
+        Neighbor ID     Pri   State           Dead Time   Address         Interface
+        192.168.199.1     1   FULL/BDR        00:00:37    172.20.1.11     Ethernet0/2
+        ```
+
+        * The `Neighbor ID` is also called the "router ID", and represents the routers identity included in OSPF updates
+        * `Pri` or "Priority" is used in "Designated Router" elections. Higher priority is better and values range from 0 -> 255
+        * `FULL/BDR` indicates that our router has completed sharing routing information (or link state database information) with this neighbor (full), and that this neighbor is the "Backup Designated Router" on this link.
+        * The `Dead Time` is a countdown clock for when this neighbor will be considered no longer valid. If it reaches `0`, the neighbor will be removed.
+        * `Address` indicates the next hop address to the neighbor out of the `Interface`
+
+        > We'll be talking more about the Designated Router / Backup Designated Router (DR/BDR) election in the next step.
+
+    1. Another very useful command is `show ip ospf interface brief`.
+
+        ```
+        cr-rtr1# show ip ospf interface brief
+        Interface    PID   Area            IP Address/Mask    Cost  State Nbrs F/C
+        Et0/2        1     0               172.20.1.1/24      10    DR    1/1
+        ```
+
+        * This command lists all interfaces on a router that are participating in OSPF. This can be helpful when troubleshooting to ensure that the interfaces you expect to have neighbors, are actually configured for OSPF.
+        * The "non-brief" version of the command has even more information that can be helpful for troubleshooting.
+
+    1. Run these commands on `bld1-sw` and compare the results.
+
+    1. Go ahead and configure `cr-rtr2`:
+
+        ```
+        router ospf 2
+         network 172.20.1.0 0.0.0.255 area 0
+        ```
+
+    1. Very quickly you should see messages on the `cr-rtr2` console that neighbor relationships with the other two routers have been established.
+
+        ```
+        *Oct 18 06:26:52.796: %OSPF-5-ADJCHG: Process 2, Nbr 192.168.199.1 on Ethernet0/2 from LOADING to FULL, Loading Done
+        *Oct 18 06:26:52.796: %OSPF-5-ADJCHG: Process 2, Nbr 192.168.200.1 on Ethernet0/2 from LOADING to FULL, Loading Done
+        ```
+
+        > This was so much faster than the initial relationship between `cr-rtr1` and `bld1-sw` because the designated router election process was already complete on the "broadcast" network connecting the three routers.
+
+    1. Run the `show ip ospf neighbor` and `show ip ospf interface brief` commands on all three devices.
+        * Each device should now have 2 neighbors
+        * `cr-rtr2` should be in a state of `FULL/DROTHER` for the other routers
+
+    ### Exploring Designated Router election and status
+    Every interface running OSPF has a "network type" that impacts some of the details with how OSPF runs and operates.  Ethernet interfaces have a type of "broadcast".  Broadcast networks can have many different OSPF speaking routers on a single network segment. If every router exchanged links state databases with every other router on a broadcast network, this would result in a large amount of duplicate traffic.
+
+    To be more efficient, OSPF elects a "Designated Router" (DR) to collect routing information from all other routers on the segment, and distribute ***ALL*** information to every other router.  And because we like redundancy in networking, a "Backup Designated Router" (BDR) is also identified. The BDR also distributes routing information to other routers. If the DR fails, the BDR will take over immediately, and a new BDR will be elected.
+
+    Like with spanning-tree, explicitly identifying the DR/BDR in an network is advised. "Core" or "hub" routers are the best candidates for this role, with "stub" routers often configured to *never* become a DR/BDR.
+
+    The OSPF priority value configured on an interface determines the outcome of a DR/BDR election. The higher the priority, the more likely it will become the DR/BDR. A priority of `0` will prevent a router from participating in the election.
+
+    Now we will update the configuration in our network to use the core routers for DR/BDR, and prevent the building switches (layer 3 switches) from becoming a DR or BDR.
+
+    > Note: DR/BDR status on a network does NOT preempt. This means that if a new router with a higher priority comes onto a network segment with a DR already elected, the new router will NOT become the DR. If the current DR or BDR fails, this new router will then take over the role of BDR.
+
+    1. Start by using the `show ip ospf neighbor` command on each router to verify the current priority and DR/BDR roles for each router.
+    1. On `cr-rtr1`, increase the ospf priority of interface `Ethernet0/2` to 10.
+
+    ```
+    interface ethernet0/2
+     ip ospf priority 10
+    ```
+
+    * You can verify the change with the `show ip ospf interface eth0/2` command
+
+    1. Access the console on `bld1-sw` and run the `show ip ospf neighbor` command. You should now see the increased priority for `cr-rtr1`.
+
+        ```
+        Neighbor ID     Pri   State           Dead Time   Address         Interface
+        192.168.200.1    10   FULL/DR         00:00:32    172.20.1.1      Ethernet0/0
+        192.168.255.64    1   FULL/DROTHER    00:00:36    172.20.1.2      Ethernet0/0
+        ```
+
+    1. Now configure a priority of `0` on `bld1-sw` interface `ethernet0/0` to remove it from the `DR/BDR` election process.
+
+        ```
+        interface ethernet0/0
+         ip ospf priority 0
+        ```
+
+    1. Check the OSPF neighbor status on the switch again.
+
+        ```
+        Neighbor ID     Pri   State           Dead Time   Address         Interface
+        192.168.200.1    10   FULL/DR         00:00:38    172.20.1.1      Ethernet0/0
+        192.168.255.64    1   FULL/BDR        00:00:35    172.20.1.2      Ethernet0/0
+        ```
+
+        * Now `cr-rtr2` is the BDR for the network segment.
+
+    1. Verify that `bld1-sw` does NOT become a DR/BDR no matter what by saving the running configuration (`write mem`) on `cr-rtr2` and then **STOPPING** the router.
+        > Only **STOP** the **router**. Do not wipe it, or stop the entire lab.
+    1. Wait 40 seconds for the dead timer to expire, and check the neighbor status on `cr-rtr1`.
+
+        ```
+        *Oct 18 07:00:55.340: %OSPF-5-ADJCHG: Process 1, Nbr 192.168.255.64 on Ethernet0/2 from FULL to DOWN, Neighbor Down: Dead timer expired
+
+        cr-rtr1#show ip ospf neighbor
+
+        Neighbor ID     Pri   State           Dead Time   Address         Interface
+        192.168.199.1     0   FULL/DROTHER    00:00:31    172.20.1.11     Ethernet0/2
+        ```
+
+        > Even though there isn't another router to be the BDR on the network segment, `bld1-sw` stays in `DROTHER` state.
+
+    1. **START** `cr-rtr2`. Shortly after coming online, it should regain the `BDR` state.
+
+    ### Configuring Router (Neighbor) IDs
+    Every OSPF router needs to have a unique router ID assigned.  If one is not explicitly configured, the router will chose the IP address of one of its interfaces to act as the router ID. The highest IP address assigned to a loopback address will be chosen. If no loopbacks are configured, the highest IP address on a non-loopback active interface will be selected.
+
+    <pre>
+    Neighbor ID     Pri   State           Dead Time   Address         Interface
+    <span style="color: red">172.20.1.2</span>        1   FULL/BDR        00:00:32    172.20.1.2      Ethernet0/2
+    <span style="color: red">192.168.199.1</span>     0   FULL/DROTHER    00:00:33    172.20.1.11     Ethernet0/2
+    <span style="color: red">192.168.200.1</span>    10   FULL/DR         00:00:30    172.20.1.1      Ethernet0/2
+    </pre>
+
+    > Above in <span style="color: red">red</span> we see the automatically assigned router IDs.  Can you tell which router is which?
+
+    Relying on automatic router ID assignment is not recommended, because as interface configurations on routers change, the router ID will also change. While this won't prevent OSPF from working, it can make operating and troubleshooting the network more difficult as router id values adjust.
+
+    Router IDs "look like" IP addresses, but they needn't be an IP address on a router. Any IP address can be used. We will configure some easy to see and identify router IDs for our network.
+
+    | Router | Router Id |
+    | ------ | --------- |
+    | `cr-rtr1` | `1.1.1.1` |
+    | `cr-rtr2` | `2.2.2.2` |
+    | `bld1-sw` | `11.11.11.11` |
+
+    1. Open the console for `cr-rtr1` and configure the router ID under the `router ospf` process.
+
+        ```
+        router ospf 1
+         router-id 1.1.1.1
+        ```
+
+    1. You should see a message like the one shown below.  To improve stability, routers identify their router ID when the OSPF process starts up and maintain that same ID, no matter configuration changes, until the OSPF process restarts. This can occur when the router reloads, or a `clear ip ospf process` command is ran.
+
+        ```
+        % OSPF: Reload or use "clear ip ospf process" command, for this to take effect
+        ```
+
+    1. Another very useful verification command is `show ip protocols`.  This command provides information on all routing protocols running on a router. Use it to verify the router-id on `cr-rtr1`. Notice that it still shows the automatically identified router ID value.
+
+        <pre>
+        show ip protocols | begin ospf
+
+        ! Output
+        Routing Protocol is "ospf 1"
+        .
+        <span style="color: red">Router ID 192.168.200.1</pre>
+        Number of areas in this router is 1. 1 normal 0 stub 0 nssa
+        Maximum path: 4
+        Routing for Networks:
+            172.20.1.0 0.0.0.255 area 0
+        .
+        </pre>
+
+    1. Now restart OSPF on the router to apply the change. You will be asked to confirm because this will be a disruptive change on the network.
+
+        ```
+        clear ip ospf process
+        ```
+
+    1. Verify that the router ID has changed.
+
+        ```
+        show ip protocols | inc ID
+
+        # Output
+        Router ID 1.1.1.1
+        ```
+
+    1. Repeat the process on `cr-rtr2` and `bld1-sw` to set their router IDs and reset the OSPF process to apply the change.
+        > Note 💡: The OSPF process ID configured on each router is unique.  `cr-rtr2` is `router ospf 2` and `bld1-sw` is `router ospf 11`
+
+    1. On `bld1-sw` look at the OSPF neighbors and see the new, more easily recognozied Router IDs.
+
+        ```
+        bld1-sw# show ip ospf neighbor
+
+        Neighbor ID     Pri   State           Dead Time   Address         Interface
+        1.1.1.1          10   FULL/DR         00:00:38    172.20.1.1      Ethernet0/0
+        2.2.2.2           1   FULL/BDR        00:00:36    172.20.1.2      Ethernet0/0
+        ```
+
+    ### Advertising Dynamic Routes
+    Now that we have the OSPF neighbor relationships created between our three routers, the time has come to replace the static routes with dynamic routes managed by OSPF.
+
+    1. Start with the Building 1 networks.  On the console for `bld1-sw`, look at the IP interfaces configured.
+
+        ```
+        show ip int bri | exc unassigned
+        ```
+
+    1. Compare the networks with the static routes on `cr-rtr1`.
+
+        ```
+        show ip route static
+        ```
+
+    1. Other than the network on `bld1-sw` interface `Ethernet0/0` which is the transit network to the routers, each of the networks on the switch should have associated static routes.
+        > The routers also each have a static default route.  `cr-rtr1`'s static route was learned through DHCP and targets the `internet-gateway`. `cr-rtr2`'s static route was manually configured to route through `cr-rtr1` over the direct transit link.
+
+    1. OSPF is a "link state" routing protocol, which means decisions are made by exchanging details about the "links" each router has. Look at the links advertised by `bld1-sw` into OSPF.
+        > This command can be ran on any router.
+
+        ```
+        show ip ospf database router adv-router 11.11.11.11
+        ```
+
+        > * There are several different types of "LSAs" used by OSPF to describe different types of networks. The `router` LSAs are used to describe all directly connected networks
+        > * This command is limiting the output only to LSA data advertised by `bld1-sw` - as identified by its router ID.
+
+    1. How many links are advertised by the switch?  Which links?
+
+    1. Add a `network` statement under the OSPF router process configuration on `bld1-sw` to begin advertising the Vlan 10 interface for users into area 0.  Remember that OSPF uses wildcard masks for matching interfaces identified in network statements.
+
+        ```
+        router ospf 11
+         network 192.168.11.0 0.0.0.255 area 0
+        ```
+
+    1. Look at the Link State Database again, do you see the new network listed?  How is this "link" different than the other "link"?
+
+    1. Now that the "user" network is included in OSPF, check the OSPF routes in the routing table on `cr-rtr1`.
+
+        ```
+        show ip route ospf
+        ```
+
+        * Is the route listed?  Why not?
+
+        <details><summary>Answer:</summary>
+        The static routes configured on the router have a lower administrative distance than the OSPF learned routes, making them more trusted/preferred.
+        </details>
+
+    1. Remove the static route on both `cr-rtr1` and `cr-rtr2` for the "user" network.
+
+        ```
+        no ip route 192.168.11.0 255.255.255.0 172.20.1.11
+        ```
+
+    1. Check the OSPF routes again.  Is it there?
+
+    1. `network` statements aren't the only way to add interfaces and networks into OSPF, there is also an interface configuration command that can be used.  Use it to advertise the `iot` network on `bld1-sw`.
+
+        ```
+        interface vlan 20
+         ip ospf 11 area 0
+        ```
+
+        > It is important to use the correct OSPF process number in this command.
+
+    1. Complete the configuration to ensure that the network `192.168.199.0/24` is listed as an "OSPF" route on both core routers.
+    1. Use either `network` statements or the interface configuration method to advertise the "security" and "guest" networks with OSPF. Be sure that they are listed as "OSPF" routes in the routing tables for the core routers.
+    1. Verify the routing table on `cr-rtr1` and `cr-rtr2` to confirm that you now have four OSPF entries, one for each of the VLANs in Building 1.
+    1. Verify that both desktops can still access the Internet. Either by browsing to https://u.cisco.com using a VNC connection, or by pinging `8.8.8.8`.
+
+    ## Part 3: Further OSPF Exploration with Enhancements, Troubleshooting, and Tuning
+    You've now completed the basic setup of OSPF on this network, moving from static routing to dynamic routing.  But that isn't the end of the OSPF journey.  In this part, you will explore a few more aspects of OSPF.
+
+    ### Troubleshooting OSPF Neighbor Relationships
+    Look at the network topology. Notice the direct link between the two core routers?  This transit network provides an alternative path between the routers should either router lose its link to the "Core Routing" network segment shared with `bld1-sw`.  In this step, we will extend OSPF area 0 to include this link.
+
+    1. From the console connection of `cr-rtr1`, use the interface configuration command to add `Ethernet0/1` to ospf area 0.
+
+        ```
+        interface eth0/1
+         ip ospf 1 area 0
+        ```
+
+    1. Repeat on `cr-rtr2`, using OSPF process 2.
+
+    1. The DR/BDR election takes 40 seconds (the equivalent of the "dead timer") to complete.  Wait that time and check the status of the neighbor relationship on both routers using the following commands:
+
+        ```
+        show ip ospf neighbor
+        show ip ospf interface brief
+        ```
+
+        * Which routers is the designated router for the link?
+        * Did the routers form a neighbor relationship?
+        * What is wrong?
+
+        <details><summary>Answer</summary>
+        Notice that both routers elected themselves designated router for the network segment. Only one DR should be present on this link.
+
+        In order for two routers to become OSPF neighbors, several configuration parameters must match on the devices.  These include:
+
+        <ul>
+            <li>Area Number</li>
+            <li>Network / Subnet Details</li>
+            <li>MTU</li>
+            <li>Timers</li>
+            <li>Authentication Configuration</li>
+        </ul>
+
+        The two routers do <strong>NOT</strong> have the same network details. `cr-rtr1` is configured with a /30 mask, while `cr-rtr2` uses a /24 mask.  This difference prevents the routers from becoming neighbors. As far as each router is concerned, they are part of different OSPF networks on this link.
+        </details>
+
+    1. The link between the two routers is a direct connection between two routers.  There will only ever be 2 hosts on this link, so a `/30` subnet is correct.  Change the configuration on `cr-rtr2` for `interface eth0/1` to use the same IP address but the correct subnet mask.
+        * You should quickly see the below message indicating that the neighbor relationship was established. Use the OSPF `show` commands to verify the current status is as expected.
+
+        ```
+        *Oct 28 06:27:50.762: %OSPF-5-ADJCHG: Process 2, Nbr 1.1.1.1 on Ethernet0/1 from LOADING to FULL, Loading Done
+        ```
+
+    ### Advertising a Default Route Dynamically
+    Currently a static route is used on `bld1-sw` to send Internet traffic through `cr-rtr1` as the primary path, with a floating static route configured to use `cr-rtr2` as an alternative.
+
+    ```
+    bld1-sw# show run | section ip route
+    ip route 0.0.0.0 0.0.0.0 172.20.1.1
+    ip route 0.0.0.0 0.0.0.0 172.20.1.2 10
+    ```
+
+    #### Testing the floating static default route
+
+    1. Test that this is working by starting a ping from the `user1` desktop to the Internet with the command `ping 8.8.8.8`.
+    1. Once it is running, `shutdown` interface `Ethernet0/2` on `cr-rtr1`. This will break the path to the internet from `bld1-sw`.
+        > `Ethernet0/2` is the interface that connects to the transit network between the devices.
+    1. What happens to the ping from the desktop?
+    1. Did the floating static route work?  Why not?
+
+        <details><summary>Answer</summary>
+        <strong>bld1-sw</strong> won't use the floating static route unless the primary route is considered "unreachable".  A broken link from the router to the "transit switch" doesn't impact <strong>bld1-sw</strong> connection the the directly connected network used to reach the next-hop 172.20.1.1.  Furthermore, anything that did make <strong>cr-rtr1</strong>'s address unreachable, would also impact <strong>cr-rtr2</strong> - they are on the same network / subnet.  This shows how simple floating static routes are not sufficient in many cases. And why dynamic routing is preferred.
+        </details>
+
+    1. Re-enable the interface on `cr-rtr1` and verify that the ping resumes working.
+
+    #### Advertise a default route from `cr-rtr1` into OSPF
+    A default network is added to OSPF with the special command `default-information originate`.
+
+    1. Add this command to the `router ospf` process configuration on `cr-rtr1`.
+
+        ```
+        router ospf 1
+         default-information originate
+        ```
+
+    1. Default routes are considered "external networks" within OSPF. Check for an "external LSA" on any router.
+
+        ```
+        show ip ospf database external
+        ```
+
+    1. We already have seen that static routes will be preferred over OSPF routes, remove both static default routes from `bld1-sw`.
+
+        ```
+        no ip route 0.0.0.0 0.0.0.0 172.20.1.2 10
+        no ip route 0.0.0.0 0.0.0.0 172.20.1.1
+        ```
+
+    1. Check the default route on `bld1-sw` now.
+
+        ```
+        show ip route
+        show ip route 0.0.0.0
+        ```
+
+        > The second command provides some additional route details, including the "type" of OSPF route it is. The "External type 2" matches the LSA database output we saw.
+
+    #### Testing Dynamic Default Routing
+    With the changes made, test that `bld1-sw` can maintain a valid path to the Internet even if the link to `cr-rtr1` fails.
+
+    1. Test that the primary path is working by tracing the first four hops in the path to `8.8.8.8` on `user1`.
+
+        ```
+        traceroute -m 4 -n 8.8.8.8
+
+        # Output
+        1  192.168.11.1  0.940 ms  0.816 ms  0.738 ms
+        2  172.20.1.1  1.556 ms  1.173 ms  1.294 ms
+        3  192.168.255.1  1.593 ms  1.754 ms  1.583 ms
+        4  10.1.1.1  1.916 ms  1.722 ms  2.042 ms
+         ```
+
+        > Hop 2, `172.20.1.1` is `cr-rtr1` as expected.
+
+    1. Start a ping from the `user1` desktop to the Internet with the command `ping 8.8.8.8`. Let it run to look for impact of an outage.
+    1. Once it is running, `shutdown` interface `Ethernet0/2` on `cr-rtr1`. This will break the path to the internet from `bld1-sw`.
+        > `Ethernet0/2` is the interface that connects to the transit network between the devices.
+    1. What happens to the ping from the desktop?
+        * No pings should be lost, or possibly 1 or 2 ping packets, because OSPF updates the interface state before IOS actually takes the interface down.
+    1. Stop the ping on `user1`, and repeat the `traceroute`.
+
+        ```
+        traceroute -m 4 -n 8.8.8.8
+        traceroute to 8.8.8.8 (8.8.8.8), 4 hops max, 46 byte packets
+        1  192.168.11.1  1.085 ms  0.618 ms  0.701 ms
+        2  172.20.1.2  1.956 ms  1.494 ms  1.183 ms
+        3  172.20.0.1  2.472 ms  2.116 ms  1.793 ms
+        4  192.168.255.1  2.517 ms  2.358 ms  2.448 ms
+        ```
+
+        > Hop 2 is now `172.20.1.2`, or `cr-rtr2`.  At hop 3, `172.20.0.1`, traffic goes across the transit link to `cr-rtr1` to reach the Internet.
+
+    1. Re-enable the interface on `cr-rtr1` and verify the path returns to directly through `cr-rtr1`.
+
+    #### Configuring the Backup Default Gateway
+    `cr-rtr2` is configured to prefer the a path to the internet through `cr-rtr2` over the direct link it has to the `internet-gateway`.  But if `cr-rtr1` goes down completely, it needs to provide an alternative path to the Internet. If multiple `default-information originate` routers are configured on a network, the `metric` can be used to perfer one path over another.
+
+    > Note 💡: `cr-rtr2` is configured with IP SLA tracking as part of the static route through `cr-rtr1`. IP SLA tracking is out of scope for the CCNA, but feel free to look at the configuration and research the topic on your own.
+
+    1. Configure `cr-rtr2` to originate a default route with a metric of `10000`.
+
+        ```
+        router ospf 2
+         default-information originate metric 10000
+        ```
+
+    1. Use `show ip ospf database external` to see the new LSA from `cr-rtr2`. How does it differ from the external LSA from `cr-rtr1`?  Why does the `Forward Address` point to `cr-rtr1`?
+    1. Start a ping to `8.8.8.8` from `user1` to test for outage impact.
+    1. Save the running configuraiton on `cr-rtr1` so none of your changes are lost.
+
+        ```
+        copy running-config startup-config
+        ```
+
+    1. **Stop** but do ***NOT*** *Wipe* `cr-rtr1`.
+    1. Monitor the ping and syslog messages on the routers.
+    1. Once the pings being working again, check the routing table on `bld1-sw`.
+        * What is the default gateway now?
+        * What is the metric of the default route now?
+    1. **Start** `cr-rtr1`.
+        * Once it restarts, verify the default route on `bld1-sw` has returned to the path through `cr-rtr1`.
+
+    ### Speeding up failure detection
+    Routers do not always have a chance to send out updates when a failure happens. In these cases, the OSPF timers configured on the network are used to remove invalid routes.
+
+    #### Testing Recovery Time When a Cable Breaks
+
+    1. Start a ping from the `user1` desktop to the Internet with the command `ping 8.8.8.8`. Let it run to look for impact of an outage.
+    1. Open the console for `bld1-sw` and run the command `show clock` to display the current time on the switch.
+    1. Find and click the link from `cr-rtr1` to the switch that connects to `cr-rtr2` and `bld1-sw` and choose "Delete".
+    1. Wait and monitor the console output on the `bld1-sw` and the results of the ping. Once the pings begin responding again, press `Cntrl-C` to stop the ping and answer these questions.
+        * How many pings were lost?
+        * Use the timestamp from the `show clock` command, and the syslog message about `%OSPF-5-ADJCHG: ... FULL to DOWN, Neighbor Down: Dead timer expired` to calculate how long it took for the network to respond to the outage
+        * Why?
+
+        <details><summary>Answer:</summary>
+        It should be about 40 ping packets lost, and about 40 seconds of time before the switch marks the router as "dead".  The reason for this is the default OSPF "dead timer" is 40 seconds, or specifically a default of 4 times the hello time. If a neighbor doesn't check in within the "dead time", then it will be flushed from the OSPF database, along with all routes in the routing table related to that neighbor.
+        </details>
+
+    1. Replace the deleted link from `cr-rtr1` to the switch.  Use interface `Ethernet 0/2` on the router and any port on the switch.
+
+    #### Configuring a Faster Neighbor Outage Detection
+    The two timers in OSPF for neighbor relationships are the "hello interval" timer and the "dead interval" timer.  The hello interval is how often a hello packet is sent between routers to build and maintain neighbor relationships. The dead interval is how long a router will wait for a hello packet on a link before marking a neighbor as "dead".  The defaults on Cisco IOS are 10 second hello interval and 40 second dead interval (the default dead interval is 4 times the hello interval).
+
+    These defaults are pretty good and work for many networks, but sometimes you want to detect and recover from failures faster. You can do this by reducing the intervals on specific interfaces.  IP networks by design are not 100% reliable, so using a 4x hello interval for the dead interval is a good practice.  And always remember you are balancing faster response time with extra overhead on the network.
+
+    *Also important to remember, the OSPF timers are one of the factors that must match in order for neighbor relationships to be built and maintained. So changing timers are disruptive to the network.*
+
+    1. On `bld1-sw` interface `Ethernet 0/0` change the timers to 1 second hello, and 4 second dead.
+
+        ```
+        interface eth0/0
+         ip ospf hello-interval 1
+         ip ospf dead-interval 4
+        ```
+
+    1. If you wait 40 seconds, you'll see messages about the neighbor relationships with the other routers going down.  Why is this?
+    1. Change the timers on `cr-rtr1` and `cr-rtr2` interfaces `Ethernet 0/2` to match.
+
+    #### Testing the new recovery time
+    Repeat the test cable break.  Use the same process and answer these questions:
+
+    * How many pings were lost?
+    * Use the timestamp from the `show clock` command, and the syslog message about `%OSPF-5-ADJCHG: ... FULL to DOWN, Neighbor Down: Dead timer expired` to calculate how long it took for the network to respond to the outage
+    * Why?
+
+    <details><summary>Answer:</summary>
+    It should be about 4 ping packets lost, and close to 4 seconds of time before the switch marks the router as "dead".
+    </details>
+
+    Much faster!
+  title: CCNA Prep 2024 S1E5 Conquering OSPF
+  version: 0.2.2
