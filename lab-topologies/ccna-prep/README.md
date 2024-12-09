@@ -19,7 +19,7 @@ The current hosts of the CCNA Prep Program are:
 1. [Building Resilient Links with EtherChannel: Gain EtherChannel excellence](s1e3/README.md)
 1. [Routing Fundamentals & Static Routes: Master concepts and static routes](s1e4/README.md)
 1. [Conquering OSPF: Optimize your network with OSPF](s1e5/README.md)
-1. [The Router's Guild: Adventures in AD, Metrics, and Prefix Lengths](s1ef4/README.md)
+1. [The Router's Guild: Adventures in AD, Metrics, and Prefix Lengths](s1e4/README.md)
 1. [GET a Head(er) of REST APIs for the CCNA Certification](s1e7/README.md)
 
 ## Season 2 (Spring 2025) - IP Services
