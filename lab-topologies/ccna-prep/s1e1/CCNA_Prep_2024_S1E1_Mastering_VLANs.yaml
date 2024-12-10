@@ -1,0 +1,2262 @@
+annotations:
+  - border_color: '#808080FF'
+    border_radius: 0
+    border_style: ''
+    color: '#EB6F6F'
+    thickness: 1
+    type: rectangle
+    x1: -1123.0
+    y1: -3.5
+    x2: 163.0
+    y2: 283.5
+    z_index: 5
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: Employees
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -1085.0
+    y1: 235.5
+    z_index: 6
+  - border_color: '#808080FF'
+    border_radius: 0
+    border_style: ''
+    color: '#656FD1'
+    thickness: 1
+    type: rectangle
+    x1: -924.0
+    y1: -2.5
+    x2: 164.0
+    y2: 282.5
+    z_index: 5
+  - border_color: '#808080FF'
+    border_radius: 0
+    border_style: ''
+    color: '#97D540'
+    thickness: 1
+    type: rectangle
+    x1: -716.0
+    y1: -2.5
+    x2: 159.0
+    y2: 281.5
+    z_index: 5
+  - border_color: '#808080FF'
+    border_radius: 0
+    border_style: ''
+    color: '#F8F8F8'
+    thickness: 1
+    type: rectangle
+    x1: -1160.0
+    y1: -200.0
+    x2: 640.0
+    y2: 496.5
+    z_index: 1
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: Guests
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -865.0
+    y1: 237.5
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: IOT Devices
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -691.0
+    y1: 240.5
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: true
+    text_content: 'Demo 1: A Network Without VLANs'
+    text_font: monospace
+    text_italic: false
+    text_size: 14
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -1108.0
+    y1: -179.5
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: 192.168.1.0/24
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -1097.0
+    y1: 258.5
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: 192.168.2.0/24
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -896.0
+    y1: 259.5
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: 192.168.3.0/24
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -696.0
+    y1: 263.5
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: 192.168.3.11
+    text_font: monospace
+    text_italic: false
+    text_size: 8
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -680.0
+    y1: 204.5
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: 192.168.2.11
+    text_font: monospace
+    text_italic: false
+    text_size: 8
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -878.0
+    y1: 204.5
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: 192.168.1.11
+    text_font: monospace
+    text_italic: false
+    text_size: 8
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -1081.0
+    y1: 203.5
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: '.1'
+    text_font: monospace
+    text_italic: false
+    text_size: 8
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -892.0
+    y1: -107.5
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: '.1'
+    text_font: monospace
+    text_italic: false
+    text_size: 8
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -831.0
+    y1: -76.5
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: '.1'
+    text_font: monospace
+    text_italic: false
+    text_size: 8
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -790.0
+    y1: -101.5
+    z_index: 6
+  - border_color: '#808080FF'
+    border_radius: 0
+    border_style: ''
+    color: '#F8F8F8'
+    thickness: 1
+    type: rectangle
+    x1: -1160.0
+    y1: 400.0
+    x2: 640.0
+    y2: 496.5
+    z_index: 1
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: true
+    text_content: 'Demo 2: Configuring VLANs and Access Ports'
+    text_font: monospace
+    text_italic: false
+    text_size: 14
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -1108.0
+    y1: 420.5
+    z_index: 6
+  - border_color: '#808080FF'
+    border_radius: 0
+    border_style: ''
+    color: '#EB6F6F'
+    thickness: 1
+    type: rectangle
+    x1: -1123.0
+    y1: 640.0
+    x2: 163.0
+    y2: 240.0
+    z_index: 5
+  - border_color: '#808080FF'
+    border_radius: 0
+    border_style: ''
+    color: '#656FD1'
+    thickness: 1
+    type: rectangle
+    x1: -924.0
+    y1: 640.0
+    x2: 164.0
+    y2: 240.0
+    z_index: 5
+  - border_color: '#808080FF'
+    border_radius: 0
+    border_style: ''
+    color: '#97D540'
+    thickness: 1
+    type: rectangle
+    x1: -716.0
+    y1: 520.0
+    x2: 159.0
+    y2: 359.0
+    z_index: 5
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      VLAN 10
+      Employees
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -1085.0
+    y1: 795.5
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      VLAN 20
+      Guests
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -865.0
+    y1: 797.5
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      VLAN 30
+      IOT-Devices
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -691.0
+    y1: 800.5
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: 10.0.0.1
+    text_font: monospace
+    text_italic: false
+    text_size: 8
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -1081.0
+    y1: 723.5
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: 10.0.0.2
+    text_font: monospace
+    text_italic: false
+    text_size: 8
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -878.0
+    y1: 724.5
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: 10.0.0.3
+    text_font: monospace
+    text_italic: false
+    text_size: 8
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -680.0
+    y1: 724.5
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: 10.0.0.4
+    text_font: monospace
+    text_italic: false
+    text_size: 8
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -680.0
+    y1: 604.5
+    z_index: 6
+  - border_color: '#808080FF'
+    border_radius: 0
+    border_style: ''
+    color: '#F8F8F8'
+    thickness: 1
+    type: rectangle
+    x1: -480.0
+    y1: -200.0
+    x2: 1320.0
+    y2: 496.5
+    z_index: -1
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: true
+    text_content: 'Demo 3: Multi-Switch Networks and VLAN Trunks'
+    text_font: monospace
+    text_italic: false
+    text_size: 14
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -388.0
+    y1: -179.5
+    z_index: 6
+  - border_color: '#808080FF'
+    border_radius: 0
+    border_style: ''
+    color: '#EB6F6F'
+    thickness: 1
+    type: rectangle
+    x1: -403.0
+    y1: 40.0
+    x2: 163.0
+    y2: 240.0
+    z_index: 5
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      VLAN 10
+      Employees
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -365.0
+    y1: 195.5
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: 192.168.1.0/24
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -377.0
+    y1: 258.5
+    z_index: 6
+  - border_color: '#808080FF'
+    border_radius: 0
+    border_style: ''
+    color: '#656FD1'
+    thickness: 1
+    type: rectangle
+    x1: -204.0
+    y1: 40.0
+    x2: 164.0
+    y2: 240.0
+    z_index: 5
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      VLAN 20
+      Guests
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -145.0
+    y1: 197.5
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: 192.168.2.0/24
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -176.0
+    y1: 259.5
+    z_index: 6
+  - border_color: '#808080FF'
+    border_radius: 0
+    border_style: ''
+    color: '#97D540'
+    thickness: 1
+    type: rectangle
+    x1: 0.0
+    y1: 40.0
+    x2: 160.0
+    y2: 240.0
+    z_index: 5
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      VLAN 30
+      IOT-Devices
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 29.0
+    y1: 200.5
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: 192.168.3.0/24
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 24.0
+    y1: 263.5
+    z_index: 6
+  - border_color: '#808080FF'
+    border_radius: 0
+    border_style: ''
+    color: '#EB6F6F'
+    thickness: 1
+    type: rectangle
+    x1: 237.0
+    y1: 40.0
+    x2: 163.0
+    y2: 240.0
+    z_index: 5
+  - border_color: '#808080FF'
+    border_radius: 0
+    border_style: ''
+    color: '#656FD1'
+    thickness: 1
+    type: rectangle
+    x1: 436.0
+    y1: 40.0
+    x2: 164.0
+    y2: 240.0
+    z_index: 5
+  - border_color: '#808080FF'
+    border_radius: 0
+    border_style: ''
+    color: '#97D540'
+    thickness: 1
+    type: rectangle
+    x1: 640.0
+    y1: 40.0
+    x2: 160.0
+    y2: 240.0
+    z_index: 5
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      VLAN 10
+      Employees
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 275.0
+    y1: 195.5
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      VLAN 20
+      Guests
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 495.0
+    y1: 197.5
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      VLAN 30
+      IOT-Devices
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 669.0
+    y1: 200.5
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: 192.168.1.11
+    text_font: monospace
+    text_italic: false
+    text_size: 8
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -361.0
+    y1: 123.5
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: 192.168.2.11
+    text_font: monospace
+    text_italic: false
+    text_size: 8
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -158.0
+    y1: 124.5
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: 192.168.3.12
+    text_font: monospace
+    text_italic: false
+    text_size: 8
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 680.0
+    y1: 124.5
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: 192.168.1.12
+    text_font: monospace
+    text_italic: false
+    text_size: 8
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 279.0
+    y1: 123.5
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: 192.168.2.12
+    text_font: monospace
+    text_italic: false
+    text_size: 8
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 482.0
+    y1: 124.5
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: 192.168.3.11
+    text_font: monospace
+    text_italic: false
+    text_size: 8
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 40.0
+    y1: 124.5
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: true
+    text_content: 'Demo 4: Inter VLAN Routing'
+    text_font: monospace
+    text_italic: false
+    text_size: 14
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 532.0
+    y1: -379.5
+    z_index: 6
+  - border_color: '#808080FF'
+    border_radius: 0
+    border_style: ''
+    color: '#F8F8F8'
+    thickness: 1
+    type: rectangle
+    x1: 520.0
+    y1: -400.0
+    x2: 320.0
+    y2: 160.0
+    z_index: -1
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#EB6F6F'
+    rotation: 0
+    text_bold: true
+    text_content: vl10
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 181.2638588204422
+    y1: -62.11441317325985
+    z_index: 7
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#656FD1'
+    rotation: 0
+    text_bold: true
+    text_content: vl20
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 179.5627501148068
+    y1: -94.45942399790066
+    z_index: 7
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#97D540'
+    rotation: 0
+    text_bold: true
+    text_content: vl30
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 180.41330446762444
+    y1: -131.90776093944754
+    z_index: 7
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: true
+    text_content: 'CCNA Exam Prep: Back to Networking Basics with Hank Preston and
+      Patrick Gargano'
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -1148.0
+    y1: -419.5
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: true
+    text_content: 'Mastering VLAN Configuration
+
+      '
+    text_font: monospace
+    text_italic: false
+    text_size: 18
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -1148.0
+    y1: -379.5
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: true
+    text_content: |-
+      Exploring why VLANs exist in network engineering and how to configure them on Cisco IOS switches.
+      * Creating VLANs
+      * Configuring Access Ports
+      * Configuring 802.1q trunk interfaces
+      * Inter VLAN Routing options
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -1148.0
+    y1: -339.5
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#5C5B5B'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      Credentials for all Hosts
+      * Username: cisco
+      * Password: cisco
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -720.0
+    y1: -280.0
+    z_index: 8
+nodes:
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname Switch01
+          !
+          interface e0/1
+           description Connected to EmpHost01
+           spanning-tree portfast
+           switchport mode access
+           switchport access vlan 10
+           no shutdown
+           exit
+          !
+          interface e0/2
+           description Connected to GstHost01
+           spanning-tree portfast
+           switchport mode access
+           switchport access vlan 20
+           no shutdown
+           exit
+          !
+          interface e0/3
+           description Connected to IOTHost01
+           spanning-tree portfast
+           switchport mode access
+           switchport access vlan 30
+           no shutdown
+           exit
+          !
+          interface e1/1
+           description Connected to Switch02 - vl10
+           switchport mode access
+           no shutdown
+           exit
+          !
+          interface e1/2
+           description Connected to Switch02 - vl20
+           switchport mode access
+           no shutdown
+           exit
+          !
+          interface e1/3
+           description Connected to Switch02 - vl30
+           switchport mode access
+           no shutdown
+           exit
+          !
+          vlan 10
+           name Employees
+           exit
+          !
+          vlan 20
+           name Guests
+           exit
+          !
+          vlan 30
+           name IOT-Devices
+           exit
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: Switch01
+    node_definition: ioll2-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: -120
+    y: -80
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet0/3
+        slot: 3
+        type: physical
+      - id: i5
+        label: Ethernet1/0
+        slot: 4
+        type: physical
+      - id: i6
+        label: Ethernet1/1
+        slot: 5
+        type: physical
+      - id: i7
+        label: Ethernet1/2
+        slot: 6
+        type: physical
+      - id: i8
+        label: Ethernet1/3
+        slot: 7
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname Switch02
+          !
+          interface e0/1
+           description Connected to EmpHost02
+           spanning-tree portfast
+           switchport mode access
+           switchport access vlan 10
+           no shutdown
+           exit
+          !
+          interface e0/2
+           description Connected to GstHost02
+           spanning-tree portfast
+           switchport mode access
+           switchport access vlan 20
+           no shutdown
+           exit
+          !
+          interface e0/3
+           description Connected to IOTHost02
+           spanning-tree portfast
+           switchport mode access
+           switchport access vlan 30
+           no shutdown
+           exit
+          !
+          interface e1/1
+           description Connected to Switch01 - vl10
+           switchport mode access
+           no shutdown
+           exit
+          !
+          interface e1/2
+           description Connected to Switch01 - vl20
+           switchport mode access
+           no shutdown
+           exit
+          !
+          interface e1/3
+           description Connected to Switch01 - vl30
+           switchport mode access
+           no shutdown
+           exit
+          !
+          vlan 10
+           name Employees
+           exit
+          !
+          vlan 20
+           name Guests
+           exit
+          !
+          vlan 30
+           name IOT-Devices
+           exit
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: Switch02
+    node_definition: ioll2-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: 520
+    y: -80
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet0/3
+        slot: 3
+        type: physical
+      - id: i5
+        label: Ethernet1/0
+        slot: 4
+        type: physical
+      - id: i6
+        label: Ethernet1/1
+        slot: 5
+        type: physical
+      - id: i7
+        label: Ethernet1/2
+        slot: 6
+        type: physical
+      - id: i8
+        label: Ethernet1/3
+        slot: 7
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname GstHost11
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+          # Configure network
+          ip address add 192.168.2.11/24 dev eth0
+          ip route add default via 192.168.2.1
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n2
+    image_definition: null
+    label: GstHost11
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: -120
+    y: 80
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname GstHost12
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+          # Configure network
+          ip address add 192.168.2.12/24 dev eth0
+          ip route add default via 192.168.2.1
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n3
+    image_definition: null
+    label: GstHost12
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: 520
+    y: 80
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname EmpHost11
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+          # Configure network
+          ip address add 192.168.1.11/24 dev eth0
+          ip route add default via 192.168.1.1
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n4
+    image_definition: null
+    label: EmpHost11
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: -320
+    y: 80
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname IOTHost12
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+          # Configure network
+          ip address add 192.168.3.12/24 dev eth0
+          ip route add default via 192.168.3.1
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n5
+    image_definition: null
+    label: IOTHost12
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: 720
+    y: 80
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname IOTHost11
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+          # Configure network
+          ip address add 192.168.3.11/24 dev eth0
+          ip route add default via 192.168.3.1
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n6
+    image_definition: null
+    label: IOTHost11
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: 80
+    y: 80
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname EmpHost12
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+          # Configure network
+          ip address add 192.168.1.12/24 dev eth0
+          ip route add default via 192.168.1.1
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n7
+    image_definition: null
+    label: EmpHost12
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: 320
+    y: 80
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n8
+    image_definition: null
+    label: EmpSw
+    node_definition: unmanaged_switch
+    parameters: {}
+    ram: null
+    tags: []
+    x: -1040
+    y: 40
+    interfaces:
+      - id: i0
+        label: port0
+        slot: 0
+        type: physical
+      - id: i1
+        label: port1
+        slot: 1
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname EmpHost
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+          # Configure network
+          ip address add 192.168.1.11/24 dev eth0
+          ip route add default via 192.168.1.1
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n9
+    image_definition: null
+    label: EmpHost
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: -1040
+    y: 160
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname GstHost
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+          # Configure network
+          ip address add 192.168.2.11/24 dev eth0
+          ip route add default via 192.168.2.1
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n10
+    image_definition: null
+    label: GstHost
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: -840
+    y: 160
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname IOTHost
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+          # Configure network
+          ip address add 192.168.3.11/24 dev eth0
+          ip route add default via 192.168.3.1
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n11
+    image_definition: null
+    label: IOTHost
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: -640
+    y: 160
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n12
+    image_definition: null
+    label: GstSw
+    node_definition: unmanaged_switch
+    parameters: {}
+    ram: null
+    tags: []
+    x: -840
+    y: 40
+    interfaces:
+      - id: i0
+        label: port0
+        slot: 0
+        type: physical
+      - id: i1
+        label: port1
+        slot: 1
+        type: physical
+      - id: i2
+        label: port2
+        slot: 2
+        type: physical
+      - id: i3
+        label: port3
+        slot: 3
+        type: physical
+      - id: i4
+        label: port4
+        slot: 4
+        type: physical
+      - id: i5
+        label: port5
+        slot: 5
+        type: physical
+      - id: i6
+        label: port6
+        slot: 6
+        type: physical
+      - id: i7
+        label: port7
+        slot: 7
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname Router
+          !
+          ! In order to avoid entering a configuration dialog
+          ! on boot, please ensure that all ethernet interfaces
+          ! have some ip configuration present here such as the
+          ! example below:
+          !
+          interface range Ethernet 0/0 - 3
+           no ip address
+           shutdown
+          !
+          interface Eth0/1
+           no shut
+           description Link to Employee Network
+           ip address 192.168.1.1 255.255.255.0
+           exit
+          !
+          interface Eth0/2
+           no shut
+           description Link to Guest Network
+           ip address 192.168.2.1 255.255.255.0
+           exit
+          !
+          interface Eth0/3
+           no shut
+           description Link to IOT Network
+           ip address 192.168.3.1 255.255.255.0
+           exit
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n13
+    image_definition: null
+    label: Router
+    node_definition: iol-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: -840
+    y: -120
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet0/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname EmpHost01
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+          # Configure network
+          ip address add 10.0.0.1/24 dev eth0
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n14
+    image_definition: null
+    label: EmpHost01
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: -1040
+    y: 680
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname GstHost01
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+          # Configure network
+          ip address add 10.0.0.2/24 dev eth0
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n15
+    image_definition: null
+    label: GstHost01
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: -840
+    y: 680
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname IOTHost01
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+          # Configure network
+          ip address add 10.0.0.3/24 dev eth0
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n16
+    image_definition: null
+    label: IOTHost01
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: -640
+    y: 680
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname Switch
+
+          interface e0/1
+           description Connected to EmpHost01
+           spanning-tree portfast
+           no shutdown
+           exit
+          !
+          interface e0/2
+           description Connected to GstHost01
+           spanning-tree portfast
+           no shutdown
+           exit
+          !
+          interface e0/3
+           description Connected to IOTHost01
+           spanning-tree portfast
+           no shutdown
+           exit
+          !
+          interface e1/0
+           description Connected to IOTHost02
+           spanning-tree portfast
+           no shutdown
+           exit
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n17
+    image_definition: null
+    label: Switch
+    node_definition: ioll2-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: -840
+    y: 520
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet0/3
+        slot: 3
+        type: physical
+      - id: i5
+        label: Ethernet1/0
+        slot: 4
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname IOTHost02
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+          # Configure network
+          ip address add 10.0.0.4/24 dev eth0
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n18
+    image_definition: null
+    label: IOTHost02
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: -640
+    y: 560
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname Router01
+          !
+          ! In order to avoid entering a configuration dialog
+          ! on boot, please ensure that all ethernet interfaces
+          ! have some ip configuration present here such as the
+          ! example below:
+          !
+          interface range Ethernet 0/0 - 3
+           no ip address
+           shutdown
+          !
+          interface Eth0/0
+           no shutdown
+           description Router on a Stick Connection to Switch02
+           exit
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n19
+    image_definition: null
+    label: Router01
+    node_definition: iol-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: 680
+    y: -320
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet0/3
+        slot: 3
+        type: physical
+links:
+  - id: l0
+    n1: n13
+    n2: n8
+    i1: i2
+    i2: i0
+    conditioning: {}
+    label: Router-Ethernet0/1<->EmpSw-port0
+  - id: l1
+    n1: n13
+    n2: n12
+    i1: i3
+    i2: i0
+    conditioning: {}
+    label: Router-Ethernet0/2<->GstSw-port0
+  - id: l2
+    n1: n8
+    n2: n9
+    i1: i1
+    i2: i0
+    conditioning: {}
+    label: EmpSw-port1<->EmpHost-eth0
+  - id: l3
+    n1: n12
+    n2: n10
+    i1: i1
+    i2: i0
+    conditioning: {}
+    label: GstSw-port1<->GstHost-eth0
+  - id: l4
+    n1: n14
+    n2: n17
+    i1: i0
+    i2: i2
+    conditioning: {}
+    label: EmpHost.2-eth0<->Switch.2-Ethernet0/1
+  - id: l5
+    n1: n17
+    n2: n15
+    i1: i3
+    i2: i0
+    conditioning: {}
+    label: Switch.2-Ethernet0/2<->GstHost.2-eth0
+  - id: l6
+    n1: n17
+    n2: n16
+    i1: i4
+    i2: i0
+    conditioning: {}
+    label: Switch.2-Ethernet0/3<->IOTHost.2-eth0
+  - id: l7
+    n1: n18
+    n2: n17
+    i1: i0
+    i2: i5
+    conditioning: {}
+    label: IOTHost02-eth0<->Switch.2-Ethernet1/0
+  - id: l8
+    n1: n0
+    n2: n4
+    i1: i2
+    i2: i0
+    conditioning: {}
+    label: Switch01-Ethernet0/1<->PC1-eth0
+  - id: l9
+    n1: n0
+    n2: n2
+    i1: i3
+    i2: i0
+    conditioning: {}
+    label: Switch01-Ethernet0/2<->PC2-eth0
+  - id: l10
+    n1: n0
+    n2: n6
+    i1: i4
+    i2: i0
+    conditioning: {}
+    label: Switch01-Ethernet0/3<->PC3-eth0
+  - id: l11
+    n1: n1
+    n2: n7
+    i1: i2
+    i2: i0
+    conditioning: {}
+    label: Switch02-Ethernet0/1<->PC4-eth0
+  - id: l12
+    n1: n1
+    n2: n3
+    i1: i3
+    i2: i0
+    conditioning: {}
+    label: Switch02-Ethernet0/2<->PC5-eth0
+  - id: l13
+    n1: n1
+    n2: n5
+    i1: i4
+    i2: i0
+    conditioning: {}
+    label: Switch02-Ethernet0/3<->PC6-eth0
+  - id: l14
+    n1: n0
+    n2: n1
+    i1: i8
+    i2: i8
+    conditioning: {}
+    label: Switch01-Ethernet1/3<->Switch02-Ethernet1/3
+  - id: l15
+    n1: n0
+    n2: n1
+    i1: i7
+    i2: i7
+    conditioning: {}
+    label: Switch01-Ethernet1/2<->Switch02-Ethernet1/2
+  - id: l16
+    n1: n0
+    n2: n1
+    i1: i6
+    i2: i6
+    conditioning: {}
+    label: Switch01-Ethernet1/1<->Switch02-Ethernet1/1
+lab:
+  description: |-
+    Exploring why VLANs exist in network engineering and how to configure them on Cisco IOS switches.
+    * Creating VLANs
+    * Configuring Access Ports
+    * Configuring 802.1q trunk interfaces
+    * Inter VLAN Routing options
+  notes: |-
+    **CCNA Exam Prep: Back to Networking Basics with Hank Preston and Patrick Gargano**
+
+    # Mastering VLAN Configuration
+
+    Exploring why VLANs exist in network engineering and how to configure them on Cisco IOS switches.
+
+    * Creating VLANs
+    * Configuring Access Ports
+    * Configuring 802.1q trunk interfaces
+    * Inter VLAN Routing options
+
+    ## Setup and Scenario
+    In this set of lab-based demonstrations, you are the network engineer for a growing organization tasked with updating the network to support new network needs.  The network traditionally has had 2 small network segments. One for "Employees" and a second one for "Guests".
+
+    You are getting two requests from the business:
+
+    1. The facilities team is asking for network connectivity for IOT Devices.  These devices need to be segmented from employee and guest traffic.
+    2. The organization is growing, and there is need to add network capacity to support additional users. These new users will be located in new office space being prepared in a different part of the building.
+
+    The following lab-based demonstrations will look at how VLANs provide solutions for these requests.
+
+    > Note: In a real network, there would be security included to control traffic to and from these segments through the use of Access Control Lists (ACLs) and/or firewalls appliances. The security configuration is out of scope for this lab that focuses solely on VLANs.
+
+    *Be sure to **START** the lab before continuing to the demo labs.*
+
+    ## Demo 1: A Network Without VLANs
+    Before we dive into creating and managing VLANs, let's remind ourselves what life would be like without them.
+
+    Our starting network is composed of 2 simple unmanaged switches. `EmpSw` for employees, and `GstSw` for guests. There is also an IOS router called `Router` that provides routing between network segments.
+
+    ***Goal: To support the new IOT devices, we will be adding a new `IOTSw` to the network.***
+
+    > Notes:
+    >
+    > * `Router` interface Ethernet0/3 is already configured for the new "IOT Devices" network segment.
+    > * `IOTHost` is already configured with an IP address on the "IOT Devices` network segment.
+
+    ### Testing current state
+    1. Open the console for `EmpHost` (credentials are `cisco / cisco`).
+    1. Ping `GstHost` with command `ping 192.168.2.11`.
+        * Verify this is successful - `0% packet loss`
+        * End the ping by pressing `Cntrl-C`
+    1. Attempt to ping `IOTHost` with command `ping 192.168.3.11`.
+        * This should be unsuccessful - `100% packet loss`
+
+    ### Adding a switch/network for IOT devices
+    1. Add a new "Unmanaged Switch" to the "IOT Devices" network block within "Demo 1".
+    1. Name this new switch `IOTSw`.
+    1. As this is an "unmanaged switch", there isn't any configuration needed.
+    1. **Start** `IOTSw`. (Right click the new switch)
+    1. Add 2 links to the new `IOTSw`.
+        1. From `Router` interface `Eth0/3` to `port0`
+        1. From `IOTHost` interface `eth0` to `port1`
+
+    ### Testing the network
+    1. Return to the console for `EmpHost`
+    1. Retry pinging `IOTHost` with command `ping 192.168.3.11`.
+        * Verify this is ***now*** successful - `0% packet loss`
+        * If it is ***NOT*** successful, ensure you connected interface `eth0/3` from the router.
+
+    ### Conclusion
+    We've been able to support the new network segment by adding an additional switch, however, consider what happens as the number of network segments increase from 3 to 10, 20, or 100. The number of physical switches required will quickly become challenging. Also worth considering is the router requirement to support this number of switches.
+
+    ## Demo 2: Configuring VLANs and Access Ports
+    In this demonstration we are looking at how we can replace multiple "unmanged switches" with a single "managed switch" and maintain the segmentation with VLANs.
+
+    The starting network already has an IOS based "switch" named `Switch` with links to each of the hosts in the network. There are the following hosts:
+
+    * `EmpHost01` - an employee host
+    * `GstHost01` - a guest host
+    * `IOTHost01` & `IOTHost02` - 2 IOT host devices
+
+    In this demonstration we are looking at how VLANs enforce layer 2 network segmentation. To explore that, each of the hosts have been assigned an IP address on the same `10.0.0.0/24` network. We will use these addresses to test and verify the segmentation.
+
+    ***Goal: To create 3 VLANs and configure each host in the proper network segment.***
+
+    ### Testing starting state
+    As we start, the only VLAN that exists on the switch is `Vlan 1`, the "default vlan". All hosts are on this vlan, and therefore should be able to communicate with each other.
+
+    1. Open the console for `Switch` and look at the starting VLAN configuration with the command `show vlan brief`.
+        > In addition to `Vlan 1`, you will see vlans `1002 - 1005`.  These are special purpose VLAN numbers used for older non-ethernet based networks and out of scope for this lab and the CCNA.
+    1. On IOS switches, the configuration of "normal range VLANs" (numbers `1 - 1001`) is not stored in the configuration file, but in a special `vlan.dat` file. Because we don't have any VLANs created yet, this file does NOT exist. You can verify with the command `dir`. You should NOT see the `vlan.dat` file.
+    1. Open the console for `IOTHost01`.  Attempt to ping each of the other hosts.
+        * `ping 10.0.0.1`
+        * `ping 10.0.0.2`
+        * `ping 10.0.0.4`
+    1. All of these should work.  This is because each host is on the same VLAN. Other ways to say this include:
+        * All hosts are on the same network segment
+        * All hosts are on the same broadcast domain
+
+    ### Creating VLANs
+    Now we will create three VLANs:
+
+    | VLAN ID  | VLAN Name   |
+    | -------- | ----------- |
+    | 10       | Employees   |
+    | 20       | Guests      |
+    | 30       | IOT-Devices |
+
+    1. Open the console for `Switch`.
+    1. Enter privileged exec mode (ie enable mode) and then configuration mode with the commands `enable` and `config t`.
+    1. Create the first vlan with the following commands:
+
+        ```
+        vlan 10
+         name Employees
+         exit
+        ```
+
+    1. Repeat for the other two VLANs, changing the numbers and names.
+    1. Leave configuration mode.
+    1. Verify that the VLANs were created with the `show vlan brief` command.
+    1. Verify that the `vlan.dat` file was created with the `dir` command.
+
+        > Note: The file may be named something like `vlan.dat-00003`. The addition of the number is due to the simulated nature of the switch used in CML.
+
+    ### Moving hosts into the correct VLANs
+    We have created the VLANs, but all our hosts are still in VLAN 1.  To move the hosts into the correct VLANs, we need to change the `access vlan` for the related interfaces on `Switch` for each host.
+
+    | Host        | Interface   | VLAN ID   |
+    | ----------- | ----------- | --------- |
+    | `EmpHost01` | `Eth0/1`    | `10`      |
+    | `GstHost01` | `Eth0/2`    | `20`      |
+    | `IOTHost01` | `Eth0/3`    | `30`      |
+    | `IOTHost02` | `Eth1/0`    | `30`      |
+
+    1. Open the console for `Switch`.
+    1. Look at the current `switchport` configuration for interface `Eth0/1` - the interface connected to `EmpHost01`. Use the command `show interface eth0/1 switchport`.
+        * Look for the lines `Operational Mode: static access` and `Access Mode VLAN: 1`
+        * These show that hosts "accessing" the network through this port are assigned to VLAN 1.
+    1. Move to configuration mode and change the "access vlan" for port `EmpHost01` to VLAN 10 with the following commands:
+
+        ```
+        interface ethernet0/1
+         switchport mode access
+         switchport access vlan 10
+         exit
+        ```
+
+        * `switchport mode access` - The default mode is `dynamic auto`, as could be seen in the output from `show interface switchport` above. This mode works for hosts, but results in the switch attempting to negotiate a "vlan trunk" with a connected device. For ports that are known to connect to a single hosts, `mode access` is preferred.
+        * `switchport access vlan 10` - This changes the VLAN that the interface will use when operating in mode `static access`
+
+    1. Repeat the configuration steps for the other three hosts.  Pay special attention to the VLAN ID used for each interface, and notice that both IOTHosts are in the same VLAN.
+    1. Exit configuration mode.
+    1. Verify the updated VLAN configuration for each interface with the command `show vlan brief`. Compare the output to the table above.
+    1. Use the command `show interface ethernet 0/1 switchport` to check the current interface switchport configuration. Compare it to the output from before the changes.
+
+    ### Testing the resulting network segmentation
+    Now that we've segmented our network into three VLANs, let's see the impact to connectivity.
+
+    1. Open the console for `IOTHost01`.
+    1. Attempt to ping `EmpHost01` with the command `ping 10.0.0.1`.
+        * This should be unsuccessful - `100% packet loss`
+    1. Attempt to ping `GstHost01` with the command `ping 10.0.0.2`.
+        * This should be unsuccessful - `100% packet loss`
+    1. Attempt to ping `IOTHost02` with the command `ping 10.0.0.4`.
+        * This should be ***successful*** - `0% packet loss`
+
+    The first 2 pings fail because the `IOTHost01`, `EmpHost01`, and `GstHost01` are all in *different* VLANs.  And the last ping works because the two IOTHosts are in the **same** VLAN.
+
+    ### Conclusion
+    We've now been able to take a single switch and use VLANs to create three "virtual switches" (ie Virtual LANs).
+
+    ## Demo 3: Multi-Switch Networks and VLAN Trunks
+    Now that we have created VLANs, we are going to look at how we can handle capacity in a network by adding additional switches to our VLAN segmented network. Reasons for an additional switch may be needed include:
+
+    * When the existing switch at a location runs out of available ports
+    * When adding a new location (such as a new building or floor in a building)
+
+    In the starting network there are two switches, each with a host in each of the VLANs.  The hosts have been segmented into VLANs 10, 20, and 30 already.  The switches have been linked together on ports `Eth1/1`, `Eth1/2`, and `Eth1/3` - one for each of the network segments.
+
+    In this demonstration, we will first configure these "inter-switch links" as access ports, just like we did in Demo 2 for the host systems.  Then we'll explore the better option for connecting switches together, VLAN trunks.
+
+    ***Goal: To create network segments that span multiple switches by using VLAN trunks.***
+
+    ### Testing starting state
+    Before we begin connecting the VLANs across switches together, let's verify that hosts on different switches can NOT communicate.
+
+    1. Open the console for `EmpHost11` that is connected to `Switch01`.
+    1. Attempt to ping `EmpHost12` with the command `ping 192.168.1.12`.
+        * This should be unsuccessful.
+    1. Repeat this test with `GstHost11` and `IOTHost11` by trying to ping the respective `Host02` on `Switch02`.
+        * These should both be unsuccessful.
+
+    ### Configuring inter-switch links as access ports
+    Similar to how in Demo 1 we started by adding a new *dedicated* switch for each segment and then explored using VLANs and a ***single*** switch, we will first see how we can use *dedicated interfaces* for each segment.
+
+    | Purpose     | Interface   | VLAN ID   |
+    | ----------- | ----------- | --------- |
+    | Employees   | `Eth1/1`    | `10`      |
+    | Guests      | `Eth1/2`    | `20`      |
+    | IOT Devices | `Eth1/3`    | `30`      |
+
+    > Note: The same interface is used on both switches
+
+    1. Open the console on `Switch01`.
+    1. Check the current VLAN configuration for interfaces `Ethernet1/1 - 3` with the command `show vlan brief`.
+        * All three interfaces should be listed as ports for VLAN 1.
+    1. Move into configuration mode and configure the access VLAN for each interface as shown in the table.
+        * Use the same commands from Demo 2.
+    1. Exit configuration mode.
+    1. Use `show vlan brief` to verify the changes were made successfully.
+    1. Open the console on `Switch02` and repeat the configuration and verification.
+
+    ### Testing inter-switch connectivity
+    With the inter-switch links configured, we can now test that communications are successful.
+
+    1. Open the console for `EmpHost11` that is connected to `Switch01`.
+    1. Attempt to ping `EmpHost12` with the command `ping 192.168.1.12`.
+        * This should now be ***successful***.
+    1. Repeat this test with `GstHost11` and `IOTHost11` by trying to ping the respective `Host12` on `Switch02`.
+        * These should now both be ***successful***.
+
+    ### Improving inter-switch links with a single VLAN Trunk
+    Just like it doesn't scale to add a new unmanaged switch for each new network segment, it doesn't make sense to need separate interfaces for each VLAN when connecting two switches together. Instead, network engineers use VLAN trunks, single interfaces that can service multiple VLANs while maintaining network isolation and segmentation.
+
+    VLAN trunks are created with the 802.1q standard trunking protocol. This protocol adds a *VLAN tag* to each frame sent on the trunk interface. The tag includes the VLAN ID number. The receiving device can then read this tag to determine what VLAN (segment) the traffic belongs on.
+
+    Let's reconfigure our network to use a single 802.1q VLAN trunk interface instead of three separate links.
+
+    1. First we will `shutdown` interfaces `Ethernet1/2` and `Ethernet1/3` on both switches.  ***On each switch:***
+        1. Open the console
+        1. Disable `interface Ethernet1/2` with these commands:
+
+            ```
+            interface ethernet1/2
+             shutdown
+             exit
+            ```
+
+        1. Repeat for `interface Ethernet1/3` with the same commands.
+    1. Test connectivity for the hosts on the segments using `ping` commands.
+        * `EmpHost11` should be able to successfully ping `EmpHost12` because we left `Ethernet1/1` enabled
+        * `GstHost11` and `IOTHost11` should **not** be able to ping their peer hosts (Host12) because we shutdown the interfaces they used for communications.
+    1. Change the configuration on `Ethernet1/1` from `static access` to `static trunk`. ***On each switch:***
+        1. Open the console
+        1. Change the `mode` of interface `Ethernet1/1` with the following commands.
+
+            ```
+            interface ethernet1/1
+             switchport trunk encapsulation dot1q
+             swithchport mode trunk
+             exit
+            ```
+
+            > Note: `dot1q` (802.1q) is an industry standard trunking protocol. `isl` is a Cisco trunking protocol that has been deprecated in favor of the standard 802.1q.
+
+        1. Exit configuration mode
+
+    1. Verify the interface is now trunking. ***On each switch:***
+        1. Check the trunking configuration with the command `show interface ethernet1/1 trunk`.
+            * Notice the encapsulation and trunking state
+            * Notice the "Vlans in spanning tree forwarding state and not pruned"
+        1. Check the `switchport status` with the command `show interface ethernet1/1 switchport`.
+            * Notice the values for `Administrative Mode`, `Operational Mode` and `Trunking Encapsulation`.
+
+    ### Testing inter-switch connectivity with the VLAN trunk
+    With the trunk configured, once more test the ability for each host to communicate with its peer on the other switch.
+
+    1. Open the console for `EmpHost11` that is connected to `Switch01`.
+    1. Attempt to ping `EmpHost12` with the command `ping 192.168.1.12`.
+        * This should now be ***successful***.
+    1. Repeat this test with `GstHost11` and `IOTHost11` by trying to ping the respective `Host12` on `Switch02`.
+        * These should now both be ***successful***.
+
+    ### Conclusion
+    Now that we've configured a VLAN trunk between the switches, hosts connected to new, future VLANS we create on our switches will be able to communicate without needing to add new links between our switches.
+
+    <!-- ### Optional: Inspect the 802.1q tags on VLAN trunk interfaces  -->
+
+    ## Demo 4: Inter VLAN Routing
+    Our last step to implementing VLANs in our network is to setup routing so that hosts on one VLAN can communicate with hosts on other VLANs.
+
+    There are two approaches to inter VLAN routing that we want to explore.
+
+    1. *Router-on-a-Stick*: This option leverages a dedicated router connected to the switches with a VLAN trunk. The router has ***subinterfaces*** for each VLAN and can forward traffic between the networks. This option is best for networks with switches that are "layer 2 only" and can't handle routing.
+    2. *Switched Virtual Interfaces (SVI)*: This option requires "layer 3 switches", sometimes known as "multi-layer switches".  These switches have the ability to act as a router in addition to being a switch. You'll create "vlan interfaces" for each VLAN that will forward traffic between the networks.
+
+    > Note: Only one of the two options should be configured and enabled on a network at one time.
+
+    ***Goal: Configure routing between the networks using both Router on a Stick and SVIs.***
+
+    ### Configuring Router-on-a-Stick
+
+    1. Locate `Router01` in the "Demo 4" box.
+    1. Add a link from `Router01` interface `Eth0/0` to `Switch02` interface `Eth0/0`
+    1. Now we'll configure the switch interface to be an 802.1q trunk, just like we did between switches.
+        1. Open the console for `Switch02`.
+        1. Enter configuration mode for `interface Eth0/0` and configure the interface as a trunk with the following commands.
+
+            ```
+            interface ethernet 0/0
+             no shutdown
+             switchport trunk encapsulation dot1q
+             switchport mode trunk
+             exit
+            ```
+
+    1. Now we'll configure the "router on a stick".
+        1. Open the console for `Router01`
+        1. Enable the physical interface connected to the switch.
+
+            ```
+            interface ethernet 0/0
+             no shutdown
+             exit
+            ```
+
+            > No IP address or other configuration is applied to the physical interface. We will be creating "subinterfaces" for each VLAN.  But if the physical interface is `shutdown`, none of the subinterfaces will work.
+
+        1. Create subinterface `ethernet0/0.10` for VLAN 10 with the following commands.
+
+            ```
+            interface ethernet0/0.10
+             encapsulation dot1q 10
+             ip address 192.168.1.1 255.255.255.0
+             exit
+            ```
+
+            * Subinterfaces are created by adding `.NUMBER` to an interface name. The number used typically matches the VLAN the subinterface will be placed on, but it is *not* mandatory to match.
+            * The command `encapsulation dot1q 10` associates this subinterface with VLAN 10
+
+        1. Repeat the process to create subinterfaces `ethernet0/0.20` and `ethernet0/0.30` for VLANs 20 and 30 respectively using IP addresses `192.168.2.1` and `192.168.3.1`.
+        1. You can verify the interface configuration on the router with the commands `show ip interface brief` and `show ip interface ethernet0/0.10`.
+
+    ### Testing Router-on-a-Stick
+
+    1. Open the console for `EmpHost11`.
+    1. Try to ping `GstHost12` with command `ping 192.168.2.12`
+        * It should be successful.
+    1. Try to ping `IOTHost12` with command `ping 192.168.3.12`
+        * It should be successful.
+    1. If the pings are NOT working, check the following:
+        * Wait 60 seconds and try again. It takes time for spanning-tree to converge after configuring the subinterfaces and it may not be done yet.
+        * Did you connect `Router01` to `Switch02`?
+        * Did you connect interfaces `Ethernet0/0` on both devices?
+        * Did you configure `Switch02` interface `Ethernet0/0` as a trunk?
+        * Did you use the correct VLAN number on the `encapsulation dot1q` commands for the subinterfaces?
+        * Did you use the correct IP addresses for each VLAN subinterface?
+
+    Great job! You've configured inter VLAN routing with router on a stick!
+
+    ### Disabling Router-on-a-Stick
+    Before we can configure Switched Virtual Interface (SVI) routing on the switches, we need to disconnect our "router on a stick".  This could be done by removing the router configuration, shutting down the interfaces, or deleting the link. We will do this by simply removing the link connecting the router to the switch.
+
+    1. Select the link connecting `Router01` to `Switch02`.
+    2. **Delete** the link.
+    3. Verify that you can ***no longer*** ping `GstHost02` from `EmpHost01`.
+        * If you can still ping between networks, make sure you deleted the correct link.
+
+    ### Configuring Switched Virtual Interface (SVI) Routing
+
+    1. Open the console for `Switch01`.
+    1. Enter configuration mode, and enable the layer 3 features of the switch with the following command:
+
+        ```
+        ip routing
+        ```
+
+        > Note: Some switches might have this command enabled by default. But it doesn't hurt to get into the habit of configuring it to be sure.
+
+    1. Create `interface vlan 10` for the Employees network with the following commands:
+
+        ```
+        interface vlan 10
+         no shutdown
+         ip address 192.168.1.1 255.255.255.0
+         exit
+        ```
+
+    1. Repeat the steps to create `interface vlan 20` and `interface vlan 30` for the guests and IOT devices networks respectively.
+    1. You can verify the interface configurations with the commands `show ip interface brief` and `show ip interface vlan 10`.
+
+    ### Testing Switched Virtual Interface (SVI) Routing
+    1. Open the console for `EmpHost11`.
+    1. Try to ping `GstHost12` with command `ping 192.168.2.12`
+        * It should be successful.
+    1. Try to ping `IOTHost12` with command `ping 192.168.3.12`
+        * It should be successful.
+    1. If the pings are NOT working, check the following:
+        * Did you use the correct VLAN numbers when creating `interface vlan`?
+        * Did you use the correct IP addresses for each VLAN interface?
+
+    Great job! You've configured inter VLAN routing with Switched Virtual Interfaces (SVIs)!
+  title: CCNA Prep 2024 S1E1 Mastering VLANs
+  version: 0.2.2

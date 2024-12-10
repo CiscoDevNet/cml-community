@@ -1,0 +1,1178 @@
+annotations:
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: true
+    text_content: 'CCNA Exam Prep: Back to Networking Basics with Hank Preston and
+      Patrick Gargano'
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -435.0
+    y1: -499.5
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: true
+    text_content: GET a Head(er) of REST APIs
+    text_font: monospace
+    text_italic: false
+    text_size: 18
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -437.0
+    y1: -478.5
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      Checkout the Lab Guide for a walkthrough exploration of RESTCONF, the standard REST API for
+      the network. Get hands on with the following IOS XE resources:
+        * https://10.1.1.254/restconf/data/Cisco-IOS-XE-native:native/hostname
+        * https://10.1.1.254/restconf/data/Cisco-IOS-XE-native:native/interface
+        * https://10.1.1.254/restconf/data/Cisco-IOS-XE-native:native/interface/Loopback
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -435.0
+    y1: -419.5
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: |2-
+
+      Create      POST                Used to create a new object/resource
+                                      Example: Create a new Loopback interface
+      Read        GET                 Retrieve details about an object/resource
+                                      Example: Retrieve the list of interfaces
+      Update      PUT                 Replace or update a resource/object
+                                      Example: Change an interface description
+      Delete      DELETE              Remove a resource/object
+                                      Example: Delete a loopback interface
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -435.0
+    y1: -259.5
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      __________________________________________________________________
+
+      __________________________________________________________________
+
+      __________________________________________________________________
+
+      __________________________________________________________________
+
+      __________________________________________________________________
+    text_font: monospace
+    text_italic: false
+    text_size: 11
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -435.0
+    y1: -259.5
+    z_index: -1
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: true
+    text_content: 'Action      HTTP Method         Description     '
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -435.0
+    y1: -259.5
+    z_index: 1
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: |2-
+
+      __________________________________________________________________________________________________________________
+
+      __________________________________________________________________________________________________________________
+
+      __________________________________________________________________________________________________________________
+
+
+      __________________________________________________________________________________________________________________
+    text_font: monospace
+    text_italic: false
+    text_size: 11
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -435.0
+    y1: 260.5
+    z_index: -1
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: |2-
+
+
+      Basic       Simple username:password "Base64 encoded"               "Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQK"
+                  credentials.
+      Token       A token, secret, or API key generated for               "Authorization: Token nakdna7dnakd8an$andkandd"
+                  use. Typically has expiration time
+      OAUTH       Complex authentication flow where authentication        "Authorization: Bearer ankandkAAKNdkanakANAKn"
+                  is handled by another system. Think "Login with X"
+                  option on web sites
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -435.0
+    y1: 260.5
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: true
+    text_content: |2-
+
+      Auth Type   Description                                             Header Example
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -435.0
+    y1: 260.5
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: |2-
+
+
+      JSON    JavaScript Object Notation
+              Lightweight and common for typical default      {"hostname": "router01"}
+              format for RESTAPIs including RESTCONF
+      XML     eXtensible Markup Language
+              Supports detailed data descriptions. Used       <hostname>router01</hostname>
+              with NETCONF and some other APIs
+      YAML    "Yet Another Markup Language"
+              Lightweight and easy to read. Commonly used     hostname: router01
+              in Infrastructure as Code tools
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -435.0
+    y1: -19.5
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: true
+    text_content: |2-
+
+      Format  Description                                     Example
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -435.0
+    y1: -19.5
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: |2-
+
+      ______________________________________________________________________________
+
+
+      ______________________________________________________________________________
+
+
+      ______________________________________________________________________________
+
+
+      ______________________________________________________________________________
+    text_font: monospace
+    text_italic: false
+    text_size: 11
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -435.0
+    y1: -19.5
+    z_index: -1
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: ''
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 160.0
+    y1: -40.0
+    z_index: 2
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      10.1.1.254
+      cisco / cisco
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 480.0
+    y1: 40.0
+    z_index: 3
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      10.1.1.100
+      cisco / cisco
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 480.0
+    y1: -120.0
+    z_index: 3
+nodes:
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: internet
+    node_definition: external_connector
+    parameters: {}
+    ram: null
+    tags: []
+    x: 400
+    y: -240
+    interfaces:
+      - id: i0
+        label: port
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname desktop
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+          # Install curl
+          apk add curl
+          # Network configuration eth1 to router
+          ip address add dev eth1 10.1.1.100/24
+          ip link set up dev eth1
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: desktop
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: 400
+    y: -120
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+      - id: i1
+        label: eth1
+        slot: 1
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: iosxe_config.txt
+        content: |-
+          platform console serial
+          !
+          hostname cat8000v
+          !
+          aaa new-model
+          !
+          username cisco priv 15 secret cisco
+          !
+          aaa authentication login default local
+          aaa authorization exec default local
+          !
+          http secure-server
+          netconf-yang
+          restconf
+          !
+          interface gig1
+           description Link to desktop
+           ip address 10.1.1.254 255.255.255.0
+           no shutdown
+           exit
+          !
+          interface loopback 1
+           description Created in Day0 Config
+           ip address 192.168.1.1 255.255.255.255
+           no shut
+          !
+          interface loopback 2
+           description Created in Day0 Config
+           ip address 192.168.2.2 255.255.255.255
+           no shut
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n2
+    image_definition: null
+    label: cat8000v
+    node_definition: cat8000v
+    parameters: {}
+    ram: null
+    tags: []
+    x: 400
+    y: 40
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: GigabitEthernet1
+        slot: 0
+        type: physical
+      - id: i2
+        label: GigabitEthernet2
+        slot: 1
+        type: physical
+      - id: i3
+        label: GigabitEthernet3
+        slot: 2
+        type: physical
+      - id: i4
+        label: GigabitEthernet4
+        slot: 3
+        type: physical
+links:
+  - id: l0
+    n1: n1
+    n2: n2
+    i1: i1
+    i2: i1
+    conditioning: {}
+    label: desktop-eth1<->cat8000v-GigabitEthernet1
+  - id: l1
+    n1: n0
+    n2: n1
+    i1: i0
+    i2: i0
+    conditioning: {}
+    label: internet-port<->desktop-eth0
+lab:
+  description: It is time to dive into network automation skills needed to succeed
+    in the journey towards your CCNA certification. Learn everything you need to describe
+    authentication, decode any possible CRUD operation, and handle JSON and XML results
+    when working with REST APIs in this bonus CCNA Prep webinar.
+  notes: |
+    **CCNA Exam Prep: Back to Networking Basics with Hank Preston and Patrick Gargano**
+
+    # GET a Head(er) of REST APIs
+
+    It is time to dive into network automation skills needed to succeed in the journey towards your CCNA certification. Learn everything you need to describe authentication, decode any possible CRUD operation, and handle JSON and XML results when working with REST APIs in this bonus CCNA Prep webinar.
+
+    In this lab you will:
+
+    * Explore each of the basic "CRUD" operations using RESTCONF and an IOS XE router
+    * Learn how to use Basic authentication with REST APIs
+    * Leverage Headers such as `Accept` and `Content-type` to influence data encoding formats
+    * Explore returned data and details from REST API servers
+
+    ## Setup and Scenario
+    This set of lab based demonstrations includes a very simple network composed of 1 Linux desktop and 1 Cisco 8000v router running IOS XE.  The router has been pre-configured to enable the RESTCONF protocol.  You will use the Linux desktop to send RESTCONF requests to the router using `curl`, a basic command line web client available on most common operating systems including Windows, Mac and Linux.
+
+    > NOTE: RESTCONF is an IETF standard REST API for networking.  It is related to the standards NETCONF and YANG.
+    >
+    > * RESTCONF - [RFC 8040](https://datatracker.ietf.org/doc/html/rfc8040)
+    > * NETCONF - [RFC 6241](https://datatracker.ietf.org/doc/html/rfc6241)
+    > * YANG 1.1 - [RFC 7950](https://datatracker.ietf.org/doc/html/rfc7950)
+
+    *Be sure to **START** the lab before continuing to the demo labs.*
+
+    <!-- ```
+    apk add curl
+    ```
+
+    ```
+    aaa authentication login default local
+    aaa authorization exec default local
+    ``` -->
+
+    ## Making our first REST API Call
+    Before we can use RESTCONF to make configuration changes, or even lookup interesting bits of information, we need to successfully connect to the router.  This will involve crafting a REST API request using the correct address, authentication, and URL format.
+
+    1. Open up the console for `desktop` and login.
+    1. We will start with a simple "hello world" kind of request, ask the router for it's hostname.  The RESTCONF URL for an IOS XE hostname is:
+
+        ```
+        https://{router-address}/restconf/data/Cisco-IOS-XE-native:native/hostname
+        ```
+
+        > `{router-address}` can be the IP address or FQDN for the router's management address where RESTCONF is available.
+
+    1. Use `curl` to send a request to `cat8000v`.
+
+        ```
+        curl https://10.1.1.254/restconf/data/Cisco-IOS-XE-native:native/hostname
+        ```
+
+        <details><summary>Expected Output</summary>
+
+        ```
+        curl: (60) SSL certificate problem: self signed certificate
+        More details here: https://curl.se/docs/sslcerts.html
+
+        curl failed to verify the legitimacy of the server and therefore could not
+        establish a secure connection to it. To learn more about this situation and
+        how to fix it, please visit the web page mentioned above.
+        ```
+
+        </details>
+
+    1. RESTCONF is a "secure" protocol and runs over HTTPS using SSL/TLS for security. However, by default the certificate used for TLS is "self-signed" and not immediately "trusted" by your client. This is similar to webbased network management applications that require you to "Accept the risk" in order to access the interface.
+    1. We will "accept the risk" by adding the argument `--insecure` (or the shorter argument `-k`) to the request.
+
+        ```
+        curl --insecure https://10.1.1.254/restconf/data/Cisco-IOS-XE-native:native/hostname
+        ```
+
+        <details><summary>Expected Output</summary>
+
+        ```xml
+        <errors xmlns="urn:ietf:params:xml:ns:yang:ietf-restconf">
+          <error>
+            <error-type>protocol</error-type>
+            <error-tag>access-denied</error-tag>
+          </error>
+        </errors>
+        ```
+
+        </details>
+
+    1. We get an `access-denied` error because we have failed to provide credentials to authenticate to the router.  Just because we are using an API, doesn't mean we don't need to properly authenticate.  There are different options for authentication with RESTAPIs, the simplest is called "Basic Authentication" and uses a username and password to authenticate.  RESTCONF on IOS XE uses "basic" authentication.
+
+    1. Provide the username and password to the `curl` request with the `--user username:password` argument. (Or the shorter `-u username:password` argument).
+
+        ```
+        curl --insecure --user cisco:cisco \
+          https://10.1.1.254/restconf/data/Cisco-IOS-XE-native:native/hostname
+        ```
+
+        > The command is getting longer, so we will use the `\` character to provide "multi-line" commands in the bash terminal.
+
+        <details><summary>Expected Output</summary>
+
+        ```xml
+        <hostname xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native"  xmlns:ios="http://cisco.com/ns/yang/Cisco-IOS-XE-native">cat8000v</hostname>
+        ```
+
+        </details>
+
+    ***Great job!!! You've sent your first successful REST API request to your router. Continue to peak behind the curtain to see more about how this works.***
+
+    ## Peaking behind the curtain
+    ### Looking at Headers and Status Codes with the "Verbose" option
+    We sent an **HTTP Request** to the router, and it replied with an **HTTP RESPONSE**. The *body* of the response was displayed by `curl` and contained an XML encoded string that included the current `hostname` of the router.
+
+    ```xml
+    <hostname xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native"  xmlns:ios="http://cisco.com/ns/yang/Cisco-IOS-XE-native">cat8000v</hostname>
+    ```
+
+    1. In addition to the "body" (or data) returned in a response, there is a lot more that is not displayed by default by `curl`. We can see the full response by adding the argument `--verbose` (or `-v`) to the request.
+
+        ```
+        curl --insecure --verbose --user cisco:cisco \
+          https://10.1.1.254/restconf/data/Cisco-IOS-XE-native:native/hostname
+        ```
+
+        <details><summary>Expected Output</summary>
+
+        ```
+        *   Trying 10.1.1.254:443...
+        * Connected to 10.1.1.254 (10.1.1.254) port 443 (#0)
+        * ALPN: offers h2,http/1.1
+        * TLSv1.3 (OUT), TLS handshake, Client hello (1):
+        * TLSv1.3 (IN), TLS handshake, Server hello (2):
+        * TLSv1.3 (OUT), TLS change cipher, Change cipher spec (1):
+        * TLSv1.3 (OUT), TLS handshake, Client hello (1):
+        * TLSv1.3 (IN), TLS handshake, Server hello (2):
+        * TLSv1.3 (IN), TLS handshake, Encrypted Extensions (8):
+        * TLSv1.3 (IN), TLS handshake, Certificate (11):
+        * TLSv1.3 (IN), TLS handshake, CERT verify (15):
+        * TLSv1.3 (IN), TLS handshake, Finished (20):
+        * TLSv1.3 (OUT), TLS handshake, Finished (20):
+        * SSL connection using TLSv1.3 / TLS_AES_256_GCM_SHA384
+        * ALPN: server accepted http/1.1
+        * Server certificate:
+        *  subject: CN=IOS-Self-Signed-Certificate-1736198370
+        *  start date: Nov 25 00:17:20 2024 GMT
+        *  expire date: Nov 25 00:17:20 2034 GMT
+        *  issuer: CN=IOS-Self-Signed-Certificate-1736198370
+        *  SSL certificate verify result: self signed certificate (18), continuing anyway.
+        * using HTTP/1.1
+        * Server auth using Basic with user 'cisco'
+        > GET /restconf/data/Cisco-IOS-XE-native:native/hostname HTTP/1.1
+        > Host: 10.1.1.254
+        > Authorization: Basic Y2lzY286Y2lzY28=
+        > User-Agent: curl/8.0.1
+        > Accept: */*
+        >
+        * TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):
+        * TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):
+        * old SSL session ID is stale, removing
+        < HTTP/1.1 200 OK
+        < Server: openresty
+        < Date: Mon, 25 Nov 2024 00:44:43 GMT
+        < Content-Type: application/yang-data+xml
+        < Transfer-Encoding: chunked
+        < Connection: keep-alive
+        < Cache-Control: private, no-cache, must-revalidate, proxy-revalidate
+        < Pragma: no-cache
+        < Content-Security-Policy: default-src 'self'; block-all-mixed-content; base-uri 'self'; frame-ancestors 'none';
+        < Strict-Transport-Security: max-age=15552000; includeSubDomains
+        < X-Content-Type-Options: nosniff
+        < X-Frame-Options: DENY
+        < X-XSS-Protection: 1; mode=block
+        <
+
+        <hostname xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native"  xmlns:ios="http://cisco.com/ns/yang/Cisco-IOS-XE-native">cat8000v</hostname>
+
+        ```
+
+        </details>
+
+        > Each line of the "verbose output" starts with a character that indicates what the line represents.
+        >
+        > * `*` - These lines represent basic connection details between client and server. Most of these lines relate to the TLS negotiation.
+        > * `>` - These lines represent the HTTP **REQUEST** that `curl` crafted and sent to the server.
+        > * `<` - These lines represent the HTTP **RESPONSE** that was returned by the web server.
+
+    1. Look at the first RESPONSE line. It should be `< HTTP/1.1 200 OK`. The first part of the line indicates the HTTP version in use.  Nearly all web servers run `HTTP/1.1` today. The more interesting part is the second half of the line - `200 OK`.  This represents the HTTP "status code".  Status codes include a number, `200`, and a message, `OK`.
+    1. There are dozens of possible status codes, but there are only a handful that a CCNA needs to worry about.
+
+        * Status code categories
+            * `2xx successful` - Any code in the `200s` can be considered positive. Whatever was expected by the request likely happened.
+            * `4xx client error` - Any code in the `400s` indicates something was wrong with the REQUEST. A `404 Not Found` is an example where the REQUESTed data was not available on the device. Perhaps you tried looking up an interface that doesn't exist?
+            * `5xx server error` - Any code in the `500s` indicates something is wrong with the server. The server could be overloaded, or down and broken.
+        * Status codes worth remembering
+            * `200 OK` - Most common "good code"
+            * `401 Unauthorized` - Indicates failed or missing authentication
+            * `404 Not Found` - Indicates the requested resource doesn't exist
+
+    1. Return to the RESPONSE lines, and find the line `< Content-Type: application/yang-data+xml`.  This is one of the many "headers" included in the response. "Headers" are a way for both request and response objects to provide details about the request being sent or reponse being returned. The `Content-type` header indicates the data format of the "body", so that clients and/or servers know how to "read" the data.
+    1. In this case, the server returned the hostname in the format of `application/yang-data+xml`. The key part being the `xml` portion. Which matches because we did infact get `xml` data back.
+
+        ```xml
+        <hostname xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native"  xmlns:ios="http://cisco.com/ns/yang/Cisco-IOS-XE-native">cat8000v</hostname>
+        ```
+
+    1. XML is the "default" content type used by the router, but we can also get JSON data back instead. We'll do that in the next part.
+    1. Now look at the REQUEST lines, and find the `> Authorization: Basic Y2lzY286Y2lzY28=` header.  This is where the `username:password` is included in the REQUEST to provide authentication to the server. We'll look at this part more in a bit.
+
+    ### Requesting JSON data from the server
+    XML data is fine, but many developers and engineers find JSON data easier to work with. Luckily, RESTCONF supports JSON as well as XML. Let's ask the router to send the hostname to us in JSON format.
+
+    1. We can request JSON data by including a header `Accept: application/yang-data+json` in our request.  Headers are added to `curl` with the `--header` (or `-H`) option.
+
+        ```
+        curl --insecure --user cisco:cisco \
+          --header "Accept: application/yang-data+json" \
+          https://10.1.1.254/restconf/data/Cisco-IOS-XE-native:native/hostname
+        ```
+
+        <details><summary>Expected Output</summary>
+
+        ```json
+        {
+            "Cisco-IOS-XE-native:hostname": "cat8000v"
+        }
+        ```
+
+        </details>
+
+        > Do more! Try sending a `verbose` request and compare the REQUEST and RESPONSE headers to see the differences.
+
+    The choice of XML or JSON for data formats is up to the engineer's preference. Do you prefer XML or JSON?
+
+    ### Understanding BASIC Authentication
+    Let's look more at the authentication that is used by the REST API. Basic authentication is very easy to leverage, and if you look back at the REQUEST header `Authorization: Basic Y2lzY286Y2lzY28=`, it might even look like it is safe and secure.  Well, let's see how "secure" it is.
+
+    1. Start by resending verbose request for the hostname.
+
+        ```
+        curl --insecure --verbose --user cisco:cisco \
+          --header "Accept: application/yang-data+json" \
+          https://10.1.1.254/restconf/data/Cisco-IOS-XE-native:native/hostname
+        ```
+
+    1. Locate the `Authorization` header.
+
+        ```
+        > Authorization: Basic Y2lzY286Y2lzY28=
+        ```
+
+    1. `Authorization` headers will indicate the type of authentication (or authorization) in use, followed by a string that represents the credential the server will use to verify access to the requested data.
+    1. "Basic" authentication creates the credential by performing a base64 encoding of the string `username:password` (where the actual username and password are used.)
+    1. "Encoding" is NOT "encryption".  And an "encoded" string, can be "decoded".  The server will do this when it recieves the request.
+    1. But we can decode it ourselves using the `base64` program.
+
+        ```
+        echo Y2lzY286Y2lzY28= | base64 -d
+        ```
+
+        <details><summary>Expected Output</summary>
+
+        ```
+        cisco:ciscodesktop:~$
+        ```
+
+        </details>
+
+        * Look at that, the username and password are easily readable!
+        * *The encoded string does NOT include a "new line character" which is why the terminal prompt shows up on the same line as the decoded credential.*
+
+    1. The `curl` option `--user` does the encoding of the credentials and addition of the `Authorization` header for us.  But we can also do this ourselves.
+    1. While we already know what `cisco:cisco` encoded with base64 is, we can generate this with the `base64` program.
+
+        ```
+        echo -n cisco:cisco | base64
+        ```
+
+        > Note: By default `echo` will add a "new line" character in addition to the string provided. This will cause problems for authorization. The `-n` argument does NOT add the new-line character.
+
+        <details><summary>Expected Output</summary>
+
+        ```
+        Y2lzY286Y2lzY28=
+        ```
+
+        </details>
+
+    1. Now remove the `--user cisco:cisco` argument from `curl` and replace it with the explicit `Authorization` header.
+
+        ```
+        curl --insecure \
+          --header "Authorization: Basic Y2lzY286Y2lzY28=" \
+          --header "Accept: application/yang-data+json" \
+          https://10.1.1.254/restconf/data/Cisco-IOS-XE-native:native/hostname
+        ```
+
+        * You should get the hostname in JSON format returned.
+        * Feel free to try again with the `--verbose` option to check the headers.
+
+    Now that we've seen how Basic authentication works, we can go back to using `--user` to save us the step of encoding on our own. But never forget that basic authentication is NOT a secure method of transporting credentials. Thankfully, the request and response headers are ENCRYPTED with TLS because RESTCONF runs over HTTPs and not HTTP.
+
+    ## Let's get our CRUD on!
+    The time has come to see how we can really interact with a device configuration using RESTCONF.  REST API actions are often called "CRUD" operations.  This acronym stands for **Create**, **R**ead, **U**pdate, and **D**elete. Each of these actions are associated with a related **HTTP Method**.
+
+    | Action | HTTP Method | Description |
+    | -- | -- | -- |
+    | Create | POST |   Used to create a new object/resource |
+    | Read |   GET |    Retrieve details about an object/resource |
+    | Update | PUT |    Replace or update a resource/object  |
+    | Delete | DELETE | Remove a resource/object  |
+
+    We will explore each of these operations by exploring interfaces, and loopback interfaces, on our router.
+
+    The base URL for the IOS XE interface list is:
+
+    `https://{device address}/restconf/data/Cisco-IOS-XE-native:native/interface`
+
+    ## "READ" the router interfaces with `GET`
+
+    1. `curl` assumes you are making a `GET` request with a basic command.  But we will be explicit by adding the `--request` (or `-X`) argument.
+
+        ```
+        curl --insecure --user cisco:cisco \
+          --header "Accept: application/yang-data+json" \
+          --request GET \
+          https://10.1.1.254/restconf/data/Cisco-IOS-XE-native:native/interface
+        ```
+
+        <details><summary>Expected Output</summary>
+
+        ```json
+        {
+        "Cisco-IOS-XE-native:interface": {
+            "GigabitEthernet": [
+            {
+                "name": "1",
+                "description": "Link to desktop",
+                "ip": {
+                "address": {
+                    "primary": {
+                    "address": "10.1.1.254",
+                    "mask": "255.255.255.0"
+                    }
+                }
+                },
+                "logging": {
+                "event": {
+                    "link-status": [null]
+                }
+                },
+                "access-session": {
+                "host-mode": "multi-auth"
+                },
+                "Cisco-IOS-XE-ethernet:negotiation": {
+                "auto": true
+                }
+            },
+            {
+                "name": "2",
+                "shutdown": [null],
+                "logging": {
+                "event": {
+                    "link-status": [null]
+                }
+                },
+                "access-session": {
+                "host-mode": "multi-auth"
+                },
+                "Cisco-IOS-XE-ethernet:negotiation": {
+                "auto": true
+                }
+            },
+            {
+                "name": "3",
+                "shutdown": [null],
+                "logging": {
+                "event": {
+                    "link-status": [null]
+                }
+                },
+                "access-session": {
+                "host-mode": "multi-auth"
+                },
+                "Cisco-IOS-XE-ethernet:negotiation": {
+                "auto": true
+                }
+            },
+            {
+                "name": "4",
+                "shutdown": [null],
+                "logging": {
+                "event": {
+                    "link-status": [null]
+                }
+                },
+                "access-session": {
+                "host-mode": "multi-auth"
+                },
+                "Cisco-IOS-XE-ethernet:negotiation": {
+                "auto": true
+                }
+            }
+            ],
+            "Loopback": [
+            {
+                "name": 1,
+                "description": "Created in Day0 Config",
+                "ip": {
+                "address": {
+                    "primary": {
+                    "address": "192.168.1.1",
+                    "mask": "255.255.255.255"
+                    }
+                }
+                },
+                "logging": {
+                "event": {
+                    "link-status": [null]
+                }
+                }
+            },
+            {
+                "name": 2,
+                "description": "Created in Day0 Config",
+                "ip": {
+                "address": {
+                    "primary": {
+                    "address": "192.168.2.2",
+                    "mask": "255.255.255.255"
+                    }
+                }
+                },
+                "logging": {
+                "event": {
+                    "link-status": [null]
+                }
+                }
+            }
+            ]
+        }
+        }
+        ```
+
+        </details>
+
+    1. Let's limit the results to just the `Loopback` interfaces.
+
+        ```
+        curl --insecure --user cisco:cisco \
+          --header "Accept: application/yang-data+json" \
+          --request GET \
+          https://10.1.1.254/restconf/data/Cisco-IOS-XE-native:native/interface/Loopback
+        ```
+
+    1. We can specify just `Loopback1` in the URL with `Loopback=1`.
+
+        ```
+        curl --insecure --user cisco:cisco \
+          --header "Accept: application/yang-data+json" \
+          --request GET \
+          https://10.1.1.254/restconf/data/Cisco-IOS-XE-native:native/interface/Loopback=1
+        ```
+
+    1. Perhaps we only want the IP address information for the interface.
+
+        ```
+        curl --insecure --user cisco:cisco \
+          --header "Accept: application/yang-data+json" \
+          --request GET \
+          https://10.1.1.254/restconf/data/Cisco-IOS-XE-native:native/interface/Loopback=1/ip/address
+        ```
+
+        <details><summary>Expected Output</summary>
+
+        ```json
+        {
+          "Cisco-IOS-XE-native:address": {
+              "primary": {
+                  "address": "192.168.1.1",
+                  "mask": "255.255.255.255"
+              }
+          }
+        }
+        ```
+
+        </details>
+
+    ## "CREATING" a new Loopback with `POST`
+    Now that we've seen how to "READ" details about Loopback interfaces, we'll learn how to create a new one. The key details about performing a POST to CREATE and object are:
+
+    * We will be ***sending*** data to the server along with our REQUEST
+    * We need to specify the `Content-type` of the data we are sending, just like the server specifies in the RESPONSE
+    * The data format for a new Loopback looks just like the returned data when we GET details about a Loopback
+    * We need to POST the data to the appropriate URL/resource.  For RESTCONF, we'll send our POST to the `Cisco-IOS-XE-native:native/interface` "list"
+
+    1. We want to create the equivalent of this configuration using RESTCONF.
+
+        ```
+        interface Loopback100
+          description Created with RESTCONF
+          ip address 192.168.100.100 255.255.255.255
+        end
+        ```
+
+    1. Use the output for `Loopback=1` to craft a JSON body with the new values for `Loopback100`.
+
+        ```
+        curl --insecure --user cisco:cisco \
+          --header "Accept: application/yang-data+json" \
+          --request GET \
+          https://10.1.1.254/restconf/data/Cisco-IOS-XE-native:native/interface/Loopback=1
+        ```
+
+        <details><summary>Loopback 100 JSON Body</summary>
+
+        ```json
+        {
+        "Cisco-IOS-XE-native:Loopback": [
+            {
+            "name": 100,
+            "description": "Created with RESTCONF",
+            "ip": {
+                "address": {
+                "primary": {
+                    "address": "192.168.100.100",
+                    "mask": "255.255.255.255"
+                }
+                }
+            },
+            "logging": {
+                "event": {
+                "link-status": [null]
+                }
+            }
+            }
+        ]
+        }
+        ```
+
+    </details>
+
+    1. The JSON body is included with the request using the `--data` argument.
+        * Surround the JSON body in single quotes (`'`). This will allow the JSON body to span across multiple lines in the terminal and not interfere with the double quotes (`"`) that are part of the JSON body itself.
+        * Include a `Content-type: application/yang-data+json` header
+        * Include the `Accept` header as well so tell the server to return any data in JSON format
+
+        ```
+        curl --insecure --user cisco:cisco \
+          --header "Accept: application/yang-data+json" \
+          --header "Content-type: application/yang-data+json" \
+          --request POST \
+          --data '
+            {
+            "Cisco-IOS-XE-native:Loopback": [
+                {
+                "name": 100,
+                "description": "Created with RESTCONF",
+                "ip": {
+                    "address": {
+                    "primary": {
+                        "address": "192.168.100.100",
+                        "mask": "255.255.255.255"
+                    }
+                    }
+                },
+                "logging": {
+                    "event": {
+                    "link-status": [null]
+                    }
+                }
+                }
+            ]
+            }
+          ' \
+          https://10.1.1.254/restconf/data/Cisco-IOS-XE-native:native/interface
+        ```
+
+        > Note: If everything goes correctly, there will be NO data returned from the server
+
+    1. Check to see what happens if you resend the request a second time.
+
+        <details><summary>Expected Output</summary>
+
+        ```json
+        {
+        "ietf-restconf:errors": {
+            "error": [
+            {
+                "error-type": "application",
+                "error-tag": "data-exists",
+                "error-path": "/Cisco-IOS-XE-native:native/interface",
+                "error-message": "object already exists: /ios:native/ios:interface/ios:Loopback[ios:name='100']"
+            }
+            ]
+        }
+        }
+        ```
+
+        </details>
+
+        * The error is pretty straightforward.  We can't create `Loopback100` because it already exists.  Looks like it DID work!
+
+    1. Now send a GET request for `Loopback=100` to verify the interface was indeed created.
+
+        ```
+        curl --insecure --user cisco:cisco \
+          --header "Accept: application/yang-data+json" \
+          --request GET \
+          https://10.1.1.254/restconf/data/Cisco-IOS-XE-native:native/interface/Loopback=100
+        ```
+
+        * Did you get a result?  Does it match what you created above?
+
+    ## "UPDATING" interface details with `PUT`
+    You can use `PUT` to replace data with new data. Let's see how we can change the description for our interface.
+
+    1. Start by getting the current interface description.
+
+        ```
+        curl --insecure --user cisco:cisco \
+          --header "Accept: application/yang-data+json" \
+          --request GET \
+          https://10.1.1.254/restconf/data/Cisco-IOS-XE-native:native/interface/Loopback=100/description
+        ```
+
+        <details><summary>Expected Output</summary>
+
+        ```json
+        {
+            "Cisco-IOS-XE-native:description": "Created with RESTCONF"
+        }
+        ```
+
+        </details>
+
+    1. A `PUT` request is very similar to `POST` request.  Use the returned data from the above request to craft the new `data` to send. You will send the request to the URL for the current description. Effectively `PUTTING` a new description at that address.
+
+        ```
+        curl --insecure --user cisco:cisco \
+          --header "Accept: application/yang-data+json" \
+          --header "Content-type: application/yang-data+json" \
+          --request PUT \
+          --data '
+            {
+                "Cisco-IOS-XE-native:description": "UPDATED with RESTCONF"
+            }
+          ' \
+          https://10.1.1.254/restconf/data/Cisco-IOS-XE-native:native/interface/Loopback=100/description
+        ```
+
+    1. Send the `GET` request to check the results.
+
+        ```
+        curl --insecure --user cisco:cisco \
+          --header "Accept: application/yang-data+json" \
+          --request GET \
+          https://10.1.1.254/restconf/data/Cisco-IOS-XE-native:native/interface/Loopback=100/description
+        ```
+
+        * Did the interface description change?
+
+    You can use this same approach to update other parts of the interface configuration.  Try to change the IP address for `Loopback100` to `10.100.100.100`.
+
+    > The address for the `Loopback100` ip is: `https://10.1.1.254/restconf/data/Cisco-IOS-XE-native:native/interface/Loopback=100/ip`
+
+    <details><summary>Answer: PUTTING a new IP address</summary>
+
+    ```
+    curl --insecure --user cisco:cisco \
+        --header "Accept: application/yang-data+json" \
+        --header "Content-type: application/yang-data+json" \
+        --request PUT \
+        --data '
+            {
+            "Cisco-IOS-XE-native:ip": {
+                "address": {
+                "primary": {
+                    "address": "10.100.100.100",
+                    "mask": "255.255.255.255"
+                }
+                }
+            }
+            }
+        ' \
+        https://10.1.1.254/restconf/data/Cisco-IOS-XE-native:native/interface/Loopback=100/ip
+    ```
+
+    </details>
+
+    ## Deleting an interface
+    The last of the CRUD actions is **DELETE**. And next to `GET`, the `DELETE` operation is the simplest to use.
+
+    1. Start by `GETing` `Loopback100` to verify it is still there.
+
+        ```
+        curl --insecure --user cisco:cisco \
+          --header "Accept: application/yang-data+json" \
+          --request GET \
+          https://10.1.1.254/restconf/data/Cisco-IOS-XE-native:native/interface/Loopback=100
+        ```
+
+    1. Now simply change from `GET` to `DELETE` and resend the request.  There is no data required to delete a resource, you just target an address with the action.
+
+        ```
+        curl --insecure --user cisco:cisco \
+          --header "Accept: application/yang-data+json" \
+          --request DELETE \
+          https://10.1.1.254/restconf/data/Cisco-IOS-XE-native:native/interface/Loopback=100
+        ```
+
+        * Just like when we created the interface with `POST`, a successful `DELETE` does NOT return any data.
+
+    1. Try to `DELETE` it again, but this time add the `--verbose` argument to the command.
+
+        ```
+        curl --insecure --user cisco:cisco --verbose \
+          --header "Accept: application/yang-data+json" \
+          --request DELETE \
+          https://10.1.1.254/restconf/data/Cisco-IOS-XE-native:native/interface/Loopback=100
+        ```
+
+        * Find the first RESPONSE line.  What status code was returned? Why was this code returned?
+
+    1. Now try to `GET` `Loopback100` again, also with the `--verbose` flag.
+
+        * Before you send it off, guess what the results will be?  What status code will be returned?
+
+        ```
+        curl --insecure --user cisco:cisco --verbose \
+          --header "Accept: application/yang-data+json" \
+          --request GET \
+          https://10.1.1.254/restconf/data/Cisco-IOS-XE-native:native/interface/Loopback=100
+        ```
+
+        * Were you right?
+  title: CCNA Prep 2024 S1E7 GET a Head(er) of REST APIs
+  version: 0.2.2
