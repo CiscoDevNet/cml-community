@@ -1,0 +1,922 @@
+annotations:
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: 192.168.1.0/24
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -440.0
+    y1: -120.0
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: 192.168.2.0/24
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 40.0
+    y1: -120.0
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#1820C8'
+    rotation: 0
+    text_bold: false
+    text_content: DHCP Client
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -480.0
+    y1: 4.334521504159601
+    z_index: 1
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#1820C8'
+    rotation: 0
+    text_bold: false
+    text_content: DHCP Client
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 120.0
+    y1: 4.334521504159601
+    z_index: 1
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#1820C8'
+    rotation: 0
+    text_bold: false
+    text_content: DHCP Server
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -331.9199341364389
+    y1: -240.0
+    z_index: 1
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: ''
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 160.0
+    y1: -200.0
+    z_index: 2
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: OSPF AREA 0
+    text_font: monospace
+    text_italic: false
+    text_size: 16
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -200.0
+    y1: 40.0
+    z_index: 4
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: 10.1.1.0/30
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -193.49821774376065
+    y1: -191.33095699168084
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: DNS Server 8.8.8.8
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 95.2436807701726
+    y1: -348.7528058356377
+    z_index: 5
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#1820C8'
+    rotation: 0
+    text_bold: false
+    text_content: DHCP Client
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 37.8327392479203
+    y1: -226.9964354875213
+    z_index: 1
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: 'CCNA Exam Prep: Back to Networking Basics with Hank Preston and
+      Patrick Gargano (Season 2)'
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -1125.258776447585
+    y1: -407.1581438914021
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: 'DHCP in Action: Streamlining Network Client Address Management'
+    text_font: monospace
+    text_italic: false
+    text_size: 18
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -1127.7286604756591
+    y1: -380.50714500921066
+    z_index: 7
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#4557D2'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      In this lab, we will explore how to:
+      * Configure a router as an IPv4 DHCP Client
+      * Configure a Router as an IPv4 DHCP Server
+      * Configure an IPv4 DHCP Relay
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -1140.7773154740125
+    y1: 22.337510119328677
+    z_index: 8
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#2A3FCC'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      Dynamic Host Configuration Protocol (DHCP) is a network protocol
+      that lets network administrators manage and automate the assignment
+      of IP addresses.
+      Without DHCP for IPv4, the administrator must manually assign
+      and configure IP addresses, preferred DNS servers, and default
+      gateways.
+      As the network grows in size, this becomes an administrative
+      problem when devices are moved from one internal network to another.
+
+      Related CCNA v1.1 exam topic:
+      4.3 Explain the role of DHCP and DNS within the network
+      4.6 Configure and verify DHCP client and relay
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -1132.1896418060846
+    y1: -324.20038804830887
+    z_index: 9
+  - border_color: '#808080FF'
+    border_radius: 0
+    border_style: ''
+    color: '#70BE58'
+    thickness: 1
+    type: rectangle
+    x1: -513.2157309182571
+    y1: -270.3112384285854
+    x2: 765.0004137890356
+    y2: 338.9822192837643
+    z_index: -3
+nodes:
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname RTR1
+          !
+          interface range Ethernet 0/0 - 3
+           no ip address
+           shutdown
+          !
+          int e0/0
+           ip address 10.1.1.1 255.255.255.252
+           no shut
+          !
+          int e0/1
+           ip address 192.168.1.1 255.255.255.0
+           no shut
+          !
+          router ospf 1
+           network 10.1.1.0 0.0.0.3 area 0
+           network 192.168.1.0 0.0.0.255 area 0
+           router-id 0.0.0.1
+          !
+          !
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: RTR1
+    node_definition: iol-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: -280
+    y: -201
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet0/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname RTR2
+          !
+          interface range Ethernet 0/0 - 3
+           no ip address
+           shutdown
+          !
+          int e0/0
+           ip address 10.1.1.2 255.255.255.252
+           ip nat inside
+           no shut
+          !
+          int e0/1
+           ip address 192.168.2.1 255.255.255.0
+           ip nat inside
+           no shut
+          !
+          int e0/3
+           ip nat outside
+           no ip address
+           shutdown
+          !
+          router ospf 1
+           network 10.1.1.0 0.0.0.3 area 0
+           network 192.168.2.0 0.0.0.255 area 0
+           router-id 0.0.0.2
+           default-information originate
+          !
+          access-list 1 permit any
+          !
+          ip nat inside source list 1 interface e0/3 overload
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: RTR2
+    node_definition: iol-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: -1
+    y: -199
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet0/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname PC2
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+          iface eth0 inet dhcp
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n2
+    image_definition: null
+    label: PC2
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: 160
+    y: -40
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname PC1
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+          iface eth0 inet dhcp
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n3
+    image_definition: null
+    label: PC1
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: -440
+    y: -40
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: hostname ASW1
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n4
+    image_definition: null
+    label: ASW1
+    node_definition: ioll2-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: -280
+    y: -40
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet0/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: 'hostname ASW2
+
+          '
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n5
+    image_definition: null
+    label: ASW2
+    node_definition: ioll2-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: 0
+    y: -40
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet0/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n6
+    image_definition: null
+    label: Internet
+    node_definition: external_connector
+    parameters: {}
+    ram: null
+    tags: []
+    x: 120
+    y: -320
+    interfaces:
+      - id: i0
+        label: port
+        slot: 0
+        type: physical
+links:
+  - id: l0
+    n1: n0
+    n2: n1
+    i1: i1
+    i2: i1
+    conditioning: {}
+    label: RTR1-Ethernet0/0<->RTR2-Ethernet0/0
+  - id: l1
+    n1: n0
+    n2: n4
+    i1: i2
+    i2: i2
+    conditioning: {}
+    label: RTR1-Ethernet0/1<->ASW1-Ethernet0/1
+  - id: l2
+    n1: n1
+    n2: n5
+    i1: i2
+    i2: i2
+    conditioning: {}
+    label: RTR2-Ethernet0/1<->ASW2-Ethernet0/1
+  - id: l3
+    n1: n4
+    n2: n3
+    i1: i1
+    i2: i0
+    conditioning: {}
+    label: ASW1-Ethernet0/0<->PC1-eth0
+  - id: l4
+    n1: n5
+    n2: n2
+    i1: i1
+    i2: i0
+    conditioning: {}
+    label: ASW2-Ethernet0/0<->PC2-eth0
+  - id: l5
+    n1: n1
+    n2: n6
+    i1: i4
+    i2: i0
+    conditioning: {}
+    label: RTR2-Ethernet0/3<->Internet-port
+lab:
+  description: ''
+  notes: |-
+    <html><head><style>body {
+       color: black;
+    }
+    </style></head><body><p><strong>CCNA Exam Prep: Back to Networking Basics with Hank Preston and Patrick Gargano -- Season 2</strong></p>
+    <h1 id="dhcp-in-action-streamlining-network-client-address-management">DHCP in Action: Streamlining Network Client Address Management</h1>
+    <p>Dynamic Host Configuration Protocol (DHCP) is a network protocol that lets network administrators manage and automate the assignment of IP addresses.
+    Without DHCP for IPv4, the administrator must manually assign and configure IP  addresses, preferred DNS servers, and default gateways. As the network grows in size, this becomes an administrative problem when devices are added or moved from one internal network to another.</p>
+    <p>Related CCNA v1.1 exam topic:</p>
+    <ul>
+    <li>4.3 Explain the role of DHCP and DNS within the network</li>
+    <li>4.6 Configure and verify DHCP client and relay</li>
+    </ul>
+    <p>In this lab, we will explore how to:</p>
+    <ul>
+    <li>Configure a router as an IPv4 DHCP Client</li>
+    <li>Configure a Router as an IPv4 DHCP Server </li>
+    <li>Configure an IPv4 DHCP Relay </li>
+    </ul>
+    <h2 id="setup-and-scenario">Setup and Scenario</h2>
+    <p>In this set of lab-based demonstrations, you are the network engineer for a growing organization tasked with updating the network to support new network needs. The network was originally deployed using static IPv4 addresses on all hosts and servers since the network was small, but now the network has grown and requires that IPv4 address assignment be automated and centralized on a DHCP server. </p>
+    <p>You&#39;ve been asked to: </p>
+    <ul>
+    <li>Configure RTR2 E0/3 to request and receive a dynamic IPv4 address from the ISP.</li>
+    <li>Configure RTR1 as an IPv4 DHCP server for the RTR1 LAN and RTR2 LAN.</li>
+    <li>Configure RTR2 as an IPv4 DHCP Relay Agent for the RTR2 LAN.</li>
+    </ul>
+    <p><em>Be sure to <strong>START</strong> the lab before continuing to the demo labs but do not power on PC1 or PC2 for now.</em></p>
+    <h2 id="part-1-reviewing-the-current-state-of-the-network">Part 1: Reviewing the Current State of the Network</h2>
+    <p>Before we jump into configuring DHCP across the network, let&#39;s check the current status of the network and how it is operating.  </p>
+    <h3 id="step-1">Step 1</h3>
+    <p>Open a console connection to RTR1 and RTR2 and verify the OSPF configuration.</p>
+    <pre>
+    RTR1# <b>show run | section ospf</b>
+    router ospf 1
+     router-id 0.0.0.1
+     network 10.1.1.0 0.0.0.3 area 0
+     network 192.168.1.0 0.0.0.255 area 0
+
+    RTR2# <b>show run | section ospf</b>
+    router ospf 1
+     router-id 0.0.0.2
+     network 10.1.1.0 0.0.0.3 area 0
+     network 192.168.2.0 0.0.0.255 area 0
+     default-information originate
+    </pre>
+    Notice that both RTR1 and RTR2 are configured with OSPF process ID 1 and that all network statements are assigned to area 0. RTR2 is also configured with the `default-information originate` command that allows RTR2 to advertise a default route to other OSPF routers as long as RTR2 has a default route in its own routing table. RTR2 does not currently have a default route but this will be corrected in the next steps.
+
+    ### Step 2
+    Verify the routing tables on RTR1 and RTR2
+
+    <pre>
+    RTR1# <b>show ip route</b>
+    <... output omitted ...>
+
+    Gateway of last resort is not set
+
+          10.0.0.0/8 is variably subnetted, 2 subnets, 2 masks
+    C        10.1.1.0/30 is directly connected, Ethernet0/0
+    L        10.1.1.1/32 is directly connected, Ethernet0/0
+          192.168.1.0/24 is variably subnetted, 2 subnets, 2 masks
+    C        192.168.1.0/24 is directly connected, Ethernet0/1
+    L        192.168.1.1/32 is directly connected, Ethernet0/1
+    O     192.168.2.0/24 [110/20] via 10.1.1.2, 2w3d, Ethernet0/0
+
+    RTR2# <b>show ip route</b>
+    <... output omitted ...>
+
+    Gateway of last resort is not set
+
+          10.0.0.0/8 is variably subnetted, 2 subnets, 2 masks
+    C        10.1.1.0/30 is directly connected, Ethernet0/0
+    L        10.1.1.2/32 is directly connected, Ethernet0/0
+    O     192.168.1.0/24 [110/20] via 10.1.1.1, 2w3d, Ethernet0/0
+          192.168.2.0/24 is variably subnetted, 2 subnets, 2 masks
+    C        192.168.2.0/24 is directly connected, Ethernet0/1
+    L        192.168.2.1/32 is directly connected, Ethernet0/1
+    </pre>
+
+    <p>RTR1 is learning about the RTR2 LAN (192.168.2.0/24) and RTR2 is learning about the RTR1 LAN (192.168.1.0/24).</p>
+    <p>Also notice that RTR2 does not currently have a default route to advertise to RTR1.</p>
+    <h3 id="step-3">Step 3</h3>
+    <p>Verify the interfaces on RTR2</p>
+    <pre>
+    RTR2# <b>show ip interface brief</b>
+    Interface              IP-Address      OK? Method Status                Protocol
+    Ethernet0/0            10.1.1.2        YES TFTP   up                    up
+    Ethernet0/1            192.168.2.1     YES TFTP   up                    up
+    Ethernet0/2            unassigned      YES TFTP   administratively down down
+    Ethernet0/3            unassigned      YES unset  administratively down down
+    </pre>
+
+    <p>The internet-facing Ethernet0/3 interface is currently administratively down and has not IP address configured. You will correct this in the next part of the lab.</p>
+    <h2 id="part-2-configure-a-router-as-an-ipv4-dhcp-client">Part 2: Configure a router as an IPv4 DHCP Client</h2>
+    <p>The RTR2 Ethernet 0/3 interface is connected to the &quot;Internet&quot; external connector node in CML. This node acts as an ISP that provides dynamic IPv4 addresses to its clients. In this part of the lab, you will enable RTR2 to request and receive an IPv4 DHCP address on interface Ethernet 0/3. RTR2 will also automatically create a default route pointing to the ISP. RTR2 should then advertise this default route to RTR1 via OSPF.</p>
+    <h3 id="step-1">Step 1</h3>
+    <p>Configure RTR2 E0/3 as an IPv4 DHCP client and enable the interface. After the interface comes up, it should take about 10 seconds for the E0/3  to received its IPv4 address.</p>
+    <pre>
+    RTR2# <b>conf t</b>
+    Enter configuration commands, one per line.  End with CNTL/Z.
+    RTR2(config)# <b>interface E0/3</b>
+    RTR2(config-if)# <b>ip address dhcp</b>
+    RTR2(config-if)# <b>no shutdown</b>
+    RTR2(config-if)#
+    *Jan  3 16:48:43.228: %LINK-3-UPDOWN: Interface Ethernet0/3, changed state to up
+    RTR2(config-if)#
+    *Jan  3 16:48:44.228: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/3, changed state to up
+    RTR2(config-if)#
+    <mark>*Jan  3 16:48:50.386: %DHCP-6-ADDRESS_ASSIGN: Interface Ethernet0/3 assigned DHCP address 192.168.255.141, mask 255.255.255.0, hostname RTR2</mark>
+    </pre>
+
+    <p>In the highlighted text above, notice that the interface is now configured with the 192.168.255.141/24 address. Use the <code>show ip interface brief</code> command to confirm the new DHCP address.</p>
+    <h3 id="step-2">Step 2</h3>
+    <p>Verify the routing table on RTR1 and RTR2. Both routers should now have a default route in its routing table.</p>
+    <pre>
+    RTR1# <b>show ip route</b>
+    <... output omitted ...>
+
+    <mark>Gateway of last resort is 10.1.1.2 to network 0.0.0.0</mark>
+
+    <mark>O*E2  0.0.0.0/0 [110/1] via 10.1.1.2, 00:06:47, Ethernet0/0</mark>
+          10.0.0.0/8 is variably subnetted, 2 subnets, 2 masks
+    C        10.1.1.0/30 is directly connected, Ethernet0/0
+    L        10.1.1.1/32 is directly connected, Ethernet0/0
+          192.168.1.0/24 is variably subnetted, 2 subnets, 2 masks
+    C        192.168.1.0/24 is directly connected, Ethernet0/1
+    L        192.168.1.1/32 is directly connected, Ethernet0/1
+    O     192.168.2.0/24 [110/20] via 10.1.1.2, 2w3d, Ethernet0/0
+
+    RTR2# <b>show ip route </b>
+    <... output omitted ...>
+
+    <mark>Gateway of last resort is 192.168.255.1 to network 0.0.0.0</mark>
+
+    <mark>S*    0.0.0.0/0 [254/0] via 192.168.255.1</mark>
+          10.0.0.0/8 is variably subnetted, 2 subnets, 2 masks
+    C        10.1.1.0/30 is directly connected, Ethernet0/0
+    L        10.1.1.2/32 is directly connected, Ethernet0/0
+    O     192.168.1.0/24 [110/20] via 10.1.1.1, 2w3d, Ethernet0/0
+          192.168.2.0/24 is variably subnetted, 2 subnets, 2 masks
+    C        192.168.2.0/24 is directly connected, Ethernet0/1
+    L        192.168.2.1/32 is directly connected, Ethernet0/1
+          192.168.255.0/24 is variably subnetted, 2 subnets, 2 masks
+    C        192.168.255.0/24 is directly connected, Ethernet0/3
+    L        192.168.255.141/32 is directly connected, Ethernet0/3
+
+    </pre>
+    RTR2 is automatically configured with a static default route thanks to DHCP. RTR1 is learning the default route via OSPF thanks to an External Type 5 LSA being advertised by RTR2 because of the default-information originate command.
+
+    ### Step 3
+    Verify connectivity from RTR1 and RTR2 to a public Internet address.
+
+    <pre>
+    RTR1# <b>ping 8.8.8.8</b>
+    Type escape sequence to abort.
+    Sending 5, 100-byte ICMP Echos to 8.8.8.8, timeout is 2 seconds:
+    !!!!!
+    Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/2 ms
+
+    RTR2# <b>ping 8.8.8.8</b>
+    Type escape sequence to abort.
+    Sending 5, 100-byte ICMP Echos to 8.8.8.8, timeout is 2 seconds:
+    !!!!!
+    Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/2 ms
+    </pre>
+    Since RTR2 is configured with NAT (which will be covered in Season 2, Episode 3), both RTR1 and RTR2 are able to reach a public Internet address.
+
+    ## Part 3: Configure a Router as an IPv4 DHCP Server
+    The Cisco IOS DHCP server is a full DHCP server implementation that assigns and manages IPv4 addresses from specified address pools within the device to DHCP clients. The DHCP server can be configured to assign additional parameters such as the IPv4 address of the DNS server and the default gateway. In this part of the lab, you will configure RTR1 as an IPv4 DHCP server for the RTR1 LAN and the RTR2 LAN.
+
+    ### Step 1
+    Configure the IPv4 DHCP pool for the RTR1 LAN (192.168.1.0/24) and exclude the first five addresses of that network. Use the pool name RTR1_LAN.
+
+    <pre>
+    RTR1(config)# <b>ip dhcp pool RTR1_LAN</b>
+    RTR1(dhcp-config)# <b>network 192.168.1.0 /24</b>
+    RTR1(dhcp-config)# <b>default-router 192.168.1.1</b>
+    RTR1(dhcp-config)# <b>dns-server 8.8.8.8</b>
+    RTR1(dhcp-config)# <b>domain-name lab.example</b>
+    RTR1(dhcp-config)# <b>lease 0 12</b>
+    RTR1(dhcp-config)#exit
+    RTR1(config)# <b>ip dhcp excluded-address 192.168.1.1 192.168.1.5</b>
+    </pre>
+    In the configuration example above the, IPv4 addresses are assigned from the address pool 192.168.1.0/24 with a lease time of 12 hours. Additional parameters are the default gateway, domain name, and DNS server. Also, IPv4 addresses from 192.168.1.1 to 192.168.1.5 are not assigned to the end devices. Use the ``?`` option under the DHCP pool to investigate the different configuration options available.
+
+    ### Step 2
+    Use the `show ip dhcp pool RTR1_LAN` command to investigate the DHCP pool configuration.
+    <pre>
+    RTR1# <b>show ip dhcp pool RTR1_LAN</b>
+
+    Pool RTR1_LAN :
+     Utilization mark (high/low)    : 100 / 0
+     Subnet size (first/next)       : 0 / 0
+     Total addresses                : 254
+     Leased addresses               : 0
+     Excluded addresses             : 5
+     Pending event                  : none
+     1 subnet is currently in the pool :
+     Current index        IP address range                    Leased/Excluded/Total
+     192.168.1.1          192.168.1.1      - 192.168.1.254     0     / 5     / 254
+    </pre>
+    The output confirms that 5 addresses are excluded from the total range and that there are currently no leased addresses.
+
+    ### Step 3
+    Enable DHCP debugging on RTR1 and then start the PC1 device.
+
+    <pre>
+    RTR1# <b>debug ip dhcp server events</b>
+    DHCP server event debugging is on.
+    RTR1# <b>debug ip dhcp server packet</b>
+    DHCP server packet debugging is on.
+    </pre>
+
+    <p>Right-click on PC1 and select <strong>Start</strong>.</p>
+    <p>Within a few seconds you should see some DHCP debugging messages. If you scroll through them, you should find the four DHCP messages exchanged between PC1 and RTR1:</p>
+    <pre>
+    *Jan  6 15:34:45.855: <mark>DHCPD: DHCPDISCOVER</mark> received from client 0152.5400.1529.f9 on interface Ethernet0/1.
+
+    *Jan  6 15:34:47.856: <mark>DHCPD: Sending DHCPOFFER</mark> to client 0152.5400.1529.f9 (192.168.1.6).
+
+    *Jan  6 15:34:47.859: <mark>DHCPD: DHCPREQUEST received</mark> from client 0152.5400.1529.f9 on interface Ethernet0/1
+
+    *Jan  6 15:34:47.859: <mark>DHCPD: Sending DHCPACK</mark> to client 0152.5400.1529.f9 (192.168.1.6).
+    </pre>
+    In the output above, PC1 was assigned the 192.168.1.6 address by the DHCP server on RTR1.
+
+
+    ### Step 4
+    Verify the IPv4 configuration on PC1 and test connectivity to the Internet.
+
+    Open the console on PC1. Use the `ip addr show dev eth0` command to verify its IPv4 configuration. PC1 will have an IP address from the 192.168.1.0/24 network.
+
+    <pre>
+    PC1:~$ <b>ip addr show dev eth0</b>
+    2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP qlen 1000
+        link/ether 52:54:00:15:29:f9 brd ff:ff:ff:ff:ff:ff
+        inet 192.168.1.6/24 scope global eth0
+           valid_lft forever preferred_lft forever
+        inet6 fe80::5054:ff:fe15:29f9/64 scope link
+           valid_lft forever preferred_lft forever
+    </pre>
+
+    <p>Use the <code>ip route list</code> command to verify the PC&#39;s routing table. You should see the default gateway set to 192.168.1.1 which is the IP address of RTR1 E0/1.</p>
+    <pre>
+    PC1:~$ <b>ip route list</b>
+    <mark>default via 192.168.1.1 dev eth0  metric 202 </mark>
+    172.17.0.0/16 dev docker0 scope link  src 172.17.0.1
+    192.168.1.0/24 dev eth0 scope link  src 192.168.1.6
+    </pre>
+
+    <p>From the command prompt, ping the public DNS server at <strong>8.8.8.8</strong>. This ping should be successful.</p>
+    <p>Open a VNC connection to PC1 and use the browser to test connectivity to <strong>www.cisco.com</strong>. This test should also be successful since the DHCP server is configured to provide clients with the DNS server&#39;s IP address (8.8.8.8)</p>
+    <h3 id="step-5">Step 5</h3>
+    <p>Configure the IPv4 DHCP pool for the RTR2 LAN (192.168.2.0/24) and exclude the first five addresses of that network. Use the pool name RTR2_LAN.</p>
+    <pre>
+    RTR1(config)# <b>ip dhcp pool RTR2_LAN</b>
+    RTR1(dhcp-config)# <b>network 192.168.2.0 /24</b>
+    RTR1(dhcp-config)# <b>default-router 192.168.2.1</b>
+    RTR1(dhcp-config)# <b>dns-server 8.8.8.8</b>
+    RTR1(dhcp-config)# <b>domain-name lab.example</b>
+    RTR1(dhcp-config)# <b>lease 0 12</b>
+    RTR1(dhcp-config)#exit
+    RTR1(config)# <b>ip dhcp excluded-address 192.168.2.1 192.168.2.5</b>
+    </pre>
+
+    <h3 id="step-6">Step 6</h3>
+    <p>Start a packet capture  on the link between RTR1 and RTR2 to capture the DHCP messages sent from PC2.</p>
+    <p> Right-click the link between RTR1 and RTR2 and click <strong>Packet Capture</strong>. In the packet capture tab, select Settings and add a BPF filter for DHCP packets. Cick <strong>Apply</strong> and then click <strong>Start</strong>.</p>
+    <p> Right-click on PC2 and select <strong>Start</strong> to boot up the device.</p>
+    <p> Return to the packet capture tab. You should not see any DHCP messages crossing the link between RTR1 and RTR2. Recall that DHCP messages from PC2 (DHCP Discover and DHCP Request) are broadcast messages and don&#39;t get forwarded off the local LAN by default. You will correct this issue in the next part of the lab.</p>
+    <h2 id="part-4-configure-an-ipv4-dhcp-relay">Part 4: Configure an IPv4 DHCP Relay</h2>
+    <p> A DHCP relay agent is any host that forwards DHCP packets between clients and servers. Relay agents are used for forwarding requests and replies between clients and servers when they are not on the same subnet. DHCP requests are sent as broadcasts, and because routers don&#39;t forward broadcasts, you need a relay functionality to reach the DHCP server. In this part of the lab, you will configure RTR2 E0/1 as a DHCP relay agent. This will allow PC2 DHCP messages to be forwarded to RTR1.</p>
+    <p> To configure the DHCP relay agent to forward packets to a DHCP server, you need to enter the interface configuration mode using the interface interface command. Then, use the <code>ip helper-address</code> command to specify that the interface will forward UDP broadcasts, including BOOTP and DHCP, to the specified server address.</p>
+    <p> The <code>ip helper-address</code> command should be issued on the interface where the DHCP broadcasts are received.</p>
+    <p>These steps show how DHCP requests are processed when DHCP relay is used:</p>
+    <ol>
+    <li><p>A DHCP client broadcasts a DHCP request.</p>
+    </li>
+    <li><p>The DHCP relay device includes option 82 and sends the DHCP request as a unicast packet to the DHCP server. Option 82 includes remote ID and circuit ID information.</p>
+    </li>
+    <li><p>The DHCP server responds to the DHCP relay.</p>
+    </li>
+    <li><p>The DHCP relay strips off option 82 and sends the response to the DHCP client.</p>
+    <h3 id="step-1">Step 1</h3>
+    <p>Configure the DHCP relay functionality on RTR2 E0/1.</p>
+    </li>
+    </ol>
+    <pre>
+    RTR2(config)# <b>interface E0/1</b>
+    RTR2(config-if)# <b>ip helper-address 10.1.1.1</b>
+    </pre>
+
+    <p>The <code>ip helper-address</code> command tells RTR2 that any broadcasts received on E0/1 will be sent to the 10.1.1.1 address which is configured on RTR1 E0/0.</p>
+    <p>Stop and re-start PC2 to trigger the client&#39;s DHCP process again.</p>
+    <h3 id="step-2">Step 2</h3>
+    <p>Return to the packet capture tab to observe the DHCP messages that are now crossing the link between RTR1 and RTR2. Your output should be similar to what is shown below:</p>
+    <table>
+    <thead>
+    <tr>
+    <th>Time</th>
+    <th>Source</th>
+    <th>Destination</th>
+    <th>Protocol</th>
+    <th>Info</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>0.000000</code></td>
+    <td><code>192.168.2.1</code></td>
+    <td><code>10.1.1.1</code></td>
+    <td><code>DHCP</code></td>
+    <td><code>DHCP Discover - Transaction ID 0xba02f774</code></td>
+    </tr>
+    <tr>
+    <td><code>0.001355</code></td>
+    <td><code>10.1.1.1</code></td>
+    <td><code>192.168.2.1</code></td>
+    <td><code>DHCP</code></td>
+    <td><code>DHCP Offer - Transaction ID 0xba02f774</code></td>
+    </tr>
+    <tr>
+    <td><code>0.002901</code></td>
+    <td><code>192.168.2.1</code></td>
+    <td><code>10.1.1.1</code></td>
+    <td><code>DHCP</code></td>
+    <td><code>DHCP Request - Transaction ID 0xba02f774</code></td>
+    </tr>
+    <tr>
+    <td><code>0.003654</code></td>
+    <td><code>10.1.1.1</code></td>
+    <td><code>192.168.2.1</code></td>
+    <td><code>DHCP</code></td>
+    <td><code>DHCP ACK - Transaction ID 0xba02f774</code></td>
+    </tr>
+    </tbody>
+    </table>
+    <p>The packet capture confirms that DHCP Discover and DHCP Request received on RTR2 E0/1 are being relayed to 10.1.1.1 on RTR1. Click through the captured packets to investigate the option fields in the DHCP header.</p>
+    <h3 id="step-3">Step 3</h3>
+    <p>Verify the IPv4 configuration on PC2 and test connectivity to the Internet.</p>
+    <p>Open the console on PC2 and access the command prompt. Use the <code>ip addr show dev eth0</code> command to verify its IPv4 configuration. PC1 will have an IP address from the 192.168.2.0/24 network.</p>
+    <p>Use the <code>ip route list</code> command to verify the PC&#39;s routing table. You should see the default gateway set to 192.168.2.1 which is the IP address of RTR2 E0/1.</p>
+    <p>From the command prompt, ping the public DNS server at <strong>8.8.8.8</strong>. This ping should be successful.</p>
+    <p>Open a VNC connection to PC2 and use the browser to test connectivity to <strong>www.cisco.com</strong>. This test should be successful.</p>
+    <h3 id="step-4">Step 4</h3>
+    <p>Return to RTR1 and inspect the DHCP debugging output. You should see the following messages:</p>
+    <p><pre>
+    *Jan  6 16:21:01.881: DHCPD: DHCPDISCOVER received from client 0152.5400.1f04.4d <mark>through relay 192.168.2.1.</mark></p>
+    <p>*Jan  6 16:21:01.881: DHCPD: Sending DHCPOFFER to client 0152.5400.1f04.4d (192.168.2.7).</p>
+    <p>*Jan  6 16:21:01.883: DHCPD: DHCPREQUEST received from client 0152.5400.1f04.4d on interface Ethernet0/0</p>
+    <p>*Jan  6 16:21:01.883: DHCPD: Client is Selecting (<mark>DHCP Request with Requested IP = 192.168.2.7, Server ID = 10.1.1.1</mark>)</p>
+    <p>*Jan  6 16:21:01.883: DHCPD: Sending DHCPACK to client 0152.5400.1f04.4d (192.168.2.7).
+    </pre>
+    Notice that RTR1 is aware that the DHCP Discover message was relayed from 192.168.2.1 and the DHCP client (PC2) is being serviced by the DHCP server located at 10.1.1.1.</p>
+    </body></html>
+  title: CCNA Prep 2025 - S2E1 - DHCP
+  version: 0.2.2
