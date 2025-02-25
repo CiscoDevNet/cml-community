@@ -9,4 +9,3 @@ Image can be downloaded from https://support.juniper.net/support/downloads/?p=vj
 Minimum CML version 2.8.0
 
 Tested with vJUNOS ROUTER image version 23.2
-
