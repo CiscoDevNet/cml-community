@@ -21,3 +21,9 @@ jobs:
         with:
           jsonSchemaFile: validation_schemas/node_definition.json
           yamlFiles: node-definitions/**/*.yaml
+          
+- name: Save state
+run: echo "{name}={value}" >> $GITHUB_STATE
+
+- name: Set output
+run: echo "{name}={value}" >> $GITHUB_OUTPUT
