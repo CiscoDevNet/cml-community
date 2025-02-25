@@ -1,0 +1,822 @@
+annotations:
+  - border_color: '#808080FF'
+    border_radius: 2
+    border_style: ''
+    color: '#F8EFBB'
+    rotation: 0
+    thickness: 1
+    type: rectangle
+    x1: 440.0
+    y1: 40.0
+    x2: 440.0
+    y2: 120.0
+    z_index: 0
+  - border_color: '#808080FF'
+    border_radius: 2
+    border_style: ''
+    color: '#C4D9F0'
+    rotation: 0
+    thickness: 1
+    type: rectangle
+    x1: 440.0
+    y1: 387.0
+    x2: 436.0
+    y2: 120.0
+    z_index: 1
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000FF'
+    rotation: 0
+    text_bold: true
+    text_content: VLAN 10
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 800.0
+    y1: 56.0
+    z_index: 3
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000FF'
+    rotation: 0
+    text_bold: true
+    text_content: VLAN 20
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 798.0
+    y1: 485.0
+    z_index: 4
+  - border_color: '#808080FF'
+    border_style: ''
+    color: '#5FD34A'
+    rotation: 0
+    thickness: 1
+    type: ellipse
+    x1: 649.1808510638298
+    y1: 261.84574468085106
+    x2: 26.10638297872339
+    y2: 39.93794326241135
+    z_index: 5
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: true
+    text_content: VLANs 10 and 20 ONLY trunked here.
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -15.497049430398334
+    y1: 188.37721292720124
+    z_index: 6
+  - border_color: '#808080FF'
+    border_style: ''
+    color: '#000000'
+    line_end: arrow
+    line_start: null
+    thickness: 1
+    type: line
+    x1: 320.0
+    y1: 200.0
+    x2: 609.8262411347517
+    y2: 222.16312056737587
+    z_index: 7
+  - border_color: '#808080FF'
+    border_style: ''
+    color: '#5FD34A'
+    rotation: 0
+    thickness: 1
+    type: ellipse
+    x1: 836.3120567375887
+    y1: 261.78014184397153
+    x2: 26.10638297872339
+    y2: 41.52836879432627
+    z_index: 5
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: true
+    text_content: VLANs 10 and 20 ONLY trunked here.
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 990.8754995421232
+    y1: 171.1980648504783
+    z_index: 6
+  - border_color: '#808080FF'
+    border_style: ''
+    color: '#000000'
+    line_end: arrow
+    line_start: null
+    thickness: 1
+    type: line
+    x1: 1060.2659574468087
+    y1: 198.9787234042553
+    x2: 876.4468085106384
+    y2: 222.16312056737587
+    z_index: 8
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: true
+    text_content: |-
+      Use 192.168.10.1/24 for VLAN 10
+      Use 192.168.20.1/24 for VLAN 20
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 920.0
+    y1: 320.0
+    z_index: 9
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: true
+    text_content: |-
+      IP address 192.168.10.2
+      Login:
+       cisco / cisco
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 480.0
+    y1: 80.0
+    z_index: 10
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: true
+    text_content: |-
+      IP address 192.168.20.2
+      Login:
+       cisco / cisco
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 587.0857921413347
+    y1: 419.83431685653386
+    z_index: 10
+smart_annotations: []
+nodes:
+  - boot_disk_size: 16
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname PC
+          # configurable user account
+          ip addr add 192.168.10.2/24 dev eth0
+          ip route add default via 192.168.10.1
+          USERNAME=cisco
+          PASSWORD=cisco
+    cpu_limit: 100
+    cpus: 1
+    data_volume: 0
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: PC
+    node_definition: desktop
+    parameters: {}
+    ram: 512
+    tags: []
+    x: 742
+    y: 91
+    interfaces:
+      - id: i0
+        label: eth0
+        mac_address: null
+        slot: 0
+        type: physical
+  - boot_disk_size: 16
+    configuration:
+      - name: iosxe_config.txt
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname server
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+          ifconfig eth0 inet 192.168.20.2 netmask 255.255.255.0
+          route add default gw 192.168.20.1
+          # no password for tc user by default
+          TC_PASSWORD=
+    cpu_limit: 100
+    cpus: 1
+    data_volume: 0
+    hide_links: false
+    id: n1
+    image_definition: server-tcl-11-1
+    label: server
+    node_definition: server
+    parameters: {}
+    ram: 128
+    tags: []
+    x: 552
+    y: 440
+    interfaces:
+      - id: i0
+        label: eth0
+        mac_address: null
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          !
+          hostname RTR
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          no aaa new-model
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          ip cef
+          login on-success log
+          no ipv6 cef
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          multilink bundle-name authenticated
+          !
+          !
+          !
+          !
+          !
+          memory free low-watermark processor 81225
+          !
+          !
+          spanning-tree mode rapid-pvst
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          interface Ethernet0/0
+           no ip address
+          !
+          interface Ethernet0/0.10
+           encapsulation dot1Q 10
+           ip address 192.168.10.1 255.255.255.0
+          !
+          interface Ethernet0/0.20
+           encapsulation dot1Q 20
+           ip address 192.168.20.1 255.255.255.0
+          !
+          interface Ethernet0/1
+           no ip address
+           shutdown
+          !
+          interface Ethernet0/2
+           no ip address
+           shutdown
+          !
+          interface Ethernet0/3
+           no ip address
+           shutdown
+          !
+          ip forward-protocol nd
+          !
+          !
+          no ip http server
+          no ip http secure-server
+          ip ssh bulk-mode 131072
+          !
+          !
+          !
+          !
+          !
+          control-plane
+          !
+          !
+          !
+          line con 0
+           exec-timeout 0 0
+           logging synchronous
+          line aux 0
+          line vty 0 4
+           login
+           transport input none
+          !
+          !
+          !
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n2
+    image_definition: null
+    label: RTR
+    node_definition: iol-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: 941
+    y: 260
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        mac_address: null
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet0/1
+        mac_address: null
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet0/2
+        mac_address: null
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet0/3
+        mac_address: null
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          service compress-config
+          !
+          hostname SW1
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          no aaa new-model
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          ip audit notify log
+          ip audit po max-events 100
+          ip cef
+          login on-success log
+          no ipv6 cef
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          vtp mode transparent
+          vtp version 1
+          multilink bundle-name authenticated
+          !
+          crypto pki trustpoint TP-self-signed-131184641
+           enrollment selfsigned
+           subject-name cn=IOS-Self-Signed-Certificate-131184641
+           revocation-check none
+           rsakeypair TP-self-signed-131184641
+           hash sha256
+          !
+          !
+          crypto pki certificate chain TP-self-signed-131184641
+           certificate self-signed 01
+            3082032E 30820216 A0030201 02020101 300D0609 2A864886 F70D0101 0B050030
+            30312E30 2C060355 04030C25 494F532D 53656C66 2D536967 6E65642D 43657274
+            69666963 6174652D 31333131 38343634 31301E17 0D323530 32323331 34343933
+            345A170D 33353032 32333134 34393334 5A303031 2E302C06 03550403 0C25494F
+            532D5365 6C662D53 69676E65 642D4365 72746966 69636174 652D3133 31313834
+            36343130 82012230 0D06092A 864886F7 0D010101 05000382 010F0030 82010A02
+            82010100 97F955E7 550CEB36 937AD820 21DD1ED4 A1CC9477 7367A640 BEA04847
+            8B5AB68E C47DDF62 21F19260 2574A025 EDEA4F96 453E0BF7 B6C2DF09 7D1D74F3
+            91575A00 ADE1F99B 0E2075BB 3F620FCF 00CC6436 CBC80C99 2B426098 FF480AAE
+            33B67914 851BBDF2 320BBA3F 1D36FCF0 115AA0C4 5D58E385 D9B6F736 0E592909
+            1A63FDE5 FF2A4BD1 F34BDE50 B07B5270 DAC09EAA EB9C75AE 3E980FD3 35CB9663
+            60198D19 327915A8 358A2A84 BE33A78C 626F1AB4 20D1C06C 848A55F6 FC05BA75
+            DE6A61D0 07380927 E9DC8329 61365E78 B6744D4F 3C4BE570 703808AB 96BE5E95
+            0660814D 59747251 8D38756E 3F48706D CFDB3C9E F5A67AB5 3B14E416 9515A44B
+            93BD71A9 02030100 01A35330 51301D06 03551D0E 04160414 8A026A3B 1C7C62DB
+            323FC051 12FEED9F BAB36CA8 301F0603 551D2304 18301680 148A026A 3B1C7C62
+            DB323FC0 5112FEED 9FBAB36C A8300F06 03551D13 0101FF04 05300301 01FF300D
+            06092A86 4886F70D 01010B05 00038201 010065F3 CE4548DF 6CD09CF8 8EE03FB0
+            EFD0F2F1 8FCC274A 16684E91 7918FA7C A14911D2 D1E2FDFC B9387841 9B5FDFBA
+            7B3CA330 8EE304DA 8F7AB174 20CD050F 5DFE51A5 29FA236C 4616BB18 9F91D9BF
+            5883E2E8 FF444E31 9D47291C 1BDE4C1D 1AF1B9EB B55A3F6A 01FCC107 EA65CFC5
+            7A458842 B4D765BF 3825B21B 4E973BE1 578D09E8 FD96E752 F5051703 EA50D1DB
+            21A04A24 C9B993D5 964379CE F4EE20E8 70855783 AD366AEE D2B83412 E5713542
+            55064B43 CBE43CE6 D267B60A EFD76F93 6E980FDC 721A56A8 E48E06DD C996C9E5
+            2200D4E5 39D05D5A 69770F2E 33964A27 D31350FB E1A44BFA 983273C4 0CEEDDC4
+            9055D03A 35B7100F 73C7741F A4EA546B 746C
+                  quit
+          !
+          !
+          memory free low-watermark processor 80589
+          !
+          !
+          spanning-tree mode pvst
+          spanning-tree extend system-id
+          !
+          !
+          vlan internal allocation policy ascending
+          !
+          vlan 10
+           name PCs
+          !
+          vlan 20
+           name SERVERs
+          !
+          !
+          !
+          !
+          !
+          interface Ethernet0/0
+           switchport trunk encapsulation dot1q
+           switchport trunk allowed vlan 10,20
+           switchport mode trunk
+          !
+          interface Ethernet0/1
+           switchport access vlan 10
+          !
+          interface Ethernet0/2
+           switchport trunk encapsulation dot1q
+           switchport trunk allowed vlan 10,20
+           switchport mode trunk
+          !
+          interface Ethernet0/3
+          !
+          ip forward-protocol nd
+          !
+          !
+          ip http server
+          ip http secure-server
+          ip ssh bulk-mode 131072
+          ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+          ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+          !
+          !
+          !
+          !
+          !
+          !
+          control-plane
+          !
+          !
+          !
+          line con 0
+           exec-timeout 0 0
+           logging synchronous
+          line aux 0
+          line vty 0 4
+           login
+           transport input ssh
+          !
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n3
+    image_definition: null
+    label: SW1
+    node_definition: ioll2-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: 740
+    y: 263
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        mac_address: null
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet0/1
+        mac_address: null
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet0/2
+        mac_address: null
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet0/3
+        mac_address: null
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          service compress-config
+          !
+          hostname SW2
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          no aaa new-model
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          ip audit notify log
+          ip audit po max-events 100
+          ip cef
+          login on-success log
+          no ipv6 cef
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          vtp mode transparent
+          vtp version 1
+          multilink bundle-name authenticated
+          !
+          crypto pki trustpoint TP-self-signed-131184643
+           enrollment selfsigned
+           subject-name cn=IOS-Self-Signed-Certificate-131184643
+           revocation-check none
+           rsakeypair TP-self-signed-131184643
+           hash sha256
+          !
+          !
+          crypto pki certificate chain TP-self-signed-131184643
+           certificate self-signed 01
+            3082032E 30820216 A0030201 02020101 300D0609 2A864886 F70D0101 0B050030
+            30312E30 2C060355 04030C25 494F532D 53656C66 2D536967 6E65642D 43657274
+            69666963 6174652D 31333131 38343634 33301E17 0D323530 32323331 34343933
+            375A170D 33353032 32333134 34393337 5A303031 2E302C06 03550403 0C25494F
+            532D5365 6C662D53 69676E65 642D4365 72746966 69636174 652D3133 31313834
+            36343330 82012230 0D06092A 864886F7 0D010101 05000382 010F0030 82010A02
+            82010100 CF90789C 82BAC8C4 7415DD3D 50A3585C 1DA872DB 6A5D7AED EC39BA0D
+            C264E3F4 14A4A7B1 CA13155E 806DB41D EF43F041 672053EB CDE6B54A 80F5FA64
+            F5564647 03E1038B 5C6AE1FE B3D31A18 E542C7ED C8550553 9B5C27FC BF943A96
+            57E50792 C3FBCC79 265E2011 043E5796 55BA5CB8 61A28B8B A11E0CF9 FDE5C63A
+            04F20604 9E076B08 92AF67D5 D796AEDA B3BFD526 657BE2E5 59956F36 F2F9B667
+            7E3BF299 B6C0CB6F 8FE8FA6C 41AE9970 C14F3390 C044AAAE 30AA3204 CB9B0534
+            93064AE5 6D7836DB DEDD5668 828D035B 6807EF38 ECE035B6 A18401CA 39162EA3
+            87D247A3 E7D9121C 7FB777C8 66CC7208 618D71A8 C64A6D98 A6F4C47D 5F0FCBA2
+            78CE6A4D 02030100 01A35330 51301D06 03551D0E 04160414 9D23C421 B20479C0
+            3859F14B D632B6F2 C9EFE989 301F0603 551D2304 18301680 149D23C4 21B20479
+            C03859F1 4BD632B6 F2C9EFE9 89300F06 03551D13 0101FF04 05300301 01FF300D
+            06092A86 4886F70D 01010B05 00038201 01006D6C A797D963 FFD56DF9 AC76FD0A
+            46A1589B 6725478D C67CEAB2 535FDB14 729D5908 4A84ED28 D6C52A2A 5E36647A
+            29854FDA 0355B011 F7AD59C9 DD5EB0AC A24ADE7A C54E86EF DC44F3DB DDE1A56A
+            06063D62 3928131D A3858542 641B6086 6D6D5D1C D5B3DE7D D17F9993 397AA85C
+            1E0C8938 AED3F88A 3440BA61 F3B791DE BFD4E61A E6494E0E F671BDE1 A14F779F
+            DE374560 A039A550 1906D3BA A3705333 66C4E1EA E3637BA4 2B130BDE 735441F3
+            F70E8182 7C2FAF28 9DA8D764 31037F40 BE0CEF7F 41EE59F7 AF57057B 7522E470
+            13DA08DF 3E75B6BA A749C4F2 3F51D1BE 9F8584C0 FC6985CC 2F28D95A 6B5E0DE1
+            306580FE C08012D1 94952A78 EA64C795 7A9A
+                  quit
+          !
+          !
+          memory free low-watermark processor 80589
+          !
+          !
+          spanning-tree mode pvst
+          spanning-tree extend system-id
+          !
+          !
+          vlan internal allocation policy ascending
+          !
+          vlan 10
+           name PCs
+          !
+          vlan 20
+           name SERVERs
+          !
+          !
+          !
+          !
+          !
+          interface Ethernet0/0
+           switchport access vlan 20
+          !
+          interface Ethernet0/1
+           switchport trunk encapsulation dot1q
+           switchport trunk allowed vlan 10,20
+           switchport mode trunk
+          !
+          interface Ethernet0/2
+          !
+          interface Ethernet0/3
+          !
+          ip forward-protocol nd
+          !
+          !
+          ip http server
+          ip http secure-server
+          ip ssh bulk-mode 131072
+          ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+          ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+          !
+          !
+          !
+          !
+          !
+          !
+          control-plane
+          !
+          !
+          !
+          line con 0
+           exec-timeout 0 0
+           logging synchronous
+          line aux 0
+          line vty 0 4
+           login
+           transport input ssh
+          !
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n4
+    image_definition: null
+    label: SW2
+    node_definition: ioll2-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: 552
+    y: 265
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        mac_address: null
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet0/1
+        mac_address: null
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet0/2
+        mac_address: null
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet0/3
+        mac_address: null
+        slot: 3
+        type: physical
+links:
+  - id: l0
+    n1: n3
+    n2: n2
+    i1: i1
+    i2: i1
+    conditioning: {}
+    label: SW1-Ethernet0/0<->RTR-Ethernet0/0
+  - id: l1
+    n1: n3
+    n2: n0
+    i1: i2
+    i2: i0
+    conditioning: {}
+    label: SW1-Ethernet0/1<->PC-eth0
+  - id: l2
+    n1: n4
+    n2: n1
+    i1: i1
+    i2: i0
+    conditioning: {}
+    label: SW2-Ethernet0/0<->server-eth0
+  - id: l3
+    n1: n4
+    n2: n3
+    i1: i2
+    i2: i3
+    conditioning: {}
+    label: SW2-Ethernet0/1<->SW1-Ethernet0/2
+lab:
+  description: ''
+  notes: |-
+    # CCNA: Implement Multiple VLANs and Basic Routing Between the VLANs
+    In this lab you need to do the following:
+    - Implement VLAN assignments on two switches
+    - Configure a dot1q trunk between those switches
+    - Configure a dot1q trunk between one switch and a router that will handle the routing for the VLANs
+    - Configure VLAN trunking on that router to act as a gateway between VLANs
+    - Verify that connectivity exists between hosts in the lab on each VLAN, and that the connectivity goes through the router
+
+    All nodes have been pre-configured.  Login to `PC` and run `traceroute -n 192.168.20.2`.  That will trace the path between the PC and the server.  Your output
+    should look like the following.  Note: the `-n` argument skips DNS lookups to make the `traceroute` run faster.
+
+    ```
+    PC:~$ traceroute -n 192.168.20.2
+    traceroute to 192.168.20.2 (192.168.20.2), 30 hops max, 46 byte packets
+     1  192.168.10.1  1.036 ms  0.803 ms  0.805 ms
+     2  192.168.20.2  3.595 ms  1.691 ms  1.708 ms
+    ```
+    In the output above, **192.168.10.1** is `RTR`, which is performing the routing between the VLANs.
+  title: Sample Lab 1 FREE (VLAN Configuration) Solution
+  version: 0.3.0
