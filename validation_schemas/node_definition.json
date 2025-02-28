@@ -51,7 +51,10 @@
             "properties": {
                 "linux_native": {
                     "$ref": "#/schemas/LinuxNativeSimulation"
-                }
+                },
+		"parameters": {
+		    "$ref": "#/schema/NodeParameters"
+		}
             },
             "required": [
                 "linux_native"
@@ -547,6 +550,15 @@
                 }
             ]
         },
+	"NodeParameters": {
+	    "type": "object",
+	    "additionalProperties": {
+		"type": "string",
+		"nullable": true
+	    },
+	    "description": "Key-value pairs of custom node SMBIOS parameters.",
+	    "example": {"smbios.bios.vendor": "Lenovo"}
+	},
         "Interfaces": {
             "type": "object",
             "additionalProperties": false,
