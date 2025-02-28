@@ -21,4 +21,3 @@ jobs:
         with:
           jsonSchemaFile: validation_schemas/node_definition.json
           yamlFiles: node-definitions/**/*.yaml
-        
