@@ -53,7 +53,7 @@
                     "$ref": "#/schemas/LinuxNativeSimulation"
                 },
 		"parameters": {
-		    "$ref": "#/schema/NodeParameters"
+		    "$ref": "#/schemas/NodeParameters"
 		}
             },
             "required": [
