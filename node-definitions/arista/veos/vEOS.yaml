@@ -1,24 +1,28 @@
 id: vEOS
 general:
-  description: Arista vEOS
+  description: |-
+    Arista vEOS.
+
+    Username: admin Password: <no-password> / admin
   nature: switch
   read_only: false
 device:
   interfaces:
     has_loopback_zero: true
     physical:
-      - eth0
-      - eth2
-      - eth3
-      - eth4
-      - eth5
-      - eth6
-      - eth7
-      - eth9
-      - eth10
-      - eth11
-      - eth12
-      - eth13
+      - Ma1
+      - Et1
+      - Et2
+      - Et3
+      - Et4
+      - Et5
+      - Et6
+      - Et7
+      - Et8
+      - Et9
+      - Et10
+      - Et11
+      - Et12
     serial_ports: 1
     default_count: 5
     loopback:
@@ -45,6 +49,7 @@ sim:
     nic_driver: virtio
 boot:
   timeout: 180
+  uses_regex: false
 inherited:
   image:
     ram: true
@@ -61,4 +66,33 @@ inherited:
 configuration:
   generator:
     driver: null
+  provisioning:
+    volume_name: ARISTA_CONFIG_DRIVE
+    media_type: iso
+    files:
+      - name: veos_usr.dat
+        editable: true
+        content: |-
+          %EOS-STARTUP-CONFIG-START%
+          !
+          no aaa root
+          !
+          username admin privilege 15 role network-admin secret 0 admin
+          !
+          switchport default mode access
+          !
+          logging console debugging
+          !
+          hostname inserthostname-here
+          !
+          interface Ethernet1
+          !
+          interface Management1
+          !
+          ip routing
+          !
+          end
+          %EOS-STARTUP-CONFIG-END%
+          %CLOUDHA-CONFIG-START%
+          %CLOUDHA-CONFIG-END%
 schema_version: 0.0.1
