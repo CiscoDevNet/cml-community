@@ -28,11 +28,10 @@ The current hosts of the CCNA Prep Program are:
 1. [DNS Deepdive: Exploring a Backbone of Network Communication”](s2e2/README.md)
 1. [Navigating NAT: Bridging Private Networks to the Internet](s2e3/README.md)
 1. [Securing Network Access: From Telnet to SSH](s2e4/README.md)
-1. Syncing Success: The Role of NTP in Network Operations
+1. [Syncing Success: The Role of NTP in Network Operations](s2e5/README.md)
 1. The Syslog Detective: Unraveling Network Mysteries
 1. Simplifying SNMP: Delivery Data for Network Operation Dashboards
 
 <!-- Future episodes
-1. [Syncing Success: The Role of NTP in Network Operations](s2e5/README.md)
 1. [The Syslog Detective: Unraveling Network Mysteries](s2e6/README.md)
 1. [Simplifying SNMP: Delivery Data for Network Operation Dashboards](s2e7/README.md) -->
