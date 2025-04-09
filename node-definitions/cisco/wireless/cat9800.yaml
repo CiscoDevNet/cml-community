@@ -56,7 +56,7 @@ sim:
     nic_driver: virtio
     ram: 8192
     video:
-      memory: 16
+      memory: 1
 pyats:
   os: iosxe
   series: csr1000v
