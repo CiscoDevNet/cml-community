@@ -12,6 +12,7 @@ configuration:
 device:
   interfaces:
     has_loopback_zero: true
+    min_count: 4
     default_count: 4
     loopback:
       - Loopback0
@@ -29,11 +30,13 @@ inherited:
   image:
     ram: true
     cpus: true
+    cpu_limit: true
     data_volume: false
     boot_disk_size: false
   node:
     ram: true
     cpus: true
+    cpu_limit: true
     data_volume: false
     boot_disk_size: false
 general:
