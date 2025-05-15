@@ -108,13 +108,9 @@ cat <<EOF
 ******************************************************************************
 * IMPORTANT!                                                                 *
 * you need to ensure that you change the username and password for a user of *
-* the system that can start the labs.                                        *
+* the system that can start the labs in /etc/default/cml-autostart           *
 *                                                                            *
-* Every lab that has the string configured in the lab description which is   *
-* defined in the default will be started by the script.                      *
-*                                                                            *
-* The default is "(autostart)".                                              *
-*                                                                            *
-* /etc/default/cml-autostart                                                 *
+* Add the string "(autostart)" to the description of each lab that you wish  *
+* to start automatically.                                                    *
 ******************************************************************************
 EOF
