@@ -79,7 +79,7 @@ After=virl2.target
 [Service]
 Type=oneshot
 ExecStart=/usr/local/bin/cml-autostart.sh
-User=virl2
+User=root
   
 [Install]
 WantedBy=multi-user.target
