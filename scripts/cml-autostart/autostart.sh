@@ -106,7 +106,7 @@ echo -e "\t✅"
 
 cat <<EOF
 ******************************************************************************
-* IMPORTANT!                                                                 *
+* ⚠️ IMPORTANT! ⚠️                                                           *
 * you need to ensure that you change the username and password for a user of *
 * the system that can start the labs in /etc/default/cml-autostart           *
 *                                                                            *
