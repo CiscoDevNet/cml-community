@@ -17,7 +17,7 @@ PASSWORD="password-that-needs-to-be-changed"
 TITLE_REGEX="\(autostart\)"
 EOF
     chown root:root "$install_dir/$(basename cml-autostart)"
-    chmod 500 "$install_dir/$(basename cml-autostart)"
+    chmod 0600 "$install_dir/$(basename cml-autostart)"
 }
 
 install_script() {
