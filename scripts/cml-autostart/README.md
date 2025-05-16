@@ -23,14 +23,15 @@ $ sudo bash ./autostart.sh
 installing defaults     ✅
 installing script       ✅
 installing service unit ✅
-******************************************************************************
-* IMPORTANT!                                                                 *
-* you need to ensure that you change the username and password for a user of *
-* the system that can start the labs in /etc/default/cml-autostart           *
-*                                                                            *
-* Add the string "(autostart)" to the description of each lab that you wish  *
-* to start automatically.                                                    *
-******************************************************************************
+*****************************************************
+* ⚠️ IMPORTANT! ⚠️                                  *
+* you need to ensure that you change the username   *
+* and password for a user of the system that can    *
+* start the labs in /etc/default/cml-autostart      *
+*                                                   *
+* Add the string "(autostart)" to the description   *
+* of each lab that you wish to start automatically. *
+*****************************************************
 $
 ```
 
