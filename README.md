@@ -41,10 +41,7 @@ Instruct users how to get help with this code; this might include links to an is
 
 If you have questions, concerns, bug reports, etc., please create an issue against this repository.
 
-If you've questions on using CML, here are some places to checkout: 
-
-* [Cisco Modeling Labs Support](https://developer.cisco.com/docs/modeling-labs/#!support)
-* [Cisco Modeling Labs Webex Teams Space](https://eurl.io/#bWHTbWz1Z)
+If you've questions on using CML, post them to our [CML community](https://developer.cisco.com/docs/modeling-labs/#!support).
 
 ## Getting involved
 
