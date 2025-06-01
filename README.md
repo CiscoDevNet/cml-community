@@ -4,7 +4,7 @@
 
 Community Contributed Content and Resources for Cisco Modeling Labs
 
-![](readme_images/cml-labmanager.jpg)
+![](readme_images/cml-lab.png)
  
 ## Repository Description
 
