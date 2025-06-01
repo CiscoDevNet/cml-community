@@ -31,7 +31,7 @@ A great way to make your repo easy for others to use is to provide a link to a [
 
 If you are new to Cisco Modeling Labs, you can explore and test drive CML within [DevNet Sandbox](https://developer.cisco.com/site/sandbox/). Just search for "Cisco Modeling" from the Sandbox Catalog. 
 
-![](readme_images/sandbox-catalog-cml.jpg)
+![](readme_images/sandbox-catalog-cml.png)
 
 ## Getting help
 
