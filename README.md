@@ -10,8 +10,9 @@ Community Contributed Content and Resources for Cisco Modeling Labs
 
 [Cisco Modeling Labs](http://developer.cisco.com/modeling-labs) (CML) is a network simulation platform from Cisco that allows for the creation of robust network topologies made up of nearly anything you can imagine. It supports virtual machine based devices using QCOW or KVM format, and can be tied into physical components by "bridging" the simulation to the real world.  
 
-CML is officially supported on bare-metal x86\_64 servers and in VMware ESXi and VMware Workstation VMs.  Unofficially, CML can be
-installed onto [HyperV](documentation/cml_on_hyperv.md), [Proxmox](documentation/cml_on_proxmox.md), and [Nutaix AHV](documentation/cml_on_nutanix.md).
+CML is officially supported on bare-metal x86\_64 servers and in VMware ESXi and VMware Workstation virtual machines.
+Unofficially, CML can be installed onto [HyperV](documentation/cml_on_hyperv.md), [Proxmox](documentation/cml_on_proxmox.md),
+and [Nutanix AHV](documentation/cml_on_nutanix.md).
 
 This repository is intended to be a place for the CML community to find and share content that builds on top of the standard CML installation.  Examples of this content include: 
 
