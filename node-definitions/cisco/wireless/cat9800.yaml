@@ -3,15 +3,20 @@ configuration:
   generator:
     driver: csr1000v
   provisioning:
-    volume_name: disk
+    volume_name: CDROM
     media_type: iso
     files:
       - name: iosxe_config.txt
-        content: hostname inserthostname_here
+        content: |-
+          platform console serial
+          hostname C9800-CL
+          !
+          end
         editable: true
 device:
   interfaces:
     has_loopback_zero: true
+    min_count: 4
     default_count: 4
     loopback:
       - Loopback0
@@ -29,17 +34,19 @@ inherited:
   image:
     ram: true
     cpus: true
+    cpu_limit: true
     data_volume: false
     boot_disk_size: false
   node:
     ram: true
     cpus: true
+    cpu_limit: true
     data_volume: false
     boot_disk_size: false
 general:
   description: Cisco Catalyst 9800 Wireless Controller for Cloud
   nature: switch
-  read_only: true
+  read_only: false
 schema_version: 0.0.1
 boot:
   timeout: 300
@@ -47,6 +54,7 @@ boot:
     - 'Would you like to enter the initial configuration dialog? [yes/no]:'
     - '%SYS-5-RESTART: System restarted'
     - 'INFO: Press RETURN to get started!'
+  uses_regex: false
 sim:
   linux_native:
     cpus: 2
@@ -54,18 +62,21 @@ sim:
     driver: server
     libvirt_domain_driver: kvm
     nic_driver: virtio
-    ram: 8192
+    ram: 6144
+    cpu_limit: 100
     video:
-      memory: 16
+      model: vga
+      memory: 1
 pyats:
   os: iosxe
   series: csr1000v
   config_extract_command: show run
+  use_in_testbed: true
 ui:
   description: |-
     Cisco Catalyst 9800 Wireless Controller for Cloud
 
-    8 GB DRAM, 2 vCPU
+    6 GB DRAM, 2 vCPU
 
     [CCO Link](https://www.cisco.com/c/en/us/support/wireless/catalyst-9800-wireless-controllers-cloud/tsd-products-support-series-home.html)
   group: Others

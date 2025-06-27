@@ -1,0 +1,1094 @@
+annotations:
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: true
+    text_content: 'CCNA Exam Prep: Back to Networking Basics with Hank Preston and
+      Patrick Gargano'
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -480.0
+    y1: -80.0
+    z_index: 2
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: true
+    text_content: 'The Syslog Detective: Unraveling Network Mysteries'
+    text_font: monospace
+    text_italic: false
+    text_size: 18
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -480.0
+    y1: -40.0
+    z_index: 2
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      CCNA 1.1 Exam Topic
+      4.5 Describe the use of syslog features including facilities and levels
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -482.49951181409887
+    y1: 225.0029291154072
+    z_index: 2
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: |2-
+
+      host user/pass:            cisco / cisco
+      network enable password:   enablepass
+      telnet password:           telnetpass
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -480.0
+    y1: 440.0
+    z_index: 3
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: true
+    text_content: 'Credentials:
+
+      '
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -480.0
+    y1: 440.0
+    z_index: 3
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: true
+    text_content: ____________
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -480.0
+    y1: 440.0
+    z_index: 3
+  - border_color: '#808080FF'
+    border_radius: 2
+    border_style: ''
+    color: '#7FF0FA'
+    thickness: 2
+    type: rectangle
+    x1: -483.21004499370474
+    y1: 310.36986501888595
+    x2: 763.2100449937047
+    y2: 260.47255474961986
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      Ever been overwhelmed by console messages when you were trying to configure a Cisco router? Ever wonder
+      what all those console messages mean, where they come from and how to control where their displayed?
+      Maybe it's an interface going down or an OSPF neighbor coming up. These are all useful and important
+      messages but too many of them can cause system interruptions and distract you.
+
+      You can use a protocol called syslog to send these console messages to a server to collect them for easy access and analysis.
+
+      In this lab you will explore how log messages work and how to configure and verify syslog.
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -478.75024409295065
+    y1: 1.2497559070494049
+    z_index: 4
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: |2-
+
+      0    emergencies          System is unusable
+      1    alerts               Immediate action required
+      2    critical             Critical conditions
+      3    errors               Error conditions
+      4    warnings             Warning conditions
+      5    notifications        Normal but significant condition
+      6    informational        Informational messages
+      7    debugging            Debugging messages
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 427.4838012010753
+    y1: 301.3797365797557
+    z_index: 5
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: ''
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 400.19267871188174
+    y1: 190.55284132635407
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: Level  Keyword              Meaning
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 412.06669247331945
+    y1: 299.08155701901615
+    z_index: 7
+  - border_color: '#808080FF'
+    border_style: ''
+    color: '#FFFFFFFF'
+    line_end: null
+    line_start: null
+    thickness: 1
+    type: line
+    x1: 400.0
+    y1: 320.0
+    x2: 960.0
+    y2: 320.0
+    z_index: 8
+  - border_color: '#808080FF'
+    border_style: ''
+    color: '#FFFFFFFF'
+    line_end: null
+    line_start: null
+    thickness: 1
+    type: line
+    x1: 399.22130997381186
+    y1: 342.86881942386003
+    x2: 959.2213099738119
+    y2: 342.86881942386003
+    z_index: 9
+  - border_color: '#808080FF'
+    border_style: ''
+    color: '#FFFFFFFF'
+    line_end: null
+    line_start: null
+    thickness: 1
+    type: line
+    x1: 401.5573800523763
+    y1: 371.96715905722544
+    x2: 961.5573800523762
+    y2: 371.96715905722544
+    z_index: 10
+  - border_color: '#808080FF'
+    border_style: ''
+    color: '#FFFFFFFF'
+    line_end: null
+    line_start: null
+    thickness: 1
+    type: line
+    x1: 400.0
+    y1: 395.61466850727373
+    x2: 960.0000000000001
+    y2: 395.61466850727373
+    z_index: 11
+  - border_color: '#808080FF'
+    border_style: ''
+    color: '#FFFFFFFF'
+    line_end: null
+    line_start: null
+    thickness: 1
+    type: line
+    x1: 401.5573800523763
+    y1: 418.48348793113377
+    x2: 961.5573800523762
+    y2: 418.48348793113377
+    z_index: 12
+  - border_color: '#808080FF'
+    border_style: ''
+    color: '#FFFFFFFF'
+    line_end: null
+    line_start: null
+    thickness: 1
+    type: line
+    x1: 400.0
+    y1: 445.24575748593463
+    x2: 960.0
+    y2: 445.24575748593463
+    z_index: 13
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      Every
+      Awesome
+      Cisco
+      Engineer
+      Will
+      Need
+      Ice-cream
+      Daily
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 969.6103774288747
+    y1: 326.2295202095055
+    z_index: 14
+  - border_color: '#808080FF'
+    border_style: ''
+    color: '#FFFFFFFF'
+    line_end: null
+    line_start: null
+    thickness: 1
+    type: line
+    x1: 399.3854080606842
+    y1: 468.5960665173115
+    x2: 964.7143670733036
+    y2: 467.81737649112324
+    z_index: 15
+  - border_color: '#808080FF'
+    border_style: ''
+    color: '#FFFFFFFF'
+    line_end: null
+    line_start: null
+    thickness: 1
+    type: line
+    x1: 399.3854080606842
+    y1: 496.628907460086
+    x2: 960.0422269161744
+    y2: 493.5141473553333
+    z_index: 16
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: Log Severity Levels
+    text_font: monospace
+    text_italic: false
+    text_size: 16
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 413.5571444387241
+    y1: 264.21531029708024
+    z_index: 17
+nodes:
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: internet
+    node_definition: external_connector
+    parameters: {}
+    ram: null
+    tags: []
+    x: 240
+    y: 360
+    interfaces:
+      - id: i0
+        label: port
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname rtr01
+          !
+          ! In order to avoid entering a configuration dialog
+          ! on boot, please ensure that all ethernet interfaces
+          ! have some ip configuration present here such as the
+          ! example below:
+          !
+          interface range Ethernet 0/0 - 3
+           no ip address
+           shutdown
+          !
+          ip host rtr01.example.com 10.0.0.1
+          ip host sw01.example.com 192.168.0.2
+          ip host ntpserver.example.com 192.168.100.100
+          ip name-server 192.168.255.1
+          ip domain name example.com
+          ip dns server
+          ip dns primary example.com soa 192.168.0.1 admin@example.com 21600 900 7776000 86400
+          ntp server 192.168.100.100
+          !
+          ip dhcp excluded-address 192.168.0.1 192.168.0.10
+          ip dhcp pool inside
+           network 192.168.0.0 /24
+           default-router 192.168.0.1
+           dns-server 10.0.0.1
+           domain-name example.com
+           exit
+          !
+          ip access-list standard NAT
+           permit 192.168.0.0 0.0.0.255
+           permit 192.168.100.0 0.0.0.255
+          !
+          ip nat inside source list NAT interface e0/0 overload
+          !
+          interface e0/1
+           description Link to Inside Hosts
+           ip address 192.168.0.1 255.255.255.0
+           ip nat inside
+           no shut
+          !
+          interface e0/0
+           description Link to Internet
+           ip address dhcp
+           ip nat outside
+           no shut
+          !
+          interface e0/2
+           description Link to Lab NTP Server
+           ip address 192.168.100.1 255.255.255.0
+           ip nat inside
+           no shut
+          !
+          interface loopback0
+           ip address 10.0.0.1 255.255.255.255
+          !
+          enable secret enablepass
+          !
+          line vty 0 4
+           transport input telnet
+           login
+           password telnetpass
+          !
+          do clock set 00:00:00 01 Jan 1993
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: rtr01
+    node_definition: iol-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: 0
+    y: 360
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet0/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname sw01
+          ip domain name example.com
+          !
+          vtp version 2
+          vtp mode transparent
+          !
+          vlan 10
+           name inside-network
+          !
+          interface e0/0
+           description Link to rtr01
+           switchport mode access
+           spanning-tree portfast
+           switchport access vlan 10
+          !
+          interface e0/1
+           description Link to netadmin
+           switchport mode access
+           spanning-tree portfast
+           switchport access vlan 10
+          !
+          interface vlan 10
+           description Switch Management Interface
+           ip address 192.168.0.2 255.255.255.0
+           no shutdown
+          !
+          ip route 0.0.0.0 0.0.0.0 192.168.0.1
+          ip name-server 10.0.0.1
+          !
+          line vty 0 4
+           no login
+           transport input none
+          !
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n2
+    image_definition: null
+    label: sw01
+    node_definition: ioll2-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: -200
+    y: 360
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet0/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname netadmin
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n3
+    image_definition: null
+    label: netadmin
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: -440
+    y: 360
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname ntpserver
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+          # Static IP address
+          ip address add 192.168.100.100/24 dev eth0
+          ip route add default via 192.168.100.1
+          # NTP Server Setup
+          echo 'NTPD_OPTS="-l -N"' > /etc/conf.d/ntpd
+          service ntpd start
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n4
+    image_definition: null
+    label: ntpserver
+    node_definition: alpine
+    parameters: {}
+    ram: null
+    tags: []
+    x: 0
+    y: 520
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+links:
+  - id: l0
+    n1: n2
+    n2: n1
+    i1: i1
+    i2: i2
+    conditioning: {}
+    label: sw01-Ethernet0/0<->rtr01-Ethernet0/1
+  - id: l1
+    n1: n3
+    n2: n2
+    i1: i0
+    i2: i2
+    conditioning: {}
+    label: netadmin-eth0<->sw01-Ethernet0/1
+  - id: l2
+    n1: n4
+    n2: n1
+    i1: i0
+    i2: i3
+    conditioning: {}
+    label: ntpserver-eth0<->rtr01-Ethernet0/2
+  - id: l3
+    n1: n1
+    n2: n0
+    i1: i1
+    i2: i0
+    conditioning: {}
+    label: rtr01-Ethernet0/0<->internet-port
+lab:
+  description: Step into the shoes of a network detective in this engaging live event,
+    where Syslog serves as your investigative tool. Learn how to configure Syslog
+    to capture and analyze crucial network events, uncovering the hidden clues within
+    your infrastructure. Through hands-on exercises, we’ll master syslog’s role in
+    solving network mysteries by piecing together performance insights, troubleshooting
+    issues, and enhancing security monitoring. Join us to become a Syslog sleuth and
+    complete your CCNA Preparation.
+  notes: |-
+    **CCNA Exam Prep: Back to Networking Basics with Hank Preston and Patrick Gargano -- Season 2**
+
+    # The Syslog Detective: Unraveling Network Mysteries
+
+    Ever been overwhelmed by console messages when you were trying to configure a Cisco router? Ever wonder what all those console messages mean, where they come from and how to control where their displayed? Maybe it's an interface going down or an OSPF neighbor coming up. These are all useful and important messages but too many of them can cause system interruptions and distract you.
+
+    You can use a protocol called syslog to send these console messages to a server to collect them for easy access and analysis.
+
+    In this lab you will explore how log messages work and how to configure and verify syslog.
+
+    Related CCNA v1.1 exam topic:
+    * 4.5 Describe the use of syslog features including facilities and levels
+
+    In this lab, we will explore how to:
+    * Verify the default logging configuration
+    * Explore where log messages can be sent
+    * Configure and verify logging to a syslog server
+
+    ## Setup and Scenario
+    In this set of lab-based demonstrations, you are a network engineer tasked with exploring and testing how log messages can be displayed in real-time or stored for later review.
+
+    You've been asked to:
+
+    * Configure console, terminal monitor, buffer and server logging.
+
+    *Be sure to **START** the lab before continuing to the demo lab.*
+
+    > Note: The credentials for all devices are **cisco / cisco**
+
+    ## Part 1: Reviewing the current logging configuration on the rtr01 router
+    Before we jump into configuring logging, let's explore what its default settings are.
+
+    ### Step 1
+    Open a console connection to the ``rtr01`` router and verify its default logging configuration. Use the ``show run all`` command.
+
+    <pre>
+    rtr01# <b>show run all | include logging</b>
+    no service pt-vty-logging
+    no logging discriminator
+    logging exception 4096
+    no logging count
+    no logging message-counter log
+    no logging message-counter debug
+    logging message-counter syslog
+    no logging snmp-authfail
+    no logging userinfo
+    logging buginf
+    logging queue-limit 100
+    logging queue-limit esm 0
+    logging queue-limit trap 100
+    <mark>logging buffered 4096 debugging</mark>
+    logging reload message-limit 1000 notifications
+    no logging persistent
+    logging rate-limit console 40 except errors
+    logging console guaranteed
+    <mark>logging console debugging
+    logging monitor debugging</mark>
+    logging cns-events informational
+    <mark>logging on</mark>
+    ethernet cfm logging alarm ieee
+    ethernet cfm logging alarm cisco
+    ethernet cfm logging ais
+    ethernet cfm logging lck
+    ip dhcp conflict logging
+    no device-tracking logging packet drop
+    no device-tracking logging theft
+    no device-tracking logging resolution-veto
+    mpls ldp logging neighbor-changes
+    mpls ldp logging password configuration
+    mpls ldp logging password rollover
+    no cts logging verbose
+     logging event link-status
+     logging event link-status
+     logging event link-status
+     logging event link-status
+     logging event link-status
+    ip ssh logging events
+    logging dmvpn rate-limit 600
+    logging history size 1
+    logging history warnings
+    <mark>logging trap informational</mark>
+    logging delimiter tcp
+    no logging origin-id
+    <mark>logging facility local7</mark>
+    no logging source-interface
+    logging server-arp
+    snmp-server enable logging setop
+     logging synchronous
+    no device-tracking binding logging
+    </pre>
+
+    Focusing on the lines in the output that are highlighted, we see that the router is configured to send debugging (or level 7) messages to the console, monitor, and buffer. We further see that logging is turned on, and that the trap logging level is informational (or level 6), and that the logging facility is number 7. The logging trap command has to deal with what messages are sent to an external server, while the facility is how the server routes the log messages when they are received. A facility can be a hardware device, a protocol, or a module of the system software. It denotes the source or the cause of the system message. (Log facility 7 indicates one of several custom logging facilities, which are typically tied to a specific file). We will look at the facility concept in more detail later in the lab.
+
+    ### Step 2
+    Verify how the ``rtr01`` router is configured to display time stamps when producing log messages.
+
+    <pre>
+    rtr01# <b>show run | section timestamp</b>
+    service timestamps debug datetime msec
+    service timestamps log datetime msec
+    </pre>
+
+    By default, the router is configured to time stamp all debug and logging messages that are produced at the console or elsewhere, down to the millisecond. These time stamps are displayed in UTC time by default but it is possible to display them in the local time zone of the device. Also, you can configure the router to display sequence numbers for all log messages instead of the date and time.
+
+    ### Step 3
+    Check the current time on the ``rtr01`` router. Although the router is configured to get its time from the NTP server, you know from the previous CCNA Prep episode on NTP that it can take a long time to synchronize its clock. If the time on the router is not accurate, go ahead and manually set it for the correct UTC time.
+
+    <pre>
+    rtr01# <b>show clock</b>
+    22:57:50.203 UTC Thu Jan 14 1993
+
+    rtr01# <b>show ntp status</b>
+    Clock is unsynchronized, stratum 2, reference is 192.168.100.100
+    nominal freq is 250.0000 Hz, actual freq is 249.8750 Hz, precision is 2**10
+    ntp uptime is 820200 (1/100 of seconds), resolution is 4016
+    reference time is AF006F7A.AB854306 (23:02:18.670 UTC Thu Jan 14 1993)
+    clock offset is -825084165.0000 msec, root delay is 1.94 msec
+    root dispersion is -825076224.00 msec, peer dispersion is 7938.96 msec
+    loopfilter state is 'SPIK' (Spike), drift is 0.000499999 s/s
+    system poll interval is 64, last update was 45 sec ago.
+
+    rtr01# <b>clock set 17:55:00 8 April 2025</b>
+    rtr01#
+    Apr  8 17:55:00.000: %SYS-6-CLOCKUPDATE: System clock has been updated from 23:04:58 UTC Thu Jan 14 1993 to 17:55:00 UTC Tue Apr 8 2025, configured from console by console.
+    </pre>
+
+     It is critical to note that prior to configuring any device to send log information, the date and time of the clock must be properly configured for accurate time. If it isn't, the time stamps on all the logging messages will not reflect the appropriate and accurate time, which will make troubleshooting much more difficult because you will not be able to correlate issues with the logs by using the time stamps generated.
+
+    Notice the log message that is generated at the console when you manually set the clock. Let's break it down:
+
+    First, you are shown a time stamp down to the millisecond: ``Apr 8 17:55:00.000``
+
+    Second, you are shown the facility on the router that generated the message: ``%SYS``
+
+    Third, you are shown the severity level of the message: ``6`` (informational)
+
+    Fourth, an abbreviation for the message: ``CLOCKUPDATE``
+
+    Finally, a description of the message itself: ``System clock has been updated from 23:04:58 UTC Thu Jan 14 1993 to 17:55:00 UTC Tue Apr 8 2025, configured from console by console``
+
+    All log messages that are generated will follow this general format.
+
+
+    ## Part 2: Configure and verify console and terminal monitor logging
+    Let's look again at the current logging settings for messages displayed at the console and for terminal connections, and modify their parameters.
+
+    ### Step 1
+    Use the ``show logging`` command on the ``rtr01`` router and verify the console and monitor settings.
+
+    <pre>
+    rtr01# <b>show logging</b>
+    <mark>Syslog logging: enabled</mark> (0 messages dropped, 2 messages rate-limited, 0 flushes, 0 overruns, xml disabled, filtering disabled)
+
+    No Active Message Discriminator.
+
+    No Inactive Message Discriminator.
+
+        <mark>Console logging: level debugging, 60 messages logged</mark>, xml disabled,
+                         filtering disabled
+        <mark>Monitor logging: level debugging, 0 messages logged</mark>, xml disabled,
+                         filtering disabled
+        Buffer logging:  level debugging, 61 messages logged, xml disabled,
+                        filtering disabled
+        Exception Logging: size (4096 bytes)
+        Count and timestamp logging messages: disabled
+        Persistent logging: disabled
+        Trap logging: level informational, 64 message lines logged
+            Logging Source-Interface:       VRF Name:
+
+    Log Buffer (4096 bytes):
+    Jan  1 00:00:00.771: %LINK-3-UPDOWN: Interface Ethernet0/1, changed state to up
+    Jan  1 00:00:00.784: %LINK-3-UPDOWN: Interface Ethernet0/2, changed state to up
+    <...output omitted...>
+    Apr  8 17:55:00.000: %SYS-6-CLOCKUPDATE: System clock has been updated from 23:04:58 UTC Thu Jan 14 1993 to 17:55:00 UTC Tue Apr 8 2025, configured from console by console.
+    rtr01#
+    </pre>
+
+    Focussing once again on the highlighted lines, you can see that logging is enabled (it can be disabled globally with the ``no logging on`` configuration command or more specifically with the ``no logging console`` or  ``no logging monitor`` commands). For both console and monitor logging, the severity level is set to debugging (level 7).
+
+    Network devices should log levels 0–6 under normal operation. Level 7 should be used for console troubleshooting only.
+
+    Note that monitor logging messages refer to messages sent to other logged-in users, for example Telnet and SSH users connected to the VTY terminal lines.
+
+    ### Step 2
+    Configure monitor logging for level 3 and below (error). Then ``telnet`` from the ``netadmin`` PC to the ``rtr01`` router. When configuring a severity level for logging, the level chosen always includes more severe levels. Since you are configuring monitor logging for level 3, this will also include levels 0, 1, and 2 as well.
+
+    <pre>
+    rtr01(config)# <b>logging monitor ?</b>
+      <0-7>          Logging severity level
+      alerts         Immediate action needed           (severity=1)
+      critical       Critical conditions               (severity=2)
+      debugging      Debugging messages                (severity=7)
+      discriminator  Establish MD-Console association
+      emergencies    System is unusable                (severity=0)
+      errors         Error conditions                  (severity=3)
+      informational  Informational messages            (severity=6)
+      notifications  Normal but significant conditions (severity=5)
+      warnings       Warning conditions                (severity=4)
+      xml            Enable logging in XML
+      <cr>           <cr>
+    rtr01(config)# <b>logging monitor 3</b>
+
+
+    netadmin:~$ <b>telnet rtr01</b>
+    Connected to rtr01
+
+    Entering character mode
+    Escape character is '^]'.
+
+
+    User Access Verification
+
+    Password: <b>telnetpass</b>
+    rtr01#
+    </pre>
+
+    ### Step 3
+    From the telnet session, enable ``terminal monitoring``. Then disable and re-enable the Ethernet0/0 interface. Compare the output from the telnet session to the output at the router's actual console.
+
+    <pre>
+    <mark><b>FROM THE TELNET SESSION</b></mark>
+    rtr01# <b>terminal monitor</b>
+    rtr01# <b>config t</b>
+    Enter configuration commands, one per line.  End with CNTL/Z.
+    rtr01(config)# <b>interface Ethernet0/0</b>
+    rtr01(config-if)# <b>shutdown</b>
+    rtr01(config-if)# <b>no shutdown</b>
+    rtr01(config-if)#
+    <mark>Apr  8 18:58:57.425: %LINK-3-UPDOWN: Interface Ethernet0/0, changed state to up</mark>
+
+
+    <mark><b>FROM THE ROUTER'S CONSOLE</b></mark>
+    rtr01#
+    Apr  8 18:58:53.745: %LINK-5-CHANGED: Interface Ethernet0/0, changed state to administratively down
+    Apr  8 18:58:54.745: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/0, changed state to down
+    rtr01#
+    Apr  8 18:58:57.425: %LINK-3-UPDOWN: Interface Ethernet0/0, changed state to up
+    rtr01#
+    Apr  8 18:58:58.425: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/0, changed state to up
+    rtr01#
+    Apr  8 18:59:02.567: %DHCP-6-ADDRESS_ASSIGN: Interface Ethernet0/0 assigned DHCP address 192.168.255.81, mask 255.255.255.0, hostname rtr01
+    </pre>
+
+    The  ``terminal monitor`` command is necessary to allow your Telnet session to receive log messages otherwise they will not be displayed, while the previous ``logging monitor 3`` command set the severity level of the messages sent to any terminal user.
+
+    Notice that the output from the Telnet session only displays the severity level 3 "interface up" message, while the router's console displays all up/down messages, as well as the DHCP message, since the console is still configured to display messages up to severity level 7.
+
+    ### Step 4
+    Use the ``show logging`` command again to verify the current logging configuration.
+
+    <pre>
+    rtr01# <b>show logging</b>
+    Syslog logging: enabled (0 messages dropped, 2 messages rate-limited, 0 flushes, 0 overruns, xml disabled, filtering disabled)
+
+    No Active Message Discriminator.
+
+    No Inactive Message Discriminator.
+
+        Console logging: level debugging, 73 messages logged, xml disabled,
+                         filtering disabled
+        Monitor logging: level errors, 1 messages logged, xml disabled,
+                         filtering disabled
+        Buffer logging:  level debugging, 87 messages logged, xml disabled,
+                        filtering disabled
+        Exception Logging: size (4096 bytes)
+        Count and timestamp logging messages: disabled
+        Persistent logging: disabled
+        Trap logging: level informational, 90 message lines logged
+            Logging Source-Interface:       VRF Name:
+
+    Log Buffer (4096 bytes):
+    <...output omitted...>>
+    </pre>
+
+    Console logging is still set to the debugging level, while monitor logging is now set to the errors level. Notice the number of messages generated for each. Your results will perhaps differ from what is show above.
+
+    ## Part 3: Configure and verify buffer and trap logging
+    Besides sending log messages to the console and to the terminal monitor, it is also possible to save log messages to a local buffer on the router, as well as send the log messages to an external server. [RFC 5424](https://datatracker.ietf.org/doc/html/rfc5424) defines the syslog protocol which allows network devices to use UDP to send log messages to a server for storage. In this part of the lab we will configure and verify both buffer logging and trap logging to a server.
+
+    ### Step 1
+    Return to the rtr01 router and consult the ``show logging`` output you generated in the last step of Part 2.
+
+    <pre>
+    rtr01# <b>show logging</b>
+    Syslog logging: enabled (0 messages dropped, 2 messages rate-limited, 0 flushes, 0 overruns, xml disabled, filtering disabled)
+
+    No Active Message Discriminator.
+
+    No Inactive Message Discriminator.
+
+        Console logging: level debugging, 73 messages logged, xml disabled,
+                         filtering disabled
+        Monitor logging: level errors, 1 messages logged, xml disabled,
+                         filtering disabled
+        <mark>Buffer logging:  level debugging, 87 messages logged</mark>, xml disabled,
+                        filtering disabled
+        Exception Logging: size (4096 bytes)
+        Count and timestamp logging messages: disabled
+        Persistent logging: disabled
+        <mark>Trap logging: level informational, 90 message lines logged</mark>
+            Logging Source-Interface:       VRF Name:
+
+    <mark>Log Buffer (4096 bytes):</mark>
+    <...output omitted...>>
+    </pre>
+
+    Focussing on the highlighted lines, you see that the buffer is currently set for severity level 7 (debugging), that the buffer size is set to 4096 bytes, and that trap logging to a syslog server is set to severity level 6 (informational)
+
+    Since the syslog server IP address has not yet been configured on the router, the trap logging messages are not currently being sent anywhere. We will correct that shortly.
+
+    The buffer logs are automatically displayed when you use the ``show logging`` command and the output can be rather overwhelming as you scroll through multiple pages of logs. Let's minimize what is sent to the buffer but also increase the buffer size to hold more messages.
+
+    ### Step 2
+    Configure the logging buffer for severity level 4 (warnings) and set the buffer size to 8192 bytes so that it can hold more messages.
+
+    <pre>
+    rtr01(config)# <b>logging buffer 8192 4</b>
+    rtr01(config)#
+    Apr 10 14:50:09.445: %SYS-5-LOG_CONFIG_CHANGE: Buffer logging: level warnings, xml disabled, filtering disabled, size (8192)
+    </pre>
+
+    The ``logging buffer`` configuration command allows you to set both the size of the buffer and the severity level.
+
+    Notice that the log message that is displayed at the console in response is a severity level 5 message. If you do a ``show logging`` command you will see that the buffer has been erased and will now only show severity level 4 and lower messages.
+
+    To generate a message that will be sent to the buffer, you can disable and re-enable the E0/0 interface as we did in an earlier step. This will generate a severity level 3 message which will be sent to the buffer.
+
+    <pre>
+    rtr01(config)# <b>interface e0/0</b>
+    rtr01(config-if)# <b>shutdown</b>
+    rtr01(config-if)#
+    Apr 10 14:55:35.060: %LINK-5-CHANGED: Interface Ethernet0/0, changed state to administratively down
+    Apr 10 14:55:36.060: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/0, changed state to down
+    rtr01(config-if)# <b>no shutdown</b>
+    rtr01(config-if)#
+    Apr 10 14:55:42.327: %LINK-3-UPDOWN: Interface Ethernet0/0, changed state to up
+    rtr01(config-if)#
+    Apr 10 14:55:43.327: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/0, changed state to up
+    Apr 10 14:55:47.718: %DHCP-6-ADDRESS_ASSIGN: Interface Ethernet0/0 assigned DHCP address 192.168.255.81, mask 255.255.255.0, hostname rtr01
+
+    rtr01(config-if)# <b>do show logging</b>
+    Syslog logging: enabled (0 messages dropped, 2 messages rate-limited, 0 flushes, 0 overruns, xml disabled, filtering disabled)
+
+    No Active Message Discriminator.
+
+
+
+    No Inactive Message Discriminator.
+
+
+        Console logging: level debugging, 83 messages logged, xml disabled,
+                         filtering disabled
+        Monitor logging: level errors, 2 messages logged, xml disabled,
+                         filtering disabled
+        <mark>Buffer logging:  level warnings, 1 messages logged</mark>, xml disabled,
+                        filtering disabled
+        Exception Logging: size (4096 bytes)
+        Count and timestamp logging messages: disabled
+        Persistent logging: disabled
+        Trap logging: level informational, 100 message lines logged
+            Logging Source-Interface:       VRF Name:
+
+    <mark>Log Buffer (8192 bytes):</mark>
+
+    <mark>Apr 10 14:55:42.327: %LINK-3-UPDOWN: Interface Ethernet0/0, changed state </mark>to up
+    </pre>
+
+    The buffer logs are now set to severity level 3 (and lower) and the buffer size is set to 8192 bytes.
+
+
+    ### Step 3
+    Configure trap logging to the syslog server at address 192.168.100.100. This is the same address as the NTP server.
+
+    <pre>
+    rtr01(config)# <b>logging host 192.168.100.100</b>
+    rtr01(config)#
+    Apr 10 15:07:00.430: %SYS-6-LOGGINGHOST_STARTSTOP: Logging to host 192.168.100.100 port 514 started - CLI initiated
+    </pre>
+
+    According to the ``show logging`` output in Step 2, trap logging is currently set to severity level 6 (informational). You could change this with the ``logging trap`` configuration command but we will leave it at 6 for this lab.
+
+    Notice that after entering the ``logging host`` command, the console displayed a severity level 6 message confirming that logging messages are now being sent to the 192.168.100.100 device on UDP port 514. It is possible to change the transport protocol to TCP and also change the port used. Finally, it is also possible to sent trap logging messages as XML instead of regular text.
+
+
+    ### Step 4
+    Use the CML Packet Capture feature to view syslog messages being sent from the rtr01 router to the syslog/NTP server at 192.168.100.100. Disable and re-enable the rtr01 E0/0 interface to generate messages for the packet capture.
+
+    Right-click the link between the rtr01 router and the syslog/NTP server. Select **Packet Capture** from the contextual menu.
+
+    Click the **Settings** tab and enter ``udp port 514`` in the BPF field. Click **Apply**.
+
+    Create another pane and drag the Packet Capture window to it so that you can view the capture live as it happens.
+
+    Click **Start** to launch the packet capture.
+
+    Return to the rtr01 router and shut/no shut the E0/0 interface to generate some log messages. Wait for the interface to come back up and for the DHCP message to be displayed.
+
+    Stop the Packet Capture.
+
+    You should see a total of **5 syslog messages** captured (two for the interface being disabled, two for the interface being re-enabled, and one for DHCP).
+
+    Click any line in the Packet Capture window and expand the Syslog message information. You will see:
+    * The facility used by the router to generate the message: LOCAL7
+    * The type of message generated: either NOTICE (5), ERR (3), or INFO (6)
+    * The actual syslog message that was displayed at the console.
+
+    ### Step 5
+    Use the ``show logging`` command to confirm the trap logging configuration.
+
+    <pre>
+    rtr01# <b>show logging</b>
+    Syslog logging: enabled (0 messages dropped, 2 messages rate-limited, 0 flushes, 0 overruns, xml disabled, filtering disabled)
+
+    No Active Message Discriminator.
+
+    No Inactive Message Discriminator.
+
+        Console logging: level debugging, 105 messages logged, xml disabled,
+                         filtering disabled
+        Monitor logging: level errors, 2 messages logged, xml disabled,
+                         filtering disabled
+        Buffer logging:  level warnings, 4 messages logged, xml disabled,
+                        filtering disabled
+        Exception Logging: size (4096 bytes)
+        Count and timestamp logging messages: disabled
+        Persistent logging: disabled
+        <mark>Trap logging: level informational, 123 message lines logged
+            Logging to 192.168.100.100  (udp port 514, audit disabled,
+                  link up),</mark>
+                  20 message lines logged,
+                  0 message lines rate-limited,
+                  0 message lines dropped-by-MD,
+                  xml disabled, sequence number disabled
+                  filtering disabled
+            Logging Source-Interface:       VRF Name:
+
+    Log Buffer (8192 bytes):
+    <...output omitted...>>
+    </pre>
+
+    The highlighted lines show that trap logging is configured to 192.168.100 100 on UDP port 514 for severity level 6 messages and lower.
+
+    To wrap up, let's return to the concept of logging facility. The definition of "facility" in a log message on Cisco IOS/IOS XE is not the same as the RFC definition of "facility" (such as local7). Cisco facilities are a free-form method of identifying the source message type such as SYS, IP, LDP, L2, MEM, FILESYS, DOT11, LINEPROTO, and so on. The complete list of Cisco facilities can be found [here](https://www.cisco.com/c/en/us/td/docs/ios/15_0sy/system/messages/15sysmg/sm15syovr.html).
+
+    Recall that at the start of the lab and in the CML Packet Capture, you saw that the default facility was set to ``local7``. This is one of the many possible [RFC](https://datatracker.ietf.org/doc/html/rfc5424#section-6.2.1) values. It is possible to change this to something else to allow you to filter and more quickly find certain types of messages sent to the syslog server.
+
+    To change the default facility value on a Cisco router, use the following command:
+
+    <pre>
+    rtr01(config)# <b>logging facility ?</b>
+      auth    Authorization system
+      cron    Cron/at facility
+      daemon  System daemons
+      kern    Kernel
+      local0  Local use
+      local1  Local use
+      local2  Local use
+      local3  Local use
+      local4  Local use
+      local5  Local use
+      local6  Local use
+      local7  Local use
+      lpr     Line printer system
+      mail    Mail system
+      news    USENET news
+      sys10   System use
+      sys11   System use
+      sys12   System use
+      sys13   System use
+      sys14   System use
+      sys9    System use
+      syslog  Syslog itself
+      user    User process
+      uucp    Unix-to-Unix copy system
+      </pre>
+
+    The local use facilities are not reserved; the processes and applications that do not have preassigned facility values can choose any of the eight local use facilities. As such, Cisco devices use one of the local use facilities for sending syslog messages (local7).
+
+    Congratulations! You have completed the lab. You learned how to configure and verify syslog for console, terminal monitor, buffer, and trap logging.
+  title: CCNA Prep 2025 S2E6 Syslog
+  version: 0.2.2

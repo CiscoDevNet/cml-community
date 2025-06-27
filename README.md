@@ -4,11 +4,15 @@
 
 Community Contributed Content and Resources for Cisco Modeling Labs
 
-![](readme_images/cml-labmanager.jpg)
+![](readme_images/cml-lab.png)
  
 ## Repository Description
 
 [Cisco Modeling Labs](http://developer.cisco.com/modeling-labs) (CML) is a network simulation platform from Cisco that allows for the creation of robust network topologies made up of nearly anything you can imagine. It supports virtual machine based devices using QCOW or KVM format, and can be tied into physical components by "bridging" the simulation to the real world.  
+
+CML is officially supported on bare-metal x86\_64 servers and in VMware ESXi and VMware Workstation virtual machines.
+Unofficially, CML can be installed onto [HyperV](documentation/cml_on_hyperv.md), [Proxmox](documentation/cml_on_proxmox.md),
+and [Nutanix AHV](documentation/cml_on_nutanix.md).
 
 This repository is intended to be a place for the CML community to find and share content that builds on top of the standard CML installation.  Examples of this content include: 
 
@@ -31,7 +35,7 @@ A great way to make your repo easy for others to use is to provide a link to a [
 
 If you are new to Cisco Modeling Labs, you can explore and test drive CML within [DevNet Sandbox](https://developer.cisco.com/site/sandbox/). Just search for "Cisco Modeling" from the Sandbox Catalog. 
 
-![](readme_images/sandbox-catalog-cml.jpg)
+![](readme_images/sandbox-catalog-cml.png)
 
 ## Getting help
 
@@ -41,10 +45,7 @@ Instruct users how to get help with this code; this might include links to an is
 
 If you have questions, concerns, bug reports, etc., please create an issue against this repository.
 
-If you've questions on using CML, here are some places to checkout: 
-
-* [Cisco Modeling Labs Support](https://developer.cisco.com/docs/modeling-labs/#!support)
-* [Cisco Modeling Labs Webex Teams Space](https://eurl.io/#bWHTbWz1Z)
+If you've questions on using CML, post them to our [CML community](https://developer.cisco.com/docs/modeling-labs/#!support).
 
 ## Getting involved
 

@@ -1,0 +1,1127 @@
+annotations:
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      CCNA Exam Topic:
+      4.1 Configure and verify inside source NAT using static and pools
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -824.9548469387755
+    y1: 59.939795918367324
+    z_index: 4
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: 209.165.200.0/29
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -400.0
+    y1: -80.0
+    z_index: 5
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: 209.165.201.10/24
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -800.0
+    y1: -80.0
+    z_index: 6
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: Lo0 192.168.255.1
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -280.0
+    y1: 2.999414176918549
+    z_index: 7
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: DHCP Client
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 160.0
+    y1: -80.0
+    z_index: 8
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      192.168.30.30/24
+      (209.165.200.5)
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 160.0
+    y1: 40.0
+    z_index: 10
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: 192.168.10.0/24
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 160.0
+    y1: -120.0
+    z_index: 11
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: 'CCNA Exam Prep: Back to Networking Basics with Hank Preston and
+      Patrick Gargano'
+    text_font: monospace
+    text_italic: false
+    text_size: 16
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -840.0
+    y1: -240.0
+    z_index: 12
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: 'Navigating NAT: Bridging Private Networks to the Internet'
+    text_font: monospace
+    text_italic: false
+    text_size: 14
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -840.0
+    y1: -200.0
+    z_index: 13
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      In this lab, we will explore how to:
+      * Configure and verify dynamic NAT for IPv4
+      * Configure and verify PAT for IPv4
+      * Configure and verify static NAT for IPv4
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -823.2831632653061
+    y1: 113.31326530612245
+    z_index: 14
+  - border_color: '#808080FF'
+    border_radius: 0
+    border_style: ''
+    color: '#8786CF'
+    thickness: 1
+    type: rectangle
+    x1: -200.0
+    y1: -160.0
+    x2: 600.0
+    y2: 280.0
+    z_index: 0
+  - border_color: '#808080FF'
+    border_radius: 0
+    border_style: ''
+    color: '#7FA649'
+    thickness: 1
+    type: rectangle
+    x1: -840.0
+    y1: -160.0
+    x2: 640.0
+    y2: 200.0
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: true
+    text_content: Inside
+    text_font: monospace
+    text_italic: false
+    text_size: 18
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -185.63597543276543
+    y1: -149.56140598418014
+    z_index: 16
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: true
+    text_content: Outside
+    text_font: monospace
+    text_italic: false
+    text_size: 18
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -304.48364111700374
+    y1: -148.63536747313796
+    z_index: 16
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: |2-
+
+      Private Networks     1918             Blocks of private addresses to use
+                                            with NAT for Internet access
+      NAT                  1631/3022        Conserves IPv4 addresses by
+                                            translating a private IPv4 address
+                                            to a public IPv4 address
+      CIDR                 1518/1519/4632   Route aggregation and
+                                            route summarization (supernetting)
+      IPv6                 2460/8200        128-bit address space
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 456.27790144691596
+    y1: -87.73755890152418
+    z_index: 17
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      _________________________________________________________________________
+
+      _________________________________________________________________________
+
+
+      _________________________________________________________________________
+
+      _________________________________________________________________________
+      _________________________________________________________________________
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 454.17021597472035
+    y1: -80.98539786392996
+    z_index: 14
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: true
+    text_content: Solution             RFC(s)           Description
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 458.6942705417827
+    y1: -87.87576963966131
+    z_index: 19
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      ______________________________________________________
+
+      ______________________________________________________
+
+      ______________________________________________________
+
+      ______________________________________________________
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 456.14020709176344
+    y1: 177.68715321307153
+    z_index: 15
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: |2-
+
+      A                             10.0.0.0/8
+
+      B                             172.16.0.0/12
+
+      C                             192.168.0.0/16
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 459.8324762674159
+    y1: 177.27332698930337
+    z_index: 17
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: true
+    text_content: IPv4 Address Class            Private IP Address Range
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 459.07967795536945
+    y1: 173.17365699252494
+    z_index: 19
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: '.1'
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -450.8766544439899
+    y1: -67.1421599744543
+    z_index: 20
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: '.6'
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -242.90946053654977
+    y1: -63.135130097477145
+    z_index: 20
+nodes:
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: "Building configuration...\n\nCurrent configuration : 3723 bytes\n\
+          !\n! Last configuration change at 19:05:04 UTC Wed Feb 26 2025\n!\nversion\
+          \ 17.12\nservice timestamps debug datetime msec\nservice timestamps log\
+          \ datetime msec\n!\nhostname EDGE\n!\nboot-start-marker\nboot-end-marker\n\
+          !\n!\nno aaa new-model\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\nip dhcp excluded-address\
+          \ 192.168.10.1 192.168.10.5\n!\nip dhcp pool VLAN10\n network 192.168.10.0\
+          \ 255.255.255.0\n default-router 192.168.10.1\n dns-server 192.168.255.1\n\
+          \ domain-name example.com\n!\n!\n!\nip host server.example.com 192.168.30.30\n\
+          ip host www_server 209.165.201.10\nip name-server 192.168.255.1\nip domain\
+          \ name example.com\nip cef\nlogin on-success log\nno ipv6 cef\n!\n!\n!\n\
+          !\n!\n!\n!\n!\nmultilink bundle-name authenticated\n!\n!\ncrypto pki trustpoint\
+          \ TP-self-signed-131184879\n enrollment selfsigned\n subject-name cn=IOS-Self-Signed-Certificate-131184879\n\
+          \ revocation-check none\n rsakeypair TP-self-signed-131184879\n hash sha256\n\
+          !\n!\ncrypto pki certificate chain TP-self-signed-131184879\n certificate\
+          \ self-signed 01\n  3082032E 30820216 A0030201 02020101 300D0609 2A864886\
+          \ F70D0101 0B050030\n  30312E30 2C060355 04030C25 494F532D 53656C66 2D536967\
+          \ 6E65642D 43657274\n  69666963 6174652D 31333131 38343837 39301E17 0D323530\
+          \ 32313732 30323631\n  355A170D 33353032 31373230 32363135 5A303031 2E302C06\
+          \ 03550403 0C25494F\n  532D5365 6C662D53 69676E65 642D4365 72746966 69636174\
+          \ 652D3133 31313834\n  38373930 82012230 0D06092A 864886F7 0D010101 05000382\
+          \ 010F0030 82010A02\n  82010100 828CE609 F54935E1 1E0AD47B 34DEAB16 04D3DF77\
+          \ 7D4A43DB AB7DE37E\n  0F83A67E 5BDFAB87 C007A63B 8F3114F2 C36B9794 B3CC4E3D\
+          \ 98AB8857 1D7B5D4E\n  F19AA484 2035F548 006BEF03 CAA2C894 6E180210 CC9D5C09\
+          \ F5E8AD4C 823C254E\n  2D5AF3F0 98A831CE 41622825 073D554B 192DAE7B 74BB7678\
+          \ D10B2A04 3EDC60E3\n  96648EBF 354C5071 AFD190D3 4934C8AD 4618F961 6AF4F49E\
+          \ C932DF3F 75EAC9F6\n  F932A775 2FB0E382 A86A1B33 7AFC36C3 EED3FC84 47B9FD13\
+          \ 5EA0CB7A 0B3AB304\n  8B78DD19 4D41F257 BC702369 F798C00F 92D2061F F712670C\
+          \ F6D3F85E DE973541\n  129D6601 66AC8F7A CDBC4D14 39E2C64D 44A3660C D8A63BE3\
+          \ 774B0F3C 1E4482C0\n  64FDCA3F 02030100 01A35330 51301D06 03551D0E 04160414\
+          \ 890098E1 76D75B15\n  7D6C5DB0 3D540482 10616D68 301F0603 551D2304 18301680\
+          \ 14890098 E176D75B\n  157D6C5D B03D5404 8210616D 68300F06 03551D13 0101FF04\
+          \ 05300301 01FF300D\n  06092A86 4886F70D 01010B05 00038201 01004BCC F6A52432\
+          \ 50CB02E7 6A3770A8\n  2C1A6B01 D406E6C3 6F29BD56 062A2BEE 516AA940 4B654246\
+          \ 04965571 CD86B67F\n  1AB1C858 9EB40CCD C9DCEF95 C12F7AF7 01B5CFB2 73907450\
+          \ 04E6CEE1 1FB63F88\n  DBA8738B C5784741 133C1060 9513A462 1F430A3D B7454635\
+          \ D28B8EF9 57BA2E65\n  187CC4B5 F693D9D8 68836448 955AB5E5 C5323ED9 2551A386\
+          \ 9B83F489 7D8FED0A\n  7BDF6658 9AC085A4 ACCEEED6 40E367DD 3D77F438 66C152CD\
+          \ 91CA2467 7F82DAD2\n  19D98A02 45CB16CD E079B2BB C32D27DF 07B69748 FB43D50A\
+          \ CD0F5F42 652A808E\n  753655B9 F74BE69A 6EB6D669 5EE85672 7E059D28 08AD23D0\
+          \ F2E7E6EE AAA9DBF6\n  EFAB2C38 5C1189E1 D01F2DA0 AE33948D 8305\n  \tquit\n\
+          !\n!\nmemory free low-watermark processor 81225\n!\n!\nspanning-tree mode\
+          \ rapid-pvst\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n\
+          !\n!\n!\n!\ninterface Loopback0\n ip address 192.168.255.1 255.255.255.255\n\
+          !\ninterface Ethernet0/0\n ip address 209.165.200.6 255.255.255.248\n!\n\
+          interface Ethernet0/1\n ip address 192.168.10.1 255.255.255.0\n!\ninterface\
+          \ Ethernet0/2\n ip address 192.168.30.1 255.255.255.0\n!\ninterface Ethernet0/3\n\
+          \ no ip address\n shutdown\n!\nip forward-protocol nd\n!\n!\nip http server\n\
+          ip http secure-server\nip dns server\nip dns primary example.com soa 192.168.255.1\
+          \ admin@example.com 21600 900 7776000 86400\nip route 0.0.0.0 0.0.0.0 209.165.200.1\n\
+          ip ssh bulk-mode 131072\n!\n!\n!\n!\n!\ncontrol-plane\n!\n!\n!\nline con\
+          \ 0\n exec-timeout 0 0\n logging synchronous\nline aux 0\nline vty 0 4\n\
+          \ exec-timeout 0 0\n login\n transport input ssh\n!\n!\n!\n!\nend"
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: EDGE
+    node_definition: iol-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: -200
+    y: -40
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet0/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname PC1
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+          #
+          iface eth0 inet dhcp
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: PC1
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: 120
+    y: -120
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname SERVER
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+          #
+          ip addr add 192.168.30.30/24 dev eth0
+          ip route add default via 192.168.30.1
+          echo -e "nameserver 192.168.255.1 \nsearch example.com" > /etc/resolv.conf
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n2
+    image_definition: null
+    label: SERVER
+    node_definition: alpine
+    parameters: {}
+    ram: null
+    tags: []
+    x: 120
+    y: 40
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          Building configuration...
+
+          Current configuration : 975 bytes
+          !
+          ! Last configuration change at 19:05:31 UTC Wed Feb 26 2025
+          !
+          version 17.12
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          !
+          hostname ISP
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          no logging console
+          no aaa new-model
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          ip cef
+          login on-success log
+          no ipv6 cef
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          multilink bundle-name authenticated
+          !
+          !
+          !
+          !
+          !
+          memory free low-watermark processor 81225
+          !
+          !
+          spanning-tree mode rapid-pvst
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          interface Ethernet0/0
+           ip address 209.165.200.1 255.255.255.248
+          !
+          interface Ethernet0/1
+           ip address 209.165.201.1 255.255.255.0
+          !
+          interface Ethernet0/2
+           no ip address
+           shutdown
+          !
+          interface Ethernet0/3
+           no ip address
+           shutdown
+          !
+          ip forward-protocol nd
+          !
+          !
+          ip http server
+          ip http secure-server
+          ip ssh bulk-mode 131072
+          !
+          !
+          !
+          !
+          !
+          control-plane
+          !
+          !
+          !
+          line con 0
+           exec-timeout 0 0
+           logging synchronous
+          line aux 0
+          line vty 0 4
+           exec-timeout 0 0
+           login
+           transport input ssh
+          !
+          !
+          !
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n3
+    image_definition: null
+    label: ISP
+    node_definition: iol-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: -480
+    y: -40
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet0/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname WWW_SERVER
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+          #
+          ip addr add 209.165.201.10/24 dev eth0
+          ip route add default via 209.165.201.1
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n4
+    image_definition: null
+    label: WWW_SERVER
+    node_definition: alpine
+    parameters: {}
+    ram: null
+    tags: []
+    x: -720
+    y: -40
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+links:
+  - id: l0
+    n1: n4
+    n2: n3
+    i1: i0
+    i2: i2
+    conditioning: {}
+    label: PUBLIC_WWW-eth0<->ISP-Ethernet0/1
+  - id: l1
+    n1: n0
+    n2: n3
+    i1: i1
+    i2: i1
+    conditioning: {}
+    label: EDGE-Ethernet0/0<->ISP-Ethernet0/0
+  - id: l2
+    n1: n0
+    n2: n1
+    i1: i2
+    i2: i0
+    conditioning: {}
+    label: EDGE-Ethernet0/1<->PC1-eth0
+  - id: l3
+    n1: n0
+    n2: n2
+    i1: i3
+    i2: i0
+    conditioning: {}
+    label: EDGE-Ethernet0/2<->SERVER-eth0
+lab:
+  description: ''
+  notes: |-
+    **CCNA Exam Prep: Back to Networking Basics with Hank Preston and Patrick Gargano -- Season 2**
+
+    # Navigating NAT: Bridging Private Networks to the Internet
+
+    Network Address Translation (NAT) is the process where a network device, such as a Cisco router or Cisco firewall, assigns a public address to host devices inside a private network. The main reason to use NAT is to reduce the number of public IP addresses that an organization uses because the number of available IPv4 public addresses is limited. In this lab, you will configure various types of NAT. You will test, view, and verify that the translations are taking place, and you will interpret the NAT/PAT statistics to monitor the process.
+
+    Related CCNA v1.1 exam topic:
+    * 4.1 Configure and verify inside source NAT using static and pools
+
+    In this lab, we will explore how to:
+    * Configure and verify dynamic NAT for IPv4
+    * Configure and verify PAT for IPv4
+    * Configure and verify static NAT for IPv4
+
+    ## Setup and Scenario
+    In this set of lab-based demonstrations, you are a network engineer tasked with exploring and testing different types of NAT deployments that your enterprise network could use.
+
+    You've been asked to:
+
+    * Configure the EDGE router with dynamic NAT, PAT, and static NAT.
+
+    *Be sure to **START** the lab before continuing to the demo lab.*
+
+    > Note: The credentials for all devices are **cisco / cisco**
+
+    ## Part 1: Reviewing the current state of the network
+    Before we jump into configuring NAT, let's check the current state of the network and how it's operating.
+
+    ### Step 1
+    Open a console connection to the EDGE router and verify its configuration.
+
+    <pre>
+    EDGE# <b>show run | section dhcp</b>
+    ip dhcp excluded-address 192.168.10.1 192.168.10.5
+    ip dhcp pool VLAN10
+     network 192.168.10.0 255.255.255.0
+     default-router 192.168.10.1
+     dns-server 192.168.255.1
+     domain-name example.com
+
+    EDGE# <b>show ip interface brief</b>
+    Interface              IP-Address      OK? Method Status                Protocol
+    Ethernet0/0            209.165.200.6   YES TFTP   up                    up
+    Ethernet0/1            192.168.10.1    YES manual up                    up
+    Ethernet0/2            192.168.30.1    YES manual up                    up
+    Ethernet0/3            unassigned      YES TFTP   administratively down down
+    Loopback0              192.168.255.1   YES TFTP   up                    up
+
+    EDGE# <b>sh run | section ip host | dns</b>
+     dns-server 192.168.255.1
+    ip host server.example.com 192.168.30.30
+    ip host www_server.example.com 209.165.201.10
+    ip dns server
+    ip dns primary example.com soa 192.168.255.1 admin@example.com 21600 900 7776000 86400
+
+    EDGE# <b>show ip route static </b>
+    <...output omitted...>
+
+    Gateway of last resort is 209.165.200.1 to network 0.0.0.0
+
+    <mark>S*    0.0.0.0/0 [1/0] via 209.165.200.1</mark>
+    </pre>
+    Notice that the EDGE router is configured as a DHCP server for the 192.168.10.0/24 network. EDGE is also configured as the primary DNS server for the example.com domain, using its Loopback0 IPv4 address as the DNS server address. EDGE is already configured with a default route pointing to the ISP router to ensure that all traffic to unknown destinations is sent to the ISP router.
+
+    ### Step 2
+    Verify internal connectivity. From PC1, ping the EDGE Loopback0 interface, ping the internal SERVER, ping the ISP router, and ping the external WWW_SERVER.
+
+    <pre>
+    PC1:~$ <b>ping 192.168.255.1</b>
+    PING 192.168.255.1 (192.168.255.1): 56 data bytes
+    64 bytes from 192.168.255.1: seq=0 ttl=42 time=1.333 ms
+    64 bytes from 192.168.255.1: seq=1 ttl=42 time=1.172 ms
+    ^C
+
+    PC1:~$ <b>ping server</b>
+    PING server (192.168.30.30): 56 data bytes
+    64 bytes from 192.168.30.30: seq=0 ttl=42 time=1.340 ms
+    64 bytes from 192.168.30.30: seq=1 ttl=42 time=1.547 ms
+    ^C
+
+    PC1:~$ <b>ping 209.165.200.1</b>
+    PING 209.165.200.1 (209.165.200.1): 56 data bytes
+    ^C
+    --- 209.165.200.1 ping statistics ---
+    9 packets transmitted, <mark>0 packets received</mark>, 100% packet loss
+
+    PC1:~$ <b>ping 209.165.201.10</b>
+    PING 209.165.201.10 (209.165.201.10): 56 data bytes
+    ^C
+    --- 209.165.201.10 ping statistics ---
+    6 packets transmitted, <mark>0 packets received</mark>, 100% packet loss
+    PC1:~$
+    </pre>
+
+    The first two test will succeed. Notice in the second test the use of the DNS name for the internal SERVER (192.168.30.30). The last two test will fail since the ISP router does not know how to route packets back to the source internal 192.168.10.0/24 network. We will correct this in the next part of the lab.
+
+    ## Part 2: Configure and verify dynamic NAT for IPv4 on EDGE
+    An ISP has allocated the public IP address space of 209.165.200.0/29 to your company. This network is used to address the link between the ISP router and the company EDGE router. The first address (209.165.200.1) is assigned to the E0/0 interface on ISP and the last address (209.165.200.6) is assigned to the E0/0 interface on EDGE. The remaining addresses (209.165.200.2-5) will be used to provide internet access to the company hosts.
+
+    ### Step 1
+    Configure a simple access list that defines what hosts are going to be allowed for translation. In this case, all devices on the 192.168.10.0/24 LAN and 192.168.30.0/24 LAN are eligible for translation.
+
+    <pre>
+    EDGE(config)# <b>access-list 1 permit 192.168.10.0 0.0.0.255</b>
+    EDGE(config)# <b>access-list 1 permit 192.168.30.0 0.0.0.255</b>
+    </pre>
+
+    ### Step 2
+    Create the NAT pool, and give it a name and a range of addresses to use. Use the first three available addresses from the ISP range.
+
+    <pre>
+    EDGE(config)# <b>ip nat pool MYPOOL 209.165.200.2 209.165.200.4 netmask 255.255.255.248</b>
+    </pre>
+    The pool contains three public IP addresses.
+
+
+    ### Step 3
+    Configure the translation, associating the ACL and pool to the translation process.
+
+    <pre>
+    EDGE(config)# <b>ip nat inside source list 1 pool MYPOOL</b>
+    </pre>
+    This command enables inside NAT for addresses matching ACL 1.
+
+    ### Step 4
+    Define the inside and outside interfaces on EDGE.
+
+    <pre>
+    EDGE(config)# <b>interface e0/1</b>
+    EDGE(config-if)# <b>ip nat inside</b>
+    EDGE(config-if)# <b>interface e0/2</b>
+    EDGE(config-if)# <b>ip nat inside</b>
+    EDGE(config-if)# <b>interface e0/0</b>
+    EDGE(config-if)# <b>ip nat outside</b>
+    </pre>
+    These commands tell the NAT process which interfaces are private (inside) and which are public (outside).
+
+    ### Step 5
+    From PC1, ping the ISP E0/0 interface (209.165.200.1) and ping the external WWW_SERVER. On EDGE, display the NAT translation table by using the ``show ip nat translations`` command.
+
+    <pre>
+    PC1:~$ <b>ping 209.165.200.1</b>
+    PING 209.165.200.1 (209.165.200.1): 56 data bytes
+    64 bytes from 209.165.200.1: seq=1 ttl=42 time=1.665 ms
+    64 bytes from 209.165.200.1: seq=2 ttl=42 time=1.405 ms
+
+    PC1:~$ <b>ping www_server</b>
+    PING www_server (209.165.201.10): 56 data bytes
+    64 bytes from 209.165.201.10: seq=0 ttl=42 time=1.956 ms
+    64 bytes from 209.165.201.10: seq=1 ttl=42 time=2.274 ms
+
+    EDGE# <b>show ip nat translations</b>
+    Pro Inside global      Inside local       Outside local      Outside global
+    icmp 209.165.200.2:14  192.168.10.6:14    209.165.201.10:14  209.165.201.10:14
+    icmp 209.165.200.2:15  192.168.10.6:15    209.165.200.1:15   209.165.200.1:15
+    --- 209.165.200.2      192.168.10.6       ---                ---
+    </pre>
+    Notice the two ICMP entries, one for the ISP 209.165.200.1 address and one for the WWW_SERVER 209.165.201.10 address, as well as a generic entry indicating the mapping of the PC1 IP address to the first available address from the pool.
+    The EDGE router has a DNS entry for the external WWW_SERVER which allows you to ping that device more easily.
+
+    The output from the ``show ip nat translations`` command displays four types of addresses:
+
+    *Inside local address*: The IP address assigned to a host on the inside network.
+
+    *Inside global address*: The translated inside local address.
+
+    *Outside global address*: The IPv4 address that the host owner assigns to a host on the outside network.
+
+    *Outside local address*: The IPv4 address of an outside host as it appears to the inside network.
+
+    ### Step 6
+    From the internal SERVER, ping the ISP E0/0 interface (209.165.200.1) and ping the external WWW_SERVER. On EDGE, display the NAT translation table by using the ``show ip nat translations`` command.
+
+    <pre>
+    SERVER:~$ <b>ping 209.165.201.1</b>
+    PING 209.165.201.1 (209.165.201.1): 56 data bytes
+    64 bytes from 209.165.201.1: seq=0 ttl=42 time=1.665 ms
+    64 bytes from 209.165.201.1: seq=1 ttl=42 time=2.114 ms
+
+    SERVER:~$ <b>ping www_server</b>
+    PING www_server (209.165.201.10): 56 data bytes
+    64 bytes from 209.165.201.10: seq=0 ttl=42 time=2.303 ms
+    64 bytes from 209.165.201.10: seq=1 ttl=42 time=2.299 ms
+
+    EDGE# <b>show ip nat translations</b>
+    Pro Inside global      Inside local       Outside local      Outside global
+    icmp 209.165.200.2:16  192.168.10.6:16    209.165.200.1:16   209.165.200.1:16
+    icmp 209.165.200.2:17  192.168.10.6:17    209.165.201.10:17  209.165.201.10:17
+    --- 209.165.200.2      192.168.10.6       ---                ---
+    icmp 209.165.200.3:1   192.168.30.30:1    209.165.201.10:1   209.165.201.10:1
+    icmp 209.165.200.3:2   192.168.30.30:2    209.165.201.1:2    209.165.201.1:2
+    --- 209.165.200.3      192.168.30.30      ---                ---
+    </pre>
+    You should have a total of four ICMP translations. Two triggered by traffic from PC1, and two triggered by traffic from the internal SERVER. You will also see two generic NAT entries, one for the PC1 mapping and one for the internal SERVER mapping.
+
+    ### Step 7
+    To verify how long these translations are allocated, issue the ``show ip nat translations verbose`` command.
+
+    <pre>
+    EDGE#sh ip nat tr ver
+    Pro Inside global      Inside local       Outside local      Outside global
+    --- 209.165.200.2      192.168.10.6       ---                ---
+        create 00:28:18, use 00:05:30, left <mark>23:54:29</mark>, Map-Id(In): 2,
+        flags:
+    none, use_count: 0, entry-id: 1, lc_entries: 0
+    --- 209.165.200.3      192.168.30.30      ---                ---
+        create 00:20:31, use 00:01:19, left 23:58:40, Map-Id(In): 2,
+        flags:
+    none, use_count: 0, entry-id: 6, lc_entries: 0
+    </pre>
+    The output shows that the NAT allocations are for 24 hours.
+
+    ### Step 8
+    Enable the ``debug ip nat`` command on the EDGE router and ping from PC1 to the external WWW_SERVER to observe the translations that take place.
+
+    <pre>
+    EDGE#
+    *Mar  3 16:54:04.365: NAT: Entry assigned id 38
+    *Mar  3 16:54:04.365: NAT*: s=192.168.10.6->209.165.200.2, d=209.165.201.10 [61076]
+    *Mar  3 16:54:04.367: NAT*: s=209.165.201.10, d=209.165.200.2->192.168.10.6 [10157]
+    *Mar  3 16:54:05.365: NAT*: s=192.168.10.6->209.165.200.2, d=209.165.201.10 [61119]
+    EDGE#
+    *Mar  3 16:54:05.366: NAT*: s=209.165.201.10, d=209.165.200.2->192.168.10.6 [10177]
+    *Mar  3 16:54:06.365: NAT*: s=192.168.10.6->209.165.200.2, d=209.165.201.10 [61169]
+    EDGE#
+    *Mar  3 16:54:06.367: NAT*: s=209.165.201.10, d=209.165.200.2->192.168.10.6 [10234]
+    EDGE#
+    *Mar  3 16:54:18.320: NAT: expiring 209.165.200.2 (192.168.10.6) icmp 25 (25)
+    *Mar  3 16:54:18.320: NAT: Freeing nat entry, id 37
+    </pre>
+
+    Look for the ``->`` symbol in each NAT translation line. This shows when NAT is occurring, either as traffic is leaving the private network, or as traffic is returning. You will get a pair of debug entries for each ping transmitted to the WWW_SERVER since a ping is two messages: echo request and echo reply. After a few moments you will see the NAT entry expiring.
+
+    Disable NAT debugging with the ``no debug ip nat`` command.
+
+    ### Step 9
+    A pool of three addresses isn't sufficient for an enterprise network with thousands of hosts. Clear the NAT translations and statistics and configure PAT in the next part of the lab.
+
+    ``EDGE# clear ip nat translations *``
+
+    ``EDGE# clear ip nat statistics``
+
+    ## Part 3: Configure and verify PAT for IPv4 on EDGE
+    Dynamic NAT with a pool is useful when the number of host devices is small, but that solution doesn't scale for large enterprise networks. Instead, you will deploy PAT, also called NAT Overload. The configuration steps are basically the same for NAT and PAT. An access list identifies addresses eligible to be translated, interfaces are identified as either inside or outside, and a pool is defined or an interface is chosen to "overload". In Part 3, we will start by enable PAT for the pool used in Part 2, and then we will migrate to interface PAT.
+
+    ### Step 1
+    Remove the NAT pool command on EDGE and then enter it again using the ``overload`` keyword.
+
+    <pre>
+    EDGE(config)# <b>no ip nat inside source list 1 pool MYPOOL</b>
+    EDGE(config)# <b>ip nat inside source list 1 pool MYPOOL overload</b>
+    </pre>
+    This is the only change required to enable PAT translations, since the access list and the pool are already configured.
+
+    ### Step 2
+    From PC1 and the internal SERVER, ping the external WWW_SERVER. USe the ``show ip nat translations`` command to verify the results.
+    <pre>
+    PC1:~$ <b>ping www_server</b>
+    PING www_server (209.165.201.10): 56 data bytes
+    64 bytes from 209.165.201.10: seq=0 ttl=42 time=3.815 ms
+    64 bytes from 209.165.201.10: seq=1 ttl=42 time=2.086 ms
+
+    SERVER:~$ <b>ping www_server</b>
+    PING www_server (209.165.201.10): 56 data bytes
+    64 bytes from 209.165.201.10: seq=0 ttl=42 time=1.810 ms
+    64 bytes from 209.165.201.10: seq=1 ttl=42 time=2.226 ms
+
+    EDGE# <b>show ip nat translations</b>
+    Pro Inside global      Inside local       Outside local      Outside global
+    icmp 209.165.200.4:1024 192.168.10.6:18   209.165.201.10:18  209.165.201.10:1024
+    icmp 209.165.200.4:1025 192.168.30.30:4   209.165.201.10:4   209.165.201.10:1025
+    </pre>
+    Notice that the inside global address is identical for both PC1 and internal SERVER traffic. In the output above, the EDGE router used the last address in the pool. Your output might differ.
+
+    The NAT process is now "overloading" one public address from the pool. This means that NAT is using Layer 4 port numbers to create unique NAT entries for each host IPv4 address being translated.
+
+    Generate more traffic from PC1 and the internal SERVER to the external WWW_SERVER and ISP router to verify that the EDGE router continues to overload the same public IP address.
+
+    If you quickly verify the output from the ``show ip nat translations verbose`` command you will notice that NAT entries for ICMP now timeout after 1 minute, as compared to 24 hours in Part 2.
+
+    ### Step 3
+    From PC1, SSH to the external WWW_SERVER and then verify the NAT translation table.
+
+    <pre>
+    PC1:~$ <b>ssh www_server</b>
+    The authenticity of host 'www_server (209.165.201.10)' can't be established.
+    ED25519 key fingerprint is SHA256:9sjYtoCKDaHJGYMCz38aLjFu4aLBlgJzdul3HwyTMlU.
+    This key is not known by any other names
+    Are you sure you want to continue connecting (yes/no/[fingerprint])? <b>yes</b>
+    Warning: Permanently added 'www_server' (ED25519) to the list of known hosts.
+    cisco@www_server's password: <b>cisco</b>
+    Welcome to Alpine!
+
+    The Alpine Wiki contains a large amount of how-to guides and general
+    information about administrating Alpine systems.
+    See <https://wiki.alpinelinux.org/>.
+
+    You can setup the system with the command: setup-alpine
+
+    You may change this message by editing /etc/motd.
+
+    WWW_SERVER:~$
+
+    EDGE# <b>show ip nat translations</b>
+    Pro Inside global      Inside local       Outside local      Outside global
+    tcp 209.165.200.4:1024 192.168.10.6:50812 209.165.201.10:22  209.165.201.10:22
+    </pre>
+
+    When prompted to continue, answer ``yes`` to trust the connection. The password for the external WWW_SERVER is ``cisco``.
+
+    Once the SSH connection established, you should see a TCP entry in the NAT table pointing to port 22 of the outside 209.165.201.10 address. If you verify the ``verbose`` output, you will see that a TCP connection timeout is 24 hours.
+
+    On PC1, type ``exit`` to terminate the SSH session.
+
+    ### Step 4
+    PAT to a pool is a very effective solution for small-to-midsize organizations. However, there could be unused IPv4 addresses in this scenario. In the next step you will enable PAT with interface overload to eliminate this waste of IPv4 addresses. Clear translations and translation statistics in preparation.
+
+    <pre>
+    EDGE# <b>clear ip nat translations *</b>
+    EDGE# <b>clear ip nat statistics</b>
+    </pre>
+
+    ### Step 5
+    For interface PAT, we still need the access list and inside and outside interfaces, but we can remove the NAT overload command and the NAT pool.
+
+    <pre>
+    EDGE(config)# <b>no ip nat inside source list 1 pool MYPOOL overload</b>
+    EDGE(config)# <b>no ip nat pool MYPOOL</b>
+
+    </pre>
+
+    ### Step 6
+    Add the PAT command to overload the EDGE E0/0 outside interface.
+
+    <pre>
+    EDGE(config)# <b>ip nat inside source list 1 interface E0/0 overload</b>
+    </pre>
+
+    ### Step 7
+    From PC1 and the internal SERVER, ping the external WWW_SERVER and the ISP. Verify the NAT translation table to confirm that the PAT feature is working.
+
+    <pre>
+    EDGE# <b>show ip nat translations</b>
+    Pro Inside global      Inside local       Outside local      Outside global
+    icmp 209.165.200.6:1024 192.168.10.6:3   209.165.201.1:3     209.165.201.1:1024
+    icmp 209.165.200.6:1025 192.168.10.6:4   209.165.201.10:4    209.165.201.10:1025
+    icmp 209.165.200.6:1026 192.168.30.30:7   209.165.201.1:7    209.165.201.1:1026
+    icmp 209.165.200.6:1027 192.168.30.30:8   209.165.201.10:8   209.165.201.10:1027
+    </pre>
+
+    Notice that the inside global address 209.165.200.6 is the same for every entry and represents the IPv4 address of the E0/0 interface on the EDGE router that is being "overloaded". Quickly verify the ``verbose`` output of the command to confirm that the timeout value is 1 minute for ICMP traffic. Similar to PAT with a pool, interface PAT also uses Layer 4 port numbers to create unique entries for each internal host.
+
+    ## Part 4: Configure and verify static NAT for IPv4 on EDGE
+    In Part 4, you will configure static NAT so that the internal SERVER is directly reachable from the internet. The internal SERVER will be reachable from the EDGE router via the address 209.165.200.5.
+
+    ### Step 1
+    On the EDGE router, clear the current NAT translations and statistics.
+
+    <pre>
+    EDGE# <b>clear ip nat translations *</b>
+    EDGE# <b>clear ip nat statistics</b>
+    </pre>
+
+    ### Step2
+    On the EDGE router, configure a static NAT mapping between the 192.168.30.30 private IPv4 address of the internal SERVER and the 209.165.200.5 public address that is part of the range of addresses provided by the ISP.
+
+    <pre>
+    EDGE(config)# <b>ip nat inside source static 192.168.30.30 209.165.200.5</b>
+    </pre>
+    ### Step 3
+    On the EDGE router, verify that the static NAT entry is working. Use the ``show ip nat translations`` command.
+
+    <pre>
+    EDGE# <b>show ip nat translations </b>
+    Pro Inside global      Inside local       Outside local      Outside global
+    --- 209.165.200.5      192.168.30.30      ---                ---
+    </pre>
+    The translation table shows the static translation is in effect. Verify this by pinging from the external WWW_SERVER to 209.165.200.5. The pings should work.
+
+    <pre>
+    WWW_SERVER:~$ <b>ping 209.165.200.5</b>
+    PING 209.165.200.5 (209.165.200.5): 56 data bytes
+    64 bytes from 209.165.200.5: seq=0 ttl=42 time=3.375 ms
+    64 bytes from 209.165.200.5: seq=1 ttl=42 time=2.782 ms
+    </pre>
+    Verify the NAT translation table again.
+    <pre>
+    EDGE# <b>show ip nat translations </b>
+    Pro Inside global      Inside local       Outside local      Outside global
+    icmp 209.165.200.5:1   192.168.30.30:1    209.165.201.10:1   209.165.201.10:1
+    --- 209.165.200.5      192.168.30.30      ---                ---
+    </pre>
+    You will see a new ICMP entry triggered by the successful ping from the 209.165.201.10 device to the 209.165.200.5 inside global address that then gets translated to the 192.168.30.30 address. The ``verbose`` output of the command will show that these entries have a timeout of 1 minute.
+
+    Perform the same SSH test from Part 3, but this time initiate the SSH session from the external WWW_SERVER towards the internal private SERVER. Accept the certificate and log into the internal SERVER. Then, verify the NAT translation table. You will see a TCP entry pointing to destination port 22.
+
+    Congratulations! You have completed the lab. You learned how to configure and verify dynamic NAT, PAT with a pool, interface PAT, and static NAT.
+  title: CCNA Prep 2025 - S2E3 - NAT
+  version: 0.2.2
