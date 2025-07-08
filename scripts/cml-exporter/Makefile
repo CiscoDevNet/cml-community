@@ -27,6 +27,8 @@ $(OUT): $(SRC) $(FILES) $(SED_SCRIPT)
 	sed -f $(SED_SCRIPT) $(SRC) > $(OUT)
 	chmod +x $(OUT)
 
-.PHONY: all clean
+.PHONY: all clean spotless
 clean:
-	rm -f $(OUT) $(SED_SCRIPT)
+	rm -f $(SED_SCRIPT)
+spotless: clean
+	rm -f $(OUT)

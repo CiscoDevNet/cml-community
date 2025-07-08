@@ -1,3 +1,56 @@
+#!/bin/bash
+
+set -e
+
+ensure_dir() {
+    local install_dir="$1"
+    if ! test -d "$install_dir"; then
+        echo "Error: $install_dir isn't there"
+        exit 1
+    fi
+}
+
+install_default() {
+    local install_dir="/etc/default"
+    ensure_dir $install_dir
+    cat >"$install_dir/cml-exporter" <<EOF
+# An administrative username for CML that would have access to all labs.
+CML_USERNAME="admin"
+# Password for the CML user.
+CML_PASSWORD="password-that-needs-to-be-changed"
+
+# The port to use to expose the CML metrics.  By default, Prometheus
+# expects exporters to be on port 9100.
+EXPORTER_PORT=9100
+
+# The frequency in seconds of polling for CML stats.  By default, Prometheus scrapes
+# every 15 seconds.  You may want to increase this if the load on the CML
+# controller gets too high.  Be sure yo adjust this within Prometheus as well.
+POLL_INTERVAL=15
+
+# The number of seconds to wait before an API requests has timed out.
+API_TIMEOUT=10
+
+# The logging level.  It can be one of DEBUG, INFO, WARN, ERROR, or CRITICAL
+LOG_LEVEL="INFO"
+EOF
+    chown root:root "$install_dir/cml-exporter"
+    chmod 0600 "$install_dir/cml-exporter"
+}
+
+install_script() {
+    local install_dir="/usr/local/bin"
+    ensure_dir $install_dir
+    cat >"$install_dir/cml-exporter.sh" <<EOF
+#!/bin/sh
+
+. /opt/cml-exporter/bin/activate
+exec /usr/local/bin/cml-exporter.py
+EOF
+    chown root:root "$install_dir/cml-exporter.sh"
+    chmod a+x "$install_dir/cml-exporter.sh"
+
+    cat >"$install_dir/cml-exporter.py" <<EOF
 #!/usr/bin/env python3
 #
 # Copyright (c) 2025  Joe Clarke <jclarke@cisco.com>
@@ -225,3 +278,100 @@ def main():
 
 if __name__ == "__main__":
     main()
+EOF
+    chown root:root "$install_dir/cml-exporter.py"
+    chmod a+x "$install_dir/cml-exporter.py"
+}
+
+install_service_unit() {
+    local install_dir="/etc/systemd/system"
+    ensure_dir $install_dir
+    cat >"$install_dir/cml-exporter.service" <<EOF
+[Unit]
+Description=CML Prometheus Exporter
+After=network.target
+After=virl2.target
+
+[Service]
+EnvironmentFile=/etc/default/cml-exporter
+ExecStart=/usr/local/bin/cml-exporter.sh
+User=virl2
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+EOF
+    chown root:root "$install_dir/cml-exporter.service"
+    systemctl daemon-reload
+    systemctl &>/dev/null enable cml-exporter.service
+}
+
+create_venv() {
+    local venv_dir="/opt/cml-exporter"
+    if ! test -d "$venv_dir"; then
+        # Install venv package
+        if ! command -v python3 -m venv &>/dev/null; then
+            apt-get update
+            apt-get install -y python3.12-venv
+        fi
+        echo "Creating virtual environment at $venv_dir"
+        python3 -m venv "$venv_dir"
+        source "$venv_dir/bin/activate"
+        pip install --upgrade pip
+        pip install requests prometheus_client
+    fi
+}
+
+add_firewall_rule() {
+    local port="9100"
+    if ! firewall-cmd --list-ports | grep -q "${port}/tcp"; then
+        echo "Adding firewall rule for port $port"
+        firewall-cmd --zone public --permanent --add-port="${port}/tcp"
+        firewall-cmd --reload
+    else
+        echo "Firewall rule for port $port already exists"
+    fi
+}
+
+if [[ $EUID -ne 0 ]]; then
+    echo "This script must be run as root." >&2
+    exit 1
+fi
+
+echo -n "creating virtual environment"
+create_venv
+echo -e "\t✅"
+echo -n "installing defaults"
+install_default
+echo -e "\t✅"
+echo -n "installing script"
+install_script
+echo -e "\t✅"
+echo -n "installing service unit"
+install_service_unit
+echo -e "\t✅"
+echo -n "adding firewall rule"
+add_firewall_rule
+echo -e "\t✅"
+
+cat <<EOF
+**************************************************************
+* ⚠️ IMPORTANT! ⚠️                                           *
+* you need to ensure that you change the username            *
+* and password for a user of the system that can             *
+* start the labs in /etc/default/cml-exporter                *
+*                                                            *
+* If using a port other than 9100, run the                   *
+* following command to add a firewall rule:                  *
+*                                                            *
+* firewall-cmd --zone public --permanent --add-port=PORT/tcp *
+*                                                            *
+* Then run:                                                  *
+* firewall-cmd --reload                                      *
+*                                                            *
+* You can then start the service with:                       *
+*                                                            *
+* systemctl start cml-exporter.service.                      *
+*                                                            *
+**************************************************************
+EOF

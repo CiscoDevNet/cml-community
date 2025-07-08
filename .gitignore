@@ -88,7 +88,6 @@ tests/*.retry
 openstack-ansible-ops
 previous
 
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -198,7 +197,7 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-# PYCHARM 
+# PYCHARM
 
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
@@ -266,6 +265,5 @@ fabric.properties
 cml-images.code-workspace
 
 # cml-exporter generated files
-scripts/cml-exporter/cml-exporter-installer.sh
 scripts/cml-exporter/cml-exporter-installer.sh.sed
 scripts/cml-exporter/cml-exporter-installer.sh.tmp
