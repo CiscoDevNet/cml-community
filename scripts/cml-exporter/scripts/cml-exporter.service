@@ -1,0 +1,13 @@
+[Unit]
+Description=CML Prometheus Exporter
+After=network.target
+After=virl2.target
+
+[Service]
+EnvironmentFile=/etc/default/cml-exporter
+ExecStart=/usr/local/bin/cml-exporter.sh
+User=virl2
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

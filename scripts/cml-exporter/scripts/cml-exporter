@@ -1,0 +1,19 @@
+# An administrative username for CML that would have access to all labs.
+CML_USERNAME="admin"
+# Password for the CML user.
+CML_PASSWORD="password-that-needs-to-be-changed"
+
+# The port to use to expose the CML metrics.  By default, Prometheus
+# expects exporters to be on port 9100.
+EXPORTER_PORT=9100
+
+# The frequency in seconds of polling for CML stats.  By default, Prometheus scrapes
+# every 15 seconds.  You may want to increase this if the load on the CML
+# controller gets too high.  Be sure yo adjust this within Prometheus as well.
+POLL_INTERVAL=15
+
+# The number of seconds to wait before an API requests has timed out.
+API_TIMEOUT=10
+
+# The logging level.  It can be one of DEBUG, INFO, WARN, ERROR, or CRITICAL
+LOG_LEVEL="INFO"

@@ -264,3 +264,8 @@ fabric.properties
 # Editor-based Rest Client
 .idea/httpRequests
 cml-images.code-workspace
+
+# cml-exporter generated files
+scripts/cml-exporter/cml-exporter-installer.sh
+scripts/cml-exporter/cml-exporter-installer.sh.sed
+scripts/cml-exporter/cml-exporter-installer.sh.tmp
