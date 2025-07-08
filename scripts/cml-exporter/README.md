@@ -39,3 +39,7 @@ For example:
     static_configs:
       - targets: ['192.168.10.210:9100']
 ```
+
+## License
+
+This project is licensed under the [BSD License](LICENSE).
