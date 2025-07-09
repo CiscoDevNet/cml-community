@@ -294,6 +294,7 @@ After=virl2.target
 
 [Service]
 EnvironmentFile=/etc/default/cml-exporter
+ExecPreStart=/usr/bin/firewall-cmd --zone public --permanent --add-port="${EXPORTER_PORT}/tcp" && /usr/bin/firewall-cmd --reload
 ExecStart=/usr/local/bin/cml-exporter.sh
 User=virl2
 Restart=on-failure
@@ -322,17 +323,6 @@ create_venv() {
     fi
 }
 
-add_firewall_rule() {
-    local port="9100"
-    if ! firewall-cmd --list-ports | grep -q "${port}/tcp"; then
-        echo "Adding firewall rule for port $port"
-        firewall-cmd --zone public --permanent --add-port="${port}/tcp"
-        firewall-cmd --reload
-    else
-        echo "Firewall rule for port $port already exists"
-    fi
-}
-
 if [[ $EUID -ne 0 ]]; then
     echo "This script must be run as root." >&2
     exit 1
@@ -350,28 +340,12 @@ echo -e "\t✅"
 echo -n "installing service unit"
 install_service_unit
 echo -e "\t✅"
-echo -n "adding firewall rule"
-add_firewall_rule
-echo -e "\t✅"
 
 cat <<EOF
 **************************************************************
 * ⚠️ IMPORTANT! ⚠️                                           *
-* you need to ensure that you change the username            *
-* and password for a user of the system that can             *
-* start the labs in /etc/default/cml-exporter                *
-*                                                            *
-* If using a port other than 9100, run the                   *
-* following command to add a firewall rule:                  *
-*                                                            *
-* firewall-cmd --zone public --permanent --add-port=PORT/tcp *
-*                                                            *
-* Then run:                                                  *
-* firewall-cmd --reload                                      *
-*                                                            *
-* You can then start the service with:                       *
-*                                                            *
-* systemctl start cml-exporter.service.                      *
-*                                                            *
+* you need to edit /etc/default/cml-exporter and set the     *
+* CML_USERNAME and CML_PASSWORD variables for a user that.   *
+* has access to see all labs in CML.                         *
 **************************************************************
 EOF
