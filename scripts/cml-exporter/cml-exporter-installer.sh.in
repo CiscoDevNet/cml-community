@@ -23,11 +23,6 @@ EOF
 install_script() {
     local install_dir="/usr/local/bin"
     ensure_dir $install_dir
-    cat >"$install_dir/cml-exporter.sh" <<EOF
-@cml_exporter_sh@
-EOF
-    chown root:root "$install_dir/cml-exporter.sh"
-    chmod a+x "$install_dir/cml-exporter.sh"
 
     cat >"$install_dir/cml-exporter.py" <<EOF
 @cml_exporter_py@

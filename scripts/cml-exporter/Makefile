@@ -6,7 +6,7 @@ OUT = cml-exporter-installer.sh
 # List of macros and corresponding files
 SHELL := /bin/bash
 
-FILES = scripts/cml-exporter scripts/cml-exporter.py scripts/cml-exporter.service scripts/cml-exporter.sh
+FILES = scripts/cml-exporter scripts/cml-exporter.py scripts/cml-exporter.service
 
 # Generate sed script to replace macros with file contents
 SED_SCRIPT = $(OUT).sed
