@@ -93,6 +93,28 @@ class CMLClient:
             logger.exception(f"Failed to authenticate with CML API: {e}")
             raise
 
+    def check_authentication(self):
+        """
+        Check if the current session is authenticated.
+        If not, re-authenticate.
+        """
+        url = f"{self.base_url}/api/v0/authok"
+        try:
+            resp = self.session.get(url, timeout=API_TIMEOUT)
+            resp.raise_for_status()
+        except requests.HTTPError as e:
+            if e.response.status_code == 401:  # Unauthorized, re-authenticate
+                logger.debug("Authentication failed, re-authenticating")
+                self.token = None
+        except requests.RequestException as e:
+            logger.error(f"Error checking authentication: {e}")
+            raise
+
+        # If token is None or authentication failed, re-authenticate
+        if not self.token:
+            logger.debug("Re-authenticating with CML API")
+            self.login()
+
     def get_system_stats(self):
         """
         Retrieve system statistics (CPU, memory, disk usage) from CML.
@@ -135,6 +157,8 @@ def collect_metrics(client):
     Collect metrics from the CML API and update Prometheus gauges.
     """
     try:
+        client.check_authentication()  # Ensure we are authenticated
+        logger.debug("Collecting metrics from CML API")
         # [Cluster] System stats
         sys_stats = client.get_system_stats()
         for _, compute_stats in sys_stats.get("computes", {}).items():
