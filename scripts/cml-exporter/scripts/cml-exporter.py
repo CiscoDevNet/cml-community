@@ -73,7 +73,7 @@ class CMLClient:
         self.username = username
         self.password = password
 
-    def login(self):
+    def login(self) -> None:
         """
         Authenticate with the CML API and store the token for future requests.
         """
@@ -92,7 +92,7 @@ class CMLClient:
             logger.exception(f"Failed to authenticate with CML API: {e}")
             raise
 
-    def check_authentication(self):
+    def check_authentication(self) -> None:
         """
         Check if the current session is authenticated.
         If not, re-authenticate.
@@ -114,7 +114,7 @@ class CMLClient:
             logger.debug("Re-authenticating with CML API")
             self.login()
 
-    def get_system_stats(self):
+    def get_system_stats(self) -> dict:
         """
         Retrieve system statistics (CPU, memory, disk usage) from CML.
         """
@@ -123,7 +123,7 @@ class CMLClient:
         resp.raise_for_status()
         return resp.json()
 
-    def get_labs(self):
+    def get_labs(self) -> list:
         """
         Get a list of all lab IDs in the CML system.
         """
@@ -132,7 +132,7 @@ class CMLClient:
         resp.raise_for_status()
         return resp.json()
 
-    def get_lab_details(self, lab_id):
+    def get_lab_details(self, lab_id: str) -> dict:
         """
         Get details (state, owner, nodes running) for a specific lab.
         """
@@ -141,7 +141,7 @@ class CMLClient:
         resp.raise_for_status()
         return resp.json()
 
-    def get_lab_element_states(self, lab_id):
+    def get_lab_element_states(self, lab_id: str) -> dict:
         """
         Get the states of all elements in a specific lab.
         """
@@ -151,7 +151,7 @@ class CMLClient:
         return resp.json()
 
 
-def collect_metrics(client):
+def collect_metrics(client: CMLClient) -> None:
     """
     Collect metrics from the CML API and update Prometheus gauges.
     """
@@ -220,7 +220,7 @@ def collect_metrics(client):
         logger.error(f"Error collecting metrics: {e}", exc_info=True)
 
 
-def metrics_loop(client):
+def metrics_loop(client: CMLClient) -> None:
     """
     Loop to periodically collect metrics at the specified polling interval.
     """
