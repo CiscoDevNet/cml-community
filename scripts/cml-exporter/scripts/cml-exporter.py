@@ -72,7 +72,6 @@ class CMLClient:
         self.token = None
         self.username = username
         self.password = password
-        self.login()  # Authenticate on initialization
 
     def login(self):
         """
