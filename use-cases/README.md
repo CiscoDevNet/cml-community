@@ -1,26 +1,27 @@
-# CML Use Cases
+# Cisco Modeling Labs (CML) Use Cases
 
-This directory consists of Git submodules for other repositories that contain uses cases for CML and build off of
-CML's powerful REST API (and Python Client Library).
+This directory contains curated use cases for Cisco Modeling Labs (CML). Each use case demonstrates practical scenarios, workflows, or solutions that can be implemented using CML.
 
-## Using
+## Use Cases in This Repository
 
-By default, git doesn't pull down the submodules content.  You can cause it to clone all of the submodules by doing the
-following:
+- Explore the subdirectories for available use cases hosted here.
 
-```sh
-git submodule init
-git submodule update
-```
+## External Use Cases
 
-If you haven't yet cloned the `cml-community` repo, you can use the following command to clone it and pull down all the
-submodules:
+The following use cases are not hosted in this repository but may be useful:
 
-```sh
-git clone --recuse-submodules https://github.com/CiscoDevNet/cml-community
-```
+- [cml-class-automation](https://github.com/CiscoDevNet/cml-class-automation) - Proof of concept on how one can automate Cisco Modeling Labs in order to deliver networking courses using virtual labs.  
+- [cml-cicd](https://github.com/CiscoDevNet/cml-cicd) - Example on using CML within a CI/CD pipeline.
+- [dst-automation](https://github.com/CiscoDevNet/dst-automation) - Automate the deployment and testing of Dynamic Split Tunneling on a Cisco ASA firewall within CML.
+- [cmlutils](https://github.com/CiscoDevNet/virlutils) - A collection of utilities for interacting with Cisco Modeling Labs (CML).
+- [ansible-cml](https://github.com/CiscoDevNet/ansible-cml) - Ansible Modules for CML.
+- [sdwan-devops](https://github.com/CiscoDevNet/sdwan-devops) -  SD-WAN DevOps Tools built around CML.
+- [ciscolive-brkcrt-2059](https://github.com/CiscoLearning/ciscolive-brkcrt-2059) - Lab Up For Success With Cisco Modeling Labs.
+- [cloud-cml](https://github.com/CiscoDevNet/cloud-cml) - Run Cisco Modeling Labs on cloud infrastructure.
 
 ## Contributing
 
-If you have a Git repo (doesn't even have to be on GitHub) that contains a use case for CML, submit a pull request or
-issue to get it added.  We'd love to see how you're using CML.
+If you wish to submit a use case, you can either create a pull request to host it here in this repository, or you can submit a pull request
+for this `README.md` alone that points to your CML use cases hosted elsewhere.
+
+Feel free to contribute new use cases or suggest additional resources!
