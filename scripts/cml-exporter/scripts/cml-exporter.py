@@ -44,6 +44,7 @@ EXPORTER_PORT = int(os.environ.get("EXPORTER_PORT", "9100"))  # Port for Prometh
 POLL_INTERVAL = int(os.environ.get("POLL_INTERVAL", "15"))  # Polling interval in seconds
 API_TIMEOUT = int(os.environ.get("API_TIMEOUT", "10"))  # API request timeout in seconds
 LOG_LEVEL = os.environ.get("LOG_LEVEL", "INFO").upper()  # Logging level
+MAX_ERRORS = int(os.environ.get("MAX_ERRORS", "4"))  # Max number of errors before stopping
 
 # Set up logging
 logging.basicConfig(level=LOG_LEVEL, format="%(asctime)s %(levelname)s %(threadName)s %(name)s: %(message)s")
@@ -59,7 +60,7 @@ nodes_running_per_user = Gauge("cml_nodes_running_per_user", "Nodes running per 
 nodes_running = Gauge("cml_nodes_running_total", "Number of total nodes running")
 
 
-class CMLClient:
+class CMLClient(object):
     """
     Client for interacting with the CML API.
     Handles authentication and provides methods to fetch system and lab information.
@@ -72,6 +73,9 @@ class CMLClient:
         self.token = None
         self.username = username
         self.password = password
+
+        # Counter for number of successive failures.
+        self.error_count = 0
 
     def login(self) -> None:
         """
@@ -97,17 +101,18 @@ class CMLClient:
         Check if the current session is authenticated.
         If not, re-authenticate.
         """
-        url = f"{self.base_url}/api/v0/authok"
-        try:
-            resp = self.session.get(url, timeout=API_TIMEOUT)
-            resp.raise_for_status()
-        except requests.HTTPError as e:
-            if e.response.status_code == 401:  # Unauthorized, re-authenticate
-                logger.debug("Authentication failed, re-authenticating")
-                self.token = None
-        except requests.RequestException as e:
-            logger.error(f"Error checking authentication: {e}")
-            raise
+        if self.token:
+            url = f"{self.base_url}/api/v0/authok"
+            try:
+                resp = self.session.get(url, timeout=API_TIMEOUT)
+                resp.raise_for_status()
+            except requests.HTTPError as e:
+                if e.response.status_code == 401:  # Unauthorized, re-authenticate
+                    logger.debug("Authentication failed, re-authenticating")
+                    self.token = None
+            except requests.RequestException as e:
+                logger.error(f"Error checking authentication: {e}")
+                raise
 
         # If token is None or authentication failed, re-authenticate
         if not self.token:
@@ -215,9 +220,15 @@ def collect_metrics(client: CMLClient) -> None:
             nodes_running_per_user.labels(username=user).set(count)
 
         logger.info("Metrics collected successfully")
+        client.error_count = 0  # Reset error count on successful collection
 
     except Exception as e:
         logger.error(f"Error collecting metrics: {e}", exc_info=True)
+        # Increment error count and log if necessary
+        client.error_count += 1
+        if client.error_count > MAX_ERRORS:
+            logger.critical("Max error limit reached, stopping metrics collection")
+            sys.exit(1)
 
 
 def metrics_loop(client: CMLClient) -> None:
