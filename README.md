@@ -25,6 +25,8 @@ The folder structure of this repository reflect the folder structure and naming 
 * [virl-base-images](virl-base-images) - Folder containing a folder for each added platform disk image. Within each platform folder you will find a YAML file that references a specific `disk_image` file for a platform. A base image definition will reference a node definition.
     * *Note: You will need to download the disk images from the vendors yourself.*
 
+When deciding how many total resources you need to use CML, consult the [CML Sizing Calculator](documentation/cml_sizing_calculator.xlsx).
+
 ### Sample Lab Topologies 
 CML includes a series of Sample Labs that are available from the Tools menu in Lab Manager, however these are just a start of the possible network simulations that can be created.  Within this repository users of CML can find, or share, network topologies that have been created to highlight a specific type of simulation challenge.
 
