@@ -5,8 +5,8 @@ After=virl2.target
 
 [Service]
 EnvironmentFile=/etc/default/cml-exporter
-ExecStartPre=/usr/bin/firewall-cmd --zone public --permanent --add-port="${EXPORTER_PORT}/tcp" && /usr/bin/firewall-cmd --reload
-ExecStart=opt/cml-exporter/bin/python3 /usr/local/bin/cml-exporter.py
+ExecStartPre=/bin/sh -c "/usr/bin/firewall-cmd -q --zone=public --query-port=${EXPORTER_PORT}/tcp || ( /usr/bin/firewall-cmd --zone public --permanent --add-port='${EXPORTER_PORT}/tcp' && /usr/bin/firewall-cmd --reload )"
+ExecStart=/opt/cml-exporter/bin/python3 /usr/local/bin/cml-exporter.py
 User=virl2
 Restart=on-failure
 
