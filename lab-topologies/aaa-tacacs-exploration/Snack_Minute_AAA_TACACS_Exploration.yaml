@@ -223,6 +223,7 @@ nodes:
             - flex
             - bison
             - libwrap0-dev
+            - libnsl-dev
 
           write_files:
             # Create the tac_plus configuration file

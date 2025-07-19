@@ -499,6 +499,7 @@ nodes:
             - bison
             - libwrap0-dev
             - python3.10-venv
+            - libnsl-dev
 
           write_files:
             # Create the tac_plus configuration file
