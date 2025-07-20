@@ -182,7 +182,8 @@
                             "description": "The type of the configuration media.",
                             "enum": [
                                 "iso",
-                                "fat"
+                                "fat",
+				"ext4"
                             ]
                         },
                         "volume_name": {
