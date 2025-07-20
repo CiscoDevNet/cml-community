@@ -2,9 +2,11 @@ name: Node definition schema check
 
 on:
   push:
+    types: [synchronize]
     paths:
       - 'node-definitions/**/*.yaml'
   pull_request:
+    types: [synchronize]
     paths:
       - 'node-definitions/**/*.yaml'
 
