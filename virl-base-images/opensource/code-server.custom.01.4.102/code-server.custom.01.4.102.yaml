@@ -1,0 +1,31 @@
+id: code-server.custom.01.4.102
+node_definition_id: code-server-custom-4.102
+description: |-
+  Code Server (4.102) from https://hub.docker.com/r/linuxserver/code-server
+
+  Reachable at: http://{IP_ADDRESS}:8443
+
+  Customizations:
+
+  * DOCKER_MODS=linuxserver/mods:code-server-python3|linuxserver/mods:code-server-terraform"
+  * VS Code Extensions
+
+      ```
+      code-server --install-extension dotjoshjohnson.xml
+      code-server --install-extension ms-python.black-formatter
+      code-server --install-extension ms-python.debugpy
+      code-server --install-extension ms-python.flake8
+      code-server --install-extension ms-python.python
+      code-server --install-extension redhat.ansible
+      code-server --install-extension redhat.vscode-yaml
+      code-server --install-extension samuelcolvin.jinjahtml
+      code-server --install-extension hashicorp.terraform
+      code-server --install-extension ms-toolsai.jupyter
+      ```
+
+  * Workspace for /app/code created
+label: Code Server Custom
+disk_image: code-server-custom.01.4.102.tar
+read_only: false
+schema_version: 0.0.1
+sha256: 6525a3a31b1b18cf01f64425e96b080aeac86f87c0f02fc041792358bc599dd1

@@ -1,0 +1,125 @@
+id: code-server-custom-4.102
+boot:
+  timeout: 30
+  completed:
+    - READY
+  uses_regex: false
+sim:
+  linux_native:
+    libvirt_domain_driver: docker
+    driver: ubuntu
+    ram: 4096
+    cpus: 1
+    cpu_limit: 100
+    video:
+      memory: 1
+general:
+  nature: host
+  description: Code-Server Customized 4.102.2 (Docker)
+  read_only: false
+configuration:
+  generator:
+    driver: null
+  provisioning:
+    files:
+      - editable: false
+        name: config.json
+        content: |-
+          {
+            "docker": {
+              "image": "code-server-custom:01_04.102.2",
+              "mounts": [
+                "type=bind,source=cfg/boot.sh,target=/boot.sh"
+              ],
+              "misc_args": [
+                "--security-opt","seccomp=unconfined"
+              ],
+              "env": [
+                "DOCKER_MODS=code-server-python3|linuxserver/mods:code-server-terraform",
+                "TZ=Etc/UTC",
+                "DEFAULT_WORKSPACE=/app/code/code.code-workspace"
+              ]
+            },
+            "shell": "/bin/sh",
+            "day0cmd": [ "/bin/sh", "/boot.sh" ],
+            "busybox": true
+          }
+      - editable: true
+        name: boot.sh
+        content: |-
+          # The following commands will run at boot.
+          # Note: Suggested that eth0 be connected to ext-conn for
+          #       internet access to reach locations such as GitHub
+          #       and PyPi. Leave eth0 gaining IP from DHCP. Add
+          #       second interface (eth1) for reachability to
+          #       "lab networks"
+
+          # Examples :
+          #  - Static IP address, routes, and DNS server
+          # ip address add dev eth1 192.168.10.11/24
+          # ip route add 192.168.11.0/24 via 192.168.10.1
+          # ip link set dev eth1 up
+          # echo "nameserver 192.168.10.11" >> /etc/resolv.conf
+
+          #  - Clone something from Source Control
+          # If the container is getting its IP via DHCP, uncomment
+          # this sleep to ensure the DHCP process completes before
+          # attempting to clone the repo
+          # sleep 10
+          #    Recommend placing code in the /app/code directory for default workspace
+          # cd /app/code
+          #    Do the clone as the user "abc", which is the code-server user
+          # sudo -u abc git clone {REPO_ADDRESS}
+          #    Install Python requirements file into the container virtual environment
+          #     Note: Depending on internet speed and number of requirements, the
+          #              installation can take significant time to complete.
+          # sudo -u abc /app/code/.venv/bin/python -m pip install -r {PROJECT_FOLDER}/requirements.txt
+
+          # End the script cleanly
+          exit 0
+      - editable: true
+        name: environment
+        content: |-
+          # Create any additional Environment Variables for the Server
+          # Example:
+          # ROUTER_ADDRESS=10.0.0.1
+    media_type: raw
+    volume_name: cfg
+device:
+  interfaces:
+    serial_ports: 2
+    physical:
+      - eth0
+      - eth1
+      - eth2
+      - eth3
+    has_loopback_zero: false
+    default_count: 1
+ui:
+  label_prefix: codeserver-
+  icon: host
+  label: Code-Server (Python/Terraform)
+  visible: true
+  group: Others
+  description: |-
+    Code Server 4.102.2 (Docker) Based on linuxserver/code-server
+
+    * Python and Terraform Installed
+    * Code workspace created at `/app/code`
+    * Workspace Python venv: `/app/code/.venv`
+    * Access Code Server at: http://{CONTAINER_IP}:8443
+      * PATty support: `pat:tcp:{PATty Port}:8443`
+inherited:
+  image:
+    ram: true
+    cpus: false
+    data_volume: false
+    boot_disk_size: false
+    cpu_limit: false
+  node:
+    ram: true
+    cpus: false
+    data_volume: false
+    boot_disk_size: false
+    cpu_limit: false
+schema_version: 0.0.1
