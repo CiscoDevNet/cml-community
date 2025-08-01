@@ -1,0 +1,429 @@
+annotations:
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#050505'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      Code Server Addresses:
+        - From Chrome Node: http://10.0.0.11:8443
+        - PATty Configured: http://{CML IP}:7001
+          (requires PATty enabled on CML server)
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 40.0
+    y1: -280.0
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#050505'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      Code Server Addresses:
+        - From Chrome Node: http://10.0.0.11:8443
+        - PATty Configured: http://{CML IP}:7001
+          (requires PATty enabled on CML server)
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -240.0
+    y1: 0.0
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#050505'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      Code Server Addresses:
+        - From Chrome Node: http://10.0.0.11:8443
+        - PATty Configured: http://{CML IP}:7001
+          (requires PATty enabled on CML server)
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -240.0
+    y1: 0.0
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#050505'
+    rotation: 0
+    text_bold: false
+    text_content: 'ip: 10.0.0.1'
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -120.0
+    y1: -320.0
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: true
+    text_content: 'Example: Using Code Server For Network Automation Testing'
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -280.0
+    y1: -400.0
+    z_index: 1
+smart_annotations:
+  - tag: pat:tcp:7001:8443
+    is_on: true
+    padding: 35
+    label: pat:tcp:7001:8443
+    tag_offset_x: 0
+    tag_offset_y: 0
+    tag_size: 14
+    group_distance: 400
+    thickness: 1
+    border_style: ''
+    fill_color: '#005C9980'
+    border_color: '#00000080'
+    z_index: 1
+nodes:
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: internet
+    node_definition: external_connector
+    parameters: {}
+    ram: null
+    tags: []
+    x: -240
+    y: -280
+    interfaces:
+      - id: i0
+        label: port
+        mac_address: null
+        type: physical
+        slot: 0
+  - boot_disk_size: null
+    configuration:
+      - name: boot.sh
+        content: |-
+          # The following commands will run at boot.
+          # Note: Suggested that eth0 be connected to ext-conn for
+          #       internet access to reach locations such as GitHub
+          #       and PyPi. Leave eth0 gaining IP from DHCP. Add
+          #       second interface (eth1) for reachability to
+          #       "lab networks"
+
+          # Examples :
+          #  - Static IP address, routes, and DNS server
+          ip address add dev eth1 10.0.0.11/24
+          ip route add 10.0.0.0/16 via 10.0.0.1
+          ip link set dev eth1 up
+          # echo "nameserver 192.168.10.11" >> /etc/resolv.conf
+
+          #  - Clone something from Source Control
+          # If the container is getting its IP via DHCP, uncomment
+          # this sleep to ensure the DHCP process completes before
+          # attempting to clone the repo
+          sleep 10
+          #    Recommend placing code in the /app/code directory for default workspace
+          cd /app/code
+          #    Do the clone as the user "abc", which is the code-server user
+          sudo -u abc git clone https://github.com/hpreston/net-hello-world.git
+          #    Install Python requirements file into the container virtual environment
+          sudo -u abc /app/code/.venv/bin/python -m pip install -r net-hello-world/requirements.txt
+
+          # End the script cleanly
+          exit 0
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: codeserver-0
+    node_definition: code-server-custom-4.102
+    parameters: {}
+    ram: null
+    tags:
+      - pat:tcp:7001:8443
+    x: -240
+    y: -120
+    interfaces:
+      - id: i0
+        label: eth0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i1
+        label: eth1
+        mac_address: null
+        type: physical
+        slot: 1
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname router01
+          ip domain name net.internal
+          ip domain list net.internal
+          !
+          ! EEM Applet to add SSH Key Automatically
+          event manager applet do-ssh authorization bypass
+           event timer cron cron-entry "@reboot" maxrun 130
+          action 01 wait 10
+          action 02 cli command "enable"
+          action 11 cli command "crypto key generate rsa modulus 2048"
+          action 20 cli command "config t"
+          action 21 cli command "no event manager applet do-ssh"
+          action 22 cli command "end"
+          action 23 cli command "write mem"
+          !
+          enable secret cisco
+          username cisco privilege 15 secret cisco
+          !
+          line vty 0 4
+           transport input ssh
+           login local
+           exit
+          !
+          !
+          ! In order to avoid entering a configuration dialog on boot, please
+          ! ensure that all interfaces have some IP configuration present here
+          ! such as the example below:
+          !
+          interface range Ethernet0/0-3
+           no ip address
+           shutdown
+          !
+          interface Serial1/0
+           no ip address
+           shutdown
+          !
+          interface Serial1/1
+           no ip address
+           shutdown
+          !
+          interface Serial1/2
+           no ip address
+           shutdown
+          !
+          interface Serial1/3
+           no ip address
+           shutdown
+          !
+          interface Ethernet0/0
+           no shut
+           ip address 10.0.0.1 255.255.255.0
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n2
+    image_definition: null
+    label: router01
+    node_definition: iol-xe-serial-4eth
+    parameters: {}
+    ram: null
+    tags: []
+    x: -80
+    y: -280
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: Ethernet0/1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: Ethernet0/2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: Ethernet0/3
+        mac_address: null
+        type: physical
+        slot: 3
+      - id: i5
+        label: Serial1/0
+        mac_address: null
+        type: physical
+        slot: 4
+      - id: i6
+        label: Serial1/1
+        mac_address: null
+        type: physical
+        slot: 5
+      - id: i7
+        label: Serial1/2
+        mac_address: null
+        type: physical
+        slot: 6
+      - id: i8
+        label: Serial1/3
+        mac_address: null
+        type: physical
+        slot: 7
+  - boot_disk_size: null
+    configuration:
+      - name: boot.sh
+        content: |-
+          # insert commands here, e.g. a static IP address
+          ip address add dev eth0 10.0.0.12/24
+          ip link set dev eth0 up
+          exit 0
+      - name: environment
+        content: |-
+          # NOTE 2025-08-01:
+          #  The current (CML 2.9.0) Chrome and Firefox containers
+          #  do NOT support setting the HOME_URL for code-server due
+          #  to code-server returning a 405 error to HEAD requests
+          #  A future CML node update will enable more flexible checks
+          #  to enable using HOME_URL for code-server
+
+          # -- These are understood by the start script
+          # -- Homepage to open at start (needs network!)
+          # HOME_URL=https://www.cisco.com/go/cml
+          # -- Wait additional time for network before starting Chrome
+          # WAIT=2
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n3
+    image_definition: null
+    label: chrome-0
+    node_definition: chrome
+    parameters: {}
+    ram: null
+    tags: []
+    x: 80
+    y: -120
+    interfaces:
+      - id: i0
+        label: eth0
+        mac_address: null
+        type: physical
+        slot: 0
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n4
+    image_definition: null
+    label: switch
+    node_definition: unmanaged_switch
+    parameters: {}
+    ram: null
+    tags: []
+    x: -80
+    y: -120
+    interfaces:
+      - id: i0
+        label: port0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i1
+        label: port1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i2
+        label: port2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i3
+        label: port3
+        mac_address: null
+        type: physical
+        slot: 3
+      - id: i4
+        label: port4
+        mac_address: null
+        type: physical
+        slot: 4
+      - id: i5
+        label: port5
+        mac_address: null
+        type: physical
+        slot: 5
+      - id: i6
+        label: port6
+        mac_address: null
+        type: physical
+        slot: 6
+      - id: i7
+        label: port7
+        mac_address: null
+        type: physical
+        slot: 7
+links:
+  - id: l0
+    n1: n1
+    n2: n0
+    i1: i0
+    i2: i0
+    conditioning: {}
+    label: codeserver-0-eth0<->internet-port
+  - id: l1
+    n1: n1
+    n2: n4
+    i1: i1
+    i2: i0
+    conditioning: {}
+    label: codeserver-0-eth1<->unmanaged-switch-0-port0
+  - id: l2
+    n1: n4
+    n2: n2
+    i1: i1
+    i2: i1
+    conditioning: {}
+    label: unmanaged-switch-0-port1<->router01-Ethernet0/0
+  - id: l3
+    n1: n3
+    n2: n4
+    i1: i0
+    i2: i2
+    conditioning: {}
+    label: chrome-0-eth0<->unmanaged-switch-0-port2
+lab:
+  description: 'This is an example topology that shows how the Code Server Custom
+    Node can be used in a topology to provide a developer experience for Network Automation
+    use cases.  '
+  notes: ''
+  title: Example - Code Server Custom
+  version: 0.3.0
