@@ -9,3 +9,5 @@ Image can be downloaded from https://support.juniper.net/support/downloads/?p=vj
 Minimum CML version 2.8.
 
 Tested with vJUNOS SWITCH image version 23.2
+
+For CML deployed in ESXI, `Performance Counters` should be enabled in CPU section of CML VM Edit settings. Without it the vJUNOS may not boot.
