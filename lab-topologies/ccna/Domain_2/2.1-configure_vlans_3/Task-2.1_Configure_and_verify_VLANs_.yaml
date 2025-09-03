@@ -270,11 +270,11 @@ nodes:
     tags: []
     x: 280
     y: -160
-  interfaces:
-      - id: i0
-        label: eth0
-        slot: 0
-        type: physical
+    interfaces:
+        - id: i0
+          label: eth0
+          slot: 0
+          type: physical
   - boot_disk_size: null
     configuration:
       - name: ios_config.txt
