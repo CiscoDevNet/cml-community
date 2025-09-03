@@ -7,5 +7,5 @@ Image can be downloaded from https://support.juniper.net/support/downloads/?p=vj
 
 ### Notes
 Minimum CML version 2.8.0
-
 Tested with vJUNOS ROUTER image version 23.2
+For CML deployed in ESXI, `Performance Counters` should be enabled in CPU section of CML VM Edit settings. Without it the vJUNOS may not boot. 
