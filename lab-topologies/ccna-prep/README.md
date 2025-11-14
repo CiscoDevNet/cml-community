@@ -8,7 +8,7 @@ The CCNA Prep Program is a study resource put together by the Learning and Certi
 ## CCNA Prep Hosts 
 The current hosts of the CCNA Prep Program are: 
 
-**Hank Preston:** I'm a Principal Engineer at Cisco Systems, and my journey in network engineering began with the CCNA. Over the years, I've earned multiple certifications, including CCNP, CCIE, and DevNet Expert. My passion for networking and teaching has led me to help engineers worldwide through Cisco's learning and certification programs.
+**Hank Preston:** I'm a Distinguished Architect at Cisco Systems, and my journey in network engineering began with the CCNA. Over the years, I've earned multiple certifications, including CCNP, CCIE, and DevNet Expert. My passion for networking and teaching has led me to help engineers worldwide through Cisco's learning and certification programs.
 
 **Patrick Gargano:** As a Lead Content Advocate and Instructor at Cisco Learning & Certifications, I am responsible for developing and delivering official Cisco course content. I started my CCNA journey in 2000 when I became a  Cisco Networking Academy instructor. Since then, I've authored Cisco Press books and achieved multiple Cisco certifications. The CCNA was a pivotal point in my career, and I'm excited to share my experiences and insights with you.
 
@@ -31,3 +31,14 @@ The current hosts of the CCNA Prep Program are:
 1. [Syncing Success: The Role of NTP in Network Operations](s2e5/README.md)
 1. [The Syslog Detective: Unraveling Network Mysteries](s2e6/README.md)
 1. [Simplifying SNMP: Delivery Data for Network Operation Dashboards](s2e7/README.md) 
+
+## Season 3 (Fall 2025) - IP Security
+
+1. [Securing the Switch with Essential Layer 2 Protections](s3e1/README.md)
+1. Fundamentals of ACLs *Coming Soon*
+1. Advanced ACL Exploration *Coming Soon*
+1. Managing Network Access with Authentication, Authorization, and Accounting *Coming Soon*
+
+<!-- 1. [Fundamentals of ACLs](s3e2/README.md)
+1. [Advanced ACL Exploration](s3e3/README.md)
+1. [Managing Network Access with Authentication, Authorization, and Accounting](s3e4/README.md) -->
