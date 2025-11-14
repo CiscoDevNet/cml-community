@@ -41,7 +41,7 @@ sim:
     video:
       model: cirrus
       memory: 16
-    cpu_limit: 20
+    cpu_limit: 100
 boot:
   timeout: 300
 inherited:

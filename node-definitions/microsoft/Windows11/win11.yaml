@@ -45,7 +45,7 @@ sim:
     video:
       model: cirrus
       memory: 16
-    cpu_limit: 20
+    cpu_limit: 100
     cpu_model: 'Skylake-Server,-waitpkg,-hle,-rtm,-mpx'
     machine_type: q35
     enable_tpm: true
