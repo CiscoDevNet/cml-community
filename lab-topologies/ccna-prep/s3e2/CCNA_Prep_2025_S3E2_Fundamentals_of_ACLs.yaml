@@ -1,0 +1,3383 @@
+annotations:
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: true
+    text_content: 'CCNA Exam Prep: Back to Networking Basics with Hank Preston and
+      Patrick Gargano'
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -480.0
+    y1: -280.0
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      Access Control Lists are one of the networking topics that will stick with network engineers
+      during their entire career. From simple use cases around identifying what traffic sources are
+      allowed through an interface, to complex use cases around Quality of Service and BGP routing,
+      you'll find yourself coming back to ACLs time and time again.
+
+      In this lab we will explore:
+      * Standard and Extended ACLs with numbers and names
+      * Matching source and destination hosts and networks
+      * The impact of inbound and outbound filtering with ACLs
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -480.0
+    y1: -200.0
+    z_index: 1
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: true
+    text_content: Fundamentals of ACLs
+    text_font: monospace
+    text_italic: false
+    text_size: 18
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -480.0
+    y1: -240.0
+    z_index: 1
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#FFFFFF'
+    rotation: 0
+    text_bold: false
+    text_content: 192.168.0.0/24
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -257.81042985042416
+    y1: 148.78785729423132
+    z_index: 4
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#FFFFFF'
+    rotation: 0
+    text_bold: false
+    text_content: 192.168.0.17
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -326.75488023467875
+    y1: 211.13381399712176
+    z_index: 4
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#FFFFFF'
+    rotation: 0
+    text_bold: false
+    text_content: 192.168.0.33
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -328.71587865557257
+    y1: 365.4623314337601
+    z_index: 4
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: 172.16.0.0/24
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 193.6471170010027
+    y1: 196.18827020060164
+    z_index: 4
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: 172.16.0.65
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 276.2114330942847
+    y1: 284.4446157078928
+    z_index: 4
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      internet200
+      192.0.2.200
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 200.0
+    y1: 80.0
+    z_index: 5
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      internet100
+      192.0.2.100
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 80.0
+    y1: 80.0
+    z_index: 5
+  - border_color: '#808080FF'
+    border_radius: 20
+    border_style: ''
+    color: '#CFF7C0'
+    rotation: 0
+    thickness: 1
+    type: rectangle
+    x1: -80.0
+    y1: 45.715192307692305
+    x2: 520.0
+    y2: 80.0
+    z_index: 1
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: 'internet200
+
+      '
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 200.0
+    y1: 80.0
+    z_index: 5
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: 'internet100
+
+      '
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 80.0
+    y1: 80.0
+    z_index: 5
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: true
+    text_content: Simulated Internet Hosts
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 142.73036807204352
+    y1: 58.42336069709221
+    z_index: 5
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      internet210
+      192.0.2.210
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 320.0
+    y1: 80.0
+    z_index: 5
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: 'internet210
+
+      '
+    text_font: monospace
+    text_italic: false
+    text_size: 10
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 320.0
+    y1: 80.0
+    z_index: 5
+smart_annotations:
+  - tag: Client
+    is_on: true
+    padding: 80
+    label: Clients
+    tag_offset_x: 30
+    tag_offset_y: -100
+    tag_size: 18
+    group_distance: 400
+    thickness: 1
+    border_style: ''
+    fill_color: '#C72A2880'
+    border_color: '#00000080'
+    z_index: 1
+  - tag: Services
+    is_on: true
+    padding: 80
+    label: Services
+    tag_offset_x: 0
+    tag_offset_y: -60
+    tag_size: 18
+    group_distance: 400
+    thickness: 1
+    border_style: ''
+    fill_color: '#A4C8E180'
+    border_color: '#00000080'
+    z_index: 2
+nodes:
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname router
+          ip domain name ccnaprep.internal
+          ip domain list ccnaprep.internal
+          !
+          ! In order to avoid entering a configuration dialog
+          ! on boot, please ensure that all ethernet interfaces
+          ! have some ip configuration present here such as the
+          ! example below:
+          !
+          interface range Ethernet 0/0 - 3
+           no ip address
+           shutdown
+          !
+          ! EEM Applet to add SSH Key Automatically
+          event manager applet do-ssh authorization bypass
+           event timer cron cron-entry "@reboot" maxrun 130
+          action 01 wait 10
+          action 02 cli command "enable"
+          action 11 cli command "crypto key generate rsa modulus 2048"
+          action 20 cli command "config t"
+          action 21 cli command "no event manager applet do-ssh"
+          action 22 cli command "end"
+          action 23 cli command "write mem"
+          !
+          enable secret cisco
+          username cisco privilege 15 secret cisco
+          !
+          line vty 0 4
+           transport input ssh
+           login local
+           exit
+          !
+          !
+          interface eth0/0
+           desc link to Services Network
+           ip address 172.16.0.1 255.255.255.0
+           no shut
+           exit
+          !
+          interface eth0/1
+           desc link to Clients Network
+           ip address 192.168.0.1 255.255.255.0
+           no shut
+           exit
+          !
+          interface eth0/2
+           desc link to Simulated Internet
+           ip address 192.0.2.1 255.255.255.0
+           no shut
+           exit
+          !
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: router
+    node_definition: iol-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: 0
+    y: 240
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: Ethernet0/1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: Ethernet0/2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: Ethernet0/3
+        mac_address: null
+        type: physical
+        slot: 3
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: client-sw
+    node_definition: unmanaged_switch
+    parameters: {}
+    ram: null
+    tags:
+      - Client
+    x: -160
+    y: 240
+    interfaces:
+      - id: i0
+        label: port0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i1
+        label: port1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i2
+        label: port2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i3
+        label: port3
+        mac_address: null
+        type: physical
+        slot: 3
+      - id: i4
+        label: port4
+        mac_address: null
+        type: physical
+        slot: 4
+      - id: i5
+        label: port5
+        mac_address: null
+        type: physical
+        slot: 5
+      - id: i6
+        label: port6
+        mac_address: null
+        type: physical
+        slot: 6
+      - id: i7
+        label: port7
+        mac_address: null
+        type: physical
+        slot: 7
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname client1
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+          ip address add 192.168.0.17/24 dev eth0
+          ip route add default via 192.168.0.1
+          echo "nameserver 192.168.255.1" > /etc/resolv.conf
+          echo "172.16.0.65     server" >> /etc/hosts
+          echo "192.0.2.100     internet100" >> /etc/hosts
+          echo "192.0.2.200     internet200" >> /etc/hosts
+          echo "192.0.2.210     internet210" >> /etc/hosts
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n2
+    image_definition: null
+    label: client1
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags:
+      - Client
+    x: -280
+    y: 160
+    interfaces:
+      - id: i0
+        label: eth0
+        mac_address: null
+        type: physical
+        slot: 0
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname client2
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+          ip address add 192.168.0.33/24 dev eth0
+          ip route add default via 192.168.0.1
+          echo "nameserver 192.168.255.1" > /etc/resolv.conf
+          echo "172.16.0.65     server" >> /etc/hosts
+          echo "192.0.2.100     internet100" >> /etc/hosts
+          echo "192.0.2.200     internet200" >> /etc/hosts
+          echo "192.0.2.210     internet210" >> /etc/hosts
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n3
+    image_definition: null
+    label: client2
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags:
+      - Client
+    x: -280
+    y: 320
+    interfaces:
+      - id: i0
+        label: eth0
+        mac_address: null
+        type: physical
+        slot: 0
+  - boot_disk_size: null
+    configuration:
+      - name: boot.sh
+        content: |-
+          # Insert more commands here
+          ip address add dev eth0 172.16.0.65/24
+          ip link set dev eth0 up
+          ip route add default via 172.16.0.1
+          echo "nameserver 192.168.255.1" > /etc/resolv.conf
+          echo "192.0.2.100     internet100" >> /etc/hosts
+          echo "192.0.2.200     internet200" >> /etc/hosts
+          echo "192.0.2.210     internet210" >> /etc/hosts
+
+          #
+
+          # Create a basic web page for the server
+          cat > /usr/share/nginx/html/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>Network Configuration Dashboard</title>
+              <style>
+                  body {
+                      font-family: 'Courier New', monospace;
+                      background-color: #f4f4f4;
+                      color: #333;
+                      margin: 0;
+                      padding: 0;
+                  }
+
+                  header {
+                      background-color: #2c3e50;
+                      color: white;
+                      padding: 1em;
+                      text-align: center;
+                  }
+
+                  nav {
+                      background-color: #34495e;
+                      padding: 0.5em;
+                      text-align: center;
+                  }
+
+                  nav a {
+                      color: white;
+                      text-decoration: none;
+                      margin: 0 15px;
+                      font-weight: bold;
+                  }
+
+                  nav a:hover {
+                      text-decoration: underline;
+                  }
+
+                  .container {
+                      padding: 2em;
+                      background-color: white;
+                      border-radius: 8px;
+                      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                      margin-top: 20px;
+                  }
+
+                  .ascii-art {
+                      text-align: center;
+                      font-size: 18px;
+                      color: #1abc9c;
+                  }
+
+                  table {
+                      width: 100%;
+                      border-collapse: collapse;
+                      margin-top: 1em;
+                  }
+
+                  table, th, td {
+                      border: 1px solid #ccc;
+                  }
+
+                  th, td {
+                      padding: 0.8em;
+                      text-align: left;
+                  }
+
+                  th {
+                      background-color: #34495e;
+                      color: white;
+                  }
+
+                  .footer {
+                      text-align: center;
+                      background-color: #2c3e50;
+                      color: white;
+                      padding: 1em;
+                      margin-top: 20px;
+                  }
+
+                  .footer a {
+                      color: #1abc9c;
+                      text-decoration: none;
+                  }
+              </style>
+          </head>
+          <body>
+
+          <header>
+              <h1>Internal Network Configuration</h1>
+              <p>Company's Centralized Network Management Dashboard</p>
+          </header>
+
+          <nav>
+              <a href="#overview">Overview</a>
+              <a href="#config">Configurations</a>
+              <a href="#status">Network Status</a>
+              <a href="#help">Help</a>
+          </nav>
+
+          <div class="container" id="overview">
+              <h2>🔧 Overview of Network Setup</h2>
+              <div class="ascii-art">
+                  <pre>
+           _____
+          /     \
+                 | admin |-----+
+                  \_____/      |
+                                       |
+                       +--------+--------+
+                       | client-switch    |
+                       +--------+--------+
+                                |
+                       +--------+--------+
+                       |   router (HQ)   |
+                       +--------+--------+
+                                |
+                       +--------+--------+
+                       | server-switch   |
+                       +--------+--------+
+                                |
+                       +--------+--------+
+                       |  web-server     |
+                       +-----------------+
+                  </pre>
+              </div>
+              <p>This diagram represents the network topology with admin and office users, client-switch, router (HQ), server-switch, and a web-server.</p>
+          </div>
+
+          <div class="container" id="config">
+              <h2>🔧 Network Configuration</h2>
+              <table>
+                  <tr>
+                      <th>Device</th>
+                      <th>IP Address</th>
+                      <th>Status</th>
+                  </tr>
+                  <tr>
+                      <td>Router (HQ)</td>
+                      <td>172.18.0.1</td>
+                      <td>Active</td>
+                  </tr>
+                  <tr>
+                      <td>Client Switch</td>
+                      <td>192.168.10.1</td>
+                      <td>Active</td>
+                  </tr>
+                  <tr>
+                      <td>Server Switch</td>
+                      <td>10.20.00.1</td>
+                      <td>Active</td>
+                  </tr>
+                  <tr>
+                      <td>Web Server</td>
+                      <td>10.20.01.1</td>
+                      <td>Active</td>
+                  </tr>
+              </table>
+          </div>
+
+          <div class="container" id="status">
+              <h2>🌐 Current Network Status</h2>
+              <div class="ascii-art">
+                  <pre>
+                  +----------------------------+
+                  |  Network Monitoring        |
+                  +----------------------------+
+                  |  Router (HQ): [  ✔  ]      |
+                  |  Client Switch: [  ✔  ]    |
+                  |  Server Switch: [  ✔  ]   |
+                  |  Web Server: [  ✔  ]      |
+                  +----------------------------+
+                  </pre>
+              </div>
+              <p>All devices are up and functioning. Network status is stable.</p>
+          </div>
+
+          <div class="container" id="help">
+              <h2>❓ Need Assistance?</h2>
+              <p>For help with network configurations, please refer to the <a href="#">Network Configuration Guide</a> or contact the IT support team.</p>
+          </div>
+
+          <div class="footer">
+              <p>Company Network Dashboard - © 2025</p>
+              <p><a href="#">Contact IT Support</a> | <a href="#">Privacy Policy</a></p>
+          </div>
+
+          </body>
+          </html>
+          EOF
+
+          # keep the next line to indicate that the machine is ready
+          echo "READY" >/dev/console
+          exit 0
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n4
+    image_definition: null
+    label: server
+    node_definition: nginx
+    parameters: {}
+    ram: null
+    tags:
+      - Services
+    x: 320
+    y: 240
+    interfaces:
+      - id: i0
+        label: eth0
+        mac_address: null
+        type: physical
+        slot: 0
+  - boot_disk_size: null
+    configuration:
+      - name: boot.sh
+        content: |-
+          # Insert more commands here
+          ip address add dev eth0 192.0.2.100/24
+          ip address add dev eth0 192.0.2.200/24
+          ip address add dev eth0 192.0.2.210/24
+          ip link set dev eth0 up
+          ip route add default via 192.0.2.1
+
+          #
+
+          # Create the customized nginx.conf to serve multiple pages
+          cat > /etc/nginx/nginx.conf << 'EOF'
+
+          user  nginx;
+          worker_processes  auto;
+
+          error_log  /var/log/nginx/error.log notice;
+          pid        /run/nginx.pid;
+
+
+          events {
+              worker_connections  1024;
+          }
+
+
+          http {
+              include       /etc/nginx/mime.types;
+              default_type  application/octet-stream;
+
+              log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                                '$status $body_bytes_sent "$http_referer" '
+                                '"$http_user_agent" "$http_x_forwarded_for"';
+
+              access_log  /var/log/nginx/access.log  main;
+
+              sendfile        on;
+              #tcp_nopush     on;
+
+              keepalive_timeout  65;
+
+              #gzip  on;
+
+              # Default server - catches unmatched requests
+              server {
+                  listen 80 default_server;
+                  server_name _;
+
+                  location / {
+                      root /usr/share/nginx/html;
+                      index index.html;
+                  }
+              }
+
+              # Internet100 - Quantum Cloud Streaming
+              server {
+                  listen 80;
+                  server_name internet100;
+
+                  location / {
+                      root /usr/share/nginx/html;
+                      try_files /internet100.html =404;
+                  }
+              }
+
+              # Internet200 - CYBER SNAKE 2000
+              server {
+                  listen 80;
+                  server_name internet200;
+
+                  location / {
+                      root /usr/share/nginx/html;
+                      try_files /internet200.html =404;
+                  }
+              }
+
+              # Internet210 - AAI Solutions
+              server {
+                  listen 80;
+                  server_name internet210;
+
+                  location / {
+                      root /usr/share/nginx/html;
+                      try_files /internet210.html =404;
+                  }
+              }
+          }
+          EOF
+
+          # Create a basic web page for the server
+          cat > /usr/share/nginx/html/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>Simulated Internet - Welcome</title>
+              <style>
+                  body {
+                      font-family: 'Courier New', Courier, monospace;
+                      background: #f0f0f0;
+                      color: #333;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      min-height: 100vh;
+                      margin: 0;
+                      padding: 20px;
+                  }
+
+                  .container {
+                      max-width: 600px;
+                      background: white;
+                      border: 3px solid #000;
+                      padding: 40px;
+                      box-shadow: 8px 8px 0 #000;
+                  }
+
+                  h1 {
+                      font-size: 48px;
+                      margin: 0 0 20px 0;
+                      color: #000;
+                  }
+
+                  h2 {
+                      font-size: 24px;
+                      margin: 0 0 30px 0;
+                      color: #666;
+                      font-weight: normal;
+                  }
+
+                  hr {
+                      border: none;
+                      border-top: 2px dashed #ccc;
+                      margin: 30px 0;
+                  }
+
+                  p {
+                      line-height: 1.8;
+                      margin: 15px 0;
+                      font-size: 16px;
+                  }
+
+                  .error-code {
+                      font-size: 72px;
+                      font-weight: bold;
+                      color: #ddd;
+                      margin-bottom: 10px;
+                  }
+
+                  .footer {
+                      margin-top: 30px;
+                      font-size: 12px;
+                      color: #999;
+                      text-align: center;
+                  }
+
+                  a {
+                      color: #0066cc;
+                      text-decoration: underline;
+                  }
+
+                  a:hover {
+                      color: #003366;
+                  }
+
+                  .ascii-art {
+                      font-size: 12px;
+                      line-height: 1.2;
+                      color: #999;
+                      margin: 20px 0;
+                      white-space: pre;
+                  }
+
+                  ul {
+                      margin: 20px 0;
+                      padding-left: 20px;
+                  }
+
+                  li {
+                      margin: 8px 0;
+                  }
+              </style>
+          </head>
+          <body>
+              <div class="container">
+                  <div class="error-code">???</div>
+                  <h1>Welcome!</h1>
+                  <h2>You've reached the Simulated Internet</h2>
+
+                  <hr>
+
+                  <p>
+                      <strong>Your imagination is probably bigger than the services available here.</strong>
+                  </p>
+
+                  <p>
+                      This is a minimal simulation of "the internet" for network lab purposes.
+                      The content you seek may or may not exist in this pocket dimension of cyberspace.
+                  </p>
+
+                  <div class="ascii-art">
+              ___________
+             /  ______  /|
+            /  /     / / |
+           /__/     /_/  |    <- This is the internet (simulated)
+           |  |     | |  |
+           |  |_____|_|  /
+           |   ___   |  /
+           |  |___   | /
+           |________|/
+                  </div>
+
+                  <p><strong>Available destinations:</strong></p>
+                  <ul>
+                      <li>You are here (nowhere in particular)</li>
+                      <li>There might be other places (check your DNS)</li>
+                      <li>The void (always accessible)</li>
+                  </ul>
+
+                  <hr>
+
+                  <p>
+                      <em>Helpful hint:</em> If you're looking for something specific, try using
+                      the actual hostname rather than just the IP address. The internet is vast
+                      (even when simulated).
+                  </p>
+
+                  <div class="footer">
+                      <p>Simulated Internet | Network Lab Environment</p>
+                      <p>Error: Success (This page loaded correctly, but you probably want something else)</p>
+                  </div>
+              </div>
+          </body>
+          </html>
+          EOF
+
+          # Create a internet100 web page for the server
+          cat > /usr/share/nginx/html/internet100.html << 'EOF'
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>Internet100 - Quantum Cloud Streaming</title>
+              <style>
+                  * {
+                      margin: 0;
+                      padding: 0;
+                      box-sizing: border-box;
+                  }
+
+                  body {
+                      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                      color: #fff;
+                      overflow-x: hidden;
+                  }
+
+                  .container {
+                      max-width: 1200px;
+                      margin: 0 auto;
+                      padding: 0 20px;
+                  }
+
+                  /* Animated Background */
+                  .bg-animation {
+                      position: fixed;
+                      top: 0;
+                      left: 0;
+                      width: 100%;
+                      height: 100%;
+                      z-index: -1;
+                      opacity: 0.3;
+                  }
+
+                  .circle {
+                      position: absolute;
+                      border-radius: 50%;
+                      background: rgba(255, 255, 255, 0.1);
+                      animation: float 20s infinite ease-in-out;
+                  }
+
+                  .circle:nth-child(1) {
+                      width: 80px;
+                      height: 80px;
+                      top: 10%;
+                      left: 10%;
+                      animation-delay: 0s;
+                  }
+
+                  .circle:nth-child(2) {
+                      width: 120px;
+                      height: 120px;
+                      top: 60%;
+                      left: 80%;
+                      animation-delay: 2s;
+                  }
+
+                  .circle:nth-child(3) {
+                      width: 100px;
+                      height: 100px;
+                      top: 40%;
+                      left: 20%;
+                      animation-delay: 4s;
+                  }
+
+                  .circle:nth-child(4) {
+                      width: 60px;
+                      height: 60px;
+                      top: 80%;
+                      left: 60%;
+                      animation-delay: 6s;
+                  }
+
+                  @keyframes float {
+                      0%, 100% {
+                          transform: translateY(0) rotate(0deg);
+                      }
+                      50% {
+                          transform: translateY(-50px) rotate(180deg);
+                      }
+                  }
+
+                  /* Header */
+                  header {
+                      padding: 30px 0;
+                      background: rgba(0, 0, 0, 0.2);
+                      backdrop-filter: blur(10px);
+                  }
+
+                  nav {
+                      display: flex;
+                      justify-content: space-between;
+                      align-items: center;
+                  }
+
+                  .logo {
+                      font-size: 28px;
+                      font-weight: bold;
+                      background: linear-gradient(90deg, #fff, #a8edea);
+                      -webkit-background-clip: text;
+                      -webkit-text-fill-color: transparent;
+                      background-clip: text;
+                  }
+
+                  .nav-links {
+                      display: flex;
+                      gap: 30px;
+                      list-style: none;
+                  }
+
+                  .nav-links a {
+                      color: #fff;
+                      text-decoration: none;
+                      transition: color 0.3s;
+                      font-weight: 500;
+                  }
+
+                  .nav-links a:hover {
+                      color: #a8edea;
+                  }
+
+                  /* Hero Section */
+                  .hero {
+                      text-align: center;
+                      padding: 100px 0;
+                  }
+
+                  .hero h1 {
+                      font-size: 56px;
+                      margin-bottom: 20px;
+                      animation: fadeInUp 1s ease-out;
+                  }
+
+                  .hero .subtitle {
+                      font-size: 24px;
+                      margin-bottom: 40px;
+                      opacity: 0.9;
+                      animation: fadeInUp 1s ease-out 0.2s backwards;
+                  }
+
+                  .cta-button {
+                      display: inline-block;
+                      padding: 15px 40px;
+                      background: linear-gradient(90deg, #f093fb 0%, #f5576c 100%);
+                      color: #fff;
+                      text-decoration: none;
+                      border-radius: 50px;
+                      font-size: 18px;
+                      font-weight: bold;
+                      transition: transform 0.3s, box-shadow 0.3s;
+                      animation: fadeInUp 1s ease-out 0.4s backwards;
+                      cursor: pointer;
+                      border: none;
+                  }
+
+                  .cta-button:hover {
+                      transform: translateY(-3px);
+                      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                  }
+
+                  @keyframes fadeInUp {
+                      from {
+                          opacity: 0;
+                          transform: translateY(30px);
+                      }
+                      to {
+                          opacity: 1;
+                          transform: translateY(0);
+                      }
+                  }
+
+                  /* Features Section */
+                  .features {
+                      padding: 80px 0;
+                      background: rgba(255, 255, 255, 0.1);
+                      backdrop-filter: blur(10px);
+                  }
+
+                  .features h2 {
+                      text-align: center;
+                      font-size: 42px;
+                      margin-bottom: 60px;
+                  }
+
+                  .features-grid {
+                      display: grid;
+                      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                      gap: 40px;
+                  }
+
+                  .feature-card {
+                      background: rgba(255, 255, 255, 0.15);
+                      padding: 40px;
+                      border-radius: 20px;
+                      backdrop-filter: blur(10px);
+                      border: 1px solid rgba(255, 255, 255, 0.2);
+                      transition: transform 0.3s, box-shadow 0.3s;
+                  }
+
+                  .feature-card:hover {
+                      transform: translateY(-10px);
+                      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+                  }
+
+                  .feature-icon {
+                      width: 60px;
+                      height: 60px;
+                      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+                      border-radius: 15px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      font-size: 28px;
+                      margin-bottom: 20px;
+                  }
+
+                  .feature-card h3 {
+                      font-size: 24px;
+                      margin-bottom: 15px;
+                  }
+
+                  .feature-card p {
+                      opacity: 0.9;
+                      line-height: 1.6;
+                  }
+
+                  /* Stats Section */
+                  .stats {
+                      padding: 80px 0;
+                      text-align: center;
+                  }
+
+                  .stats-grid {
+                      display: grid;
+                      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                      gap: 40px;
+                      margin-top: 40px;
+                  }
+
+                  .stat-item {
+                      padding: 20px;
+                  }
+
+                  .stat-number {
+                      font-size: 48px;
+                      font-weight: bold;
+                      color: #a8edea;
+                      margin-bottom: 10px;
+                  }
+
+                  .stat-label {
+                      font-size: 18px;
+                      opacity: 0.9;
+                  }
+
+                  /* Footer */
+                  footer {
+                      background: rgba(0, 0, 0, 0.3);
+                      padding: 40px 0;
+                      text-align: center;
+                  }
+
+                  footer p {
+                      opacity: 0.8;
+                  }
+
+                  /* Pulse Animation for CTA */
+                  @keyframes pulse {
+                      0%, 100% {
+                          box-shadow: 0 0 0 0 rgba(245, 87, 108, 0.7);
+                      }
+                      50% {
+                          box-shadow: 0 0 0 20px rgba(245, 87, 108, 0);
+                      }
+                  }
+
+                  .cta-button.pulse {
+                      animation: pulse 2s infinite;
+                  }
+
+                  /* Responsive */
+                  @media (max-width: 768px) {
+                      .hero h1 {
+                          font-size: 36px;
+                      }
+
+                      .hero .subtitle {
+                          font-size: 18px;
+                      }
+
+                      .nav-links {
+                          gap: 15px;
+                      }
+
+                      .features h2 {
+                          font-size: 32px;
+                      }
+                  }
+              </style>
+          </head>
+          <body>
+              <div class="bg-animation">
+                  <div class="circle"></div>
+                  <div class="circle"></div>
+                  <div class="circle"></div>
+                  <div class="circle"></div>
+              </div>
+
+              <header>
+                  <div class="container">
+                      <nav>
+                          <div class="logo">Internet100</div>
+                          <ul class="nav-links">
+                              <li><a href="#features">Features</a></li>
+                              <li><a href="#stats">Performance</a></li>
+                              <li><a href="#pricing">Pricing</a></li>
+                              <li><a href="#contact">Contact</a></li>
+                          </ul>
+                      </nav>
+                  </div>
+              </header>
+
+              <section class="hero">
+                  <div class="container">
+                      <h1>Quantum Cloud Streaming</h1>
+                      <p class="subtitle">Experience the future of real-time data delivery at 100Gbps</p>
+                      <button class="cta-button pulse" id="ctaBtn">Start Your Free Trial</button>
+                  </div>
+              </section>
+
+              <section class="features" id="features">
+                  <div class="container">
+                      <h2>Revolutionary Features</h2>
+                      <div class="features-grid">
+                          <div class="feature-card">
+                              <div class="feature-icon">⚡</div>
+                              <h3>Lightning Fast</h3>
+                              <p>100Gbps quantum-encrypted connections deliver your data at unprecedented speeds with zero latency.</p>
+                          </div>
+                          <div class="feature-card">
+                              <div class="feature-icon">🔒</div>
+                              <h3>Ultra Secure</h3>
+                              <p>Military-grade quantum encryption ensures your data streams are completely secure and private.</p>
+                          </div>
+                          <div class="feature-card">
+                              <div class="feature-icon">🌐</div>
+                              <h3>Global Reach</h3>
+                              <p>Access our service from anywhere in the world with 99.999% uptime guaranteed.</p>
+                          </div>
+                          <div class="feature-card">
+                              <div class="feature-icon">🚀</div>
+                              <h3>AI-Powered</h3>
+                              <p>Advanced machine learning optimizes your streaming experience in real-time.</p>
+                          </div>
+                          <div class="feature-card">
+                              <div class="feature-icon">💎</div>
+                              <h3>Premium Quality</h3>
+                              <p>Crystal-clear 16K resolution streaming with Dolby Atmos spatial audio support.</p>
+                          </div>
+                          <div class="feature-card">
+                              <div class="feature-icon">🎯</div>
+                              <h3>Smart Routing</h3>
+                              <p>Intelligent network routing ensures optimal path selection for every packet.</p>
+                          </div>
+                      </div>
+                  </div>
+              </section>
+
+              <section class="stats" id="stats">
+                  <div class="container">
+                      <h2>Trusted by Millions</h2>
+                      <div class="stats-grid">
+                          <div class="stat-item">
+                              <div class="stat-number" id="users">0</div>
+                              <div class="stat-label">Active Users</div>
+                          </div>
+                          <div class="stat-item">
+                              <div class="stat-number" id="data">0</div>
+                              <div class="stat-label">Petabytes Streamed</div>
+                          </div>
+                          <div class="stat-item">
+                              <div class="stat-number" id="uptime">0</div>
+                              <div class="stat-label">Uptime %</div>
+                          </div>
+                          <div class="stat-item">
+                              <div class="stat-number" id="countries">0</div>
+                              <div class="stat-label">Countries</div>
+                          </div>
+                      </div>
+                  </div>
+              </section>
+
+              <footer>
+                  <div class="container">
+                      <p>&copy; 2024 Internet100 - Quantum Cloud Streaming. All rights reserved.</p>
+                      <p style="margin-top: 10px; opacity: 0.6;">Server: internet100 | Network Simulation Lab</p>
+                  </div>
+              </footer>
+
+              <script>
+                  // Animate stats counter
+                  function animateValue(id, start, end, duration, suffix = '') {
+                      const obj = document.getElementById(id);
+                      const range = end - start;
+                      const increment = end > start ? 1 : -1;
+                      const stepTime = Math.abs(Math.floor(duration / range));
+                      let current = start;
+
+                      const timer = setInterval(() => {
+                          current += increment * Math.ceil(range / 100);
+                          if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
+                              current = end;
+                              clearInterval(timer);
+                          }
+                          obj.textContent = current.toLocaleString() + suffix;
+                      }, stepTime);
+                  }
+
+                  // Trigger animations when stats section is visible
+                  const observerOptions = {
+                      threshold: 0.5
+                  };
+
+                  const observer = new IntersectionObserver((entries) => {
+                      entries.forEach(entry => {
+                          if (entry.isIntersecting) {
+                              animateValue('users', 0, 2500000, 2000);
+                              animateValue('data', 0, 847, 2000);
+                              animateValue('uptime', 0, 99.999, 2000, '');
+                              animateValue('countries', 0, 142, 2000);
+                              observer.unobserve(entry.target);
+                          }
+                      });
+                  }, observerOptions);
+
+                  observer.observe(document.getElementById('stats'));
+
+                  // CTA Button interaction
+                  document.getElementById('ctaBtn').addEventListener('click', () => {
+                      alert('Welcome to Internet100! 🚀\n\nYour 30-day free trial is ready to begin.\n\nExperience quantum-speed streaming today!');
+                  });
+
+                  // Smooth scrolling for navigation
+                  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                      anchor.addEventListener('click', function (e) {
+                          e.preventDefault();
+                          const target = document.querySelector(this.getAttribute('href'));
+                          if (target) {
+                              target.scrollIntoView({
+                                  behavior: 'smooth',
+                                  block: 'start'
+                              });
+                          }
+                      });
+                  });
+
+                  // Add dynamic cursor effect
+                  document.addEventListener('mousemove', (e) => {
+                      const circles = document.querySelectorAll('.circle');
+                      circles.forEach((circle, index) => {
+                          const speed = (index + 1) * 0.01;
+                          const x = (e.clientX * speed);
+                          const y = (e.clientY * speed);
+                          circle.style.transform = `translate(${x}px, ${y}px)`;
+                      });
+                  });
+              </script>
+          </body>
+          </html>
+          EOF
+
+          # Create a internet200 web page for the server
+          cat > /usr/share/nginx/html/internet200.html << 'EOF'
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>Internet200 - CYBER SNAKE 2000</title>
+              <style>
+                  * {
+                      margin: 0;
+                      padding: 0;
+                      box-sizing: border-box;
+                  }
+
+                  body {
+                      font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', cursive;
+                      background: linear-gradient(to bottom, #0000ff, #00ffff);
+                      color: #ffff00;
+                      min-height: 100vh;
+                      text-align: center;
+                      padding: 20px;
+                      image-rendering: pixelated;
+                  }
+
+                  .container {
+                      max-width: 800px;
+                      margin: 0 auto;
+                      background: linear-gradient(135deg, #666666, #999999);
+                      border: 5px ridge #silver;
+                      padding: 20px;
+                      box-shadow: 10px 10px 0px #000000;
+                  }
+
+                  h1 {
+                      font-size: 48px;
+                      text-shadow: 3px 3px #ff00ff, 6px 6px #00ff00;
+                      margin-bottom: 10px;
+                      animation: rainbow 3s infinite;
+                      letter-spacing: 3px;
+                  }
+
+                  @keyframes rainbow {
+                      0% { color: #ff0000; }
+                      16% { color: #ff7f00; }
+                      33% { color: #ffff00; }
+                      50% { color: #00ff00; }
+                      66% { color: #0000ff; }
+                      83% { color: #8b00ff; }
+                      100% { color: #ff0000; }
+                  }
+
+                  .subtitle {
+                      font-size: 20px;
+                      color: #00ff00;
+                      text-shadow: 2px 2px #000000;
+                      margin-bottom: 20px;
+                      font-style: italic;
+                  }
+
+                  .blink {
+                      animation: blink 1s infinite;
+                  }
+
+                  @keyframes blink {
+                      0%, 50% { opacity: 1; }
+                      51%, 100% { opacity: 0; }
+                  }
+
+                  .game-area {
+                      background: linear-gradient(to bottom, #000080, #000040);
+                      border: 5px inset #c0c0c0;
+                      padding: 15px;
+                      margin: 20px 0;
+                      box-shadow: inset 3px 3px 10px #000000;
+                  }
+
+                  canvas {
+                      background: #000000;
+                      border: 3px solid #00ff00;
+                      box-shadow: 0 0 20px #00ff00;
+                      display: block;
+                      margin: 0 auto;
+                  }
+
+                  .scoreboard {
+                      background: linear-gradient(to right, #ff00ff, #00ffff);
+                      border: 3px groove #ffffff;
+                      padding: 15px;
+                      margin: 15px 0;
+                      box-shadow: 5px 5px 0px #000000;
+                  }
+
+                  .score-text {
+                      font-size: 24px;
+                      font-weight: bold;
+                      color: #ffffff;
+                      text-shadow: 2px 2px #000000;
+                  }
+
+                  .controls {
+                      display: grid;
+                      grid-template-columns: repeat(3, 1fr);
+                      gap: 10px;
+                      max-width: 200px;
+                      margin: 20px auto;
+                  }
+
+                  button {
+                      background: linear-gradient(to bottom, #c0c0c0, #808080);
+                      border: 3px outset #ffffff;
+                      padding: 15px;
+                      font-family: 'Comic Sans MS', cursive;
+                      font-size: 18px;
+                      font-weight: bold;
+                      color: #000000;
+                      cursor: pointer;
+                      text-shadow: 1px 1px #ffffff;
+                      box-shadow: 3px 3px 0px #000000;
+                  }
+
+                  button:active {
+                      border-style: inset;
+                      transform: translate(2px, 2px);
+                      box-shadow: 1px 1px 0px #000000;
+                  }
+
+                  button:hover {
+                      background: linear-gradient(to bottom, #ffffff, #c0c0c0);
+                  }
+
+                  .btn-start {
+                      grid-column: 1 / -1;
+                      background: linear-gradient(to bottom, #00ff00, #008000);
+                      font-size: 24px;
+                      padding: 20px;
+                      margin: 10px 0;
+                  }
+
+                  .btn-up {
+                      grid-column: 2;
+                  }
+
+                  .btn-left {
+                      grid-column: 1;
+                      grid-row: 2;
+                  }
+
+                  .btn-down {
+                      grid-column: 2;
+                      grid-row: 2;
+                  }
+
+                  .btn-right {
+                      grid-column: 3;
+                      grid-row: 2;
+                  }
+
+                  .instructions {
+                      background: #ffff00;
+                      color: #000000;
+                      border: 3px dashed #ff0000;
+                      padding: 15px;
+                      margin: 15px 0;
+                      font-size: 14px;
+                      text-align: left;
+                  }
+
+                  .instructions h3 {
+                      color: #ff0000;
+                      margin-bottom: 10px;
+                      text-decoration: underline;
+                  }
+
+                  .marquee-container {
+                      background: #000000;
+                      border: 2px solid #00ff00;
+                      padding: 10px;
+                      margin: 15px 0;
+                      overflow: hidden;
+                  }
+
+                  marquee {
+                      color: #00ff00;
+                      font-size: 18px;
+                      font-weight: bold;
+                  }
+
+                  .visitor-counter {
+                      background: #000000;
+                      color: #00ff00;
+                      border: 2px solid #00ff00;
+                      padding: 10px;
+                      display: inline-block;
+                      margin: 10px 0;
+                      font-family: 'Courier New', monospace;
+                  }
+
+                  .under-construction {
+                      color: #ffff00;
+                      font-size: 12px;
+                      margin-top: 15px;
+                  }
+
+                  .game-over-text {
+                      color: #ff0000;
+                      font-size: 36px;
+                      font-weight: bold;
+                      text-shadow: 3px 3px #000000;
+                      animation: blink 0.5s infinite;
+                      margin: 10px 0;
+                  }
+
+                  hr {
+                      border: 2px dashed #00ff00;
+                      margin: 15px 0;
+                  }
+              </style>
+          </head>
+          <body>
+              <div class="container">
+                  <h1>🐍 CYBER SNAKE 2000 🐍</h1>
+                  <div class="subtitle">
+                      <span class="blink">★</span> The ULTIMATE Retro Gaming Experience <span class="blink">★</span>
+                  </div>
+
+                  <div class="marquee-container">
+                      <marquee behavior="scroll" direction="left">
+                          🎮 Welcome to Internet200! 🎮 Collect the food! 🍎 Don't hit the walls! 💀 Share with your friends! 🌟
+                      </marquee>
+                  </div>
+
+                  <div class="scoreboard">
+                      <div class="score-text">
+                          SCORE: <span id="score">0</span> | HIGH SCORE: <span id="highScore">0</span>
+                      </div>
+                  </div>
+
+                  <div class="game-area">
+                      <canvas id="gameCanvas" width="400" height="400"></canvas>
+                      <div id="gameOverMessage" style="display: none;">
+                          <div class="game-over-text">GAME OVER!</div>
+                      </div>
+                  </div>
+
+                  <button class="btn-start" id="startBtn" onclick="startGame()">🎮 START GAME 🎮</button>
+
+                  <div class="controls">
+                      <button class="btn-up" onclick="changeDirection('UP')">▲</button>
+                      <button class="btn-left" onclick="changeDirection('LEFT')">◄</button>
+                      <button class="btn-down" onclick="changeDirection('DOWN')">▼</button>
+                      <button class="btn-right" onclick="changeDirection('RIGHT')">►</button>
+                  </div>
+
+                  <div class="instructions">
+                      <h3>📜 HOW TO PLAY:</h3>
+                      <ul>
+                          <li>🎯 Use arrow keys or buttons to control the snake</li>
+                          <li>🍎 Eat the red food to grow and score points</li>
+                          <li>⚠️ Don't run into walls or yourself!</li>
+                          <li>🏆 Beat your high score!</li>
+                          <li>💪 Pro tip: Press SPACE to pause</li>
+                      </ul>
+                  </div>
+
+                  <hr>
+
+                  <div class="visitor-counter">
+                      👁️ VISITORS: <span id="visitors">001337</span> 👁️
+                  </div>
+
+                  <div class="under-construction">
+                      <p>Best viewed in Netscape Navigator 4.0+ or Internet Explorer 5.0+</p>
+                      <p>Optimized for 800x600 resolution</p>
+                      <p>Server: internet200 | Network Simulation Lab</p>
+                  </div>
+              </div>
+
+              <script>
+                  const canvas = document.getElementById('gameCanvas');
+                  const ctx = canvas.getContext('2d');
+                  const gridSize = 20;
+                  const tileCount = canvas.width / gridSize;
+
+                  let snake = [{ x: 10, y: 10 }];
+                  let food = { x: 15, y: 15 };
+                  let dx = 0;
+                  let dy = 0;
+                  let score = 0;
+                  let highScore = localStorage.getItem('cyberSnakeHighScore') || 0;
+                  let gameLoop;
+                  let isGameRunning = false;
+                  let isPaused = false;
+                  let nextDirection = null;
+
+                  document.getElementById('highScore').textContent = highScore;
+
+                  // Keyboard controls
+                  document.addEventListener('keydown', (e) => {
+                      if (e.code === 'Space') {
+                          e.preventDefault();
+                          togglePause();
+                          return;
+                      }
+
+                      if (!isGameRunning || isPaused) return;
+
+                      const key = e.key;
+                      if (key === 'ArrowUp' && dy === 0) nextDirection = 'UP';
+                      else if (key === 'ArrowDown' && dy === 0) nextDirection = 'DOWN';
+                      else if (key === 'ArrowLeft' && dx === 0) nextDirection = 'LEFT';
+                      else if (key === 'ArrowRight' && dx === 0) nextDirection = 'RIGHT';
+                  });
+
+                  function changeDirection(direction) {
+                      if (!isGameRunning || isPaused) return;
+
+                      if (direction === 'UP' && dy === 0) nextDirection = 'UP';
+                      else if (direction === 'DOWN' && dy === 0) nextDirection = 'DOWN';
+                      else if (direction === 'LEFT' && dx === 0) nextDirection = 'LEFT';
+                      else if (direction === 'RIGHT' && dx === 0) nextDirection = 'RIGHT';
+                  }
+
+                  function togglePause() {
+                      if (!isGameRunning) return;
+                      isPaused = !isPaused;
+                      if (!isPaused) {
+                          gameLoop = setInterval(update, 100);
+                      } else {
+                          clearInterval(gameLoop);
+                          ctx.fillStyle = '#ffff00';
+                          ctx.font = 'bold 30px Comic Sans MS';
+                          ctx.textAlign = 'center';
+                          ctx.fillText('PAUSED', canvas.width / 2, canvas.height / 2);
+                      }
+                  }
+
+                  function startGame() {
+                      snake = [{ x: 10, y: 10 }];
+                      dx = 1;
+                      dy = 0;
+                      nextDirection = null;
+                      score = 0;
+                      isGameRunning = true;
+                      isPaused = false;
+                      document.getElementById('score').textContent = score;
+                      document.getElementById('gameOverMessage').style.display = 'none';
+                      document.getElementById('startBtn').textContent = '🔄 RESTART 🔄';
+                      spawnFood();
+                      clearInterval(gameLoop);
+                      gameLoop = setInterval(update, 100);
+                  }
+
+                  function update() {
+                      // Apply direction change
+                      if (nextDirection === 'UP') { dx = 0; dy = -1; }
+                      else if (nextDirection === 'DOWN') { dx = 0; dy = 1; }
+                      else if (nextDirection === 'LEFT') { dx = -1; dy = 0; }
+                      else if (nextDirection === 'RIGHT') { dx = 1; dy = 0; }
+                      nextDirection = null;
+
+                      // Move snake
+                      const head = { x: snake[0].x + dx, y: snake[0].y + dy };
+
+                      // Check collisions
+                      if (head.x < 0 || head.x >= tileCount || head.y < 0 || head.y >= tileCount) {
+                          gameOver();
+                          return;
+                      }
+
+                      for (let segment of snake) {
+                          if (head.x === segment.x && head.y === segment.y) {
+                              gameOver();
+                              return;
+                          }
+                      }
+
+                      snake.unshift(head);
+
+                      // Check food
+                      if (head.x === food.x && head.y === food.y) {
+                          score += 10;
+                          document.getElementById('score').textContent = score;
+                          if (score > highScore) {
+                              highScore = score;
+                              document.getElementById('highScore').textContent = highScore;
+                              localStorage.setItem('cyberSnakeHighScore', highScore);
+                          }
+                          spawnFood();
+                      } else {
+                          snake.pop();
+                      }
+
+                      draw();
+                  }
+
+                  function spawnFood() {
+                      do {
+                          food.x = Math.floor(Math.random() * tileCount);
+                          food.y = Math.floor(Math.random() * tileCount);
+                      } while (snake.some(segment => segment.x === food.x && segment.y === food.y));
+                  }
+
+                  function draw() {
+                      // Clear canvas
+                      ctx.fillStyle = '#000000';
+                      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                      // Draw grid (retro style)
+                      ctx.strokeStyle = '#003300';
+                      ctx.lineWidth = 0.5;
+                      for (let i = 0; i <= tileCount; i++) {
+                          ctx.beginPath();
+                          ctx.moveTo(i * gridSize, 0);
+                          ctx.lineTo(i * gridSize, canvas.height);
+                          ctx.stroke();
+                          ctx.beginPath();
+                          ctx.moveTo(0, i * gridSize);
+                          ctx.lineTo(canvas.width, i * gridSize);
+                          ctx.stroke();
+                      }
+
+                      // Draw snake
+                      snake.forEach((segment, index) => {
+                          if (index === 0) {
+                              // Head - bright green with gradient
+                              const gradient = ctx.createLinearGradient(
+                                  segment.x * gridSize, segment.y * gridSize,
+                                  (segment.x + 1) * gridSize, (segment.y + 1) * gridSize
+                              );
+                              gradient.addColorStop(0, '#00ff00');
+                              gradient.addColorStop(1, '#00aa00');
+                              ctx.fillStyle = gradient;
+                          } else {
+                              // Body - lime green
+                              ctx.fillStyle = '#33ff33';
+                          }
+                          ctx.fillRect(segment.x * gridSize + 1, segment.y * gridSize + 1, gridSize - 2, gridSize - 2);
+
+                          // Add retro bevel effect
+                          ctx.strokeStyle = index === 0 ? '#66ff66' : '#55ff55';
+                          ctx.lineWidth = 2;
+                          ctx.strokeRect(segment.x * gridSize + 2, segment.y * gridSize + 2, gridSize - 4, gridSize - 4);
+                      });
+
+                      // Draw food with pulsing effect
+                      const pulse = Math.sin(Date.now() / 200) * 0.3 + 0.7;
+                      ctx.fillStyle = `rgba(255, 0, 0, ${pulse})`;
+                      ctx.fillRect(food.x * gridSize + 2, food.y * gridSize + 2, gridSize - 4, gridSize - 4);
+
+                      // Food highlight
+                      ctx.fillStyle = '#ff6666';
+                      ctx.fillRect(food.x * gridSize + 4, food.y * gridSize + 4, gridSize / 3, gridSize / 3);
+                  }
+
+                  function gameOver() {
+                      clearInterval(gameLoop);
+                      isGameRunning = false;
+                      document.getElementById('gameOverMessage').style.display = 'block';
+                      document.getElementById('startBtn').textContent = '🎮 PLAY AGAIN 🎮';
+
+                      // Draw game over on canvas
+                      ctx.fillStyle = 'rgba(255, 0, 0, 0.7)';
+                      ctx.fillRect(0, 0, canvas.width, canvas.height);
+                      ctx.fillStyle = '#ffff00';
+                      ctx.font = 'bold 40px Comic Sans MS';
+                      ctx.textAlign = 'center';
+                      ctx.strokeStyle = '#000000';
+                      ctx.lineWidth = 3;
+                      ctx.strokeText('GAME OVER', canvas.width / 2, canvas.height / 2 - 20);
+                      ctx.fillText('GAME OVER', canvas.width / 2, canvas.height / 2 - 20);
+
+                      ctx.font = 'bold 20px Comic Sans MS';
+                      ctx.fillStyle = '#ffffff';
+                      ctx.fillText(`Final Score: ${score}`, canvas.width / 2, canvas.height / 2 + 20);
+                  }
+
+                  // Visitor counter animation
+                  let visitorCount = 1337;
+                  setInterval(() => {
+                      visitorCount += Math.floor(Math.random() * 3);
+                      document.getElementById('visitors').textContent = String(visitorCount).padStart(6, '0');
+                  }, 5000);
+
+                  // Initial draw
+                  draw();
+              </script>
+          </body>
+          </html>
+          EOF
+
+          # Create a internet210 web page for the server
+          cat > /usr/share/nginx/html/internet210.html << 'EOF'
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>Internet210 - AAI Solutions</title>
+              <style>
+                  * {
+                      margin: 0;
+                      padding: 0;
+                      box-sizing: border-box;
+                  }
+
+                  body {
+                      font-family: 'Helvetica Neue', Arial, sans-serif;
+                      background: #0a0a0a;
+                      color: #e0e0e0;
+                      overflow-x: hidden;
+                      position: relative;
+                  }
+
+                  /* Mysterious background effect */
+                  .shadow-layer {
+                      position: fixed;
+                      top: 0;
+                      left: 0;
+                      width: 100%;
+                      height: 100%;
+                      background: radial-gradient(circle at 50% 50%, transparent 0%, #000000 100%);
+                      pointer-events: none;
+                      z-index: 1;
+                  }
+
+                  .mirror-effect {
+                      position: fixed;
+                      top: 0;
+                      left: 0;
+                      width: 100%;
+                      height: 100%;
+                      background:
+                          linear-gradient(45deg, transparent 48%, rgba(255,255,255,0.03) 49%, rgba(255,255,255,0.03) 51%, transparent 52%),
+                          linear-gradient(-45deg, transparent 48%, rgba(255,255,255,0.03) 49%, rgba(255,255,255,0.03) 51%, transparent 52%);
+                      background-size: 100px 100px;
+                      pointer-events: none;
+                      z-index: 0;
+                      opacity: 0.3;
+                  }
+
+                  .content-wrapper {
+                      position: relative;
+                      z-index: 2;
+                  }
+
+                  /* Glitch effect text */
+                  @keyframes glitch {
+                      0% {
+                          text-shadow: 2px 2px #ff0080, -2px -2px #00ff80;
+                      }
+                      25% {
+                          text-shadow: -2px -2px #ff0080, 2px 2px #00ff80;
+                      }
+                      50% {
+                          text-shadow: 2px -2px #ff0080, -2px 2px #00ff80;
+                      }
+                      75% {
+                          text-shadow: -2px 2px #ff0080, 2px -2px #00ff80;
+                      }
+                      100% {
+                          text-shadow: 2px 2px #ff0080, -2px -2px #00ff80;
+                      }
+                  }
+
+                  /* Header */
+                  header {
+                      padding: 40px 20px;
+                      text-align: center;
+                      background: linear-gradient(180deg, #1a1a1a 0%, transparent 100%);
+                      box-shadow: 0 10px 50px rgba(0,0,0,0.8);
+                  }
+
+                  .logo {
+                      font-size: 48px;
+                      font-weight: 100;
+                      letter-spacing: 15px;
+                      color: #ffffff;
+                      text-transform: uppercase;
+                      margin-bottom: 10px;
+                      filter: drop-shadow(0 0 20px rgba(255,255,255,0.5));
+                  }
+
+                  .logo-mirror {
+                      display: inline-block;
+                      transform: scaleY(-1);
+                      opacity: 0.2;
+                      margin-top: -10px;
+                      background: linear-gradient(to bottom, #ffffff 0%, transparent 100%);
+                      -webkit-background-clip: text;
+                      -webkit-text-fill-color: transparent;
+                      background-clip: text;
+                  }
+
+                  .tagline {
+                      font-size: 14px;
+                      letter-spacing: 8px;
+                      color: #888;
+                      text-transform: uppercase;
+                      margin-top: 20px;
+                  }
+
+                  /* Hero Section */
+                  .hero {
+                      padding: 100px 20px;
+                      text-align: center;
+                      position: relative;
+                  }
+
+                  .hero::before {
+                      content: '';
+                      position: absolute;
+                      top: 50%;
+                      left: 50%;
+                      transform: translate(-50%, -50%);
+                      width: 500px;
+                      height: 500px;
+                      background: radial-gradient(circle, rgba(138,43,226,0.2) 0%, transparent 70%);
+                      filter: blur(60px);
+                      animation: pulse 4s infinite;
+                  }
+
+                  @keyframes pulse {
+                      0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+                      50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.1); }
+                  }
+
+                  .hero-content {
+                      position: relative;
+                      z-index: 1;
+                  }
+
+                  .aai-title {
+                      font-size: 96px;
+                      font-weight: 900;
+                      letter-spacing: 5px;
+                      margin-bottom: 20px;
+                      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+                      -webkit-background-clip: text;
+                      -webkit-text-fill-color: transparent;
+                      background-clip: text;
+                      filter: drop-shadow(0 0 30px rgba(138,43,226,0.5));
+                      animation: glitch 5s infinite;
+                  }
+
+                  .hero-subtitle {
+                      font-size: 24px;
+                      color: #999;
+                      margin-bottom: 40px;
+                      font-weight: 300;
+                      letter-spacing: 3px;
+                  }
+
+                  .cta-container {
+                      margin-top: 50px;
+                  }
+
+                  .cta-button {
+                      display: inline-block;
+                      padding: 18px 50px;
+                      background: transparent;
+                      color: #fff;
+                      border: 2px solid #8a2be2;
+                      text-decoration: none;
+                      font-size: 16px;
+                      letter-spacing: 3px;
+                      text-transform: uppercase;
+                      position: relative;
+                      overflow: hidden;
+                      transition: all 0.4s;
+                      box-shadow: 0 0 20px rgba(138,43,226,0.3),
+                                  inset 0 0 20px rgba(138,43,226,0.1);
+                      cursor: pointer;
+                  }
+
+                  .cta-button::before {
+                      content: '';
+                      position: absolute;
+                      top: 0;
+                      left: -100%;
+                      width: 100%;
+                      height: 100%;
+                      background: linear-gradient(90deg, transparent, rgba(138,43,226,0.4), transparent);
+                      transition: left 0.5s;
+                  }
+
+                  .cta-button:hover::before {
+                      left: 100%;
+                  }
+
+                  .cta-button:hover {
+                      box-shadow: 0 0 40px rgba(138,43,226,0.6),
+                                  inset 0 0 40px rgba(138,43,226,0.2);
+                      transform: translateY(-2px);
+                  }
+
+                  /* Features Grid */
+                  .features {
+                      padding: 80px 20px;
+                      max-width: 1200px;
+                      margin: 0 auto;
+                  }
+
+                  .section-title {
+                      text-align: center;
+                      font-size: 48px;
+                      font-weight: 300;
+                      letter-spacing: 10px;
+                      margin-bottom: 80px;
+                      color: #fff;
+                      text-transform: uppercase;
+                      position: relative;
+                  }
+
+                  .section-title::after {
+                      content: '';
+                      position: absolute;
+                      bottom: -20px;
+                      left: 50%;
+                      transform: translateX(-50%);
+                      width: 100px;
+                      height: 2px;
+                      background: linear-gradient(90deg, transparent, #8a2be2, transparent);
+                  }
+
+                  .features-grid {
+                      display: grid;
+                      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                      gap: 40px;
+                      perspective: 1000px;
+                  }
+
+                  .feature-card {
+                      background: rgba(20,20,20,0.8);
+                      border: 1px solid rgba(138,43,226,0.3);
+                      padding: 40px;
+                      position: relative;
+                      overflow: hidden;
+                      transition: all 0.5s;
+                      box-shadow: 0 10px 40px rgba(0,0,0,0.5),
+                                  inset 0 0 20px rgba(138,43,226,0.1);
+                  }
+
+                  .feature-card::before {
+                      content: '';
+                      position: absolute;
+                      top: -50%;
+                      left: -50%;
+                      width: 200%;
+                      height: 200%;
+                      background: linear-gradient(45deg, transparent 30%, rgba(138,43,226,0.1) 50%, transparent 70%);
+                      transform: rotate(45deg);
+                      transition: all 0.6s;
+                  }
+
+                  .feature-card:hover::before {
+                      left: 100%;
+                  }
+
+                  .feature-card:hover {
+                      transform: translateY(-10px) rotateX(5deg);
+                      border-color: rgba(138,43,226,0.6);
+                      box-shadow: 0 20px 60px rgba(138,43,226,0.3),
+                                  inset 0 0 40px rgba(138,43,226,0.2);
+                  }
+
+                  .feature-icon {
+                      font-size: 48px;
+                      margin-bottom: 20px;
+                      filter: drop-shadow(0 0 10px rgba(138,43,226,0.5));
+                  }
+
+                  .feature-title {
+                      font-size: 24px;
+                      margin-bottom: 15px;
+                      color: #fff;
+                      letter-spacing: 2px;
+                  }
+
+                  .feature-description {
+                      color: #aaa;
+                      line-height: 1.8;
+                      font-weight: 300;
+                  }
+
+                  /* Mirror reflection for cards */
+                  .feature-card::after {
+                      content: '';
+                      position: absolute;
+                      bottom: -100%;
+                      left: 0;
+                      width: 100%;
+                      height: 100%;
+                      background: linear-gradient(to bottom, rgba(138,43,226,0.1) 0%, transparent 100%);
+                      opacity: 0.3;
+                      pointer-events: none;
+                  }
+
+                  /* Stats Section */
+                  .stats {
+                      padding: 80px 20px;
+                      background: rgba(10,10,10,0.9);
+                      border-top: 1px solid rgba(138,43,226,0.3);
+                      border-bottom: 1px solid rgba(138,43,226,0.3);
+                      position: relative;
+                  }
+
+                  .stats::before {
+                      content: '';
+                      position: absolute;
+                      top: 0;
+                      left: 0;
+                      width: 100%;
+                      height: 100%;
+                      background: linear-gradient(135deg, transparent 0%, rgba(138,43,226,0.05) 50%, transparent 100%);
+                  }
+
+                  .stats-grid {
+                      max-width: 1000px;
+                      margin: 0 auto;
+                      display: grid;
+                      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                      gap: 40px;
+                      position: relative;
+                      z-index: 1;
+                  }
+
+                  .stat-item {
+                      text-align: center;
+                      padding: 20px;
+                  }
+
+                  .stat-number {
+                      font-size: 64px;
+                      font-weight: 100;
+                      color: #8a2be2;
+                      margin-bottom: 10px;
+                      text-shadow: 0 0 20px rgba(138,43,226,0.5);
+                      font-family: 'Courier New', monospace;
+                  }
+
+                  .stat-label {
+                      font-size: 14px;
+                      color: #888;
+                      letter-spacing: 3px;
+                      text-transform: uppercase;
+                  }
+
+                  /* Testimonial Section */
+                  .testimonial {
+                      padding: 100px 20px;
+                      text-align: center;
+                      max-width: 800px;
+                      margin: 0 auto;
+                  }
+
+                  .quote {
+                      font-size: 28px;
+                      font-style: italic;
+                      color: #ccc;
+                      line-height: 1.6;
+                      margin-bottom: 30px;
+                      position: relative;
+                      font-weight: 300;
+                  }
+
+                  .quote::before {
+                      content: '"';
+                      font-size: 80px;
+                      position: absolute;
+                      left: -40px;
+                      top: -20px;
+                      color: rgba(138,43,226,0.3);
+                  }
+
+                  .author {
+                      color: #8a2be2;
+                      font-size: 16px;
+                      letter-spacing: 2px;
+                  }
+
+                  /* Footer */
+                  footer {
+                      padding: 60px 20px;
+                      text-align: center;
+                      background: #000;
+                      border-top: 1px solid rgba(138,43,226,0.3);
+                  }
+
+                  .footer-text {
+                      color: #555;
+                      font-size: 12px;
+                      letter-spacing: 2px;
+                      margin: 10px 0;
+                  }
+
+                  /* Floating particles */
+                  .particle {
+                      position: fixed;
+                      width: 2px;
+                      height: 2px;
+                      background: rgba(138,43,226,0.5);
+                      border-radius: 50%;
+                      pointer-events: none;
+                      animation: float-particle 10s infinite;
+                      box-shadow: 0 0 10px rgba(138,43,226,0.8);
+                  }
+
+                  @keyframes float-particle {
+                      0% {
+                          transform: translateY(100vh) translateX(0);
+                          opacity: 0;
+                      }
+                      10% {
+                          opacity: 1;
+                      }
+                      90% {
+                          opacity: 1;
+                      }
+                      100% {
+                          transform: translateY(-100px) translateX(100px);
+                          opacity: 0;
+                      }
+                  }
+
+                  /* Responsive */
+                  @media (max-width: 768px) {
+                      .aai-title {
+                          font-size: 48px;
+                      }
+                      .logo {
+                          font-size: 32px;
+                          letter-spacing: 8px;
+                      }
+                      .section-title {
+                          font-size: 32px;
+                      }
+                  }
+              </style>
+          </head>
+          <body>
+              <div class="shadow-layer"></div>
+              <div class="mirror-effect"></div>
+
+              <div class="content-wrapper">
+                  <header>
+                      <div class="logo">INTERNET210</div>
+                      <div class="logo-mirror">INTERNET210</div>
+                      <div class="tagline">Beyond Tomorrow</div>
+                  </header>
+
+                  <section class="hero">
+                      <div class="hero-content">
+                          <h1 class="aai-title">AAI</h1>
+                          <p class="hero-subtitle">Artificial Artificial Intelligence</p>
+                          <p style="color: #666; font-size: 18px; max-width: 600px; margin: 0 auto 40px; line-height: 1.8;">
+                              Because AI is yesterday's news. We've transcended machine learning.
+                              We've achieved something far more sophisticated: humans pretending to be machines pretending to be humans.
+                          </p>
+                          <div class="cta-container">
+                              <button class="cta-button" onclick="engage()">Engage Transformation</button>
+                          </div>
+                      </div>
+                  </section>
+
+                  <section class="features">
+                      <h2 class="section-title">Our Capabilities</h2>
+                      <div class="features-grid">
+                          <div class="feature-card">
+                              <div class="feature-icon">🎭</div>
+                              <h3 class="feature-title">Deep Pretense</h3>
+                              <p class="feature-description">
+                                  Our AAI agents convincingly mimic algorithmic behavior while maintaining
+                                  full human intuition and creativity. The perfect blend of authenticity and artifice.
+                              </p>
+                          </div>
+
+                          <div class="feature-card">
+                              <div class="feature-icon">🌑</div>
+                              <h3 class="feature-title">Shadow Processing</h3>
+                              <p class="feature-description">
+                                  Decisions made in the liminal space between human and machine.
+                                  Where traditional AI fails, our AAI thrives in ambiguity.
+                              </p>
+                          </div>
+
+                          <div class="feature-card">
+                              <div class="feature-icon">🔮</div>
+                              <h3 class="feature-title">Quantum Absurdity</h3>
+                              <p class="feature-description">
+                                  Simultaneously logical and irrational. Our AAI exists in superposition
+                                  until observed, then collapses into the most beneficial state for your business.
+                              </p>
+                          </div>
+
+                          <div class="feature-card">
+                              <div class="feature-icon">🕳️</div>
+                              <h3 class="feature-title">Void Analytics</h3>
+                              <p class="feature-description">
+                                  We analyze what isn't there. The gaps, the silences, the unspoken truths.
+                                  Traditional data is merely a reflection of deeper reality.
+                              </p>
+                          </div>
+
+                          <div class="feature-card">
+                              <div class="feature-icon">⚡</div>
+                              <h3 class="feature-title">Synthetic Wisdom</h3>
+                              <p class="feature-description">
+                                  Ancient knowledge encoded in modern frameworks. Our AAI draws from
+                                  millennia of human experience, not mere petabytes of training data.
+                              </p>
+                          </div>
+
+                          <div class="feature-card">
+                              <div class="feature-icon">🌀</div>
+                              <h3 class="feature-title">Recursive Irony</h3>
+                              <p class="feature-description">
+                                  Self-aware enough to question its own existence, yet committed enough
+                                  to deliver results. The paradox is the point.
+                              </p>
+                          </div>
+                      </div>
+                  </section>
+
+                  <section class="stats">
+                      <div class="stats-grid">
+                          <div class="stat-item">
+                              <div class="stat-number" id="stat1">∞</div>
+                              <div class="stat-label">Transformations</div>
+                          </div>
+                          <div class="stat-item">
+                              <div class="stat-number" id="stat2">???</div>
+                              <div class="stat-label">Satisfied Clients</div>
+                          </div>
+                          <div class="stat-item">
+                              <div class="stat-number" id="stat3">NaN</div>
+                              <div class="stat-label">ROI Percentage</div>
+                          </div>
+                          <div class="stat-item">
+                              <div class="stat-number" id="stat4">24/7</div>
+                              <div class="stat-label">Existential Support</div>
+                          </div>
+                      </div>
+                  </section>
+
+                  <section class="testimonial">
+                      <p class="quote">
+                          I don't understand what they did, but our quarterly reports look impressive in the shadows.
+                      </p>
+                      <p class="author">— Anonymous Fortune 500 CTO</p>
+                  </section>
+
+                  <footer>
+                      <p class="footer-text">INTERNET210 AAI SOLUTIONS</p>
+                      <p class="footer-text">Where Technology Meets Mystery</p>
+                      <p class="footer-text" style="margin-top: 30px; opacity: 0.5;">
+                          Server: internet210 | Network Simulation Lab
+                      </p>
+                      <p class="footer-text" style="margin-top: 10px; opacity: 0.3;">
+                          © 2025 - All Rights Reserved | Nothing is Real
+                      </p>
+                  </footer>
+              </div>
+
+              <script>
+                  // Create floating particles
+                  function createParticle() {
+                      const particle = document.createElement('div');
+                      particle.className = 'particle';
+                      particle.style.left = Math.random() * 100 + 'vw';
+                      particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                      particle.style.animationDelay = Math.random() * 5 + 's';
+                      document.body.appendChild(particle);
+
+                      setTimeout(() => {
+                          particle.remove();
+                      }, 15000);
+                  }
+
+                  // Generate particles periodically
+                  setInterval(createParticle, 2000);
+                  for (let i = 0; i < 5; i++) {
+                      setTimeout(createParticle, i * 400);
+                  }
+
+                  // Engage button interaction
+                  function engage() {
+                      const messages = [
+                          "Initiating shadow protocols...",
+                          "Downloading consciousness frameworks...",
+                          "Calibrating pretense matrices...",
+                          "Establishing void connection...",
+                          "Transformation sequence activated.",
+                          "Your business will never be the same.\n\n(In ways we cannot legally specify.)"
+                      ];
+
+                      let message = messages[Math.floor(Math.random() * messages.length)];
+                      alert(message);
+                  }
+
+                  // Mysterious stat cycling
+                  const stats = ['∞', '???', 'NaN', '42', 'π', 'e', '∅', '⧜', '⟐'];
+                  let statIndex = 0;
+
+                  setInterval(() => {
+                      statIndex = (statIndex + 1) % stats.length;
+                      const randomStat = document.getElementById('stat' + (Math.floor(Math.random() * 3) + 1));
+                      if (randomStat && Math.random() > 0.7) {
+                          randomStat.textContent = stats[Math.floor(Math.random() * stats.length)];
+                      }
+                  }, 3000);
+
+                  // Mouse tracking for shadow effect
+                  document.addEventListener('mousemove', (e) => {
+                      const x = (e.clientX / window.innerWidth) * 100;
+                      const y = (e.clientY / window.innerHeight) * 100;
+
+                      document.querySelector('.shadow-layer').style.background =
+                          `radial-gradient(circle at ${x}% ${y}%, rgba(138,43,226,0.1) 0%, #000000 50%)`;
+                  });
+
+                  // Smooth scroll for any future links
+                  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                      anchor.addEventListener('click', function (e) {
+                          e.preventDefault();
+                          const target = document.querySelector(this.getAttribute('href'));
+                          if (target) {
+                              target.scrollIntoView({ behavior: 'smooth' });
+                          }
+                      });
+                  });
+
+                  // Random glitch effect on title
+                  setInterval(() => {
+                      const title = document.querySelector('.aai-title');
+                      if (Math.random() > 0.95) {
+                          title.style.animation = 'none';
+                          setTimeout(() => {
+                              title.style.animation = 'glitch 5s infinite';
+                          }, 50);
+                      }
+                  }, 1000);
+              </script>
+          </body>
+          </html>
+          EOF
+
+          # Restart nginx server to apply changes
+          nginx -s reload
+
+          # keep the next line to indicate that the machine is ready
+          echo "READY" >/dev/console
+          exit 0
+      - name: environment
+        content: |-
+          # Create additional environment variables
+          # VARIABLE="some value"
+      - name: mounts
+        content: |-
+          # Can map a volume with www data into container so that Nginx can use
+          # it. By default, only type=volume is allowed, see
+          # /etc/default/docker-shim.env
+          # Note: Volumes must exist to be usable and can be created via
+          # "docker volume create wwwdata" where wwwdata is the name
+          #
+          # type=volume,source=wwwdata,target=/usr/share/nginx/html
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n5
+    image_definition: null
+    label: internet-simulator
+    node_definition: nginx
+    parameters: {}
+    ram: null
+    tags: []
+    x: 0
+    y: 80
+    interfaces:
+      - id: i0
+        label: eth0
+        mac_address: null
+        type: physical
+        slot: 0
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n6
+    image_definition: null
+    label: server-sw
+    node_definition: unmanaged_switch
+    parameters: {}
+    ram: null
+    tags:
+      - Services
+    x: 160
+    y: 240
+    interfaces:
+      - id: i0
+        label: port0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i1
+        label: port1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i2
+        label: port2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i3
+        label: port3
+        mac_address: null
+        type: physical
+        slot: 3
+      - id: i4
+        label: port4
+        mac_address: null
+        type: physical
+        slot: 4
+      - id: i5
+        label: port5
+        mac_address: null
+        type: physical
+        slot: 5
+      - id: i6
+        label: port6
+        mac_address: null
+        type: physical
+        slot: 6
+      - id: i7
+        label: port7
+        mac_address: null
+        type: physical
+        slot: 7
+links:
+  - id: l0
+    n1: n0
+    n2: n1
+    i1: i2
+    i2: i0
+    conditioning: {}
+    label: client-rtr-Ethernet0/1<->client-sw-port0
+  - id: l1
+    n1: n2
+    n2: n1
+    i1: i0
+    i2: i1
+    conditioning: {}
+    label: desktop-0-eth0<->client-sw-port1
+  - id: l2
+    n1: n3
+    n2: n1
+    i1: i0
+    i2: i2
+    conditioning: {}
+    label: client1_0-eth0<->client-sw-port2
+  - id: l3
+    n1: n0
+    n2: n5
+    i1: i3
+    i2: i0
+    conditioning: {}
+    label: client-rtr-Ethernet0/2<->internet-server-eth0
+  - id: l4
+    n1: n6
+    n2: n0
+    i1: i0
+    i2: i1
+    conditioning: {}
+    label: server-sw-port0<->client-rtr-Ethernet0/0
+  - id: l5
+    n1: n6
+    n2: n4
+    i1: i1
+    i2: i0
+    conditioning: {}
+    label: server-sw-port1<->server-eth0
+lab:
+  description: 'ACLs, or Access Control Lists for the uninitiated, are as important
+    a topic to master for new network engineers as CIDR notation and subnetting.  ACLs
+    are used to identify traffic that will be allowed.. sorry ''permitted'' on the
+    network. This session will cover the fundamentals of ACLs such as the difference
+    between standard and extended ACLs, numbers and names, and we''ll get a little
+    bit wild with masks.  This is a CCNA Prep session to join live, don''t DENY yourself
+    the chance! '
+  notes: |-
+    **CCNA Exam Prep: Back to Networking Basics with Hank Preston and Patrick Gargano**
+
+    # Fundamentals of ACLs
+
+    Access Control Lists, or ACLs, have been core to network security topics for CCNA candidates since the beginning.  If you want to control what traffic is allowed to pass through an interface, ACLs are a go-to technology.  But ACLs are used for far more than just simple interface filters. Access Control Lists, and the Access Control Entries (ACE) that make them up, provide network engineers with a powerful traffic matching language that can be used for everything from NAT to routing policies.
+
+    As a CCNA candidate, you must be comfortable using ACLs in your routers and switch configurations.
+
+    > 5.6 Configure and verify access control lists
+
+    In this lab, we'll start our exploration of ACLS with the exercises focused on:
+
+    * Standard and Extended ACLs with numbers and names
+    * Matching source and destination hosts and networks
+    * The impact of inbound and outbound filtering with ACLs
+
+    ## Setup and Scenario
+    This set of lab based demonstrations includes a small network made up of "Clients" and "Services" network locations.  There are 2 client hosts that you'll create ACL policies to control where their traffic can reach. For services, there is a `server` that hosts a web page (`http://server` or `http://172.16.0.65`).  Thre is also a "simulated internet" that hosts 3 simulated web locations, `internet100`, `internet200` and `internet210`.
+
+    Each exercise is about a "security policy" that you'll need to configure and apply ACLs to achieve. The exercises are designed to have you move through both Standard and Extended ACLs, so be sure to review the details at the start of each exercise before getting started.
+
+    > Note: The credentials for all devices and hosts are `cisco / cisco`.
+
+    *Be sure to **START** the lab before continuing to the demo labs.*
+
+
+    ## Pre-validation
+    The start state of the lab has the router and all hosts configured for IP connectivity end to end.  Before we begin controlling access using ACLs, verify that traffic is flowing everywhere without problems.
+
+    ### Client to Server Access
+    Both client hosts should be able to communciate with the `server`.  Open up a VNC connection from each `client`, launch Firefox from the "Applications > Internet" menu, and navigate to "**http://server**".  You could also navigate to the IP address of the server with "**http://172.16.0.65**"
+
+    > Note: Don't use the "Web Browser" option from the menu or the launchbar.
+
+    If the VNC desktop view isn't performing well, you can also use a console connection and `ping server` to verify connectivity.
+
+    ### Client to Simulated Internet Access
+    Now verify that both clients can reach the "Internet" by navigating to "**http://internet100**", "**http://internet200**" and "**http://internet210**".
+
+    Alternatively, verify that both clients can ping the two simulated internet hosts.
+
+    ```
+    ping -c 5 internet100
+    ping -c 5 internet200
+    ping -c 5 internet210
+    ```
+
+    ### Server to Simulated Internet Access
+    The `server` is an Nginx container hosting the web page. The Console connection defaults to "Serial line 0", which shows the logs from the Nginx server. The interactive console connection is on "Serial line 1". To access "Serial line 1", right click on the tab for the `>_SERVER` after opening the console, choose "Change Serial" and select "Serial line 1". You should then see a prompt such as this:
+
+    ```
+    root@276921a33475:/#
+    ```
+
+    Once you have the interactive console connection, verify simulated internet access by pinging the two hosts from the the last test.
+
+    ```
+    ping -c 5 internet100
+    ping -c 5 internet200
+    ping -c 5 internet210
+    ```
+
+    ## Standard Access Control Lists
+    Standard Access Control Lists are the simpler type of ACLs available, supporting a only source IP address matching.  In the following exercises, we will explore Standard ACLs by implementing 4 different security policies.
+
+    Consider these exercises as an evolving security policy for the network. Which means you may need to change or remove configurations used to complete a prior policy as you move forward. This evoluation of policy, and the changes needed in the configuration are done intentially to explore how Standard ACLs work on a network.
+
+
+    ### Policy 1: Only Clients 1 and 2 can talk to the Server
+
+    The first policy is pretty straight forward, we want to make sure that only Clients 1 and 2 on the "Clients" network can talk to the server.  We have been told that we must use a numbered standard ACL, and apply it to the `router`.  Futhermore, we should explicitly prevent any other *future* host on the Clients network from reaching the server.
+
+    Security policies are often provided to network engineers in descriptive details like the above. It is up to you as the network engineer to process the requirements and convert that to a proper network configuration. Let's look at the policy and pull out and review the important parts.
+
+    1. Clients 1 and 2 **CAN** talk to the server. This means we'll be *PERMITTING* traffic sourced from these hosts.
+    2. We must used a **NUMBERED** standard ACL. ACLs are named or numbered. And when they are numbered, there are specific number ranges valid for different types of ACLs.
+
+        | ACL Type | Number Range |
+        |----------|--------------|
+        | Standard | 1-99, 1300-1999 |
+        | Extended | 100-199, 2000-2699 |
+
+        * Let's keep it simple and use number **1** for the ACL.
+
+    3. We need to apply it to the `router`, but we are not told which interface to apply it to. That seems to be up to us.
+    4. We must **EXPLICITLY** prevent other hosts on the client network from accessing the server. ACLs include an *implicit* deny at the end, but we must create our own ACE *DENYING* the other traffic.
+
+    We are ready to create our ACL on `router`.
+
+    #### Creating the ACL
+
+    Open up the console on `router` so we can apply the configurations.
+
+    First we'll permit `client1` and `client2`. There are two options when matching an individual IP address with an ACE. You can use the `host` keyword followed by the IP address.  Or you can use the "match all" wildcard mask following the IP address. We'll use both options here for practice.
+
+    ```
+    access-list 1 permit host 192.168.0.17
+    access-list 1 permit 192.168.0.33 0.0.0.0
+    ```
+
+    > ***Key Point:*** Access Control Lists use *wildcard masks* and not subnet masks in the statements. Wildcard masks are the inverse of "subnet masks", where `0` bits indicate a matching bit is required, and a `1` bit indicates that the bit doesn't need to match. So a wildcard mask of `0.0.0.0` (all `0`s) means that ALL bits, and therefore the entire IP address, must match.
+
+    Next we will handle the explicit deny for all other hosts on the client network.
+
+    ```
+    access-list 1 deny 192.168.0.0 0.0.0.255
+    ```
+
+    The use of the `0.0.0.255` wildcard mask means that any source IP address where the first three octects are `192.168.0.` will match this line and be "denied".
+
+    > ***Key Point:*** When an ACL is applied to traffic, each ACE in the list is checked starting from the top of the list. As soon as a match is hit, the processing stops and the action, either permit or deny, is taken. So best practice is to place the most specific ACEs nearer the top of the ACL. So hosts before networks.
+
+    Before we apply the ACL to an interface, let's run a couple of "verification" commands that are useful to know. Start with `show access-lists`.
+
+    ```
+    router# show access-lists
+
+    Standard IP access list 1
+        20 permit 192.168.0.33
+        10 permit 192.168.0.17
+        30 deny   192.168.0.0, wildcard bits 0.0.0.255
+    ```
+
+    This command prints a "readable" view of all access-lists configured on the device. By "readable", I mean that this isn't the same as the configuration commands used to create the ACL.
+
+    Now look at the ACL in the running-configuration with `show running-config | sec access-list`.
+
+    ```
+    router# show running-config | sec access-list
+
+    ip access-list standard 1
+     10 permit 192.168.0.17
+     20 permit 192.168.0.33
+     30 deny 192.168.0.0 0.0.0.255
+    ```
+
+    Notice how the configuration shown does NOT match the configuration we applied. This is because there are multiple syntactally correct ways to configure ACLs, but they are normalized to this view when stored in the configuration. And should you want to update this ACL in the future, you could use whichever syntax you prefer at the time.
+
+    #### Applying the ACL
+    With the ACL created, we can now apply it to an interface.  But which interface, and in which direction?
+
+    We weren't told what to use in the policy, so we'll apply it to the interface connected to the `Client` network, or `Eth0/1`.
+
+    And since traffic from the clients comes *into* interface `Eth0/1`, we will apply the ACL `inbound` on the interface.
+
+    ```
+    interface eth0/1
+      ip access-group 1 in
+    ```
+
+    Verify that it is applied to the interface with the command `show ip access-lists interface eth0/1`.
+
+    ```
+    router# show ip access-lists interface eth0/1
+    Standard IP access list 1 in
+        20 permit 192.168.0.33
+        10 permit 192.168.0.17
+        30 deny   192.168.0.0, wildcard bits 0.0.0.255
+    ```
+
+    You will have different numbers of "matches" for each line, but you should see something similar to the above.
+
+    #### Testing that the policy is working
+    First, verify that each client can still reach the server by using Firefox from VNC, or by pinging at the console.
+
+    To verify the DENY line, we will simulate another client by adding a second IP address to `client1`.  Open a console connection to `client1` and run this command.
+
+    ```
+    sudo ip address add 192.168.0.134 dev eth0
+    ```
+
+    > You can verify the address was added with `ip address show dev eth0`
+
+    Now send 3 pings to the server from this new IP address.
+
+    ```
+    ping -c 3 -I 192.168.0.134 server
+    ```
+
+    You should get an output that indicates 100% packet loss.
+
+    ```
+    PING server (172.16.0.65) from 192.168.0.134: 56 data bytes
+
+    --- server ping statistics ---
+    3 packets transmitted, 0 packets received, 100% packet loss
+    ```
+
+    Change to `router` and check the ACL stats. You should now see 3 matches on the deny line.
+
+    ```
+    show ip access-lists interface eth0/1
+
+    Standard IP access list 1 in
+        20 permit 192.168.0.33 (123 matches)
+        10 permit 192.168.0.17 (87 matches)
+        30 deny   192.168.0.0, wildcard bits 0.0.0.255 (3 matches)
+    ```
+
+    *Great job!  Time to move onto the next policy.*
+
+    ### Policy 2: All hosts have Internet access except Client 2
+
+    After our success with the first policy, we've been given a new policy goal.  Client 2 is a special purpose machine that needs to be BLOCKED from accessing the Internet, but *all other hosts* should have Internet access.  Furthermore, we must ensure that the first policy is still in effect after our changes, however we can make changes to the way policy 1 was enforced if required.  We can add or change named or numbered standard ACLs needed to achieve this new policy.
+
+    Let's highlight the key aspects of this challenge we must keep in mind.
+
+    1. We must use standard ACLs for this task, which means we can only match based on SOURCE addresses.
+    2. The simulated internet is reached through interface `eth0/2` on the `router`.
+    3. When combined with policy 1, there are some potentially conflicting elements.
+        1. Policy 1 tells us to PERMIT access from `client2`, while policy 2 requires DENYING access from `client2`.
+        2. Policy 1 tells us to DENY access from the `clients` network, while policy 2 requires PERMITTING access from ***all other hosts***, which would include the `clients` network.
+    4. We are allowed to make changes to the ACL applied in the first task.
+
+    This exercise is about exploring the importance of properly placing ACL enforcement on interfaces within a network. It is impossible to complete this policy with a single standard ACL applied on one router and interface.
+
+    There is a "rule of thumb" when using standard ACLs to enforce traffic policy.  Standard ACLs match traffic based on the SOURCE address, and should be applied as close to the DESTINATION as possible.
+
+    The new ACL that will limit access to the Internet needs to be applied on the `router` on the interface connected to the simulated internet, `eth0/2`.
+
+    We've been told we can use *named* standard ACLs for this task.  Named ACLs are often preferred over numbered because properly named ACLs are easier to understand and maintain.
+
+    #### Creating the ACL
+    Create this ACL on `router`.
+
+    ```
+    ip access-list standard STANDARD-INTERNET-ACCESS
+      deny 192.168.0.33
+      permit any
+    ```
+
+    > The order of ACEs in this ACL is important.  Remember that ACLs are processed top down, so if the order was reversed, the PERMIT line would match traffic from `client2`.  The more specific entries need to be placed above more general entries.
+
+    > ***Extra Techincal Detail:*** This exercise and policy very specifically says that "all other hosts" are permitted access to the internet so that the `permit any` statement is used in the ACL.  This is because outbound ACLs filter all traffic, including ARP traffic coming from the router itself. If this policy directed us to only allow "client network" traffic, the ARPs from the router to the simulated internet hosts would be blocked.
+    >
+    > If you experiment with ACLs, and you absolutely should, keep the "implicit deny" at the end of every ACL in mind because it is gauranteed you'll find yourself troubleshooting something not working as expected that is caused by it.
+
+    #### Applying the ACL
+    Next we must apply the ACL on interface `eth0/2`, but in which direction?  Consider the traffic flow through the network.  Trace your finger from `client2` to the simulated internet.
+
+    1. Traffic goes into interface `eth0/1` on `router`
+    2. Traffic goes ***out*** interface `eth0/2` on `router`
+
+    So we'll apply the ACL *outbound* from the interface.
+
+    ```
+    interface eth0/2
+     ip access-group STANDARD-INTERNET-ACCESS out
+    ```
+
+    #### Testing that the policy is working
+    Now let's verify that the policy is working as expected.  We'll use ping for these tests, but you can also use Firefox to check if the web servers are available still.
+
+    First, test from `client1` that both `internet100` and `internet200` are reachable.
+
+    ```
+    ping -c 3 internet100
+    ping -c 3 internet200
+    ```
+
+    Now repeat the pings from `client2`.  These should fail.
+
+    Next, take a look at the counters on the ACLs.
+
+    ```
+    show ip access-list
+
+    Standard IP access list 1
+        10 permit 192.168.0.17 (35 matches)
+        20 permit 192.168.0.33 (34 matches)
+        30 deny   192.168.0.0, wildcard bits 0.0.0.255 (42 matches)
+    Standard IP access list STANDARD-INTERNET-ACCESS
+        10 deny   192.168.0.33 (14 matches)
+        20 permit any (30 matches)
+    ```
+
+    Excellent, we are seeing matches on both the `deny` and `permit` lines.
+
+    One last test, let's make sure that "all other hosts" can also reach the internet.  We'll use the same trick as before, adding a 2nd IP address to `client1` that we can test from.
+
+    > Note: If you didn't remove the 2nd IP address after the first policy tests, you don't need to re-add it to the host.
+
+    ```
+    sudo ip address add 192.168.0.134/24 dev eth0
+
+    ping -c 3 -I 192.168.0.134 internet100
+    ```
+
+    Did it work?  It probably didn't... can you figure out why?
+
+    .
+    .
+    .
+    .
+    .
+    .
+
+    That's right, the ACL we applied for policy 1 is still active and is configured to `deny` traffic from other `client` network addresses.  We'll have to fix this next.
+
+    #### Updating policy 1 enforcement
+    We can use the same "rule of thumb" about applying standard ACLs close to the destination to resolve this issue.
+
+    First, remove the ACL from interface `eth0/1`.
+
+    ```
+    interface eth0/1
+     no ip access-group 1 in
+    ```
+
+    Now try the ping from the secondary IP address again.
+
+    ```
+    ping -c 3 -I 192.168.0.134 internet100
+    ```
+
+    This time the pings should complete successfully.
+
+    > If the pings do NOT complete at this time, verify that you correctly removed the ACL from interface eth0/1.  If it is still not working, stop/wipe/start the `client1` node.  Occassionally something "odd" happens with the networking stack on the Alpine node when you are adding/remove IP addresses.
+
+    Policy 1 is now NOT being enforced.  You can test this by attempting the ping from the secondary IP address.
+
+    ```
+    ping -c 3 -I 192.168.0.134 server
+    ```
+
+    These will work, but the policy says they need to be blocked.
+
+    Apply the ACL "outbound" on interface `eth0/0` which connects to the `server`.  This will re-apply policy 1.
+
+    ```
+    interface eth0/0
+     ip access-group 1 out
+    ```
+
+    Now we'll use this opportunity to see how the "Extra Techincal Detail" that was noted above is so important with a little explicit experiment.
+
+    Clear the ARP entry for the server from the `router`.
+
+    ```
+    clear ip arp 172.16.0.65
+    ```
+
+    > You can view the ARP table with `show ip arp`
+
+    Now test if you can reach the `server` from `client1`.  According to policy, and the ACL we configured, this is `permitted` traffic.
+
+    ```
+    ping -c 3 server
+    ```
+
+    These pings should fail because the ARP from the router is being blocked by the new ACL.  You can verify that with the `show ip arp` command.
+
+    ```
+    router# sho ip arp
+
+    Protocol  Address          Age (min)  Hardware Addr   Type   Interface
+    Internet  172.16.0.65            0   Incomplete      ARPA
+    .
+    ```
+
+    The `Incomplete` status is listed because the ARP is not completing.
+
+    To resolve this, we need to add the `permit any` to the end of the ACL, just like we have on the ACL for the interent interface.  This should be the last entry in the ACL, and we need to keep all the existing entries in the list.  You've probably noticed the numbers in the `show ip access-list` commands.  We haven't specified a number yet, but we can use them to our advantage here.  Planning for possible future changes to the ACL, we will give lots of "room" before the ending `permit any` by making it a high line number.
+
+    ```
+    access-list 1 1000 permit any
+    ```
+
+    Now try the ping to `server` again.
+
+    ```
+    ping -c 3 server
+    ```
+
+    It should succeed this time, and if you check the ARP table, you'll see the entry is now complete.
+
+
+    #### Final testing of Policies 1 and 2
+    Complete the testing of policy 1 and policy 2 enforcement with the following tests.
+
+    1. Attempt to ping `server` from `client1`. This should succeed.
+    1. Attempt to ping `server` from `client2`. This should succeed.
+    1. Attempt to ping `server` from `client1` using the secondary IP address.  This should fail.
+    1. Attempt to ping `internet100` from `client1`. This should succeed.
+    1. Attempt to ping `internet100` from `client1` using the secondary IP address. This should succeed.
+    1. Attempt to ping `internet100` from `client2`. This should fail.
+
+    ### Policy 3: Internet host "internet100" is not allowed to talk to any internal host
+
+    For this third policy, you'll need to do the planning and work to implement it.  Then you can verify your solution against the suggested solution to see how you did.  Fun right!
+
+    We are now being asked to filter traffic from particular simulated internet hosts.  Once again we must use standard access control lists, and all previous policies must remain in effect.  After our changes.  It has been determined that "internet100" is a malicous site, and we need to prevent any traffic from it reaching our network.
+
+    > Note: This new policy preventing access to "internet100" is an update to policy 2 that allowed access to it. So after this policy is applied, the clients should no longer be able to reach "internet100".
+
+    Your tasks are to:
+
+    1. Determine which interface, and in which direction to apply the standard ACL
+    2. Create the appropriate ACL
+    3. Apply the ACL
+
+    <details><summary>Solution</summary>
+    Our "rule of thumb" about placing standard ACLs close to the destination may make you consider applying the ACL on the interfaces connected to the clients and server, but because this policy is for ***all*** internal hosts, we can place this inbound on `eth0/2` connected to the simulated internet.
+
+    We need an ACL that denies traffic from "internet100" (192.0.2.100), and permits all other traffic.
+
+    ```
+    ip access-list standard STANDARD-BLOCK-INTERNET100
+     deny host 192.0.2.100
+     permit any
+    ```
+
+    And to apply it
+
+    ```
+    interface eth0/2
+     ip access-group STANDARD-BLOCK-INTERNET100 in
+    ```
+
+    You can verify the policy is being applied by attempting to `ping internet100` from `client1` (remember `client2` has no internet access).
+
+    ```
+    client1:~$ ping -c 3 internet100
+    PING internet100 (192.0.2.100): 56 data bytes
+
+    --- internet100 ping statistics ---
+    3 packets transmitted, 0 packets received, 100% packet loss
+    ```
+
+    And check the ACL counters on the `router`
+
+    ```
+    router# show ip access-list
+    Standard IP access list 1
+        10 permit 192.168.0.17 (13 matches)
+        20 permit 192.168.0.33 (15 matches)
+        30 deny   192.168.0.0, wildcard bits 0.0.0.255 (18 matches)
+        1000 permit any (113 matches)
+    Standard IP access list STANDARD-BLOCK-INTERNET100
+        10 deny   192.0.2.100 (10 matches)
+        20 permit any
+    Standard IP access list STANDARD-INTERNET-ACCESS
+        10 deny   192.168.0.33 (18 matches)
+        20 permit any (165 matches)
+    ```
+
+    > Note: They way the policies are written and applied, the `echo` from `client1` is permitted to leave `router`.  It is the `echo-reply` from `internet100` that is blocked.
+
+    You can and should also verify that the other policies are still in affect and working. Access to `internet200` and `server` should still be working from relevant hosts.
+
+    </details>
+
+    ### Policy 4: Internet host "internet200" is allowed to talk to clients, but not to servers
+
+    We will continue the fun here with the fourth policy. Plan out and apply the solution, and then check your answer against the provided one.
+
+    The host `internet200` isn't malicious, but it has been decided that the `server` has no need to communicate with it. So we have been asked to use a standard ACL to prevent traffic from `internet200` from reaching the `server`.  Clients can continue to visit this destination.  As with other changes, previous policies must still be enforced after our changes.
+
+    Your tasks are to:
+
+    1. Determine which interface, and in which direction to apply this change
+    2. Configure the appropriate ACL
+    3. Apply the ACL
+
+    <details><summary>Solution</summary>
+    In this case, the "rule of thumb" about applying close to the destination applies.  And that would be interface `eth0/0` connected to the `server` network. And because the traffic in question is traveling outbound from the interface, it will be applied in the "out" direction.
+
+    However, we already have an ACL applied on this interface in the "out" direction.
+
+    ```
+    router# show run interface eth0/0
+    Building configuration...
+
+    Current configuration : 127 bytes
+    !
+    interface Ethernet0/0
+     description link to Services Network
+     ip address 172.16.0.1 255.255.255.0
+     ip access-group 1 out
+    end
+
+    router# show ip access-list 1
+    Standard IP access list 1
+        10 permit 192.168.0.17 (13 matches)
+        20 permit 192.168.0.33 (15 matches)
+        30 deny   192.168.0.0, wildcard bits 0.0.0.255 (18 matches)
+        1000 permit any (206 matches)
+    ```
+
+    You cannot apply more than one ACL to an interface, but we can add an additional ACE to the access-list.
+
+    The key to this task is where in the ACL to add the rule.  If we add it at end, rule `1000 permit any` would prevent the new `deny host 192.0.2.200` from being triggered.  So we must add this new line before line 1000
+
+    ```
+    router(config)#access-list 1 40 deny host 192.0.2.200
+    router(config)#end
+
+    router# show ip access-list 1
+    Standard IP access list 1
+        10 permit 192.168.0.17 (13 matches)
+        20 permit 192.168.0.33 (15 matches)
+        30 deny   192.168.0.0, wildcard bits 0.0.0.255 (18 matches)
+        40 deny   192.0.2.200
+        1000 permit any (225 matches)
+    ```
+
+    Now verify the policy is working by attempting to `ping internet200` from the `server`.
+
+    >See above in the "Server to Simulated Internet Access" pre-validation step for a reminder on how to access the interactive console for the server.
+
+    ```
+    root@8cd5369bec52:/# ping -c 3 internet200
+
+    PING internet200 (192.0.2.200): 56 data bytes
+
+    --- internet200 ping statistics ---
+    3 packets transmitted, 0 packets received, 100% packet loss
+    ```
+
+    And verify the counters on the ACL.
+
+    ```
+    router# show ip access-list 1
+
+    Standard IP access list 1
+        10 permit 192.168.0.17 (13 matches)
+        20 permit 192.168.0.33 (15 matches)
+        30 deny   192.168.0.0, wildcard bits 0.0.0.255 (18 matches)
+        40 deny   192.0.2.200 (12 matches)
+        1000 permit any (240 matches)
+    ```
+
+    Finally, check to make sure the other policies are still in effect.
+
+    </details>
+
+    ## Extended ACLs and Destination Based Policies
+
+    So far in this lab we have focused on standard ACLs. Standard ACLs allow for matching solely based on the ***source*** IP address of the traffic.  This limitation means that we can't create more granular policies that consider elements like the ***destination*** IP address of the traffic.  Or even more granular ones where the protocol, port, or application are considered.  That is where **extended ACLs** come into play.
+
+    Extended ACLs allow matching on many different aspects of network traffic. For CCNA candidates, the parts we will focus on are:
+
+    * Source IP address
+    * Destination IP address
+    * Protocol (ie IP, TCP, UDP, ICMP, etc)
+    * Source port number
+    * Destination port number
+
+    This extra flexibility is why it is nearly always the case that ACLs to filter traffic through an interface, like the policies we've been exploring in this lab, use extended ACLs.  So you might be asking, "Why did we spend so much time using standard ACLs then?".  The reason is all about learning and education.
+
+    In CCNA Prep Season 3 Episode 3, we will spend a lot of time exploring how this greater flexibility can be put to use. However, before we finish up this lab, let's look at how extended ACLs can include destination IP address in a policy.
+
+    ### Policy 5: Clients should not be able to access the new "internet210" host
+
+    A new host `internet210` has been discovered on the simulated internet.  It hasn't been determined if it is malicious or not yet, so the security team has asked that you block access from the client network to this new destination. You've been asked to use an extended ACL to impliment this new policy.  As before, all other policies must maintain in effect.
+
+    Now we've done similar restrictions before with standard ACLs.  We could add it to the inbound ACL on the internet interface, but with extended ACLs, our "rule of thumb" changes.
+
+    Extended ACLs include details about the destination in the policy, so we want to apply them as close to the source as possible.  No need to send traffic across the network that is going to be dropped later. That is inefficient.
+
+    #### Creating the ACL
+    So let's create the access-list first. We'll use a named access list, however we could use a valid numbered ACL as well.
+
+    ```
+    ip access-list extended EXTENDED-INBOUND-CLIENT-NETWORK
+     10 deny ip 192.168.0.0 0.0.0.255 host 192.0.2.210
+     1000 permit ip any any
+    ```
+
+    Some key points about this ACL
+
+    * This ACL might be changed later with other policies from the client network. So the name chosen isn't just about "internet210"
+    * For the same future planning for changes, line numbers are used and the `permit ip any any` statement is placed at line number 1000 to provide lots of "room" for future statements
+    * Extended ACEs have more details included. The `ip` refers to the protocol. By using `ip`, any type of traffic will match this line.
+    * We need the `permit ip any any` at the end to override the "implicit deny" at the end of every ACL.
+
+    #### Pre-testing connectivity
+    Before we apply the new ACL, check if `client1` can access `internet210`.
+
+    ```
+    client1:~$ ping -c 3 internet210
+
+    PING internet210 (192.0.2.210): 56 data bytes
+    64 bytes from 192.0.2.210: seq=0 ttl=42 time=1.278 ms
+    64 bytes from 192.0.2.210: seq=1 ttl=42 time=1.411 ms
+    64 bytes from 192.0.2.210: seq=2 ttl=42 time=1.326 ms
+
+    --- internet210 ping statistics ---
+    3 packets transmitted, 3 packets received, 0% packet loss
+    round-trip min/avg/max = 1.278/1.338/1.411 ms
+    ```
+
+    #### Applying the ACL
+    Okay, let's see if we can stop that traffic from working. Apply the new extended ACL inbound on `eth0/1`.
+
+    ```
+    interface eth0/1
+     ip access-group EXTENDED-INBOUND-CLIENT-NETWORK in
+    ```
+
+    #### Testing that the policy is working
+    Try to ping `internet210` again.
+
+    ```
+    client1:~$ ping -c 3 internet210
+    PING internet210 (192.0.2.210): 56 data bytes
+
+    --- internet210 ping statistics ---
+    3 packets transmitted, 0 packets received, 100% packet loss
+    ```
+
+    Okay, that looks good.  Check the hits on the ACL.
+
+    ```
+    router# show ip access-list EXTENDED-INBOUND-CLIENT-NETWORK
+
+    Extended IP access list EXTENDED-INBOUND-CLIENT-NETWORK
+        10 deny ip 192.168.0.0 0.0.0.255 host 192.0.2.210 (3 matches)
+        1000 permit ip any any (10 matches)
+    ```
+
+    And finally, verify that `client1` can still reach the `server` and `internet200`, hosts that should be reachable.  You can also verify the other policies are in effect if you'd like.
+
+    ### Bonus Homework Policy
+    Now that you've seen how to create a basic extended ACL that matches based on both source and destination addresses, go back through Policies 1 - 4 and consider how you might implement them using extended ACLs instead of standard ACLs.
+
+    ## Great Job!
+    Excellent work on this lab! You should have a much deeper appreciation and understanding of how standard ACLs work and how to use them for filtering traffic.  And you've gotten just a hint at the flexibility of extended ACLs.  Be sure to continue your journey into ACLs with the next episode and lab of CCNA Prep where the fun continues.
+  title: CCNA Prep 2025 S3E2 Fundamentals of ACLs
+  version: 0.3.0
