@@ -35,10 +35,10 @@ The current hosts of the CCNA Prep Program are:
 ## Season 3 (Fall 2025) - IP Security
 
 1. [Securing the Switch with Essential Layer 2 Protections](s3e1/README.md)
-1. Fundamentals of ACLs *Coming Soon*
+1. [Fundamentals of ACLs](s3e2/README.md)
 1. Advanced ACL Exploration *Coming Soon*
 1. Managing Network Access with Authentication, Authorization, and Accounting *Coming Soon*
 
-<!-- 1. [Fundamentals of ACLs](s3e2/README.md)
+<!-- 
 1. [Advanced ACL Exploration](s3e3/README.md)
 1. [Managing Network Access with Authentication, Authorization, and Accounting](s3e4/README.md) -->
