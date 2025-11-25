@@ -1,0 +1,471 @@
+annotations:
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      http://netbox-server
+              or
+      http://192.168.1.10
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -200.0
+    y1: 88.51434513013454
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      Chrome Web Browser to access NetBox
+      (Note: NetBox can take 2+ minutes to
+             fully start.)
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -40.0
+    y1: 200.0
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      Note: CMLAPI Access configured using ext-conn NAT. This
+      requires adding https as allowed service in Cockpit to the
+      Libvirt Zone.
+
+      Instructions:
+      1. From Cockpit, navigate to
+         "Networking" -> "Edit Rules and Zones" -> "Add Services"
+         (in the Libvirt zone)
+      2. Select HTTPS from the services list
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 40.0
+    y1: -120.0
+    z_index: 1
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: false
+    text_content: Example NetBox Server Topology
+    text_font: monospace
+    text_italic: false
+    text_size: 15
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -320.0
+    y1: -280.0
+    z_index: 1
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      A simple topology using the NetBox Server node definition that automatically
+      populates a Source of Truth based on a CML network.
+      Uses the cml2netbox Python package: https://pypi.org/project/cml2netbox
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -320.0
+    y1: -240.0
+    z_index: 0
+  - border_color: '#FFFFFF'
+    border_radius: 0
+    border_style: ''
+    color: '#E6E3E3'
+    rotation: 0
+    thickness: 1
+    type: rectangle
+    x1: 27.014345130134625
+    y1: -131.92834493360317
+    x2: 604.5185042395525
+    y2: 256.8494114257254
+    z_index: 0
+smart_annotations: []
+nodes:
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: cmlapi
+    node_definition: external_connector
+    parameters: {}
+    ram: null
+    tags: []
+    x: -120
+    y: -120
+    interfaces:
+      - id: i0
+        label: port
+        mac_address: null
+        type: physical
+        slot: 0
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+
+          # OS Level Configuration
+          hostname netbox-server
+
+          # Network Config: eth0
+          # Optional: Configure static IP address if DHCP not being used
+          # ip link set up dev eth0
+          # ip addr add 192.168.0.11/24 dev eth0
+          # ip route add default via 192.168.0.1
+          # Configure DNS servers
+          # echo "nameserver 192.168.0.1" > /etc/resolv.conf
+
+          # Optional: Create an additional OS user account
+          # Note: The user cisco/cisco is already created
+          # USERNAME=anotheruser
+          # PASSWORD=cisco
+
+          # Network Config: eth1
+          # Optional: Configure IP address on 2nd interface to
+          #           allow access to the CML controller. This
+          #           is required to sync the CML topology to NetBox
+          #           if the primary interface doesn't have a path
+          #           to the CML controller.
+          # Note: The default CML firewall configuration for the
+          #       NAT ext-conn does NOT allow CML API access.
+          #       Either add https to the firewall rule in Cockpit
+          #       or use a bridge external connector
+          ip link set up dev eth1
+          ip addr add 192.168.1.10/24 dev eth1
+
+          # Optional: Settings to Auto Populate NetBox from CML Topology
+          # By setting the following ENVs the cml2netbox/topology-2-netbox
+          # script will run to attempt to populate NetBox
+          # Notes:
+          #   * These variables all relate to the CML controller/server
+          #   * The netbox-server must be connected to an ext-conn to reach
+          #     the CML API.
+          #   * A bridge ext-conn will work with the default CML network config
+          #   * A NAT ext-conn requires HTTPs being enabled on the virbr0 firewall
+          #     zone from within Cockpit
+          #   * The example value below uses the standard NAT ext-conn address.
+          #     Update it for your environment if you're using a bridge ext-conn
+
+          export VIRL2_URL=https://192.168.255.1
+          export VIRL2_USER=admin
+          export VIRL2_PASS=1234QWer
+          export VIRL2_VERIFY_SSL=False
+          export LAB_NAME="Example NetBox Server Topology"
+          # Note: Lab_ID only needs to be set if multiple Labs with same
+          #       Name exist on the CML server
+          # export LAB_ID=****
+
+          # These two scripts will:
+          # 1. Check if NetBox is healthy
+          # 2. Check if CML is reachable, and if so...
+          # 3. Run the script to sync the CML topology to Netbox
+          /home/cisco/check_netbox.sh >> /home/cisco/startup_log.txt 2>> /home/cisco/startup_err.txt
+          /home/cisco/check_and_sync_cml.sh >> /home/cisco/startup_log.txt 2>> /home/cisco/startup_err.txt
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: netbox-server
+    node_definition: netbox-server
+    parameters: {}
+    ram: null
+    tags: []
+    x: -120
+    y: 40
+    interfaces:
+      - id: i0
+        label: eth0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i1
+        label: eth1
+        mac_address: null
+        type: physical
+        slot: 1
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname inserthostname-here
+          !
+          ! In order to avoid entering a configuration dialog
+          ! on boot, please ensure that all ethernet interfaces
+          ! have some ip configuration present here such as the
+          ! example below:
+          !
+          interface range Ethernet 0/0 - 3
+           no ip address
+           shutdown
+          !
+          interface e0/0
+           no shut
+           ip address 192.168.1.1 255.255.255.0
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n2
+    image_definition: null
+    label: router01
+    node_definition: iol-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: -280
+    y: -120
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: Ethernet0/1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: Ethernet0/2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: Ethernet0/3
+        mac_address: null
+        type: physical
+        slot: 3
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |
+          hostname switch01
+
+          interface vlan 1
+           no shut
+           ip address 192.168.1.5 255.255.255.0
+          interface e0/0
+           no shut
+           switch mode access
+           switch access vlan 1
+           description To Router 01
+          interface e0/1
+           no shut
+           switch mode access
+           switch access vlan 1
+           description To Switch 02
+          interface e0/3
+           no shut
+           switch mode access
+           switch access vlan 1
+           description To NetBox Server
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n3
+    image_definition: null
+    label: switch01
+    node_definition: ioll2-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: -280
+    y: 40
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: Ethernet0/1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: Ethernet0/2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: Ethernet0/3
+        mac_address: null
+        type: physical
+        slot: 3
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |
+          hostname switch02
+
+          interface vlan 1
+           no shut
+           ip address 192.168.1.6 255.255.255.0
+          interface e0/0
+           no shut
+           switch mode access
+           switch access vlan 1
+           description To netbox-client
+          interface e0/1
+           no shut
+           switch mode access
+           switch access vlan 1
+           description To Switch 01
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n4
+    image_definition: null
+    label: switch02
+    node_definition: ioll2-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: -280
+    y: 200
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: Ethernet0/1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: Ethernet0/2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: Ethernet0/3
+        mac_address: null
+        type: physical
+        slot: 3
+  - boot_disk_size: null
+    configuration:
+      - name: boot.sh
+        content: |-
+          # insert commands here, e.g. a static IP address
+          # ip address add dev eth1 10.0.0.1/24
+          # ip link set dev eth1 up
+          ip address add 192.168.1.11/24 dev eth0
+          ip route add default 192.168.1.1
+          echo "192.168.1.10     netbox-server" >> /etc/hosts
+          exit 0
+      - name: environment
+        content: |-
+          # -- These are understood by the start script
+          # -- Homepage to open at start (needs network!)
+          HOME_URL=http://netbox-server
+          # -- Wait additional time for network before starting Chrome
+          #WAIT=1
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n5
+    image_definition: null
+    label: netbox-client
+    node_definition: chrome
+    parameters: {}
+    ram: null
+    tags: []
+    x: -120
+    y: 200
+    interfaces:
+      - id: i0
+        label: eth0
+        mac_address: null
+        type: physical
+        slot: 0
+links:
+  - id: l0
+    n1: n1
+    n2: n0
+    i1: i0
+    i2: i0
+    conditioning: {}
+    label: netbox-server-0-eth0<->cmlapi-port
+  - id: l1
+    n1: n2
+    n2: n3
+    i1: i1
+    i2: i1
+    conditioning: {}
+    label: router01-Ethernet0/0<->switch01-Ethernet0/0
+  - id: l2
+    n1: n4
+    n2: n3
+    i1: i2
+    i2: i2
+    conditioning: {}
+    label: switch02-Ethernet0/1<->switch01-Ethernet0/1
+  - id: l3
+    n1: n1
+    n2: n3
+    i1: i1
+    i2: i4
+    conditioning: {}
+    label: netbox-server-eth1<->switch01-Ethernet0/3
+  - id: l4
+    n1: n5
+    n2: n4
+    i1: i0
+    i2: i1
+    conditioning: {}
+    label: netbox-client-eth0<->switch02-Ethernet0/0
+lab:
+  description: Simple Example topology using the NetBox Server Node Definition.
+  notes: ''
+  title: Example NetBox Server Topology
+  version: 0.3.0

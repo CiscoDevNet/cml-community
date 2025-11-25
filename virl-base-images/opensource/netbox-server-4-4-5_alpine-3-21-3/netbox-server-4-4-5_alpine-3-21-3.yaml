@@ -1,0 +1,7 @@
+id: netbox-server-4-4-5_alpine-3-21-3
+node_definition_id: netbox-server
+description: NetBox Server Community 4.4.5
+label: NetBox Server 4.3.5 (Alpine 3.21.3)
+disk_image: netbox-server-4-4-5_alpine-3-21-3.qcow2
+read_only: true
+schema_version: 0.0.1
