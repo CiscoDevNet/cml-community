@@ -21,7 +21,8 @@ The vJunos-Evolved **requires** EFI/UEFI boot to be enabled in order to properly
 
 1. Ensure that the SSH service for the underlying Linux platform of the CML controller is enabled. This is **NOT** the same as the terminal server/SCP service available on the standard SSH port (tcp/22). The CML server should be listening for SSH requests on TCP port 1122
 2. Use SSH to connect to the Linux CLI of the CML server
-3. Run the following commands to define the appropriate EFI firmware files for the vJunos-Evolved node type in the CML configuration. The folder name is *VERY* important - it must match the ID of the node definition
+3. Run the `sudo -s` command and type in the password of the `sysadmin` user to launch into the root CLI
+4. Run the following commands to define the appropriate EFI firmware files for the vJunos-Evolved node type in the CML configuration. The folder name is *VERY* important - it must match the ID of the node definition
 
 ```
 cd /usr/share/edk2/ovmf
