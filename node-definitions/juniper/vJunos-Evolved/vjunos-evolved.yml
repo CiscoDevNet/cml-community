@@ -7,7 +7,7 @@ boot:
 sim:
   linux_native:
     libvirt_domain_driver: kvm
-    driver: nxosv9000
+    driver: server
     disk_driver: virtio
     efi_boot: true
     ram: 8192
