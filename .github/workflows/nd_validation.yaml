@@ -5,10 +5,12 @@ on:
     types: [synchronize]
     paths:
       - 'node-definitions/**/*.yaml'
+      - '!node-definitions/**/*-Topology.yaml'
   pull_request:
     types: [synchronize]
     paths:
       - 'node-definitions/**/*.yaml'
+      - '!node-definitions/**/*-Topology.yaml'
 
 
 jobs:
