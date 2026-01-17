@@ -11,6 +11,7 @@ on:
     paths:
       - 'node-definitions/**/*.yaml'
       - '!node-definitions/**/*-Topology.yaml'
+  workflow_dispatch:
 
 
 jobs:
