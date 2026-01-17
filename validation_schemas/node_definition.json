@@ -183,7 +183,8 @@
                             "enum": [
                                 "iso",
                                 "fat",
-				"ext4"
+				"ext4",
+				"raw"
                             ]
                         },
                         "volume_name": {
@@ -360,8 +361,9 @@
                     "enum": [
 			"iol",
                         "kvm",
-                        "lxc",
-                        "none"
+                        "none",
+			"docker",
+			"ums"
                     ]
                 },
                 "driver": {
