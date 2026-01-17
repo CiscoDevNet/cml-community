@@ -525,11 +525,7 @@
                     "properties": {
                         "libvirt_domain_driver": {
                             "enum": [
-                                "kvm",
-				"docker",
-				"iol",
-				"lxc",
-				"none"
+                                "kvm"
                             ]
                         }
                     },
@@ -544,7 +540,9 @@
                     "properties": {
                         "libvirt_domain_driver": {
                             "enum": [
-                                "lxc"
+                                "kvm",
+				"docker",
+				"iol"
                             ]
                         }
                     },
