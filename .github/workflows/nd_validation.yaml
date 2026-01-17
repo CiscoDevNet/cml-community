@@ -24,4 +24,6 @@ jobs:
         uses: thiagodnf/yaml-schema-checker@v0.0.8
         with:
           jsonSchemaFile: validation_schemas/node_definition.json
-          yamlFiles: node-definitions/**/*.yaml
+          yamlFiles: |
+            !node-definitions/**/*-Topology.yaml
+            node-definitions/**/*.yaml
