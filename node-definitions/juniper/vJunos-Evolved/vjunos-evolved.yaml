@@ -1,0 +1,74 @@
+id: vjunos-evolved
+boot:
+  timeout: 60
+  completed:
+    - 'login:'
+  uses_regex: false
+sim:
+  linux_native:
+    libvirt_domain_driver: kvm
+    driver: server
+    disk_driver: virtio
+    efi_boot: true
+    ram: 8192
+    cpus: 4
+    cpu_limit: 100
+    nic_driver: virtio
+    enable_rng: true
+    enable_tpm: false
+  parameters:
+    smbios.bios.vendor: Bochs
+    smbios.bios.version: Bochs
+    smbios.chassis.manufacturer: Bochs
+    smbios.system.manufacturer: Bochs
+    smbios.system.product: Bochs
+    smbios.system.serial: chassis_no=0:slot=0:type=1:assembly_id=0x0D20:platform=251:master=0:channelized=no
+general:
+  nature: router
+  description: vJunos-Evolved (vPTX)
+  read_only: false
+configuration:
+  generator:
+    driver: null
+device:
+  interfaces:
+    serial_ports: 1
+    physical:
+      - re0:mgmt-0
+      - et-0/0/0
+      - et-0/0/1
+      - et-0/0/2
+      - et-0/0/3
+      - et-0/0/4
+      - et-0/0/5
+      - et-0/0/6
+      - et-0/0/7
+      - et-0/0/8
+      - et-0/0/9
+      - et-0/0/10
+      - et-0/0/11
+      - et-0/0/12
+    has_loopback_zero: true
+    min_count: 3
+    default_count: 13
+    loopback:
+      - lo
+ui:
+  label_prefix: vjunosevo-
+  icon: router
+  label: vJunosEvolved
+  visible: true
+inherited:
+  image:
+    ram: true
+    cpus: true
+    data_volume: true
+    boot_disk_size: true
+    cpu_limit: true
+  node:
+    ram: true
+    cpus: true
+    data_volume: true
+    boot_disk_size: true
+    cpu_limit: true
+schema_version: 0.0.1
