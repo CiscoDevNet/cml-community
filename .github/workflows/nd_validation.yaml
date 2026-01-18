@@ -26,5 +26,4 @@ jobs:
         with:
           jsonSchemaFile: validation_schemas/node_definition.json
           yamlFiles: |
-            node-definitions/**/*.yaml
-            !node-definitions/**/*-Topology.yaml
+            node-definitions/**/!(*-Topology).yaml
