@@ -2,11 +2,11 @@
 
 The `virl2-migrate-data.sh` script allows you to copy CML configuration, lab, node, and image data between two CML servers.  Copying can be done "online" whereby the data is copied directly from one system to another; or "offline" where the data is first archived, and then the archive can be transferred to the new system and then extracted.
 
-You can also migration between CML 2.2 and CML 2.3.  This is a special case as the underlying OS has changed from CentOS to Ubuntu.  Both online and offline migrations are supported.
+You can also use this script to migrate between supported CML versions.  The current release supports source servers running CML 2.6.x through 2.10.x and target servers running CML 2.8.x through 2.10.x.  Both online and offline workflows are supported, and the script auto-detects when a version migration (rather than a same-version copy) is required.
 
 The script requires the following:
 
-- Both CML servers must be running the *exact same version of CML* (unless doing a version migration).
+- The source and target CML servers must be running supported versions (see above).  For a straight data copy without a version change, both servers must be on the *exact same version of CML*.
 - The target CML server must have sufficient disk space to copy all of the data from the source CML server (in online operation).
 - The source server must have sufficient disk space to hold an archive of all of its data (in offline operation).
 
@@ -93,13 +93,9 @@ To perform an offline, archive file copy, run the following command on the sourc
 sudo /usr/local/bin/virl2-migrate-data.sh --backup --file /path/to/archive.tar
 ```
 
-If you will be doing a version migration (i.e., from 2.2 to 2.3), run the following command instead:
+The same command is used regardless of whether you are doing a same-version data copy or a version migration; the script inspects the source and target CML versions and adjusts its behavior automatically.
 
-```bash
-sudo /usr/local/bin/virl2-migrate-data.sh --backup --migration --file /path/to/archive.tar
-```
-
-You can specify a file path for the archive where ever you have the requisite disk space.  The backup command will perform some source checks and then create this archive tar file.
+You can specify a file path for the archive wherever you have the requisite disk space.  The backup command will perform some source checks and then create this archive tar file.
 
 Once the backup portion completes, transfer this archive file to the target CML server.  How you do this transfer is up to you.  Using an intermediate SFTP or SCP server might be the easiest way.
 
@@ -126,3 +122,5 @@ This step isn't typically required, but if you are running into problems it can 
 This script is distributed as-is without formal support.  While it has been tested to work, it cannot anticipate all conditions of the source and target CML servers and may not properly copy all data in all cases.  Prior to running the script, you should have a backup of the source CML server (and/or VMware snapshot) just in case something goes wrong.  You should also wait to delete the source server after migration until you have thoroughly tested the target and confirm all functionality is properly working.
 
 If you have renamed the *sysadmin* user, you must pass the `--user` parameter to the migration command when doing online migration/copying.  For example: `--user cmladmin`.
+
+Likewise, if the source CML server's sysadmin SSH service is reachable on a non-default port, pass `--port <port>` (the default is `1122`).  For unattended invocations the script also accepts `--no-confirm` to skip the interactive confirmation prompts.
