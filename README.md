@@ -26,7 +26,7 @@ The folder structure of this repository reflect the folder structure and naming 
 * [virl-base-images](virl-base-images) - Folder containing a folder for each added platform disk image. Within each platform folder you will find a YAML file that references a specific `disk_image` file for a platform. A base image definition will reference a node definition.
   * **Note: You will need to download the disk images from the vendors yourself.**
 
-When deciding how many total resources you need to use CML, consult the [CML Sizing Calculator](documentation/cml_sizing_calculator.xlsx).
+When deciding how many total resources you need to use CML, consult the [CML Sizing Calculator](https://ciscolearning.github.io/cml-sizer/).
 
 ### Sample Lab Topologies
 
