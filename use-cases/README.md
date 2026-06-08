@@ -18,6 +18,7 @@ The following use cases are not hosted in this repository but may be useful:
 - [sdwan-devops](https://github.com/CiscoDevNet/sdwan-devops) -  SD-WAN DevOps Tools built around CML.
 - [ciscolive-brkcrt-2059](https://github.com/CiscoLearning/ciscolive-brkcrt-2059) - Lab Up For Success With Cisco Modeling Labs.
 - [cloud-cml](https://github.com/CiscoDevNet/cloud-cml) - Run Cisco Modeling Labs on cloud infrastructure.
+- [cml-mcp](https://github.com/xorrkaz/cml-mcp) - A Model Context Protocol (MCP) server for CML 2.9 and higher.  Integrate CML with your AI agents.
 
 ## Contributing
 
