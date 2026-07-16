@@ -1,0 +1,7 @@
+id: zebra-rs-26.7.4
+label: zebra-rs 26.7.4
+description: zebra-rs 26.7.4
+node_definition_id: zebra-rs
+disk_image: zebra-rs-26.7.4.qcow2
+read_only: false
+schema_version: 0.0.1

@@ -1,0 +1,115 @@
+#
+# zebra-rs node definition (cloud image, using cloud-init)
+#
+
+id: zebra-rs
+sim:
+  linux_native:
+    driver: server
+    libvirt_domain_driver: kvm
+    disk_driver: virtio
+    nic_driver: virtio
+    ram: 2048
+    cpus: 1
+    data_volume: 0
+    boot_disk_size: 64
+inherited:
+  image:
+    ram: true
+    cpus: true
+    cpu_limit: true
+    data_volume: true
+    boot_disk_size: true
+  node:
+    ram: true
+    cpus: true
+    cpu_limit: true
+    data_volume: true
+    boot_disk_size: true
+general:
+  nature: server
+  description: zebra-rs is a BGP, OSPF, and IS‑IS routing stack with SRv6, SR-MPLS, L3VPN, and EVPN extensions, written from scratch in Rust.
+  read_only: false
+schema_version: 0.0.1
+configuration:
+  generator:
+    driver: ubuntu
+  provisioning:
+    volume_name: cidata
+    media_type: iso
+    files:
+      - name: meta-data
+        content: |
+          instance-id: ubuntu
+          local-hostname: ubuntu
+        editable: false
+      - name: user-data
+        content: |
+          #cloud-config
+          hostname: inserthostname-here
+          manage_etc_hosts: True
+          system_info:
+            default_user:
+              name: cisco
+          password: cisco
+          chpasswd: { expire: False }
+          ssh_pwauth: True
+          ssh_authorized_keys:
+            - your-ssh-pubkey-line-goes-here
+        editable: true
+      - name: network-config
+        content: |
+          #network-config
+          network:
+            version: 2
+            ethernets:
+              ens2:
+                dhcp4: true
+        editable: true
+      - name: zebra-rs
+        content: |
+          system {
+            hostname inserthostname-here;
+          }
+        editable: true
+device:
+  interfaces:
+    # 8 should be enough, they are called ens2, ens3, ...
+    # however, those are PCI bus/slot numbers. I guess they are
+    # not static. Depends what device goes before '2'
+    physical:
+      - ens2
+      - ens3
+      - ens4
+      - ens5
+      - ens6
+      - ens7
+      - ens8
+      - ens9
+    has_loopback_zero: false
+    default_count: 1
+    serial_ports: 1
+boot:
+  timeout: 180
+  # seems that without proper meta-data the hostname is not
+  # correctly set at initial boot. It is 'ubuntu'. Also, the
+  # first line is not seen at first boot. Only at second
+  # boot, the correct hostname plus the 'reached target' is
+  # will be set / shown on the console.
+  completed:
+    - Cloud-init target
+    - Welcome to Ubuntu
+    - running 'modules:final' at
+pyats:
+  os: linux
+ui:
+  group: Others
+  icon: router
+  label: zebra-rs
+  label_prefix: zebra-rs-
+  visible: true
+  description: |
+    zebra-rs is a BGP, OSPF, and IS‑IS routing stack with SRv6, SR-MPLS, L3VPN,
+    and EVPN extensions, written from scratch in Rust. Memory‑safe, async to the core,
+    idempotent by design — and the first routing daemon to ship with a native MCP server for AI agents.
+    Project Home Page http://zebra.rs/.
