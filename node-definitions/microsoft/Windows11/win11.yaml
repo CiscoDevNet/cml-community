@@ -1,11 +1,36 @@
 id: win11
+boot:
+  timeout: 300
+  completed:
+    - READY
+  uses_regex: false
+sim:
+  linux_native:
+    libvirt_domain_driver: kvm
+    driver: server
+    disk_driver: virtio
+    efi_boot: true
+    machine_type: q35
+    ram: 6144
+    cpus: 2
+    cpu_limit: 100
+    cpu_model: Westmere,-waitpkg,-hle,-rtm,-mpx
+    nic_driver: virtio
+    video:
+      memory: 16
+      model: qxl
+    enable_rng: true
+    enable_tpm: true
 general:
   nature: server
-  read_only: false
   description: Windows 11
+  read_only: false
+configuration:
+  generator:
+    driver: server
 device:
   interfaces:
-    has_loopback_zero: false
+    serial_ports: 1
     physical:
       - eth0
       - eth1
@@ -15,43 +40,14 @@ device:
       - eth5
       - eth6
       - eth7
-    serial_ports: 1
+    has_loopback_zero: false
     default_count: 2
 ui:
-  visible: true
   label_prefix: win11-
   icon: host
   label: Windows 11
-  description: |-
-    2 vCPUs 6 GB RAM
-
-    Username/Password:
-    IEUser/Passw0rd! (or whichever is set on installation)
-
-    ##### Note
-    **EXPERIMENTAL**
-
-    The -waitpkg flag is required for boot with hyperv compatibility,
-    which speeds up the node; the model setting then required disabling
-    the other features (hle,rtm,mpx) on the machine used to test this.
-sim:
-  linux_native:
-    libvirt_domain_driver: kvm
-    driver: server
-    disk_driver: sata
-    ram: 6144
-    cpus: 2
-    nic_driver: e1000
-    video:
-      model: cirrus
-      memory: 16
-    cpu_limit: 100
-    cpu_model: 'Skylake-Server,-waitpkg,-hle,-rtm,-mpx'
-    machine_type: q35
-    enable_tpm: true
-    efi_boot: true
-boot:
-  timeout: 300
+  visible: true
+  description: 2 vCPUs 6 GB RAM
 inherited:
   image:
     ram: true
@@ -65,7 +61,4 @@ inherited:
     data_volume: true
     boot_disk_size: true
     cpu_limit: true
-configuration:
-  generator:
-    driver: server
 schema_version: 0.0.1
