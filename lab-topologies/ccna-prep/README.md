@@ -46,3 +46,15 @@ The current hosts of the CCNA Prep Program are:
     * [Lablet 2](sb1e1-lablet2/README.md)
     * [Lablet 3](sb1e1-lablet3/README.md)
     * [Lablet 4](sb1e1-lablet4/README.md)
+
+## Season 4 (Fall 2026) - CCNA v2.0 Topics
+
+1. [OSPFv3 Unlocked: Routing the IPv6 Way](s4e1/README.md)
+1. A CCNA Diagnostic Playbook: Isolating Faults from Layer 1 to Layer 7  - *Coming Soon*
+1. Exploring Client Networking on Windows, Mac, and Linux - *Coming Soon*
+1. Modern, Secure File Transfers and Device Administration - *Coming Soon*
+
+<!-- 
+1. [A CCNA Diagnostic Playbook: Isolating Faults from Layer 1 to Layer 7 ](s4e1/README.md)
+1. [Exploring Client Networking on Windows, Mac, and Linux](s4e1/README.md)
+1. [Modern, Secure File Transfers and Device Administration](s4e1/README.md) -->
