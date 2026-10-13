@@ -1,0 +1,47 @@
+05923109-fe68-41d3-a638-55962bb9977d:
+  created: "2026-05-15T23:00:44+00:00"
+  effective_permissions:
+  - lab_admin
+  - lab_exec
+  - lab_edit
+  - lab_view
+  enabled: true
+  id: 05923109-fe68-41d3-a638-55962bb9977d
+  lab_description: ""
+  lab_title: INIT
+  link_count: 4
+  node_count: 5
+  nodes:
+    005dfa97-a3dc-4b4f-b548-372941209b1f:
+      devices:
+      - enabled: true
+        listen_port: 9002
+        name: serial0
+        running: false
+        status: ""
+      label: "65200"
+    98bacfe7-5d37-4702-8b00-9c2ffcd81e80:
+      devices:
+      - enabled: true
+        listen_port: 9003
+        name: serial0
+        running: false
+        status: ""
+      label: "65300"
+    acae0012-6d7f-4b25-8f30-30938593abf4:
+      devices:
+      - enabled: true
+        listen_port: 9001
+        name: serial0
+        running: false
+        status: ""
+      label: "65100"
+    d44f037a-8082-4aa9-9723-f91607c7e3b7:
+      devices:
+      - enabled: true
+        listen_port: 9000
+        name: serial0
+        running: false
+        status: ""
+      label: "65001"
+  state: STARTED
