@@ -1,0 +1,1410 @@
+annotations:
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      rtr1 (10.80.0.1)
+      Credentials:
+      username/password: cisco / cisco
+      enable password:   cisco
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 80.0
+    y1: -80.0
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      Server Functions:
+      * DNS - 10.80.15.3
+      * Application/HTTP - http://server
+                           http://10.80.15.3
+      * Simulated Internet Hosts:
+        (ping only, websites not live)
+        csnake.example.com
+        quantumcloud.example.com
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -200.0
+    y1: 320.0
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: 10.80.15.2
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 200.0
+    y1: 120.0
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: 10.80.15.1
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -160.0
+    y1: 120.0
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#2E2D2D'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      CCNA TROUBLESHOOTING METHODOLOGIES
+      ==================================
+
+      1. BOTTOM-UP
+         Start at Layer 1 and work upward through Layers 2 and 3 toward the
+         application. Check cabling, link status, VLANs, addressing, and routing.
+         Useful when a link is down, hardware was recently installed, or the
+         connection failed after a move or cabling change.
+
+      2. TOP-DOWN
+         Start with the application and work downward toward the physical link.
+         Check the reported error, name resolution, transport connectivity, and
+         then the underlying network. Useful when basic connectivity works but a
+         particular application, service, or hostname does not.
+
+      3. DIVIDE AND CONQUER (MIDDLE-OUT)
+         Start at Layer 3 with a ping or traceroute to the gateway or destination.
+         If the test succeeds, investigate higher-layer services such as ports,
+         DNS, and the application. If it fails, check lower layers such as the
+         gateway, ARP, subnet mask, VLAN, and physical connection. A blocked ICMP
+         test can look like a connectivity failure, so confirm with other evidence.
+
+      4. HOP-BY-HOP
+         Follow the traffic path from the source to the destination, checking each
+         network device and link along the way. Verify forwarding, VLANs, trunks,
+         and routing at each point. Useful when traffic reaches part of the path
+         but fails farther along, or when traceroute identifies a likely drop point.
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 480.0
+    y1: -120.0
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: true
+    text_content: 'CCNA Exam Prep: Back to Networking Basics with Hank Preston and
+      Patrick Gargano'
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -200.0
+    y1: -320.0
+    z_index: 1
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: true
+    text_content: 'A CCNA Diagnostic Playbook: Isolating Faults from Layer 1 to Layer
+      7'
+    text_font: monospace
+    text_italic: false
+    text_size: 18
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -200.0
+    y1: -280.0
+    z_index: 2
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      The network doesn't always work... this lab is all about how to approach trouble tickets in a methodological way.
+      Open up the lab guide and start troubleshooting!
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -200.0
+    y1: -240.0
+    z_index: 3
+smart_annotations: []
+nodes:
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname sw1
+          !
+          no logging console
+          !
+          no ip domain lookup
+          vtp mode transparent
+          !
+          vlan 9
+           name USERS-FLOOR2
+          vlan 10
+           name USERS-FLOOR3
+          vlan 11
+           name USERS-FLOOR4
+          !
+          vlan 15
+           name APPLICATION
+          !
+          vlan 19
+           name GUESTS-FLOOR2
+          !
+          vlan 20
+           name GUESTS-FLOOR3
+          !
+          vlan 22
+           name GUESTS-FLOOR4
+          !
+          vlan 999
+           name MGMT
+          !
+          interface range e0/0-1
+           channel-group 1 mode active
+           no shut
+          !
+          int po1
+           switchport trunk encap dot1q
+           switchport mode trunk
+           switchport trunk allowed vlan 9-11,19-21,999
+           no shut
+          !
+          ip route 0.0.0.0 0.0.0.0 10.80.0.1
+          !
+          int vlan 9
+           ip address 10.80.10.1 255.255.255.128
+           ip helper 10.80.0.101
+           no shut
+          int vlan 10
+           ip address 10.80.10.254 255.255.255.128
+           ip helper 10.80.0.101
+           no shut
+          int vlan 11
+           ip address 10.80.11.129 255.255.255.128
+           ip helper 10.80.0.101
+           no shut
+          int vlan 15
+           ip address 10.80.15.1 255.255.255.248
+          int vlan 19
+           ip address 10.80.20.126 255.255.255.128
+           no shut
+          int vlan 20
+           ip address 10.80.20.254 255.255.255.128
+           no shut
+          int vlan 21
+           ip address 10.80.21.129 255.255.255.128
+           no shut
+          int vlan 999
+           ip address 10.80.254.254 255.255.252.0
+           no shut
+          !
+          inter range e0/2
+           no switchport
+           ip address 10.80.0.2 255.255.255.252
+           no shut
+          !
+          interface e1/0
+           no shutdown
+           description Connection to server
+           switchport mode access
+           switchport access vlan 15
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: sw1
+    node_definition: ioll2-xe
+    parameters: {}
+    priority: 8
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: 0
+    y: 120
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: Ethernet0/1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: Ethernet0/2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: Ethernet0/3
+        mac_address: null
+        type: physical
+        slot: 3
+      - id: i5
+        label: Ethernet1/0
+        mac_address: null
+        type: physical
+        slot: 4
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname sw2
+          !
+          no logging console
+          !
+          no ip domain lookup
+          vtp mode transparent
+          !
+          vlan 9
+           name USERS-FLOOR2
+          vlan 10
+           name USERS-FLOOR3
+          vlan 11
+           name USERS-FLOOR4
+          !
+          vlan 15
+           name APPLICATION
+          !
+          vlan 19
+           name GUESTS-FLOOR2
+          !
+          vlan 20
+           name GUESTS-FLOOR3
+          !
+          vlan 22
+           name GUESTS-FLOOR4
+          !
+          vlan 999
+           name MGMT
+          !
+          interface range e0/0-1
+           channel-group 1 mode active
+           no shut
+          !
+          int po1
+           switchport trunk encap dot1q
+           switchport mode trunk
+           switchport trunk allowed vlan 9-11,15,19-21,999
+           no shut
+          !
+          ip route 0.0.0.0 0.0.0.0 10.80.254.1
+          !
+          int vlan 15
+           ip address 10.80.15.2 255.255.255.248
+          int vlan 999
+           ip address 10.80.254.2 255.255.252.0
+           no shut
+          !
+          interface e1/0
+           no shutdown
+           description Connection to client
+           switchport mode access
+           switchport access vlan 15
+          !
+          ip dhcp excluded-address 10.80.15.1 10.80.15.4
+          ip dhcp pool APPLICATION
+           network 10.80.15.0 255.255.255.248
+           default-router 10.80.15.1
+           domain-name example.com
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: sw2
+    node_definition: ioll2-xe
+    parameters: {}
+    priority: 8
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: 160
+    y: 120
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: Ethernet0/1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: Ethernet0/2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: Ethernet0/3
+        mac_address: null
+        type: physical
+        slot: 3
+      - id: i5
+        label: Ethernet1/0
+        mac_address: null
+        type: physical
+        slot: 4
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname client
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+          ip link set dev eth0 mtu 9000
+          echo "10.80.15.3 server" >> /etc/hosts
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n2
+    image_definition: null
+    label: client
+    node_definition: alpine
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: 280
+    y: 240
+    interfaces:
+      - id: i0
+        label: eth0
+        mac_address: null
+        type: physical
+        slot: 0
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: "# this is a shell script which will be sourced at boot\nhostname\
+          \ server\n# configurable user account\nUSERNAME=cisco\nPASSWORD=cisco\n\n\
+          echo \"127.0.0.1 server\" >> /etc/hosts\n\n# Create command aliases\necho\
+          \ 'alias ping=\"ping -c 4\"' >> /etc/profile.d/aliases.sh\n\n# Configure\
+          \ static IP address\nip addr add 10.80.15.3/29 dev eth0\nip route add default\
+          \ via 10.80.15.1\n# Note: Cisco Umbrella DNS used for public resolution\n\
+          echo \"nameserver 208.67.220.220\" > /etc/resolv.conf\n\n# Install and Configure\
+          \ Bind DNS Server\napk add bind bind-tools\n\n# Create /etc/bind/named.conf\n\
+          # Note: Cisco Umbrella DNS used for forwarders\necho '\noptions {\n  directory\
+          \ \"/var/bind\";\n  allow-recursion { 10.0.0.0/8; };\n  forwarders {\n \
+          \ 208.67.222.222;\n  208.67.220.220;\n  };\n  listen-on { 10.80.15.3; };\n\
+          \  listen-on-v6 { none; };\n  pid-file \"/var/run/named/named.pid\";\n \
+          \ allow-transfer { none; };\n};\nzone \"example.com\" IN {\ntype master;\n\
+          file \"/etc/bind/db.example.com\";\n};\n' > /etc/bind/named.conf\n\n# Create\
+          \ zone file for example.com\necho '\n$TTL 86400\n@       IN      SOA   \
+          \  server.example.com.      hostmaster.example.com. (\n      2025020201\t\
+          ; serial number YYMMDDNN\n      28800           ; Refresh\n      7200  \
+          \          ; Retry\n      864000          ; Expire\n      86400        \
+          \   ; Min TTL\n      )\n\n    NS      server.example.com.\n\n; Websites\n\
+          quantumcloud      IN      CNAME   server.example.com.\ncsnake          IN\
+          \      CNAME   server.example.com.\naaisolutions      IN      CNAME   server.example.com.\n\
+          \n; End Devices\nserver      IN      A       10.80.15.3\n\n$ORIGIN example.com.\n\
+          ' > /etc/bind/db.example.com\n\n# Start bind service\nrc-service named start\n\
+          # Re-configured local DNS server to use localhost\necho \"nameserver 10.80.15.3\"\
+          \ > /etc/resolv.conf\n\n# Create test files and http server for ticket\n\
+          apk add lighttpd\nservice lighttpd start\nfallocate -l 100M /var/www/localhost/htdocs/data.file\n\
+          fallocate -l 1M /var/www/localhost/htdocs/config.file\necho \"Success!\"\
+          \ > /var/www/localhost/htdocs/test.txt\nip link set dev eth0 mtu 9000"
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n3
+    image_definition: null
+    label: server
+    node_definition: alpine
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: -120
+    y: 240
+    interfaces:
+      - id: i0
+        label: eth0
+        mac_address: null
+        type: physical
+        slot: 0
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname rtr1
+          !
+          no logging console
+          !
+          ! In order to avoid entering a configuration dialog on boot, please
+          ! ensure that all interfaces have some IP configuration present here
+          ! such as the example below:
+          !
+          interface range Ethernet 0/0 - 3
+           no ip address
+           shutdown
+          !
+          ! EEM Applet to add SSH Key Automatically
+          event manager applet do-ssh authorization bypass
+           event timer cron cron-entry "@reboot" maxrun 130
+          action 01 wait 10
+          action 02 cli command "enable"
+          action 11 cli command "crypto key generate rsa modulus 2048"
+          action 20 cli command "config t"
+          action 21 cli command "no event manager applet do-ssh"
+          action 22 cli command "end"
+          action 23 cli command "write mem"
+          !
+          enable secret cisco
+          username cisco priv 15 secret cisco
+          !
+          line vty 0 4
+           transport input ssh telnet
+           login local
+          !
+          int e0/0
+           ip address dhcp
+           ip nat outside
+           no shut
+           exit
+          !
+          int e0/1
+           ip address 10.80.0.1 255.255.255.252
+           ip nat inside
+           no shut
+          !
+          access-list 10 permit 10.80.0.0 0.0.255.255
+          ip nat inside source list 10 interface e0/0 overload
+          !
+          ip route 10.80.0.0 255.255.0.0 10.80.0.2
+          !
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n4
+    image_definition: null
+    label: rtr1
+    node_definition: iol-xe
+    parameters: {}
+    priority: 9
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: 0
+    y: -40
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: Ethernet0/1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: Ethernet0/2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: Ethernet0/3
+        mac_address: null
+        type: physical
+        slot: 3
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n5
+    image_definition: null
+    label: internet
+    node_definition: external_connector
+    parameters: {}
+    priority: 10
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: -120
+    y: -40
+    interfaces:
+      - id: i0
+        label: port
+        mac_address: null
+        type: physical
+        slot: 0
+links:
+  - id: l0
+    n1: n1
+    n2: n0
+    i1: i1
+    i2: i1
+    conditioning: {}
+    label: sw1-Ethernet0/0<->sw2-Ethernet0/0
+  - id: l1
+    n1: n1
+    n2: n0
+    i1: i2
+    i2: i2
+    conditioning: {}
+    label: sw1-Ethernet0/1<->sw2-Ethernet0/1
+  - id: l2
+    n1: n2
+    n2: n1
+    i1: i0
+    i2: i5
+    conditioning: {}
+    label: client-eth0<->sw1-Ethernet1/0
+  - id: l3
+    n1: n3
+    n2: n0
+    i1: i0
+    i2: i5
+    conditioning: {}
+    label: server-eth0<->sw2-Ethernet1/0
+  - id: l4
+    n1: n5
+    n2: n4
+    i1: i0
+    i2: i1
+    conditioning: {}
+    label: internet-port<->rtr1-Ethernet0/0
+  - id: l5
+    n1: n4
+    n2: n0
+    i1: i2
+    i2: i3
+    conditioning: {}
+    label: rtr1-Ethernet0/1<->sw2-Ethernet0/2
+lab:
+  description: 'When network connectivity breaks, where do you begin? Troubleshooting
+    is a cornerstone of the CCNA v2.0 exam, and having a systematic diagnostic methodology
+    is what separates guessing from true engineering. In this live stream, Hank and
+    Patrick build a practical diagnostic playbook from the ground up. We''ll explore
+    structured troubleshooting models using the OSI stack, highlighting core diagnostic
+    tools including show commands, syslog inspection, standard/extended ping, and
+    traceroute. We’ll also analyze pre-staged packet capture output to interpret real-world
+    protocol behaviors (ARP, DHCP, and 802.1Q tags) without getting bogged down in
+    capture setup. Finally, we''ll configure and verify Layer 2 storm control to protect
+    access switches from broadcast storms. Join us to sharpen your troubleshooting
+    instincts! '
+  notes: |-
+    **CCNA Exam Prep: Back to Networking Basics with Hank Preston and Patrick Gargano**
+
+    # A CCNA Diagnostic Playbook: Isolating Faults from Layer 1 to Layer 7
+
+    When network connectivity breaks, where do you begin? Troubleshooting is a cornerstone of the CCNA v2.0 exam, and having a systematic diagnostic methodology is what separates guessing from true engineering. In this live stream, Hank and Patrick build a practical diagnostic playbook from the ground up. We'll explore structured troubleshooting models using the OSI stack, highlighting core diagnostic tools, including show commands, syslog inspection, standard and extended ping, and traceroute. We’ll also analyze pre-staged packet capture output to interpret real-world protocol behaviors (ARP, DHCP, and 802.1Q tags) without getting bogged down in capture setup. Join us to sharpen your troubleshooting instincts!
+
+    > Blueprint Topics:
+    >
+    > * 1.1: Diagnose interface and cable issues (collisions, errors, duplex, speed)
+    > * 1.6 Troubleshoot wired and wireless client connectivity (IP configuration, network reachability, and wireless security parameters on Windows, macOS, and Linux)
+    > * 2.4: Troubleshoot basic Layer 2/Layer 3 connectivity and device operations using show commands (including show logs), ping, extended ping, traceroute, and packet capture output
+
+    > Note: A PDF version of this lab guide is available on the [CML Community](https://github.com/CiscoDevNet/cml-community/blob/master/lab-topologies/ccna-prep/s4e2/).
+
+
+    ## Lab Requirements
+    This CML topology and lab require a CML server that supports public Internet access through the external connector named "Internet". It is configured in NAT mode to provide reachability to Internet resources through the CML host. This access is required to configure the "server" node and to complete some of the lab exercises.
+
+    If your CML server is "air-gapped" and doesn't have Internet access for topologies, this lab will not work as designed.
+
+    ## Setup and Scenario
+    This is a simplified network topology connecting a "client" and a "server" that is used as the basis for a series of "trouble tickets": scenarios where some network-based traffic is not working as expected.
+
+    The "server" is an Alpine Linux host, reachable at IP address 10.80.15.3. It acts as a DNS server for the domain "example.com" and provides recursive lookups to public DNS servers. It also represents a "web application server" hosting files that the "client" should be able to access.
+
+    The "client" is an Alpine Linux host and uses DHCP from "sw2" to configure its IP address. See `/etc/network/interfaces`.
+
+    ## Pre-validation
+    After starting the lab topology, verify the starting state by running these commands on "server".
+
+    > These commands verify that the startup configuration for "server" was completed successfully. This includes installing the DNS and HTTP services used in this lab.
+
+    <pre>
+    server:~$ <span style="font-weight: bold;">dig server.example.com</span>
+
+    ; <<>> DiG 9.20.29 <<>> server.example.com
+    ;; global options: +cmd
+    ;; Got answer:
+    ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 23149
+    ;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+    ;; OPT PSEUDOSECTION:
+    ; EDNS: version: 0, flags:; udp: 1232
+    ; COOKIE: 452d18fa4c4598ab010000006acfeb1709166434033ffc57 (good)
+    ;; QUESTION SECTION:
+    ;server.example.com.            IN      A
+
+    ;; ANSWER SECTION:
+    <span style="background-color:yellow">server.example.com.     86400   IN      A       10.80.15.3</span>
+
+    ;; Query time: 1 msec
+    ;; SERVER: 10.80.15.3#53(10.80.15.3) (UDP)
+    ;; WHEN: Wed Oct 14 20:50:31 UTC 2026
+    ;; MSG SIZE  rcvd: 91
+    </pre>
+
+    <pre>
+    server:~$ <span style="font-weight: bold;">wget -O - http://server/test.txt</span>
+    Connecting to server (127.0.0.1:80)
+    writing to stdout
+    <span style="background-color:yellow">Success!</span>
+    -                    100% |********************************|     9  0:00:00 ETA
+    written to stdout
+    </pre>
+
+    # Trouble Tickets
+    The following troubleshooting tickets can be completed using the CML topology after it starts. Each ticket is self-contained; however, they should be completed in order because later tickets may "assume" that previous tickets have already been solved.
+
+    Troubleshooting walkthroughs for each ticket are provided, but initially collapsed/hidden so you can try to solve the ticket on your own.
+
+    ## Trouble Ticket #1: Client / Server Not Making a Connection
+    **Title:** A newly deployed "client" can't ping its "server"
+
+    **Description:** The team just deployed a new "client" host at a new site. The "client" is connected to "sw2" on port `e1/0`. It needs to be able to ping "server" (`10.80.15.3/29`) which is connected to "sw1". Both hosts are on the "APPLICATION" network.
+
+    **Troubleshooting Method Suggestion:** Bottom Up / Hop-by-Hop
+
+    **Ticket Goal:** Identify and fix the issue preventing "client" from pinging "server"
+
+    <details>
+    <summary>Troubleshooting Walkthrough</summary>
+    We will tackle this ticket starting at the new "client" host, using a combination of hop-by-hop and bottom-up methodologies.
+
+    1. From the "client" and "sw2" consoles, check the network connection state (layer 1).
+
+        <pre>
+        client:~$ <span style="font-weight: bold;">ip link</span>
+
+        1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN qlen 1000
+            link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+        2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state <span style="background-color:yellow">UP</span> qlen 1000
+            link/ether 52:54:00:a4:78:3d brd ff:ff:ff:ff:ff:ff
+        </pre>
+
+        <pre>
+        sw2# <span style="font-weight: bold;">show int e1/0 status</span>
+
+        Port         Name               Status       Vlan       Duplex  Speed Type
+        Et1/0        Connection to clie <span style="background-color:yellow">connected</span>    15           full   auto 10/100/1000BaseTX
+        </pre>
+
+        * Link shows "up" on client and "connected" on switch.  Looks good.
+
+    1. Check whether the MAC address for "client" is learned on the switch (Layer 2).
+
+        <pre>
+        sw2# <span style="font-weight: bold;">show mac address-table interface ethernet 1/0</span>
+                Mac Address Table
+        -------------------------------------------
+
+        Vlan    Mac Address       Type        Ports
+        ----    -----------       --------    -----
+        15    <span style="background-color:yellow">5254.00a4.783d</span>    DYNAMIC     Et1/0
+        Total Mac Addresses for this criterion: 1
+        </pre>
+
+        > Note: The MAC address shown on your lab instance will differ from this output. Check the MAC from your "client" to the "switch".
+
+        * The MAC address from the "client" was learned by the switch on the expected interface.
+
+    1. Check whether "client" has an IP address (Layer 3).
+
+        <pre>
+        client:~$ <span style="font-weight: bold;">ip address show dev eth0</span>
+        2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP qlen 1000
+            link/ether 52:54:00:a4:78:3d brd ff:ff:ff:ff:ff:ff
+            <span style="background-color:yellow">inet 10.80.15.5/29</span> scope global eth0
+            valid_lft forever preferred_lft forever
+            inet6 fe80::5054:ff:fea4:783d/64 scope link
+            valid_lft forever preferred_lft forever
+        </pre>
+
+        * It does have an IP address.
+        * It is in the same subnet as "server"
+            * `10.80.15.3/29` <- Server
+            * `10.80.15.5/29` <- Client
+        * So communication between client and server is L2 traffic
+
+    1. Try to ping "server" at its IP address
+
+        <pre>
+        client:~$ <span style="font-weight: bold;">ping -c 4 10.80.15.3</span>
+        PING 10.80.15.3 (10.80.15.3): 56 data bytes
+
+        --- 10.80.15.3 ping statistics ---
+        4 packets transmitted, 0 packets received, <span style="background-color:red;color:white">100% packet loss</span>
+        </pre>
+
+        * Ping not working.
+
+    1. Check ARP table on "client" for "server".
+
+        <pre>
+        client:~$ <span style="font-weight: bold;">ip neigh show</span>
+        10.80.15.3 dev eth0  used 0/0/0 probes 6 <span style="background-color:red;color:white">FAILED</span>
+        </pre>
+
+        * ARP failure
+
+    1. Start checking Layer 2 path hop-by-hop.
+    1. Check VLAN status on "sw2".
+
+        <pre>
+        sw2# <span style="font-weight: bold;">show vlan brief</span>
+
+        VLAN Name                             Status    Ports
+        ---- -------------------------------- --------- -------------------------------
+        1    default                          active    Et0/2, Et0/3, Et1/1, Et1/2
+                                                        Et1/3
+        9    USERS-FLOOR2                     active
+        10   USERS-FLOOR3                     active
+        11   USERS-FLOOR4                     active
+        <span style="background-color:yellow">15   APPLICATION                      active    Et1/0</span>
+        19   GUESTS-FLOOR2                    active
+        20   GUESTS-FLOOR3                    active
+        22   GUESTS-FLOOR4                    active
+        999  MGMT                             active
+        </pre>
+
+        * VLAN 15 is "APPLICATION".
+        * The "client" interface is in the VLAN.
+
+    1. The "server" is connected to "sw1". Let's check how "sw1" is connected to "sw2".
+
+        <pre>
+        sw2# <span style="font-weight: bold;">show cdp neighbors</span>
+        Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
+                        S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone,
+                        D - Remote, C - CVTA, M - Two-port Mac Relay
+
+        Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+        <span style="background-color:yellow">sw1              Eth 0/0           162             R S I  Linux Uni Eth 0/0
+        sw1              Eth 0/1           163             R S I  Linux Uni Eth 0/1</span>
+
+        Total cdp entries displayed : 2
+
+        sw2# <span style="font-weight: bold;">show etherchannel summary</span>
+        Flags:  D - down        P - bundled in port-channel
+        .
+        Number of channel-groups in use: 1
+        Number of aggregators:           1
+
+        Group  Port-channel  Protocol    Ports
+        ------+-------------+-----------+-----------------------------------------------
+        <span style="background-color:yellow">1      Po1(SU)         LACP        Et0/0(P)        Et0/1(P)</span>
+
+        </pre>
+
+        * Two interfaces connect the switches
+        * The interfaces are combined into a port-channel
+
+    1. Check the switchport trunk status on "sw2".
+
+        <pre>
+        sw2# <span style="font-weight: bold;">show interface po1 trunk</span>
+
+        Port           Mode             Encapsulation  Status        Native vlan
+        Po1            on               802.1q         trunking      1
+
+        Port           Vlans allowed on trunk
+        Po1            9-11,15,19-21,999
+
+        Port           Vlans allowed and active in management domain
+        Po1            9-11,15,19-20,999
+
+        Port           Vlans in spanning tree forwarding state and not pruned
+        Po1            9-11,<span style="background-color:yellow">15</span>,19-20,999
+        </pre>
+
+        * The "APPLICATION" vlan is active on the trunk on "sw2"
+
+    1. Move to the next "hop", "sw1"
+    1. Start back at the "bottom" and check the status of the interfaces on "sw1".
+
+        <pre>
+        sw1# <span style="font-weight: bold;">show etherchan sum</span>
+        Flags:  D - down        P - bundled in port-channel
+        .
+                A - formed by Auto LAG
+
+
+        Number of channel-groups in use: 1
+        Number of aggregators:           1
+
+        Group  Port-channel  Protocol    Ports
+        ------+-------------+-----------+-----------------------------------------------
+        <span style="background-color:yellow">1      Po1(SU)         LACP        Et0/0(P)        Et0/1(P)</span>
+        </pre>
+
+    * Looks good
+
+    1. Move to Layer 2 and check the VLAN status on "sw1".
+
+        <pre>
+        sw1# <span style="font-weight: bold;">show vlan b</span>
+
+        VLAN Name                             Status    Ports
+        ---- -------------------------------- --------- -------------------------------
+        1    default                          active    Et0/3, Et1/1, Et1/2, Et1/3
+        9    USERS-FLOOR2                     active
+        10   USERS-FLOOR3                     active
+        11   USERS-FLOOR4                     active
+        <span style="background-color:yellow">15   APPLICATION                      active    Et1/0</span>
+        19   GUESTS-FLOOR2                    active
+        20   GUESTS-FLOOR3                    active
+        22   GUESTS-FLOOR4                    active
+        999  MGMT                             active
+
+
+        sw1# <span style="font-weight: bold;">show interface po1 trunk</span>
+
+        Port           Mode             Encapsulation  Status        Native vlan
+        Po1            on               802.1q         trunking      1
+
+        Port           Vlans allowed on trunk
+        Po1            9-11,19-21,999
+
+        Port           Vlans allowed and active in management domain
+        Po1            9-11,19-20,999
+
+        Port           Vlans in spanning tree forwarding state and not pruned
+        <span style="background-color:red;color:white">Po1            9-11,19-20,999</span>
+        </pre>
+
+        * VLAN 15 - APPLICATION - exists on the switch
+        * But it is ***not*** active on the trunk
+
+    1. Proposed fix: Add VLAN 15 to the trunk link to "sw2" on "sw1".
+
+        <pre>
+        sw1# <span style="font-weight: bold;">conf t</span>
+
+        sw1(config)# <span style="font-weight: bold;">int po1</span>
+        sw1(config-if)# <span style="font-weight: bold; background-color:yellow">switchport trunk allowed vlan add 15</span>
+        sw1(config-if)# <span style="font-weight: bold;">end</span>
+        sw1#
+        </pre>
+
+    1. Test connectivity from "client" to "server".
+
+        <pre>
+        client:~$ <span style="font-weight: bold;">ping -c 4 10.80.15.3</span>
+        PING 10.80.15.3 (10.80.15.3): 56 data bytes
+        64 bytes from 10.80.15.3: seq=0 ttl=42 time=3.439 ms
+        64 bytes from 10.80.15.3: seq=1 ttl=42 time=2.259 ms
+        64 bytes from 10.80.15.3: seq=2 ttl=42 time=2.188 ms
+        64 bytes from 10.80.15.3: seq=3 ttl=42 time=2.458 ms
+
+        --- 10.80.15.3 ping statistics ---
+        <span style="background-color:yellow">4 packets transmitted, 4 packets received, 0% packet loss</span>
+        round-trip min/avg/max = 2.188/2.586/3.439 ms
+        </pre>
+
+        * Success!
+
+    **Resolution:** The trunk link from "sw1" to "sw2" was missing the required VLAN on the "sw1" end. VLAN 15 was added to the trunk, and the "client" was able to ping the "server".
+
+    </details>
+
+    ## Trouble Ticket #2: Secure Remote Management Not Working
+    **Title:** Unable to connect to "rtr1" with SSH for management
+
+    **Description:** An audit of the network's secure management protocols found that "rtr1" (`10.80.0.1`) is reachable via Telnet, but SSH is not working. SSH version 2 must be enabled and use local username and password authentication. Telnet must be disabled.
+
+    > * Test access from "server" for this ticket.
+    > * All credentials on "rtr1" are set to `cisco`
+
+    **Troubleshooting Method Suggestion:** Top-Down
+
+    **Ticket Goal:** Identify and resolve the problem with SSH management. Also disable Telnet access.
+
+    <details>
+    <summary>Troubleshooting Walkthrough</summary>
+    We will use a "top-down" methodology for this ticket, testing access from the "server" Linux host.
+
+    1. Start by verifying the initial access state from "server".
+
+        <pre>
+        server:~$ <span style="font-weight: bold;">telnet 10.80.0.1</span>
+        Connected to 10.80.0.1
+
+        Entering character mode
+        Escape character is '^]'.
+
+
+
+        User Access Verification
+
+        Username: cisco
+        Password:
+        rtr1#
+        </pre>
+
+        * Telnet is working
+
+        <pre>
+        server:~$ <span style="font-weight: bold;">ssh cisco@10.80.0.1</span>
+        ssh: connect to host 10.80.0.1 port 22: <span style="background-color:red;color:white">Connection refused</span>
+        </pre>
+
+        * SSH connections are refused.  This looks like an application level issue.
+
+    1. Let's check the transport settings on the VTY lines of "rtr1".
+
+        <pre>
+        rtr1# <span style="font-weight: bold;">show run | sec line vty</span>
+
+        line vty 0 4
+        activation-character 13
+        login local
+        <span style="background-color:yellow">transport input telnet ssh</span>
+        </pre>
+
+        * Both telnet and ssh are enabled
+
+    1. Check the SSH status on "rtr1".
+
+        <pre>
+        rtr1# <span style="font-weight: bold;">show ip ssh</span>
+
+        <span style="background-color:red;color:white">SSH Disabled</span> - version 2.0
+        %Please create an RSA key of atleast 3072 bits or an EC key of atleast 384 bits to enable SSH server functionality
+        </pre>
+
+        * SSH is disabled, and a message tells us to create a key.
+
+    1. Create the key on "rtr1".
+
+        <pre>
+        rtr1# <span style="font-weight: bold;">crypto key generate ec keysize 384</span>
+        <span style="background-color:red;color:white">% Please define a domain-name first.</span>
+
+        rtr1# <span style="font-weight: bold;">crypto key generate rsa general-keys modulus 4096</span>
+        <span style="background-color:red;color:white">% Please define a domain-name first.</span>
+        </pre>
+
+        * Both EC (elliptic curve) and RSA (Rivest-Shamir-Adleman) key-generation attempts fail because no domain name is configured.
+
+    1. Configure a domain name on "rtr1".  The domain name doesn't matter for the ticket, it is just required to create a key.
+
+        <pre>
+        rtr1# <span style="font-weight: bold;">conf t</span>
+        Enter configuration commands, one per line.  End with CNTL/Z.
+
+        rtr1(config)# <span style="font-weight: bold;">ip domain name example.com</span>
+        rtr1(config)# <span style="font-weight: bold;">exit</span>
+
+        rtr1# <span style="font-weight: bold;">crypto key generate ec keysize 384</span>
+        The name for the keys will be: rtr1.example.com
+
+        rtr1# <span style="font-weight: bold;">show crypto key mypubkey all</span>
+        % Key pair was generated at: 17:58:29 UTC Oct 13 2026
+        Key name: rtr1.example.com
+        Key type: EC KEYS      p384 curve
+        Storage Device: private-config
+        Usage: Signature Key
+        Key is not exportable. Redundancy enabled.
+        Key Data:
+        30763010 06072A86 48CE3D02 0106052B 81040022 03620004 ED4933D5 F4EE0D97
+        A70BA7D7 1A7D1121 979B196E 34823986 F4DD3A32 836DD8D6 E0D96350 1133BB05
+        1FB169D9 2FA4093C 4A532892 652F706E 32EC904E DA8F2372 53974C19 FCDE32B1
+        17ED282B 46AA24F5 A0F68C5C 8D1FF4C4 5C4CCFEC 99F90514
+        </pre>
+
+    1. Let's check the log. Key generation should generate a message.
+
+        <pre>
+        rtr1# <span style="font-weight: bold;">show log last 5</span>
+        Syslog logging: enabled (0 messages dropped, 2 messages rate-limited, 0 flushes, 0 overruns, xml disabled, filtering disabled)
+        .
+
+        Showing last 5 lines
+
+        Log Buffer (4096 bytes):
+
+        *Oct 13 17:07:52.586: %SYS-5-CONFIG_I: Configured from console by console
+        *Oct 13 17:18:15.378: %SYS-6-TTY_EXPIRE_TIMER: (exec timer expired, tty 0 (0.0.0.0)), user
+        *Oct 13 17:58:26.098: %SYS-5-CONFIG_I: Configured from console by console
+        *Oct 13 17:58:29.709: <span style="background-color:yellow">%CRYPTO_ENGINE-5-KEY_ADDITION: A key named rtr1.example.com has been generated or imported by crypto-engine</span>
+        *Oct 13 17:58:29.718: <span style="background-color:yellow">%SSH-5-ENABLED: SSH 2.0 has been enabled</span>
+        </pre>
+
+        * The key was created.
+        * SSH now shows as enabled.
+
+    1. Verify SSH status.
+
+        <pre>
+        rtr1# <span style="font-weight: bold;">show ip ssh</span>
+        SSH Enabled - version 2.0
+        Authentication methods:publickey,keyboard-interactive,password
+        .
+        </pre>
+
+    1. Check to see if SSH access works from "server".
+
+        <pre>
+        server:~$ <span style="font-weight: bold;">ssh cisco@10.80.0.1</span>
+
+        (cisco@10.80.0.1) Password:
+
+
+        rtr1#
+        </pre>
+
+        * SSH is now working.
+        * We'll leave the whole "post-quantum key exchange" issue for another ticket :-)
+
+    1. Disable telnet on "rtr1"
+
+        <pre>
+        rtr1# <span style="font-weight: bold;">conf t</span>
+        Enter configuration commands, one per line.  End with CNTL/Z.
+
+        rtr1(config)# <span style="font-weight: bold;">line vty 0 4</span>
+        rtr1(config-line)# <span style="font-weight: bold;">transport input ssh</span>
+        rtr1(config-line)# <span style="font-weight: bold;">end</span>
+        rtr1#
+        </pre>
+
+    1. Test telnet from "server" to verify it doesn't work.
+
+        <pre>
+        server:~$ <span style="font-weight: bold;">telnet 10.80.0.1</span>
+        <span style="background-color:yellow">telnet: can't connect to remote host (10.80.0.1): Connection refused
+        </span>
+        </pre>
+
+    **Resolution:** SSH wasn't working on "rtr1" because no key was configured. A domain name had to be added to generate a key. SSH access from "server" was tested, then Telnet was disabled and verified.
+
+    </details>
+
+
+    ## Trouble Ticket #3: Client Configuration Download Failing
+    **Title:** Client unable to download config or data from "server"
+
+    **Description:** While setting up the application on "client", the systems team encountered an issue downloading the required files `http://server/config.file` and `http://server/data.file`. The test file `http://server/test.txt` does work.
+
+    > * The command `wget -T 10` can be used to download files. Ex: `wget -T 10 http://server/test.txt`
+    >   * Note: The `-T 10` argument sets the timeout for `wget` to 10 seconds. The default is indefinite
+    > * Determine why the file downloads are failing on "client"
+
+    **Troubleshooting Method Suggestion:** Top-Down
+
+    **Ticket Goal:** Diagnose the problem. Determine the most likely cause and suggest ways to resolve it. Actually fixing the problem is not necessary.
+
+    <details>
+    <summary>Diagnostic Walkthrough</summary>
+    Trouble Ticket #1 verified basic connectivity between "client" and "server" using a bottom-up approach. This time, we'll start at the top and work our way down to find the issue.
+
+    1. First, replicate the problem on "client" by attempting to download all three files: the test file, config file, and data file.
+
+        <pre>
+        client:~$ <span style="font-weight: bold;">wget -T 10 http://server/test.txt</span>
+        Connecting to server (10.80.15.3:80)
+        saving to 'test.txt'
+        test.txt             100% |********************************|     9  0:00:00 ETA
+        <span style="background-color:yellow">'test.txt' saved</span>
+
+        client:~$ <span style="font-weight: bold;">wget -T 10 http://server/config.file</span>
+        Connecting to server (10.80.15.3:80)
+        <span style="background-color:red;color:white">wget: download timed out</span>
+
+        client:~$ <span style="font-weight: bold;">wget -T 10 http://server/data.file</span>
+        Connecting to server (10.80.15.3:80)
+        <span style="background-color:red;color:white">wget: download timed out</span>
+
+        client:~$ <span style="font-weight: bold;">ls -lh</span>
+        total 4K
+        -rw-r--r--    1 cisco    cisco          9 Oct 14 15:45 test.txt
+
+        </pre>
+
+        * Replicated the problem
+        * "client" can access and download the "test.txt" file successfully, but the other files fail.
+
+    1. Test that the downloads work from "server".
+
+        <pre>
+        server:~$ <span style="font-weight: bold;">wget -T 10 http://server/test.txt</span>
+        Connecting to server (127.0.0.1:80)
+        saving to 'test.txt'
+        test.txt             100% |********************************|     9  0:00:00 ETA
+        <span style="background-color:yellow">'test.txt' saved</span>
+
+
+        server:~$ <span style="font-weight: bold;">wget -T 10 http://server/config.file</span>
+        Connecting to server (127.0.0.1:80)
+        saving to 'config.file'
+        config.file          100% |********************************| 1024k  0:00:00 ETA
+        <span style="background-color:yellow">'config.file' saved</span>
+
+
+        server:~$ <span style="font-weight: bold;">wget -T 10 http://server/data.file</span>
+        Connecting to server (127.0.0.1:80)
+        saving to 'data.file'
+        data.file            100% |********************************|  100M  0:00:00 ETA
+        <span style="background-color:yellow">'data.file' saved</span>
+
+        server:~$ <span style="font-weight: bold;">ls -lh</span>
+        total 101M
+        -rw-r--r--    1 cisco    cisco       1.0M Oct 14 15:50 config.file
+        -rw-r--r--    1 cisco    cisco     100.0M Oct 14 15:50 data.file
+        -rw-r--r--    1 cisco    cisco          9 Oct 14 15:50 test.txt
+        </pre>
+
+        * The downloads are working fine on "server".
+
+    1. Top-Down analysis so far
+        * Layers 7-5 [Application, Presentation, Session] seem to be working from "client" to "server" because the test file downloads successfully.
+        * Layer 4 [Transport] - Must be working in order for test file download to work
+        * Layer 3 [Network] - No routing is involved between "server" and "client", but ping and reachability are working.
+        * Layer 2 [Data Link] - With HTTP and ping working, layer 2 seems healthy
+        * Layer 1 [Physical] - Seems to be working, but are there errors?
+
+    1. Let's check interface details on the switches connected to "server" and "client".
+
+        <pre>
+        sw1# <span style="font-weight: bold;">show inter e1/0</span>
+        Ethernet1/0 is up, line protocol is up (connected)
+        Hardware is Ethernet, address is aabb.cc00.6301 (bia aabb.cc00.6301)
+        Description: Connection to server
+        MTU 1500 bytes, BW 10000 Kbit/sec, DLY 1000 usec,
+            reliability 255/255, txload 1/255, rxload 1/255
+        Encapsulation ARPA, loopback not set
+        Keepalive set (10 sec)
+        .
+        Queueing strategy: fifo
+        Output queue: 0/40 (size/max)
+        5 minute input rate 0 bits/sec, 0 packets/sec
+        5 minute output rate 0 bits/sec, 0 packets/sec
+            14268 packets input, 1365896 bytes, 0 no buffer
+            Received 0 broadcasts (0 multicasts)
+            0 runts, <span style="background-color:red;color:white">203 giants</span>, 0 throttles
+            <span style="background-color:red;color:white">208 input errors</span>, 0 CRC, 0 frame, 0 overrun, 5 ignored
+            0 input packets with dribble condition detected
+            78467 packets output, 47205719 bytes, 0 underruns
+            Output 47293 broadcasts (47245 multicasts)
+            2 output errors, 2 collisions, 1 interface resets
+            0 unknown protocol drops
+            0 babbles, 0 late collision, 0 deferred
+            0 lost carrier, 0 no carrier
+            0 output buffer failures, 0 output buffers swapped out
+        </pre>
+
+        <pre>
+        sw2# <span style="font-weight: bold;">show int e1/0</span>
+        Ethernet1/0 is up, line protocol is up (connected)
+        Hardware is Ethernet, address is aabb.cc00.6001 (bia aabb.cc00.6001)
+        Description: Connection to client
+        MTU 1500 bytes, BW 10000 Kbit/sec, DLY 1000 usec,
+            reliability 255/255, txload 1/255, rxload 1/255
+        Encapsulation ARPA, loopback not set
+        Keepalive set (10 sec)
+        .
+        Queueing strategy: fifo
+        Output queue: 0/40 (size/max)
+        5 minute input rate 0 bits/sec, 0 packets/sec
+        5 minute output rate 0 bits/sec, 0 packets/sec
+            205 packets input, 20601 bytes, 0 no buffer
+            Received 0 broadcasts (0 multicasts)
+            0 runts, <span style="background-color:red;color:white">10 giants</span>, 0 throttles
+            <span style="background-color:red;color:white">10 input errors</span>, 0 CRC, 0 frame, 0 overrun, 0 ignored
+            0 input packets with dribble condition detected
+            6791 packets output, 838563 bytes, 0 underruns
+            Output 6634 broadcasts (5373 multicasts)
+            0 output errors, 0 collisions, 0 interface resets
+            0 unknown protocol drops
+            0 babbles, 0 late collision, 0 deferred
+            0 lost carrier, 0 no carrier
+            0 output buffer failures, 0 output buffers swapped out
+        </pre>
+
+        * Both switches show input errors and giants on the interfaces connected to the hosts.
+        * "Giants" are packets that exceed an interface's MTU.
+
+    1. Check the MTU configured on the "server" and "client".
+
+        <pre>
+        server:~$ <span style="font-weight: bold;">ip link show dev eth0</span>
+        2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> <span style="background-color:yellow">mtu 9000</span> qdisc pfifo_fast state UP qlen 1000
+            link/ether 52:54:00:e4:a3:89 brd ff:ff:ff:ff:ff:ff
+        </pre>
+
+        <pre>
+        client:~$ <span style="font-weight: bold;">ip link show dev eth0</span>
+        2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> <span style="background-color:yellow">mtu 9000</span> qdisc pfifo_fast state UP qlen 1000
+            link/ether 52:54:00:a9:40:25 brd ff:ff:ff:ff:ff:ff
+        </pre>
+
+        * Both hosts are configured for jumbo frames with a 9000-byte MTU.
+        * The switch interfaces use a standard MTU of 1500 bytes.
+
+    **Diagnosis:** An MTU mismatch between the hosts and the network is causing issues with "bulky" data transmissions. The "test file" is only 9 bytes and doesn't exceed the standard MTU on the switches. However, the config and data files are larger, and the hosts are sending network traffic that is too large for the switches. To resolve the issue, the hosts' MTUs must be no larger than the MTU supported by the switches in the path.
+
+    We can test the diagnosis with ping by setting the size and do-not-fragment bits.
+
+    1. From "client", send a `1472-byte` ping to test the standard MTU by sending a 1500-byte packet.
+
+        <pre>
+        client:~$ <span style="font-weight: bold;">ping -c 4 -s 1472 server</span>
+        PING server (10.80.15.3): 1472 data bytes
+        1480 bytes from 10.80.15.3: seq=0 ttl=42 time=2.268 ms
+        1480 bytes from 10.80.15.3: seq=1 ttl=42 time=2.583 ms
+        1480 bytes from 10.80.15.3: seq=2 ttl=42 time=2.736 ms
+        1480 bytes from 10.80.15.3: seq=3 ttl=42 time=2.601 ms
+
+        --- server ping statistics ---
+        <span style="background-color:yellow">4 packets transmitted, 4 packets received, 0% packet loss</span>
+        round-trip min/avg/max = 2.268/2.547/2.736 ms
+        </pre>
+
+        * Note: The ICMPv4 header is 8 bytes, and the IPv4 header is 20 bytes.
+
+            <pre>
+            1472 (data) + 8 (ICMP) + 20 (IPv4) = 1500 bytes
+            </pre>
+
+    1. Now, from "client", send a "jumbo" ping with a total size larger than 1500 bytes.
+
+        <pre>
+        client:~$ <span style="font-weight: bold;">ping -c 4 -s 2000 server</span>
+        PING server (10.80.15.3): 2000 data bytes
+
+        --- server ping statistics ---
+        <span style="background-color:red;color:white">4 packets transmitted, 0 packets received, 100% packet loss</span>
+        </pre>
+
+    Diagnosis verified!
+
+    </details>
+
+    <details>
+    <summary>Fixing the Issue!</summary>
+    This ticket was about diagnosing the problem, but you may want to fix it too! Me too :-)
+
+    The problem is that the hosts are using a larger MTU than the network supports. We either need to increase the network's MTU or decrease the MTU on the hosts.
+
+    > Note: Having a network with a larger MTU than its hosts is typically not a problem. This configuration is common in a data center, where the switches would be configured for jumbo frames and server engineers could choose to use jumbo frames on a server-by-server basis.
+
+    The IOL switches used in this lab don't support changing the MTU on the network, but we can change the MTU on the Linux hosts using the `ip link` command.
+
+    Run this command on "client".  No reboot is necessary.
+
+    <pre>
+    <span style="font-weight: bold;">sudo ip link set dev eth0 mtu 1500</span>
+    </pre>
+
+    Now try to download the config or data file.
+
+    <pre>
+    client:~$ <span style="font-weight: bold;">wget http://server/config.file</span>
+    Connecting to server (10.80.15.3:80)
+    saving to 'config.file'
+    config.file          100% |********************************| 1024k  0:00:00 ETA
+    'config.file' saved
+    </pre>
+
+    Success!
+
+    You may wonder why we didn't need to change the MTU on the server. That's a great question. During the four-way handshake for TCP, hosts negotiate a maximum segment size. If two hosts support different MTUs, they will agree to use the largest MTU supported by both.
+
+    </details>
+
+
+    ## Trouble Ticket #4: Internet is down!
+    > Note: We got a little excited about the topic, and this lab guide got a little too big to embed within CML. You can find Ticket 4 in the PDF lab guide available with the resources on the [CML Community](https://github.com/CiscoDevNet/cml-community/blob/master/lab-topologies/ccna-prep/s4e2/).
+  title: 'CCNA Prep 2026 S4E2 - Isolating Faults from Layer 1 to Layer 7 '
+  node_staging:
+    enabled: false
+    start_remaining: true
+    abort_on_failure: false
+  version: 0.3.1
