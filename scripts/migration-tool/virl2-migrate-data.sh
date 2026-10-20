@@ -114,6 +114,10 @@ ask_confirm() {
 
 cleanup_local() {
     set +e
+    if [[ "${REMOTE_WORK_DIR:-}" =~ ^/var/tmp/migration\.[A-Za-z0-9]+$ &&
+        "$REMOTE_WORK_DIR" != "${WORKING_DIR:-}" ]]; then
+        rm -rf "$REMOTE_WORK_DIR"
+    fi
     if [[ -n "$WORKING_DIR" && -d "$WORKING_DIR" ]]; then
         rm -rf "$WORKING_DIR"
     fi
@@ -218,19 +222,19 @@ prepare_export() {
 
     mkdir -p "$WORKING_DIR"/{kvm,net}
     local target="$WORKING_DIR/kvm" origin="$LIBVIRT_XML/qemu"
-    if [ -d "$origin" ]; then
+    if [[ -d "$origin" ]]; then
         copy_xml
     fi
 
     origin="$LIBVIRT_XML/lxc"
-    if "$SOURCE_LXC" && [ -d "$origin" ]; then
+    if "$SOURCE_LXC" && [[ -d "$origin" ]]; then
         target="$WORKING_DIR/lxc"
         mkdir -p "$target"
         copy_xml
     fi
 
     origin="$LIBVIRT_XML/qemu/networks"
-    if [ -d "$origin" ]; then
+    if [[ -d "$origin" ]]; then
         target="$WORKING_DIR/net"
         copy_xml
     fi
@@ -621,6 +625,10 @@ sync_from_host() {
         return $rc
     fi
 
+    # Sticky /tmp (1777) refuses scp overwrite of a leftover root-owned
+    # /tmp/virl2-migrate-data.sh from a prior migration.
+    ssh "${ssh_opts[@]}" "$host" "sudo rm -f $OTHER_ME" || true
+
     # Install this script on the remote host.
     scp "${ssh_opts[@]}" "$LOCAL_ME" "$scp_rsync_host":"$OTHER_ME" >/dev/null || rc=$?
     if [[ $rc != 0 ]]; then
@@ -658,11 +666,12 @@ sync_from_host() {
         echo "Failed to prepare export on $host"
         return $rc
     fi
-    REMOTE_WORK_DIR=$(grep -oE 'PREPARE_EXPORT_PATH=\S+' <<<"$output" | tail -1 | cut -d= -f2)
-    if [[ -z "$REMOTE_WORK_DIR" ]]; then
-        echo "Source host did not return a working-dir path; aborting."
+    remote_work_dir=$(grep -oE 'PREPARE_EXPORT_PATH=\S+' <<<"$output" | tail -1 | cut -d= -f2)
+    if [[ ! "$remote_work_dir" =~ ^/var/tmp/migration\.[A-Za-z0-9]+$ ]]; then
+        echo "Source host returned an invalid working-dir path; aborting."
         return 1
     fi
+    REMOTE_WORK_DIR=$remote_work_dir
     SRC_DIRS+=("$REMOTE_WORK_DIR")
 
     # Get required disk space from remote host
@@ -691,6 +700,9 @@ sync_from_host() {
         return $rc
     fi
     printf "\nData transfer completed SUCCESSFULLY.\n"
+    if [[ "$REMOTE_WORK_DIR" != "$WORKING_DIR" ]]; then
+        cp -a "$REMOTE_WORK_DIR"/. "$WORKING_DIR"/ || return $?
+    fi
     perform_restore
 
     trap - SIGINT ERR
@@ -797,6 +809,10 @@ while true; do
         --)
             shift
             break
+            ;;
+        *)
+            show_error "Unexpected option parser token '$1'."
+            exit 1
             ;;
     esac
     shift
