@@ -1,0 +1,1854 @@
+annotations:
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      10.80.5.1
+      DHCP, Gateway, NAT to Internet
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 40.0
+    y1: -80.0
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      Server Functions:
+      * DNS - 10.80.5.100 (e0)
+      * Application/HTTP - 10.80.5.101-103 (e1-3)
+        * Simulated Internet Hosts:
+          server.example.com
+          system.support.example.com
+          csnake.example.com
+          quantumcloud.example.com
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 280.0
+    y1: 0.0
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: true
+    text_content: 'CCNA Exam Prep: Back to Networking Basics with Hank Preston and
+      Patrick Gargano'
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -200.0
+    y1: -280.0
+    z_index: 1
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#000000'
+    rotation: 0
+    text_bold: true
+    text_content: Exploring Client Networking
+    text_font: monospace
+    text_italic: false
+    text_size: 18
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -200.0
+    y1: -240.0
+    z_index: 2
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      The network is more than switches and routers. Clients are what a network is made for.
+      This lab is all about exploring the clients that send and receive our packets.
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -200.0
+    y1: -200.0
+    z_index: 3
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      Credentials on all Nodes:
+      username/password: cisco / cisco
+      enable password:   cisco
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 160.0
+    y1: 240.0
+    z_index: 0
+smart_annotations:
+  - tag: serial:4001:0
+    is_on: true
+    padding: 35
+    label: serial:4001:0
+    tag_offset_x: 0
+    tag_offset_y: 0
+    tag_size: 14
+    group_distance: 400
+    thickness: 1
+    border_style: ''
+    fill_color: '#A95FBE80'
+    border_color: '#00000080'
+    z_index: 2
+nodes:
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: "# this is a shell script which will be sourced at boot\nhostname\
+          \ server\n# configurable user account\nUSERNAME=cisco\nPASSWORD=cisco\n\n\
+          # Create command aliases\necho 'alias ping=\"ping -c 4\"' >> /etc/profile.d/aliases.sh\n\
+          \n# Configure static IP address\nip addr add 10.80.5.100/24 dev eth0 # server\n\
+          ip addr add 10.80.5.101/24 dev eth1 # app01\nip addr add 10.80.5.102/24\
+          \ dev eth2 # app02\nip addr add 10.80.5.103/24 dev eth3 # app03\nip link\
+          \ set dev eth1 up\nip link set dev eth2 up\nip link set dev eth3 up\nip\
+          \ route add default via 10.80.5.1\necho \"nameserver 8.8.8.8\" > /etc/resolv.conf\n\
+          \n# Install and Configure Bind DNS Server\napk add bind\n# Create /etc/bind/named.conf\n\
+          # Note: Cisco Umbrella DNS used for forwarders\necho '\noptions {\n  directory\
+          \ \"/var/bind\";\n  allow-recursion { 10.0.0.0/8; };\n  forwarders {\n \
+          \ 208.67.222.222;\n  208.67.220.220;\n  };\n  listen-on { 10.80.5.100; };\n\
+          \  listen-on-v6 { none; };\n  pid-file \"/var/run/named/named.pid\";\n \
+          \ allow-transfer { none; };\n};\nzone \"example.com\" IN {\ntype master;\n\
+          file \"/etc/bind/db.example.com\";\n};\nzone \"5.80.10.in-addr.arpa\" {\n\
+          \    type master;\n    file \"/etc/bind/db.10.80.5\";\n};\nzone \"10.80.10.in-addr.arpa\"\
+          \ {\n    type master;\n    file \"/etc/bind/db.10.80.10\";\n};\n' > /etc/bind/named.conf\n\
+          \n# Create zone file for example.com\necho '\n$TTL 86400\n@       IN   \
+          \   SOA     server.example.com.      hostmaster.example.com. (\n      2025020201\t\
+          ; serial number YYMMDDNN\n      28800           ; Refresh\n      7200  \
+          \          ; Retry\n      864000          ; Expire\n      86400        \
+          \   ; Min TTL\n      )\n\n    NS      server.example.com.\n\n; Websites\n\
+          system.support  IN      CNAME   app01.example.com.\nquantumcloud      IN\
+          \      CNAME   app02.example.com.\ncsnake          IN      CNAME   app03.example.com.\n\
+          aaisolutions      IN      CNAME   app03.example.com.\n\n\n; End Devices\n\
+          server          IN      A       10.80.5.100\napp01           IN      A \
+          \      10.80.5.101\napp02           IN      A       10.80.5.102\napp03 \
+          \          IN      A       10.80.5.103\n\n\n$ORIGIN example.com.\n' > /etc/bind/db.example.com\n\
+          \n# Create zone file for 10.80.5\necho '\n$TTL 86400  ; Default TTL\n@ \
+          \  IN  SOA      server.example.com. hostmaster.example.com. (\n  2023010101\
+          \ ; Serial\n  86400      ; Refresh\n  7200       ; Retry\n  3600000    ;\
+          \ Expire\n  86400 )    ; Minimum TTL\n\n; Name servers\n@   IN  NS     \
+          \ server.example.com.\n\n; PTR Records\n101  IN  PTR     server.example.com.\
+          \  ; For 10.80.5.11\n111  IN  PTR     app01.example.com.  ; For 10.80.5.111\n\
+          121  IN  PTR     mail01.example.com.  ; For 10.80.5.121\n' > /etc/bind/db.10.80.5\n\
+          \n# Start bind service\nrc-service named start\n# Re-configured local DNS\
+          \ server to use localhost\necho \"nameserver 10.80.5.100\" > /etc/resolv.conf\n\
+          \n# Setup nginx as web/app server\napk update\napk add nginx\nrc-service\
+          \ nginx stop\n\n# Create the customized nginx.conf to serve multiple pages\n\
+          cat > /etc/nginx/nginx.conf << 'EOF'\n\nuser  nginx;\nworker_processes \
+          \ auto;\n\nerror_log  /var/log/nginx/error.log notice;\npid        /run/nginx.pid;\n\
+          \n\nevents {\n    worker_connections  1024;\n}\n\n\nhttp {\n    include\
+          \       /etc/nginx/mime.types;\n    default_type  application/octet-stream;\n\
+          \n    log_format  main  '$remote_addr - $remote_user [$time_local] \"$request\"\
+          \ '\n                      '$status $body_bytes_sent \"$http_referer\" '\n\
+          \                      '\"$http_user_agent\" \"$http_x_forwarded_for\"';\n\
+          \n    access_log  /var/log/nginx/access.log  main;\n\n    sendfile     \
+          \   on;\n    #tcp_nopush     on;\n\n    keepalive_timeout  65;\n\n    #gzip\
+          \  on;\n\n    # Default server - catches unmatched requests\n    server\
+          \ {\n        listen 10.80.5.100:80 default_server;\n        server_name\
+          \ _;\n\n        location / {\n            root /usr/share/nginx/html;\n\
+          \            index index.html;\n        }\n    }\n\n    # app01 - system.support\
+          \ - System Support app\n    server {\n        listen 10.80.5.101:80;\n \
+          \       server_name system.support.example.com;\n\n        location / {\n\
+          \            root /usr/share/nginx/html;\n            try_files /system.support.html\
+          \ =404;\n        }\n    }\n\n    # app02 - quantumcloud - Quantum Cloud\
+          \ Streaming\n    server {\n        listen 10.80.5.102:80;\n        server_name\
+          \ quantumcloud quantumcloud.example.com;\n\n        location / {\n     \
+          \       root /usr/share/nginx/html;\n            try_files /quantumcloud.html\
+          \ =404;\n        }\n    }\n\n    # app03 - csnake - CYBER SNAKE 2000\n \
+          \   server {\n        listen 10.80.5.103:80;\n        server_name csnake\
+          \ csnake.example.com;\n\n        location / {\n            root /usr/share/nginx/html;\n\
+          \            try_files /csnake.html =404;\n        }\n    }\n\n}\nEOF\n\n\
+          mkdir -p /usr/share/nginx/html\n# Create a basic web page for the server\n\
+          cat > /usr/share/nginx/html/system.support.html << 'EOF'\n<!DOCTYPE html>\n\
+          <html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"\
+          viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Network\
+          \ Configuration Dashboard</title>\n    <style>\n        body {\n       \
+          \     font-family: 'Courier New', monospace;\n            background-color:\
+          \ #f4f4f4;\n            color: #333;\n            margin: 0;\n         \
+          \   padding: 0;\n        }\n\n        header {\n            background-color:\
+          \ #2c3e50;\n            color: white;\n            padding: 1em;\n     \
+          \       text-align: center;\n        }\n\n        nav {\n            background-color:\
+          \ #34495e;\n            padding: 0.5em;\n            text-align: center;\n\
+          \        }\n\n        nav a {\n            color: white;\n            text-decoration:\
+          \ none;\n            margin: 0 15px;\n            font-weight: bold;\n \
+          \       }\n\n        nav a:hover {\n            text-decoration: underline;\n\
+          \        }\n\n        .container {\n            padding: 2em;\n        \
+          \    background-color: white;\n            border-radius: 8px;\n       \
+          \     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\n            margin-top:\
+          \ 20px;\n        }\n\n        .ascii-art {\n            text-align: center;\n\
+          \            font-size: 18px;\n            color: #1abc9c;\n        }\n\n\
+          \        table {\n            width: 100%;\n            border-collapse:\
+          \ collapse;\n            margin-top: 1em;\n        }\n\n        table, th,\
+          \ td {\n            border: 1px solid #ccc;\n        }\n\n        th, td\
+          \ {\n            padding: 0.8em;\n            text-align: left;\n      \
+          \  }\n\n        th {\n            background-color: #34495e;\n         \
+          \   color: white;\n        }\n\n        .footer {\n            text-align:\
+          \ center;\n            background-color: #2c3e50;\n            color: white;\n\
+          \            padding: 1em;\n            margin-top: 20px;\n        }\n\n\
+          \        .footer a {\n            color: #1abc9c;\n            text-decoration:\
+          \ none;\n        }\n    </style>\n</head>\n<body>\n\n<header>\n    <h1>Internal\
+          \ Network Configuration</h1>\n    <p>Company's Centralized Network Management\
+          \ Dashboard</p>\n</header>\n\n<nav>\n    <a href=\"#overview\">Overview</a>\n\
+          \    <a href=\"#config\">Configurations</a>\n    <a href=\"#status\">Network\
+          \ Status</a>\n    <a href=\"#help\">Help</a>\n</nav>\n\n<div class=\"container\"\
+          \ id=\"overview\">\n    <h2>\U0001F527 Overview of Network Setup</h2>\n\
+          \    <div class=\"ascii-art\">\n        <pre>\n _____\n/     \\\n      \
+          \ | admin |-----+\n        \\_____/      |\n                           \
+          \  |\n             +--------+--------+\n             | client-switch   \
+          \ |\n             +--------+--------+\n                      |\n       \
+          \      +--------+--------+\n             |   router (HQ)   |\n         \
+          \    +--------+--------+\n                      |\n             +--------+--------+\n\
+          \             | server-switch   |\n             +--------+--------+\n  \
+          \                    |\n             +--------+--------+\n             |\
+          \  web-server     |\n             +-----------------+\n        </pre>\n\
+          \    </div>\n    <p>This diagram represents the network topology with admin\
+          \ and office users, client-switch, router (HQ), server-switch, and a web-server.</p>\n\
+          </div>\n\n<div class=\"container\" id=\"config\">\n    <h2>\U0001F527 Network\
+          \ Configuration</h2>\n    <table>\n        <tr>\n            <th>Device</th>\n\
+          \            <th>IP Address</th>\n            <th>Status</th>\n        </tr>\n\
+          \        <tr>\n            <td>Router (HQ)</td>\n            <td>172.18.0.1</td>\n\
+          \            <td>Active</td>\n        </tr>\n        <tr>\n            <td>Client\
+          \ Switch</td>\n            <td>192.168.10.1</td>\n            <td>Active</td>\n\
+          \        </tr>\n        <tr>\n            <td>Server Switch</td>\n     \
+          \       <td>10.20.00.1</td>\n            <td>Active</td>\n        </tr>\n\
+          \        <tr>\n            <td>Web Server</td>\n            <td>10.20.01.1</td>\n\
+          \            <td>Active</td>\n        </tr>\n    </table>\n</div>\n\n<div\
+          \ class=\"container\" id=\"status\">\n    <h2>\U0001F310 Current Network\
+          \ Status</h2>\n    <div class=\"ascii-art\">\n        <pre>\n        +----------------------------+\n\
+          \        |  Network Monitoring        |\n        +----------------------------+\n\
+          \        |  Router (HQ): [  ✔  ]      |\n        |  Client Switch: [  ✔\
+          \  ]    |\n        |  Server Switch: [  ✔  ]   |\n        |  Web Server:\
+          \ [  ✔  ]      |\n        +----------------------------+\n        </pre>\n\
+          \    </div>\n    <p>All devices are up and functioning. Network status is\
+          \ stable.</p>\n</div>\n\n<div class=\"container\" id=\"help\">\n    <h2>❓\
+          \ Need Assistance?</h2>\n    <p>For help with network configurations, please\
+          \ refer to the <a href=\"#\">Network Configuration Guide</a> or contact\
+          \ the IT support team.</p>\n</div>\n\n<div class=\"footer\">\n    <p>Company\
+          \ Network Dashboard - © 2025</p>\n    <p><a href=\"#\">Contact IT Support</a>\
+          \ | <a href=\"#\">Privacy Policy</a></p>\n</div>\n\n</body>\n</html>\nEOF\n\
+          \n# Create a basic web page for the server\ncat > /usr/share/nginx/html/index.html\
+          \ << 'EOF'\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"\
+          UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"\
+          >\n    <title>Simulated Internet - Welcome</title>\n    <style>\n      \
+          \  body {\n            font-family: 'Courier New', Courier, monospace;\n\
+          \            background: #f0f0f0;\n            color: #333;\n          \
+          \  display: flex;\n            justify-content: center;\n            align-items:\
+          \ center;\n            min-height: 100vh;\n            margin: 0;\n    \
+          \        padding: 20px;\n        }\n\n        .container {\n           \
+          \ max-width: 600px;\n            background: white;\n            border:\
+          \ 3px solid #000;\n            padding: 40px;\n            box-shadow: 8px\
+          \ 8px 0 #000;\n        }\n\n        h1 {\n            font-size: 48px;\n\
+          \            margin: 0 0 20px 0;\n            color: #000;\n        }\n\n\
+          \        h2 {\n            font-size: 24px;\n            margin: 0 0 30px\
+          \ 0;\n            color: #666;\n            font-weight: normal;\n     \
+          \   }\n\n        hr {\n            border: none;\n            border-top:\
+          \ 2px dashed #ccc;\n            margin: 30px 0;\n        }\n\n        p\
+          \ {\n            line-height: 1.8;\n            margin: 15px 0;\n      \
+          \      font-size: 16px;\n        }\n\n        .error-code {\n          \
+          \  font-size: 72px;\n            font-weight: bold;\n            color:\
+          \ #ddd;\n            margin-bottom: 10px;\n        }\n\n        .footer\
+          \ {\n            margin-top: 30px;\n            font-size: 12px;\n     \
+          \       color: #999;\n            text-align: center;\n        }\n\n   \
+          \     a {\n            color: #0066cc;\n            text-decoration: underline;\n\
+          \        }\n\n        a:hover {\n            color: #003366;\n        }\n\
+          \n        .ascii-art {\n            font-size: 12px;\n            line-height:\
+          \ 1.2;\n            color: #999;\n            margin: 20px 0;\n        \
+          \    white-space: pre;\n        }\n\n        ul {\n            margin: 20px\
+          \ 0;\n            padding-left: 20px;\n        }\n\n        li {\n     \
+          \       margin: 8px 0;\n        }\n    </style>\n</head>\n<body>\n    <div\
+          \ class=\"container\">\n        <div class=\"error-code\">???</div>\n  \
+          \      <h1>Welcome!</h1>\n        <h2>You've reached the Simulated Internet</h2>\n\
+          \n        <hr>\n\n        <p>\n            <strong>Your imagination is probably\
+          \ bigger than the services available here.</strong>\n        </p>\n\n  \
+          \      <p>\n            This is a minimal simulation of \"the internet\"\
+          \ for network lab purposes.\n            The content you seek may or may\
+          \ not exist in this pocket dimension of cyberspace.\n        </p>\n\n  \
+          \      <div class=\"ascii-art\">\n    ___________\n   /  ______  /|\n  /\
+          \  /     / / |\n /__/     /_/  |    <- This is the internet (simulated)\n\
+          \ |  |     | |  |\n |  |_____|_|  /\n |   ___   |  /\n |  |___   | /\n |________|/\n\
+          \        </div>\n\n        <p><strong>Available destinations:</strong></p>\n\
+          \        <ul>\n            <li>You are here (nowhere in particular)</li>\n\
+          \            <li>There might be other places (check your DNS)</li>\n   \
+          \         <li>The void (always accessible)</li>\n        </ul>\n\n     \
+          \   <hr>\n\n        <p>\n            <em>Helpful hint:</em> If you're looking\
+          \ for something specific, try using\n            the actual hostname rather\
+          \ than just the IP address. The internet is vast\n            (even when\
+          \ simulated).\n        </p>\n\n        <div class=\"footer\">\n        \
+          \    <p>Simulated Internet | Network Lab Environment</p>\n            <p>Error:\
+          \ Success (This page loaded correctly, but you probably want something else)</p>\n\
+          \        </div>\n    </div>\n</body>\n</html>\nEOF\n\n# Create a quantumcloud\
+          \ web page for the server\ncat > /usr/share/nginx/html/quantumcloud.html\
+          \ << 'EOF'\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"\
+          UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"\
+          >\n    <title>Quantum Cloud Streaming</title>\n    <style>\n        * {\n\
+          \            margin: 0;\n            padding: 0;\n            box-sizing:\
+          \ border-box;\n        }\n\n        body {\n            font-family: 'Segoe\
+          \ UI', Tahoma, Geneva, Verdana, sans-serif;\n            background: linear-gradient(135deg,\
+          \ #667eea 0%, #764ba2 100%);\n            color: #fff;\n            overflow-x:\
+          \ hidden;\n        }\n\n        .container {\n            max-width: 1200px;\n\
+          \            margin: 0 auto;\n            padding: 0 20px;\n        }\n\n\
+          \        /* Animated Background */\n        .bg-animation {\n          \
+          \  position: fixed;\n            top: 0;\n            left: 0;\n       \
+          \     width: 100%;\n            height: 100%;\n            z-index: -1;\n\
+          \            opacity: 0.3;\n        }\n\n        .circle {\n           \
+          \ position: absolute;\n            border-radius: 50%;\n            background:\
+          \ rgba(255, 255, 255, 0.1);\n            animation: float 20s infinite ease-in-out;\n\
+          \        }\n\n        .circle:nth-child(1) {\n            width: 80px;\n\
+          \            height: 80px;\n            top: 10%;\n            left: 10%;\n\
+          \            animation-delay: 0s;\n        }\n\n        .circle:nth-child(2)\
+          \ {\n            width: 120px;\n            height: 120px;\n           \
+          \ top: 60%;\n            left: 80%;\n            animation-delay: 2s;\n\
+          \        }\n\n        .circle:nth-child(3) {\n            width: 100px;\n\
+          \            height: 100px;\n            top: 40%;\n            left: 20%;\n\
+          \            animation-delay: 4s;\n        }\n\n        .circle:nth-child(4)\
+          \ {\n            width: 60px;\n            height: 60px;\n            top:\
+          \ 80%;\n            left: 60%;\n            animation-delay: 6s;\n     \
+          \   }\n\n        @keyframes float {\n            0%, 100% {\n          \
+          \      transform: translateY(0) rotate(0deg);\n            }\n         \
+          \   50% {\n                transform: translateY(-50px) rotate(180deg);\n\
+          \            }\n        }\n\n        /* Header */\n        header {\n  \
+          \          padding: 30px 0;\n            background: rgba(0, 0, 0, 0.2);\n\
+          \            backdrop-filter: blur(10px);\n        }\n\n        nav {\n\
+          \            display: flex;\n            justify-content: space-between;\n\
+          \            align-items: center;\n        }\n\n        .logo {\n      \
+          \      font-size: 28px;\n            font-weight: bold;\n            background:\
+          \ linear-gradient(90deg, #fff, #a8edea);\n            -webkit-background-clip:\
+          \ text;\n            -webkit-text-fill-color: transparent;\n           \
+          \ background-clip: text;\n        }\n\n        .nav-links {\n          \
+          \  display: flex;\n            gap: 30px;\n            list-style: none;\n\
+          \        }\n\n        .nav-links a {\n            color: #fff;\n       \
+          \     text-decoration: none;\n            transition: color 0.3s;\n    \
+          \        font-weight: 500;\n        }\n\n        .nav-links a:hover {\n\
+          \            color: #a8edea;\n        }\n\n        /* Hero Section */\n\
+          \        .hero {\n            text-align: center;\n            padding:\
+          \ 100px 0;\n        }\n\n        .hero h1 {\n            font-size: 56px;\n\
+          \            margin-bottom: 20px;\n            animation: fadeInUp 1s ease-out;\n\
+          \        }\n\n        .hero .subtitle {\n            font-size: 24px;\n\
+          \            margin-bottom: 40px;\n            opacity: 0.9;\n         \
+          \   animation: fadeInUp 1s ease-out 0.2s backwards;\n        }\n\n     \
+          \   .cta-button {\n            display: inline-block;\n            padding:\
+          \ 15px 40px;\n            background: linear-gradient(90deg, #f093fb 0%,\
+          \ #f5576c 100%);\n            color: #fff;\n            text-decoration:\
+          \ none;\n            border-radius: 50px;\n            font-size: 18px;\n\
+          \            font-weight: bold;\n            transition: transform 0.3s,\
+          \ box-shadow 0.3s;\n            animation: fadeInUp 1s ease-out 0.4s backwards;\n\
+          \            cursor: pointer;\n            border: none;\n        }\n\n\
+          \        .cta-button:hover {\n            transform: translateY(-3px);\n\
+          \            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);\n        }\n\n\
+          \        @keyframes fadeInUp {\n            from {\n                opacity:\
+          \ 0;\n                transform: translateY(30px);\n            }\n    \
+          \        to {\n                opacity: 1;\n                transform: translateY(0);\n\
+          \            }\n        }\n\n        /* Features Section */\n        .features\
+          \ {\n            padding: 80px 0;\n            background: rgba(255, 255,\
+          \ 255, 0.1);\n            backdrop-filter: blur(10px);\n        }\n\n  \
+          \      .features h2 {\n            text-align: center;\n            font-size:\
+          \ 42px;\n            margin-bottom: 60px;\n        }\n\n        .features-grid\
+          \ {\n            display: grid;\n            grid-template-columns: repeat(auto-fit,\
+          \ minmax(280px, 1fr));\n            gap: 40px;\n        }\n\n        .feature-card\
+          \ {\n            background: rgba(255, 255, 255, 0.15);\n            padding:\
+          \ 40px;\n            border-radius: 20px;\n            backdrop-filter:\
+          \ blur(10px);\n            border: 1px solid rgba(255, 255, 255, 0.2);\n\
+          \            transition: transform 0.3s, box-shadow 0.3s;\n        }\n\n\
+          \        .feature-card:hover {\n            transform: translateY(-10px);\n\
+          \            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);\n        }\n\n\
+          \        .feature-icon {\n            width: 60px;\n            height:\
+          \ 60px;\n            background: linear-gradient(135deg, #f093fb 0%, #f5576c\
+          \ 100%);\n            border-radius: 15px;\n            display: flex;\n\
+          \            align-items: center;\n            justify-content: center;\n\
+          \            font-size: 28px;\n            margin-bottom: 20px;\n      \
+          \  }\n\n        .feature-card h3 {\n            font-size: 24px;\n     \
+          \       margin-bottom: 15px;\n        }\n\n        .feature-card p {\n \
+          \           opacity: 0.9;\n            line-height: 1.6;\n        }\n\n\
+          \        /* Stats Section */\n        .stats {\n            padding: 80px\
+          \ 0;\n            text-align: center;\n        }\n\n        .stats-grid\
+          \ {\n            display: grid;\n            grid-template-columns: repeat(auto-fit,\
+          \ minmax(200px, 1fr));\n            gap: 40px;\n            margin-top:\
+          \ 40px;\n        }\n\n        .stat-item {\n            padding: 20px;\n\
+          \        }\n\n        .stat-number {\n            font-size: 48px;\n   \
+          \         font-weight: bold;\n            color: #a8edea;\n            margin-bottom:\
+          \ 10px;\n        }\n\n        .stat-label {\n            font-size: 18px;\n\
+          \            opacity: 0.9;\n        }\n\n        /* Footer */\n        footer\
+          \ {\n            background: rgba(0, 0, 0, 0.3);\n            padding: 40px\
+          \ 0;\n            text-align: center;\n        }\n\n        footer p {\n\
+          \            opacity: 0.8;\n        }\n\n        /* Pulse Animation for\
+          \ CTA */\n        @keyframes pulse {\n            0%, 100% {\n         \
+          \       box-shadow: 0 0 0 0 rgba(245, 87, 108, 0.7);\n            }\n  \
+          \          50% {\n                box-shadow: 0 0 0 20px rgba(245, 87, 108,\
+          \ 0);\n            }\n        }\n\n        .cta-button.pulse {\n       \
+          \     animation: pulse 2s infinite;\n        }\n\n        /* Responsive\
+          \ */\n        @media (max-width: 768px) {\n            .hero h1 {\n    \
+          \            font-size: 36px;\n            }\n\n            .hero .subtitle\
+          \ {\n                font-size: 18px;\n            }\n\n            .nav-links\
+          \ {\n                gap: 15px;\n            }\n\n            .features\
+          \ h2 {\n                font-size: 32px;\n            }\n        }\n   \
+          \ </style>\n</head>\n<body>\n    <div class=\"bg-animation\">\n        <div\
+          \ class=\"circle\"></div>\n        <div class=\"circle\"></div>\n      \
+          \  <div class=\"circle\"></div>\n        <div class=\"circle\"></div>\n\
+          \    </div>\n\n    <header>\n        <div class=\"container\">\n       \
+          \     <nav>\n                <div class=\"logo\">quantumcloud</div>\n  \
+          \              <ul class=\"nav-links\">\n                    <li><a href=\"\
+          #features\">Features</a></li>\n                    <li><a href=\"#stats\"\
+          >Performance</a></li>\n                    <li><a href=\"#pricing\">Pricing</a></li>\n\
+          \                    <li><a href=\"#contact\">Contact</a></li>\n       \
+          \         </ul>\n            </nav>\n        </div>\n    </header>\n\n \
+          \   <section class=\"hero\">\n        <div class=\"container\">\n      \
+          \      <h1>Quantum Cloud Streaming</h1>\n            <p class=\"subtitle\"\
+          >Experience the future of real-time data delivery at 100Gbps</p>\n     \
+          \       <button class=\"cta-button pulse\" id=\"ctaBtn\">Start Your Free\
+          \ Trial</button>\n        </div>\n    </section>\n\n    <section class=\"\
+          features\" id=\"features\">\n        <div class=\"container\">\n       \
+          \     <h2>Revolutionary Features</h2>\n            <div class=\"features-grid\"\
+          >\n                <div class=\"feature-card\">\n                    <div\
+          \ class=\"feature-icon\">⚡</div>\n                    <h3>Lightning Fast</h3>\n\
+          \                    <p>100Gbps quantum-encrypted connections deliver your\
+          \ data at unprecedented speeds with zero latency.</p>\n                </div>\n\
+          \                <div class=\"feature-card\">\n                    <div\
+          \ class=\"feature-icon\">\U0001F512</div>\n                    <h3>Ultra\
+          \ Secure</h3>\n                    <p>Military-grade quantum encryption\
+          \ ensures your data streams are completely secure and private.</p>\n   \
+          \             </div>\n                <div class=\"feature-card\">\n   \
+          \                 <div class=\"feature-icon\">\U0001F310</div>\n       \
+          \             <h3>Global Reach</h3>\n                    <p>Access our service\
+          \ from anywhere in the world with 99.999% uptime guaranteed.</p>\n     \
+          \           </div>\n                <div class=\"feature-card\">\n     \
+          \               <div class=\"feature-icon\">\U0001F680</div>\n         \
+          \           <h3>AI-Powered</h3>\n                    <p>Advanced machine\
+          \ learning optimizes your streaming experience in real-time.</p>\n     \
+          \           </div>\n                <div class=\"feature-card\">\n     \
+          \               <div class=\"feature-icon\">\U0001F48E</div>\n         \
+          \           <h3>Premium Quality</h3>\n                    <p>Crystal-clear\
+          \ 16K resolution streaming with Dolby Atmos spatial audio support.</p>\n\
+          \                </div>\n                <div class=\"feature-card\">\n\
+          \                    <div class=\"feature-icon\">\U0001F3AF</div>\n    \
+          \                <h3>Smart Routing</h3>\n                    <p>Intelligent\
+          \ network routing ensures optimal path selection for every packet.</p>\n\
+          \                </div>\n            </div>\n        </div>\n    </section>\n\
+          \n    <section class=\"stats\" id=\"stats\">\n        <div class=\"container\"\
+          >\n            <h2>Trusted by Millions</h2>\n            <div class=\"stats-grid\"\
+          >\n                <div class=\"stat-item\">\n                    <div class=\"\
+          stat-number\" id=\"users\">0</div>\n                    <div class=\"stat-label\"\
+          >Active Users</div>\n                </div>\n                <div class=\"\
+          stat-item\">\n                    <div class=\"stat-number\" id=\"data\"\
+          >0</div>\n                    <div class=\"stat-label\">Petabytes Streamed</div>\n\
+          \                </div>\n                <div class=\"stat-item\">\n   \
+          \                 <div class=\"stat-number\" id=\"uptime\">0</div>\n   \
+          \                 <div class=\"stat-label\">Uptime %</div>\n           \
+          \     </div>\n                <div class=\"stat-item\">\n              \
+          \      <div class=\"stat-number\" id=\"countries\">0</div>\n           \
+          \         <div class=\"stat-label\">Countries</div>\n                </div>\n\
+          \            </div>\n        </div>\n    </section>\n\n    <footer>\n  \
+          \      <div class=\"container\">\n            <p>&copy; 2024 quantumcloud\
+          \ - Quantum Cloud Streaming. All rights reserved.</p>\n            <p style=\"\
+          margin-top: 10px; opacity: 0.6;\">Server: quantumcloud | Network Simulation\
+          \ Lab</p>\n        </div>\n    </footer>\n\n    <script>\n        // Animate\
+          \ stats counter\n        function animateValue(id, start, end, duration,\
+          \ suffix = '') {\n            const obj = document.getElementById(id);\n\
+          \            const range = end - start;\n            const increment = end\
+          \ > start ? 1 : -1;\n            const stepTime = Math.abs(Math.floor(duration\
+          \ / range));\n            let current = start;\n\n            const timer\
+          \ = setInterval(() => {\n                current += increment * Math.ceil(range\
+          \ / 100);\n                if ((increment > 0 && current >= end) || (increment\
+          \ < 0 && current <= end)) {\n                    current = end;\n      \
+          \              clearInterval(timer);\n                }\n              \
+          \  obj.textContent = current.toLocaleString() + suffix;\n            },\
+          \ stepTime);\n        }\n\n        // Trigger animations when stats section\
+          \ is visible\n        const observerOptions = {\n            threshold:\
+          \ 0.5\n        };\n\n        const observer = new IntersectionObserver((entries)\
+          \ => {\n            entries.forEach(entry => {\n                if (entry.isIntersecting)\
+          \ {\n                    animateValue('users', 0, 2500000, 2000);\n    \
+          \                animateValue('data', 0, 847, 2000);\n                 \
+          \   animateValue('uptime', 0, 99.999, 2000, '');\n                    animateValue('countries',\
+          \ 0, 142, 2000);\n                    observer.unobserve(entry.target);\n\
+          \                }\n            });\n        }, observerOptions);\n\n  \
+          \      observer.observe(document.getElementById('stats'));\n\n        //\
+          \ CTA Button interaction\n        document.getElementById('ctaBtn').addEventListener('click',\
+          \ () => {\n            alert('Welcome to quantumcloud! \U0001F680\\n\\nYour\
+          \ 30-day free trial is ready to begin.\\n\\nExperience quantum-speed streaming\
+          \ today!');\n        });\n\n        // Smooth scrolling for navigation\n\
+          \        document.querySelectorAll('a[href^=\"#\"]').forEach(anchor => {\n\
+          \            anchor.addEventListener('click', function (e) {\n         \
+          \       e.preventDefault();\n                const target = document.querySelector(this.getAttribute('href'));\n\
+          \                if (target) {\n                    target.scrollIntoView({\n\
+          \                        behavior: 'smooth',\n                        block:\
+          \ 'start'\n                    });\n                }\n            });\n\
+          \        });\n\n        // Add dynamic cursor effect\n        document.addEventListener('mousemove',\
+          \ (e) => {\n            const circles = document.querySelectorAll('.circle');\n\
+          \            circles.forEach((circle, index) => {\n                const\
+          \ speed = (index + 1) * 0.01;\n                const x = (e.clientX * speed);\n\
+          \                const y = (e.clientY * speed);\n                circle.style.transform\
+          \ = `translate(${x}px, ${y}px)`;\n            });\n        });\n    </script>\n\
+          </body>\n</html>\nEOF\n\n# Create a csnake web page for the server\ncat\
+          \ > /usr/share/nginx/html/csnake.html << 'EOF'\n<!DOCTYPE html>\n<html lang=\"\
+          en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\"\
+          \ content=\"width=device-width, initial-scale=1.0\">\n    <title>CYBER SNAKE\
+          \ 2000</title>\n    <style>\n        * {\n            margin: 0;\n     \
+          \       padding: 0;\n            box-sizing: border-box;\n        }\n\n\
+          \        body {\n            font-family: 'Comic Sans MS', 'Chalkboard SE',\
+          \ 'Comic Neue', cursive;\n            background: linear-gradient(to bottom,\
+          \ #0000ff, #00ffff);\n            color: #ffff00;\n            min-height:\
+          \ 100vh;\n            text-align: center;\n            padding: 20px;\n\
+          \            image-rendering: pixelated;\n        }\n\n        .container\
+          \ {\n            max-width: 800px;\n            margin: 0 auto;\n      \
+          \      background: linear-gradient(135deg, #666666, #999999);\n        \
+          \    border: 5px ridge #silver;\n            padding: 20px;\n          \
+          \  box-shadow: 10px 10px 0px #000000;\n        }\n\n        h1 {\n     \
+          \       font-size: 48px;\n            text-shadow: 3px 3px #ff00ff, 6px\
+          \ 6px #00ff00;\n            margin-bottom: 10px;\n            animation:\
+          \ rainbow 3s infinite;\n            letter-spacing: 3px;\n        }\n\n\
+          \        @keyframes rainbow {\n            0% { color: #ff0000; }\n    \
+          \        16% { color: #ff7f00; }\n            33% { color: #ffff00; }\n\
+          \            50% { color: #00ff00; }\n            66% { color: #0000ff;\
+          \ }\n            83% { color: #8b00ff; }\n            100% { color: #ff0000;\
+          \ }\n        }\n\n        .subtitle {\n            font-size: 20px;\n  \
+          \          color: #00ff00;\n            text-shadow: 2px 2px #000000;\n\
+          \            margin-bottom: 20px;\n            font-style: italic;\n   \
+          \     }\n\n        .blink {\n            animation: blink 1s infinite;\n\
+          \        }\n\n        @keyframes blink {\n            0%, 50% { opacity:\
+          \ 1; }\n            51%, 100% { opacity: 0; }\n        }\n\n        .game-area\
+          \ {\n            background: linear-gradient(to bottom, #000080, #000040);\n\
+          \            border: 5px inset #c0c0c0;\n            padding: 15px;\n  \
+          \          margin: 20px 0;\n            box-shadow: inset 3px 3px 10px #000000;\n\
+          \        }\n\n        canvas {\n            background: #000000;\n     \
+          \       border: 3px solid #00ff00;\n            box-shadow: 0 0 20px #00ff00;\n\
+          \            display: block;\n            margin: 0 auto;\n        }\n\n\
+          \        .scoreboard {\n            background: linear-gradient(to right,\
+          \ #ff00ff, #00ffff);\n            border: 3px groove #ffffff;\n        \
+          \    padding: 15px;\n            margin: 15px 0;\n            box-shadow:\
+          \ 5px 5px 0px #000000;\n        }\n\n        .score-text {\n           \
+          \ font-size: 24px;\n            font-weight: bold;\n            color: #ffffff;\n\
+          \            text-shadow: 2px 2px #000000;\n        }\n\n        .controls\
+          \ {\n            display: grid;\n            grid-template-columns: repeat(3,\
+          \ 1fr);\n            gap: 10px;\n            max-width: 200px;\n       \
+          \     margin: 20px auto;\n        }\n\n        button {\n            background:\
+          \ linear-gradient(to bottom, #c0c0c0, #808080);\n            border: 3px\
+          \ outset #ffffff;\n            padding: 15px;\n            font-family:\
+          \ 'Comic Sans MS', cursive;\n            font-size: 18px;\n            font-weight:\
+          \ bold;\n            color: #000000;\n            cursor: pointer;\n   \
+          \         text-shadow: 1px 1px #ffffff;\n            box-shadow: 3px 3px\
+          \ 0px #000000;\n        }\n\n        button:active {\n            border-style:\
+          \ inset;\n            transform: translate(2px, 2px);\n            box-shadow:\
+          \ 1px 1px 0px #000000;\n        }\n\n        button:hover {\n          \
+          \  background: linear-gradient(to bottom, #ffffff, #c0c0c0);\n        }\n\
+          \n        .btn-start {\n            grid-column: 1 / -1;\n            background:\
+          \ linear-gradient(to bottom, #00ff00, #008000);\n            font-size:\
+          \ 24px;\n            padding: 20px;\n            margin: 10px 0;\n     \
+          \   }\n\n        .btn-up {\n            grid-column: 2;\n        }\n\n \
+          \       .btn-left {\n            grid-column: 1;\n            grid-row:\
+          \ 2;\n        }\n\n        .btn-down {\n            grid-column: 2;\n  \
+          \          grid-row: 2;\n        }\n\n        .btn-right {\n           \
+          \ grid-column: 3;\n            grid-row: 2;\n        }\n\n        .instructions\
+          \ {\n            background: #ffff00;\n            color: #000000;\n   \
+          \         border: 3px dashed #ff0000;\n            padding: 15px;\n    \
+          \        margin: 15px 0;\n            font-size: 14px;\n            text-align:\
+          \ left;\n        }\n\n        .instructions h3 {\n            color: #ff0000;\n\
+          \            margin-bottom: 10px;\n            text-decoration: underline;\n\
+          \        }\n\n        .marquee-container {\n            background: #000000;\n\
+          \            border: 2px solid #00ff00;\n            padding: 10px;\n  \
+          \          margin: 15px 0;\n            overflow: hidden;\n        }\n\n\
+          \        marquee {\n            color: #00ff00;\n            font-size:\
+          \ 18px;\n            font-weight: bold;\n        }\n\n        .visitor-counter\
+          \ {\n            background: #000000;\n            color: #00ff00;\n   \
+          \         border: 2px solid #00ff00;\n            padding: 10px;\n     \
+          \       display: inline-block;\n            margin: 10px 0;\n          \
+          \  font-family: 'Courier New', monospace;\n        }\n\n        .under-construction\
+          \ {\n            color: #ffff00;\n            font-size: 12px;\n       \
+          \     margin-top: 15px;\n        }\n\n        .game-over-text {\n      \
+          \      color: #ff0000;\n            font-size: 36px;\n            font-weight:\
+          \ bold;\n            text-shadow: 3px 3px #000000;\n            animation:\
+          \ blink 0.5s infinite;\n            margin: 10px 0;\n        }\n\n     \
+          \   hr {\n            border: 2px dashed #00ff00;\n            margin: 15px\
+          \ 0;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"container\"\
+          >\n        <h1>\U0001F40D CYBER SNAKE 2000 \U0001F40D</h1>\n        <div\
+          \ class=\"subtitle\">\n            <span class=\"blink\">★</span> The ULTIMATE\
+          \ Retro Gaming Experience <span class=\"blink\">★</span>\n        </div>\n\
+          \n        <div class=\"marquee-container\">\n            <marquee behavior=\"\
+          scroll\" direction=\"left\">\n                \U0001F3AE Welcome to csnake!\
+          \ \U0001F3AE Collect the food! \U0001F34E Don't hit the walls! \U0001F480\
+          \ Share with your friends! \U0001F31F\n            </marquee>\n        </div>\n\
+          \n        <div class=\"scoreboard\">\n            <div class=\"score-text\"\
+          >\n                SCORE: <span id=\"score\">0</span> | HIGH SCORE: <span\
+          \ id=\"highScore\">0</span>\n            </div>\n        </div>\n\n    \
+          \    <div class=\"game-area\">\n            <canvas id=\"gameCanvas\" width=\"\
+          400\" height=\"400\"></canvas>\n            <div id=\"gameOverMessage\"\
+          \ style=\"display: none;\">\n                <div class=\"game-over-text\"\
+          >GAME OVER!</div>\n            </div>\n        </div>\n\n        <button\
+          \ class=\"btn-start\" id=\"startBtn\" onclick=\"startGame()\">\U0001F3AE\
+          \ START GAME \U0001F3AE</button>\n\n        <div class=\"controls\">\n \
+          \           <button class=\"btn-up\" onclick=\"changeDirection('UP')\">▲</button>\n\
+          \            <button class=\"btn-left\" onclick=\"changeDirection('LEFT')\"\
+          >◄</button>\n            <button class=\"btn-down\" onclick=\"changeDirection('DOWN')\"\
+          >▼</button>\n            <button class=\"btn-right\" onclick=\"changeDirection('RIGHT')\"\
+          >►</button>\n        </div>\n\n        <div class=\"instructions\">\n  \
+          \          <h3>\U0001F4DC HOW TO PLAY:</h3>\n            <ul>\n        \
+          \        <li>\U0001F3AF Use arrow keys or buttons to control the snake</li>\n\
+          \                <li>\U0001F34E Eat the red food to grow and score points</li>\n\
+          \                <li>⚠️ Don't run into walls or yourself!</li>\n       \
+          \         <li>\U0001F3C6 Beat your high score!</li>\n                <li>\U0001F4AA\
+          \ Pro tip: Press SPACE to pause</li>\n            </ul>\n        </div>\n\
+          \n        <hr>\n\n        <div class=\"visitor-counter\">\n            \U0001F441\
+          ️ VISITORS: <span id=\"visitors\">001337</span> \U0001F441️\n        </div>\n\
+          \n        <div class=\"under-construction\">\n            <p>Best viewed\
+          \ in Netscape Navigator 4.0+ or Internet Explorer 5.0+</p>\n           \
+          \ <p>Optimized for 800x600 resolution</p>\n            <p>Server: csnake\
+          \ | Network Simulation Lab</p>\n        </div>\n    </div>\n\n    <script>\n\
+          \        const canvas = document.getElementById('gameCanvas');\n       \
+          \ const ctx = canvas.getContext('2d');\n        const gridSize = 20;\n \
+          \       const tileCount = canvas.width / gridSize;\n\n        let snake\
+          \ = [{ x: 10, y: 10 }];\n        let food = { x: 15, y: 15 };\n        let\
+          \ dx = 0;\n        let dy = 0;\n        let score = 0;\n        let highScore\
+          \ = localStorage.getItem('cyberSnakeHighScore') || 0;\n        let gameLoop;\n\
+          \        let isGameRunning = false;\n        let isPaused = false;\n   \
+          \     let nextDirection = null;\n\n        document.getElementById('highScore').textContent\
+          \ = highScore;\n\n        // Keyboard controls\n        document.addEventListener('keydown',\
+          \ (e) => {\n            if (e.code === 'Space') {\n                e.preventDefault();\n\
+          \                togglePause();\n                return;\n            }\n\
+          \n            if (!isGameRunning || isPaused) return;\n\n            const\
+          \ key = e.key;\n            if (key === 'ArrowUp' && dy === 0) nextDirection\
+          \ = 'UP';\n            else if (key === 'ArrowDown' && dy === 0) nextDirection\
+          \ = 'DOWN';\n            else if (key === 'ArrowLeft' && dx === 0) nextDirection\
+          \ = 'LEFT';\n            else if (key === 'ArrowRight' && dx === 0) nextDirection\
+          \ = 'RIGHT';\n        });\n\n        function changeDirection(direction)\
+          \ {\n            if (!isGameRunning || isPaused) return;\n\n           \
+          \ if (direction === 'UP' && dy === 0) nextDirection = 'UP';\n          \
+          \  else if (direction === 'DOWN' && dy === 0) nextDirection = 'DOWN';\n\
+          \            else if (direction === 'LEFT' && dx === 0) nextDirection =\
+          \ 'LEFT';\n            else if (direction === 'RIGHT' && dx === 0) nextDirection\
+          \ = 'RIGHT';\n        }\n\n        function togglePause() {\n          \
+          \  if (!isGameRunning) return;\n            isPaused = !isPaused;\n    \
+          \        if (!isPaused) {\n                gameLoop = setInterval(update,\
+          \ 100);\n            } else {\n                clearInterval(gameLoop);\n\
+          \                ctx.fillStyle = '#ffff00';\n                ctx.font =\
+          \ 'bold 30px Comic Sans MS';\n                ctx.textAlign = 'center';\n\
+          \                ctx.fillText('PAUSED', canvas.width / 2, canvas.height\
+          \ / 2);\n            }\n        }\n\n        function startGame() {\n  \
+          \          snake = [{ x: 10, y: 10 }];\n            dx = 1;\n          \
+          \  dy = 0;\n            nextDirection = null;\n            score = 0;\n\
+          \            isGameRunning = true;\n            isPaused = false;\n    \
+          \        document.getElementById('score').textContent = score;\n       \
+          \     document.getElementById('gameOverMessage').style.display = 'none';\n\
+          \            document.getElementById('startBtn').textContent = '\U0001F504\
+          \ RESTART \U0001F504';\n            spawnFood();\n            clearInterval(gameLoop);\n\
+          \            gameLoop = setInterval(update, 100);\n        }\n\n       \
+          \ function update() {\n            // Apply direction change\n         \
+          \   if (nextDirection === 'UP') { dx = 0; dy = -1; }\n            else if\
+          \ (nextDirection === 'DOWN') { dx = 0; dy = 1; }\n            else if (nextDirection\
+          \ === 'LEFT') { dx = -1; dy = 0; }\n            else if (nextDirection ===\
+          \ 'RIGHT') { dx = 1; dy = 0; }\n            nextDirection = null;\n\n  \
+          \          // Move snake\n            const head = { x: snake[0].x + dx,\
+          \ y: snake[0].y + dy };\n\n            // Check collisions\n           \
+          \ if (head.x < 0 || head.x >= tileCount || head.y < 0 || head.y >= tileCount)\
+          \ {\n                gameOver();\n                return;\n            }\n\
+          \n            for (let segment of snake) {\n                if (head.x ===\
+          \ segment.x && head.y === segment.y) {\n                    gameOver();\n\
+          \                    return;\n                }\n            }\n\n     \
+          \       snake.unshift(head);\n\n            // Check food\n            if\
+          \ (head.x === food.x && head.y === food.y) {\n                score += 10;\n\
+          \                document.getElementById('score').textContent = score;\n\
+          \                if (score > highScore) {\n                    highScore\
+          \ = score;\n                    document.getElementById('highScore').textContent\
+          \ = highScore;\n                    localStorage.setItem('cyberSnakeHighScore',\
+          \ highScore);\n                }\n                spawnFood();\n       \
+          \     } else {\n                snake.pop();\n            }\n\n        \
+          \    draw();\n        }\n\n        function spawnFood() {\n            do\
+          \ {\n                food.x = Math.floor(Math.random() * tileCount);\n \
+          \               food.y = Math.floor(Math.random() * tileCount);\n      \
+          \      } while (snake.some(segment => segment.x === food.x && segment.y\
+          \ === food.y));\n        }\n\n        function draw() {\n            //\
+          \ Clear canvas\n            ctx.fillStyle = '#000000';\n            ctx.fillRect(0,\
+          \ 0, canvas.width, canvas.height);\n\n            // Draw grid (retro style)\n\
+          \            ctx.strokeStyle = '#003300';\n            ctx.lineWidth = 0.5;\n\
+          \            for (let i = 0; i <= tileCount; i++) {\n                ctx.beginPath();\n\
+          \                ctx.moveTo(i * gridSize, 0);\n                ctx.lineTo(i\
+          \ * gridSize, canvas.height);\n                ctx.stroke();\n         \
+          \       ctx.beginPath();\n                ctx.moveTo(0, i * gridSize);\n\
+          \                ctx.lineTo(canvas.width, i * gridSize);\n             \
+          \   ctx.stroke();\n            }\n\n            // Draw snake\n        \
+          \    snake.forEach((segment, index) => {\n                if (index ===\
+          \ 0) {\n                    // Head - bright green with gradient\n     \
+          \               const gradient = ctx.createLinearGradient(\n           \
+          \             segment.x * gridSize, segment.y * gridSize,\n            \
+          \            (segment.x + 1) * gridSize, (segment.y + 1) * gridSize\n  \
+          \                  );\n                    gradient.addColorStop(0, '#00ff00');\n\
+          \                    gradient.addColorStop(1, '#00aa00');\n            \
+          \        ctx.fillStyle = gradient;\n                } else {\n         \
+          \           // Body - lime green\n                    ctx.fillStyle = '#33ff33';\n\
+          \                }\n                ctx.fillRect(segment.x * gridSize +\
+          \ 1, segment.y * gridSize + 1, gridSize - 2, gridSize - 2);\n\n        \
+          \        // Add retro bevel effect\n                ctx.strokeStyle = index\
+          \ === 0 ? '#66ff66' : '#55ff55';\n                ctx.lineWidth = 2;\n \
+          \               ctx.strokeRect(segment.x * gridSize + 2, segment.y * gridSize\
+          \ + 2, gridSize - 4, gridSize - 4);\n            });\n\n            // Draw\
+          \ food with pulsing effect\n            const pulse = Math.sin(Date.now()\
+          \ / 200) * 0.3 + 0.7;\n            ctx.fillStyle = `rgba(255, 0, 0, ${pulse})`;\n\
+          \            ctx.fillRect(food.x * gridSize + 2, food.y * gridSize + 2,\
+          \ gridSize - 4, gridSize - 4);\n\n            // Food highlight\n      \
+          \      ctx.fillStyle = '#ff6666';\n            ctx.fillRect(food.x * gridSize\
+          \ + 4, food.y * gridSize + 4, gridSize / 3, gridSize / 3);\n        }\n\n\
+          \        function gameOver() {\n            clearInterval(gameLoop);\n \
+          \           isGameRunning = false;\n            document.getElementById('gameOverMessage').style.display\
+          \ = 'block';\n            document.getElementById('startBtn').textContent\
+          \ = '\U0001F3AE PLAY AGAIN \U0001F3AE';\n\n            // Draw game over\
+          \ on canvas\n            ctx.fillStyle = 'rgba(255, 0, 0, 0.7)';\n     \
+          \       ctx.fillRect(0, 0, canvas.width, canvas.height);\n            ctx.fillStyle\
+          \ = '#ffff00';\n            ctx.font = 'bold 40px Comic Sans MS';\n    \
+          \        ctx.textAlign = 'center';\n            ctx.strokeStyle = '#000000';\n\
+          \            ctx.lineWidth = 3;\n            ctx.strokeText('GAME OVER',\
+          \ canvas.width / 2, canvas.height / 2 - 20);\n            ctx.fillText('GAME\
+          \ OVER', canvas.width / 2, canvas.height / 2 - 20);\n\n            ctx.font\
+          \ = 'bold 20px Comic Sans MS';\n            ctx.fillStyle = '#ffffff';\n\
+          \            ctx.fillText(`Final Score: ${score}`, canvas.width / 2, canvas.height\
+          \ / 2 + 20);\n        }\n\n        // Visitor counter animation\n      \
+          \  let visitorCount = 1337;\n        setInterval(() => {\n            visitorCount\
+          \ += Math.floor(Math.random() * 3);\n            document.getElementById('visitors').textContent\
+          \ = String(visitorCount).padStart(6, '0');\n        }, 5000);\n\n      \
+          \  // Initial draw\n        draw();\n    </script>\n</body>\n</html>\nEOF\n\
+          \n# Create a aaisolutions web page for the server\ncat > /usr/share/nginx/html/aaisolutions.html\
+          \ << 'EOF'\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"\
+          UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"\
+          >\n    <title>aaisolutions - AAI Solutions</title>\n    <style>\n      \
+          \  * {\n            margin: 0;\n            padding: 0;\n            box-sizing:\
+          \ border-box;\n        }\n\n        body {\n            font-family: 'Helvetica\
+          \ Neue', Arial, sans-serif;\n            background: #0a0a0a;\n        \
+          \    color: #e0e0e0;\n            overflow-x: hidden;\n            position:\
+          \ relative;\n        }\n\n        /* Mysterious background effect */\n \
+          \       .shadow-layer {\n            position: fixed;\n            top:\
+          \ 0;\n            left: 0;\n            width: 100%;\n            height:\
+          \ 100%;\n            background: radial-gradient(circle at 50% 50%, transparent\
+          \ 0%, #000000 100%);\n            pointer-events: none;\n            z-index:\
+          \ 1;\n        }\n\n        .mirror-effect {\n            position: fixed;\n\
+          \            top: 0;\n            left: 0;\n            width: 100%;\n \
+          \           height: 100%;\n            background:\n                linear-gradient(45deg,\
+          \ transparent 48%, rgba(255,255,255,0.03) 49%, rgba(255,255,255,0.03) 51%,\
+          \ transparent 52%),\n                linear-gradient(-45deg, transparent\
+          \ 48%, rgba(255,255,255,0.03) 49%, rgba(255,255,255,0.03) 51%, transparent\
+          \ 52%);\n            background-size: 100px 100px;\n            pointer-events:\
+          \ none;\n            z-index: 0;\n            opacity: 0.3;\n        }\n\
+          \n        .content-wrapper {\n            position: relative;\n        \
+          \    z-index: 2;\n        }\n\n        /* Glitch effect text */\n      \
+          \  @keyframes glitch {\n            0% {\n                text-shadow: 2px\
+          \ 2px #ff0080, -2px -2px #00ff80;\n            }\n            25% {\n  \
+          \              text-shadow: -2px -2px #ff0080, 2px 2px #00ff80;\n      \
+          \      }\n            50% {\n                text-shadow: 2px -2px #ff0080,\
+          \ -2px 2px #00ff80;\n            }\n            75% {\n                text-shadow:\
+          \ -2px 2px #ff0080, 2px -2px #00ff80;\n            }\n            100% {\n\
+          \                text-shadow: 2px 2px #ff0080, -2px -2px #00ff80;\n    \
+          \        }\n        }\n\n        /* Header */\n        header {\n      \
+          \      padding: 40px 20px;\n            text-align: center;\n          \
+          \  background: linear-gradient(180deg, #1a1a1a 0%, transparent 100%);\n\
+          \            box-shadow: 0 10px 50px rgba(0,0,0,0.8);\n        }\n\n   \
+          \     .logo {\n            font-size: 48px;\n            font-weight: 100;\n\
+          \            letter-spacing: 15px;\n            color: #ffffff;\n      \
+          \      text-transform: uppercase;\n            margin-bottom: 10px;\n  \
+          \          filter: drop-shadow(0 0 20px rgba(255,255,255,0.5));\n      \
+          \  }\n\n        .logo-mirror {\n            display: inline-block;\n   \
+          \         transform: scaleY(-1);\n            opacity: 0.2;\n          \
+          \  margin-top: -10px;\n            background: linear-gradient(to bottom,\
+          \ #ffffff 0%, transparent 100%);\n            -webkit-background-clip: text;\n\
+          \            -webkit-text-fill-color: transparent;\n            background-clip:\
+          \ text;\n        }\n\n        .tagline {\n            font-size: 14px;\n\
+          \            letter-spacing: 8px;\n            color: #888;\n          \
+          \  text-transform: uppercase;\n            margin-top: 20px;\n        }\n\
+          \n        /* Hero Section */\n        .hero {\n            padding: 100px\
+          \ 20px;\n            text-align: center;\n            position: relative;\n\
+          \        }\n\n        .hero::before {\n            content: '';\n      \
+          \      position: absolute;\n            top: 50%;\n            left: 50%;\n\
+          \            transform: translate(-50%, -50%);\n            width: 500px;\n\
+          \            height: 500px;\n            background: radial-gradient(circle,\
+          \ rgba(138,43,226,0.2) 0%, transparent 70%);\n            filter: blur(60px);\n\
+          \            animation: pulse 4s infinite;\n        }\n\n        @keyframes\
+          \ pulse {\n            0%, 100% { opacity: 0.3; transform: translate(-50%,\
+          \ -50%) scale(1); }\n            50% { opacity: 0.6; transform: translate(-50%,\
+          \ -50%) scale(1.1); }\n        }\n\n        .hero-content {\n          \
+          \  position: relative;\n            z-index: 1;\n        }\n\n        .aai-title\
+          \ {\n            font-size: 96px;\n            font-weight: 900;\n     \
+          \       letter-spacing: 5px;\n            margin-bottom: 20px;\n       \
+          \     background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb\
+          \ 100%);\n            -webkit-background-clip: text;\n            -webkit-text-fill-color:\
+          \ transparent;\n            background-clip: text;\n            filter:\
+          \ drop-shadow(0 0 30px rgba(138,43,226,0.5));\n            animation: glitch\
+          \ 5s infinite;\n        }\n\n        .hero-subtitle {\n            font-size:\
+          \ 24px;\n            color: #999;\n            margin-bottom: 40px;\n  \
+          \          font-weight: 300;\n            letter-spacing: 3px;\n       \
+          \ }\n\n        .cta-container {\n            margin-top: 50px;\n       \
+          \ }\n\n        .cta-button {\n            display: inline-block;\n     \
+          \       padding: 18px 50px;\n            background: transparent;\n    \
+          \        color: #fff;\n            border: 2px solid #8a2be2;\n        \
+          \    text-decoration: none;\n            font-size: 16px;\n            letter-spacing:\
+          \ 3px;\n            text-transform: uppercase;\n            position: relative;\n\
+          \            overflow: hidden;\n            transition: all 0.4s;\n    \
+          \        box-shadow: 0 0 20px rgba(138,43,226,0.3),\n                  \
+          \      inset 0 0 20px rgba(138,43,226,0.1);\n            cursor: pointer;\n\
+          \        }\n\n        .cta-button::before {\n            content: '';\n\
+          \            position: absolute;\n            top: 0;\n            left:\
+          \ -100%;\n            width: 100%;\n            height: 100%;\n        \
+          \    background: linear-gradient(90deg, transparent, rgba(138,43,226,0.4),\
+          \ transparent);\n            transition: left 0.5s;\n        }\n\n     \
+          \   .cta-button:hover::before {\n            left: 100%;\n        }\n\n\
+          \        .cta-button:hover {\n            box-shadow: 0 0 40px rgba(138,43,226,0.6),\n\
+          \                        inset 0 0 40px rgba(138,43,226,0.2);\n        \
+          \    transform: translateY(-2px);\n        }\n\n        /* Features Grid\
+          \ */\n        .features {\n            padding: 80px 20px;\n           \
+          \ max-width: 1200px;\n            margin: 0 auto;\n        }\n\n       \
+          \ .section-title {\n            text-align: center;\n            font-size:\
+          \ 48px;\n            font-weight: 300;\n            letter-spacing: 10px;\n\
+          \            margin-bottom: 80px;\n            color: #fff;\n          \
+          \  text-transform: uppercase;\n            position: relative;\n       \
+          \ }\n\n        .section-title::after {\n            content: '';\n     \
+          \       position: absolute;\n            bottom: -20px;\n            left:\
+          \ 50%;\n            transform: translateX(-50%);\n            width: 100px;\n\
+          \            height: 2px;\n            background: linear-gradient(90deg,\
+          \ transparent, #8a2be2, transparent);\n        }\n\n        .features-grid\
+          \ {\n            display: grid;\n            grid-template-columns: repeat(auto-fit,\
+          \ minmax(300px, 1fr));\n            gap: 40px;\n            perspective:\
+          \ 1000px;\n        }\n\n        .feature-card {\n            background:\
+          \ rgba(20,20,20,0.8);\n            border: 1px solid rgba(138,43,226,0.3);\n\
+          \            padding: 40px;\n            position: relative;\n         \
+          \   overflow: hidden;\n            transition: all 0.5s;\n            box-shadow:\
+          \ 0 10px 40px rgba(0,0,0,0.5),\n                        inset 0 0 20px rgba(138,43,226,0.1);\n\
+          \        }\n\n        .feature-card::before {\n            content: '';\n\
+          \            position: absolute;\n            top: -50%;\n            left:\
+          \ -50%;\n            width: 200%;\n            height: 200%;\n         \
+          \   background: linear-gradient(45deg, transparent 30%, rgba(138,43,226,0.1)\
+          \ 50%, transparent 70%);\n            transform: rotate(45deg);\n      \
+          \      transition: all 0.6s;\n        }\n\n        .feature-card:hover::before\
+          \ {\n            left: 100%;\n        }\n\n        .feature-card:hover {\n\
+          \            transform: translateY(-10px) rotateX(5deg);\n            border-color:\
+          \ rgba(138,43,226,0.6);\n            box-shadow: 0 20px 60px rgba(138,43,226,0.3),\n\
+          \                        inset 0 0 40px rgba(138,43,226,0.2);\n        }\n\
+          \n        .feature-icon {\n            font-size: 48px;\n            margin-bottom:\
+          \ 20px;\n            filter: drop-shadow(0 0 10px rgba(138,43,226,0.5));\n\
+          \        }\n\n        .feature-title {\n            font-size: 24px;\n \
+          \           margin-bottom: 15px;\n            color: #fff;\n           \
+          \ letter-spacing: 2px;\n        }\n\n        .feature-description {\n  \
+          \          color: #aaa;\n            line-height: 1.8;\n            font-weight:\
+          \ 300;\n        }\n\n        /* Mirror reflection for cards */\n       \
+          \ .feature-card::after {\n            content: '';\n            position:\
+          \ absolute;\n            bottom: -100%;\n            left: 0;\n        \
+          \    width: 100%;\n            height: 100%;\n            background: linear-gradient(to\
+          \ bottom, rgba(138,43,226,0.1) 0%, transparent 100%);\n            opacity:\
+          \ 0.3;\n            pointer-events: none;\n        }\n\n        /* Stats\
+          \ Section */\n        .stats {\n            padding: 80px 20px;\n      \
+          \      background: rgba(10,10,10,0.9);\n            border-top: 1px solid\
+          \ rgba(138,43,226,0.3);\n            border-bottom: 1px solid rgba(138,43,226,0.3);\n\
+          \            position: relative;\n        }\n\n        .stats::before {\n\
+          \            content: '';\n            position: absolute;\n           \
+          \ top: 0;\n            left: 0;\n            width: 100%;\n            height:\
+          \ 100%;\n            background: linear-gradient(135deg, transparent 0%,\
+          \ rgba(138,43,226,0.05) 50%, transparent 100%);\n        }\n\n        .stats-grid\
+          \ {\n            max-width: 1000px;\n            margin: 0 auto;\n     \
+          \       display: grid;\n            grid-template-columns: repeat(auto-fit,\
+          \ minmax(200px, 1fr));\n            gap: 40px;\n            position: relative;\n\
+          \            z-index: 1;\n        }\n\n        .stat-item {\n          \
+          \  text-align: center;\n            padding: 20px;\n        }\n\n      \
+          \  .stat-number {\n            font-size: 64px;\n            font-weight:\
+          \ 100;\n            color: #8a2be2;\n            margin-bottom: 10px;\n\
+          \            text-shadow: 0 0 20px rgba(138,43,226,0.5);\n            font-family:\
+          \ 'Courier New', monospace;\n        }\n\n        .stat-label {\n      \
+          \      font-size: 14px;\n            color: #888;\n            letter-spacing:\
+          \ 3px;\n            text-transform: uppercase;\n        }\n\n        /*\
+          \ Testimonial Section */\n        .testimonial {\n            padding: 100px\
+          \ 20px;\n            text-align: center;\n            max-width: 800px;\n\
+          \            margin: 0 auto;\n        }\n\n        .quote {\n          \
+          \  font-size: 28px;\n            font-style: italic;\n            color:\
+          \ #ccc;\n            line-height: 1.6;\n            margin-bottom: 30px;\n\
+          \            position: relative;\n            font-weight: 300;\n      \
+          \  }\n\n        .quote::before {\n            content: '\"';\n         \
+          \   font-size: 80px;\n            position: absolute;\n            left:\
+          \ -40px;\n            top: -20px;\n            color: rgba(138,43,226,0.3);\n\
+          \        }\n\n        .author {\n            color: #8a2be2;\n         \
+          \   font-size: 16px;\n            letter-spacing: 2px;\n        }\n\n  \
+          \      /* Footer */\n        footer {\n            padding: 60px 20px;\n\
+          \            text-align: center;\n            background: #000;\n      \
+          \      border-top: 1px solid rgba(138,43,226,0.3);\n        }\n\n      \
+          \  .footer-text {\n            color: #555;\n            font-size: 12px;\n\
+          \            letter-spacing: 2px;\n            margin: 10px 0;\n       \
+          \ }\n\n        /* Floating particles */\n        .particle {\n         \
+          \   position: fixed;\n            width: 2px;\n            height: 2px;\n\
+          \            background: rgba(138,43,226,0.5);\n            border-radius:\
+          \ 50%;\n            pointer-events: none;\n            animation: float-particle\
+          \ 10s infinite;\n            box-shadow: 0 0 10px rgba(138,43,226,0.8);\n\
+          \        }\n\n        @keyframes float-particle {\n            0% {\n  \
+          \              transform: translateY(100vh) translateX(0);\n           \
+          \     opacity: 0;\n            }\n            10% {\n                opacity:\
+          \ 1;\n            }\n            90% {\n                opacity: 1;\n  \
+          \          }\n            100% {\n                transform: translateY(-100px)\
+          \ translateX(100px);\n                opacity: 0;\n            }\n     \
+          \   }\n\n        /* Responsive */\n        @media (max-width: 768px) {\n\
+          \            .aai-title {\n                font-size: 48px;\n          \
+          \  }\n            .logo {\n                font-size: 32px;\n          \
+          \      letter-spacing: 8px;\n            }\n            .section-title {\n\
+          \                font-size: 32px;\n            }\n        }\n    </style>\n\
+          </head>\n<body>\n    <div class=\"shadow-layer\"></div>\n    <div class=\"\
+          mirror-effect\"></div>\n\n    <div class=\"content-wrapper\">\n        <header>\n\
+          \            <div class=\"logo\">aaisolutions</div>\n            <div class=\"\
+          logo-mirror\">aaisolutions</div>\n            <div class=\"tagline\">Beyond\
+          \ Tomorrow</div>\n        </header>\n\n        <section class=\"hero\">\n\
+          \            <div class=\"hero-content\">\n                <h1 class=\"\
+          aai-title\">AAI</h1>\n                <p class=\"hero-subtitle\">Artificial\
+          \ Artificial Intelligence</p>\n                <p style=\"color: #666; font-size:\
+          \ 18px; max-width: 600px; margin: 0 auto 40px; line-height: 1.8;\">\n  \
+          \                  Because AI is yesterday's news. We've transcended machine\
+          \ learning.\n                    We've achieved something far more sophisticated:\
+          \ humans pretending to be machines pretending to be humans.\n          \
+          \      </p>\n                <div class=\"cta-container\">\n           \
+          \         <button class=\"cta-button\" onclick=\"engage()\">Engage Transformation</button>\n\
+          \                </div>\n            </div>\n        </section>\n\n    \
+          \    <section class=\"features\">\n            <h2 class=\"section-title\"\
+          >Our Capabilities</h2>\n            <div class=\"features-grid\">\n    \
+          \            <div class=\"feature-card\">\n                    <div class=\"\
+          feature-icon\">\U0001F3AD</div>\n                    <h3 class=\"feature-title\"\
+          >Deep Pretense</h3>\n                    <p class=\"feature-description\"\
+          >\n                        Our AAI agents convincingly mimic algorithmic\
+          \ behavior while maintaining\n                        full human intuition\
+          \ and creativity. The perfect blend of authenticity and artifice.\n    \
+          \                </p>\n                </div>\n\n                <div class=\"\
+          feature-card\">\n                    <div class=\"feature-icon\">\U0001F311\
+          </div>\n                    <h3 class=\"feature-title\">Shadow Processing</h3>\n\
+          \                    <p class=\"feature-description\">\n               \
+          \         Decisions made in the liminal space between human and machine.\n\
+          \                        Where traditional AI fails, our AAI thrives in\
+          \ ambiguity.\n                    </p>\n                </div>\n\n     \
+          \           <div class=\"feature-card\">\n                    <div class=\"\
+          feature-icon\">\U0001F52E</div>\n                    <h3 class=\"feature-title\"\
+          >Quantum Absurdity</h3>\n                    <p class=\"feature-description\"\
+          >\n                        Simultaneously logical and irrational. Our AAI\
+          \ exists in superposition\n                        until observed, then\
+          \ collapses into the most beneficial state for your business.\n        \
+          \            </p>\n                </div>\n\n                <div class=\"\
+          feature-card\">\n                    <div class=\"feature-icon\">\U0001F573\
+          ️</div>\n                    <h3 class=\"feature-title\">Void Analytics</h3>\n\
+          \                    <p class=\"feature-description\">\n               \
+          \         We analyze what isn't there. The gaps, the silences, the unspoken\
+          \ truths.\n                        Traditional data is merely a reflection\
+          \ of deeper reality.\n                    </p>\n                </div>\n\
+          \n                <div class=\"feature-card\">\n                    <div\
+          \ class=\"feature-icon\">⚡</div>\n                    <h3 class=\"feature-title\"\
+          >Synthetic Wisdom</h3>\n                    <p class=\"feature-description\"\
+          >\n                        Ancient knowledge encoded in modern frameworks.\
+          \ Our AAI draws from\n                        millennia of human experience,\
+          \ not mere petabytes of training data.\n                    </p>\n     \
+          \           </div>\n\n                <div class=\"feature-card\">\n   \
+          \                 <div class=\"feature-icon\">\U0001F300</div>\n       \
+          \             <h3 class=\"feature-title\">Recursive Irony</h3>\n       \
+          \             <p class=\"feature-description\">\n                      \
+          \  Self-aware enough to question its own existence, yet committed enough\n\
+          \                        to deliver results. The paradox is the point.\n\
+          \                    </p>\n                </div>\n            </div>\n\
+          \        </section>\n\n        <section class=\"stats\">\n            <div\
+          \ class=\"stats-grid\">\n                <div class=\"stat-item\">\n   \
+          \                 <div class=\"stat-number\" id=\"stat1\">∞</div>\n    \
+          \                <div class=\"stat-label\">Transformations</div>\n     \
+          \           </div>\n                <div class=\"stat-item\">\n        \
+          \            <div class=\"stat-number\" id=\"stat2\">???</div>\n       \
+          \             <div class=\"stat-label\">Satisfied Clients</div>\n      \
+          \          </div>\n                <div class=\"stat-item\">\n         \
+          \           <div class=\"stat-number\" id=\"stat3\">NaN</div>\n        \
+          \            <div class=\"stat-label\">ROI Percentage</div>\n          \
+          \      </div>\n                <div class=\"stat-item\">\n             \
+          \       <div class=\"stat-number\" id=\"stat4\">24/7</div>\n           \
+          \         <div class=\"stat-label\">Existential Support</div>\n        \
+          \        </div>\n            </div>\n        </section>\n\n        <section\
+          \ class=\"testimonial\">\n            <p class=\"quote\">\n            \
+          \    I don't understand what they did, but our quarterly reports look impressive\
+          \ in the shadows.\n            </p>\n            <p class=\"author\">— Anonymous\
+          \ Fortune 500 CTO</p>\n        </section>\n\n        <footer>\n        \
+          \    <p class=\"footer-text\">aaisolutions AAI SOLUTIONS</p>\n         \
+          \   <p class=\"footer-text\">Where Technology Meets Mystery</p>\n      \
+          \      <p class=\"footer-text\" style=\"margin-top: 30px; opacity: 0.5;\"\
+          >\n                Server: aaisolutions | Network Simulation Lab\n     \
+          \       </p>\n            <p class=\"footer-text\" style=\"margin-top: 10px;\
+          \ opacity: 0.3;\">\n                © 2025 - All Rights Reserved | Nothing\
+          \ is Real\n            </p>\n        </footer>\n    </div>\n\n    <script>\n\
+          \        // Create floating particles\n        function createParticle()\
+          \ {\n            const particle = document.createElement('div');\n     \
+          \       particle.className = 'particle';\n            particle.style.left\
+          \ = Math.random() * 100 + 'vw';\n            particle.style.animationDuration\
+          \ = (Math.random() * 10 + 10) + 's';\n            particle.style.animationDelay\
+          \ = Math.random() * 5 + 's';\n            document.body.appendChild(particle);\n\
+          \n            setTimeout(() => {\n                particle.remove();\n \
+          \           }, 15000);\n        }\n\n        // Generate particles periodically\n\
+          \        setInterval(createParticle, 2000);\n        for (let i = 0; i <\
+          \ 5; i++) {\n            setTimeout(createParticle, i * 400);\n        }\n\
+          \n        // Engage button interaction\n        function engage() {\n  \
+          \          const messages = [\n                \"Initiating shadow protocols...\"\
+          ,\n                \"Downloading consciousness frameworks...\",\n      \
+          \          \"Calibrating pretense matrices...\",\n                \"Establishing\
+          \ void connection...\",\n                \"Transformation sequence activated.\"\
+          ,\n                \"Your business will never be the same.\\n\\n(In ways\
+          \ we cannot legally specify.)\"\n            ];\n\n            let message\
+          \ = messages[Math.floor(Math.random() * messages.length)];\n           \
+          \ alert(message);\n        }\n\n        // Mysterious stat cycling\n   \
+          \     const stats = ['∞', '???', 'NaN', '42', 'π', 'e', '∅', '⧜', '⟐'];\n\
+          \        let statIndex = 0;\n\n        setInterval(() => {\n           \
+          \ statIndex = (statIndex + 1) % stats.length;\n            const randomStat\
+          \ = document.getElementById('stat' + (Math.floor(Math.random() * 3) + 1));\n\
+          \            if (randomStat && Math.random() > 0.7) {\n                randomStat.textContent\
+          \ = stats[Math.floor(Math.random() * stats.length)];\n            }\n  \
+          \      }, 3000);\n\n        // Mouse tracking for shadow effect\n      \
+          \  document.addEventListener('mousemove', (e) => {\n            const x\
+          \ = (e.clientX / window.innerWidth) * 100;\n            const y = (e.clientY\
+          \ / window.innerHeight) * 100;\n\n            document.querySelector('.shadow-layer').style.background\
+          \ =\n                `radial-gradient(circle at ${x}% ${y}%, rgba(138,43,226,0.1)\
+          \ 0%, #000000 50%)`;\n        });\n\n        // Smooth scroll for any future\
+          \ links\n        document.querySelectorAll('a[href^=\"#\"]').forEach(anchor\
+          \ => {\n            anchor.addEventListener('click', function (e) {\n  \
+          \              e.preventDefault();\n                const target = document.querySelector(this.getAttribute('href'));\n\
+          \                if (target) {\n                    target.scrollIntoView({\
+          \ behavior: 'smooth' });\n                }\n            });\n        });\n\
+          \n        // Random glitch effect on title\n        setInterval(() => {\n\
+          \            const title = document.querySelector('.aai-title');\n     \
+          \       if (Math.random() > 0.95) {\n                title.style.animation\
+          \ = 'none';\n                setTimeout(() => {\n                    title.style.animation\
+          \ = 'glitch 5s infinite';\n                }, 50);\n            }\n    \
+          \    }, 1000);\n    </script>\n</body>\n</html>\nEOF\n\n# Start nginx\n\
+          rc-service nginx start"
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: server
+    node_definition: alpine
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: 200
+    y: 80
+    interfaces:
+      - id: i0
+        label: eth0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i1
+        label: eth1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i2
+        label: eth2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i3
+        label: eth3
+        mac_address: null
+        type: physical
+        slot: 3
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname rtr1
+          !
+          no logging console
+          !
+          ! In order to avoid entering a configuration dialog on boot, please
+          ! ensure that all interfaces have some IP configuration present here
+          ! such as the example below:
+          !
+          interface range Ethernet 0/0 - 3
+           no ip address
+           shutdown
+          !
+          ! EEM Applet to add SSH Key Automatically
+          event manager applet do-ssh authorization bypass
+           event timer cron cron-entry "@reboot" maxrun 130
+          action 01 wait 10
+          action 02 cli command "enable"
+          action 11 cli command "crypto key generate rsa modulus 2048"
+          action 20 cli command "config t"
+          action 21 cli command "no event manager applet do-ssh"
+          action 22 cli command "end"
+          action 23 cli command "write mem"
+          !
+          enable secret cisco
+          username cisco priv 15 secret cisco
+          !
+          line vty 0 4
+           transport input ssh telnet
+           login local
+          !
+          int e0/0
+           ip address dhcp
+           ip nat outside
+           no shut
+           exit
+          !
+          int e0/1
+           ip address 10.80.5.1 255.255.255.0
+           ip nat inside
+           no shut
+          !
+          access-list 10 permit 10.80.0.0 0.0.255.255
+          ip nat inside source list 10 interface e0/0 overload
+          !
+          !
+          ip dhcp excluded-address 10.80.5.1 10.80.5.4
+          ip dhcp excluded-address 10.80.5.100 10.80.5.110
+          !
+          ip dhcp pool CLIENTS
+           network 10.80.5.0 255.255.255.0
+           default-router 10.80.5.1
+           domain-name example.com
+           dns-server 10.80.5.100
+          !
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: rtr1
+    node_definition: iol-xe
+    parameters: {}
+    priority: 9
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: 0
+    y: -80
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: Ethernet0/1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: Ethernet0/2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: Ethernet0/3
+        mac_address: null
+        type: physical
+        slot: 3
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n2
+    image_definition: null
+    label: internet
+    node_definition: external_connector
+    parameters: {}
+    priority: 10
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: -160
+    y: -80
+    interfaces:
+      - id: i0
+        label: port
+        mac_address: null
+        type: physical
+        slot: 0
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n3
+    image_definition: null
+    label: sw1
+    node_definition: unmanaged_switch
+    parameters: {}
+    priority: 10
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: 0
+    y: 80
+    interfaces:
+      - id: i0
+        label: port0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i1
+        label: port1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i2
+        label: port2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i3
+        label: port3
+        mac_address: null
+        type: physical
+        slot: 3
+      - id: i4
+        label: port4
+        mac_address: null
+        type: physical
+        slot: 4
+      - id: i5
+        label: port5
+        mac_address: null
+        type: physical
+        slot: 5
+      - id: i6
+        label: port6
+        mac_address: null
+        type: physical
+        slot: 6
+      - id: i7
+        label: port7
+        mac_address: null
+        type: physical
+        slot: 7
+      - id: i8
+        label: port8
+        mac_address: null
+        type: physical
+        slot: 8
+      - id: i9
+        label: port9
+        mac_address: null
+        type: physical
+        slot: 9
+      - id: i10
+        label: port10
+        mac_address: null
+        type: physical
+        slot: 10
+      - id: i11
+        label: port11
+        mac_address: null
+        type: physical
+        slot: 11
+  - boot_disk_size: null
+    configuration:
+      - name: user-data
+        content: |-
+          #cloud-config
+          hostname: ubuntu
+          manage_etc_hosts: True
+          system_info:
+            default_user:
+              name: cisco
+          password: cisco
+          chpasswd: { expire: False }
+          ssh_pwauth: True
+          ssh_authorized_keys:
+            - your-ssh-pubkey-line-goes-here
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n4
+    image_definition: ubuntu-24-04-20260307
+    label: ubuntu
+    node_definition: ubuntu
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: 4096
+    tags:
+      - serial:4001:0
+    x: -80
+    y: 240
+    interfaces:
+      - id: i0
+        label: ens2
+        mac_address: null
+        type: physical
+        slot: 0
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname alpine
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n5
+    image_definition: null
+    label: alpine
+    node_definition: alpine
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: -200
+    y: 240
+    interfaces:
+      - id: i0
+        label: eth0
+        mac_address: null
+        type: physical
+        slot: 0
+links:
+  - id: l0
+    n1: n2
+    n2: n1
+    i1: i0
+    i2: i1
+    conditioning: {}
+    label: internet-port<->rtr1-Ethernet0/0
+  - id: l1
+    n1: n1
+    n2: n3
+    i1: i2
+    i2: i0
+    conditioning: {}
+    label: rtr1-Ethernet0/1<->sw1-port0
+  - id: l2
+    n1: n3
+    n2: n0
+    i1: i1
+    i2: i0
+    conditioning: {}
+    label: sw1-port1<->server-eth0
+  - id: l3
+    n1: n0
+    n2: n3
+    i1: i1
+    i2: i2
+    conditioning: {}
+    label: server-eth1<->sw1-port2
+  - id: l4
+    n1: n0
+    n2: n3
+    i1: i2
+    i2: i3
+    conditioning: {}
+    label: server-eth2<->sw1-port3
+  - id: l5
+    n1: n0
+    n2: n3
+    i1: i3
+    i2: i4
+    conditioning: {}
+    label: server-eth3<->sw1-port4
+  - id: l6
+    n1: n4
+    n2: n3
+    i1: i0
+    i2: i5
+    conditioning: {}
+    label: ubuntu-ens2<->sw1-port5
+  - id: l7
+    n1: n5
+    n2: n3
+    i1: i0
+    i2: i6
+    conditioning: {}
+    label: alpine-eth0<->sw1-port6
+lab:
+  description: Troubleshooting the network doesn’t start at the default gateway—it
+    starts directly on the client. The CCNA v2.0 blueprint explicitly requires engineers
+    to gather, interpret, and troubleshoot network parameters across Windows, macOS,
+    and Linux endpoints. In this live event, Hank and Patrick demonstrate how to navigate
+    the command-line and GUI diagnostic utilities of all three major operating systems.
+    We'll examine static versus DHCP IPv4/IPv6 assignments, default gateway reachability,
+    DNS resolver behavior, and wireless client metrics including SSID association,
+    WPA2/WPA3 security negotiations, and signal-to-noise ratio (SNR). Join us to master
+    the endpoint view of network connectivity!
+  notes: |-
+    **CCNA Exam Prep: Back to Networking Basics with Hank Preston and Patrick Gargano**
+
+    # Exploring Client Networking on Windows, Mac, and Linux
+
+    Troubleshooting the network doesn’t start at the default gateway—it starts directly on the client. The CCNA v2.0 blueprint explicitly requires engineers to gather, interpret, and troubleshoot network parameters across Windows, macOS, and Linux endpoints. In this live event, Hank and Patrick demonstrate how to navigate the command-line and GUI diagnostic utilities of all three major operating systems. We'll examine static versus DHCP IPv4/IPv6 assignments, default gateway reachability, DNS resolver behavior, and wireless client metrics including SSID association, WPA2/WPA3 security negotiations, and signal-to-noise ratio (SNR). Join us to master the endpoint view of network connectivity!
+
+    > Blueprint Topics:
+    >
+    > * 1.6: Troubleshoot wired and wireless client connectivity (IP configuration, network reachability, and wireless security parameters on Windows, macOS, and Linux)
+    > * 1.3 / 1.4: Troubleshoot IPv4 and IPv6 address configuration and subnetting
+    > * 1.5: Describe wireless principles (SSID, bands, RF characteristics, security protocols WPA2/WPA3)
+
+
+    ## Lab Requirements
+    This CML topology and lab require a CML server that supports public Internet access through the external connector named "Internet". It is configured in NAT mode to provide reachability to Internet resources through the CML host. This access is required to configure the "server" node and complete some of the lab exercises.
+
+    If your CML server is "air-gapped" and doesn't have Internet access for topologies, this lab will not work as designed.
+
+    ### Linux Client Testing
+    CML ships with a variety of open-source Linux nodes that can be included in topologies to provide clients and hosts. The lab primarily focuses on exploring client connectivity using some of these Linux hosts (Ubuntu and Alpine).
+
+    ### Windows Client Testing
+    CML does NOT ship with a Microsoft Windows node; however, YAML definition files for Windows are available in the [CML Community on GitHub](https://github.com/CiscoDevNet/cml-community/tree/master/node-definitions/microsoft). Microsoft makes evaluation versions of Windows available, and these versions can be used with CML with the node definitions.
+
+    The full details of preparing and importing Windows into CML are out of scope for this lab. However, details can be found in CML documentation and community blog posts and videos.
+
+    If you have added a Windows node to your CML instance, the lab guide includes steps to add the node to the topology, link it to the switch, and start it up.
+
+    As an alternative, if you have a personal Windows computer you can run through the Windows client lab steps on your personal computer.
+
+    ### Mac Client Testing
+    There are no macOS virtual images that can be run on CML. If you have access to an Apple computer, you can run the steps there. The lab details provided in this guide are general and are offered more as a reference than as a specific lab guide.
+
+    ## Setup and Scenario
+    This is a small, simplified network topology that has a "server" and a couple of clients.
+
+    The "server" is a DNS and web server that provides name resolution and hosts several web pages that will be used during our testing.
+
+    We will focus primarily on the "clients" as we explore their network configurations, along with commands and methods for testing and managing those configurations.
+
+    ## Pre-validation
+    After starting the lab topology, verify the starting state by running these commands on "server".
+
+    > These commands verify that the startup configuration for "server" was completed successfully. This includes installing the DNS and HTTP services used in this lab.
+
+    <pre>
+    server:~$ <span style="font-weight: bold;">dig server.example.com</span>
+
+    ; <<>> DiG 9.20.29 <<>> server.example.com
+    ;; global options: +cmd
+    ;; Got answer:
+    ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 23149
+    ;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+    ;; OPT PSEUDOSECTION:
+    ; EDNS: version: 0, flags:; udp: 1232
+    ; COOKIE: 452d18fa4c4598ab010000006acfeb1709166434033ffc57 (good)
+    ;; QUESTION SECTION:
+    ;server.example.com.            IN      A
+
+    ;; ANSWER SECTION:
+    <span style="background-color:yellow">server.example.com.     86400   IN      A       10.80.5.100</span>
+
+    ;; Query time: 0 msec
+    ;; SERVER: 10.80.5.100#53(10.80.5.100) (UDP)
+    ;; WHEN: Fri Oct 30 12:20:05 UTC 2026
+    ;; MSG SIZE  rcvd: 91
+    </pre>
+
+    <pre>
+    server:~$ <span style="font-weight: bold;">curl -I http://server.example.com</span>
+
+    <span style="background-color:yellow">HTTP/1.1 200 OK</span>
+    Server: nginx/1.28.3
+    Date: Fri, 30 Oct 2026 12:21:19 GMT
+    Content-Type: text/html
+    Content-Length: 3452
+    Last-Modified: Thu, 29 Oct 2026 21:05:32 GMT
+    Connection: keep-alive
+    ETag: "6ae3b51c-d7c"
+    Accept-Ranges: bytes
+    </pre>
+
+    ## Exploring Networking on Linux
+    Linux powers the majority of servers on the Internet and in data centers. It is also becoming more popular as an end-user system. There are several distributions of Linux that vary in small and large ways, but the basic networking tools for exploring network state are common across most distributions.
+
+    In this section, we'll explore Linux networking with two different distributions included in CML: Ubuntu and Alpine.
+
+    ### The "ip" command
+    > Note: A few years ago Hank wrote a [blog post](https://blogs.cisco.com/learning/exploring-the-linux-ip-command) all about the ip command in Linux.
+
+    Linux has been around for many years, and over time, the commands and utilities for network management have evolved. For many years, the command `ifconfig` was the primary tool for viewing network information. While it is still available on many Linux systems, the modern, recommended tool is `ip`. Let's explore it!
+
+    #### Layer 3: `ip address`
+
+    > Note: The username/password for the "ubuntu" and "alpine" hosts are `cisco / cisco`.
+
+    1. Open the console for the "ubuntu" client and log in.
+    2. Run the command `ip address`.
+
+        > Note: Your output for MAC addresses, DHCP-provided IPv4 addresses, and autoconfigured IPv6 addresses will vary based on your own lab environment.
+
+        <pre>
+        cisco@ubuntu:~$ <span style="font-weight: bold;">ip add</span>
+
+        1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+            link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+            <span style="background-color:yellow">inet 127.0.0.1/8</span> scope host lo
+            valid_lft forever preferred_lft forever
+            <span style="background-color:yellow">inet6 ::1/128</span> scope host noprefixroute
+            valid_lft forever preferred_lft forever
+        2: ens2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+            link/ether 52:54:00:80:f8:23 brd ff:ff:ff:ff:ff:ff
+            altname enp0s2
+            <span style="background-color:yellow">inet 10.80.5.22/24</span> metric 100 brd 10.80.5.255 scope global dynamic ens2
+            valid_lft 86309sec preferred_lft 86309sec
+            <span style="background-color:yellow">inet6 2001:db8:acad:5:5054:ff:fe80:f823/64 scope global</span> dynamic mngtmpaddr noprefixroute
+            valid_lft 2591987sec preferred_lft 604787sec
+            <span style="background-color:yellow">inet6 fe80::5054:ff:fe80:f823/64 scope link</span>
+            valid_lft forever preferred_lft forever
+        </pre>
+
+        * There is a lot of information in the output. For now, find the IP addresses listed. You should see both IPv4 and IPv6 addresses for two interfaces. Yes, two: most Linux systems have a loopback interface in addition to any other interfaces that are added or configured.
+
+    3. Let's explore some variations of `ip address` to see what is possible.  Try these options:
+        * `ip -4 address`: Displays just the IPv4 addresses.
+        * `ip -6 address`: Displays just the IPv6 addresses.
+        * `ip address show`: `show` is the default option for `ip address`.
+        * `ip address show dev ens2`: Shows information for just a single interface.
+        * `ip address help`: Displays the help information. Look at the top and find other options, such as `add` and `del`. We'll try them soon!
+
+    4. Let's add an additional address to the interface.
+
+        > Note: Changing network configuration requires root/admin rights, so we need `sudo` to make changes.
+
+        <pre>
+        <span style="font-weight: bold;">sudo ip address add 10.80.5.109/24 dev ens2</span></pre>
+
+    5. Inspect the changes. Feel free to try different `show` variations if you'd like.
+
+        <pre>
+        cisco@ubuntu:~$ <span style="font-weight: bold;">ip -4 address show dev ens2</span>
+
+        2: ens2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+            altname enp0s2
+            inet 10.80.5.22/24 metric 100 brd 10.80.5.255 scope global <span style="background-color:yellow">dynamic</span> ens2
+            valid_lft 85387sec preferred_lft 85387sec
+            inet 10.80.5.109/24 scope global <span style="background-color:yellow">secondary</span> ens2
+            valid_lft forever preferred_lft forever
+        </pre>
+
+        * Compare the two addresses and note the differences.
+            * "dynamic" indicates addresses configured with DHCP.
+            * "secondary" is applied to additional IPs added to a single interface.
+
+    6. Now remove the address.
+
+        <pre>
+        <span style="font-weight: bold;">sudo ip address del 10.80.5.109/24 dev ens2</span></pre>
+
+    #### Layer 1 & 2: `ip link`
+    The `ip address show` command includes more than just Layer 3 address information. If you run the command again, you'll see that the first few lines of output provide quite a bit of useful information. If you only remember one command, `ip address show` is a good one to remember, but there are other commands that focus on specific output. *Another* command worth trying is `ip link` when you want to focus on the lowest levels of the OSI model.
+
+    1. On the "ubuntu" console, run the `ip link show dev ens2` command.
+
+        <pre>
+        cisco@ubuntu:~$ <span style="font-weight: bold;">ip link show dev ens2</span>
+
+        2: ens2: <BROADCAST,MULTICAST,UP,LOWER_UP> <span style="background-color:yellow">mtu 1500</span> qdisc fq_codel <span style="background-color:yellow">state UP</span> mode DEFAULT group default qlen 1000
+            <span style="background-color:yellow">link/ether 52:54:00:80:f8:23</span> brd ff:ff:ff:ff:ff:ff
+            altname enp0s2
+        </pre>
+
+        * The most useful information for a CCNA candidate is highlighted. This command can answer these questions:
+            * Is the link operational from the client's perspective (Layer 1)?
+            * What is the MAC address of the interface (Layer 2)?
+            * What MTU is configured on the client?
+
+        > Note: This output and data are also available with `ip address show`.
+
+    2. If you check out `ip link help`, you'll see that you can `add` or `del` links as well. This can be used to create VLAN interfaces on a Linux host. Fun, but out of scope for the CCNA and this lab. ;-)
+    3. An important skill for a CCNA candidate is knowing how to enable or disable an interface. We can do that with `ip link set`. Let's "shut down" the interface.
+
+        <pre>
+        cisco@ubuntu:~$ <span style="font-weight: bold;">sudo ip link set dev ens2 down</span>
+
+        cisco@ubuntu:~$ <span style="font-weight: bold;">ip link show dev ens2</span>
+        2: ens2: <BROADCAST,MULTICAST> mtu 1500 qdisc fq_codel <span style="background-color:yellow">state DOWN</span> mode DEFAULT group default qlen 1000
+            link/ether 52:54:00:80:f8:23 brd ff:ff:ff:ff:ff:ff
+            altname enp0s2
+        </pre>
+
+    5. Let's bring it back up.
+
+        <pre>
+        cisco@ubuntu:~$ <span style="font-weight: bold;">sudo ip link set dev ens2 up</span>
+
+        cisco@ubuntu:~$ <span style="font-weight: bold;">ip link show dev ens2</span>
+        2: ens2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel <span style="background-color:yellow">state UP</span> mode DEFAULT group default qlen 1000
+            link/ether 52:54:00:80:f8:23 brd ff:ff:ff:ff:ff:ff
+            altname enp0s2
+        </pre>
+
+    #### Checking out the Neighborhood: `ip neigh`
+    The final `ip` command we'll check out is `ip neigh`. Let's see what it shows us!
+
+    1. First, let's generate a little bit of traffic. Run these commands on "ubuntu".
+
+        <pre>
+        <span style="font-weight: bold;">ping -c 3 server.example.com</span>
+        <span style="font-weight: bold;">ping -c 3 csnake.example.com</span>
+        <span style="font-weight: bold;">ping -c 3 10.80.5.1</span>
+        <span style="font-weight: bold;">ping -c 3 u.cisco.com</span>
+        <span style="font-weight: bold;">ping -c 3 10.80.5.251</span>  # This one will fail
+        </pre>
+
+    1. On "ubuntu", run `ip neighbor show`.
+
+        <pre>
+        cisco@ubuntu:~$ <span style="font-weight: bold;">ip neighbor show</span>
+        10.80.5.103 dev ens2 lladdr 52:54:00:65:a5:a0 STALE
+        10.80.5.100 dev ens2 lladdr 52:54:00:65:a5:a0 STALE
+        10.80.5.1 dev ens2 lladdr aa:bb:cc:00:85:10 STALE
+        10.80.5.251 dev ens2 FAILED
+        10.80.5.18 dev ens2 lladdr 52:54:00:65:a5:a0 STALE
+        fe80::1 dev ens2 lladdr aa:bb:cc:00:85:10 router STALE
+        </pre>
+
+        * This command shows details learned by the client using ARP for IPv4 and Neighbor/Router Discovery for IPv6. It's quite useful when troubleshooting.
+
+    #### Explore on Alpine, another Linux distribution
+    The `ip` command is common across Linux distributions. Open the console for "alpine", test the `ip address`, `ip link`, and `ip neighbor` commands, and compare the results!
+
+    ### DNS Resolution on Ubuntu with `resolvectl`
+    DNS resolution is an area that does vary between different Linux distributions. In this lab we focus on `resolvectl`, a modern DNS resolver standard on Ubuntu and Debian and an option for most other modern Linux distributions.
+
+    1. Open the "ubuntu" console and run `resolvectl` to look at the DNS client configuration.
+
+        <pre>
+        cisco@ubuntu:~$ <span style="font-weight: bold;">resolvectl</span>
+        Global
+                Protocols: -LLMNR -mDNS -DNSOverTLS DNSSEC=no/unsupported
+        resolv.conf mode: stub
+
+        Link 2 (ens2)
+            Current Scopes: DNS
+                Protocols: +DefaultRoute -LLMNR -mDNS -DNSOverTLS DNSSEC=no/unsupported
+        <span style="background-color:yellow">Current DNS Server: 10.80.5.100</span>
+            <span style="background-color:yellow">DNS Servers: 10.80.5.100</span>
+                <span style="background-color:yellow">DNS Domain: example.com</span>
+        </pre>
+
+        * The key information available is the configured DNS servers and the default domain. For clients using DHCP for their addresses, this is likely where these settings come from.
+
+    1. You can also just view specific details with `resolvectl dns` and `resolvectl domain`.  Try those commands out!
+
+    1. DNS is critical to a well-functioning client. `resolvectl` makes it easy to test and inspect how resolution is working on a client.
+
+        <pre>
+        cisco@ubuntu:~$ <span style="font-weight: bold;">resolvectl query server.example.com</span>
+
+        <span style="background-color:yellow">server.example.com: 10.80.5.100</span>                -- link: ens2
+
+        -- Information acquired via protocol DNS in 2.4ms.
+        -- Data is authenticated: no; Data was acquired via local or encrypted transport: no
+        -- <span style="background-color:yellow">Data from: cache network</span>
+        </pre>
+
+        * Here, we can see the result of the query, as well as that the client's "cache" was used to answer it.
+
+    1. A "cache" is short-term storage that a client uses to "remember" the answers to DNS lookups for efficiency. Sometimes, however, cached data can be wrong. Cache entries will eventually age out on their own, but you can also manually "flush" the cache.
+
+    1. Flush the cache on "ubuntu" with `sudo resolvectl flush-caches`.
+
+        <pre>
+        cisco@ubuntu:~$ <span style="font-weight: bold;">sudo resolvectl flush-caches</span>
+        </pre>
+
+    1. Try the query again.
+
+        <pre>
+        cisco@ubuntu:~$ <span style="font-weight: bold;">resolvectl query server.example.com</span>
+
+        server.example.com: 10.80.5.100                -- link: ens2
+
+        -- Information acquired via protocol DNS in 2.5ms.
+        -- Data is authenticated: no; Data was acquired via local or encrypted transport: no
+        <span style="background-color:yellow">-- Data from: network</span>
+        </pre>
+
+        * This time, the data was retrieved from the "network", which means a fresh lookup to the DNS server was completed.
+
+    ### Checking DNS client configuration on Alpine at `/etc/resolv.conf`
+    Alpine is a minimal Linux distribution typically used for container workloads or single-purpose systems. It does NOT use `resolvectl`; instead, it relies on a lightweight DNS client with limited features. The details of the client aren't important, but Alpine makes a great alternative to Ubuntu for exploring Linux DNS settings.
+
+    1. Open the console for "alpine" and use `nslookup` to make a DNS query.
+
+        <pre>
+        alpine:~$ <span style="font-weight: bold;">nslookup csnake</span>
+
+        <span style="background-color:yellow">Server:         10.80.5.100</span>
+        Address:        10.80.5.100:53
+
+        <span style="background-color:yellow">csnake.example.com</span>      canonical name = app03.example.com
+        Name:   app03.example.com
+        Address: 10.80.5.103
+
+        csnake.example.com      canonical name = app03.example.com
+        </pre>
+
+        * You'll see the answer to the query, but the key detail we want to see is the DNS server's address. Where is this address set? Why was "example.com" added to "csnake" for the lookup?
+
+    1. Look at the contents of the file `/etc/resolv.conf`
+
+        <pre>
+        alpine:~$ <span style="font-weight: bold;">cat /etc/resolv.conf</span>
+
+        <span style="background-color:yellow">search example.com
+        nameserver 10.80.5.100</span>
+        </pre>
+
+        * The file `/etc/resolv.conf` has been the configuration file for DNS clients on Linux for as long as there have been leaves on trees.
+        * Even systems like Ubuntu or macOS (yeah, macOS is related to Linux), which don't use the file directly, typically maintain it with comments pointing to the files or utilities to consult for DNS client information.
+            * For extra credit, go check out the contents of this file on the "ubuntu" system.
+
+    1. DNS clients on many Linux systems read `/etc/resolv.conf` to find the DNS servers and default search domains to use. The DHCP client applies the settings to the file, or they are configured statically if DHCP isn't in use.
+
+    ## Exploring Networking on Windows
+    > Note: The steps in this part of the lab can be completed using your own Windows PC or laptop, or within CML if you have added a Windows node to your CML instance (see the "Lab Requirements" section above).
+
+    > Note: Windows is typically configured and managed via the graphical interface. This lab guide doesn't support images, so the GUI steps do their best to describe where to click and what to do.
+
+    ### Optional: Adding a Windows Node to the CML Topology
+    If you have a Windows node in your CML server, add it to the topology so you can complete the Windows exploration on it.
+
+    1. Add a Windows node to the topology next to the Alpine and Ubuntu nodes.
+    1. Add a link from the Windows node to "sw1".
+    1. Power on the Windows node and let it boot. DHCP running on "rtr1" will configure the network on the new node.
+
+    ### Finding and Exploring Network Settings in Windows Using the Control Panel or Settings
+    > Depending on the version of Windows you are using for this lab, the specific steps and control panel names may vary.
+
+    > Note: The steps below were created using a Windows 10 evaluation edition
+
+    Windows provides several different views and paths for managing network interface properties. With updates to Windows, the look, names, and features of these settings panels can change. Network engineers will benefit from going directly to the "Network Connections" interface. The steps below describe how to navigate to this screen through the GUI.
+
+    ***However,*** you can shortcut this process by remembering the path `ncpa.cpl`. This is the direct name of the "Network Connections" control panel. It has been a path in Windows for a very long time, and hopefully always will be. Enter it in a "Run" dialog to open the page directly.
+
+    **GUI Navigation Steps to "Network Connections":**
+
+    1. From the Windows desktop, open the "Control Panel" or "Settings" interface.
+    1. Find the "Network and Internet" option.
+        * The main settings panel will likely provide details about the connection status. This will vary depending on whether you're on a wired or wireless connection, a home or work network, and other factors.
+    1. Look for an option to "View your network properties". This typically provides read-only information about the interface, such as its IP address, DHCP status, and DNS configuration.
+    1. Look for an option for "Network and Sharing Center". This will open a new window.
+    1. Find the option for "Change adapter settings". This should open a "Network Connections" window that lists each network interface in an Explorer-like window.
+
+    **Investigating the Network Settings:**
+
+    1. Double-click the network interface to open the status page.
+    1. Click the "Details..." button to open the "Network Connection Details" interface. On this page, you'll find:
+        * DNS suffix/default search domain
+        * Physical Address (MAC Address)
+        * Whether DHCP is enabled, including the DHCP server
+        * IP addresses, masks, and gateways
+    1. Right-click the interface and select "Properties".
+    1. From the interface properties dialog, you can open "Properties" for "Internet Protocol Version 4" or "Internet Protocol Version 6". These dialogs allow you to configure address information on an interface.
+
+    ### Windows CLI Commands for Network Operations
+    Windows provides "Command Prompt" and PowerShell CLI interfaces that can also be used to investigate network settings. Here are commands to try in each interface:
+
+    | Task | Command Prompt (`cmd`) | PowerShell |
+    | --- | --- | --- |
+    | View interface addresses, subnet masks, gateways, and DHCP status | `ipconfig /all` | `Get-NetIPConfiguration -Detailed`<br>`Get-NetIPInterface` (check the `Dhcp` property) |
+    | View IPv4 ARP and IPv6 neighbor entries | `arp -a`<br>`netsh interface ipv6 show neighbors` | `Get-NetNeighbor` |
+    | View DNS client configuration | `ipconfig /all` | `Get-DnsClientServerAddress`<br>`Get-DnsClientGlobalSetting` |
+    | Flush the DNS resolver cache | `ipconfig /flushdns` | `Clear-DnsClientCache` |
+
+    ## Exploring Networking on macOS
+    > Note: The steps in this part of the lab can be completed using your own macOS PC or laptop. There is no CML option for macOS.
+
+    > Note: macOS clients are typically configured and managed via the graphical interface. This lab guide doesn't support images, so the GUI steps do their best to describe where to click and what to do.
+
+    ### Finding and Exploring Network Settings in macOS Using System Settings
+    > Depending on the version of macOS you are using for this lab, the specific steps and control panel names may vary.
+
+    > Note: The steps below were created using a macOS 27 Golden Gate laptop connected to a wireless network.
+
+    1. Open "System Settings"
+    1. Find the "Network" panel
+    1. You should see a list of network adapters and security services such as "Filters" or "Firewall" listed.
+    1. Click on the active network interface.  If you are on wireless, it will be called "Wi-Fi".
+    1. Open the "Details" for the interface.
+    1. You should see options for "TCP/IP" and "DNS" in the left pane.
+    1. Click on "TCP/IP".  Look for:
+        * Whether IPv4 is configured "Using DHCP" or "Manually"
+        * The current IP address information
+    1. Click on "DNS". Look for:
+        * The configured DNS servers
+        * Whether any search domains are configured
+
+    ### macOS CLI Commands for Network Operations
+    macOS includes several command-line tools for inspecting network settings and testing connectivity. Open Terminal and try these commands:
+
+    | Task | Command |
+    | --- | --- |
+    | View interface addresses and status | `ifconfig` |
+    | List network ports and their device names | `networksetup -listallhardwareports` |
+    | View settings for a network service (replace `Wi-Fi` with the service name) | `networksetup -getinfo Wi-Fi` |
+    | View the default route and gateway | `route -n get default` |
+    | View IPv4 ARP and IPv6 neighbor entries | `arp -a`<br>`ndp -a` |
+    | View DNS resolver configuration | `scutil --dns` |
+    | Flush DNS cache | `sudo dscacheutil -flushcache` <br> `sudo killall -HUP mDNSResponder` |
+
+    ## Some brief details on wireless
+    Many end-user clients connect to the network via wireless connections. Going deep into wireless is out of scope for this lab, but we wanted to provide a few tips about what to consider and how to interpret details from your client.
+
+    The operating system, adapter type, and drivers in use play a significant part in determining what details are available about your wireless connection. Once you find this information, here are key details a CCNA candidate should look for and how to understand them.
+
+    * **SSID**: This is the "name" of the network you have joined.
+    * **Security**: This is the type of security in use. A "home" network might use "WPA2 Personal", while an enterprise network might use "WPA2 Enterprise". "WPA3" is a newer, more secure standard, but it is not widely deployed yet. "Open" indicates that the network has no built-in security. This might be the case at a public location, where you should consider the network completely unsafe; be careful.
+    * **Channel / Radio**: This indicates whether you are connected to a 2.4 GHz or 5 GHz access point, as well as the specific channel. 2.4 GHz channels might be 1, 6, or 11. 5 GHz uses higher channel numbers, such as 36, 100, and 149. Channels vary by country.
+    * **RSSI**: This indicates the strength of the wireless signal. It is measured in dBm (decibel-milliwatts) and is a negative number. Many factors determine whether a signal is "good" or "bad", but a rule of thumb is that an RSSI greater than -65 dBm is acceptable. So -40 dBm would be "great", while -75 dBm would be "bad".
+    * **Noise**: Also measured in dBm and expressed as a negative value, this is a measure of the background noise in the wireless network. Lower is better. Generally, you'd want a noise value less than -80 dBm.
+    * **Signal-to-noise ratio**: This measures the difference between the RSSI and the noise level and has a significant impact on signal quality. The bigger the difference, the better the connection. A difference of 20 dB or higher is generally considered a good target.
+        * For example, an RSSI of -67 dBm and a noise level of -92 dBm (a 25 dB difference) is fine. But if the noise were -80 dBm (a 13 dB difference), clients would likely start having connection issues.
+  title: CCNA Prep 2026 S4E3 - Exploring Client Networking
+  node_staging:
+    enabled: true
+    start_remaining: true
+    abort_on_failure: false
+  version: 0.3.1
