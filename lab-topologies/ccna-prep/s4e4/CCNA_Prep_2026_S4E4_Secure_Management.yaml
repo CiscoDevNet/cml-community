@@ -1,0 +1,1248 @@
+annotations:
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080'
+    rotation: 0
+    text_bold: false
+    text_content: 'CCNA Exam Prep: Back to Networking Basics with Hank Preston and
+      Patrick Gargano'
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -440.0
+    y1: -200.0
+    z_index: 0
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080'
+    rotation: 0
+    text_bold: false
+    text_content: Modern, Secure File Transfers and Device Administration
+    text_font: monospace
+    text_italic: false
+    text_size: 18
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -440.0
+    y1: -160.0
+    z_index: 2
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#B3B3B3'
+    rotation: 0
+    text_bold: false
+    text_content: 192.168.1.20
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 23.78669854617287
+    y1: 282.70221690897114
+    z_index: 4
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      VLAN 10 - management
+      10.1.1.0/24
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -640.0
+    y1: 360.0
+    z_index: 7
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      VLAN 100 - servers
+      192.168.1.0/24
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -200.0
+    y1: 360.0
+    z_index: 7
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      R1 / SW1
+      enable password: cisco
+      telnet password: cisco
+
+      PC1
+      username: cisco
+      password: cisco
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -400.0
+    y1: 40.0
+    z_index: 7
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      Username    Password    Priv Level
+      tacadmin    admin123    15
+      tacoper     oper123     1
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 200.0
+    y1: 320.0
+    z_index: 7
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#B3B3B3'
+    rotation: 0
+    text_bold: false
+    text_content: 192.168.1.21
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 23.78669854617287
+    y1: 401.3511084544856
+    z_index: 4
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: __________________________________
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 200.0
+    y1: 320.0
+    z_index: 7
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      TACACS Shared Secret: Cisco123!
+
+      TACACS User Accounts
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: 200.0
+    y1: 240.0
+    z_index: 7
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      e0/2.10:  10.1.1.1
+      e0/2.100: 192.168.1.1
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -80.0
+    y1: 67.84002390962965
+    z_index: 4
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080FF'
+    rotation: 0
+    text_bold: false
+    text_content: 10.1.1.2
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -159.82473738053963
+    y1: 285.73815708825396
+    z_index: 4
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#8C8B8B'
+    rotation: 0
+    text_bold: false
+    text_content: 10.1.1.10
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -359.30490892255517
+    y1: 364.865637542114
+    z_index: 4
+  - border_color: '#00000000'
+    border_style: ''
+    color: '#808080'
+    rotation: 0
+    text_bold: false
+    text_content: |-
+      Practice CCNA v2.0 secure device management skills in this lab designed to mimic
+      lablet like tasks that you might see on the CCNA exam.
+    text_font: monospace
+    text_italic: false
+    text_size: 12
+    text_unit: pt
+    thickness: 1
+    type: text
+    x1: -440.0
+    y1: -120.0
+    z_index: 0
+smart_annotations:
+  - tag: clients
+    is_on: true
+    padding: 80
+    label: clients
+    tag_offset_x: 0
+    tag_offset_y: 0
+    tag_size: 14
+    group_distance: 400
+    thickness: 1
+    border_style: ''
+    fill_color: '#A95FBE80'
+    border_color: '#00000080'
+    z_index: 2
+  - tag: servers
+    is_on: true
+    padding: 85
+    label: ''
+    tag_offset_x: 0
+    tag_offset_y: -120
+    tag_size: 14
+    group_distance: 400
+    thickness: 1
+    border_style: ''
+    fill_color: '#B7E3D980'
+    border_color: '#00000080'
+    z_index: 1
+nodes:
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          !
+          !
+          hostname R1
+          !
+          !
+          ! In order to avoid entering a configuration dialog on boot, please
+          ! ensure that all interfaces have some IP configuration present here
+          ! such as the example below:
+          !
+          interface range Ethernet 0/0 - 3
+           no ip address
+           shutdown
+          !
+          !
+          no logging console
+          no aaa new-model
+          !
+          enable secret cisco
+          !
+          !
+          no ip domain lookup
+          !
+          int e0/0
+           ip address dhcp
+           ip nat outside
+           no shut
+           exit
+          !
+          !
+          interface Ethernet 0/2
+           description router-on-a-stick
+           no shut
+          !
+          interface Ethernet0/2.100
+           encapsulation dot1q 100
+           description servers
+           ip address 192.168.1.1 255.255.255.0
+          !
+          interface Ethernet0/2.10
+           encapsulation dot1q 10
+           description management
+           ip address 10.1.1.1 255.255.255.0
+           ip nat inside
+          !
+          !
+          access-list 10 permit 10.1.0.0 0.0.255.255
+          ip nat inside source list 10 interface e0/0 overload
+          !
+          !
+          line con 0
+           exec-timeout 0 0
+           logging synchronous
+          line aux 0
+          line vty 0 4
+           exec-timeout 0 0
+           password cisco
+           transport input all
+          !
+          !
+          !
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: R1
+    node_definition: iol-xe
+    parameters: {}
+    priority: 9
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: -120
+    y: 80
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: Ethernet0/1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: Ethernet0/2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: Ethernet0/3
+        mac_address: null
+        type: physical
+        slot: 3
+  - boot_disk_size: null
+    configuration:
+      - name: tac_plus.conf
+        content: |-
+          key = Cisco123!
+          accounting file = /var/log/tacplus-acct.log
+          acl = default {
+            permit = 0.0.0.0
+          }
+          host = 0.0.0.0 {
+            prompt = "TACACS+ auth: "
+          }
+          group = netadmin {
+            default service = permit
+            service = exec {
+              priv-lvl = 15
+            }
+          }
+          group = netoper {
+            default service = permit
+            service = exec {
+              priv-lvl = 1
+            }
+          }
+          user = $enab15$ {
+            login = cleartext admin123
+          }
+          user = tacadmin {
+            login = cleartext admin123
+            member = netadmin
+          }
+          user = tacoper {
+            login = cleartext oper123
+            member = netoper
+          }
+      - name: boot.sh
+        content: |-
+          # insert more commands here
+          ip address add dev eth0 192.168.1.20/24
+          ip link set dev eth0 up
+          ip route add default via 192.168.1.1
+
+          #
+          # keep the next line to indicate that the machine is ready
+          echo "READY" >/dev/console
+          exit 0
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: TACACS01
+    node_definition: tacplus
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags:
+      - servers
+    x: 80
+    y: 240
+    interfaces:
+      - id: i0
+        label: eth0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i1
+        label: eth1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i2
+        label: eth2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i3
+        label: eth3
+        mac_address: null
+        type: physical
+        slot: 3
+  - boot_disk_size: null
+    configuration:
+      - name: node.cfg
+        content: |-
+          # this is a shell script which will be sourced at boot
+          hostname PC1
+          # configurable user account
+          USERNAME=cisco
+          PASSWORD=cisco
+          ip address add 10.1.1.10/24 dev eth0
+          ip route add default via 10.1.1.1
+
+          mkdir /etc/skel
+          fallocate -l 1M /etc/skel/data.bin
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n2
+    image_definition: null
+    label: PC1
+    node_definition: alpine
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags:
+      - clients
+    x: -320
+    y: 320
+    interfaces:
+      - id: i0
+        label: eth0
+        mac_address: null
+        type: physical
+        slot: 0
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n3
+    image_definition: null
+    label: internet
+    node_definition: external_connector
+    parameters: {}
+    priority: 10
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: -120
+    y: -40
+    interfaces:
+      - id: i0
+        label: port
+        mac_address: null
+        type: physical
+        slot: 0
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname SW1
+          !
+          vtp mode transparent
+          no logging console
+          !
+          enable secret cisco
+          !
+          vlan 10
+           name management
+           exit
+          vlan 100
+           name servers
+           exit
+          !
+          interface vlan 10
+           description management
+           ip address 10.1.1.2 255.255.255.0
+           no shut
+          !
+          ip route 0.0.0.0 0.0.0.0 10.1.1.1
+          !
+          interface e0/0
+           description trunk to R1
+           switchport trunk encap dot1q
+           switchport mode trunk
+           no shut
+          !
+          interface e0/1
+           description PC1
+           no shut
+           switchport mode access
+           switchport access vlan 10
+          !
+          interface e1/0
+           description TACSRV01
+           no shut
+           switchport mode access
+           switchport access vlan 100
+          !
+          interface e1/1
+           description TACSRV02
+           no shut
+           switchport mode access
+           switchport access vlan 100
+          !
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n4
+    image_definition: null
+    label: SW1
+    node_definition: ioll2-xe
+    parameters: {}
+    priority: 9
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: -120
+    y: 240
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: Ethernet0/1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: Ethernet0/2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: Ethernet0/3
+        mac_address: null
+        type: physical
+        slot: 3
+      - id: i5
+        label: Ethernet1/0
+        mac_address: null
+        type: physical
+        slot: 4
+      - id: i6
+        label: Ethernet1/1
+        mac_address: null
+        type: physical
+        slot: 5
+  - boot_disk_size: null
+    configuration:
+      - name: tac_plus.conf
+        content: |-
+          key = Cisco123!
+          accounting file = /var/log/tacplus-acct.log
+          acl = default {
+            permit = 0.0.0.0
+          }
+          host = 0.0.0.0 {
+            prompt = "TACACS+ auth: "
+          }
+          group = netadmin {
+            default service = permit
+            service = exec {
+              priv-lvl = 15
+            }
+          }
+          group = netoper {
+            default service = permit
+            service = exec {
+              priv-lvl = 1
+            }
+          }
+          user = $enab15$ {
+            login = cleartext admin123
+          }
+          user = tacadmin {
+            login = cleartext admin123
+            member = netadmin
+          }
+          user = tacoper {
+            login = cleartext oper123
+            member = netoper
+          }
+      - name: boot.sh
+        content: |-
+          # insert more commands here
+          ip address add dev eth0 192.168.1.21/24
+          ip link set dev eth0 up
+          ip route add default via 192.168.1.1
+
+          #
+          # keep the next line to indicate that the machine is ready
+          echo "READY" >/dev/console
+          exit 0
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n5
+    image_definition: null
+    label: TACACS02
+    node_definition: tacplus
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags:
+      - servers
+    x: 80
+    y: 360
+    interfaces:
+      - id: i0
+        label: eth0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i1
+        label: eth1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i2
+        label: eth2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i3
+        label: eth3
+        mac_address: null
+        type: physical
+        slot: 3
+links:
+  - id: l0
+    n1: n0
+    n2: n3
+    i1: i1
+    i2: i0
+    conditioning: {}
+    label: R1-Ethernet0/0<->internet-port
+  - id: l1
+    n1: n0
+    n2: n4
+    i1: i3
+    i2: i1
+    conditioning: {}
+    label: R1-Ethernet0/2<->SW1-Ethernet0/0
+  - id: l2
+    n1: n2
+    n2: n4
+    i1: i0
+    i2: i2
+    conditioning: {}
+    label: PC1-eth0<->SW1-Ethernet0/1
+  - id: l3
+    n1: n1
+    n2: n4
+    i1: i0
+    i2: i5
+    conditioning: {}
+    label: TACSRV01-eth0<->SW1-Ethernet1/0
+  - id: l4
+    n1: n5
+    n2: n4
+    i1: i0
+    i2: i6
+    conditioning: {}
+    label: TACSRV02-eth0<->SW1-Ethernet1/1
+lab:
+  description: 'Unencrypted protocols like TFTP and Telnet belong in the past. The
+    CCNA v2.0 blueprint highlights modern, secure device management as an essential
+    operational skill for network engineers. In this episode, Hank and Patrick walk
+    through the practical implementation of Secure Copy (SCP) and Secure File Transfer
+    Protocol (SFTP) on Cisco IOS XE. We will focus on the exact CCNA scope: enabling
+    the services on the device, setting up local administrative authentication, and
+    executing secure file transfer operations for startup/running configurations and
+    software images. Join us to make secure file transfer an effortless part of your
+    day-to-day administration toolkit!'
+  notes: |-
+    **CCNA Exam Prep: Back to Networking Basics with Hank Preston and Patrick Gargano**
+
+    # Modern, Secure File Transfers and Device Administration
+
+    Unencrypted protocols like TFTP and Telnet belong in the past. The CCNA v2.0 blueprint highlights modern, secure device management as an essential operational skill for network engineers. In this episode, Hank and Patrick walk through the practical implementation of Secure Copy Protocol (SCP) and Secure File Transfer Protocol (SFTP) on Cisco IOS XE. We will focus on the exact CCNA scope: enabling the services on the device, setting up local administrative authentication, and executing secure file transfer operations for startup/running configurations and software images. Join us to make secure file transfer an effortless part of your day-to-day administration toolkit!
+
+    > Blueprint Topics:
+    > * 4.1: Configure network devices with local usernames and as an AAA client (TACACS+ and RADIUS) for management
+    > * 4.2: Manage device configuration and software files using secure file transfer operations with SFTP/SCP
+
+
+    ## Lab Introduction
+    This isn't the first time topics such as AAA, TACACS, and SSH have been covered in CCNA Prep.  [Season 3, Episode 4](https://github.com/CiscoDevNet/cml-community/tree/master/lab-topologies/ccna-prep/s3e4) was all about **Managing Network Access with Authentication, Authorization, and Accounting**.  That lab provides a deep exploration of the topic, including leveraging `debug` commands to explore the processes involved in authentication, authorization, and accounting. If you haven't checked that lab out yet, it is a great one to look at before or after you complete this lab.
+
+    This lab takes a different approach to the topic from what we did in Season 3. Inspired by the changes in the [CCNA v2.0 Blueprint](https://learningnetwork.cisco.com/s/ccna-v2-exam-topics) which asks you to ***CONFIGURE*** AAA features, a change from the v1.1 blueprint, this lab presents a series of **Tasks** to complete, similar to the performance based "lablet" questions you'll find on the CCNA exam.  If you are at the point in your studies where you are preparing for the exam, use this as an opportunity for practicing your skills directly.
+
+    Below the "**Lab Tasks**" section, you'll find a "**Lab Walkthrough**" which provides an "answer key" to each task, highlighting the configurations, verifications, and management actions for each of the tasks.
+
+    ## Setup and Scenario
+    The topology includes two preconfigured TACACS+ servers, one IOS router, one IOS switch, and a management PC for testing connections.
+
+    The tasks focus on configuring the router, but for extra practice you can also configure the switch.
+
+
+    # Lab Tasks
+
+    ## AAA Based Management
+
+    ### Task 1: Local Database Usernames
+
+    * Create the following local database accounts on R1
+
+        | Username | Password | Priv Level |
+        | -------- | -------- | ---------- |
+        | localadmin | local123 | 15 |
+        | localoper  | local456 | 1 |
+
+    * Configure R1s default AAA login authentication and exec authorization policies to use the local database
+    * Configure R1s console to support authorization through AAA services
+
+    ### Task 2: Configure AAA Client
+
+    **TACACS User Accounts:**
+
+    | Username | Password | Priv Level |
+    | -------- | -------- | ---------- |
+    | tacadmin | admin123 | 15 |
+    | tacoper  | oper123  | 1 |
+
+
+    * Create a TACACS Server group called `TACACS-SERVERS` made up of `TACACS01` & `TACACS02` on R1.
+        * The TACACS shared secret is `Cisco123!`
+        * Note: You can test the TACACS connection with the command:
+
+            ```
+            test aaa group {GROUP NAME} {USERNAME} {PASSWORD} legacy
+            ```
+
+    * Create AAA login authentication and exec authorization policies named `TACACS-LOCAL` on R1 which use the `TACACS-SERVERS` group with fallback to local for authentication
+    * Configure R1s VTY lines to use the `TACACS-LOCAL` policies for login authentication and exec authorization
+
+    ### AAA Verifications
+
+    * Verify console logins to R1 use the local database accounts
+    * Verify VTY logins (ie telnet/ssh) use the TACACS user accounts
+    * Verify admin users are authorized to privileged exec mode automatically at login
+
+    ## Secure Management and File Transfer
+
+    ### What makes a protocol "insecure" and why are they bad
+
+    Let's take a slight detour before we "secure" things up to revisit why makes a protocol insecure.  Insecure protocols don't protect the data being sent with encryption of some sort.  Telnet, TFTP, HTTP, and other "insecure" protocols send data in *clear text*. This means that if you can "see" the traffic, you can easily read the data being sent.
+
+    Let's see this in action with telnet and a basic packet capture between **PC1** and **SW1**.
+
+    **Starting the Packet Capture:**
+
+    1. Right click the link between the PC and switch, selecting "Packet Capture".
+    2. Click the gear icon to open the "Capture Settings".
+    3. In the "BPF" field, enter the filter `tcp port 23` to capture only telnet traffic.
+    4. Apply the filter.
+    5. Start the capture.
+
+    **Generating the Traffic:**
+
+    1. Open the console on "PC1". The credentials are `cisco/cisco`.
+    2. Connect to "R1" from "PC1" with the command `telnet 10.1.1.1`.
+    3. Enter the telnet password when prompted. The password is `cisco`.
+
+    **Inspecting the Captured Traffic:**
+
+    1. Stop the packet capture.
+    2. Find the packets from "PC1" (source 10.1.1.10) to "R1" (destination 10.1.1.1) that show "Telnet Data..." in the INFO column.
+    3. Click on each of these packets and expand the "Telnet" section of the details.
+        * The first packet will have some telnet session details sent. The next packets should show the password you entered.
+        * You may find the password split across as many as 5 packets, but you will see the exact password you typed represented in clear text.
+
+    This is why enabling and using "secure protocols" is so critical across the network. Now back to the tasks.
+
+    ### Task 3: Enforce Secure Remote Access to CLI
+
+    * Create an exportable elliptical curve certificate named `R1.example.com` with a 384 bit key on R1
+    * Ensure SSH v2.0 is enabled on R1
+    * Configure R1 to allow connections to the VTY lines using SSH only
+    * Configure R1 to only allow connections to the VTY lines from hosts on the management network (VLAN 10)
+
+    ### Task 4: Secure File Management Activities
+    > Note:
+    > * PC1 credentials are `cisco / cisco`
+    > * PC1 address is `10.1.1.10`
+
+    * Save `running-config` to `startup-config` on R1
+    * Copy the `startup-config` from R1 to PC1 as `r1-config.txt` using SFTP.
+    * Copy the file `data.bin` from PC1 to R1 using SCP
+        * Save the file to the `unix:` filesystem
+    * Export the certification `r1.example.com` from R1 using SFTP
+        * Encrypt the private key with AES and a passphrase of `test1234`
+        * Prefix the public and private key files with the name `R1.example.com`
+
+    -------------------------------------------------------------------------------
+
+    # Lab Walkthrough
+    Below are configuration and command examples for how to complete each task and sub-task in the lab.
+
+    ## Task 1: Local Database Usernames
+
+    ### Create the following local database accounts on R1
+
+    | Username | Password | Priv Level |
+    | -------- | -------- | ---------- |
+    | localadmin | local123 | 15 |
+    | localoper  | local456 | 1 |
+
+    You can create multiple local accounts on a device using the `username` command. The default "priv level" is `1`, but by setting to `15` and enabling authorization, you can create admin accounts.
+
+    > Important Tip: Be careful ***NOT*** to add a trailing space after a password when configuring user accounts.  If you do, that space becomes part of the password.  This tip also is relevant when configuring an `enable secret`.
+
+    ```
+    enable
+    config t
+
+    username localadmin priv 15 secret local123
+    username localoper priv 1 secret local456
+    end
+    ```
+
+    ### Configure R1's default AAA login authentication and exec authorization policies to use the local database
+
+    Before you can configure any AAA policies, you need to enable `new-model` for AAA.
+
+    ```
+    enable
+    config t
+
+    aaa new-model
+    aaa authentication login default local
+    aaa authorization exec default local
+    end
+    ```
+
+    There is no automatic "default" policy for AAA.  All policies need to be configured, including the `default`.  Once configured, these default policies are used unless a named policy is configured for line access.
+
+    This means that `line console` and `line vty` will immediately use these policies.
+
+    You can verify that the "default" policies are used on the lines with the command `show run all | sec line con`.
+
+    > Note: Many default configuration elements are hidden when you run `show run`.  These can be seen with `show run all`, however be prepared for a lot of output.
+
+    ```
+    show run all | sec line con
+
+    ! Note: Unrelated output has been removed from this example for brevity
+    line con 0
+     .
+     .
+     authorization exec default
+     .
+     .
+     login authentication default
+     .
+     .
+    ```
+
+    You can check the VTY lines with the command `show run all | line vty`
+
+
+    ### Configure R1's console to support authorization through AAA services
+
+    Despite the default configuration for the console line including `authorization exec default`, IOS does NOT perform authorization on the console line unless the global configuration `aaa authorization console` is configured.
+
+    ```
+    enable
+    config t
+
+    aaa authorization console
+    end
+    ```
+
+    > Note: You might wonder why you need to explicitly enable console authorization. While the author of this lab wasn't involved in the design meeting, he does think it's a good idea.  The "console" is often the access method of last resort. What is used when other access isn't working. And a misconfigured AAA policy is an easy way to find yourself locked out of a switch or router and needing to perform password recovery.  So an extra step to make sure you really really want to perform AAA authorization on the console is a nice safety step and has likely saved a network engineer or two from an unplanned recovery operation.
+
+    ## Task 2: Configure AAA Client
+
+    ### Create a TACACS Server group called `TACACS-SERVERS` made up of `TACACS01` & `TACACS02` on R1
+
+    There are a few different ways you can configure TACACS servers on IOS.  This example creates individual `tacacs server` elements that are then grouped in the `aaa group` object.  An advantage of this approach is that each TACACS server can have independent keys/shared secrets configured, something considered a good practice over resusing or sharing secrets/keys across servers.
+
+    ```
+    enable
+    config t
+
+    tacacs server TACACS01
+     address ipv4 192.168.1.20
+     key Cisco123!
+
+    tacacs server TACACS02
+     address ipv4 192.168.1.21
+     key Cisco123!
+
+    aaa group server tacacs+ TACACS-SERVERS
+     server name TACACS01
+     server name TACACS02
+
+    end
+    ```
+
+    ### Create AAA login authentication and exec authorization policies named `TACACS-LOCAL` on R1 which uses the `TACACS-SERVERS` group with fallback to local for authentication
+
+    You can many different "named" policies for AAA.  This allows using different AAA schemes and requirements on different management channels.  It is also useful to support migration and changes of servers in a controlled and orderly fashion.
+
+    Each policy supports a series of prioritized sources of authentication or authorization. Using a remote server with TACACS or RADIUS as the primary method and falling back to local accounts is common practice at many organizations.
+
+    ```
+    enable
+    config t
+
+    aaa authentication login TACACS-LOCAL group TACACS-SERVERS local
+    aaa authorization exec TACACS-LOCAL group TACACS-SERVERS local
+
+    end
+    ```
+
+    ### Configure R1s VTY lines to use the `TACACS-LOCAL` policies for login authentication and exec authorization
+
+    As we say, by default the VTY lines use the `default` policies.  But we want to leverage the named policies that use the centalized TACACS servers as a primary source.
+
+    ```
+    enable
+    config t
+
+    line vty 0 4
+     login authentication TACACS-LOCAL
+     authorization exec TACACS-LOCAL
+    end
+    ```
+
+    ## AAA Verifications
+    With the AAA policies all in place, we can now test that they work as intended.
+
+    ### Verify console logins to R1 use the local database accounts
+
+    **Example Verification:**
+
+    ```
+    R1 con0 is now available
+
+    Press RETURN to get started.
+
+    User Access Verification
+
+    Username: localadmin
+    Password:
+
+    R1#
+    ```
+
+    ### Verify VTY logins (ie telnet/ssh) use the TACACS user accounts
+
+    Perform this verification from the console of "PC1".
+
+    **Example Verification:**
+
+    ```
+    PC1:~$ telnet 10.1.1.1
+
+    Connected to 10.1.1.1
+
+    Entering character mode
+    Escape character is '^]'.
+
+
+    User Access Verification
+
+    Username: tacadmin
+    Password:
+
+    R1#exit
+    Connection closed by foreign host
+    ```
+
+    ### Verify admin users are authorized to priveleged exec mode automatically at login
+
+    Compare results of using the `localoper` and `tacoper` accounts and `localadmin` and `tacadmin` accounts to verify the authorization.  The `admin` accounts should result in a privileged exec prompt.
+
+    ```
+    R1#
+    ```
+
+    ## Task 3: Enforce Secure Remote Access to CLI
+
+    ### Create an exportable elliptical curve certificate named `R1.example.com` with a 384 bit key on R1
+
+    A certificate is required for a device to support SSH based management.  This task specifies that we create an elliptical curve (ec) certificate rather than an RSA certificate.
+
+    We are told the certificate must be named `R1.example.com`. IOS creates the default name (label) for a certificate based on the hostname and domain name.  The hostname is already configured, but no `domain name` is configured on the router.  Configure it to be `example.com` and the name will match the requirement.
+
+    Furthermore, this task specifies the certificate must be "exportable".  This is required so that Task 4 can be completed successfully.
+
+    ```
+    enable
+    config t
+
+    ip domain name example.com
+    exit
+
+    crypto key generate ec keysize 384 exportable
+    ```
+
+    > Note: In older versions of IOS the `crypto key generate` command was entered in config mode. Current IOS versions now have this command in priveleged exec (enable) mode.
+
+    Once created, you can verify the certificate label/name, type, and key size with the command `show crypto key mypubkey all`
+
+    <pre>
+    show crypto key mypubkey all
+
+    % Key pair was generated at: 08:50:21 UTC Nov 13 2026
+    <span style="background-color:yellow">Key name: R1.example.com</span>
+    <span style="background-color:yellow">Key type: EC KEYS      p384 curve</span>
+     Storage Device: private-config
+     Usage: Signature Key
+     Key is exportable. Redundancy enabled.
+     Key Data:
+      .
+      .
+
+    </pre>
+
+    > Note: The default key label is `{HOSTNAME}.{DOMAIN NAME}` which is why we typically configure a domain name when generating a key. However, you can set the key label at creation without needing configure a domain name.
+    >
+    > `crypto key generate ec keysize 384 exportable label R1.example.com`
+    >
+    > Even though you can bypass configuring a domain name for a certificate, configuring the domain is useful for other reasons as well. So still a good habit to get into.
+
+
+    ### Ensure SSH v2.0 is enabled on R1
+
+    Most modern IOS versions will immediately enable SSH v2.0 once a certificate is created. You can verify it with the `show ip ssh` command.
+
+    **Example Verification:**
+
+    ```
+    R1# show ip ssh
+
+    SSH Enabled - version 2.0
+    Authentication methods:publickey,keyboard-interactive,password
+    .
+    .
+    ```
+
+    ### Configure R1 to allow connections to the VTY lines using SSH only
+
+    The default for VTY lines is to allow telnet and/or SSH for remote management. Once you've enabled and tested that SSH is working, you can enforce only the secure option by configuring the `transport` on the lines.
+
+    ```
+    enable
+    config t
+
+    line vty 0 4
+     transport input ssh
+     end
+    ```
+
+    ### Configure R1 to only allow connections to the VTY lines from hosts on the management network (VLAN 10)
+
+    This task further secures remote management by using an access list to limit where connections can come from.
+
+    ```
+    enable
+    config t
+
+    ip access-list standard REMOTE-MANAGEMENT
+     permit 10.1.1.0 0.0.0.255
+     exit
+
+    line vty 0 4
+     access-class REMOTE-MANAGEMENT in
+     end
+    ```
+
+    ## Task 4: Secure File Management Activities
+    Network operations and management often includes copying files to and from routers and switches.  In this task we'll practice using the secure file transfer protocol options, SFTP and SCP, that are explicitly mentioned on the CCNA v2.0 blueprint.
+
+    ### Save `running-config` to `startup-config` on R1
+    Before we backup the configuration to our management PC, we better save all the changes we've made.
+
+    ```
+    copy running-config startup-config
+    ```
+
+    ### Copy the `startup-config` from R1 to PC1 as `r1-config.txt` using SFTP.
+    The `copy` command provides a large number of protocols that can be used to interact with remote servers.  Some protocols, like SFTP and SCP, require credentials to access the server.
+
+    **Example Command:**
+
+    ```
+    copy startup-config sftp://cisco@10.1.1.10/r1-config.txt
+
+    ! Output
+    Address or name of remote host [10.1.1.10]?
+    Destination username [cisco]?
+    Destination filename [r1-config.txt]?
+    Password:
+
+    SFTP send: Writing to /home/cisco/r1-config.txt size 2313
+    !
+    2313 bytes copied in 1.525 secs (1517 bytes/sec)
+    ```
+
+    If you don't remember the format for including the username, address, and filename in the copy command, that's not a problem.  You can simply provide the protocol in the copy command (`copy startup-config sftp:`) and you'll be prompted to provide the required details.
+
+    ### Copy the file `data.bin` from PC1 to R1 using SCP
+    This task simulates the activity of copying a new software image to a device before an upgrade or downgrade.
+
+    **Example Command:**
+
+    ```
+    copy scp://cisco@10.1.1.10/data.bin unix:
+
+    ! Output
+    Destination filename [data.bin]?
+    Password:
+     scp: debug1: fd 3 clearing O_NONBLOCK
+     Sending file modes: C0644 1048576 data.bin
+    !! scp: debug1: fd 1 clearing O_NONBLOCK
+
+    1048576 bytes copied in 1.916 secs (547273 bytes/sec)
+    ```
+
+    > While copying new software images to a device is common for physical devices, virtual platforms like used in CML or Packet Tracer aren't typically upgraded like a physical device. Virtual network devices are more often upgraded by deploying a new device running the upgraded image, and then migrating traffic over.
+
+    ### Export the certificate `r1.example.com` from R1 using SFTP
+    You can backup the certificates created on network devices by exporting them off to a file server. However, the private key is a critical file for ensuring true secure connections, so extra steps are required.  This includes initially creating the key as "exportable" (which we did in Task 3) as well as providing a passphrase to encrypte the key file. This passphrase is needed to leverage the private key.
+
+    > Note: During the export and copy you'll be prompted for a password several times. This is the password for the destination host. So `cisco` is the password to use.
+
+    **Example Command:**
+
+    ```
+    crypto key export ec R1.example.com pem url sftp://cisco@10.1.1.10/R1.example.com aes test1234
+
+    ! Output
+    % Key name: R1.example.com
+       Usage: Signature Key
+    Exporting public key...
+    Address or name of remote host [10.1.1.10]?
+    Destination username [cisco]?
+    Destination filename [R1.example.com-sign.pub]?
+    Password:
+    Writing file to sftp://cisco@10.1.1.10/R1.example.com-sign.pub
+    Password:
+
+    SFTP send: Writing to /home/cisco/R1.example.com-sign.pub size 215
+    !
+    base64 len 124
+    Exporting private key...
+    Address or name of remote host [10.1.1.10]?
+    Destination username [cisco]?
+    Destination filename [R1.example.com-sign.prv]?
+    Password:
+    Writing file to sftp://cisco@10.1.1.10/R1.example.com-sign.prv
+    Password:
+
+    SFTP send: Writing to /home/cisco/R1.example.com-sign.prv size 261
+    !
+    ```
+  title: CCNA Prep 2026 S4E4 Secure Management
+  node_staging:
+    enabled: true
+    start_remaining: true
+    abort_on_failure: false
+  version: 0.3.1
