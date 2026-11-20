@@ -12,7 +12,7 @@ Community Contributed Content and Resources for Cisco Modeling Labs
 
 CML is officially supported on bare-metal x86\_64 servers and in VMware ESXi and VMware Workstation virtual machines.
 Unofficially, CML can be installed onto [HyperV](documentation/cml_on_hyperv.md), [Proxmox](documentation/cml_on_proxmox.md),
-and [Nutanix AHV](documentation/cml_on_nutanix.md).
+[Nutanix AHV](documentation/cml_on_nutanix.md), and [AWS EC2](documentation/cml_on_aws.md) using nested virtualization.
 
 This repository is intended to be a place for the CML community to find and share content that builds on top of the standard CML installation.  Examples of this content include:
 
@@ -68,5 +68,6 @@ This project was written and is maintained by the following individuals:
 * Alexander Deca <alexander@deca-consulting.be>
 * Xinyu Wei <trustywolf@sfc.wide.ad.jp>
 * Kelly Christians <kelly.christians@rsmus.com>
+* Felipe de Bene <felipe@debene.dev>
 * Ariadne Haske <ariadne@haske.org>
 * Alec Gauldin <goldfishnetworks@gmail.com>
